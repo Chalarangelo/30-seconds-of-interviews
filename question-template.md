@@ -30,10 +30,10 @@
 
 <!-- Whenever possible, link a more detailed explanation. -->
 
-* https://yourLinkGoes.here/
+* [Short title](https://yourLinkGoes.here/)
 
 #### Caveats
 
-<!-- Whenever possible, include common mistakes, plus points and so on.
+<!-- Whenever possible, include common mistakes, plus points and so on. -->
 
 <!-- tags: (separate each by a comma) -->
