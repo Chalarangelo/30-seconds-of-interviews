@@ -32,8 +32,8 @@
 
 * [Short title](https://yourLinkGoes.here/)
 
-#### Caveats
+#### Good to hear
 
-<!-- Whenever possible, include common mistakes, plus points and so on. -->
+<!-- Whenever possible, include the short list of bullet points that sum up the answer. -->
 
 <!-- tags: (separate each by a comma) -->
