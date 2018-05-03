@@ -10,7 +10,7 @@ console.log(hoist); // Output: undefined
 var hoist = 'The variable has been hoisted.';
 ```
 
-#### Aditional links
+#### Additional links
 
 * [MDN docs for hoisting](https://developer.mozilla.org/en-US/docs/Glossary/Hoisting)
 * [Understanding Hoisting in JavaScript](https://scotch.io/tutorials/understanding-hoisting-in-javascript)

@@ -5,7 +5,7 @@
 When elements overlap, z-order determines which one covers the other.
 
 
-#### Aditional links
+#### Additional links
 
 * [MDN docs for z-index](https://developer.mozilla.org/en-US/docs/Web/CSS/z-index)
 * [Understanding CSS z-index](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Positioning/Understanding_z_index)

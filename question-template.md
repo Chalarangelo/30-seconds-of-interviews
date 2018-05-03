@@ -26,7 +26,7 @@
 ```js
 ```
 
-#### Aditional links
+#### Additional links
 
 <!-- Whenever possible, link a more detailed explanation. -->
 
