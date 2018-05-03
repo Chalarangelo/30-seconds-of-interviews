@@ -4,7 +4,7 @@
 
 When using triple equals in JavaScript we are testing for strict equality. This means both the type and the value we are comparing have to be the same. On the other hand, double equals firstly performs type coercion and then checks for the loose equality.
 
-#### Aditional links
+#### Additional links
 
 * [MDN docs for comparison operators](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Comparison_Operators)
 

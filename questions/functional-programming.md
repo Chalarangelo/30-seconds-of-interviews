@@ -4,7 +4,7 @@
 
 Functional programming is an essential concept in JavaScript. It produces programs by composing mathematical functions and avoids shared state and mutable data. The main difference in functional programming in comparison to other programming paradigms is a declarative approach versus an imperative one.
 
-#### Aditional links
+#### Additional links
 
 * [Javascript and Functional Programming: An Introduction](https://hackernoon.com/javascript-and-functional-programming-an-introduction-286aa625e26d)
 

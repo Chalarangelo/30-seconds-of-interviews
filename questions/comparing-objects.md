@@ -23,7 +23,7 @@ function isEqual(obj1, obj2){
 }
 ```
 
-#### Aditional links
+#### Additional links
 
 * [Object Equality in JavaScript](http://adripofjavascript.com/blog/drips/object-equality-in-javascript.html)
 * [Deep comparison between two values](https://30secondsofcode.org/object#equals)
