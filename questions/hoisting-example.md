@@ -19,7 +19,7 @@ Firstly `foobar` won't look for the outer scope as `var foo = 2;`'s declaration 
 
 #### Good to hear
 
-* Hoisting is Javascript’s default behavior of moving declarations to the top
+* Hoisting is JavaScript’s default behavior of moving declarations to the top
 * Mention of `strict` mode
 
 <!-- tags: (javascript) -->

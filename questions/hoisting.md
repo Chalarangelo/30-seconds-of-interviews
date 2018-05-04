@@ -17,7 +17,7 @@ var hoist = 'The variable has been hoisted.';
 
 #### Good to hear
 
-* Hoisting is Javascript’s default behavior of moving declarations to the top
+* Hoisting is JavaScript’s default behavior of moving declarations to the top
 * Functions are hoisted before variables
 * Mention of `strict` mode
 * `const` variables must be both declared and initialised before use
