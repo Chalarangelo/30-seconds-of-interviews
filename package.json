@@ -15,5 +15,10 @@
   "bugs": {
     "url": "https://github.com/fejes713/30-seconds-of-interviews/issues"
   },
-  "homepage": "https://github.com/fejes713/30-seconds-of-interviews#readme"
+  "homepage": "https://github.com/fejes713/30-seconds-of-interviews#readme",
+  "dependencies": {
+    "chalk": "^2.4.1",
+    "fs-extra": "^6.0.0",
+    "npm": "^6.0.0"
+  }
 }
