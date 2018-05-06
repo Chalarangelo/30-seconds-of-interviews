@@ -1,5 +1,7 @@
-![30 seconds of interviews](/logo-512x512.png)
+![30 seconds of interviews](/logo.png)
 
 # 30 seconds of interviews
 
-## The curated collection of common interview questions to help you prepare for your next interview.
+> A curated collection of common interview questions to help you prepare for your next interview.
+
+This repository contains short answers to most common questions asked in a full-stack interview. Each explanation is written with the motto _you can understand it in 30 seconds_.
