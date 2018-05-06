@@ -11,7 +11,7 @@ var objClone = Object.assign(obj);
 
 It is important to remember that nested objects are not cloned, but rather their references get copied, so nested objects still refer to the same objects as the original.
 
-#### Aditional links
+#### Additional links
 
 <!-- Whenever possible, link a more detailed explanation. -->
 
