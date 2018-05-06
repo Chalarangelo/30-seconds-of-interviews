@@ -1,4 +1,4 @@
-### What are the advantages of using CSS preprocessors
+### What are the advantages of using CSS preprocessors?
 
 #### Answer
 
