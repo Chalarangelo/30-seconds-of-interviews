@@ -11,7 +11,7 @@ Including `'use strict'` at the beginning of your JavaScript source file enables
 * Simplifies `eval()` and `arguments`.
 * Helps make JavaScript more secure.
 
-#### Aditional links
+#### Additional links
 
 * [MDN docs for strict mode](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode)
 

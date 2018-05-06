@@ -8,7 +8,7 @@ A closure is a function defined insider another function and has access to its l
 * Variables declared in the scope of the parent function
 * Variables declared in the global scope
 
-#### Aditional links
+#### Additional links
 
 * [MDN docs for closures](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures)
 * [What is a closure](https://medium.com/javascript-scene/master-the-javascript-interview-what-is-a-closure-b2f0d2152b36)
