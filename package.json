@@ -1,10 +1,11 @@
 {
   "name": "30-seconds-of-interviews",
-  "description": "The curated collection of common interview questions to help you prepare for your next interview.",
+  "description":
+    "The curated collection of common interview questions to help you prepare for your next interview.",
   "version": "0.0.1",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "builder": "node ./scripts/build.js"
   },
   "repository": {
     "type": "git",
