@@ -30,7 +30,7 @@
 
 <!-- Whenever possible, include the short list of bullet points that sum up the answer. -->
 
-####### Additional links
+##### Additional links
 
 <!-- Whenever possible, link a more detailed explanation. -->
 
