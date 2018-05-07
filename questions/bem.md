@@ -21,7 +21,7 @@ The BEM methodology is another naming convention for CSS classes. The BEM stands
 * Elements make no sense to be alone - they are tightly dependent on blocks
 * Modifier is a flag added to block or element so it makes them a bit more specific
 
-####### Additional links
+##### Additional links
 
 * [Writing clean and maintainable CSS](https://hackernoon.com/writing-clean-and-maintainable-css-using-bem-methodology-1dcbf810a664)
 
