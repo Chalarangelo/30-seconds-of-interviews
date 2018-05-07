@@ -25,15 +25,15 @@ The BEM methodology is another naming convention for CSS classes. The BEM stands
 .block__element-modifier {}
 ```
 
-#### Additional links
-
-* [Writing clean and maintainable CSS](https://hackernoon.com/writing-clean-and-maintainable-css-using-bem-methodology-1dcbf810a664)
-
 #### Good to hear
 
 * Block is a top-level abstraction of a new component
 * Elements make no sense to be alone - they are tightly dependent on blocks
 * Modifier is a flag added to block or element so it makes them a bit more specific
+
+####### Additional links
+
+* [Writing clean and maintainable CSS](https://hackernoon.com/writing-clean-and-maintainable-css-using-bem-methodology-1dcbf810a664)
 
 <!-- tags: (css) -->
 ### How do you clone an object in JavaScript?
@@ -49,18 +49,18 @@ var objClone = Object.assign(obj);
 
 It is important to remember that nested objects are not cloned, but rather their references get copied, so nested objects still refer to the same objects as the original.
 
-#### Additional links
-
-<!-- Whenever possible, link a more detailed explanation. -->
-
-* [MDN docs for Object.assign()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign)
-* [Clone an object in vanilla JS](http://voidcanvas.com/clone-an-object-in-vanilla-js-in-depth/)
-
 #### Good to hear
 
 * JavaScript passes objects by reference, meaning that nested objects get their references copied, instead of their values.
 * The same method can be used to merge two objects.
 * `JSON.stringify()` is another alternative, but is CPU-intensive.
+
+##### Additional links
+
+<!-- Whenever possible, link a more detailed explanation. -->
+
+* [MDN docs for Object.assign()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign)
+* [Clone an object in vanilla JS](http://voidcanvas.com/clone-an-object-in-vanilla-js-in-depth/)
 
 <!-- tags: (javascript) -->
 ### What is a closure in Javascript?
@@ -73,17 +73,17 @@ A closure is a function defined insider another function and has access to its l
 * Variables declared in the scope of the parent function
 * Variables declared in the global scope
 
-#### Additional links
-
-* [MDN docs for closures](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures)
-* [What is a closure](https://medium.com/javascript-scene/master-the-javascript-interview-what-is-a-closure-b2f0d2152b36)
-* [I never understood JavaScript closures](https://medium.com/dailyjs/i-never-understood-javascript-closures-9663703368e8)
-
 #### Good to hear
 
 * Closures are useful because they let you associate data with a function that operates on that data.
 * A closure can substitute an object with only a single method.
 * Closures can be used to emulate private methods.
+
+##### Additional links
+
+* [MDN docs for closures](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures)
+* [What is a closure](https://medium.com/javascript-scene/master-the-javascript-interview-what-is-a-closure-b2f0d2152b36)
+* [I never understood JavaScript closures](https://medium.com/dailyjs/i-never-understood-javascript-closures-9663703368e8)
 
 <!-- tags: (javascript) -->
 ### How would you compare two objects in JavaScript?
@@ -111,16 +111,15 @@ function isEqual(obj1, obj2){
 }
 ```
 
-#### Additional links
-
-* [Object Equality in JavaScript](http://adripofjavascript.com/blog/drips/object-equality-in-javascript.html)
-* [Deep comparison between two values](https://30secondsofcode.org/object#equals)
-
-
 #### Good to hear
 
 * Primitives like strings and numbers are compared by their value
 * Objects on the other hand are compared by their reference(location in memory)
+
+##### Additional links
+
+* [Object Equality in JavaScript](http://adripofjavascript.com/blog/drips/object-equality-in-javascript.html)
+* [Deep comparison between two values](https://30secondsofcode.org/object#equals)
 
 <!-- tags: (javascript) -->
 ### What are the advantages of using CSS preprocessors?
@@ -129,32 +128,31 @@ function isEqual(obj1, obj2){
 
 There are many advantages of using CSS preprocessors. Firstly, they allow us to write more maintainable and scalable CSS overall. Secondly, they provide syntax for easy to write nested selectors as well as variables for consistent theming. CSS preprocessors also allow us to write mixins to generate repeated CSS. On top of everything, they let us split code into multiple files (without needing to make HTTP request for each one).
 
-
-#### Additional links
-
-* [CSS Preprocessors](https://medium.com/@garyfagan/css-preprocessors-6f226fa16f27)
-
 #### Good to hear
 
 * They allow us to write more maintainable and scalable CSS
 * Some disadvantages of using CSS preprocessors(setup, re-compilation time can be slow etc.)
+
+##### Additional links
+
+* [CSS Preprocessors](https://medium.com/@garyfagan/css-preprocessors-6f226fa16f27)
 
 <!-- tags: (css) -->
 ### What is event-driven programming?
 
 #### Answer
 
-Event-driven programming is building an application that is based on and responds to events. Whenever an event occurs, the application responds by running a callback function, which is registered to that event and context. 
-
-#### Additional links
-
-* [MDN docs on Events and Handlers](https://developer.mozilla.org/en-US/docs/Web/Guide/Events/Overview_of_Events_and_Handlers)
-* [Understanding Node.js event-driven architecture](https://medium.freecodecamp.org/understanding-node-js-event-driven-architecture-223292fcbc2d)
+Event-driven programming is building an application that is based on and responds to events. Whenever an event occurs, the application responds by running a callback function, which is registered to that event and context.
 
 #### Good to hear
 
 * Responds to events that occur by running a callback function
 * Follows a publish-subscribe pattern
+
+##### Additional links
+
+* [MDN docs on Events and Handlers](https://developer.mozilla.org/en-US/docs/Web/Guide/Events/Overview_of_Events_and_Handlers)
+* [Understanding Node.js event-driven architecture](https://medium.freecodecamp.org/understanding-node-js-event-driven-architecture-223292fcbc2d)
 
 <!-- tags: (javascript) -->
 ### Generate an array, containing the Fibonacci sequence, up until the nth term
@@ -171,11 +169,11 @@ const fibonacci = n =>
   );
 ```
 
-#### Additional links
+#### Good to hear
+
+##### Additional links
 
 * [Similar problem](https://github.com/Chalarangelo/30-seconds-of-code/blob/master/snippets_archive/fibonacciUntilNum.md)
-
-#### Good to hear
 
 <!-- tags: (javascript) -->
 ### Use flexbox to create a 3-column layout where each of the columns has a width of 2/12, 7/12 and 3/12 of the screen width respectively. Use the following HTML code as a guide.
@@ -210,12 +208,12 @@ We only need to set the `display` property of the `flex-grid` element to `flex` 
 }
 ```
 
-#### Additional links
+#### Good to hear
+
+##### Additional links
 
 * [MDN docs for basic concepts of flexbox](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Basic_Concepts_of_Flexbox)
 * [A complete guide to Flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
-
-#### Good to hear
 
 <!-- tags: (css) -->
 ### What does `0.1 + 0.2 === 0.3` return?
@@ -228,14 +226,14 @@ It equals to `false` because JavaScript uses the IEEE 754 standard for Math and 
 0.1 + 0.2; // 0.300000004
 ```
 
-#### Additional links
-
-* [A simple helper function to check equality](https://github.com/Chalarangelo/30-seconds-of-code#approximatelyequal)
-* [Fix "0.1 + 0.2 = 0.300000004" in JavaScript](http://blog.blakesimpson.co.uk/read/61-fix-0-1-0-2-0-300000004-in-javascript)
-
 #### Good to hear
 
 * A simple solution to this problem
+
+##### Additional links
+
+* [A simple helper function to check equality](https://github.com/Chalarangelo/30-seconds-of-code#approximatelyequal)
+* [Fix "0.1 + 0.2 = 0.300000004" in JavaScript](http://blog.blakesimpson.co.uk/read/61-fix-0-1-0-2-0-300000004-in-javascript)
 
 <!-- tags: (javascript) -->
 ### What is the difference between a `.map` loop and a `.forEach` loop
@@ -244,16 +242,16 @@ It equals to `false` because JavaScript uses the IEEE 754 standard for Math and 
 
 Both loops iterate through the elements in an array. `.map()` maps each element to new element by calling the function on each element and it returns the new array. On the other hand, `.forEach()` executes a callback function for each element but does not return anything.
 
-#### Additional links
-
-* [MDN docs for forEach](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach)
-* [MDN docs for map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map)
-* [JavaScript — Map vs. ForEach](https://codeburst.io/javascript-map-vs-foreach-f38111822c0f)
-
 #### Good to hear
 
 * If you need to iterate over an array, `.forEach()` is a solid option
 * If you need a result but don't want to mutate original array, `.map()` is the right choice
+
+##### Additional links
+
+* [MDN docs for forEach](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach)
+* [MDN docs for map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map)
+* [JavaScript — Map vs. ForEach](https://codeburst.io/javascript-map-vs-foreach-f38111822c0f)
 
 <!-- tags: (javascript) -->
 ### What is functional programming?
@@ -262,20 +260,18 @@ Both loops iterate through the elements in an array. `.map()` maps each element 
 
 Functional programming is an essential concept in JavaScript. It produces programs by composing mathematical functions and avoids shared state and mutable data. The main difference in functional programming in comparison to other programming paradigms is a declarative approach versus an imperative one.
 
-#### Additional links
-
-* [Javascript and Functional Programming: An Introduction](https://hackernoon.com/javascript-and-functional-programming-an-introduction-286aa625e26d)
-
-* [Master the JavaScript Interview: What is Functional Programming?](https://medium.com/javascript-scene/master-the-javascript-interview-what-is-functional-programming-7f218c68b3a0)
-
-
-
 #### Good to hear
 
 * Cleaner, more concise development experience
 * Simple function composition
 * Features of JavaScript that enable functional programming(`.map`, `.reduce` etc.)
 * JavaScript is multi-paradigm programming language
+
+##### Additional links
+
+* [Javascript and Functional Programming: An Introduction](https://hackernoon.com/javascript-and-functional-programming-an-introduction-286aa625e26d)
+
+* [Master the JavaScript Interview: What is Functional Programming?](https://medium.com/javascript-scene/master-the-javascript-interview-what-is-functional-programming-7f218c68b3a0)
 
 <!-- tags: (javascript) -->
 ### What will be the output of this code?
@@ -293,14 +289,14 @@ foobar();
 
 Firstly `foobar` won't look for the outer scope as `var foo = 2;`'s declaration is hoisted. On the other hand,  JavaScript doesn't hoist initialization, so the output of this code is going to be `undefined`.
 
-#### Additional links
-
-* [MDN docs for hoisting](https://developer.mozilla.org/en-US/docs/Glossary/Hoisting)
-
 #### Good to hear
 
 * Hoisting is JavaScript’s default behavior of moving declarations to the top
 * Mention of `strict` mode
+
+##### Additional links
+
+* [MDN docs for hoisting](https://developer.mozilla.org/en-US/docs/Glossary/Hoisting)
 
 <!-- tags: (javascript) -->
 ### How does hoisting work in JavaScript?
@@ -315,11 +311,6 @@ console.log(hoist); // Output: undefined
 var hoist = 'The variable has been hoisted.';
 ```
 
-#### Additional links
-
-* [MDN docs for hoisting](https://developer.mozilla.org/en-US/docs/Glossary/Hoisting)
-* [Understanding Hoisting in JavaScript](https://scotch.io/tutorials/understanding-hoisting-in-javascript)
-
 #### Good to hear
 
 * Hoisting is JavaScript’s default behavior of moving declarations to the top
@@ -328,6 +319,11 @@ var hoist = 'The variable has been hoisted.';
 * `const` variables must be both declared and initialised before use
 * `let` variables must be declared before use
 
+##### Additional links
+
+* [MDN docs for hoisting](https://developer.mozilla.org/en-US/docs/Glossary/Hoisting)
+* [Understanding Hoisting in JavaScript](https://scotch.io/tutorials/understanding-hoisting-in-javascript)
+
 <!-- tags: (javascript) -->
 ### What is the purpose of `alt` attribute on images?
 
@@ -335,13 +331,13 @@ var hoist = 'The variable has been hoisted.';
 
 The `alt` attribute provides alternative information for an image if a user cannot view it. If the image is for decorative purposes only, the `alt` attribute should be empty. On the other hand, if image contains information the `alt` attribute should describe image.
 
-#### Additional links
-
-* [A good basis for accessibility](https://developer.mozilla.org/en-US/docs/Learn/Accessibility/HTML)
-
 #### Good to hear
 
 * Decorative images should have empty `alt` tag
+
+##### Additional links
+
+* [A good basis for accessibility](https://developer.mozilla.org/en-US/docs/Learn/Accessibility/HTML)
 
 <!-- tags: (html) -->
 ### What is the event loop in Node.js?
@@ -350,15 +346,15 @@ The `alt` attribute provides alternative information for an image if a user cann
 
 The event loop handles all async callbacks. Callbacks are queued in a loop, while other code runs, and will run one by one when the response for each one has been received.
 
-#### Additional links
+#### Good to hear
+
+* The event loop allows Node.js to perform non-blocking I/O operations, despite the fact that JavaScript is single-threaded
+
+##### Additional links
 
 <!-- Whenever possible, link a more detailed explanation. -->
 
 * [Node.js docs on event loop, timers and process.nextTick()](https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick/)
-
-#### Good to hear
-
-* The event loop allows Node.js to perform non-blocking I/O operations, despite the fact that JavaScript is single-threaded
 
 <!-- tags: (node,javascript) -->
 ### What are the differences between `null` and `undefined`?
@@ -367,16 +363,16 @@ The event loop handles all async callbacks. Callbacks are queued in a loop, whil
 
 In JavaScript, two values discretely represent nothing - `undefined` and `null`. When value of the variable is not defined it is `undefined`. On the other hand, `null` means empty or non-existent value which is used by programmers to indicate “no value”.
 
-#### Additional links
-
-* [MDN docs for null](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null)
-* [MDN docs for undefined](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined)
-
 #### Good to hear
 
 * `typeof undefined` returns `undefined`
 * `typeof null` returns `object`. However, it is still a primitive value
 * `undefined == null` equals to `true`
+
+##### Additional links
+
+* [MDN docs for null](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null)
+* [MDN docs for undefined](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined)
 
 <!-- tags: (javascript) -->
 ### Does JavaScript pass parameter by value or by reference?
@@ -385,14 +381,13 @@ In JavaScript, two values discretely represent nothing - `undefined` and `null`.
 
 In JavaScript, primitive values are passed by value while objects are passed by reference.
 
-
-#### Additional links
-
-* [JavaScript Value vs Reference](https://medium.com/dailyjs/back-to-roots-javascript-value-vs-reference-8fb69d587a18)
-
 #### Good to hear
 
 * Difference between pass-by-value and pass-by-reference
+
+##### Additional links
+
+* [JavaScript Value vs Reference](https://medium.com/dailyjs/back-to-roots-javascript-value-vs-reference-8fb69d587a18)
 
 <!-- tags: (javascript) -->
 ### How does prototypal inheritance differ from classical inheritance?
@@ -403,15 +398,15 @@ In the classical inheritance paradigm, object instances inherit their properties
 
 In the prototypal inheritance paradigm, object instances inherit directly from other objects and are typically created using factory functions or `Object.create()`. Finally, object instances can be composed from many different objects, allowing for selective inheritance.
 
-#### Additional links
-
-* [MDN docs for inheritance and the prototype chain](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Inheritance_and_the_prototype_chain)
-* [Differences between class and prototypal inheritance](https://medium.com/javascript-scene/master-the-javascript-interview-what-s-the-difference-between-class-prototypal-inheritance-e4cd0a7562e9)
-
 #### Good to hear
 
 * Classes create hierarches and taxonomies.
 * Prototypal inheritance allows for a flat prototype delegation hierarchy.
+
+##### Additional links
+
+* [MDN docs for inheritance and the prototype chain](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Inheritance_and_the_prototype_chain)
+* [Differences between class and prototypal inheritance](https://medium.com/javascript-scene/master-the-javascript-interview-what-s-the-difference-between-class-prototypal-inheritance-e4cd0a7562e9)
 
 <!-- tags: (javascript) -->
 ### What is the output of the following code?
@@ -429,34 +424,34 @@ console.log(a == b);
 
 The first `console.log` outputs `true` because JavaScript's compiler performs type conversion and therefore it compares to strings by their value. On the other hand, the second `console.log` outputs `false` because Arrays are  Objects and Objects are compared by reference.
 
-#### Additional links
-
-* [JavaScript Value vs Reference](https://medium.com/dailyjs/back-to-roots-javascript-value-vs-reference-8fb69d587a18)
-
 #### Good to hear
 
 * JavaScript performs automatic type conversion
 * Objects are compared by reference
 * Primitives are compared by value
 
+##### Additional links
+
+* [JavaScript Value vs Reference](https://medium.com/dailyjs/back-to-roots-javascript-value-vs-reference-8fb69d587a18)
+
 <!-- tags: (javascript) -->
 ### Where and why is the `rel="noopener"` attribute used?
 
 #### Answer
 
-The `rel="noopener"` is an attribute used in `<a>` elements (hyperlinks). It prevents pages from having a `window.opener` property, which would otherwise point to the page from where the link was opened and would allow the page opened from the hyperlink to manipulate the page where the hyperlink is. 
-
-#### Additional links
-
-<!-- Whenever possible, link a more detailed explanation. -->
-
-* [Open external anchors using rel="noopener"](https://developers.google.com/web/tools/lighthouse/audits/noopener)
-* [About rel="noopener"](https://mathiasbynens.github.io/rel-noopener/)
+The `rel="noopener"` is an attribute used in `<a>` elements (hyperlinks). It prevents pages from having a `window.opener` property, which would otherwise point to the page from where the link was opened and would allow the page opened from the hyperlink to manipulate the page where the hyperlink is.
 
 #### Good to hear
 
 * `rel="noopener"` is applied to hyperlinks.
 * `rel="noopener"` prevents opened links from manipulating the source page.
+
+##### Additional links
+
+<!-- Whenever possible, link a more detailed explanation. -->
+
+* [Open external anchors using rel="noopener"](https://developers.google.com/web/tools/lighthouse/audits/noopener)
+* [About rel="noopener"](https://mathiasbynens.github.io/rel-noopener/)
 
 <!-- tags: (html) -->
 ### What does the following function return?
@@ -474,15 +469,14 @@ function greet() {
 
 Because of JavaScript's automatic semicolon placement compiler places a semicolon after `return` keyword and therefore it returns `undefined` without single error being thrown.
 
-#### Additional links
-
-* [Automatic semicolon insertion in JavaScript](http://2ality.com/2011/05/semicolon-insertion.html)
-
 #### Good to hear
 
 * Automatic semicolon placement can lead to time-consuming bugs
 * Even though semicolons are optional in JavaScript, you should use them
 
+##### Additional links
+
+* [Automatic semicolon insertion in JavaScript](http://2ality.com/2011/05/semicolon-insertion.html)
 
 <!-- tags: (javascript) -->
 ### What is the difference between `==` and `===`
@@ -491,16 +485,16 @@ Because of JavaScript's automatic semicolon placement compiler places a semicolo
 
 When using triple equals in JavaScript we are testing for strict equality. This means both the type and the value we are comparing have to be the same. On the other hand, double equals firstly performs type coercion and then checks for the loose equality.
 
-#### Additional links
-
-* [MDN docs for comparison operators](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Comparison_Operators)
-
 #### Good to hear
 
 * Whenever possible, use triple equals to test equality
 * Type coercion - converts values into a common type
 * Mention of falsy values and their comparison
 * `NaN` is not equivalent to anything, not even itself
+
+##### Additional links
+
+* [MDN docs for comparison operators](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Comparison_Operators)
 
 <!-- tags: (javascript) -->
 ### What would the following code return?
@@ -513,11 +507,11 @@ console.log(typeof typeof 0);
 
 `typeof 0` returns `"number"` and therefore `typeof "number"` would return `string`.
 
-#### Additional links
+#### Good to hear
+
+##### Additional links
 
 * [MDN docs for typeof](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/typeof)
-
-#### Good to hear
 
 <!-- tags: (javascript) -->
 ### What are JavaScript data types?
@@ -526,18 +520,16 @@ console.log(typeof typeof 0);
 
 The latest ECMAScript standard defines seven data types, six of them being primitive: `Boolean`, `Null`, `Undefined`, `Number`, `String`, `Symbol` and one non-primitive data type: `Object`.
 
-#### Additional links
-
-* [MDN docs for data types and data structures](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures)
-* [Understanding Data Types in JavaScript](https://www.digitalocean.com/community/tutorials/understanding-data-types-in-javascript)
-
-
 #### Good to hear
 
 * Mention of newly added `Symbol` data type
 * `Array`, `Date` and `function` are all of type `object`
 * Functions in JavaScript are objects with the capability of being callable
 
+##### Additional links
+
+* [MDN docs for data types and data structures](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures)
+* [Understanding Data Types in JavaScript](https://www.digitalocean.com/community/tutorials/understanding-data-types-in-javascript)
 
 <!-- tags: (javascript) -->
 ### What does `'use strict'` do and what are some of the key benefits to using it?
@@ -553,15 +545,15 @@ Including `'use strict'` at the beginning of your JavaScript source file enables
 * Simplifies `eval()` and `arguments`.
 * Helps make JavaScript more secure.
 
-#### Additional links
-
-* [MDN docs for strict mode](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode)
-
 #### Good to hear
 
 * Eliminates `this` coercion, throwing an error when `this` references a value of `null` or `undefined`.
 * Throws an error on invalid usage of `delete`.
 * Prohibits some syntax likely to be defined in future versions of ECMAScript
+
+##### Additional links
+
+* [MDN docs for strict mode](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode)
 
 <!-- tags: (javascript) -->
 ### What is the reason for wrapping the entire content of a JavaScript source file in a function block?
@@ -571,15 +563,14 @@ Including `'use strict'` at the beginning of your JavaScript source file enables
 
 This technique is very common in JavaScript libraries. It creates a closure around the entire contents of the file which creates a private namespace and thereby helps avoid potential name clashes between different JavaScript modules and libraries
 
-
-#### Additional links
-
-* [MDN docs for closures](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures)
-
 #### Good to hear
 
 * Used among many popular JavaScript libraries
 * Creates a private namespace
+
+##### Additional links
+
+* [MDN docs for closures](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures)
 
 <!-- tags: (javascript) -->
 ### How does Z index function?
@@ -588,18 +579,16 @@ This technique is very common in JavaScript libraries. It creates a closure arou
 
 When elements overlap, z-order determines which one covers the other.
 
-
-#### Additional links
-
-* [MDN docs for z-index](https://developer.mozilla.org/en-US/docs/Web/CSS/z-index)
-* [Understanding CSS z-index](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Positioning/Understanding_z_index)
-* [What No One Told You About Z-Index](https://philipwalton.com/articles/what-no-one-told-you-about-z-index/)
-
 #### Good to hear
 
 * `z-index` only applies to positioned elements (except `static`)
 * How to organize z-indexes on large scale projects
 
+##### Additional links
+
+* [MDN docs for z-index](https://developer.mozilla.org/en-US/docs/Web/CSS/z-index)
+* [Understanding CSS z-index](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Positioning/Understanding_z_index)
+* [What No One Told You About Z-Index](https://philipwalton.com/articles/what-no-one-told-you-about-z-index/)
 
 <!-- tags: (css) -->
 
