@@ -19,7 +19,7 @@
 
 ## Additional information regarding the project and its structure
 
-* _Do not modify_ the `README.md` or `index.html` files. _Travis CI_ will automatically build the README.md and index.html files when your pull request is merged. All changes to questions should be inside of `questions directory`
+* **Do not modify** the `README.md` or `index.html` files. **Travis CI** will automatically build the README.md and index.html files when your pull request is merged. All changes to questions should be inside of `questions directory`
 
 * We weren't sure how to name files inside `questions` directory. If you have any idea let us know
 
