@@ -12,10 +12,10 @@ const fibonacci = n =>
   );
 ```
 
-#### Additional links
+#### Good to hear
+
+##### Additional links
 
 * [Similar problem](https://github.com/Chalarangelo/30-seconds-of-code/blob/master/snippets_archive/fibonacciUntilNum.md)
-
-#### Good to hear
 
 <!-- tags: (javascript) -->

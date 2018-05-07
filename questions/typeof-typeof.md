@@ -8,10 +8,10 @@ console.log(typeof typeof 0);
 
 `typeof 0` returns `"number"` and therefore `typeof "number"` would return `string`.
 
-#### Additional links
+#### Good to hear
+
+##### Additional links
 
 * [MDN docs for typeof](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/typeof)
-
-#### Good to hear
 
 <!-- tags: (javascript) -->

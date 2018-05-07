@@ -10,11 +10,6 @@ console.log(hoist); // Output: undefined
 var hoist = 'The variable has been hoisted.';
 ```
 
-#### Additional links
-
-* [MDN docs for hoisting](https://developer.mozilla.org/en-US/docs/Glossary/Hoisting)
-* [Understanding Hoisting in JavaScript](https://scotch.io/tutorials/understanding-hoisting-in-javascript)
-
 #### Good to hear
 
 * Hoisting is JavaScript’s default behavior of moving declarations to the top
@@ -22,5 +17,10 @@ var hoist = 'The variable has been hoisted.';
 * Mention of `strict` mode
 * `const` variables must be both declared and initialised before use
 * `let` variables must be declared before use
+
+##### Additional links
+
+* [MDN docs for hoisting](https://developer.mozilla.org/en-US/docs/Glossary/Hoisting)
+* [Understanding Hoisting in JavaScript](https://scotch.io/tutorials/understanding-hoisting-in-javascript)
 
 <!-- tags: (javascript) -->
