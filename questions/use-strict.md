@@ -11,14 +11,14 @@ Including `'use strict'` at the beginning of your JavaScript source file enables
 * Simplifies `eval()` and `arguments`.
 * Helps make JavaScript more secure.
 
-#### Additional links
-
-* [MDN docs for strict mode](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode)
-
 #### Good to hear
 
 * Eliminates `this` coercion, throwing an error when `this` references a value of `null` or `undefined`.
 * Throws an error on invalid usage of `delete`.
 * Prohibits some syntax likely to be defined in future versions of ECMAScript
+
+##### Additional links
+
+* [MDN docs for strict mode](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode)
 
 <!-- tags: (javascript) -->

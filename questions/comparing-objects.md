@@ -23,15 +23,14 @@ function isEqual(obj1, obj2){
 }
 ```
 
-#### Additional links
-
-* [Object Equality in JavaScript](http://adripofjavascript.com/blog/drips/object-equality-in-javascript.html)
-* [Deep comparison between two values](https://30secondsofcode.org/object#equals)
-
-
 #### Good to hear
 
 * Primitives like strings and numbers are compared by their value
 * Objects on the other hand are compared by their reference(location in memory)
+
+##### Additional links
+
+* [Object Equality in JavaScript](http://adripofjavascript.com/blog/drips/object-equality-in-javascript.html)
+* [Deep comparison between two values](https://30secondsofcode.org/object#equals)
 
 <!-- tags: (javascript) -->

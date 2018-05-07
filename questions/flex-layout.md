@@ -30,11 +30,11 @@ We only need to set the `display` property of the `flex-grid` element to `flex` 
 }
 ```
 
-#### Additional links
+#### Good to hear
+
+##### Additional links
 
 * [MDN docs for basic concepts of flexbox](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Basic_Concepts_of_Flexbox)
 * [A complete guide to Flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
-
-#### Good to hear
 
 <!-- tags: (css) -->
