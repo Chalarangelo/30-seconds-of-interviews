@@ -24,4 +24,14 @@ const readQuestions = questionsPath => {
   return questions;
 };
 
-module.exports = { readQuestions };
+const toKebabCase = str =>
+  str &&
+  str
+    .match(/[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+/g)
+    .map(x => x.toLowerCase())
+    .join('-');
+
+const capitalize = ([first, ...rest], lowerRest = false) =>
+  first.toUpperCase() + (lowerRest ? rest.join('').toLowerCase() : rest.join(''));
+
+module.exports = { readQuestions, toKebabCase, capitalize };
