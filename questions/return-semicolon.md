@@ -2,10 +2,10 @@
 
 ```js
 function greet() {
-    return
-    {
-      message: 'hello'
-    }
+  return
+  {
+    message: 'hello'
+  }
 }
 ```
 
@@ -16,7 +16,7 @@ Because of JavaScript's automatic semicolon placement compiler places a semicolo
 #### Good to hear
 
 * Automatic semicolon placement can lead to time-consuming bugs
-* Even though semicolons are optional in JavaScript, you should use them
+* Semicolons can be omitted in JavaScript if you know the cases in which they are required
 
 ##### Additional links
 
