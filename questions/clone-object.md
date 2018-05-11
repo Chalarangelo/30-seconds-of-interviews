@@ -10,8 +10,7 @@ const obj = { a: 1, b: 2 }
 const shallowClone = { ...obj }
 ```
 
-With this method, nested objects are not cloned, but rather their references get copied, so nested objects still refer to the same objects as the original. Deep-cloning is much more complex in order to effectively clone
-any type of object (Dates, RegExp, Function, Set, etc) that may be nested within the object.
+With this technique, prototypes are ignored. In addition, nested objects are not cloned, but rather their references get copied, so nested objects still refer to the same objects as the original. Deep-cloning is much more complex in order to effectively clone any type of object (Dates, RegExp, Function, Set, etc) that may be nested within the object.
 
 #### Good to hear
 
