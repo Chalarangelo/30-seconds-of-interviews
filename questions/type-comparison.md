@@ -1,8 +1,8 @@
-### What is the difference between `==` and `===`
+### What is the difference between `==` and `===`?
 
 #### Answer
 
-When using triple equals in JavaScript we are testing for strict equality. This means both the type and the value we are comparing have to be the same. On the other hand, double equals firstly performs type coercion and then checks for the loose equality.
+When using triple equals in JavaScript we are testing for strict equality. This means both the type and the value we are comparing have to be the same. On the other hand, double equals first performs type coercion and then checks for loose equality.
 
 #### Good to hear
 

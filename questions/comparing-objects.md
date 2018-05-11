@@ -2,21 +2,23 @@
 
 #### Answer
 
-Even though two objects have the same properties and all of their properties have the same value they're not considered equal. This is because JavaScript has two different approaches for testing equality. Primitives are compared by their value while objects are compared by their reference(location in memory). To compare two objects we need to do it with a helper function.
+Even though two different objects can have the same properties with equal values, they're not considered equal. When two objects are compared, they are being compared by their reference (location in memory), unlike primitive values. To compare two objects, they need to be of equal length and have the same properties.
+
+Note: this method ignores prototypes and only considers them equal if they have the same nested objects.
 
 ```js
-function isEqual(obj1, obj2){
-  const obj1Props = Object.getOwnPropertyNames(obj1);
-  const obj2Props = Object.getOwnPropertyNames(obj2);
+function isShallowEqual(obj1, obj2) {
+  const obj1Props = Object.getOwnPropertyNames(obj1)
+  const obj2Props = Object.getOwnPropertyNames(obj2)
 
   if (obj1Props.length != obj2Props.length) {
     return false
   }
 
-  for (let prop of obj1Props) {
-        if (obj1[prop] !== obj2[prop]) {
-            return false;
-        }
+  for (const prop of obj1Props) {
+    if (obj1[prop] !== obj2[prop]) {
+      return false
+    }
   }
 
   return true
@@ -26,7 +28,7 @@ function isEqual(obj1, obj2){
 #### Good to hear
 
 * Primitives like strings and numbers are compared by their value
-* Objects on the other hand are compared by their reference(location in memory)
+* Objects on the other hand are compared by their reference (location in memory)
 
 ##### Additional links
 

@@ -2,14 +2,16 @@
 
 #### Answer
 
-Using `Object.assign()`, one can create a shallow clone of an object, like this:
+Using the object spread operator `...`, the object's own enumerable properties can be copied
+into the new object. This creates a shallow clone of the object.
 
 ```js
-var obj = {a: 1, b: 2};
-var objClone = Object.assign(obj);
+const obj = { a: 1, b: 2 }
+const shallowClone = { ...obj }
 ```
 
-It is important to remember that nested objects are not cloned, but rather their references get copied, so nested objects still refer to the same objects as the original.
+With this method, nested objects are not cloned, but rather their references get copied, so nested objects still refer to the same objects as the original. Deep-cloning is much more complex in order to effectively clone
+any type of object (Dates, RegExp, Function, Set, etc) that may be nested within the object.
 
 #### Good to hear
 
