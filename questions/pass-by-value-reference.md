@@ -1,8 +1,8 @@
-### Does JavaScript pass parameter by value or by reference?
+### Does JavaScript pass by value or by reference?
 
 #### Answer
 
-In JavaScript, primitive values are passed by value while objects are passed by reference.
+JavaScript always passes by value. However, with objects, the value is a reference to the object.
 
 #### Good to hear
 
