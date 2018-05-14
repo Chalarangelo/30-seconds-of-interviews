@@ -4,7 +4,8 @@
   "version": "0.0.1",
   "main": "index.js",
   "scripts": {
-    "builder": "node ./scripts/build.js"
+    "builder": "node ./scripts/build.js",
+    "extractor": "node ./scripts/extract.js"
   },
   "repository": {
     "type": "git",
