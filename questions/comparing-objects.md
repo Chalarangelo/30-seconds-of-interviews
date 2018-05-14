@@ -8,8 +8,8 @@ Note: this method ignores prototypes and only considers them equal if they have 
 
 ```js
 function isShallowEqual(obj1, obj2) {
-  const obj1Props = Object.getOwnPropertyNames(obj1)
-  const obj2Props = Object.getOwnPropertyNames(obj2)
+  const obj1Props = Object.getOwnPropertyNames(obj1);
+  const obj2Props = Object.getOwnPropertyNames(obj2);
 
   if (obj1Props.length != obj2Props.length) {
     return false
@@ -17,11 +17,11 @@ function isShallowEqual(obj1, obj2) {
 
   for (const prop of obj1Props) {
     if (obj1[prop] !== obj2[prop]) {
-      return false
+      return false;
     }
   }
 
-  return true
+  return true;
 }
 ```
 
