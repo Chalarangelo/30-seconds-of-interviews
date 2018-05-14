@@ -33,24 +33,26 @@ console.time('Extractor');
 try {
   questions = util.readQuestions(QUESTIONS_PATH);
 
+
   // TODO
   for (let question in questions) {
+    questions[question] = questions[question].replace(/\r\n/g,'\n');
     output[question] = {
       name: question,
-      question: null,
+      question: questions[question].slice(0+4,questions[question].indexOf('#### Answer')).trim(),
       questionHTML: null,
       questionCSS: null,
       questionJS: null,
-      answer: null,
+      answer: questions[question].slice(questions[question].indexOf('#### Answer')+12,questions[question].indexOf('#### Good to hear')).trim(),
       answerHTML: null,
       answerCSS: null,
       answerJS: null,
-      goodToHear: [],
-      links: []
+      goodToHear: questions[question].slice(questions[question].indexOf('#### Good to hear')+18,questions[question].indexOf('##### Additional links')).trim().split('\n').map(v => v.replace('* ','')).filter(v => v.trim() !== ''),
+      links: questions[question].slice(questions[question].indexOf('##### Additional links')+23).trim().split('\n').map(v => v.replace('* ','')).filter(v => v.trim() !== '')
     };
   }
 
-  fs.writeFileSync('./data/questions.json', JSON.stringify(output));
+  fs.writeFileSync('./data/questions.json', JSON.stringify(output, null, 2));
 } catch (err) {
   console.log(
     `${chalk.red('ERROR!')} During questions.json generation: ${err}`
