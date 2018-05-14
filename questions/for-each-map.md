@@ -1,13 +1,13 @@
-### What is the difference between a `.map` loop and a `.forEach` loop
+### What is the difference between a `map` loop and a `forEach` loop?
 
 #### Answer
 
-Both loops iterate through the elements in an array. `.map()` maps each element to new element by calling the function on each element and it returns the new array. On the other hand, `.forEach()` executes a callback function for each element but does not return anything.
+Both loops iterate through the elements in an array. `.map()` maps each element to new element by calling the function on each element and it returns the new array. On the other hand, `.forEach()` executes a callback function for each element but does not return anything. `.forEach()` is generally used when causing a side effect on each iteration, whereas `.map()` is a common functional programming technique.
 
 #### Good to hear
 
-* If you need to iterate over an array, `.forEach()` is a solid option
-* If you need a result but don't want to mutate original array, `.map()` is the right choice
+* Use `.forEach()` if you need to iterate over an array and cause mutations to the elements without needing to return values to generate a new array.
+* `.map()` is the right choice to keep data immutable where each value of the original array is mapped to a new array.
 
 ##### Additional links
 

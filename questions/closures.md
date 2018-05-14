@@ -2,7 +2,7 @@
 
 #### Answer
 
-A closure is a function defined insider another function and has access to its lexical scope even when it is executing outside its lexical scope. The closure has access to variables in three scopes:
+A closure is a function defined inside another function and has access to its lexical scope even when it is executing outside its lexical scope. The closure has access to variables in three scopes:
 
 * Variables declared in its own scope
 * Variables declared in the scope of the parent function
