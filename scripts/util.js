@@ -34,4 +34,18 @@ const toKebabCase = str =>
 const capitalize = ([first, ...rest], lowerRest = false) =>
   first.toUpperCase() + (lowerRest ? rest.join('').toLowerCase() : rest.join(''));
 
-module.exports = { readQuestions, toKebabCase, capitalize };
+const getCodeBlocks = (str) => {
+  const regex = /```[.\S\s]*?```/g;
+  let results = [];
+  while ((m = regex.exec(str)) !== null) {
+    if (m.index === regex.lastIndex) {
+        regex.lastIndex++;
+    }
+    m.forEach((match, groupIndex) => {
+        results.push(match);
+    });
+  }
+  return results;
+}
+
+module.exports = { readQuestions, toKebabCase, capitalize, getCodeBlocks };
