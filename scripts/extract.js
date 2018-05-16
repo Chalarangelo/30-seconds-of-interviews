@@ -11,23 +11,6 @@ const QUESTIONS_PATH = './questions';
 let questions = {};
 let output = {};
 
-// question model:
-// questionName: {
-//     question: ''
-//     questionHTML: ''
-//     questionCSS: ''
-//     questionJS: ''
-//     answer: ''
-//     answerHTML: ''
-//     answerCSS: ''
-//     answerJS: ''
-//     goodToHear: ['','','']
-//     links: [{
-//         title:
-//         url:
-//     }]
-// }
-
 console.time('Extractor');
 
 try {
