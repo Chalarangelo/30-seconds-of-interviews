@@ -40,16 +40,12 @@ try {
     output[question] = {
       name: question,
       question: questions[question].slice(0+4,questions[question].indexOf('#### Answer')).trim(),
-      questionHTML: null,
-      questionCSS: null,
-      questionJS: null,
       answer: questions[question].slice(questions[question].indexOf('#### Answer')+12,questions[question].indexOf('#### Good to hear')).trim(),
-      answerHTML: null,
-      answerCSS: null,
-      answerJS: null,
       goodToHear: questions[question].slice(questions[question].indexOf('#### Good to hear')+18,questions[question].indexOf('##### Additional links')).trim().split('\n').map(v => v.replace('* ','')).filter(v => v.trim() !== ''),
       links: questions[question].slice(questions[question].indexOf('##### Additional links')+23).trim().split('\n').map(v => v.replace('* ','')).filter(v => v.trim() !== '')
     };
+    output[question].questionCodeBlocks = util.getCodeBlocks(output[question].question);
+    output[question].answerCodeBlocks = util.getCodeBlocks(output[question].answer);
   }
 
   fs.writeFileSync('./data/questions.json', JSON.stringify(output, null, 2));
