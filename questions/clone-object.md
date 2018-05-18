@@ -16,7 +16,12 @@ With this technique, prototypes are ignored. In addition, nested objects are not
 
 * JavaScript passes objects by reference, meaning that nested objects get their references copied, instead of their values.
 * The same method can be used to merge two objects.
+
+#### Alternatives
+
 * `JSON.stringify()` is another alternative, but is CPU-intensive.
+* `Object.assign({},obj)` is another alternative.
+* `Object.keys(obj).reduce((acc, key) => acc[key] = obj[key], acc , {})` is another more verbose alternative that shows the concept in greater depth.
 
 ##### Additional links
 
