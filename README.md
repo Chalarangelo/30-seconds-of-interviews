@@ -6,7 +6,7 @@
 
 This repository contains short answers to most common questions asked in a full-stack interview. Each explanation is written with the motto _you can understand it in 30 seconds_.
 
-Have an excellent idea or you know some cool questions that aren't on the list? Read contribution guidelines.
+Have an excellent idea or you know some cool questions that aren't on the list? Read the [contribution guidelines](CONTRIBUTING.md).
 
 ## Table of Contents
 
