@@ -1,4 +1,4 @@
-### What is a closure in Javascript?
+### What is a closure?
 
 #### Answer
 
