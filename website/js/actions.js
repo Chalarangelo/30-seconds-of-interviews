@@ -1,5 +1,3 @@
-import Prism from "prismjs"
-
 export default {
   onAnswerButtonClick: ({ event, name, isOpen }) => state => ({
     questions: state.questions.map(
