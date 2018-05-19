@@ -6,7 +6,6 @@ Hoisting is a JavaScript mechanism where variables and function declarations are
 
 ```js
 console.log(hoist); // Output: undefined
-
 var hoist = 'The variable has been hoisted.';
 ```
 

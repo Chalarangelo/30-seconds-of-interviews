@@ -10,13 +10,13 @@ const obj = { a: 1, b: 2 };
 const shallowClone = { ...obj };
 ```
 
-With this technique, prototypes are ignored. In addition, nested objects are not cloned, but rather their references get copied, so nested objects still refer to the same objects as the original. Deep-cloning is much more complex in order to effectively clone any type of object (Dates, RegExp, Function, Set, etc) that may be nested within the object.
+With this technique, prototypes are ignored. In addition, nested objects are not cloned, but rather their references get copied, so nested objects still refer to the same objects as the original. Deep-cloning is much more complex in order to effectively clone any type of object (Date, RegExp, Function, Set, etc) that may be nested within the object.
 
-Other alternative include
+Other alternative include:
 
-* `JSON.stringify()` but has the drawback that it is CPU-intensive.
-* `Object.assign({},obj)` is another alternative.
-* `Object.keys(obj).reduce((acc, key) => acc[key] = obj[key], acc , {})` is another more verbose alternative that shows the concept in greater depth.
+* `JSON.parse(JSON.stringify(obj))` can be used to deep-clone a simple object, but it is CPU-intensive and only accepts valid JSON (therefore it strips functions and does not allow circular references).
+* `Object.assign({}, obj)` is another alternative.
+* `Object.keys(obj).reduce((acc, key) => (acc[key] = obj[key], acc), {})` is another more verbose alternative that shows the concept in greater depth.
 
 #### Good to hear
 
