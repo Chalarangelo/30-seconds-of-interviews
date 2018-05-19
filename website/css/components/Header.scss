@@ -1,10 +1,45 @@
+@import "../_vars.scss";
+
 .Header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   background: radial-gradient(
     circle,
     #f9add3,
-    #b977c1 8%,
+    #b977c1 15%,
     #593173,
-    #20164d 35%,
+    #20164d 45%,
     #12072d
   );
+  min-height: 400px;
+  overflow: hidden;
+
+  @media (min-width: $breakpoint-sm) {
+    min-height: 550px;
+    background: radial-gradient(
+      circle,
+      #f9add3,
+      #b977c1 40px,
+      #593173,
+      #20164d 175px,
+      #12072d
+    );
+  }
+
+  &__image {
+    display: block;
+    margin: 0 auto;
+    max-width: 900px;
+    max-height: 450px;
+    transform: scale(1.8);
+
+    @media (min-width: 450px) {
+      transform: scale(1.5);
+    }
+
+    @media (min-width: $breakpoint-md) {
+      transform: scale(1.2);
+    }
+  }
 }
