@@ -6,7 +6,7 @@
 
 This repository contains short answers to most common questions asked in a full-stack interview. Each explanation is written with the motto _you can understand it in 30 seconds_.
 
-Have an excellent idea or you know some cool questions that aren't on the list? Read the [contribution guidelines](CONTRIBUTING.md).
+Do you have an excellent idea or know some cool questions that aren't on the list? Read the contribution guidelines and submit a pull request.
 
 ## Table of Contents
 
@@ -22,16 +22,16 @@ Have an excellent idea or you know some cool questions that aren't on the list? 
 * [ What is event-driven programming?](#what-is-event-driven-programming) 
 * [ Generate an array, containing the Fibonacci sequence, up until the nth term](#generate-an-array-containing-the-fibonacci-sequence-up-until-the-nth-term) 
 * [ What does `0.1 + 0.2 === 0.3` return?](#what-does-0-1-0-2-0-3-return) 
-* [ What is the difference between a `.map` loop and a `.forEach` loop](#what-is-the-difference-between-a-map-loop-and-a-foreach-loop) 
+* [ What is the difference between a `map` loop and a `forEach` loop?](#what-is-the-difference-between-a-map-loop-and-a-foreach-loop) 
 * [ What is functional programming?](#what-is-functional-programming) 
 * [ What will be the output of this code?](#what-will-be-the-output-of-this-code) 
 * [ How does hoisting work in JavaScript?](#how-does-hoisting-work-in-javascript) 
 * [ What are the differences between `null` and `undefined`?](#what-are-the-differences-between-null-and-undefined) 
-* [ Does JavaScript pass parameter by value or by reference?](#does-javascript-pass-parameter-by-value-or-by-reference) 
+* [ Does JavaScript pass by value or by reference?](#does-javascript-pass-by-value-or-by-reference) 
 * [ How does prototypal inheritance differ from classical inheritance?](#how-does-prototypal-inheritance-differ-from-classical-inheritance) 
 * [ What is the output of the following code?](#what-is-the-output-of-the-following-code) 
 * [ What does the following function return?](#what-does-the-following-function-return) 
-* [ What is the difference between `==` and `===`](#what-is-the-difference-between-and) 
+* [ What is the difference between `==` and `===`?](#what-is-the-difference-between-and) 
 * [ What would the following code return?](#what-would-the-following-code-return) 
 * [ What are JavaScript data types?](#what-are-javascript-data-types) 
 * [ What does `'use strict'` do and what are some of the key benefits to using it?](#what-does-use-strict-do-and-what-are-some-of-the-key-benefits-to-using-it) 
@@ -77,14 +77,15 @@ Have an excellent idea or you know some cool questions that aren't on the list? 
 <details>
 <summary>View answer</summary>
 
-Using `Object.assign()`, one can create a shallow clone of an object, like this:
+Using the object spread operator `...`, the object's own enumerable properties can be copied
+into the new object. This creates a shallow clone of the object.
 
 ```js
-var obj = {a: 1, b: 2};
-var objClone = Object.assign(obj);
+const obj = { a: 1, b: 2 };
+const shallowClone = { ...obj };
 ```
 
-It is important to remember that nested objects are not cloned, but rather their references get copied, so nested objects still refer to the same objects as the original.
+With this technique, prototypes are ignored. In addition, nested objects are not cloned, but rather their references get copied, so nested objects still refer to the same objects as the original. Deep-cloning is much more complex in order to effectively clone any type of object (Dates, RegExp, Function, Set, etc) that may be nested within the object.
 
 #### Good to hear
 
@@ -111,7 +112,7 @@ It is important to remember that nested objects are not cloned, but rather their
 <details>
 <summary>View answer</summary>
 
-A closure is a function defined insider another function and has access to its lexical scope even when it is executing outside its lexical scope. The closure has access to variables in three scopes:
+A closure is a function defined inside another function and has access to its lexical scope even when it is executing outside its lexical scope. The closure has access to variables in three scopes:
 
 * Variables declared in its own scope
 * Variables declared in the scope of the parent function
@@ -141,10 +142,12 @@ A closure is a function defined insider another function and has access to its l
 <details>
 <summary>View answer</summary>
 
-Even though two objects have the same properties and all of their properties have the same value they're not considered equal. This is because JavaScript has two different approaches for testing equality. Primitives are compared by their value while objects are compared by their reference(location in memory). To compare two objects we need to do it with a helper function.
+Even though two different objects can have the same properties with equal values, they're not considered equal. When two objects are compared, they are being compared by their reference (location in memory), unlike primitive values which are compared by value. To compare two objects, they need to be of equal length and have the same properties.
+
+Note: this method ignores prototypes and only considers them equal if they have the same nested objects. Objects can be  complex structures which are difficult to compare.
 
 ```js
-function isEqual(obj1, obj2){
+function isShallowEqual(obj1, obj2) {
   const obj1Props = Object.getOwnPropertyNames(obj1);
   const obj2Props = Object.getOwnPropertyNames(obj2);
 
@@ -152,20 +155,20 @@ function isEqual(obj1, obj2){
     return false
   }
 
-  for (let prop of obj1Props) {
-        if (obj1[prop] !== obj2[prop]) {
-            return false;
-        }
+  for (const prop of obj1Props) {
+    if (obj1[prop] !== obj2[prop]) {
+      return false;
+    }
   }
 
-  return true
+  return true;
 }
 ```
 
 #### Good to hear
 
 * Primitives like strings and numbers are compared by their value
-* Objects on the other hand are compared by their reference(location in memory)
+* Objects on the other hand are compared by their reference (location in memory)
 
 ##### Additional links
 
@@ -256,19 +259,19 @@ It equals to `false` because JavaScript uses the IEEE 754 standard for Math and 
 
 <br>[⬆ Back to top](#table-of-contents)
 
-### What is the difference between a `.map` loop and a `.forEach` loop
+### What is the difference between a `map` loop and a `forEach` loop?
 
 #### Answer
 
 <details>
 <summary>View answer</summary>
 
-Both loops iterate through the elements in an array. `.map()` maps each element to new element by calling the function on each element and it returns the new array. On the other hand, `.forEach()` executes a callback function for each element but does not return anything.
+Both loops iterate through the elements in an array. `.map()` maps each element to new element by calling the function on each element and it returns the new array. On the other hand, `.forEach()` executes a callback function for each element but does not return anything. `.forEach()` is generally used when causing a side effect on each iteration, whereas `.map()` is a common functional programming technique.
 
 #### Good to hear
 
-* If you need to iterate over an array, `.forEach()` is a solid option
-* If you need a result but don't want to mutate original array, `.map()` is the right choice
+* Use `.forEach()` if you need to iterate over an array and cause mutations to the elements without needing to return values to generate a new array.
+* `.map()` is the right choice to keep data immutable where each value of the original array is mapped to a new array.
 
 ##### Additional links
 
@@ -288,14 +291,14 @@ Both loops iterate through the elements in an array. `.map()` maps each element 
 <details>
 <summary>View answer</summary>
 
-Functional programming is an essential concept in JavaScript. It produces programs by composing mathematical functions and avoids shared state and mutable data. The main difference in functional programming in comparison to other programming paradigms is a declarative approach versus an imperative one.
+Functional programming is a paradigm in which programs are built in a declarative manner using pure functions that avoid shared state and mutable data. Functions that always return the same value for the same input and don't produce side effects are the pillar of functional programming. Many programmers consider this to be the best approach to software development as it reduces bugs and mental overhead.
 
 #### Good to hear
 
 * Cleaner, more concise development experience
 * Simple function composition
-* Features of JavaScript that enable functional programming(`.map`, `.reduce` etc.)
-* JavaScript is multi-paradigm programming language
+* Features of JavaScript that enable functional programming (`.map`, `.reduce` etc.)
+* JavaScript is multi-paradigm programming language (Object-Oriented Programming and Functional Programming live in harmony)
 
 ##### Additional links
 
@@ -380,7 +383,7 @@ var hoist = 'The variable has been hoisted.';
 <details>
 <summary>View answer</summary>
 
-In JavaScript, two values discretely represent nothing - `undefined` and `null`. When value of the variable is not defined it is `undefined`. On the other hand, `null` means empty or non-existent value which is used by programmers to indicate “no value”.
+In JavaScript, two values discretely represent nothing - `undefined` and `null`. The concrete difference between them is that `null` is explicit, while `undefined` is implicit. When a property does not exist or a variable has not been given a value, the value is `undefined`. `null` is set as the value to explicitly indicate “no value”. In essence, `undefined` is used when the nothing is not known, and `null` is used when the nothing is known.
 
 #### Good to hear
 
@@ -398,14 +401,14 @@ In JavaScript, two values discretely represent nothing - `undefined` and `null`.
 
 <br>[⬆ Back to top](#table-of-contents)
 
-### Does JavaScript pass parameter by value or by reference?
+### Does JavaScript pass by value or by reference?
 
 #### Answer
 
 <details>
 <summary>View answer</summary>
 
-In JavaScript, primitive values are passed by value while objects are passed by reference.
+JavaScript always passes by value. However, with objects, the value is a reference to the object.
 
 #### Good to hear
 
@@ -483,10 +486,10 @@ The first `console.log` outputs `true` because JavaScript's compiler performs ty
 
 ```js
 function greet() {
-    return
-    {
-      message: 'hello'
-    }
+  return
+  {
+    message: 'hello'
+  }
 }
 ```
 
@@ -500,7 +503,7 @@ Because of JavaScript's automatic semicolon placement compiler places a semicolo
 #### Good to hear
 
 * Automatic semicolon placement can lead to time-consuming bugs
-* Even though semicolons are optional in JavaScript, you should use them
+* Semicolons can be omitted in JavaScript if you know the cases in which they are required
 
 ##### Additional links
 
@@ -511,14 +514,14 @@ Because of JavaScript's automatic semicolon placement compiler places a semicolo
 
 <br>[⬆ Back to top](#table-of-contents)
 
-### What is the difference between `==` and `===`
+### What is the difference between `==` and `===`?
 
 #### Answer
 
 <details>
 <summary>View answer</summary>
 
-When using triple equals in JavaScript we are testing for strict equality. This means both the type and the value we are comparing have to be the same. On the other hand, double equals firstly performs type coercion and then checks for the loose equality.
+When using triple equals in JavaScript we are testing for strict equality. This means both the type and the value we are comparing have to be the same. On the other hand, double equals first performs type coercion and then checks for loose equality.
 
 #### Good to hear
 
