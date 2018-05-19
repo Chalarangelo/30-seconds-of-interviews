@@ -25,8 +25,56 @@
   }
 
   &__answer {
+    display: none;
+
+    &.is-open {
+      display: block;
+    }
+
     p:last-child {
       margin-bottom: 0;
+    }
+  }
+
+  &__button {
+    background: white;
+    border: none;
+    color: #8385aa;
+    border: 1px solid #c8cbf2;
+    font-weight: 700;
+    width: 180px;
+    font-size: 17px;
+    padding: 8px 16px;
+    border-radius: 4px;
+    transition: background 0.12s, color 0.12s, border-color 0.12s;
+    outline: 0;
+    cursor: pointer;
+
+    &:hover {
+      background: #8385aa;
+      color: white;
+      border-color: #8385aa;
+    }
+
+    &:active {
+      box-shadow: inset 0 0.1rem 0.1rem 0.1rem rgba(0, 0, 0, 0.2);
+    }
+
+    &.focus-visible {
+      outline: 4px solid rgba(131, 133, 170, 0.5);
+    }
+  }
+
+  &__button-icon {
+    vertical-align: middle;
+    margin-left: 8px;
+
+    &.is-rotated svg {
+      transform: rotate(180deg);
+    }
+
+    svg {
+      vertical-align: -5px;
     }
   }
 }
