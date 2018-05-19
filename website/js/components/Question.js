@@ -1,5 +1,6 @@
 import { h } from "hyperapp"
 import marked from "marked"
+import feather from "feather-icons"
 import { cc } from "../utils"
 
 export default ({ name, question, answer, isOpen }) => (state, actions) => (
@@ -10,6 +11,10 @@ export default ({ name, question, answer, isOpen }) => (state, actions) => (
       onclick={event => actions.onAnswerButtonClick({ event, name, isOpen })}
     >
       {isOpen ? "Hide answer" : "Show answer"}
+      <span
+        class={cc("Question__button-icon", { "is-rotated": isOpen })}
+        innerHTML={feather.icons["arrow-down-circle"].toSvg()}
+      />
     </button>
     <div
       class={cc("Question__answer", { "is-open": isOpen })}
