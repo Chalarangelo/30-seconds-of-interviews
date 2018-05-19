@@ -2,7 +2,7 @@
   {
     "name": "bem.md",
     "question": "What is CSS BEM?",
-    "answer": "The BEM methodology is another naming convention for CSS classes. The BEM stands for Block, Element, Modifier which is an explanation for its structure. Block is a standalone component that is reusable across projects. Elements and modifiers are part of the block with no standalone meaning. Here is the example of the typical syntax:\n\n```css\n/* block component */\n.block {}\n\n/* element */\n.block__element {}\n\n/* modifier */\n.block__element-modifier {}\n```",
+    "answer": "The BEM methodology is another naming convention for CSS classes. The BEM stands for Block, Element, Modifier which is an explanation for its structure. Block is a standalone component that is reusable across projects. Elements and modifiers are part of the block with no standalone meaning. Here is the example of the typical syntax:\n\n```css\n/* block component */\n.block {}\n\n/* element */\n.block__element {}\n\n/* modifier */\n.block__element--modifier {}\n```",
     "goodToHear": [
       "Block is a top-level abstraction of a new component",
       "Elements make no sense to be alone - they are tightly dependent on blocks",
@@ -14,13 +14,13 @@
     ],
     "questionCodeBlocks": [],
     "answerCodeBlocks": [
-      "```css\n/* block component */\n.block {}\n\n/* element */\n.block__element {}\n\n/* modifier */\n.block__element-modifier {}\n```"
+      "```css\n/* block component */\n.block {}\n\n/* element */\n.block__element {}\n\n/* modifier */\n.block__element--modifier {}\n```"
     ]
   },
   {
     "name": "clone-object.md",
     "question": "How do you clone an object in JavaScript?",
-    "answer": "Using the object spread operator `...`, the object's own enumerable properties can be copied\ninto the new object. This creates a shallow clone of the object.\n\n```js\nconst obj = { a: 1, b: 2 };\nconst shallowClone = { ...obj };\n```\n\nWith this technique, prototypes are ignored. In addition, nested objects are not cloned, but rather their references get copied, so nested objects still refer to the same objects as the original. Deep-cloning is much more complex in order to effectively clone any type of object (Dates, RegExp, Function, Set, etc) that may be nested within the object.\n\nOther alternative include\n\n* `JSON.stringify()` but has the drawback that it is CPU-intensive.\n* `Object.assign({},obj)` is another alternative.\n* `Object.keys(obj).reduce((acc, key) => acc[key] = obj[key], acc , {})` is another more verbose alternative that shows the concept in greater depth.",
+    "answer": "Using the object spread operator `...`, the object's own enumerable properties can be copied\ninto the new object. This creates a shallow clone of the object.\n\n```js\nconst obj = { a: 1, b: 2 };\nconst shallowClone = { ...obj };\n```\n\nWith this technique, prototypes are ignored. In addition, nested objects are not cloned, but rather their references get copied, so nested objects still refer to the same objects as the original. Deep-cloning is much more complex in order to effectively clone any type of object (Date, RegExp, Function, Set, etc) that may be nested within the object.\n\nOther alternative include:\n\n* `JSON.parse(JSON.stringify(obj))` can be used to deep-clone a simple object, but it is CPU-intensive and only accepts valid JSON (therefore it strips functions and does not allow circular references).\n* `Object.assign({}, obj)` is another alternative.\n* `Object.keys(obj).reduce((acc, key) => (acc[key] = obj[key], acc), {})` is another more verbose alternative that shows the concept in greater depth.",
     "goodToHear": [
       "JavaScript passes objects by reference, meaning that nested objects get their references copied, instead of their values.",
       "The same method can be used to merge two objects."
@@ -38,7 +38,7 @@
   },
   {
     "name": "closures.md",
-    "question": "What is a closure in Javascript?",
+    "question": "What is a closure?",
     "answer": "A closure is a function defined inside another function and has access to its lexical scope even when it is executing outside its lexical scope. The closure has access to variables in three scopes:\n\n* Variables declared in its own scope\n* Variables declared in the scope of the parent function\n* Variables declared in the global scope",
     "goodToHear": [
       "Closures are useful because they let you associate data with a function that operates on that data.",
@@ -57,7 +57,7 @@
   {
     "name": "comparing-objects.md",
     "question": "How would you compare two objects in JavaScript?",
-    "answer": "Even though two different objects can have the same properties with equal values, they're not considered equal. When two objects are compared, they are being compared by their reference (location in memory), unlike primitive values which are compared by value. To compare two objects, they need to be of equal length and have the same properties.\n\nNote: this method ignores prototypes and only considers them equal if they have the same nested objects. Objects can be  complex structures which are difficult to compare.\n\n```js\nfunction isShallowEqual(obj1, obj2) {\n  const obj1Props = Object.getOwnPropertyNames(obj1);\n  const obj2Props = Object.getOwnPropertyNames(obj2);\n\n  if (obj1Props.length != obj2Props.length) {\n    return false\n  }\n\n  for (const prop of obj1Props) {\n    if (obj1[prop] !== obj2[prop]) {\n      return false;\n    }\n  }\n\n  return true;\n}\n```",
+    "answer": "Even though two different objects can have the same properties with equal values, they are not considered equal when compared. When two objects are compared with `==` or `===`, they are being compared by their reference (location in memory), unlike primitive values which are compared by value.\n\nNote: this technique ignores prototypes and does not consider nested objects equal if they are not the same reference.\n\n```js\nfunction isShallowEqual(obj1, obj2) {\n  const obj1Props = Object.getOwnPropertyNames(obj1);\n  const obj2Props = Object.getOwnPropertyNames(obj2);\n\n  if (obj1Props.length != obj2Props.length) {\n    return false;\n  }\n\n  for (const prop of obj1Props) {\n    if (obj1[prop] !== obj2[prop]) {\n      return false;\n    }\n  }\n\n  return true;\n}\n```",
     "goodToHear": [
       "Primitives like strings and numbers are compared by their value",
       "Objects on the other hand are compared by their reference (location in memory)"
@@ -69,16 +69,16 @@
     ],
     "questionCodeBlocks": [],
     "answerCodeBlocks": [
-      "```js\nfunction isShallowEqual(obj1, obj2) {\n  const obj1Props = Object.getOwnPropertyNames(obj1);\n  const obj2Props = Object.getOwnPropertyNames(obj2);\n\n  if (obj1Props.length != obj2Props.length) {\n    return false\n  }\n\n  for (const prop of obj1Props) {\n    if (obj1[prop] !== obj2[prop]) {\n      return false;\n    }\n  }\n\n  return true;\n}\n```"
+      "```js\nfunction isShallowEqual(obj1, obj2) {\n  const obj1Props = Object.getOwnPropertyNames(obj1);\n  const obj2Props = Object.getOwnPropertyNames(obj2);\n\n  if (obj1Props.length != obj2Props.length) {\n    return false;\n  }\n\n  for (const prop of obj1Props) {\n    if (obj1[prop] !== obj2[prop]) {\n      return false;\n    }\n  }\n\n  return true;\n}\n```"
     ]
   },
   {
     "name": "css-preprocessors.md",
     "question": "What are the advantages of using CSS preprocessors?",
-    "answer": "There are many advantages of using CSS preprocessors. Firstly, they allow us to write more maintainable and scalable CSS overall. Secondly, they provide syntax for easy to write nested selectors as well as variables for consistent theming. CSS preprocessors also allow us to write mixins to generate repeated CSS. On top of everything, they let us split code into multiple files (without needing to make HTTP request for each one).",
+    "answer": "CSS preprocessors add useful functionality that native CSS does not have, and generally make CSS neater and more maintainable by enabling DRY (Don't Repeat Yourself) principles. Their terse syntax for nested selectors cuts down on repeated code. They provide variables for consistent theming (however, CSS variables have largely replaced this functionality) and additional tools like color functions (`lighten`, `darken`, `transparentize`, etc), variables, mixins, and loops that make CSS more like a real programming language and gives the developer more power to generate complex CSS.",
     "goodToHear": [
       "They allow us to write more maintainable and scalable CSS",
-      "Some disadvantages of using CSS preprocessors(setup, re-compilation time can be slow etc.)"
+      "Some disadvantages of using CSS preprocessors (setup, re-compilation time can be slow etc.)"
     ],
     "links": [
       "[CSS Preprocessors](https://medium.com/@garyfagan/css-preprocessors-6f226fa16f27)",
@@ -105,8 +105,8 @@
   },
   {
     "name": "fibonacci.md",
-    "question": "Generate an array, containing the Fibonacci sequence, up until the nth term",
-    "answer": "Create an empty array of the specific length, initializing the first two values (0 and 1). Use Array.reduce() to add values into the array, using the sum of the last two values, except for the first two.\n\n```js\nconst fibonacci = n =>\n  Array.from({ length: n }).reduce(\n    (acc, val, i) => acc.concat(i > 1 ? acc[i - 1] + acc[i - 2] : i),\n    []\n  );\n```",
+    "question": "Generate an array, containing the Fibonacci sequence, up until the nth term.",
+    "answer": "Create an empty array of the specific length. Use Array.reduce() to add values into the array, using the sum of the last two values, except for the first two.\n\n```js\nconst fibonacci = n =>\n  Array.from({ length: n }).reduce(\n    (acc, val, i) => acc.concat(i > 1 ? acc[i - 1] + acc[i - 2] : i),\n    []\n  );\n```",
     "goodToHear": [],
     "links": [
       "[Similar problem](https://github.com/Chalarangelo/30-seconds-of-code/blob/master/snippets_archive/fibonacciUntilNum.md)",
@@ -136,8 +136,8 @@
   },
   {
     "name": "floating-point.md",
-    "question": "What does `0.1 + 0.2 === 0.3` return?",
-    "answer": "It equals to `false` because JavaScript uses the IEEE 754 standard for Math and it makes use of 64-bit floating numbers. This causes precision errors when doing decimal calculations, in short, due to computers working in Base 2 while decimal is Base 10.\n\n```js\n0.1 + 0.2; // 0.300000004\n```",
+    "question": "What does `0.1 + 0.2 === 0.3` evaluate to?",
+    "answer": "It evaluates to `false` because JavaScript uses the IEEE 754 standard for Math and it makes use of 64-bit floating numbers. This causes precision errors when doing decimal calculations, in short, due to computers working in Base 2 while decimal is Base 10.\n\n```js\n0.1 + 0.2 // 0.300000004\n```",
     "goodToHear": [
       "A simple solution to this problem"
     ],
@@ -148,16 +148,16 @@
     ],
     "questionCodeBlocks": [],
     "answerCodeBlocks": [
-      "```js\n0.1 + 0.2; // 0.300000004\n```"
+      "```js\n0.1 + 0.2 // 0.300000004\n```"
     ]
   },
   {
     "name": "for-each-map.md",
-    "question": "What is the difference between a `map` loop and a `forEach` loop?",
-    "answer": "Both loops iterate through the elements in an array. `.map()` maps each element to new element by calling the function on each element and it returns the new array. On the other hand, `.forEach()` executes a callback function for each element but does not return anything. `.forEach()` is generally used when causing a side effect on each iteration, whereas `.map()` is a common functional programming technique.",
+    "question": "What is the difference between the array methods `map()` and `forEach()`?",
+    "answer": "Both methods iterate through the elements of an array. `map()` maps each element to new element by invoking the callback function on each element and returns a new array. On the other hand, `forEach()` invokes the callback function for each element but does not return a new array. `forEach()` is generally used when causing a side effect on each iteration, whereas `map()` is a common functional programming technique.",
     "goodToHear": [
-      "Use `.forEach()` if you need to iterate over an array and cause mutations to the elements without needing to return values to generate a new array.",
-      "`.map()` is the right choice to keep data immutable where each value of the original array is mapped to a new array."
+      "Use `forEach()` if you need to iterate over an array and cause mutations to the elements without needing to return values to generate a new array.",
+      "`map()` is the right choice to keep data immutable where each value of the original array is mapped to a new array."
     ],
     "links": [
       "[MDN docs for forEach](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach)",
@@ -188,8 +188,8 @@
   },
   {
     "name": "hoisting-example.md",
-    "question": "What will be the output of this code?\n\n```js\nvar foo = 1;\nvar foobar = function () {\n    console.log(foo);\n    var foo = 2;\n};\nfoobar();\n```",
-    "answer": "Firstly `foobar` won't look for the outer scope as `var foo = 2;`'s declaration is hoisted. On the other hand,  JavaScript doesn't hoist initialization, so the output of this code is going to be `undefined`.",
+    "question": "What will the console log in this example?\n\n```js\nvar foo = 1;\nvar foobar = function () {\n  console.log(foo);\n  var foo = 2;\n};\nfoobar();\n```",
+    "answer": "Due to hoisting, the local variable `foo` is declared before the `console.log` method is called. This means the local variable `foo` is passed as an argument to `log` instead of the global one declared outside of the function. However, since the value is not hoisted with the variable declaration, the output will be `undefined`, not `2`.",
     "goodToHear": [
       "Hoisting is JavaScript’s default behavior of moving declarations to the top",
       "Mention of `strict` mode"
@@ -199,14 +199,14 @@
       "<!-- tags: (javascript) -->"
     ],
     "questionCodeBlocks": [
-      "```js\nvar foo = 1;\nvar foobar = function () {\n    console.log(foo);\n    var foo = 2;\n};\nfoobar();\n```"
+      "```js\nvar foo = 1;\nvar foobar = function () {\n  console.log(foo);\n  var foo = 2;\n};\nfoobar();\n```"
     ],
     "answerCodeBlocks": []
   },
   {
     "name": "hoisting.md",
     "question": "How does hoisting work in JavaScript?",
-    "answer": "Hoisting is a JavaScript mechanism where variables and function declarations are put into memory during the compile phase. This means that no matter where functions and variables are declared, they are moved to the top of their scope regardless of whether their scope is global or local.\n\n```js\nconsole.log(hoist); // Output: undefined\n\nvar hoist = 'The variable has been hoisted.';\n```",
+    "answer": "Hoisting is a JavaScript mechanism where variables and function declarations are put into memory during the compile phase. This means that no matter where functions and variables are declared, they are moved to the top of their scope regardless of whether their scope is global or local.\n\n```js\nconsole.log(hoist); // Output: undefined\nvar hoist = 'The variable has been hoisted.';\n```",
     "goodToHear": [
       "Hoisting is JavaScript’s default behavior of moving declarations to the top",
       "Functions are hoisted before variables",
@@ -221,7 +221,7 @@
     ],
     "questionCodeBlocks": [],
     "answerCodeBlocks": [
-      "```js\nconsole.log(hoist); // Output: undefined\n\nvar hoist = 'The variable has been hoisted.';\n```"
+      "```js\nconsole.log(hoist); // Output: undefined\nvar hoist = 'The variable has been hoisted.';\n```"
     ]
   },
   {
@@ -337,18 +337,17 @@
   },
   {
     "name": "return-semicolon.md",
-    "question": "What does the following function return?\n\n```js\nfunction greet() {\n  return\n  {\n    message: 'hello'\n  }\n}\n```",
-    "answer": "Because of JavaScript's automatic semicolon placement compiler places a semicolon after `return` keyword and therefore it returns `undefined` without single error being thrown.",
+    "question": "What does the following function return?\n\n```js\nfunction greet() {\n  return\n  {\n    message: \"hello\"\n  };\n}\n```",
+    "answer": "Because of JavaScript's automatic semicolon insertion (ASI), the compiler places a semicolon after `return` keyword and therefore it returns `undefined` without an error being thrown.",
     "goodToHear": [
-      "Automatic semicolon placement can lead to time-consuming bugs",
-      "Semicolons can be omitted in JavaScript if you know the cases in which they are required"
+      "Automatic semicolon placement can lead to time-consuming bugs"
     ],
     "links": [
       "[Automatic semicolon insertion in JavaScript](http://2ality.com/2011/05/semicolon-insertion.html)",
       "<!-- tags: (javascript) -->"
     ],
     "questionCodeBlocks": [
-      "```js\nfunction greet() {\n  return\n  {\n    message: 'hello'\n  }\n}\n```"
+      "```js\nfunction greet() {\n  return\n  {\n    message: \"hello\"\n  };\n}\n```"
     ],
     "answerCodeBlocks": []
   },
@@ -418,8 +417,8 @@
   },
   {
     "name": "wrap-content.md",
-    "question": "What is the reason for wrapping the entire content of a JavaScript source file in a function block?",
-    "answer": "This technique is very common in JavaScript libraries. It creates a closure around the entire contents of the file which creates a private namespace and thereby helps avoid potential name clashes between different JavaScript modules and libraries",
+    "question": "What is the reason for wrapping the entire contents of a JavaScript source file in a function?",
+    "answer": "This technique is very common in JavaScript libraries. It creates a closure around the entire contents of the file which creates a private namespace and thereby helps avoid potential name clashes between different JavaScript modules and libraries. The function is usually immediately invoked so that the namespace (library name) is assigned the return value of the function.\n\n```js\nconst myLibrary = function () {\n  var privateVariable = 2;\n  return {\n    publicMethod: () => privateVariable;\n  };\n}();\nprivateVariable; // ReferenceError\nmyLibrary.publicMethod(); // 2\n```",
     "goodToHear": [
       "Used among many popular JavaScript libraries",
       "Creates a private namespace"
@@ -429,7 +428,9 @@
       "<!-- tags: (javascript) -->"
     ],
     "questionCodeBlocks": [],
-    "answerCodeBlocks": []
+    "answerCodeBlocks": [
+      "```js\nconst myLibrary = function () {\n  var privateVariable = 2;\n  return {\n    publicMethod: () => privateVariable;\n  };\n}();\nprivateVariable; // ReferenceError\nmyLibrary.publicMethod(); // 2\n```"
+    ]
   },
   {
     "name": "z-index.md",
