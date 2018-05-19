@@ -1,0 +1,67 @@
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+  background: #f5f5fb;
+}
+
+code[class*="language-"],
+pre[class*="language-"] {
+  text-shadow: none;
+  font-family: "SF Mono", "Fira Code", Consolas, Menlo, monospace;
+  color: #345173;
+  font-size: 17px;
+  -webkit-overflow-scrolling: touch;
+  line-height: 1.8;
+}
+
+.token.punctuation {
+  color: #5a90c3;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+  color: #7b8cc1;
+}
+
+.token.selector,
+.token.char,
+.token.builtin,
+.token.inserted {
+  color: #3d65e0;
+}
+
+.token.string,
+.token.attr-value,
+.token.selector {
+  color: #008865;
+}
+
+.token.atrule,
+.token.keyword,
+.token.operator {
+  background: none;
+  color: #7633f2;
+}
+
+.token.number,
+.token.constant,
+.token.symbol,
+.token.deleted {
+}
+
+.token.boolean,
+.token.attr-name {
+  background: none;
+  color: #e0612d;
+}
+
+.token.tag,
+.token.number {
+  color: #ec4790;
+}
+
+.token.function,
+.token.property {
+  color: #2a68e4;
+}

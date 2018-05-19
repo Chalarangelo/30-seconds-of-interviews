@@ -1,0 +1,23 @@
+@import "./_vars.scss";
+
+body {
+  color: #51526f;
+}
+
+code {
+  background: radial-gradient(circle at 30% 50%, #f2f8ff, #e4edff);
+  color: #4b47c7;
+  padding: 2px 3px;
+  border-radius: 2px;
+  font-size: 90%;
+}
+
+.container {
+  max-width: 1000px;
+  padding: 0 4%;
+  margin: 0 auto;
+
+  @media (min-width: $breakpoint-md) {
+    padding: 0 50px;
+  }
+}

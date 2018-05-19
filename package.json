@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "builder": "node ./scripts/build.js",
-    "extractor": "node ./scripts/extract.js"
+    "extractor": "node ./scripts/extract.js",
+    "dev": "parcel website/index.html"
   },
   "repository": {
     "type": "git",
@@ -19,7 +20,16 @@
   "homepage": "https://github.com/fejes713/30-seconds-of-interviews#readme",
   "dependencies": {
     "chalk": "^2.4.1",
+    "focus-visible": "^4.1.4",
     "fs-extra": "^6.0.0",
-    "npm": "^6.0.0"
+    "hyperapp": "^1.2.5",
+    "marked": "^0.3.19",
+    "modern-normalize": "^0.4.0",
+    "npm": "^6.0.0",
+    "prismjs": "^1.14.0"
+  },
+  "devDependencies": {
+    "node-sass": "^4.9.0",
+    "parcel-bundler": "^1.8.1"
   }
 }

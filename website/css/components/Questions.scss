@@ -1,0 +1,16 @@
+@import "../_vars.scss";
+
+.Questions {
+  padding: 50px 0;
+  background: #f6f7fd;
+
+  .container {
+    padding: 0;
+  }
+
+  @media (min-width: $breakpoint-md) {
+    .container {
+      padding: 0 25px;
+    }
+  }
+}
