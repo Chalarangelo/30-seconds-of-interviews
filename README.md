@@ -22,14 +22,14 @@ Do you have an excellent idea or know some cool questions that aren't on the lis
 <summary>View contents</summary>
 
 * [ How do you clone an object in JavaScript?](#how-do-you-clone-an-object-in-javascript) 
-* [ What is a closure in Javascript?](#what-is-a-closure-in-javascript) 
+* [ What is a closure?](#what-is-a-closure) 
 * [ How would you compare two objects in JavaScript?](#how-would-you-compare-two-objects-in-javascript) 
 * [ What is event-driven programming?](#what-is-event-driven-programming) 
-* [ Generate an array, containing the Fibonacci sequence, up until the nth term](#generate-an-array-containing-the-fibonacci-sequence-up-until-the-nth-term) 
-* [ What does `0.1 + 0.2 === 0.3` return?](#what-does-0-1-0-2-0-3-return) 
-* [ What is the difference between a `map` loop and a `forEach` loop?](#what-is-the-difference-between-a-map-loop-and-a-foreach-loop) 
+* [ Generate an array, containing the Fibonacci sequence, up until the nth term.](#generate-an-array-containing-the-fibonacci-sequence-up-until-the-nth-term) 
+* [ What does `0.1 + 0.2 === 0.3` evaluate to?](#what-does-0-1-0-2-0-3-evaluate-to) 
+* [ What is the difference between the array methods `map()` and `forEach()`?](#what-is-the-difference-between-the-array-methods-map-and-foreach) 
 * [ What is functional programming?](#what-is-functional-programming) 
-* [ What will be the output of this code?](#what-will-be-the-output-of-this-code) 
+* [ What will the console log in this example?](#what-will-the-console-log-in-this-example) 
 * [ How does hoisting work in JavaScript?](#how-does-hoisting-work-in-javascript) 
 * [ What are the differences between `null` and `undefined`?](#what-are-the-differences-between-null-and-undefined) 
 * [ Does JavaScript pass by value or by reference?](#does-javascript-pass-by-value-or-by-reference) 
@@ -40,7 +40,7 @@ Do you have an excellent idea or know some cool questions that aren't on the lis
 * [ What would the following code return?](#what-would-the-following-code-return) 
 * [ What are JavaScript data types?](#what-are-javascript-data-types) 
 * [ What does `'use strict'` do and what are some of the key benefits to using it?](#what-does-use-strict-do-and-what-are-some-of-the-key-benefits-to-using-it) 
-* [ What is the reason for wrapping the entire content of a JavaScript source file in a function block?](#what-is-the-reason-for-wrapping-the-entire-content-of-a-javascript-source-file-in-a-function-block) 
+* [ What is the reason for wrapping the entire contents of a JavaScript source file in a function?](#what-is-the-reason-for-wrapping-the-entire-contents-of-a-javascript-source-file-in-a-function) 
 </details>
 
 ### Css 
@@ -90,13 +90,13 @@ const obj = { a: 1, b: 2 };
 const shallowClone = { ...obj };
 ```
 
-With this technique, prototypes are ignored. In addition, nested objects are not cloned, but rather their references get copied, so nested objects still refer to the same objects as the original. Deep-cloning is much more complex in order to effectively clone any type of object (Dates, RegExp, Function, Set, etc) that may be nested within the object.
+With this technique, prototypes are ignored. In addition, nested objects are not cloned, but rather their references get copied, so nested objects still refer to the same objects as the original. Deep-cloning is much more complex in order to effectively clone any type of object (Date, RegExp, Function, Set, etc) that may be nested within the object.
 
-Other alternative include
+Other alternative include:
 
-* `JSON.stringify()` but has the drawback that it is CPU-intensive.
-* `Object.assign({},obj)` is another alternative.
-* `Object.keys(obj).reduce((acc, key) => acc[key] = obj[key], acc , {})` is another more verbose alternative that shows the concept in greater depth.
+* `JSON.parse(JSON.stringify(obj))` can be used to deep-clone a simple object, but it is CPU-intensive and only accepts valid JSON (therefore it strips functions and does not allow circular references).
+* `Object.assign({}, obj)` is another alternative.
+* `Object.keys(obj).reduce((acc, key) => (acc[key] = obj[key], acc), {})` is another more verbose alternative that shows the concept in greater depth.
 
 #### Good to hear
 
@@ -115,7 +115,7 @@ Other alternative include
 
 <br>[⬆ Back to top](#table-of-contents)
 
-### What is a closure in Javascript?
+### What is a closure?
 
 #### Answer
 
@@ -152,9 +152,9 @@ A closure is a function defined inside another function and has access to its le
 <details>
 <summary>View answer</summary>
 
-Even though two different objects can have the same properties with equal values, they're not considered equal. When two objects are compared, they are being compared by their reference (location in memory), unlike primitive values which are compared by value. To compare two objects, they need to be of equal length and have the same properties.
+Even though two different objects can have the same properties with equal values, they are not considered equal when compared. When two objects are compared with `==` or `===`, they are being compared by their reference (location in memory), unlike primitive values which are compared by value.
 
-Note: this method ignores prototypes and only considers them equal if they have the same nested objects. Objects can be  complex structures which are difficult to compare.
+Note: this technique ignores prototypes and does not consider nested objects equal if they are not the same reference.
 
 ```js
 function isShallowEqual(obj1, obj2) {
@@ -162,7 +162,7 @@ function isShallowEqual(obj1, obj2) {
   const obj2Props = Object.getOwnPropertyNames(obj2);
 
   if (obj1Props.length != obj2Props.length) {
-    return false
+    return false;
   }
 
   for (const prop of obj1Props) {
@@ -214,14 +214,14 @@ Event-driven programming is building an application that is based on and respond
 
 <br>[⬆ Back to top](#table-of-contents)
 
-### Generate an array, containing the Fibonacci sequence, up until the nth term
+### Generate an array, containing the Fibonacci sequence, up until the nth term.
 
 #### Answer
 
 <details>
 <summary>View answer</summary>
 
-Create an empty array of the specific length, initializing the first two values (0 and 1). Use Array.reduce() to add values into the array, using the sum of the last two values, except for the first two.
+Create an empty array of the specific length. Use Array.reduce() to add values into the array, using the sum of the last two values, except for the first two.
 
 ```js
 const fibonacci = n =>
@@ -242,17 +242,17 @@ const fibonacci = n =>
 
 <br>[⬆ Back to top](#table-of-contents)
 
-### What does `0.1 + 0.2 === 0.3` return?
+### What does `0.1 + 0.2 === 0.3` evaluate to?
 
 #### Answer
 
 <details>
 <summary>View answer</summary>
 
-It equals to `false` because JavaScript uses the IEEE 754 standard for Math and it makes use of 64-bit floating numbers. This causes precision errors when doing decimal calculations, in short, due to computers working in Base 2 while decimal is Base 10.
+It evaluates to `false` because JavaScript uses the IEEE 754 standard for Math and it makes use of 64-bit floating numbers. This causes precision errors when doing decimal calculations, in short, due to computers working in Base 2 while decimal is Base 10.
 
 ```js
-0.1 + 0.2; // 0.300000004
+0.1 + 0.2 // 0.300000004
 ```
 
 #### Good to hear
@@ -269,19 +269,19 @@ It equals to `false` because JavaScript uses the IEEE 754 standard for Math and 
 
 <br>[⬆ Back to top](#table-of-contents)
 
-### What is the difference between a `map` loop and a `forEach` loop?
+### What is the difference between the array methods `map()` and `forEach()`?
 
 #### Answer
 
 <details>
 <summary>View answer</summary>
 
-Both loops iterate through the elements in an array. `.map()` maps each element to new element by calling the function on each element and it returns the new array. On the other hand, `.forEach()` executes a callback function for each element but does not return anything. `.forEach()` is generally used when causing a side effect on each iteration, whereas `.map()` is a common functional programming technique.
+Both methods iterate through the elements of an array. `map()` maps each element to new element by invoking the callback function on each element and returns a new array. On the other hand, `forEach()` invokes the callback function for each element but does not return a new array. `forEach()` is generally used when causing a side effect on each iteration, whereas `map()` is a common functional programming technique.
 
 #### Good to hear
 
-* Use `.forEach()` if you need to iterate over an array and cause mutations to the elements without needing to return values to generate a new array.
-* `.map()` is the right choice to keep data immutable where each value of the original array is mapped to a new array.
+* Use `forEach()` if you need to iterate over an array and cause mutations to the elements without needing to return values to generate a new array.
+* `map()` is the right choice to keep data immutable where each value of the original array is mapped to a new array.
 
 ##### Additional links
 
@@ -321,13 +321,13 @@ Functional programming is a paradigm in which programs are built in a declarativ
 
 <br>[⬆ Back to top](#table-of-contents)
 
-### What will be the output of this code?
+### What will the console log in this example?
 
 ```js
 var foo = 1;
 var foobar = function () {
-    console.log(foo);
-    var foo = 2;
+  console.log(foo);
+  var foo = 2;
 };
 foobar();
 ```
@@ -337,7 +337,7 @@ foobar();
 <details>
 <summary>View answer</summary>
 
-Firstly `foobar` won't look for the outer scope as `var foo = 2;`'s declaration is hoisted. On the other hand,  JavaScript doesn't hoist initialization, so the output of this code is going to be `undefined`.
+Due to hoisting, the local variable `foo` is declared before the `console.log` method is called. This means the local variable `foo` is passed as an argument to `log` instead of the global one declared outside of the function. However, since the value is not hoisted with the variable declaration, the output will be `undefined`, not `2`.
 
 #### Good to hear
 
@@ -364,7 +364,6 @@ Hoisting is a JavaScript mechanism where variables and function declarations are
 
 ```js
 console.log(hoist); // Output: undefined
-
 var hoist = 'The variable has been hoisted.';
 ```
 
@@ -498,8 +497,8 @@ The first `console.log` outputs `true` because JavaScript's compiler performs ty
 function greet() {
   return
   {
-    message: 'hello'
-  }
+    message: "hello"
+  };
 }
 ```
 
@@ -508,12 +507,11 @@ function greet() {
 <details>
 <summary>View answer</summary>
 
-Because of JavaScript's automatic semicolon placement compiler places a semicolon after `return` keyword and therefore it returns `undefined` without single error being thrown.
+Because of JavaScript's automatic semicolon insertion (ASI), the compiler places a semicolon after `return` keyword and therefore it returns `undefined` without an error being thrown.
 
 #### Good to hear
 
 * Automatic semicolon placement can lead to time-consuming bugs
-* Semicolons can be omitted in JavaScript if you know the cases in which they are required
 
 ##### Additional links
 
@@ -629,15 +627,25 @@ Including `'use strict'` at the beginning of your JavaScript source file enables
 
 <br>[⬆ Back to top](#table-of-contents)
 
-### What is the reason for wrapping the entire content of a JavaScript source file in a function block?
-
+### What is the reason for wrapping the entire contents of a JavaScript source file in a function?
 
 #### Answer
 
 <details>
 <summary>View answer</summary>
 
-This technique is very common in JavaScript libraries. It creates a closure around the entire contents of the file which creates a private namespace and thereby helps avoid potential name clashes between different JavaScript modules and libraries
+This technique is very common in JavaScript libraries. It creates a closure around the entire contents of the file which creates a private namespace and thereby helps avoid potential name clashes between different JavaScript modules and libraries. The function is usually immediately invoked so that the namespace (library name) is assigned the return value of the function.
+
+```js
+const myLibrary = function () {
+  var privateVariable = 2;
+  return {
+    publicMethod: () => privateVariable;
+  };
+}();
+privateVariable; // ReferenceError
+myLibrary.publicMethod(); // 2
+```
 
 #### Good to hear
 
@@ -675,7 +683,7 @@ The BEM methodology is another naming convention for CSS classes. The BEM stands
 .block__element {}
 
 /* modifier */
-.block__element-modifier {}
+.block__element--modifier {}
 ```
 
 #### Good to hear
@@ -700,12 +708,12 @@ The BEM methodology is another naming convention for CSS classes. The BEM stands
 <details>
 <summary>View answer</summary>
 
-There are many advantages of using CSS preprocessors. Firstly, they allow us to write more maintainable and scalable CSS overall. Secondly, they provide syntax for easy to write nested selectors as well as variables for consistent theming. CSS preprocessors also allow us to write mixins to generate repeated CSS. On top of everything, they let us split code into multiple files (without needing to make HTTP request for each one).
+CSS preprocessors add useful functionality that native CSS does not have, and generally make CSS neater and more maintainable by enabling DRY (Don't Repeat Yourself) principles. Their terse syntax for nested selectors cuts down on repeated code. They provide variables for consistent theming (however, CSS variables have largely replaced this functionality) and additional tools like color functions (`lighten`, `darken`, `transparentize`, etc), variables, mixins, and loops that make CSS more like a real programming language and gives the developer more power to generate complex CSS.
 
 #### Good to hear
 
 * They allow us to write more maintainable and scalable CSS
-* Some disadvantages of using CSS preprocessors(setup, re-compilation time can be slow etc.)
+* Some disadvantages of using CSS preprocessors (setup, re-compilation time can be slow etc.)
 
 ##### Additional links
 
