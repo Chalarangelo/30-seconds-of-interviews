@@ -13,8 +13,11 @@ export default () => (
       <FilterButton type="css" icon="feather">
         CSS
       </FilterButton>
-      <FilterButton type="javascript" icon="terminal">
+      <FilterButton type="javascript" icon="code">
         JavaScript
+      </FilterButton>
+      <FilterButton type="node" icon="server">
+        Node
       </FilterButton>
     </div>
   </div>
