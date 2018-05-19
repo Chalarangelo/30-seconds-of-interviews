@@ -9,9 +9,9 @@
       "Modifier is a flag added to block or element so it makes them a bit more specific"
     ],
     "links": [
-      "[Writing clean and maintainable CSS](https://hackernoon.com/writing-clean-and-maintainable-css-using-bem-methodology-1dcbf810a664)",
-      "<!-- tags: (css) -->"
+      "[Writing clean and maintainable CSS](https://hackernoon.com/writing-clean-and-maintainable-css-using-bem-methodology-1dcbf810a664)"
     ],
+    "category": "css",
     "questionCodeBlocks": [],
     "answerCodeBlocks": [
       "```css\n/* block component */\n.block {}\n\n/* element */\n.block__element {}\n\n/* modifier */\n.block__element--modifier {}\n```"
@@ -28,9 +28,9 @@
     "links": [
       "<!-- Whenever possible, link a more detailed explanation. -->",
       "[MDN docs for Object.assign()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign)",
-      "[Clone an object in vanilla JS](http://voidcanvas.com/clone-an-object-in-vanilla-js-in-depth/)",
-      "<!-- tags: (javascript) -->"
+      "[Clone an object in vanilla JS](http://voidcanvas.com/clone-an-object-in-vanilla-js-in-depth/)"
     ],
+    "category": "javascript",
     "questionCodeBlocks": [],
     "answerCodeBlocks": [
       "```js\nconst obj = { a: 1, b: 2 };\nconst shallowClone = { ...obj };\n```"
@@ -48,9 +48,9 @@
     "links": [
       "[MDN docs for closures](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures)",
       "[What is a closure](https://medium.com/javascript-scene/master-the-javascript-interview-what-is-a-closure-b2f0d2152b36)",
-      "[I never understood JavaScript closures](https://medium.com/dailyjs/i-never-understood-javascript-closures-9663703368e8)",
-      "<!-- tags: (javascript) -->"
+      "[I never understood JavaScript closures](https://medium.com/dailyjs/i-never-understood-javascript-closures-9663703368e8)"
     ],
+    "category": "javascript",
     "questionCodeBlocks": [],
     "answerCodeBlocks": []
   },
@@ -64,9 +64,9 @@
     ],
     "links": [
       "[Object Equality in JavaScript](http://adripofjavascript.com/blog/drips/object-equality-in-javascript.html)",
-      "[Deep comparison between two values](https://30secondsofcode.org/object#equals)",
-      "<!-- tags: (javascript) -->"
+      "[Deep comparison between two values](https://30secondsofcode.org/object#equals)"
     ],
+    "category": "javascript",
     "questionCodeBlocks": [],
     "answerCodeBlocks": [
       "```js\nfunction isShallowEqual(obj1, obj2) {\n  const obj1Props = Object.getOwnPropertyNames(obj1);\n  const obj2Props = Object.getOwnPropertyNames(obj2);\n\n  if (obj1Props.length != obj2Props.length) {\n    return false;\n  }\n\n  for (const prop of obj1Props) {\n    if (obj1[prop] !== obj2[prop]) {\n      return false;\n    }\n  }\n\n  return true;\n}\n```"
@@ -81,9 +81,9 @@
       "Some disadvantages of using CSS preprocessors (setup, re-compilation time can be slow etc.)"
     ],
     "links": [
-      "[CSS Preprocessors](https://medium.com/@garyfagan/css-preprocessors-6f226fa16f27)",
-      "<!-- tags: (css) -->"
+      "[CSS Preprocessors](https://medium.com/@garyfagan/css-preprocessors-6f226fa16f27)"
     ],
+    "category": "css",
     "questionCodeBlocks": [],
     "answerCodeBlocks": []
   },
@@ -97,9 +97,9 @@
     ],
     "links": [
       "[MDN docs on Events and Handlers](https://developer.mozilla.org/en-US/docs/Web/Guide/Events/Overview_of_Events_and_Handlers)",
-      "[Understanding Node.js event-driven architecture](https://medium.freecodecamp.org/understanding-node-js-event-driven-architecture-223292fcbc2d)",
-      "<!-- tags: (javascript) -->"
+      "[Understanding Node.js event-driven architecture](https://medium.freecodecamp.org/understanding-node-js-event-driven-architecture-223292fcbc2d)"
     ],
+    "category": "javascript",
     "questionCodeBlocks": [],
     "answerCodeBlocks": []
   },
@@ -109,9 +109,9 @@
     "answer": "Create an empty array of the specific length. Use Array.reduce() to add values into the array, using the sum of the last two values, except for the first two.\n\n```js\nconst fibonacci = n =>\n  Array.from({ length: n }).reduce(\n    (acc, val, i) => acc.concat(i > 1 ? acc[i - 1] + acc[i - 2] : i),\n    []\n  );\n```",
     "goodToHear": [],
     "links": [
-      "[Similar problem](https://github.com/Chalarangelo/30-seconds-of-code/blob/master/snippets_archive/fibonacciUntilNum.md)",
-      "<!-- tags: (javascript) -->"
+      "[Similar problem](https://github.com/Chalarangelo/30-seconds-of-code/blob/master/snippets_archive/fibonacciUntilNum.md)"
     ],
+    "category": "javascript",
     "questionCodeBlocks": [],
     "answerCodeBlocks": [
       "```js\nconst fibonacci = n =>\n  Array.from({ length: n }).reduce(\n    (acc, val, i) => acc.concat(i > 1 ? acc[i - 1] + acc[i - 2] : i),\n    []\n  );\n```"
@@ -124,9 +124,9 @@
     "goodToHear": [],
     "links": [
       "[MDN docs for basic concepts of flexbox](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Basic_Concepts_of_Flexbox)",
-      "[A complete guide to Flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)",
-      "<!-- tags: (css) -->"
+      "[A complete guide to Flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)"
     ],
+    "category": "css",
     "questionCodeBlocks": [
       "```html\n<div class=\"flex-grid\">\n  <div class=\"col-2\"></div>\n  <div class=\"col-7\"></div>\n  <div class=\"col-3\"></div>\n</div>\n```"
     ],
@@ -143,9 +143,9 @@
     ],
     "links": [
       "[A simple helper function to check equality](https://github.com/Chalarangelo/30-seconds-of-code#approximatelyequal)",
-      "[Fix \"0.1 + 0.2 = 0.300000004\" in JavaScript](http://blog.blakesimpson.co.uk/read/61-fix-0-1-0-2-0-300000004-in-javascript)",
-      "<!-- tags: (javascript) -->"
+      "[Fix \"0.1 + 0.2 = 0.300000004\" in JavaScript](http://blog.blakesimpson.co.uk/read/61-fix-0-1-0-2-0-300000004-in-javascript)"
     ],
+    "category": "javascript",
     "questionCodeBlocks": [],
     "answerCodeBlocks": [
       "```js\n0.1 + 0.2 // 0.300000004\n```"
@@ -162,9 +162,9 @@
     "links": [
       "[MDN docs for forEach](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach)",
       "[MDN docs for map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map)",
-      "[JavaScript — Map vs. ForEach](https://codeburst.io/javascript-map-vs-foreach-f38111822c0f)",
-      "<!-- tags: (javascript) -->"
+      "[JavaScript — Map vs. ForEach](https://codeburst.io/javascript-map-vs-foreach-f38111822c0f)"
     ],
+    "category": "javascript",
     "questionCodeBlocks": [],
     "answerCodeBlocks": []
   },
@@ -180,9 +180,9 @@
     ],
     "links": [
       "[Javascript and Functional Programming: An Introduction](https://hackernoon.com/javascript-and-functional-programming-an-introduction-286aa625e26d)",
-      "[Master the JavaScript Interview: What is Functional Programming?](https://medium.com/javascript-scene/master-the-javascript-interview-what-is-functional-programming-7f218c68b3a0)",
-      "<!-- tags: (javascript) -->"
+      "[Master the JavaScript Interview: What is Functional Programming?](https://medium.com/javascript-scene/master-the-javascript-interview-what-is-functional-programming-7f218c68b3a0)"
     ],
+    "category": "javascript",
     "questionCodeBlocks": [],
     "answerCodeBlocks": []
   },
@@ -195,9 +195,9 @@
       "Mention of `strict` mode"
     ],
     "links": [
-      "[MDN docs for hoisting](https://developer.mozilla.org/en-US/docs/Glossary/Hoisting)",
-      "<!-- tags: (javascript) -->"
+      "[MDN docs for hoisting](https://developer.mozilla.org/en-US/docs/Glossary/Hoisting)"
     ],
+    "category": "javascript",
     "questionCodeBlocks": [
       "```js\nvar foo = 1;\nvar foobar = function () {\n  console.log(foo);\n  var foo = 2;\n};\nfoobar();\n```"
     ],
@@ -216,9 +216,9 @@
     ],
     "links": [
       "[MDN docs for hoisting](https://developer.mozilla.org/en-US/docs/Glossary/Hoisting)",
-      "[Understanding Hoisting in JavaScript](https://scotch.io/tutorials/understanding-hoisting-in-javascript)",
-      "<!-- tags: (javascript) -->"
+      "[Understanding Hoisting in JavaScript](https://scotch.io/tutorials/understanding-hoisting-in-javascript)"
     ],
+    "category": "javascript",
     "questionCodeBlocks": [],
     "answerCodeBlocks": [
       "```js\nconsole.log(hoist); // Output: undefined\nvar hoist = 'The variable has been hoisted.';\n```"
@@ -232,9 +232,9 @@
       "Decorative images should have empty `alt` tag"
     ],
     "links": [
-      "[A good basis for accessibility](https://developer.mozilla.org/en-US/docs/Learn/Accessibility/HTML)",
-      "<!-- tags: (html) -->"
+      "[A good basis for accessibility](https://developer.mozilla.org/en-US/docs/Learn/Accessibility/HTML)"
     ],
+    "category": "html",
     "questionCodeBlocks": [],
     "answerCodeBlocks": []
   },
@@ -247,9 +247,9 @@
     ],
     "links": [
       "<!-- Whenever possible, link a more detailed explanation. -->",
-      "[Node.js docs on event loop, timers and process.nextTick()](https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick/)",
-      "<!-- tags: (node,javascript) -->"
+      "[Node.js docs on event loop, timers and process.nextTick()](https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick/)"
     ],
+    "category": "node,javascript",
     "questionCodeBlocks": [],
     "answerCodeBlocks": []
   },
@@ -264,9 +264,9 @@
     ],
     "links": [
       "[MDN docs for null](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null)",
-      "[MDN docs for undefined](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined)",
-      "<!-- tags: (javascript) -->"
+      "[MDN docs for undefined](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined)"
     ],
+    "category": "javascript",
     "questionCodeBlocks": [],
     "answerCodeBlocks": []
   },
@@ -278,9 +278,9 @@
       "Difference between pass-by-value and pass-by-reference"
     ],
     "links": [
-      "[JavaScript Value vs Reference](https://medium.com/dailyjs/back-to-roots-javascript-value-vs-reference-8fb69d587a18)",
-      "<!-- tags: (javascript) -->"
+      "[JavaScript Value vs Reference](https://medium.com/dailyjs/back-to-roots-javascript-value-vs-reference-8fb69d587a18)"
     ],
+    "category": "javascript",
     "questionCodeBlocks": [],
     "answerCodeBlocks": []
   },
@@ -294,9 +294,9 @@
     ],
     "links": [
       "[MDN docs for inheritance and the prototype chain](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Inheritance_and_the_prototype_chain)",
-      "[Differences between class and prototypal inheritance](https://medium.com/javascript-scene/master-the-javascript-interview-what-s-the-difference-between-class-prototypal-inheritance-e4cd0a7562e9)",
-      "<!-- tags: (javascript) -->"
+      "[Differences between class and prototypal inheritance](https://medium.com/javascript-scene/master-the-javascript-interview-what-s-the-difference-between-class-prototypal-inheritance-e4cd0a7562e9)"
     ],
+    "category": "javascript",
     "questionCodeBlocks": [],
     "answerCodeBlocks": []
   },
@@ -310,9 +310,9 @@
       "Primitives are compared by value"
     ],
     "links": [
-      "[JavaScript Value vs Reference](https://medium.com/dailyjs/back-to-roots-javascript-value-vs-reference-8fb69d587a18)",
-      "<!-- tags: (javascript) -->"
+      "[JavaScript Value vs Reference](https://medium.com/dailyjs/back-to-roots-javascript-value-vs-reference-8fb69d587a18)"
     ],
+    "category": "javascript",
     "questionCodeBlocks": [
       "```js\nconst a = [1,2,3];\nconst b = [1,2,3];\nconst c = \"1,2,3\";\n\nconsole.log(a == c);\nconsole.log(a == b);\n```"
     ],
@@ -329,9 +329,9 @@
     "links": [
       "<!-- Whenever possible, link a more detailed explanation. -->",
       "[Open external anchors using rel=\"noopener\"](https://developers.google.com/web/tools/lighthouse/audits/noopener)",
-      "[About rel=\"noopener\"](https://mathiasbynens.github.io/rel-noopener/)",
-      "<!-- tags: (html) -->"
+      "[About rel=\"noopener\"](https://mathiasbynens.github.io/rel-noopener/)"
     ],
+    "category": "html",
     "questionCodeBlocks": [],
     "answerCodeBlocks": []
   },
@@ -343,9 +343,9 @@
       "Automatic semicolon placement can lead to time-consuming bugs"
     ],
     "links": [
-      "[Automatic semicolon insertion in JavaScript](http://2ality.com/2011/05/semicolon-insertion.html)",
-      "<!-- tags: (javascript) -->"
+      "[Automatic semicolon insertion in JavaScript](http://2ality.com/2011/05/semicolon-insertion.html)"
     ],
+    "category": "javascript",
     "questionCodeBlocks": [
       "```js\nfunction greet() {\n  return\n  {\n    message: \"hello\"\n  };\n}\n```"
     ],
@@ -362,9 +362,9 @@
       "`NaN` is not equivalent to anything, not even itself"
     ],
     "links": [
-      "[MDN docs for comparison operators](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Comparison_Operators)",
-      "<!-- tags: (javascript) -->"
+      "[MDN docs for comparison operators](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Comparison_Operators)"
     ],
+    "category": "javascript",
     "questionCodeBlocks": [],
     "answerCodeBlocks": []
   },
@@ -374,9 +374,9 @@
     "answer": "`typeof 0` returns `\"number\"` and therefore `typeof \"number\"` would return `string`.",
     "goodToHear": [],
     "links": [
-      "[MDN docs for typeof](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/typeof)",
-      "<!-- tags: (javascript) -->"
+      "[MDN docs for typeof](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/typeof)"
     ],
+    "category": "javascript",
     "questionCodeBlocks": [
       "```js\nconsole.log(typeof typeof 0);\n```"
     ],
@@ -393,9 +393,9 @@
     ],
     "links": [
       "[MDN docs for data types and data structures](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures)",
-      "[Understanding Data Types in JavaScript](https://www.digitalocean.com/community/tutorials/understanding-data-types-in-javascript)",
-      "<!-- tags: (javascript) -->"
+      "[Understanding Data Types in JavaScript](https://www.digitalocean.com/community/tutorials/understanding-data-types-in-javascript)"
     ],
+    "category": "javascript",
     "questionCodeBlocks": [],
     "answerCodeBlocks": []
   },
@@ -409,9 +409,9 @@
       "Prohibits some syntax likely to be defined in future versions of ECMAScript"
     ],
     "links": [
-      "[MDN docs for strict mode](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode)",
-      "<!-- tags: (javascript) -->"
+      "[MDN docs for strict mode](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode)"
     ],
+    "category": "javascript",
     "questionCodeBlocks": [],
     "answerCodeBlocks": []
   },
@@ -424,9 +424,9 @@
       "Creates a private namespace"
     ],
     "links": [
-      "[MDN docs for closures](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures)",
-      "<!-- tags: (javascript) -->"
+      "[MDN docs for closures](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures)"
     ],
+    "category": "javascript",
     "questionCodeBlocks": [],
     "answerCodeBlocks": [
       "```js\nconst myLibrary = function () {\n  var privateVariable = 2;\n  return {\n    publicMethod: () => privateVariable;\n  };\n}();\nprivateVariable; // ReferenceError\nmyLibrary.publicMethod(); // 2\n```"
@@ -443,9 +443,9 @@
     "links": [
       "[MDN docs for z-index](https://developer.mozilla.org/en-US/docs/Web/CSS/z-index)",
       "[Understanding CSS z-index](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Positioning/Understanding_z_index)",
-      "[What No One Told You About Z-Index](https://philipwalton.com/articles/what-no-one-told-you-about-z-index/)",
-      "<!-- tags: (css) -->"
+      "[What No One Told You About Z-Index](https://philipwalton.com/articles/what-no-one-told-you-about-z-index/)"
     ],
+    "category": "css",
     "questionCodeBlocks": [],
     "answerCodeBlocks": []
   }
