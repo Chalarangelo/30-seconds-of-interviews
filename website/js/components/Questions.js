@@ -1,11 +1,10 @@
 import { h } from "hyperapp"
-import questions from "../../../data/questions.json"
 import Question from "./Question"
 
-export default () => (
+export default () => state => (
   <main class="Questions">
     <div class="container">
-      {questions.map(question => <Question {...question} />)}
+      {state.questions.map(question => <Question {...question} />)}
     </div>
   </main>
 )
