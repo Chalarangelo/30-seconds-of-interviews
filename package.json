@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/fejes713/30-seconds-of-interviews#readme",
   "dependencies": {
+    "babel-preset-stage-3": "^6.24.1",
     "chalk": "^2.4.1",
     "focus-visible": "^4.1.4",
     "fs-extra": "^6.0.0",
