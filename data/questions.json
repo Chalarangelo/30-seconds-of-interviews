@@ -1,5 +1,5 @@
-{
-  "bem.md": {
+[
+  {
     "name": "bem.md",
     "question": "What is CSS BEM?",
     "answer": "The BEM methodology is another naming convention for CSS classes. The BEM stands for Block, Element, Modifier which is an explanation for its structure. Block is a standalone component that is reusable across projects. Elements and modifiers are part of the block with no standalone meaning. Here is the example of the typical syntax:\n\n```css\n/* block component */\n.block {}\n\n/* element */\n.block__element {}\n\n/* modifier */\n.block__element-modifier {}\n```",
@@ -17,7 +17,7 @@
       "```css\n/* block component */\n.block {}\n\n/* element */\n.block__element {}\n\n/* modifier */\n.block__element-modifier {}\n```"
     ]
   },
-  "clone-object.md": {
+  {
     "name": "clone-object.md",
     "question": "How do you clone an object in JavaScript?",
     "answer": "Using the object spread operator `...`, the object's own enumerable properties can be copied\ninto the new object. This creates a shallow clone of the object.\n\n```js\nconst obj = { a: 1, b: 2 };\nconst shallowClone = { ...obj };\n```\n\nWith this technique, prototypes are ignored. In addition, nested objects are not cloned, but rather their references get copied, so nested objects still refer to the same objects as the original. Deep-cloning is much more complex in order to effectively clone any type of object (Dates, RegExp, Function, Set, etc) that may be nested within the object.",
@@ -37,7 +37,7 @@
       "```js\nconst obj = { a: 1, b: 2 };\nconst shallowClone = { ...obj };\n```"
     ]
   },
-  "closures.md": {
+  {
     "name": "closures.md",
     "question": "What is a closure in Javascript?",
     "answer": "A closure is a function defined inside another function and has access to its lexical scope even when it is executing outside its lexical scope. The closure has access to variables in three scopes:\n\n* Variables declared in its own scope\n* Variables declared in the scope of the parent function\n* Variables declared in the global scope",
@@ -55,7 +55,7 @@
     "questionCodeBlocks": [],
     "answerCodeBlocks": []
   },
-  "comparing-objects.md": {
+  {
     "name": "comparing-objects.md",
     "question": "How would you compare two objects in JavaScript?",
     "answer": "Even though two different objects can have the same properties with equal values, they're not considered equal. When two objects are compared, they are being compared by their reference (location in memory), unlike primitive values which are compared by value. To compare two objects, they need to be of equal length and have the same properties.\n\nNote: this method ignores prototypes and only considers them equal if they have the same nested objects. Objects can be  complex structures which are difficult to compare.\n\n```js\nfunction isShallowEqual(obj1, obj2) {\n  const obj1Props = Object.getOwnPropertyNames(obj1);\n  const obj2Props = Object.getOwnPropertyNames(obj2);\n\n  if (obj1Props.length != obj2Props.length) {\n    return false\n  }\n\n  for (const prop of obj1Props) {\n    if (obj1[prop] !== obj2[prop]) {\n      return false;\n    }\n  }\n\n  return true;\n}\n```",
@@ -73,7 +73,7 @@
       "```js\nfunction isShallowEqual(obj1, obj2) {\n  const obj1Props = Object.getOwnPropertyNames(obj1);\n  const obj2Props = Object.getOwnPropertyNames(obj2);\n\n  if (obj1Props.length != obj2Props.length) {\n    return false\n  }\n\n  for (const prop of obj1Props) {\n    if (obj1[prop] !== obj2[prop]) {\n      return false;\n    }\n  }\n\n  return true;\n}\n```"
     ]
   },
-  "css-preprocessors.md": {
+  {
     "name": "css-preprocessors.md",
     "question": "What are the advantages of using CSS preprocessors?",
     "answer": "There are many advantages of using CSS preprocessors. Firstly, they allow us to write more maintainable and scalable CSS overall. Secondly, they provide syntax for easy to write nested selectors as well as variables for consistent theming. CSS preprocessors also allow us to write mixins to generate repeated CSS. On top of everything, they let us split code into multiple files (without needing to make HTTP request for each one).",
@@ -88,7 +88,7 @@
     "questionCodeBlocks": [],
     "answerCodeBlocks": []
   },
-  "event-driven-programming.md": {
+  {
     "name": "event-driven-programming.md",
     "question": "What is event-driven programming?",
     "answer": "Event-driven programming is building an application that is based on and responds to events. Whenever an event occurs, the application responds by running a callback function, which is registered to that event and context.",
@@ -104,7 +104,7 @@
     "questionCodeBlocks": [],
     "answerCodeBlocks": []
   },
-  "fibonacci.md": {
+  {
     "name": "fibonacci.md",
     "question": "Generate an array, containing the Fibonacci sequence, up until the nth term",
     "answer": "Create an empty array of the specific length, initializing the first two values (0 and 1). Use Array.reduce() to add values into the array, using the sum of the last two values, except for the first two.\n\n```js\nconst fibonacci = n =>\n  Array.from({ length: n }).reduce(\n    (acc, val, i) => acc.concat(i > 1 ? acc[i - 1] + acc[i - 2] : i),\n    []\n  );\n```",
@@ -118,7 +118,7 @@
       "```js\nconst fibonacci = n =>\n  Array.from({ length: n }).reduce(\n    (acc, val, i) => acc.concat(i > 1 ? acc[i - 1] + acc[i - 2] : i),\n    []\n  );\n```"
     ]
   },
-  "flex-layout.md": {
+  {
     "name": "flex-layout.md",
     "question": "Use flexbox to create a 3-column layout where each of the columns has a width of 2/12, 7/12 and 3/12 of the screen width respectively. Use the following HTML code as a guide.\n\n```html\n<div class=\"flex-grid\">\n  <div class=\"col-2\"></div>\n  <div class=\"col-7\"></div>\n  <div class=\"col-3\"></div>\n</div>\n```",
     "answer": "We only need to set the `display` property of the `flex-grid` element to `flex` and then apply the appropriate values for each column, using the `flex` property like this:\n\n```css\n.flex-grid {\n  display: flex;\n}\n\n.col-2 {\n  flex: 2;\n}\n\n.col-7 {\n  flex: 7;\n}\n\n.col-3 {\n  flex: 3;\n}\n```",
@@ -135,7 +135,7 @@
       "```css\n.flex-grid {\n  display: flex;\n}\n\n.col-2 {\n  flex: 2;\n}\n\n.col-7 {\n  flex: 7;\n}\n\n.col-3 {\n  flex: 3;\n}\n```"
     ]
   },
-  "floating-point.md": {
+  {
     "name": "floating-point.md",
     "question": "What does `0.1 + 0.2 === 0.3` return?",
     "answer": "It equals to `false` because JavaScript uses the IEEE 754 standard for Math and it makes use of 64-bit floating numbers. This causes precision errors when doing decimal calculations, in short, due to computers working in Base 2 while decimal is Base 10.\n\n```js\n0.1 + 0.2; // 0.300000004\n```",
@@ -152,7 +152,7 @@
       "```js\n0.1 + 0.2; // 0.300000004\n```"
     ]
   },
-  "for-each-map.md": {
+  {
     "name": "for-each-map.md",
     "question": "What is the difference between a `map` loop and a `forEach` loop?",
     "answer": "Both loops iterate through the elements in an array. `.map()` maps each element to new element by calling the function on each element and it returns the new array. On the other hand, `.forEach()` executes a callback function for each element but does not return anything. `.forEach()` is generally used when causing a side effect on each iteration, whereas `.map()` is a common functional programming technique.",
@@ -169,7 +169,7 @@
     "questionCodeBlocks": [],
     "answerCodeBlocks": []
   },
-  "functional-programming.md": {
+  {
     "name": "functional-programming.md",
     "question": "What is functional programming?",
     "answer": "Functional programming is a paradigm in which programs are built in a declarative manner using pure functions that avoid shared state and mutable data. Functions that always return the same value for the same input and don't produce side effects are the pillar of functional programming. Many programmers consider this to be the best approach to software development as it reduces bugs and mental overhead.",
@@ -187,7 +187,7 @@
     "questionCodeBlocks": [],
     "answerCodeBlocks": []
   },
-  "hoisting-example.md": {
+  {
     "name": "hoisting-example.md",
     "question": "What will be the output of this code?\n\n```js\nvar foo = 1;\nvar foobar = function () {\n    console.log(foo);\n    var foo = 2;\n};\nfoobar();\n```",
     "answer": "Firstly `foobar` won't look for the outer scope as `var foo = 2;`'s declaration is hoisted. On the other hand,  JavaScript doesn't hoist initialization, so the output of this code is going to be `undefined`.",
@@ -204,7 +204,7 @@
     ],
     "answerCodeBlocks": []
   },
-  "hoisting.md": {
+  {
     "name": "hoisting.md",
     "question": "How does hoisting work in JavaScript?",
     "answer": "Hoisting is a JavaScript mechanism where variables and function declarations are put into memory during the compile phase. This means that no matter where functions and variables are declared, they are moved to the top of their scope regardless of whether their scope is global or local.\n\n```js\nconsole.log(hoist); // Output: undefined\n\nvar hoist = 'The variable has been hoisted.';\n```",
@@ -225,7 +225,7 @@
       "```js\nconsole.log(hoist); // Output: undefined\n\nvar hoist = 'The variable has been hoisted.';\n```"
     ]
   },
-  "image-accessibility.md": {
+  {
     "name": "image-accessibility.md",
     "question": "What is the purpose of `alt` attribute on images?",
     "answer": "The `alt` attribute provides alternative information for an image if a user cannot view it. If the image is for decorative purposes only, the `alt` attribute should be empty. On the other hand, if image contains information the `alt` attribute should describe image.",
@@ -239,7 +239,7 @@
     "questionCodeBlocks": [],
     "answerCodeBlocks": []
   },
-  "node-event-loop.md": {
+  {
     "name": "node-event-loop.md",
     "question": "What is the event loop in Node.js?",
     "answer": "The event loop handles all async callbacks. Callbacks are queued in a loop, while other code runs, and will run one by one when the response for each one has been received.",
@@ -254,7 +254,7 @@
     "questionCodeBlocks": [],
     "answerCodeBlocks": []
   },
-  "null-vs-undefined.md": {
+  {
     "name": "null-vs-undefined.md",
     "question": "What are the differences between `null` and `undefined`?",
     "answer": "In JavaScript, two values discretely represent nothing - `undefined` and `null`. The concrete difference between them is that `null` is explicit, while `undefined` is implicit. When a property does not exist or a variable has not been given a value, the value is `undefined`. `null` is set as the value to explicitly indicate “no value”. In essence, `undefined` is used when the nothing is not known, and `null` is used when the nothing is known.",
@@ -271,7 +271,7 @@
     "questionCodeBlocks": [],
     "answerCodeBlocks": []
   },
-  "pass-by-value-reference.md": {
+  {
     "name": "pass-by-value-reference.md",
     "question": "Does JavaScript pass by value or by reference?",
     "answer": "JavaScript always passes by value. However, with objects, the value is a reference to the object.",
@@ -285,7 +285,7 @@
     "questionCodeBlocks": [],
     "answerCodeBlocks": []
   },
-  "prototypal-inheritance.md": {
+  {
     "name": "prototypal-inheritance.md",
     "question": "How does prototypal inheritance differ from classical inheritance?",
     "answer": "In the classical inheritance paradigm, object instances inherit their properties and functions from a class, which acts as a blueprint for the object. Object instances are typically created using a constructor and the `new` keyword.\n\nIn the prototypal inheritance paradigm, object instances inherit directly from other objects and are typically created using factory functions or `Object.create()`. Finally, object instances can be composed from many different objects, allowing for selective inheritance.",
@@ -301,7 +301,7 @@
     "questionCodeBlocks": [],
     "answerCodeBlocks": []
   },
-  "reference-example.md": {
+  {
     "name": "reference-example.md",
     "question": "What is the output of the following code?\n\n```js\nconst a = [1,2,3];\nconst b = [1,2,3];\nconst c = \"1,2,3\";\n\nconsole.log(a == c);\nconsole.log(a == b);\n```",
     "answer": "The first `console.log` outputs `true` because JavaScript's compiler performs type conversion and therefore it compares to strings by their value. On the other hand, the second `console.log` outputs `false` because Arrays are  Objects and Objects are compared by reference.",
@@ -319,7 +319,7 @@
     ],
     "answerCodeBlocks": []
   },
-  "rel-noopener.md": {
+  {
     "name": "rel-noopener.md",
     "question": "Where and why is the `rel=\"noopener\"` attribute used?",
     "answer": "The `rel=\"noopener\"` is an attribute used in `<a>` elements (hyperlinks). It prevents pages from having a `window.opener` property, which would otherwise point to the page from where the link was opened and would allow the page opened from the hyperlink to manipulate the page where the hyperlink is.",
@@ -336,7 +336,7 @@
     "questionCodeBlocks": [],
     "answerCodeBlocks": []
   },
-  "return-semicolon.md": {
+  {
     "name": "return-semicolon.md",
     "question": "What does the following function return?\n\n```js\nfunction greet() {\n  return\n  {\n    message: 'hello'\n  }\n}\n```",
     "answer": "Because of JavaScript's automatic semicolon placement compiler places a semicolon after `return` keyword and therefore it returns `undefined` without single error being thrown.",
@@ -353,7 +353,7 @@
     ],
     "answerCodeBlocks": []
   },
-  "type-comparison.md": {
+  {
     "name": "type-comparison.md",
     "question": "What is the difference between `==` and `===`?",
     "answer": "When using triple equals in JavaScript we are testing for strict equality. This means both the type and the value we are comparing have to be the same. On the other hand, double equals first performs type coercion and then checks for loose equality.",
@@ -370,7 +370,7 @@
     "questionCodeBlocks": [],
     "answerCodeBlocks": []
   },
-  "typeof-typeof.md": {
+  {
     "name": "typeof-typeof.md",
     "question": "What would the following code return?\n\n```js\nconsole.log(typeof typeof 0);\n```",
     "answer": "`typeof 0` returns `\"number\"` and therefore `typeof \"number\"` would return `string`.",
@@ -384,7 +384,7 @@
     ],
     "answerCodeBlocks": []
   },
-  "types.md": {
+  {
     "name": "types.md",
     "question": "What are JavaScript data types?",
     "answer": "The latest ECMAScript standard defines seven data types, six of them being primitive: `Boolean`, `Null`, `Undefined`, `Number`, `String`, `Symbol` and one non-primitive data type: `Object`.",
@@ -401,7 +401,7 @@
     "questionCodeBlocks": [],
     "answerCodeBlocks": []
   },
-  "use-strict.md": {
+  {
     "name": "use-strict.md",
     "question": "What does `'use strict'` do and what are some of the key benefits to using it?",
     "answer": "Including `'use strict'` at the beginning of your JavaScript source file enables strict mode, which enfores more strict parsing and error handling of JavaScript code. It is considered a good practice and offers a lot of benefits, such as:\n\n* Easier debugging due to eliminating silent errors.\n* Disallows variable redefinition.\n* Prevents accidental global variables.\n* Oftentimes provides increased performance over identical code that is not running in strict mode.\n* Simplifies `eval()` and `arguments`.\n* Helps make JavaScript more secure.",
@@ -417,7 +417,7 @@
     "questionCodeBlocks": [],
     "answerCodeBlocks": []
   },
-  "wrap-content.md": {
+  {
     "name": "wrap-content.md",
     "question": "What is the reason for wrapping the entire content of a JavaScript source file in a function block?",
     "answer": "This technique is very common in JavaScript libraries. It creates a closure around the entire contents of the file which creates a private namespace and thereby helps avoid potential name clashes between different JavaScript modules and libraries",
@@ -432,7 +432,7 @@
     "questionCodeBlocks": [],
     "answerCodeBlocks": []
   },
-  "z-index.md": {
+  {
     "name": "z-index.md",
     "question": "How does Z index function?",
     "answer": "When elements overlap, z-order determines which one covers the other.",
@@ -449,4 +449,4 @@
     "questionCodeBlocks": [],
     "answerCodeBlocks": []
   }
-}
+]
