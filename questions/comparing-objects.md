@@ -12,7 +12,7 @@ function isShallowEqual(obj1, obj2) {
   const obj2Props = Object.getOwnPropertyNames(obj2);
 
   if (obj1Props.length != obj2Props.length) {
-    return false
+    return false;
   }
 
   for (const prop of obj1Props) {
