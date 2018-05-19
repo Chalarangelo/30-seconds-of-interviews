@@ -1,17 +1,17 @@
-### What will be the output of this code?
+### What will the console log in this example?
 
 ```js
 var foo = 1;
 var foobar = function () {
-    console.log(foo);
-    var foo = 2;
+  console.log(foo);
+  var foo = 2;
 };
 foobar();
 ```
 
 #### Answer
 
-Firstly `foobar` won't look for the outer scope as `var foo = 2;`'s declaration is hoisted. On the other hand,  JavaScript doesn't hoist initialization, so the output of this code is going to be `undefined`.
+Due to hoisting, the local variable `foo` is declared before the `console.log` method is called. This means the local variable `foo` is passed as an argument to `log` instead of the global one declared outside of the function. However, since the value is not hoisted with the variable declaration, the output will be `undefined`, not `2`.
 
 #### Good to hear
 
