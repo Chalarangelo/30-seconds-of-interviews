@@ -11,6 +11,12 @@
 
 <br>
 
+<p align="center">
+  <a href="https://gitter.im/30-seconds-of-interviews/Lobby"><img src="https://img.shields.io/badge/gitter-join%20chat%20%E2%86%92-brightgreen.svg" alt="gitter"></a>
+</p>
+
+<br>
+
 This repository contains short answers to most common questions asked in a full-stack interview. Each explanation is written with the motto _you can understand it in 30 seconds_.
 
-Do you have an excellent idea or know some cool questions that aren't on the list? Read the contribution guidelines and submit a pull request.
+Do you have an excellent idea or know some cool questions that aren't on the list? Read the [contribution guidelines](https://github.com/fejes713/30-seconds-of-interviews/blob/master/CONTRIBUTING.md) and submit a pull request.
