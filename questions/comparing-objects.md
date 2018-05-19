@@ -2,9 +2,9 @@
 
 #### Answer
 
-Even though two different objects can have the same properties with equal values, they're not considered equal. When two objects are compared, they are being compared by their reference (location in memory), unlike primitive values which are compared by value. To compare two objects, they need to be of equal length and have the same properties.
+Even though two different objects can have the same properties with equal values, they are not considered equal when compared. When two objects are compared with `==` or `===`, they are being compared by their reference (location in memory), unlike primitive values which are compared by value.
 
-Note: this method ignores prototypes and only considers them equal if they have the same nested objects. Objects can be  complex structures which are difficult to compare.
+Note: this technique ignores prototypes and does not consider nested objects equal if they are not the same reference.
 
 ```js
 function isShallowEqual(obj1, obj2) {
