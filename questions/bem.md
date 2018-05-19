@@ -12,7 +12,7 @@ The BEM methodology is another naming convention for CSS classes. The BEM stands
 .block__element {}
 
 /* modifier */
-.block__element-modifier {}
+.block__element--modifier {}
 ```
 
 #### Good to hear

@@ -1,8 +1,8 @@
-### Generate an array, containing the Fibonacci sequence, up until the nth term
+### Generate an array, containing the Fibonacci sequence, up until the nth term.
 
 #### Answer
 
-Create an empty array of the specific length, initializing the first two values (0 and 1). Use Array.reduce() to add values into the array, using the sum of the last two values, except for the first two.
+Create an empty array of the specific length. Use Array.reduce() to add values into the array, using the sum of the last two values, except for the first two.
 
 ```js
 const fibonacci = n =>
