@@ -1,0 +1,11 @@
+@import "../_vars.scss";
+
+.Filter {
+  margin-top: 25px;
+
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}

@@ -1,0 +1,11 @@
+@import "../_vars.scss";
+
+.FilterButton {
+  margin: 8px 4px;
+
+  &.is-active {
+    background: #7983ff;
+    border-color: #7983ff;
+    color: white;
+  }
+}

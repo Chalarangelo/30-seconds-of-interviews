@@ -43,7 +43,8 @@ try {
         .trim()
         .split("\n")
         .map(v => v.replace("* ", ""))
-        .filter(v => v.trim() !== "")
+        .filter(v => v.trim() !== "" && !v.includes("tags")),
+      category: (questions[question].match(/<!--\s*tags: \((.+)\)/) || [])[1]
     })
     const q = output.find(({ name }) => name === question)
     q.questionCodeBlocks = util.getCodeBlocks(q.question)
