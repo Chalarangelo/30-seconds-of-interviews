@@ -4,19 +4,18 @@
 function greet() {
   return
   {
-    message: 'hello'
-  }
+    message: "hello"
+  };
 }
 ```
 
 #### Answer
 
-Because of JavaScript's automatic semicolon placement compiler places a semicolon after `return` keyword and therefore it returns `undefined` without single error being thrown.
+Because of JavaScript's automatic semicolon insertion (ASI), the compiler places a semicolon after `return` keyword and therefore it returns `undefined` without an error being thrown.
 
 #### Good to hear
 
 * Automatic semicolon placement can lead to time-consuming bugs
-* Semicolons can be omitted in JavaScript if you know the cases in which they are required
 
 ##### Additional links
 
