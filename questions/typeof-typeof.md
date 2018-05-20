@@ -1,12 +1,14 @@
-### What would the following code return?
+### What does the following code evaluate to?
 
 ```js
-console.log(typeof typeof 0);
+typeof typeof 0;
 ```
 
 #### Answer
 
-`typeof 0` returns `"number"` and therefore `typeof "number"` would return `string`.
+It evaluates to `"string"`.
+
+`typeof 0` evaluates to the string `"number"` and therefore `typeof "number"` evaluates to `"string"`.
 
 #### Good to hear
 
