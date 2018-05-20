@@ -1,6 +1,6 @@
 <h1 align="center">
   <br>
-  <a href="https://30secondsofinterviews.org"><img src="logo.svg" alt="30 seconds of interviews logo" width="200"></a>
+  <a href="https://30secondsofinterviews.org"><img src="30-seconds-of-interviews/logo.svg" alt="30 seconds of interviews logo" width="200"></a>
   <br>
   30 seconds of interviews
   <br>
