@@ -10,3 +10,4 @@ import view from "./js/view"
 
 const main = app(state, actions, view, document.body)
 setTimeout(Prism.highlightAll)
+addEventListener("scroll", main.onScroll)

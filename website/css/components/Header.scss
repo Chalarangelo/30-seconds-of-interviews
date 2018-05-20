@@ -12,11 +12,11 @@
     #20164d 45%,
     #12072d
   );
-  min-height: 400px;
+  min-height: 500px;
   overflow: hidden;
 
   @media (min-width: $breakpoint-sm) {
-    min-height: 550px;
+    min-height: 600px;
     background: radial-gradient(
       circle,
       #f9add3,
@@ -41,5 +41,9 @@
     @media (min-width: $breakpoint-md) {
       transform: scale(1.2);
     }
+  }
+
+  &__tagline {
+    text-align: center;
   }
 }
