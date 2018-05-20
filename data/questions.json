@@ -22,7 +22,7 @@
   {
     "name": "clone-object.md",
     "question": "How do you clone an object in JavaScript?",
-    "answer": "Using the object spread operator `...`, the object's own enumerable properties can be copied\ninto the new object. This creates a shallow clone of the object.\n\n```js\nconst obj = { a: 1, b: 2 };\nconst shallowClone = { ...obj };\n```\n\nWith this technique, prototypes are ignored. In addition, nested objects are not cloned, but rather their references get copied, so nested objects still refer to the same objects as the original. Deep-cloning is much more complex in order to effectively clone any type of object (Date, RegExp, Function, Set, etc) that may be nested within the object.\n\nOther alternative include:\n\n* `JSON.parse(JSON.stringify(obj))` can be used to deep-clone a simple object, but it is CPU-intensive and only accepts valid JSON (therefore it strips functions and does not allow circular references).\n* `Object.assign({}, obj)` is another alternative.\n* `Object.keys(obj).reduce((acc, key) => (acc[key] = obj[key], acc), {})` is another more verbose alternative that shows the concept in greater depth.",
+    "answer": "Using the object spread operator `...`, the object's own enumerable properties can be copied\ninto the new object. This creates a shallow clone of the object.\n\n```js\nconst obj = { a: 1, b: 2 };\nconst shallowClone = { ...obj };\n```\n\nWith this technique, prototypes are ignored. In addition, nested objects are not cloned, but rather their references get copied, so nested objects still refer to the same objects as the original. Deep-cloning is much more complex in order to effectively clone any type of object (Date, RegExp, Function, Set, etc) that may be nested within the object.\n\nOther alternatives include:\n\n* `JSON.parse(JSON.stringify(obj))` can be used to deep-clone a simple object, but it is CPU-intensive and only accepts valid JSON (therefore it strips functions and does not allow circular references).\n* `Object.assign({}, obj)` is another alternative.\n* `Object.keys(obj).reduce((acc, key) => (acc[key] = obj[key], acc), {})` is another more verbose alternative that shows the concept in greater depth.",
     "goodToHear": [
       "JavaScript passes objects by reference, meaning that nested objects get their references copied, instead of their values.",
       "The same method can be used to merge two objects."
@@ -62,8 +62,8 @@
   },
   {
     "name": "comparing-objects.md",
-    "question": "How would you compare two objects in JavaScript?",
-    "answer": "Even though two different objects can have the same properties with equal values, they are not considered equal when compared. When two objects are compared with `==` or `===`, they are being compared by their reference (location in memory), unlike primitive values which are compared by value.\n\nNote: this technique ignores prototypes and does not consider nested objects equal if they are not the same reference.\n\n```js\nfunction isShallowEqual(obj1, obj2) {\n  const obj1Props = Object.getOwnPropertyNames(obj1);\n  const obj2Props = Object.getOwnPropertyNames(obj2);\n\n  if (obj1Props.length != obj2Props.length) {\n    return false;\n  }\n\n  for (const prop of obj1Props) {\n    if (obj1[prop] !== obj2[prop]) {\n      return false;\n    }\n  }\n\n  return true;\n}\n```",
+    "question": "How do you compare two objects in JavaScript?",
+    "answer": "Even though two different objects can have the same properties with equal values, they are not considered equal when compared using `==` or `===`. This is because they are being compared by their reference (location in memory), unlike primitive values which are compared by value.\n\nIn order to test if two objects are equal in structure, a helper function is required. It will\niterate through the own properties of each object to test if they have the same values, including nested objects.\nOptionally, the prototypes of the objects may also be tested for equivalence by passing `true` as the 3rd argument.\n\nNote: this technique does not attempt to test equivalence of data structures other than\nplain objects, arrays, functions, dates and primitive values.\n\n```js\nfunction isDeepEqual(obj1, obj2, testPrototypes = false) {\n  if (obj1 === obj2) {\n    return true;\n  }\n\n  if (typeof obj1 === \"function\" && typeof obj2 === \"function\") {\n    return obj1.toString() === obj2.toString();\n  }\n\n  if (obj1 instanceof Date && obj2 instanceof Date) {\n    return obj1.getTime() === obj2.getTime();\n  }\n\n  const prototypesAreEqual = testPrototypes\n    ? isDeepEqual(\n        Object.getPrototypeOf(obj1),\n        Object.getPrototypeOf(obj2),\n        true\n      )\n    : true;\n\n  const obj1Props = Object.getOwnPropertyNames(obj1);\n  const obj2Props = Object.getOwnPropertyNames(obj2);\n\n  return (\n    obj1Props.length === obj2Props.length &&\n    prototypesAreEqual &&\n    obj1Props.every(prop => isDeepEqual(obj1[prop], obj2[prop]))\n  );\n}\n```",
     "goodToHear": [
       "Primitives like strings and numbers are compared by their value",
       "Objects on the other hand are compared by their reference (location in memory)"
@@ -77,7 +77,7 @@
     ],
     "questionCodeBlocks": [],
     "answerCodeBlocks": [
-      "```js\nfunction isShallowEqual(obj1, obj2) {\n  const obj1Props = Object.getOwnPropertyNames(obj1);\n  const obj2Props = Object.getOwnPropertyNames(obj2);\n\n  if (obj1Props.length != obj2Props.length) {\n    return false;\n  }\n\n  for (const prop of obj1Props) {\n    if (obj1[prop] !== obj2[prop]) {\n      return false;\n    }\n  }\n\n  return true;\n}\n```"
+      "```js\nfunction isDeepEqual(obj1, obj2, testPrototypes = false) {\n  if (obj1 === obj2) {\n    return true;\n  }\n\n  if (typeof obj1 === \"function\" && typeof obj2 === \"function\") {\n    return obj1.toString() === obj2.toString();\n  }\n\n  if (obj1 instanceof Date && obj2 instanceof Date) {\n    return obj1.getTime() === obj2.getTime();\n  }\n\n  const prototypesAreEqual = testPrototypes\n    ? isDeepEqual(\n        Object.getPrototypeOf(obj1),\n        Object.getPrototypeOf(obj2),\n        true\n      )\n    : true;\n\n  const obj1Props = Object.getOwnPropertyNames(obj1);\n  const obj2Props = Object.getOwnPropertyNames(obj2);\n\n  return (\n    obj1Props.length === obj2Props.length &&\n    prototypesAreEqual &&\n    obj1Props.every(prop => isDeepEqual(obj1[prop], obj2[prop]))\n  );\n}\n```"
     ]
   },
   {
@@ -415,8 +415,8 @@
   },
   {
     "name": "typeof-typeof.md",
-    "question": "What would the following code return?\n\n```js\nconsole.log(typeof typeof 0);\n```",
-    "answer": "`typeof 0` returns `\"number\"` and therefore `typeof \"number\"` would return `string`.",
+    "question": "What does the following code evaluate to?\n\n```js\ntypeof typeof 0;\n```",
+    "answer": "It evaluates to `\"string\"`.\n\n`typeof 0` evaluates to the string `\"number\"` and therefore `typeof \"number\"` evaluates to `\"string\"`.",
     "goodToHear": [],
     "links": [
       "[MDN docs for typeof](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/typeof)"
@@ -425,7 +425,7 @@
       "javascript"
     ],
     "questionCodeBlocks": [
-      "```js\nconsole.log(typeof typeof 0);\n```"
+      "```js\ntypeof typeof 0;\n```"
     ],
     "answerCodeBlocks": []
   },
