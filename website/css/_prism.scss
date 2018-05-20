@@ -1,3 +1,5 @@
+@import "./_vars.scss";
+
 :not(pre) > code[class*="language-"],
 pre[class*="language-"] {
   background: #f5f5fb;
@@ -8,9 +10,23 @@ pre[class*="language-"] {
   text-shadow: none;
   font-family: "SF Mono", "Fira Code", Consolas, Menlo, monospace;
   color: #345173;
-  font-size: 17px;
+  font-size: 15px;
   -webkit-overflow-scrolling: touch;
   line-height: 1.8;
+  padding: 0;
+  margin-bottom: 16px;
+
+  @media (min-width: $breakpoint-xs) {
+    font-size: 16px;
+  }
+
+  @media (min-width: $breakpoint-md) {
+    font-size: 17px;
+  }
+}
+
+pre[class*="language-"] {
+  padding: 8px 16px;
 }
 
 .token.punctuation {
