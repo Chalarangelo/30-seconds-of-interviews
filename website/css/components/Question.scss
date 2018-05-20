@@ -20,7 +20,11 @@
     h2 {
       margin-top: 0;
       line-height: 1.3;
-      font-size: 24px;
+      font-size: 22px;
+
+      @media (min-width: $breakpoint-md) {
+        font-size: 24px;
+      }
     }
   }
 
