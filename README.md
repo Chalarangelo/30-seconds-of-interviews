@@ -21,6 +21,8 @@ This repository contains short answers to most common questions asked in a full-
 
 Do you have an excellent idea or know some cool questions that aren't on the list? Read the [contribution guidelines](https://github.com/fejes713/30-seconds-of-interviews/blob/master/CONTRIBUTING.md) and submit a pull request.
 
+## Table of Contents
+
 
 ### Javascript 
 
@@ -29,7 +31,7 @@ Do you have an excellent idea or know some cool questions that aren't on the lis
 
 * [ How do you clone an object in JavaScript?](#how-do-you-clone-an-object-in-javascript) 
 * [ What is a closure?](#what-is-a-closure) 
-* [ How would you compare two objects in JavaScript?](#how-would-you-compare-two-objects-in-javascript) 
+* [ How do you compare two objects in JavaScript?](#how-do-you-compare-two-objects-in-javascript) 
 * [ What is event-driven programming?](#what-is-event-driven-programming) 
 * [ Generate an array, containing the Fibonacci sequence, up until the nth term.](#generate-an-array-containing-the-fibonacci-sequence-up-until-the-nth-term) 
 * [ What does `0.1 + 0.2 === 0.3` evaluate to?](#what-does-0-1-0-2-0-3-evaluate-to) 
@@ -43,7 +45,7 @@ Do you have an excellent idea or know some cool questions that aren't on the lis
 * [ What is the output of the following code?](#what-is-the-output-of-the-following-code) 
 * [ What does the following function return?](#what-does-the-following-function-return) 
 * [ What is the difference between `==` and `===`?](#what-is-the-difference-between-and) 
-* [ What would the following code return?](#what-would-the-following-code-return) 
+* [ What does the following code evaluate to?](#what-does-the-following-code-evaluate-to) 
 * [ What are JavaScript data types?](#what-are-javascript-data-types) 
 * [ What does `'use strict'` do and what are some of the key benefits to using it?](#what-does-use-strict-do-and-what-are-some-of-the-key-benefits-to-using-it) 
 * [ What is the reason for wrapping the entire contents of a JavaScript source file in a function?](#what-is-the-reason-for-wrapping-the-entire-contents-of-a-javascript-source-file-in-a-function) 
@@ -98,7 +100,7 @@ const shallowClone = { ...obj };
 
 With this technique, prototypes are ignored. In addition, nested objects are not cloned, but rather their references get copied, so nested objects still refer to the same objects as the original. Deep-cloning is much more complex in order to effectively clone any type of object (Date, RegExp, Function, Set, etc) that may be nested within the object.
 
-Other alternative include:
+Other alternatives include:
 
 * `JSON.parse(JSON.stringify(obj))` can be used to deep-clone a simple object, but it is CPU-intensive and only accepts valid JSON (therefore it strips functions and does not allow circular references).
 * `Object.assign({}, obj)` is another alternative.
@@ -151,33 +153,52 @@ A closure is a function defined inside another function and has access to its le
 
 <br>[⬆ Back to top](#table-of-contents)
 
-### How would you compare two objects in JavaScript?
+### How do you compare two objects in JavaScript?
 
 #### Answer
 
 <details>
 <summary>View answer</summary>
 
-Even though two different objects can have the same properties with equal values, they are not considered equal when compared. When two objects are compared with `==` or `===`, they are being compared by their reference (location in memory), unlike primitive values which are compared by value.
+Even though two different objects can have the same properties with equal values, they are not considered equal when compared using `==` or `===`. This is because they are being compared by their reference (location in memory), unlike primitive values which are compared by value.
 
-Note: this technique ignores prototypes and does not consider nested objects equal if they are not the same reference.
+In order to test if two objects are equal in structure, a helper function is required. It will
+iterate through the own properties of each object to test if they have the same values, including nested objects.
+Optionally, the prototypes of the objects may also be tested for equivalence by passing `true` as the 3rd argument.
+
+Note: this technique does not attempt to test equivalence of data structures other than
+plain objects, arrays, functions, dates and primitive values.
 
 ```js
-function isShallowEqual(obj1, obj2) {
+function isDeepEqual(obj1, obj2, testPrototypes = false) {
+  if (obj1 === obj2) {
+    return true;
+  }
+
+  if (typeof obj1 === "function" && typeof obj2 === "function") {
+    return obj1.toString() === obj2.toString();
+  }
+
+  if (obj1 instanceof Date && obj2 instanceof Date) {
+    return obj1.getTime() === obj2.getTime();
+  }
+
+  const prototypesAreEqual = testPrototypes
+    ? isDeepEqual(
+        Object.getPrototypeOf(obj1),
+        Object.getPrototypeOf(obj2),
+        true
+      )
+    : true;
+
   const obj1Props = Object.getOwnPropertyNames(obj1);
   const obj2Props = Object.getOwnPropertyNames(obj2);
 
-  if (obj1Props.length != obj2Props.length) {
-    return false;
-  }
-
-  for (const prop of obj1Props) {
-    if (obj1[prop] !== obj2[prop]) {
-      return false;
-    }
-  }
-
-  return true;
+  return (
+    obj1Props.length === obj2Props.length &&
+    prototypesAreEqual &&
+    obj1Props.every(prop => isDeepEqual(obj1[prop], obj2[prop]))
+  );
 }
 ```
 
@@ -553,10 +574,10 @@ When using triple equals in JavaScript we are testing for strict equality. This 
 
 <br>[⬆ Back to top](#table-of-contents)
 
-### What would the following code return?
+### What does the following code evaluate to?
 
 ```js
-console.log(typeof typeof 0);
+typeof typeof 0;
 ```
 
 #### Answer
@@ -564,7 +585,9 @@ console.log(typeof typeof 0);
 <details>
 <summary>View answer</summary>
 
-`typeof 0` returns `"number"` and therefore `typeof "number"` would return `string`.
+It evaluates to `"string"`.
+
+`typeof 0` evaluates to the string `"number"` and therefore `typeof "number"` evaluates to `"string"`.
 
 #### Good to hear
 
