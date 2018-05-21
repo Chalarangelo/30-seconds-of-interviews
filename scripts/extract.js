@@ -13,6 +13,8 @@ console.time("Extractor")
 
 attempt("questions.json generation", () => {
   const output = readQuestions().map(({ name, contents }) => {
+    contents = contents.replace(/\r\n/g, "\n")
+
     const question = contents
       .slice(0 + 4, contents.indexOf("#### Answer"))
       .trim()
