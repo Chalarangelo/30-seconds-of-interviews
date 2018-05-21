@@ -2,61 +2,54 @@
 const fs = require("fs-extra")
 const path = require("path")
 const chalk = require("chalk")
-
-const util = require("./util")
-
-const QUESTIONS_PATH = "./questions"
-
-let questions = {}
-let output = []
+const {
+  attempt,
+  readQuestions,
+  getCodeBlocks,
+  QUESTIONS_PATH
+} = require("./util")
 
 console.time("Extractor")
 
-try {
-  questions = util.readQuestions(QUESTIONS_PATH)
+attempt("questions.json generation", () => {
+  const output = readQuestions().map(({ name, contents }) => {
+    const question = contents
+      .slice(0 + 4, contents.indexOf("#### Answer"))
+      .trim()
+    const answer = contents
+      .slice(
+        contents.indexOf("#### Answer") + 12,
+        contents.indexOf("#### Good to hear")
+      )
+      .trim()
 
-  // TODO
-  for (let question in questions) {
-    questions[question] = questions[question].replace(/\r\n/g, "\n")
-    output.push({
-      name: question,
-      question: questions[question]
-        .slice(0 + 4, questions[question].indexOf("#### Answer"))
-        .trim(),
-      answer: questions[question]
+    return {
+      name,
+      question,
+      answer,
+      goodToHear: contents
         .slice(
-          questions[question].indexOf("#### Answer") + 12,
-          questions[question].indexOf("#### Good to hear")
-        )
-        .trim(),
-      goodToHear: questions[question]
-        .slice(
-          questions[question].indexOf("#### Good to hear") + 18,
-          questions[question].indexOf("##### Additional links")
+          contents.indexOf("#### Good to hear") + 18,
+          contents.indexOf("##### Additional links")
         )
         .trim()
         .split("\n")
         .map(v => v.replace("* ", ""))
         .filter(v => v.trim() !== ""),
-      links: questions[question]
-        .slice(questions[question].indexOf("##### Additional links") + 23)
+      links: contents
+        .slice(contents.indexOf("##### Additional links") + 23)
         .trim()
         .split("\n")
         .map(v => v.replace("* ", ""))
         .filter(v => v.trim() !== "" && !v.includes("tags")),
-      categories: (questions[question].match(/<!--\s*tags: \((.+)\)/) ||
-        [])[1].split(",")
-    })
-    const q = output.find(({ name }) => name === question)
-    q.questionCodeBlocks = util.getCodeBlocks(q.question)
-    q.answerCodeBlocks = util.getCodeBlocks(q.answer)
-  }
+      categories: (contents.match(/<!--\s*tags: \((.+)\)/) || [])[1].split(","),
+      questionCodeBlocks: getCodeBlocks(question),
+      answerCodeBlocks: getCodeBlocks(answer)
+    }
+  })
 
   fs.writeFileSync("./data/questions.json", JSON.stringify(output, null, 2))
-} catch (err) {
-  console.log(`${chalk.red("ERROR!")} During questions.json generation: ${err}`)
-  process.exit(1)
-}
+})
 
 console.log(`${chalk.green("SUCCESS!")} questions.json file generated!`)
 console.timeEnd("Extractor")
