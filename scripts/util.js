@@ -20,7 +20,9 @@ const readQuestions = () =>
       .sort((a, b) => (a.toLowerCase() < b.toLowerCase() ? -1 : 1))
       .map(name => ({
         name,
-        contents: fs.readFileSync(path.join(QUESTIONS_PATH, name), "utf8")
+        contents: fs
+          .readFileSync(path.join(QUESTIONS_PATH, name), "utf8")
+          .replace(/\r\n/g, "\n")
       }))
   )
 
