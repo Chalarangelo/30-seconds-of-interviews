@@ -18,15 +18,12 @@ const readQuestions = () =>
     fs
       .readdirSync(QUESTIONS_PATH)
       .sort((a, b) => (a.toLowerCase() < b.toLowerCase() ? -1 : 1))
-      .reduce(
-        (acc, name) => ({
-          ...acc,
-          [name]: fs
-            .readFileSync(path.join(QUESTIONS_PATH, name), "utf8")
-            .replace(/\r\n/g, "\n")
-        }),
-        {}
-      )
+      .reduce((acc, name) => {
+        acc[name] = fs
+          .readFileSync(path.join(QUESTIONS_PATH, name), "utf8")
+          .replace(/\r\n/g, "\n")
+        return acc
+      }, {})
   )
 
 const toKebabCase = str =>
