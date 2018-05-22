@@ -56,5 +56,6 @@ module.exports = {
   readQuestions,
   toKebabCase,
   capitalize,
-  getCodeBlocks
+  getCodeBlocks,
+  QUESTIONS_PATH
 }
