@@ -12,7 +12,7 @@ const {
 console.time("Extractor")
 
 attempt("questions.json generation", () => {
-  const output = readQuestions().map(({ name, contents }) => {
+  const output = Object.entries(readQuestions()).map(([name, contents]) => {
     const question = contents
       .slice(0 + 4, contents.indexOf("#### Answer"))
       .trim()
