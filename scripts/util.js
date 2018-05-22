@@ -1,51 +1,64 @@
-const fs = require('fs-extra');
-const path = require('path');
-const chalk = require('chalk');
+const fs = require("fs-extra")
+const path = require("path")
+const chalk = require("chalk")
 
-const readQuestions = questionsPath => {
-  let questions = {};
+const QUESTIONS_PATH = "./questions"
+
+const attempt = (task, cb) => {
   try {
-    let questionFilenames = fs.readdirSync(questionsPath);
-    questionFilenames.sort((a, b) => {
-      a = a.toLowerCase();
-      b = b.toLowerCase();
-      if (a < b) return -1;
-      if (a > b) return 1;
-      return 0;
-    });
-    // Store the data read from each question in the appropriate object
-    for (let question of questionFilenames)
-      questions[question] = fs.readFileSync(path.join(questionsPath, question), 'utf8');
-  } catch (err) {
-    // Handle errors (hopefully not!)
-    console.log(`${chalk.red('ERROR!')} During question loading: ${err}`);
-    process.exit(1);
+    return cb()
+  } catch (e) {
+    console.log(`${chalk.red("ERROR!")} During ${task}: ${e}`)
+    process.exit(1)
   }
-  return questions;
-};
+}
+
+const readQuestions = () =>
+  attempt("read questions", () =>
+    fs
+      .readdirSync(QUESTIONS_PATH)
+      .sort((a, b) => (a.toLowerCase() < b.toLowerCase() ? -1 : 1))
+      .reduce(
+        (acc, name) => ({
+          ...acc,
+          [name]: fs
+            .readFileSync(path.join(QUESTIONS_PATH, name), "utf8")
+            .replace(/\r\n/g, "\n")
+        }),
+        {}
+      )
+  )
 
 const toKebabCase = str =>
   str &&
   str
     .match(/[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+/g)
     .map(x => x.toLowerCase())
-    .join('-');
+    .join("-")
 
 const capitalize = ([first, ...rest], lowerRest = false) =>
-  first.toUpperCase() + (lowerRest ? rest.join('').toLowerCase() : rest.join(''));
+  first.toUpperCase() +
+  (lowerRest ? rest.join("").toLowerCase() : rest.join(""))
 
-const getCodeBlocks = (str) => {
-  const regex = /```[.\S\s]*?```/g;
-  let results = [];
+const getCodeBlocks = str => {
+  const regex = /```[.\S\s]*?```/g
+  let results = []
   while ((m = regex.exec(str)) !== null) {
     if (m.index === regex.lastIndex) {
-        regex.lastIndex++;
+      regex.lastIndex++
     }
     m.forEach((match, groupIndex) => {
-        results.push(match);
-    });
+      results.push(match)
+    })
   }
-  return results;
+  return results
 }
 
-module.exports = { readQuestions, toKebabCase, capitalize, getCodeBlocks };
+module.exports = {
+  attempt,
+  readQuestions,
+  toKebabCase,
+  capitalize,
+  getCodeBlocks,
+  QUESTIONS_PATH
+}
