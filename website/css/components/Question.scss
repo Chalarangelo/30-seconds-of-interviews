@@ -1,19 +1,21 @@
 @import "../_vars.scss";
 
 .Question {
+  position: relative;
   background: white;
   padding: 8% 5%;
-  border-radius: 8px;
+  border-radius: 12px;
   box-shadow: 0 0.4rem 0.8rem -0.1rem rgba(0, 32, 128, 0.1), 0 0 0 1px #f0f2f7;
   line-height: 1.8;
   font-size: 18px;
+  margin-bottom: 20px;
 
   @media (min-width: $breakpoint-md) {
     padding: 40px;
   }
 
-  &:not(:last-child) {
-    margin-bottom: 15px;
+  &:last-child {
+    margin-bottom: 40px;
   }
 
   &__heading {
@@ -35,12 +37,46 @@
       display: block;
     }
 
-    p:last-child {
+    > p:last-child {
       margin-bottom: 0;
+    }
+
+    h4 {
+      margin-bottom: 0;
+    }
+
+    ul {
+      margin-top: 5px;
+      padding-left: 25px;
+
+      p {
+        margin: 0;
+      }
     }
   }
 
   &__button {
     width: 180px;
+  }
+
+  &__badge {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: -7px;
+    padding: 5px 10px;
+    border-radius: 30px;
+    line-height: 1;
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: bold;
+    background: white;
+    color: #8385aa;
+    line-height: 1;
+    outline: 0;
+    border-top: 1px solid darken(#f0f2f7, 4%);
+
+    &.is-senior {
+    }
   }
 }

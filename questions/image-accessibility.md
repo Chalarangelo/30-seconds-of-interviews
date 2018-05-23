@@ -13,3 +13,5 @@ The `alt` attribute provides alternative information for an image if a user cann
 * [A good basis for accessibility](https://developer.mozilla.org/en-US/docs/Learn/Accessibility/HTML)
 
 <!-- tags: (html) -->
+
+<!-- expertise: (junior) -->

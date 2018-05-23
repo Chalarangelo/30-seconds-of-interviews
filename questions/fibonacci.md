@@ -9,7 +9,7 @@ const fibonacci = n =>
   Array.from({ length: n }).reduce(
     (acc, val, i) => acc.concat(i > 1 ? acc[i - 1] + acc[i - 2] : i),
     []
-  );
+  )
 ```
 
 #### Good to hear
@@ -19,3 +19,5 @@ const fibonacci = n =>
 * [Similar problem](https://github.com/Chalarangelo/30-seconds-of-code/blob/master/snippets_archive/fibonacciUntilNum.md)
 
 <!-- tags: (javascript) -->
+
+<!-- expertise: (intermediate) -->

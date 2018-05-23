@@ -1,12 +1,12 @@
 ### What will the console log in this example?
 
 ```js
-var foo = 1;
-var foobar = function () {
-  console.log(foo);
-  var foo = 2;
-};
-foobar();
+var foo = 1
+var foobar = function() {
+  console.log(foo)
+  var foo = 2
+}
+foobar()
 ```
 
 #### Answer
@@ -23,3 +23,5 @@ Due to hoisting, the local variable `foo` is declared before the `console.log` m
 * [MDN docs for hoisting](https://developer.mozilla.org/en-US/docs/Glossary/Hoisting)
 
 <!-- tags: (javascript) -->
+
+<!-- expertise: (intermediate) -->
