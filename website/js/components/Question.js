@@ -16,8 +16,9 @@ export default ({ name, question, answer, goodToHear, isOpen, expertise }) => (
     >
       {isOpen ? "Hide" : "Show"} answer
       <i
+        class={cc({ "is-rotated": isOpen })}
         innerHTML={feather.icons["chevron-down"].toSvg({
-          class: cc("btn__icon", { "is-rotated": isOpen })
+          class: "btn__icon"
         })}
       />
     </button>
