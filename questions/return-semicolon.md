@@ -5,7 +5,7 @@ function greet() {
   return
   {
     message: "hello"
-  };
+  }
 }
 ```
 
@@ -22,3 +22,5 @@ Because of JavaScript's automatic semicolon insertion (ASI), the compiler places
 * [Automatic semicolon insertion in JavaScript](http://2ality.com/2011/05/semicolon-insertion.html)
 
 <!-- tags: (javascript) -->
+
+<!-- expertise: (intermediate) -->

@@ -13,3 +13,5 @@ JavaScript always passes by value. However, with objects, the value is a referen
 * [JavaScript Value vs Reference](https://medium.com/dailyjs/back-to-roots-javascript-value-vs-reference-8fb69d587a18)
 
 <!-- tags: (javascript) -->
+
+<!-- expertise: (intermediate) -->

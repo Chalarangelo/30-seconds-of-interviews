@@ -25,3 +25,5 @@ myLibrary.publicMethod(); // 2
 * [MDN docs for closures](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures)
 
 <!-- tags: (javascript) -->
+
+<!-- expertise: (intermediate) -->

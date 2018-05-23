@@ -1,7 +1,7 @@
 ### What does the following code evaluate to?
 
 ```js
-typeof typeof 0;
+typeof typeof 0
 ```
 
 #### Answer
@@ -17,3 +17,5 @@ It evaluates to `"string"`.
 * [MDN docs for typeof](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/typeof)
 
 <!-- tags: (javascript) -->
+
+<!-- expertise: (intermediate) -->

@@ -16,3 +16,5 @@ In JavaScript, two values discretely represent nothing - `undefined` and `null`.
 * [MDN docs for undefined](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined)
 
 <!-- tags: (javascript) -->
+
+<!-- expertise: (intermediate) -->

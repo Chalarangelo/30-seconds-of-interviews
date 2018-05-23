@@ -15,3 +15,5 @@ Event-driven programming is building an application that is based on and respond
 * [Understanding Node.js event-driven architecture](https://medium.freecodecamp.org/understanding-node-js-event-driven-architecture-223292fcbc2d)
 
 <!-- tags: (javascript) -->
+
+<!-- expertise: (senior) -->

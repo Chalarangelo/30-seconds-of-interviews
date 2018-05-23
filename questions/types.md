@@ -16,3 +16,5 @@ The latest ECMAScript standard defines seven data types, six of them being primi
 * [Understanding Data Types in JavaScript](https://www.digitalocean.com/community/tutorials/understanding-data-types-in-javascript)
 
 <!-- tags: (javascript) -->
+
+<!-- expertise: (intermediate) -->
