@@ -13,6 +13,7 @@
 
 <p align="center">
   <a href="https://gitter.im/30-seconds-of-interviews/Lobby"><img src="https://img.shields.io/badge/gitter-join%20chat%20%E2%86%92-brightgreen.svg" alt="gitter"></a>
+  <a href="https://travis-ci.com/fejes713/30-seconds-of-interviews"><img src="https://img.shields.io/travis/fejes713/30secondsofinterviews.svg" alt="travis"></a>
 </p>
 
 <br>
