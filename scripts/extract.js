@@ -42,7 +42,8 @@ attempt("questions.json generation", () => {
         .split("\n")
         .map(v => v.replace("* ", ""))
         .filter(v => v.trim() !== "" && !v.includes("tags")),
-      categories: (contents.match(/<!--\s*tags: \((.+)\)/) || [])[1].split(","),
+      tags: (contents.match(/<!--\s*tags:\s*\((.+)\)/) || [])[1].split(","),
+      expertise: (contents.match(/<!--\s*expertise:\s*\((.+)\)/) || [])[1],
       questionCodeBlocks: getCodeBlocks(question),
       answerCodeBlocks: getCodeBlocks(answer)
     }

@@ -16,3 +16,5 @@ When using triple equals in JavaScript we are testing for strict equality. This 
 * [MDN docs for comparison operators](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Comparison_Operators)
 
 <!-- tags: (javascript) -->
+
+<!-- expertise: (junior) -->

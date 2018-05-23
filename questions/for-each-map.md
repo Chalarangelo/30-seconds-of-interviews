@@ -16,3 +16,5 @@ Both methods iterate through the elements of an array. `map()` maps each element
 * [JavaScript — Map vs. ForEach](https://codeburst.io/javascript-map-vs-foreach-f38111822c0f)
 
 <!-- tags: (javascript) -->
+
+<!-- expertise: (intermediate) -->

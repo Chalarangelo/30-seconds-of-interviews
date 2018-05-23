@@ -6,13 +6,16 @@ The BEM methodology is another naming convention for CSS classes. The BEM stands
 
 ```css
 /* block component */
-.block {}
+.block {
+}
 
 /* element */
-.block__element {}
+.block__element {
+}
 
 /* modifier */
-.block__element--modifier {}
+.block__element--modifier {
+}
 ```
 
 #### Good to hear
@@ -26,3 +29,5 @@ The BEM methodology is another naming convention for CSS classes. The BEM stands
 * [Writing clean and maintainable CSS](https://hackernoon.com/writing-clean-and-maintainable-css-using-bem-methodology-1dcbf810a664)
 
 <!-- tags: (css) -->
+
+<!-- expertise: (junior) -->

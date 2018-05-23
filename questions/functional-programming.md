@@ -18,3 +18,5 @@ Functional programming is a paradigm in which programs are built in a declarativ
 * [Master the JavaScript Interview: What is Functional Programming?](https://medium.com/javascript-scene/master-the-javascript-interview-what-is-functional-programming-7f218c68b3a0)
 
 <!-- tags: (javascript) -->
+
+<!-- expertise: (senior) -->
