@@ -22,3 +22,5 @@ Including `'use strict'` at the beginning of your JavaScript source file enables
 * [MDN docs for strict mode](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode)
 
 <!-- tags: (javascript) -->
+
+<!-- expertise: (senior) -->

@@ -21,3 +21,5 @@ A closure is a function defined inside another function and has access to its le
 * [I never understood JavaScript closures](https://medium.com/dailyjs/i-never-understood-javascript-closures-9663703368e8)
 
 <!-- tags: (javascript) -->
+
+<!-- expertise: (senior) -->
