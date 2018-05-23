@@ -58,7 +58,10 @@ Do you have an excellent idea or know some cool questions that aren't on the lis
 
 * [ What is CSS BEM?](#what-is-css-bem) 
 * [ What are the advantages of using CSS preprocessors?](#what-are-the-advantages-of-using-css-preprocessors) 
+* [ Can you describe how CSS specificity works?](#can-you-describe-how-css-specificity-works) 
 * [ Use flexbox to create a 3-column layout where each of the columns has a width of 2/12, 7/12 and 3/12 of the screen width respectively. Use the following HTML code as a guide.](#use-flexbox-to-create-a-3-column-layout-where-each-of-the-columns-has-a-width-of-2-12-7-12-and-3-12-of-the-screen-width-respectively-use-the-following-html-code-as-a-guide) 
+* [ Can you name the four types of `@media` properties?](#can-you-name-the-four-types-of-media-properties) 
+* [ What are the advantages of using CSS sprites and how would one utilize them?](#what-are-the-advantages-of-using-css-sprites-and-how-would-one-utilize-them) 
 * [ How does Z index function?](#how-does-z-index-function) 
 </details>
 
@@ -67,6 +70,7 @@ Do you have an excellent idea or know some cool questions that aren't on the lis
 <details>
 <summary>View contents</summary>
 
+* [ What are some differences that XHTML has compared to HTML?](#what-are-some-differences-that-xhtml-has-compared-to-html) 
 * [ What is the purpose of `alt` attribute on images?](#what-is-the-purpose-of-alt-attribute-on-images) 
 * [ Where and why is the `rel="noopener"` attribute used?](#where-and-why-is-the-rel-noopener-attribute-used) 
 </details>
@@ -800,6 +804,38 @@ CSS preprocessors add useful functionality that native CSS does not have, and ge
 
 <br>[⬆ Back to top](#table-of-contents)
 
+### Can you describe how CSS specificity works?
+
+#### Answer
+
+<details>
+<summary>View answer</summary>
+
+Assuming the browser has already determined the set of rules for an element, each rule is assigned a matrix of values, which correspond to the following from highest to lowest specificity:
+
+* Inline rules (binary - 1 or 0)
+* Number of id selectors
+* Number of class, pseudo-class and attribute selectors
+* Number of tags and pseudo-element selectors
+
+When two selectors are compared, the comparison is made on a per-column basis (e.g. an id selector will always be higher than any amount of class selectors, as ids have higher specificity than classes). In cases of equal specificity between multiple rules, the rules that comes last in the page's style sheet is deemed more specific and therefore applied to the element.
+
+#### Good to hear
+
+* Specificity matrix: [inline, id, class/pseudo-class/attribute, tag/pseudo-element]
+* In cases of equal specificity, last rule is applied
+
+##### Additional links
+
+* [CSS Specificity](https://www.smashingmagazine.com/2007/07/css-specificity-things-you-should-know/)
+
+<!-- tags: (css) -->
+
+<!-- expertise: (intermediate) -->
+</details> 
+
+<br>[⬆ Back to top](#table-of-contents)
+
 ### Use flexbox to create a 3-column layout where each of the columns has a width of 2/12, 7/12 and 3/12 of the screen width respectively. Use the following HTML code as a guide.
 
 ```html
@@ -849,6 +885,59 @@ We only need to set the `display` property of the `flex-grid` element to `flex` 
 
 <br>[⬆ Back to top](#table-of-contents)
 
+### Can you name the four types of `@media` properties?
+
+#### Answer
+
+<details>
+<summary>View answer</summary>
+
+* `all`, which applies to all media type devices
+* `print`, which only applies to printers
+* `screen`, which only applies to screens (desktops, tablets, mobile etc.)
+* `speech`, which only applies to screenreaders
+
+#### Good to hear
+
+##### Additional links
+
+* [MDN docs for `@media` rule](https://developer.mozilla.org/en-US/docs/Web/CSS/@media)
+* [MDN docs for using media queries](https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries)
+
+<!-- tags: (css) -->
+
+<!-- expertise: (basic) -->
+</details> 
+
+<br>[⬆ Back to top](#table-of-contents)
+
+### What are the advantages of using CSS sprites and how would one utilize them?
+
+#### Answer
+
+<details>
+<summary>View answer</summary>
+
+CSS sprites combine multiple images into one image, limiting the amount of HTTP requests a browser has to make, thus improving load times.
+
+To utilize a spritesheet in CSS, one would use certain properties, such as `background-image`, `background-position` and `background-size` to ultimately alter the `background` of a CSS selector or an element.
+
+#### Good to hear
+
+* CSS sprites combine multiple images into one, which improves page load times by limiting requests
+* `background-image`, `background-position` and `background-size` can be used to utilize a spritesheet
+
+##### Additional links
+
+* [CSS Sprites explained by CSS Tricks](https://css-tricks.com/css-sprites/)
+
+<!-- tags: (css) -->
+
+<!-- expertise: (intermediate) -->
+</details> 
+
+<br>[⬆ Back to top](#table-of-contents)
+
 ### How does Z index function?
 
 #### Answer
@@ -880,6 +969,38 @@ When elements overlap, z-order determines which one covers the other.
 ---
 
 ## Html
+
+### What are some differences that XHTML has compared to HTML?
+
+#### Answer
+
+<details>
+<summary>View answer</summary>
+
+Some of the key differences are:
+
+* An XHTML element must have an XHTML `<DOCTYPE>`
+* Attributes values must be enclosed in quotes
+* Attribute minimization is forbidden (e.g. one has to use `checked="checked"` instead of `checked`)
+* Elements must always be properly nested
+* Elements must always be closed
+* Special characters must be escaped
+
+#### Good to hear
+
+* Any element can be self-closed
+* Tags ands attributes are case-sensitive, usually lowercase
+
+##### Additional links
+
+* [W3Schools docs for HTML and XHTML](https://www.w3schools.com/html/html_xhtml.asp)
+
+<!-- tags: (html) -->
+
+<!-- expertise: (intermediate) -->
+</details> 
+
+<br>[⬆ Back to top](#table-of-contents)
 
 ### What is the purpose of `alt` attribute on images?
 
