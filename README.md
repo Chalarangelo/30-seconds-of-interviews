@@ -94,8 +94,8 @@ Using the object spread operator `...`, the object's own enumerable properties c
 into the new object. This creates a shallow clone of the object.
 
 ```js
-const obj = { a: 1, b: 2 };
-const shallowClone = { ...obj };
+const obj = { a: 1, b: 2 }
+const shallowClone = { ...obj }
 ```
 
 With this technique, prototypes are ignored. In addition, nested objects are not cloned, but rather their references get copied, so nested objects still refer to the same objects as the original. Deep-cloning is much more complex in order to effectively clone any type of object (Date, RegExp, Function, Set, etc) that may be nested within the object.
@@ -119,6 +119,8 @@ Other alternatives include:
 * [Clone an object in vanilla JS](http://voidcanvas.com/clone-an-object-in-vanilla-js-in-depth/)
 
 <!-- tags: (javascript) -->
+
+<!-- expertise: (intermediate) -->
 </details> 
 
 <br>[⬆ Back to top](#table-of-contents)
@@ -149,6 +151,8 @@ A closure is a function defined inside another function and has access to its le
 * [I never understood JavaScript closures](https://medium.com/dailyjs/i-never-understood-javascript-closures-9663703368e8)
 
 <!-- tags: (javascript) -->
+
+<!-- expertise: (senior) -->
 </details> 
 
 <br>[⬆ Back to top](#table-of-contents)
@@ -172,15 +176,15 @@ plain objects, arrays, functions, dates and primitive values.
 ```js
 function isDeepEqual(obj1, obj2, testPrototypes = false) {
   if (obj1 === obj2) {
-    return true;
+    return true
   }
 
   if (typeof obj1 === "function" && typeof obj2 === "function") {
-    return obj1.toString() === obj2.toString();
+    return obj1.toString() === obj2.toString()
   }
 
   if (obj1 instanceof Date && obj2 instanceof Date) {
-    return obj1.getTime() === obj2.getTime();
+    return obj1.getTime() === obj2.getTime()
   }
 
   const prototypesAreEqual = testPrototypes
@@ -189,16 +193,16 @@ function isDeepEqual(obj1, obj2, testPrototypes = false) {
         Object.getPrototypeOf(obj2),
         true
       )
-    : true;
+    : true
 
-  const obj1Props = Object.getOwnPropertyNames(obj1);
-  const obj2Props = Object.getOwnPropertyNames(obj2);
+  const obj1Props = Object.getOwnPropertyNames(obj1)
+  const obj2Props = Object.getOwnPropertyNames(obj2)
 
   return (
     obj1Props.length === obj2Props.length &&
     prototypesAreEqual &&
     obj1Props.every(prop => isDeepEqual(obj1[prop], obj2[prop]))
-  );
+  )
 }
 ```
 
@@ -213,6 +217,8 @@ function isDeepEqual(obj1, obj2, testPrototypes = false) {
 * [Deep comparison between two values](https://30secondsofcode.org/object#equals)
 
 <!-- tags: (javascript) -->
+
+<!-- expertise: (intermediate) -->
 </details> 
 
 <br>[⬆ Back to top](#table-of-contents)
@@ -237,6 +243,8 @@ Event-driven programming is building an application that is based on and respond
 * [Understanding Node.js event-driven architecture](https://medium.freecodecamp.org/understanding-node-js-event-driven-architecture-223292fcbc2d)
 
 <!-- tags: (javascript) -->
+
+<!-- expertise: (senior) -->
 </details> 
 
 <br>[⬆ Back to top](#table-of-contents)
@@ -255,7 +263,7 @@ const fibonacci = n =>
   Array.from({ length: n }).reduce(
     (acc, val, i) => acc.concat(i > 1 ? acc[i - 1] + acc[i - 2] : i),
     []
-  );
+  )
 ```
 
 #### Good to hear
@@ -265,6 +273,8 @@ const fibonacci = n =>
 * [Similar problem](https://github.com/Chalarangelo/30-seconds-of-code/blob/master/snippets_archive/fibonacciUntilNum.md)
 
 <!-- tags: (javascript) -->
+
+<!-- expertise: (intermediate) -->
 </details> 
 
 <br>[⬆ Back to top](#table-of-contents)
@@ -292,6 +302,8 @@ It evaluates to `false` because JavaScript uses the IEEE 754 standard for Math a
 * [Fix "0.1 + 0.2 = 0.300000004" in JavaScript](http://blog.blakesimpson.co.uk/read/61-fix-0-1-0-2-0-300000004-in-javascript)
 
 <!-- tags: (javascript) -->
+
+<!-- expertise: (intermediate) -->
 </details> 
 
 <br>[⬆ Back to top](#table-of-contents)
@@ -317,6 +329,8 @@ Both methods iterate through the elements of an array. `map()` maps each element
 * [JavaScript — Map vs. ForEach](https://codeburst.io/javascript-map-vs-foreach-f38111822c0f)
 
 <!-- tags: (javascript) -->
+
+<!-- expertise: (intermediate) -->
 </details> 
 
 <br>[⬆ Back to top](#table-of-contents)
@@ -344,6 +358,8 @@ Functional programming is a paradigm in which programs are built in a declarativ
 * [Master the JavaScript Interview: What is Functional Programming?](https://medium.com/javascript-scene/master-the-javascript-interview-what-is-functional-programming-7f218c68b3a0)
 
 <!-- tags: (javascript) -->
+
+<!-- expertise: (senior) -->
 </details> 
 
 <br>[⬆ Back to top](#table-of-contents)
@@ -351,12 +367,12 @@ Functional programming is a paradigm in which programs are built in a declarativ
 ### What will the console log in this example?
 
 ```js
-var foo = 1;
-var foobar = function () {
-  console.log(foo);
-  var foo = 2;
-};
-foobar();
+var foo = 1
+var foobar = function() {
+  console.log(foo)
+  var foo = 2
+}
+foobar()
 ```
 
 #### Answer
@@ -376,6 +392,8 @@ Due to hoisting, the local variable `foo` is declared before the `console.log` m
 * [MDN docs for hoisting](https://developer.mozilla.org/en-US/docs/Glossary/Hoisting)
 
 <!-- tags: (javascript) -->
+
+<!-- expertise: (intermediate) -->
 </details> 
 
 <br>[⬆ Back to top](#table-of-contents)
@@ -390,8 +408,8 @@ Due to hoisting, the local variable `foo` is declared before the `console.log` m
 Hoisting is a JavaScript mechanism where variables and function declarations are put into memory during the compile phase. This means that no matter where functions and variables are declared, they are moved to the top of their scope regardless of whether their scope is global or local.
 
 ```js
-console.log(hoist); // Output: undefined
-var hoist = 'The variable has been hoisted.';
+console.log(hoist) // Output: undefined
+var hoist = "The variable has been hoisted."
 ```
 
 #### Good to hear
@@ -408,6 +426,8 @@ var hoist = 'The variable has been hoisted.';
 * [Understanding Hoisting in JavaScript](https://scotch.io/tutorials/understanding-hoisting-in-javascript)
 
 <!-- tags: (javascript) -->
+
+<!-- expertise: (intermediate) -->
 </details> 
 
 <br>[⬆ Back to top](#table-of-contents)
@@ -433,6 +453,8 @@ In JavaScript, two values discretely represent nothing - `undefined` and `null`.
 * [MDN docs for undefined](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined)
 
 <!-- tags: (javascript) -->
+
+<!-- expertise: (intermediate) -->
 </details> 
 
 <br>[⬆ Back to top](#table-of-contents)
@@ -455,6 +477,8 @@ JavaScript always passes by value. However, with objects, the value is a referen
 * [JavaScript Value vs Reference](https://medium.com/dailyjs/back-to-roots-javascript-value-vs-reference-8fb69d587a18)
 
 <!-- tags: (javascript) -->
+
+<!-- expertise: (intermediate) -->
 </details> 
 
 <br>[⬆ Back to top](#table-of-contents)
@@ -481,6 +505,8 @@ In the prototypal inheritance paradigm, object instances inherit directly from o
 * [Differences between class and prototypal inheritance](https://medium.com/javascript-scene/master-the-javascript-interview-what-s-the-difference-between-class-prototypal-inheritance-e4cd0a7562e9)
 
 <!-- tags: (javascript) -->
+
+<!-- expertise: (intermediate) -->
 </details> 
 
 <br>[⬆ Back to top](#table-of-contents)
@@ -488,12 +514,12 @@ In the prototypal inheritance paradigm, object instances inherit directly from o
 ### What is the output of the following code?
 
 ```js
-const a = [1,2,3];
-const b = [1,2,3];
-const c = "1,2,3";
+const a = [1, 2, 3]
+const b = [1, 2, 3]
+const c = "1,2,3"
 
-console.log(a == c);
-console.log(a == b);
+console.log(a == c)
+console.log(a == b)
 ```
 
 #### Answer
@@ -501,7 +527,7 @@ console.log(a == b);
 <details>
 <summary>View answer</summary>
 
-The first `console.log` outputs `true` because JavaScript's compiler performs type conversion and therefore it compares to strings by their value. On the other hand, the second `console.log` outputs `false` because Arrays are  Objects and Objects are compared by reference.
+The first `console.log` outputs `true` because JavaScript's compiler performs type conversion and therefore it compares to strings by their value. On the other hand, the second `console.log` outputs `false` because Arrays are Objects and Objects are compared by reference.
 
 #### Good to hear
 
@@ -514,6 +540,8 @@ The first `console.log` outputs `true` because JavaScript's compiler performs ty
 * [JavaScript Value vs Reference](https://medium.com/dailyjs/back-to-roots-javascript-value-vs-reference-8fb69d587a18)
 
 <!-- tags: (javascript) -->
+
+<!-- expertise: (intermediate) -->
 </details> 
 
 <br>[⬆ Back to top](#table-of-contents)
@@ -525,7 +553,7 @@ function greet() {
   return
   {
     message: "hello"
-  };
+  }
 }
 ```
 
@@ -545,6 +573,8 @@ Because of JavaScript's automatic semicolon insertion (ASI), the compiler places
 * [Automatic semicolon insertion in JavaScript](http://2ality.com/2011/05/semicolon-insertion.html)
 
 <!-- tags: (javascript) -->
+
+<!-- expertise: (intermediate) -->
 </details> 
 
 <br>[⬆ Back to top](#table-of-contents)
@@ -570,6 +600,8 @@ When using triple equals in JavaScript we are testing for strict equality. This 
 * [MDN docs for comparison operators](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Comparison_Operators)
 
 <!-- tags: (javascript) -->
+
+<!-- expertise: (junior) -->
 </details> 
 
 <br>[⬆ Back to top](#table-of-contents)
@@ -577,7 +609,7 @@ When using triple equals in JavaScript we are testing for strict equality. This 
 ### What does the following code evaluate to?
 
 ```js
-typeof typeof 0;
+typeof typeof 0
 ```
 
 #### Answer
@@ -596,6 +628,8 @@ It evaluates to `"string"`.
 * [MDN docs for typeof](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/typeof)
 
 <!-- tags: (javascript) -->
+
+<!-- expertise: (intermediate) -->
 </details> 
 
 <br>[⬆ Back to top](#table-of-contents)
@@ -621,6 +655,8 @@ The latest ECMAScript standard defines seven data types, six of them being primi
 * [Understanding Data Types in JavaScript](https://www.digitalocean.com/community/tutorials/understanding-data-types-in-javascript)
 
 <!-- tags: (javascript) -->
+
+<!-- expertise: (intermediate) -->
 </details> 
 
 <br>[⬆ Back to top](#table-of-contents)
@@ -652,6 +688,8 @@ Including `'use strict'` at the beginning of your JavaScript source file enables
 * [MDN docs for strict mode](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode)
 
 <!-- tags: (javascript) -->
+
+<!-- expertise: (senior) -->
 </details> 
 
 <br>[⬆ Back to top](#table-of-contents)
@@ -686,6 +724,8 @@ myLibrary.publicMethod(); // 2
 * [MDN docs for closures](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures)
 
 <!-- tags: (javascript) -->
+
+<!-- expertise: (intermediate) -->
 </details> 
 
 <br>[⬆ Back to top](#table-of-contents)
@@ -706,13 +746,16 @@ The BEM methodology is another naming convention for CSS classes. The BEM stands
 
 ```css
 /* block component */
-.block {}
+.block {
+}
 
 /* element */
-.block__element {}
+.block__element {
+}
 
 /* modifier */
-.block__element--modifier {}
+.block__element--modifier {
+}
 ```
 
 #### Good to hear
@@ -726,6 +769,8 @@ The BEM methodology is another naming convention for CSS classes. The BEM stands
 * [Writing clean and maintainable CSS](https://hackernoon.com/writing-clean-and-maintainable-css-using-bem-methodology-1dcbf810a664)
 
 <!-- tags: (css) -->
+
+<!-- expertise: (junior) -->
 </details> 
 
 <br>[⬆ Back to top](#table-of-contents)
@@ -749,6 +794,8 @@ CSS preprocessors add useful functionality that native CSS does not have, and ge
 * [CSS Preprocessors](https://medium.com/@garyfagan/css-preprocessors-6f226fa16f27)
 
 <!-- tags: (css) -->
+
+<!-- expertise: (junior) -->
 </details> 
 
 <br>[⬆ Back to top](#table-of-contents)
@@ -796,6 +843,8 @@ We only need to set the `display` property of the `flex-grid` element to `flex` 
 * [A complete guide to Flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
 
 <!-- tags: (css) -->
+
+<!-- expertise: (junior) -->
 </details> 
 
 <br>[⬆ Back to top](#table-of-contents)
@@ -821,6 +870,8 @@ When elements overlap, z-order determines which one covers the other.
 * [What No One Told You About Z-Index](https://philipwalton.com/articles/what-no-one-told-you-about-z-index/)
 
 <!-- tags: (css) -->
+
+<!-- expertise: (junior) -->
 </details> 
 
 <br>[⬆ Back to top](#table-of-contents)
@@ -848,6 +899,8 @@ The `alt` attribute provides alternative information for an image if a user cann
 * [A good basis for accessibility](https://developer.mozilla.org/en-US/docs/Learn/Accessibility/HTML)
 
 <!-- tags: (html) -->
+
+<!-- expertise: (junior) -->
 </details> 
 
 <br>[⬆ Back to top](#table-of-contents)
@@ -874,6 +927,8 @@ The `rel="noopener"` is an attribute used in `<a>` elements (hyperlinks). It pre
 * [About rel="noopener"](https://mathiasbynens.github.io/rel-noopener/)
 
 <!-- tags: (html) -->
+
+<!-- expertise: (intermediate) -->
 </details> 
 
 <br>[⬆ Back to top](#table-of-contents)
@@ -903,6 +958,8 @@ The event loop handles all async callbacks. Callbacks are queued in a loop, whil
 * [Node.js docs on event loop, timers and process.nextTick()](https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick/)
 
 <!-- tags: (node,javascript) -->
+
+<!-- expertise: (senior) -->
 </details> 
 
 <br>[⬆ Back to top](#table-of-contents)
