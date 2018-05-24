@@ -38,4 +38,9 @@
 
 <!-- tags: (separate each by a comma) -->
 
-<!-- expertise: (junior, intermediate, senior) -->
+<!-- expertise: (0,1,2) -->
+<!-- Expertise levels:
+	0: junior
+	1: intermediate
+	2: senior
+-->
