@@ -24,4 +24,4 @@ var hoist = "The variable has been hoisted."
 
 <!-- tags: (javascript) -->
 
-<!-- expertise: (intermediate) -->
+<!-- expertise: (1) -->

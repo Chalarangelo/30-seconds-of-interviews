@@ -17,4 +17,4 @@ To utilize a spritesheet in CSS, one would use certain properties, such as `back
 
 <!-- tags: (css) -->
 
-<!-- expertise: (intermediate) -->
+<!-- expertise: (1) -->

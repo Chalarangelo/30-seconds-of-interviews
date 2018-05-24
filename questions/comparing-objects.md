@@ -56,4 +56,4 @@ function isDeepEqual(obj1, obj2, testPrototypes = false) {
 
 <!-- tags: (javascript) -->
 
-<!-- expertise: (intermediate) -->
+<!-- expertise: (1) -->

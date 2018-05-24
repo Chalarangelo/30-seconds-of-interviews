@@ -17,4 +17,4 @@ In JavaScript, two values discretely represent nothing - `undefined` and `null`.
 
 <!-- tags: (javascript) -->
 
-<!-- expertise: (intermediate) -->
+<!-- expertise: (1) -->

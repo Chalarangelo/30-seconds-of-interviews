@@ -14,4 +14,4 @@ The `alt` attribute provides alternative information for an image if a user cann
 
 <!-- tags: (html) -->
 
-<!-- expertise: (junior) -->
+<!-- expertise: (0) -->
