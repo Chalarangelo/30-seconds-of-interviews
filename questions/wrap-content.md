@@ -26,4 +26,4 @@ myLibrary.publicMethod(); // 2
 
 <!-- tags: (javascript) -->
 
-<!-- expertise: (intermediate) -->
+<!-- expertise: (1) -->

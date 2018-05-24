@@ -17,4 +17,4 @@ Both methods iterate through the elements of an array. `map()` maps each element
 
 <!-- tags: (javascript) -->
 
-<!-- expertise: (intermediate) -->
+<!-- expertise: (1) -->

@@ -22,4 +22,4 @@ A closure is a function defined inside another function and has access to its le
 
 <!-- tags: (javascript) -->
 
-<!-- expertise: (senior) -->
+<!-- expertise: (2) -->

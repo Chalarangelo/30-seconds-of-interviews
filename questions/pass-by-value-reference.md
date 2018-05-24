@@ -14,4 +14,4 @@ JavaScript always passes by value. However, with objects, the value is a referen
 
 <!-- tags: (javascript) -->
 
-<!-- expertise: (intermediate) -->
+<!-- expertise: (1) -->
