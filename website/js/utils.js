@@ -20,3 +20,17 @@ export const expertiseStrings = [
   'intermediate',
   'senior'
 ]
+
+export const sortByStrings = {
+  expertise: 'by expertise',
+  alpha: 'alphabetically',
+  nonalpha: 'unalphabetically'
+}
+
+export const filterStrings = {
+  all: 'all',
+  html: 'html',
+  css: 'css',
+  js: 'javascript',
+  node: 'node'
+}
