@@ -1,0 +1,13 @@
+@import "../_vars.scss";
+
+.SortButton {
+	margin: 8px 4px;
+	position: absolute;
+	right: 25px;
+
+  &.is-active {
+    background: #7983ff;
+    border-color: #7983ff;
+    color: white;
+  }
+}
