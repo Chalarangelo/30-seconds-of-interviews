@@ -22,4 +22,4 @@ Some of the key differences are:
 
 <!-- tags: (html) -->
 
-<!-- expertise: (intermediate) -->
+<!-- expertise: (1) -->

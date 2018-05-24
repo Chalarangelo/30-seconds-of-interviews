@@ -9,13 +9,12 @@
       "Modifier is a flag added to block or element so it makes them a bit more specific"
     ],
     "links": [
-      "[Writing clean and maintainable CSS](https://hackernoon.com/writing-clean-and-maintainable-css-using-bem-methodology-1dcbf810a664)",
-      "<!-- expertise: (junior) -->"
+      "[Writing clean and maintainable CSS](https://hackernoon.com/writing-clean-and-maintainable-css-using-bem-methodology-1dcbf810a664)"
     ],
     "tags": [
       "css"
     ],
-    "expertise": "junior",
+    "expertise": 0,
     "questionCodeBlocks": [],
     "answerCodeBlocks": [
       "```css\n/* block component */\n.block {\n}\n\n/* element */\n.block__element {\n}\n\n/* modifier */\n.block__element--modifier {\n}\n```"
@@ -30,15 +29,13 @@
       "The same method can be used to merge two objects."
     ],
     "links": [
-      "<!-- Whenever possible, link a more detailed explanation. -->",
       "[MDN docs for Object.assign()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign)",
-      "[Clone an object in vanilla JS](http://voidcanvas.com/clone-an-object-in-vanilla-js-in-depth/)",
-      "<!-- expertise: (intermediate) -->"
+      "[Clone an object in vanilla JS](http://voidcanvas.com/clone-an-object-in-vanilla-js-in-depth/)"
     ],
     "tags": [
       "javascript"
     ],
-    "expertise": "intermediate",
+    "expertise": 1,
     "questionCodeBlocks": [],
     "answerCodeBlocks": [
       "```js\nconst obj = { a: 1, b: 2 }\nconst shallowClone = { ...obj }\n```"
@@ -56,13 +53,12 @@
     "links": [
       "[MDN docs for closures](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures)",
       "[What is a closure](https://medium.com/javascript-scene/master-the-javascript-interview-what-is-a-closure-b2f0d2152b36)",
-      "[I never understood JavaScript closures](https://medium.com/dailyjs/i-never-understood-javascript-closures-9663703368e8)",
-      "<!-- expertise: (senior) -->"
+      "[I never understood JavaScript closures](https://medium.com/dailyjs/i-never-understood-javascript-closures-9663703368e8)"
     ],
     "tags": [
       "javascript"
     ],
-    "expertise": "senior",
+    "expertise": 2,
     "questionCodeBlocks": [],
     "answerCodeBlocks": []
   },
@@ -76,13 +72,12 @@
     ],
     "links": [
       "[Object Equality in JavaScript](http://adripofjavascript.com/blog/drips/object-equality-in-javascript.html)",
-      "[Deep comparison between two values](https://30secondsofcode.org/object#equals)",
-      "<!-- expertise: (intermediate) -->"
+      "[Deep comparison between two values](https://30secondsofcode.org/object#equals)"
     ],
     "tags": [
       "javascript"
     ],
-    "expertise": "intermediate",
+    "expertise": 1,
     "questionCodeBlocks": [],
     "answerCodeBlocks": [
       "```js\nfunction isDeepEqual(obj1, obj2, testPrototypes = false) {\n  if (obj1 === obj2) {\n    return true\n  }\n\n  if (typeof obj1 === \"function\" && typeof obj2 === \"function\") {\n    return obj1.toString() === obj2.toString()\n  }\n\n  if (obj1 instanceof Date && obj2 instanceof Date) {\n    return obj1.getTime() === obj2.getTime()\n  }\n\n  const prototypesAreEqual = testPrototypes\n    ? isDeepEqual(\n        Object.getPrototypeOf(obj1),\n        Object.getPrototypeOf(obj2),\n        true\n      )\n    : true\n\n  const obj1Props = Object.getOwnPropertyNames(obj1)\n  const obj2Props = Object.getOwnPropertyNames(obj2)\n\n  return (\n    obj1Props.length === obj2Props.length &&\n    prototypesAreEqual &&\n    obj1Props.every(prop => isDeepEqual(obj1[prop], obj2[prop]))\n  )\n}\n```"
@@ -97,13 +92,12 @@
       "Some disadvantages of using CSS preprocessors (setup, re-compilation time can be slow etc.)"
     ],
     "links": [
-      "[CSS Preprocessors](https://medium.com/@garyfagan/css-preprocessors-6f226fa16f27)",
-      "<!-- expertise: (junior) -->"
+      "[CSS Preprocessors](https://medium.com/@garyfagan/css-preprocessors-6f226fa16f27)"
     ],
     "tags": [
       "css"
     ],
-    "expertise": "junior",
+    "expertise": 0,
     "questionCodeBlocks": [],
     "answerCodeBlocks": []
   },
@@ -116,13 +110,12 @@
       "In cases of equal specificity, last rule is applied"
     ],
     "links": [
-      "[CSS Specificity](https://www.smashingmagazine.com/2007/07/css-specificity-things-you-should-know/)",
-      "<!-- expertise: (intermediate) -->"
+      "[CSS Specificity](https://www.smashingmagazine.com/2007/07/css-specificity-things-you-should-know/)"
     ],
     "tags": [
       "css"
     ],
-    "expertise": "intermediate",
+    "expertise": 1,
     "questionCodeBlocks": [],
     "answerCodeBlocks": []
   },
@@ -136,13 +129,12 @@
     ],
     "links": [
       "[MDN docs on Events and Handlers](https://developer.mozilla.org/en-US/docs/Web/Guide/Events/Overview_of_Events_and_Handlers)",
-      "[Understanding Node.js event-driven architecture](https://medium.freecodecamp.org/understanding-node-js-event-driven-architecture-223292fcbc2d)",
-      "<!-- expertise: (senior) -->"
+      "[Understanding Node.js event-driven architecture](https://medium.freecodecamp.org/understanding-node-js-event-driven-architecture-223292fcbc2d)"
     ],
     "tags": [
       "javascript"
     ],
-    "expertise": "senior",
+    "expertise": 2,
     "questionCodeBlocks": [],
     "answerCodeBlocks": []
   },
@@ -152,13 +144,12 @@
     "answer": "Create an empty array of the specific length. Use Array.reduce() to add values into the array, using the sum of the last two values, except for the first two.\n\n```js\nconst fibonacci = n =>\n  Array.from({ length: n }).reduce(\n    (acc, val, i) => acc.concat(i > 1 ? acc[i - 1] + acc[i - 2] : i),\n    []\n  )\n```",
     "goodToHear": [],
     "links": [
-      "[Similar problem](https://github.com/Chalarangelo/30-seconds-of-code/blob/master/snippets_archive/fibonacciUntilNum.md)",
-      "<!-- expertise: (intermediate) -->"
+      "[Similar problem](https://github.com/Chalarangelo/30-seconds-of-code/blob/master/snippets_archive/fibonacciUntilNum.md)"
     ],
     "tags": [
       "javascript"
     ],
-    "expertise": "intermediate",
+    "expertise": 1,
     "questionCodeBlocks": [],
     "answerCodeBlocks": [
       "```js\nconst fibonacci = n =>\n  Array.from({ length: n }).reduce(\n    (acc, val, i) => acc.concat(i > 1 ? acc[i - 1] + acc[i - 2] : i),\n    []\n  )\n```"
@@ -171,13 +162,12 @@
     "goodToHear": [],
     "links": [
       "[MDN docs for basic concepts of flexbox](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Basic_Concepts_of_Flexbox)",
-      "[A complete guide to Flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)",
-      "<!-- expertise: (junior) -->"
+      "[A complete guide to Flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)"
     ],
     "tags": [
       "css"
     ],
-    "expertise": "junior",
+    "expertise": 0,
     "questionCodeBlocks": [
       "```html\n<div class=\"flex-grid\">\n  <div class=\"col-2\"></div>\n  <div class=\"col-7\"></div>\n  <div class=\"col-3\"></div>\n</div>\n```"
     ],
@@ -194,13 +184,12 @@
     ],
     "links": [
       "[A simple helper function to check equality](https://github.com/Chalarangelo/30-seconds-of-code#approximatelyequal)",
-      "[Fix \"0.1 + 0.2 = 0.300000004\" in JavaScript](http://blog.blakesimpson.co.uk/read/61-fix-0-1-0-2-0-300000004-in-javascript)",
-      "<!-- expertise: (intermediate) -->"
+      "[Fix \"0.1 + 0.2 = 0.300000004\" in JavaScript](http://blog.blakesimpson.co.uk/read/61-fix-0-1-0-2-0-300000004-in-javascript)"
     ],
     "tags": [
       "javascript"
     ],
-    "expertise": "intermediate",
+    "expertise": 1,
     "questionCodeBlocks": [],
     "answerCodeBlocks": [
       "```js\n0.1 + 0.2 // 0.300000004\n```"
@@ -217,13 +206,12 @@
     "links": [
       "[MDN docs for forEach](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach)",
       "[MDN docs for map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map)",
-      "[JavaScript — Map vs. ForEach](https://codeburst.io/javascript-map-vs-foreach-f38111822c0f)",
-      "<!-- expertise: (intermediate) -->"
+      "[JavaScript — Map vs. ForEach](https://codeburst.io/javascript-map-vs-foreach-f38111822c0f)"
     ],
     "tags": [
       "javascript"
     ],
-    "expertise": "intermediate",
+    "expertise": 1,
     "questionCodeBlocks": [],
     "answerCodeBlocks": []
   },
@@ -239,13 +227,12 @@
     ],
     "links": [
       "[Javascript and Functional Programming: An Introduction](https://hackernoon.com/javascript-and-functional-programming-an-introduction-286aa625e26d)",
-      "[Master the JavaScript Interview: What is Functional Programming?](https://medium.com/javascript-scene/master-the-javascript-interview-what-is-functional-programming-7f218c68b3a0)",
-      "<!-- expertise: (senior) -->"
+      "[Master the JavaScript Interview: What is Functional Programming?](https://medium.com/javascript-scene/master-the-javascript-interview-what-is-functional-programming-7f218c68b3a0)"
     ],
     "tags": [
       "javascript"
     ],
-    "expertise": "senior",
+    "expertise": 2,
     "questionCodeBlocks": [],
     "answerCodeBlocks": []
   },
@@ -258,13 +245,12 @@
       "Mention of `strict` mode"
     ],
     "links": [
-      "[MDN docs for hoisting](https://developer.mozilla.org/en-US/docs/Glossary/Hoisting)",
-      "<!-- expertise: (intermediate) -->"
+      "[MDN docs for hoisting](https://developer.mozilla.org/en-US/docs/Glossary/Hoisting)"
     ],
     "tags": [
       "javascript"
     ],
-    "expertise": "intermediate",
+    "expertise": 1,
     "questionCodeBlocks": [
       "```js\nvar foo = 1\nvar foobar = function() {\n  console.log(foo)\n  var foo = 2\n}\nfoobar()\n```"
     ],
@@ -283,13 +269,12 @@
     ],
     "links": [
       "[MDN docs for hoisting](https://developer.mozilla.org/en-US/docs/Glossary/Hoisting)",
-      "[Understanding Hoisting in JavaScript](https://scotch.io/tutorials/understanding-hoisting-in-javascript)",
-      "<!-- expertise: (intermediate) -->"
+      "[Understanding Hoisting in JavaScript](https://scotch.io/tutorials/understanding-hoisting-in-javascript)"
     ],
     "tags": [
       "javascript"
     ],
-    "expertise": "intermediate",
+    "expertise": 1,
     "questionCodeBlocks": [],
     "answerCodeBlocks": [
       "```js\nconsole.log(hoist) // Output: undefined\nvar hoist = \"The variable has been hoisted.\"\n```"
@@ -304,13 +289,12 @@
       "Tags ands attributes are case-sensitive, usually lowercase"
     ],
     "links": [
-      "[W3Schools docs for HTML and XHTML](https://www.w3schools.com/html/html_xhtml.asp)",
-      "<!-- expertise: (intermediate) -->"
+      "[W3Schools docs for HTML and XHTML](https://www.w3schools.com/html/html_xhtml.asp)"
     ],
     "tags": [
       "html"
     ],
-    "expertise": "intermediate",
+    "expertise": 1,
     "questionCodeBlocks": [],
     "answerCodeBlocks": []
   },
@@ -322,13 +306,12 @@
       "Decorative images should have empty `alt` tag"
     ],
     "links": [
-      "[A good basis for accessibility](https://developer.mozilla.org/en-US/docs/Learn/Accessibility/HTML)",
-      "<!-- expertise: (junior) -->"
+      "[A good basis for accessibility](https://developer.mozilla.org/en-US/docs/Learn/Accessibility/HTML)"
     ],
     "tags": [
       "html"
     ],
-    "expertise": "junior",
+    "expertise": 0,
     "questionCodeBlocks": [],
     "answerCodeBlocks": []
   },
@@ -339,13 +322,12 @@
     "goodToHear": [],
     "links": [
       "[MDN docs for `@media` rule](https://developer.mozilla.org/en-US/docs/Web/CSS/@media)",
-      "[MDN docs for using media queries](https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries)",
-      "<!-- expertise: (basic) -->"
+      "[MDN docs for using media queries](https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries)"
     ],
     "tags": [
       "css"
     ],
-    "expertise": "basic",
+    "expertise": 0,
     "questionCodeBlocks": [],
     "answerCodeBlocks": []
   },
@@ -357,15 +339,13 @@
       "The event loop allows Node.js to perform non-blocking I/O operations, despite the fact that JavaScript is single-threaded"
     ],
     "links": [
-      "<!-- Whenever possible, link a more detailed explanation. -->",
-      "[Node.js docs on event loop, timers and process.nextTick()](https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick/)",
-      "<!-- expertise: (senior) -->"
+      "[Node.js docs on event loop, timers and process.nextTick()](https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick/)"
     ],
     "tags": [
       "node",
       "javascript"
     ],
-    "expertise": "senior",
+    "expertise": 2,
     "questionCodeBlocks": [],
     "answerCodeBlocks": []
   },
@@ -380,13 +360,12 @@
     ],
     "links": [
       "[MDN docs for null](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null)",
-      "[MDN docs for undefined](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined)",
-      "<!-- expertise: (intermediate) -->"
+      "[MDN docs for undefined](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined)"
     ],
     "tags": [
       "javascript"
     ],
-    "expertise": "intermediate",
+    "expertise": 1,
     "questionCodeBlocks": [],
     "answerCodeBlocks": []
   },
@@ -398,13 +377,12 @@
       "Difference between pass-by-value and pass-by-reference"
     ],
     "links": [
-      "[JavaScript Value vs Reference](https://medium.com/dailyjs/back-to-roots-javascript-value-vs-reference-8fb69d587a18)",
-      "<!-- expertise: (intermediate) -->"
+      "[JavaScript Value vs Reference](https://medium.com/dailyjs/back-to-roots-javascript-value-vs-reference-8fb69d587a18)"
     ],
     "tags": [
       "javascript"
     ],
-    "expertise": "intermediate",
+    "expertise": 1,
     "questionCodeBlocks": [],
     "answerCodeBlocks": []
   },
@@ -418,13 +396,12 @@
     ],
     "links": [
       "[MDN docs for inheritance and the prototype chain](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Inheritance_and_the_prototype_chain)",
-      "[Differences between class and prototypal inheritance](https://medium.com/javascript-scene/master-the-javascript-interview-what-s-the-difference-between-class-prototypal-inheritance-e4cd0a7562e9)",
-      "<!-- expertise: (intermediate) -->"
+      "[Differences between class and prototypal inheritance](https://medium.com/javascript-scene/master-the-javascript-interview-what-s-the-difference-between-class-prototypal-inheritance-e4cd0a7562e9)"
     ],
     "tags": [
       "javascript"
     ],
-    "expertise": "intermediate",
+    "expertise": 1,
     "questionCodeBlocks": [],
     "answerCodeBlocks": []
   },
@@ -438,13 +415,12 @@
       "Primitives are compared by value"
     ],
     "links": [
-      "[JavaScript Value vs Reference](https://medium.com/dailyjs/back-to-roots-javascript-value-vs-reference-8fb69d587a18)",
-      "<!-- expertise: (intermediate) -->"
+      "[JavaScript Value vs Reference](https://medium.com/dailyjs/back-to-roots-javascript-value-vs-reference-8fb69d587a18)"
     ],
     "tags": [
       "javascript"
     ],
-    "expertise": "intermediate",
+    "expertise": 1,
     "questionCodeBlocks": [
       "```js\nconst a = [1, 2, 3]\nconst b = [1, 2, 3]\nconst c = \"1,2,3\"\n\nconsole.log(a == c)\nconsole.log(a == b)\n```"
     ],
@@ -459,15 +435,13 @@
       "`rel=\"noopener\"` prevents opened links from manipulating the source page."
     ],
     "links": [
-      "<!-- Whenever possible, link a more detailed explanation. -->",
       "[Open external anchors using rel=\"noopener\"](https://developers.google.com/web/tools/lighthouse/audits/noopener)",
-      "[About rel=\"noopener\"](https://mathiasbynens.github.io/rel-noopener/)",
-      "<!-- expertise: (intermediate) -->"
+      "[About rel=\"noopener\"](https://mathiasbynens.github.io/rel-noopener/)"
     ],
     "tags": [
       "html"
     ],
-    "expertise": "intermediate",
+    "expertise": 1,
     "questionCodeBlocks": [],
     "answerCodeBlocks": []
   },
@@ -479,13 +453,12 @@
       "Automatic semicolon placement can lead to time-consuming bugs"
     ],
     "links": [
-      "[Automatic semicolon insertion in JavaScript](http://2ality.com/2011/05/semicolon-insertion.html)",
-      "<!-- expertise: (intermediate) -->"
+      "[Automatic semicolon insertion in JavaScript](http://2ality.com/2011/05/semicolon-insertion.html)"
     ],
     "tags": [
       "javascript"
     ],
-    "expertise": "intermediate",
+    "expertise": 1,
     "questionCodeBlocks": [
       "```js\nfunction greet() {\n  return\n  {\n    message: \"hello\"\n  }\n}\n```"
     ],
@@ -500,13 +473,12 @@
       "`background-image`, `background-position` and `background-size` can be used to utilize a spritesheet"
     ],
     "links": [
-      "[CSS Sprites explained by CSS Tricks](https://css-tricks.com/css-sprites/)",
-      "<!-- expertise: (intermediate) -->"
+      "[CSS Sprites explained by CSS Tricks](https://css-tricks.com/css-sprites/)"
     ],
     "tags": [
       "css"
     ],
-    "expertise": "intermediate",
+    "expertise": 1,
     "questionCodeBlocks": [],
     "answerCodeBlocks": []
   },
@@ -521,13 +493,12 @@
       "`NaN` is not equivalent to anything, not even itself"
     ],
     "links": [
-      "[MDN docs for comparison operators](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Comparison_Operators)",
-      "<!-- expertise: (junior) -->"
+      "[MDN docs for comparison operators](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Comparison_Operators)"
     ],
     "tags": [
       "javascript"
     ],
-    "expertise": "junior",
+    "expertise": 0,
     "questionCodeBlocks": [],
     "answerCodeBlocks": []
   },
@@ -537,13 +508,12 @@
     "answer": "It evaluates to `\"string\"`.\n\n`typeof 0` evaluates to the string `\"number\"` and therefore `typeof \"number\"` evaluates to `\"string\"`.",
     "goodToHear": [],
     "links": [
-      "[MDN docs for typeof](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/typeof)",
-      "<!-- expertise: (intermediate) -->"
+      "[MDN docs for typeof](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/typeof)"
     ],
     "tags": [
       "javascript"
     ],
-    "expertise": "intermediate",
+    "expertise": 1,
     "questionCodeBlocks": [
       "```js\ntypeof typeof 0\n```"
     ],
@@ -560,13 +530,12 @@
     ],
     "links": [
       "[MDN docs for data types and data structures](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures)",
-      "[Understanding Data Types in JavaScript](https://www.digitalocean.com/community/tutorials/understanding-data-types-in-javascript)",
-      "<!-- expertise: (intermediate) -->"
+      "[Understanding Data Types in JavaScript](https://www.digitalocean.com/community/tutorials/understanding-data-types-in-javascript)"
     ],
     "tags": [
       "javascript"
     ],
-    "expertise": "intermediate",
+    "expertise": 1,
     "questionCodeBlocks": [],
     "answerCodeBlocks": []
   },
@@ -580,13 +549,12 @@
       "Prohibits some syntax likely to be defined in future versions of ECMAScript"
     ],
     "links": [
-      "[MDN docs for strict mode](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode)",
-      "<!-- expertise: (senior) -->"
+      "[MDN docs for strict mode](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode)"
     ],
     "tags": [
       "javascript"
     ],
-    "expertise": "senior",
+    "expertise": 2,
     "questionCodeBlocks": [],
     "answerCodeBlocks": []
   },
@@ -599,13 +567,12 @@
       "Creates a private namespace"
     ],
     "links": [
-      "[MDN docs for closures](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures)",
-      "<!-- expertise: (intermediate) -->"
+      "[MDN docs for closures](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures)"
     ],
     "tags": [
       "javascript"
     ],
-    "expertise": "intermediate",
+    "expertise": 1,
     "questionCodeBlocks": [],
     "answerCodeBlocks": [
       "```js\nconst myLibrary = function () {\n  var privateVariable = 2;\n  return {\n    publicMethod: () => privateVariable;\n  };\n}();\nprivateVariable; // ReferenceError\nmyLibrary.publicMethod(); // 2\n```"
@@ -622,13 +589,12 @@
     "links": [
       "[MDN docs for z-index](https://developer.mozilla.org/en-US/docs/Web/CSS/z-index)",
       "[Understanding CSS z-index](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Positioning/Understanding_z_index)",
-      "[What No One Told You About Z-Index](https://philipwalton.com/articles/what-no-one-told-you-about-z-index/)",
-      "<!-- expertise: (junior) -->"
+      "[What No One Told You About Z-Index](https://philipwalton.com/articles/what-no-one-told-you-about-z-index/)"
     ],
     "tags": [
       "css"
     ],
-    "expertise": "junior",
+    "expertise": 0,
     "questionCodeBlocks": [],
     "answerCodeBlocks": []
   }

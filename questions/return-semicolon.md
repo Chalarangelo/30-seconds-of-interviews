@@ -23,4 +23,4 @@ Because of JavaScript's automatic semicolon insertion (ASI), the compiler places
 
 <!-- tags: (javascript) -->
 
-<!-- expertise: (intermediate) -->
+<!-- expertise: (1) -->

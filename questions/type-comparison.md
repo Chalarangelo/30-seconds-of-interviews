@@ -17,4 +17,4 @@ When using triple equals in JavaScript we are testing for strict equality. This 
 
 <!-- tags: (javascript) -->
 
-<!-- expertise: (junior) -->
+<!-- expertise: (0) -->
