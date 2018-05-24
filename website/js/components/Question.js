@@ -1,14 +1,14 @@
 import { h } from "hyperapp"
 import marked from "marked"
 import feather from "feather-icons"
-import { cc } from "../utils"
+import { cc, expertiseStrings } from "../utils"
 
 export default ({ name, question, answer, goodToHear, isOpen, expertise }) => (
   state,
   actions
 ) => (
   <div class="Question">
-    <div class={`Question__badge is-${expertise}`}>{expertise}</div>
+    <div class={`Question__badge is-${expertiseStrings[expertise]}`}>{expertiseStrings[expertise]}</div>
     <div class="Question__heading" innerHTML={marked(`## ${question}`)} />
     <button
       class="btn Question__button"
