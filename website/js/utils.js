@@ -14,3 +14,9 @@ export const scrollToTop = () => {
     scrollTo(0, c - c / 8)
   }
 }
+
+export const expertiseStrings = [
+  'junior',
+  'intermediate',
+  'senior'
+]

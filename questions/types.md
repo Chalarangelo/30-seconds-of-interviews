@@ -17,4 +17,4 @@ The latest ECMAScript standard defines seven data types, six of them being primi
 
 <!-- tags: (javascript) -->
 
-<!-- expertise: (intermediate) -->
+<!-- expertise: (1) -->

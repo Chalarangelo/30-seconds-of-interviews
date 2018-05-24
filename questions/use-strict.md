@@ -23,4 +23,4 @@ Including `'use strict'` at the beginning of your JavaScript source file enables
 
 <!-- tags: (javascript) -->
 
-<!-- expertise: (senior) -->
+<!-- expertise: (2) -->

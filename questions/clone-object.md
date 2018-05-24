@@ -32,4 +32,4 @@ Other alternatives include:
 
 <!-- tags: (javascript) -->
 
-<!-- expertise: (intermediate) -->
+<!-- expertise: (1) -->
