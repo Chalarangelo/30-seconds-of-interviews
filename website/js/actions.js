@@ -1,5 +1,5 @@
 import Prism from "prismjs"
-import { scrollToTop } from "./utils"
+import { scrollToTop, sortByStrings } from "./utils"
 
 export default {
   scrollBackToTop: scrollToTop,
@@ -11,5 +11,8 @@ export default {
   setFilter: value => {
     requestAnimationFrame(() => setTimeout(Prism.highlightAll))
     return { filter: value }
+  },
+  setSortBy: value => state => {
+    return { sortBy: sortByStrings[state.sortBy.indexOf(value)+1] }
   }
 }
