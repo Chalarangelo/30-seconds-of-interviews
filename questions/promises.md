@@ -21,8 +21,8 @@ new Promise((resolve, reject) => {
 
 ##### Additional links
 
-* [Writing neat asynchronous Node.js Code with Promises](https://medium.com/dev-bits/writing-neat-asynchronous-node-js-code-with-promises-32ed3a4fd098)
+* [Master the JavaScript Interview: What is a Promise?](https://medium.com/javascript-scene/master-the-javascript-interview-what-is-a-promise-27fc71e772618)
 
-<!-- tags: (node, javascript) -->
+<!-- tags: (javascript) -->
 
 <!-- expertise: (0) -->

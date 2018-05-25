@@ -17,6 +17,6 @@ When either of these options happens, the associated handlers queued up by a pro
 
 * [Official Web Docs - Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)
 
-<!-- tags: (node, javascript) -->
+<!-- tags: (javascript) -->
 
 <!-- expertise: (0) -->
