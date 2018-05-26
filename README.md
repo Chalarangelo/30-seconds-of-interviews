@@ -1,10 +1,7 @@
+<a href="https://30secondsofinterviews.org"><img src="logo.png" alt="30 seconds of interviews logo"></a>
+
 <h1 align="center">
-  <br>
-  <a href="https://30secondsofinterviews.org"><img src="logo.svg" alt="30 seconds of interviews logo" width="600"></a>
-  <br>
   30 seconds of interviews
-  <br>
-  <br>
 </h1>
 
 <h4 align="center">A curated collection of common interview questions to help you prepare for your next interview.</h4>
@@ -33,9 +30,11 @@ Do you have an excellent idea or know some cool questions that aren't on the lis
 <details>
 <summary>View contents</summary>
 
+* [ What is a callback?](#what-is-a-callback) 
 * [ How do you clone an object in JavaScript?](#how-do-you-clone-an-object-in-javascript) 
 * [ What is a closure?](#what-is-a-closure) 
 * [ How do you compare two objects in JavaScript?](#how-do-you-compare-two-objects-in-javascript) 
+* [ What is the difference between `==` and `===`?](#what-is-the-difference-between-and) 
 * [ What is event-driven programming?](#what-is-event-driven-programming) 
 * [ Generate an array, containing the Fibonacci sequence, up until the nth term.](#generate-an-array-containing-the-fibonacci-sequence-up-until-the-nth-term) 
 * [ What does `0.1 + 0.2 === 0.3` evaluate to?](#what-does-0-1-0-2-0-3-evaluate-to) 
@@ -43,14 +42,16 @@ Do you have an excellent idea or know some cool questions that aren't on the lis
 * [ What is functional programming?](#what-is-functional-programming) 
 * [ What will the console log in this example?](#what-will-the-console-log-in-this-example) 
 * [ How does hoisting work in JavaScript?](#how-does-hoisting-work-in-javascript) 
+* [ What is the only value not equal to itself in JavaScript?](#what-is-the-only-value-not-equal-to-itself-in-javascript) 
 * [ What are the differences between `null` and `undefined`?](#what-are-the-differences-between-null-and-undefined) 
 * [ Does JavaScript pass by value or by reference?](#does-javascript-pass-by-value-or-by-reference) 
 * [ How does prototypal inheritance differ from classical inheritance?](#how-does-prototypal-inheritance-differ-from-classical-inheritance) 
 * [ What is the output of the following code?](#what-is-the-output-of-the-following-code) 
 * [ What does the following function return?](#what-does-the-following-function-return) 
-* [ What is the difference between `==` and `===`?](#what-is-the-difference-between-and) 
+* [ How does `this` work?](#how-does-this-work) 
 * [ What does the following code evaluate to?](#what-does-the-following-code-evaluate-to) 
 * [ What are JavaScript data types?](#what-are-javascript-data-types) 
+* [ What is the purpose of JavaScript UI libraries/frameworks like React, Vue, Angular, Hyperapp, etc?](#what-is-the-purpose-of-javascript-ui-libraries-frameworks-like-react-vue-angular-hyperapp-etc) 
 * [ What does `'use strict'` do and what are some of the key benefits to using it?](#what-does-use-strict-do-and-what-are-some-of-the-key-benefits-to-using-it) 
 * [ What is the reason for wrapping the entire contents of a JavaScript source file in a function?](#what-is-the-reason-for-wrapping-the-entire-contents-of-a-javascript-source-file-in-a-function) 
 </details>
@@ -74,6 +75,8 @@ Do you have an excellent idea or know some cool questions that aren't on the lis
 <details>
 <summary>View contents</summary>
 
+* [ What are `defer` and `async` attributes on a `<script>` tag?](#what-are-defer-and-async-attributes-on-a-script-tag) 
+* [ What is the DOM?](#what-is-the-dom) 
 * [ What are some differences that XHTML has compared to HTML?](#what-are-some-differences-that-xhtml-has-compared-to-html) 
 * [ What is the purpose of `alt` attribute on images?](#what-is-the-purpose-of-alt-attribute-on-images) 
 * [ Where and why is the `rel="noopener"` attribute used?](#where-and-why-is-the-rel-noopener-attribute-used) 
@@ -90,6 +93,42 @@ Do you have an excellent idea or know some cool questions that aren't on the lis
 ---
 
 ## Javascript
+
+### What is a callback?
+
+#### Answer
+
+<details>
+<summary>View answer</summary>
+
+Callbacks are functions passed as an argument to another function to be executed once an event has occurred or a certain task is complete, often used in asynchronous code. Callback functions are invoked later by a piece of code but can be declared on initialization without being invoked.
+
+Event listeners are callbacks that are only executed when a specific event occurs.
+
+```js
+function onClick() {
+  console.log("The user clicked on the page.")
+}
+document.addEventListener("click", onClick)
+```
+
+#### Good to hear
+
+* Functions are first-class objects in JavaScript
+* Callbacks vs Promises
+
+##### Additional links
+
+<!-- Whenever possible, link a more detailed explanation. -->
+
+* [MDN docs for callbacks](https://developer.mozilla.org/en-US/docs/Glossary/Callback_function)
+
+<!-- tags: (javascript) -->
+
+<!-- expertise: (1) -->
+</details> 
+
+<br>[⬆ Back to top](#table-of-contents)
 
 ### How do you clone an object in JavaScript?
 
@@ -128,7 +167,7 @@ Other alternatives include:
 
 <!-- tags: (javascript) -->
 
-<!-- expertise: (intermediate) -->
+<!-- expertise: (1) -->
 </details> 
 
 <br>[⬆ Back to top](#table-of-contents)
@@ -160,7 +199,7 @@ A closure is a function defined inside another function and has access to its le
 
 <!-- tags: (javascript) -->
 
-<!-- expertise: (senior) -->
+<!-- expertise: (2) -->
 </details> 
 
 <br>[⬆ Back to top](#table-of-contents)
@@ -226,7 +265,33 @@ function isDeepEqual(obj1, obj2, testPrototypes = false) {
 
 <!-- tags: (javascript) -->
 
-<!-- expertise: (intermediate) -->
+<!-- expertise: (1) -->
+</details> 
+
+<br>[⬆ Back to top](#table-of-contents)
+
+### What is the difference between `==` and `===`?
+
+#### Answer
+
+<details>
+<summary>View answer</summary>
+
+When using triple equals in JavaScript we are testing for strict equality. This means both the type and the value we are comparing have to be the same. On the other hand, double equals first performs type coercion and then checks for loose equality.
+
+#### Good to hear
+
+* Whenever possible, use triple equals to test equality
+* Type coercion - converts values into a common type
+* Mention of falsy values and their comparison
+
+##### Additional links
+
+* [MDN docs for comparison operators](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Comparison_Operators)
+
+<!-- tags: (javascript) -->
+
+<!-- expertise: (0) -->
 </details> 
 
 <br>[⬆ Back to top](#table-of-contents)
@@ -252,7 +317,7 @@ Event-driven programming is building an application that is based on and respond
 
 <!-- tags: (javascript) -->
 
-<!-- expertise: (senior) -->
+<!-- expertise: (2) -->
 </details> 
 
 <br>[⬆ Back to top](#table-of-contents)
@@ -282,7 +347,7 @@ const fibonacci = n =>
 
 <!-- tags: (javascript) -->
 
-<!-- expertise: (intermediate) -->
+<!-- expertise: (1) -->
 </details> 
 
 <br>[⬆ Back to top](#table-of-contents)
@@ -311,7 +376,7 @@ It evaluates to `false` because JavaScript uses the IEEE 754 standard for Math a
 
 <!-- tags: (javascript) -->
 
-<!-- expertise: (intermediate) -->
+<!-- expertise: (1) -->
 </details> 
 
 <br>[⬆ Back to top](#table-of-contents)
@@ -338,7 +403,7 @@ Both methods iterate through the elements of an array. `map()` maps each element
 
 <!-- tags: (javascript) -->
 
-<!-- expertise: (intermediate) -->
+<!-- expertise: (1) -->
 </details> 
 
 <br>[⬆ Back to top](#table-of-contents)
@@ -367,7 +432,7 @@ Functional programming is a paradigm in which programs are built in a declarativ
 
 <!-- tags: (javascript) -->
 
-<!-- expertise: (senior) -->
+<!-- expertise: (2) -->
 </details> 
 
 <br>[⬆ Back to top](#table-of-contents)
@@ -401,7 +466,7 @@ Due to hoisting, the local variable `foo` is declared before the `console.log` m
 
 <!-- tags: (javascript) -->
 
-<!-- expertise: (intermediate) -->
+<!-- expertise: (1) -->
 </details> 
 
 <br>[⬆ Back to top](#table-of-contents)
@@ -435,7 +500,32 @@ var hoist = "The variable has been hoisted."
 
 <!-- tags: (javascript) -->
 
-<!-- expertise: (intermediate) -->
+<!-- expertise: (1) -->
+</details> 
+
+<br>[⬆ Back to top](#table-of-contents)
+
+### What is the only value not equal to itself in JavaScript?
+
+#### Answer
+
+<details>
+<summary>View answer</summary>
+
+`NaN` (Not-a-Number) is the only value not equal to itself when comparing with any of the comparison operators. `NaN` is often the result of meaningless math computations, so two `NaN` values make no sense to be considered equal.
+
+#### Good to hear
+
+* The functions `isNaN()` and `Number.isNaN()`
+* `const isNaN = x => x !== x`
+
+##### Additional links
+
+* [MDN docs for `NaN`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NaN)
+
+<!-- tags: (javascript) -->
+
+<!-- expertise: (2) -->
 </details> 
 
 <br>[⬆ Back to top](#table-of-contents)
@@ -462,7 +552,7 @@ In JavaScript, two values discretely represent nothing - `undefined` and `null`.
 
 <!-- tags: (javascript) -->
 
-<!-- expertise: (intermediate) -->
+<!-- expertise: (1) -->
 </details> 
 
 <br>[⬆ Back to top](#table-of-contents)
@@ -486,7 +576,7 @@ JavaScript always passes by value. However, with objects, the value is a referen
 
 <!-- tags: (javascript) -->
 
-<!-- expertise: (intermediate) -->
+<!-- expertise: (1) -->
 </details> 
 
 <br>[⬆ Back to top](#table-of-contents)
@@ -514,7 +604,7 @@ In the prototypal inheritance paradigm, object instances inherit directly from o
 
 <!-- tags: (javascript) -->
 
-<!-- expertise: (intermediate) -->
+<!-- expertise: (1) -->
 </details> 
 
 <br>[⬆ Back to top](#table-of-contents)
@@ -549,7 +639,7 @@ The first `console.log` outputs `true` because JavaScript's compiler performs ty
 
 <!-- tags: (javascript) -->
 
-<!-- expertise: (intermediate) -->
+<!-- expertise: (1) -->
 </details> 
 
 <br>[⬆ Back to top](#table-of-contents)
@@ -582,34 +672,82 @@ Because of JavaScript's automatic semicolon insertion (ASI), the compiler places
 
 <!-- tags: (javascript) -->
 
-<!-- expertise: (intermediate) -->
+<!-- expertise: (1) -->
 </details> 
 
 <br>[⬆ Back to top](#table-of-contents)
 
-### What is the difference between `==` and `===`?
+### How does `this` work?
 
 #### Answer
 
 <details>
 <summary>View answer</summary>
 
-When using triple equals in JavaScript we are testing for strict equality. This means both the type and the value we are comparing have to be the same. On the other hand, double equals first performs type coercion and then checks for loose equality.
+The `this` keyword is an object that represents the context of an executing function. Regular functions can have their `this` value changed with `.call`, `.apply` and `.bind`. Arrow functions implicitly bind `this` so that it refers to the context of its lexical environment, regardless of whether or not its context is set explicitly with `call`.
+
+Here are some common examples of `this`:
+
+```js
+// Object literals
+var myObject = {
+  regularFunction: function() {
+    return this
+  },
+  arrowFunction: () => {
+    return this
+  }
+}
+myObject.regularFunction() // myObject
+myObject.arrowFunction() // NOT myObject
+const withoutContextFunction = myObject.regularFunction
+withoutContextFunction() // NOT myObject
+
+// Event listeners
+document.body.addEventListener("click", function() {
+  console.log(this) // document.body
+})
+
+// Classes
+class myClass {
+  constructor() {
+    console.log(this) // myClassInstance
+  }
+}
+var myClassInstance = new myClass()
+
+// Manual
+var myFunction = function() {
+  return this
+}
+myFunction.call({ customThis: true }) // { customThis: true }
+
+// Unwanted `this`
+var obj = {
+  arr: [1, 2, 3],
+  doubleArr() {
+    return this.arr.map(function(value) {
+      // this === this.arr
+      return this.double(value)
+    })
+  },
+  double() {
+    return value * 2
+  }
+}
+obj.doubleArr() // Uncaught TypeError: this.double is not a function
+```
 
 #### Good to hear
 
-* Whenever possible, use triple equals to test equality
-* Type coercion - converts values into a common type
-* Mention of falsy values and their comparison
-* `NaN` is not equivalent to anything, not even itself
-
-##### Additional links
-
-* [MDN docs for comparison operators](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Comparison_Operators)
+* Global `this` in strict and non-strict mode
+* Differences between `call`, `apply` and `bind`
+* Cases where a method will not have the correct `this` context
+* When to use arrow functions and regular functions
 
 <!-- tags: (javascript) -->
 
-<!-- expertise: (junior) -->
+<!-- expertise: (2) -->
 </details> 
 
 <br>[⬆ Back to top](#table-of-contents)
@@ -637,7 +775,7 @@ It evaluates to `"string"`.
 
 <!-- tags: (javascript) -->
 
-<!-- expertise: (intermediate) -->
+<!-- expertise: (1) -->
 </details> 
 
 <br>[⬆ Back to top](#table-of-contents)
@@ -664,7 +802,30 @@ The latest ECMAScript standard defines seven data types, six of them being primi
 
 <!-- tags: (javascript) -->
 
-<!-- expertise: (intermediate) -->
+<!-- expertise: (1) -->
+</details> 
+
+<br>[⬆ Back to top](#table-of-contents)
+
+### What is the purpose of JavaScript UI libraries/frameworks like React, Vue, Angular, Hyperapp, etc?
+
+#### Answer
+
+<details>
+<summary>View answer</summary>
+
+The main purpose is to avoid manipulating the DOM directly and keep the state of an application
+in sync with the UI easily. Additionally, they provide the ability to create components that can be reused when they have similar functionality with minor differences, avoiding duplication which would require multiple changes whenever the structure of a component which is reused in multiple places needs to be updated.
+
+When working with the DOM manipulation libraries like jQuery, the data of an application is generally kept in the DOM itself, often as class names or `data` attributes. Manipulating the DOM to update the UI involves many extra steps and can introduce subtle bugs over time. Keeping the state separate and letting a framework handle the UI updates when the state changes reduces cognitive load, i.e. saying you want the UI to look a certain way when the state is a certain value is the declarative way of creating an application, instead of manually updating the UI to reflect the new state (imperative).
+
+#### Good to hear
+
+* Explanation of templating languages and JSX
+
+<!-- tags: (javascript) -->
+
+<!-- expertise: (2) -->
 </details> 
 
 <br>[⬆ Back to top](#table-of-contents)
@@ -697,7 +858,7 @@ Including `'use strict'` at the beginning of your JavaScript source file enables
 
 <!-- tags: (javascript) -->
 
-<!-- expertise: (senior) -->
+<!-- expertise: (2) -->
 </details> 
 
 <br>[⬆ Back to top](#table-of-contents)
@@ -733,7 +894,7 @@ myLibrary.publicMethod(); // 2
 
 <!-- tags: (javascript) -->
 
-<!-- expertise: (intermediate) -->
+<!-- expertise: (1) -->
 </details> 
 
 <br>[⬆ Back to top](#table-of-contents)
@@ -778,7 +939,7 @@ The BEM methodology is another naming convention for CSS classes. The BEM stands
 
 <!-- tags: (css) -->
 
-<!-- expertise: (junior) -->
+<!-- expertise: (0) -->
 </details> 
 
 <br>[⬆ Back to top](#table-of-contents)
@@ -803,7 +964,7 @@ CSS preprocessors add useful functionality that native CSS does not have, and ge
 
 <!-- tags: (css) -->
 
-<!-- expertise: (junior) -->
+<!-- expertise: (0) -->
 </details> 
 
 <br>[⬆ Back to top](#table-of-contents)
@@ -835,7 +996,7 @@ When two selectors are compared, the comparison is made on a per-column basis (e
 
 <!-- tags: (css) -->
 
-<!-- expertise: (intermediate) -->
+<!-- expertise: (1) -->
 </details> 
 
 <br>[⬆ Back to top](#table-of-contents)
@@ -884,7 +1045,7 @@ We only need to set the `display` property of the `flex-grid` element to `flex` 
 
 <!-- tags: (css) -->
 
-<!-- expertise: (junior) -->
+<!-- expertise: (0) -->
 </details> 
 
 <br>[⬆ Back to top](#table-of-contents)
@@ -910,7 +1071,7 @@ We only need to set the `display` property of the `flex-grid` element to `flex` 
 
 <!-- tags: (css) -->
 
-<!-- expertise: (basic) -->
+<!-- expertise: (0) -->
 </details> 
 
 <br>[⬆ Back to top](#table-of-contents)
@@ -937,7 +1098,7 @@ To utilize a spritesheet in CSS, one would use certain properties, such as `back
 
 <!-- tags: (css) -->
 
-<!-- expertise: (intermediate) -->
+<!-- expertise: (1) -->
 </details> 
 
 <br>[⬆ Back to top](#table-of-contents)
@@ -964,7 +1125,7 @@ When elements overlap, z-order determines which one covers the other.
 
 <!-- tags: (css) -->
 
-<!-- expertise: (junior) -->
+<!-- expertise: (0) -->
 </details> 
 
 <br>[⬆ Back to top](#table-of-contents)
@@ -973,6 +1134,74 @@ When elements overlap, z-order determines which one covers the other.
 ---
 
 ## Html
+
+### What are `defer` and `async` attributes on a `<script>` tag?
+
+#### Answer
+
+<details>
+<summary>View answer</summary>
+
+If neither attribute is present, the script is downloaded and executed synchronously, and will halt parsing of the document until it has finished executing (default behavior). Scripts are downloaded and executed in the order
+they are encountered.
+
+The `defer` attribute downloads the script while the document is still parsing but waits until the document has finished parsing before executing it, equivalent to executing inside a `DOMContentLoaded` event listener. `defer` scripts will execute in order.
+
+The `async` attribute downloads the script during parsing the document but will pause the parser to execute the script before it has fully finished parsing. `async` scripts will not necessarily execute in order.
+
+Note: both attributes must only be used if the script has a `src` attribute (i.e. not an inline script).
+
+```html
+<script src="myscript.js"></script>
+<script src="myscript.js" defer></script>
+<script src="myscript.js" async></script>
+```
+
+#### Good to hear
+
+* Placing a `defer` script in the `<head>` allows the browser to download the script while the page is still parsing, and is therefore a better option than placing the script before the end of the body.
+* If the scripts rely on each other, use `defer`.
+* If the script is independent, use `async`.
+* Use `defer` if the DOM must be ready and the contents are not placed within a `DOMContentLoaded` listener.
+
+##### Additional links
+
+<!-- Whenever possible, link a more detailed explanation. -->
+
+* [async vs defer attributes](http://www.growingwiththeweb.com/2014/02/async-vs-defer-attributes.html)
+
+<!-- tags: (html) -->
+
+<!-- expertise: (1) -->
+</details> 
+
+<br>[⬆ Back to top](#table-of-contents)
+
+### What is the DOM?
+
+#### Answer
+
+<details>
+<summary>View answer</summary>
+
+The DOM (Document Object Model) is an API that represents the structure of HTML and XML documents. The document
+is represented by a node tree (such as elements, text nodes, comments), where each node is an object that can be manipulated via JavaScript to change their styles, contents, placement in the tree, or interacted with through event listeners.
+
+#### Good to hear
+
+* The DOM was designed to be independent of any particular programming language, making the structural representation of the document available from a single, consistent API
+* The DOM is constructed progressively in the browser as a page loads, which is why scripts are often placed at the bottom of a page, in the `<head>` with a `defer` attribute, or inside a `DOMContentLoaded` event listener. Scripts that manipulate DOM nodes should be run after the DOM has been constructed to avoid errors.
+
+##### Additional links
+
+* [MDN docs for DOM](https://developer.mozilla.org/en-US/docs/DOM)
+
+<!-- tags: (html,javascript) -->
+
+<!-- expertise: (1) -->
+</details> 
+
+<br>[⬆ Back to top](#table-of-contents)
 
 ### What are some differences that XHTML has compared to HTML?
 
@@ -1001,7 +1230,7 @@ Some of the key differences are:
 
 <!-- tags: (html) -->
 
-<!-- expertise: (intermediate) -->
+<!-- expertise: (1) -->
 </details> 
 
 <br>[⬆ Back to top](#table-of-contents)
@@ -1025,7 +1254,7 @@ The `alt` attribute provides alternative information for an image if a user cann
 
 <!-- tags: (html) -->
 
-<!-- expertise: (junior) -->
+<!-- expertise: (0) -->
 </details> 
 
 <br>[⬆ Back to top](#table-of-contents)
@@ -1053,7 +1282,7 @@ The `rel="noopener"` is an attribute used in `<a>` elements (hyperlinks). It pre
 
 <!-- tags: (html) -->
 
-<!-- expertise: (intermediate) -->
+<!-- expertise: (1) -->
 </details> 
 
 <br>[⬆ Back to top](#table-of-contents)
@@ -1084,7 +1313,7 @@ The event loop handles all async callbacks. Callbacks are queued in a loop, whil
 
 <!-- tags: (node,javascript) -->
 
-<!-- expertise: (senior) -->
+<!-- expertise: (2) -->
 </details> 
 
 <br>[⬆ Back to top](#table-of-contents)

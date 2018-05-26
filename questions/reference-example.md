@@ -25,4 +25,4 @@ The first `console.log` outputs `true` because JavaScript's compiler performs ty
 
 <!-- tags: (javascript) -->
 
-<!-- expertise: (intermediate) -->
+<!-- expertise: (1) -->
