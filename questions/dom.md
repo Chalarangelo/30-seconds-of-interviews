@@ -14,6 +14,6 @@ is represented by a node tree (such as elements, text nodes, comments), where ea
 
 * [MDN docs for DOM](https://developer.mozilla.org/en-US/docs/DOM)
 
-<!-- tags: (javascript) -->
+<!-- tags: (html,javascript) -->
 
 <!-- expertise: (1) -->
