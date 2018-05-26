@@ -1,6 +1,7 @@
+<a href="https://30secondsofinterviews.org"><img src="logo.png" alt="30 seconds of interviews logo" width="600"></a>
+
 <h1 align="center">
   <br>
-  <a href="https://30secondsofinterviews.org"><img src="logo.png" alt="30 seconds of interviews logo" width="600"></a>
   <br>
   30 seconds of interviews
   <br>
@@ -27,64 +28,65 @@ Do you have an excellent idea or know some cool questions that aren't on the lis
 
 ## Table of Contents
 
-### Javascript
+
+### Javascript 
 
 <details>
 <summary>View contents</summary>
 
-* [ How do you clone an object in JavaScript?](#how-do-you-clone-an-object-in-javascript)
-* [ What is a closure?](#what-is-a-closure)
-* [ How do you compare two objects in JavaScript?](#how-do-you-compare-two-objects-in-javascript)
-* [ What is event-driven programming?](#what-is-event-driven-programming)
-* [ Generate an array, containing the Fibonacci sequence, up until the nth term.](#generate-an-array-containing-the-fibonacci-sequence-up-until-the-nth-term)
-* [ What does `0.1 + 0.2 === 0.3` evaluate to?](#what-does-0-1-0-2-0-3-evaluate-to)
-* [ What is the difference between the array methods `map()` and `forEach()`?](#what-is-the-difference-between-the-array-methods-map-and-foreach)
-* [ What is functional programming?](#what-is-functional-programming)
-* [ What will the console log in this example?](#what-will-the-console-log-in-this-example)
-* [ How does hoisting work in JavaScript?](#how-does-hoisting-work-in-javascript)
-* [ What are the differences between `null` and `undefined`?](#what-are-the-differences-between-null-and-undefined)
-* [ Does JavaScript pass by value or by reference?](#does-javascript-pass-by-value-or-by-reference)
-* [ How does prototypal inheritance differ from classical inheritance?](#how-does-prototypal-inheritance-differ-from-classical-inheritance)
-* [ What is the output of the following code?](#what-is-the-output-of-the-following-code)
-* [ What does the following function return?](#what-does-the-following-function-return)
-* [ What is the difference between `==` and `===`?](#what-is-the-difference-between-and)
-* [ What does the following code evaluate to?](#what-does-the-following-code-evaluate-to)
-* [ What are JavaScript data types?](#what-are-javascript-data-types)
-* [ What does `'use strict'` do and what are some of the key benefits to using it?](#what-does-use-strict-do-and-what-are-some-of-the-key-benefits-to-using-it)
-* [ What is the reason for wrapping the entire contents of a JavaScript source file in a function?](#what-is-the-reason-for-wrapping-the-entire-contents-of-a-javascript-source-file-in-a-function)
-  </details>
+* [ How do you clone an object in JavaScript?](#how-do-you-clone-an-object-in-javascript) 
+* [ What is a closure?](#what-is-a-closure) 
+* [ How do you compare two objects in JavaScript?](#how-do-you-compare-two-objects-in-javascript) 
+* [ What is event-driven programming?](#what-is-event-driven-programming) 
+* [ Generate an array, containing the Fibonacci sequence, up until the nth term.](#generate-an-array-containing-the-fibonacci-sequence-up-until-the-nth-term) 
+* [ What does `0.1 + 0.2 === 0.3` evaluate to?](#what-does-0-1-0-2-0-3-evaluate-to) 
+* [ What is the difference between the array methods `map()` and `forEach()`?](#what-is-the-difference-between-the-array-methods-map-and-foreach) 
+* [ What is functional programming?](#what-is-functional-programming) 
+* [ What will the console log in this example?](#what-will-the-console-log-in-this-example) 
+* [ How does hoisting work in JavaScript?](#how-does-hoisting-work-in-javascript) 
+* [ What are the differences between `null` and `undefined`?](#what-are-the-differences-between-null-and-undefined) 
+* [ Does JavaScript pass by value or by reference?](#does-javascript-pass-by-value-or-by-reference) 
+* [ How does prototypal inheritance differ from classical inheritance?](#how-does-prototypal-inheritance-differ-from-classical-inheritance) 
+* [ What is the output of the following code?](#what-is-the-output-of-the-following-code) 
+* [ What does the following function return?](#what-does-the-following-function-return) 
+* [ What is the difference between `==` and `===`?](#what-is-the-difference-between-and) 
+* [ What does the following code evaluate to?](#what-does-the-following-code-evaluate-to) 
+* [ What are JavaScript data types?](#what-are-javascript-data-types) 
+* [ What does `'use strict'` do and what are some of the key benefits to using it?](#what-does-use-strict-do-and-what-are-some-of-the-key-benefits-to-using-it) 
+* [ What is the reason for wrapping the entire contents of a JavaScript source file in a function?](#what-is-the-reason-for-wrapping-the-entire-contents-of-a-javascript-source-file-in-a-function) 
+</details>
 
-### Css
-
-<details>
-<summary>View contents</summary>
-
-* [ What is CSS BEM?](#what-is-css-bem)
-* [ What are the advantages of using CSS preprocessors?](#what-are-the-advantages-of-using-css-preprocessors)
-* [ Can you describe how CSS specificity works?](#can-you-describe-how-css-specificity-works)
-* [ Use flexbox to create a 3-column layout where each of the columns has a width of 2/12, 7/12 and 3/12 of the screen width respectively. Use the following HTML code as a guide.](#use-flexbox-to-create-a-3-column-layout-where-each-of-the-columns-has-a-width-of-2-12-7-12-and-3-12-of-the-screen-width-respectively-use-the-following-html-code-as-a-guide)
-* [ Can you name the four types of `@media` properties?](#can-you-name-the-four-types-of-media-properties)
-* [ What are the advantages of using CSS sprites and how would one utilize them?](#what-are-the-advantages-of-using-css-sprites-and-how-would-one-utilize-them)
-* [ How does Z index function?](#how-does-z-index-function)
-  </details>
-
-### Html
+### Css 
 
 <details>
 <summary>View contents</summary>
 
-* [ What are some differences that XHTML has compared to HTML?](#what-are-some-differences-that-xhtml-has-compared-to-html)
-* [ What is the purpose of `alt` attribute on images?](#what-is-the-purpose-of-alt-attribute-on-images)
-* [ Where and why is the `rel="noopener"` attribute used?](#where-and-why-is-the-rel-noopener-attribute-used)
-  </details>
+* [ What is CSS BEM?](#what-is-css-bem) 
+* [ What are the advantages of using CSS preprocessors?](#what-are-the-advantages-of-using-css-preprocessors) 
+* [ Can you describe how CSS specificity works?](#can-you-describe-how-css-specificity-works) 
+* [ Use flexbox to create a 3-column layout where each of the columns has a width of 2/12, 7/12 and 3/12 of the screen width respectively. Use the following HTML code as a guide.](#use-flexbox-to-create-a-3-column-layout-where-each-of-the-columns-has-a-width-of-2-12-7-12-and-3-12-of-the-screen-width-respectively-use-the-following-html-code-as-a-guide) 
+* [ Can you name the four types of `@media` properties?](#can-you-name-the-four-types-of-media-properties) 
+* [ What are the advantages of using CSS sprites and how would one utilize them?](#what-are-the-advantages-of-using-css-sprites-and-how-would-one-utilize-them) 
+* [ How does Z index function?](#how-does-z-index-function) 
+</details>
 
-### Node
+### Html 
 
 <details>
 <summary>View contents</summary>
 
-* [ What is the event loop in Node.js?](#what-is-the-event-loop-in-node-js)
-  </details>
+* [ What are some differences that XHTML has compared to HTML?](#what-are-some-differences-that-xhtml-has-compared-to-html) 
+* [ What is the purpose of `alt` attribute on images?](#what-is-the-purpose-of-alt-attribute-on-images) 
+* [ Where and why is the `rel="noopener"` attribute used?](#where-and-why-is-the-rel-noopener-attribute-used) 
+</details>
+
+### Node 
+
+<details>
+<summary>View contents</summary>
+
+* [ What is the event loop in Node.js?](#what-is-the-event-loop-in-node-js) 
+</details>
 
 ---
 
@@ -128,8 +130,7 @@ Other alternatives include:
 <!-- tags: (javascript) -->
 
 <!-- expertise: (1) -->
-
-</details>
+</details> 
 
 <br>[⬆ Back to top](#table-of-contents)
 
@@ -161,8 +162,7 @@ A closure is a function defined inside another function and has access to its le
 <!-- tags: (javascript) -->
 
 <!-- expertise: (2) -->
-
-</details>
+</details> 
 
 <br>[⬆ Back to top](#table-of-contents)
 
@@ -228,8 +228,7 @@ function isDeepEqual(obj1, obj2, testPrototypes = false) {
 <!-- tags: (javascript) -->
 
 <!-- expertise: (1) -->
-
-</details>
+</details> 
 
 <br>[⬆ Back to top](#table-of-contents)
 
@@ -255,8 +254,7 @@ Event-driven programming is building an application that is based on and respond
 <!-- tags: (javascript) -->
 
 <!-- expertise: (2) -->
-
-</details>
+</details> 
 
 <br>[⬆ Back to top](#table-of-contents)
 
@@ -286,8 +284,7 @@ const fibonacci = n =>
 <!-- tags: (javascript) -->
 
 <!-- expertise: (1) -->
-
-</details>
+</details> 
 
 <br>[⬆ Back to top](#table-of-contents)
 
@@ -316,8 +313,7 @@ It evaluates to `false` because JavaScript uses the IEEE 754 standard for Math a
 <!-- tags: (javascript) -->
 
 <!-- expertise: (1) -->
-
-</details>
+</details> 
 
 <br>[⬆ Back to top](#table-of-contents)
 
@@ -344,8 +340,7 @@ Both methods iterate through the elements of an array. `map()` maps each element
 <!-- tags: (javascript) -->
 
 <!-- expertise: (1) -->
-
-</details>
+</details> 
 
 <br>[⬆ Back to top](#table-of-contents)
 
@@ -374,8 +369,7 @@ Functional programming is a paradigm in which programs are built in a declarativ
 <!-- tags: (javascript) -->
 
 <!-- expertise: (2) -->
-
-</details>
+</details> 
 
 <br>[⬆ Back to top](#table-of-contents)
 
@@ -409,8 +403,7 @@ Due to hoisting, the local variable `foo` is declared before the `console.log` m
 <!-- tags: (javascript) -->
 
 <!-- expertise: (1) -->
-
-</details>
+</details> 
 
 <br>[⬆ Back to top](#table-of-contents)
 
@@ -444,8 +437,7 @@ var hoist = "The variable has been hoisted."
 <!-- tags: (javascript) -->
 
 <!-- expertise: (1) -->
-
-</details>
+</details> 
 
 <br>[⬆ Back to top](#table-of-contents)
 
@@ -472,8 +464,7 @@ In JavaScript, two values discretely represent nothing - `undefined` and `null`.
 <!-- tags: (javascript) -->
 
 <!-- expertise: (1) -->
-
-</details>
+</details> 
 
 <br>[⬆ Back to top](#table-of-contents)
 
@@ -497,8 +488,7 @@ JavaScript always passes by value. However, with objects, the value is a referen
 <!-- tags: (javascript) -->
 
 <!-- expertise: (1) -->
-
-</details>
+</details> 
 
 <br>[⬆ Back to top](#table-of-contents)
 
@@ -526,8 +516,7 @@ In the prototypal inheritance paradigm, object instances inherit directly from o
 <!-- tags: (javascript) -->
 
 <!-- expertise: (1) -->
-
-</details>
+</details> 
 
 <br>[⬆ Back to top](#table-of-contents)
 
@@ -562,8 +551,7 @@ The first `console.log` outputs `true` because JavaScript's compiler performs ty
 <!-- tags: (javascript) -->
 
 <!-- expertise: (1) -->
-
-</details>
+</details> 
 
 <br>[⬆ Back to top](#table-of-contents)
 
@@ -596,8 +584,7 @@ Because of JavaScript's automatic semicolon insertion (ASI), the compiler places
 <!-- tags: (javascript) -->
 
 <!-- expertise: (1) -->
-
-</details>
+</details> 
 
 <br>[⬆ Back to top](#table-of-contents)
 
@@ -624,8 +611,7 @@ When using triple equals in JavaScript we are testing for strict equality. This 
 <!-- tags: (javascript) -->
 
 <!-- expertise: (0) -->
-
-</details>
+</details> 
 
 <br>[⬆ Back to top](#table-of-contents)
 
@@ -653,8 +639,7 @@ It evaluates to `"string"`.
 <!-- tags: (javascript) -->
 
 <!-- expertise: (1) -->
-
-</details>
+</details> 
 
 <br>[⬆ Back to top](#table-of-contents)
 
@@ -681,8 +666,7 @@ The latest ECMAScript standard defines seven data types, six of them being primi
 <!-- tags: (javascript) -->
 
 <!-- expertise: (1) -->
-
-</details>
+</details> 
 
 <br>[⬆ Back to top](#table-of-contents)
 
@@ -715,8 +699,7 @@ Including `'use strict'` at the beginning of your JavaScript source file enables
 <!-- tags: (javascript) -->
 
 <!-- expertise: (2) -->
-
-</details>
+</details> 
 
 <br>[⬆ Back to top](#table-of-contents)
 
@@ -752,10 +735,10 @@ myLibrary.publicMethod(); // 2
 <!-- tags: (javascript) -->
 
 <!-- expertise: (1) -->
-
-</details>
+</details> 
 
 <br>[⬆ Back to top](#table-of-contents)
+
 
 ---
 
@@ -797,8 +780,7 @@ The BEM methodology is another naming convention for CSS classes. The BEM stands
 <!-- tags: (css) -->
 
 <!-- expertise: (0) -->
-
-</details>
+</details> 
 
 <br>[⬆ Back to top](#table-of-contents)
 
@@ -823,8 +805,7 @@ CSS preprocessors add useful functionality that native CSS does not have, and ge
 <!-- tags: (css) -->
 
 <!-- expertise: (0) -->
-
-</details>
+</details> 
 
 <br>[⬆ Back to top](#table-of-contents)
 
@@ -856,8 +837,7 @@ When two selectors are compared, the comparison is made on a per-column basis (e
 <!-- tags: (css) -->
 
 <!-- expertise: (1) -->
-
-</details>
+</details> 
 
 <br>[⬆ Back to top](#table-of-contents)
 
@@ -906,8 +886,7 @@ We only need to set the `display` property of the `flex-grid` element to `flex` 
 <!-- tags: (css) -->
 
 <!-- expertise: (0) -->
-
-</details>
+</details> 
 
 <br>[⬆ Back to top](#table-of-contents)
 
@@ -933,8 +912,7 @@ We only need to set the `display` property of the `flex-grid` element to `flex` 
 <!-- tags: (css) -->
 
 <!-- expertise: (0) -->
-
-</details>
+</details> 
 
 <br>[⬆ Back to top](#table-of-contents)
 
@@ -961,8 +939,7 @@ To utilize a spritesheet in CSS, one would use certain properties, such as `back
 <!-- tags: (css) -->
 
 <!-- expertise: (1) -->
-
-</details>
+</details> 
 
 <br>[⬆ Back to top](#table-of-contents)
 
@@ -989,10 +966,10 @@ When elements overlap, z-order determines which one covers the other.
 <!-- tags: (css) -->
 
 <!-- expertise: (0) -->
-
-</details>
+</details> 
 
 <br>[⬆ Back to top](#table-of-contents)
+
 
 ---
 
@@ -1026,8 +1003,7 @@ Some of the key differences are:
 <!-- tags: (html) -->
 
 <!-- expertise: (1) -->
-
-</details>
+</details> 
 
 <br>[⬆ Back to top](#table-of-contents)
 
@@ -1051,8 +1027,7 @@ The `alt` attribute provides alternative information for an image if a user cann
 <!-- tags: (html) -->
 
 <!-- expertise: (0) -->
-
-</details>
+</details> 
 
 <br>[⬆ Back to top](#table-of-contents)
 
@@ -1080,10 +1055,10 @@ The `rel="noopener"` is an attribute used in `<a>` elements (hyperlinks). It pre
 <!-- tags: (html) -->
 
 <!-- expertise: (1) -->
-
-</details>
+</details> 
 
 <br>[⬆ Back to top](#table-of-contents)
+
 
 ---
 
@@ -1111,9 +1086,11 @@ The event loop handles all async callbacks. Callbacks are queued in a loop, whil
 <!-- tags: (node,javascript) -->
 
 <!-- expertise: (2) -->
-
-</details>
+</details> 
 
 <br>[⬆ Back to top](#table-of-contents)
 
+
 ---
+
+
