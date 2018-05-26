@@ -10,12 +10,8 @@ import view from "./js/view"
 
 const main = app(state, actions, view, document.body)
 
-// Once app has mounted to DOM
 setTimeout(() => {
   Prism.highlightAll()
-
-  // Back to top button. Linking with Hyperapp state seems
-  // to debounce the view update
   const backToTopButton = document.querySelector(".BackToTopButton")
   addEventListener("scroll", () => {
     backToTopButton.classList[window.scrollY > 750 ? "add" : "remove"](
