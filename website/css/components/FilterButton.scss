@@ -4,8 +4,37 @@
   margin: 8px 4px;
 
   &.is-active {
-    background: #7983ff;
-    border-color: #7983ff;
+    background: #3b3754;
+    border-color: #3b3754;
     color: white;
+
+    &.is-html {
+      background: $gradient-html;
+      background-size: 120% 120%;
+      background-position: 5% 50%;
+      border-color: transparent;
+    }
+
+    &.is-css {
+      background: $gradient-css;
+      background-size: 120% 120%;
+      background-position: 5% 50%;
+      border-color: transparent;
+    }
+
+    &.is-javascript {
+      background: $gradient-javascript;
+      background-size: 120% 120%;
+      background-position: 5% 50%;
+      border-color: transparent;
+      color: #794c22;
+    }
+
+    &.is-node {
+      background: $gradient-node;
+      background-size: 120% 120%;
+      background-position: 5% 50%;
+      border-color: transparent;
+    }
   }
 }
