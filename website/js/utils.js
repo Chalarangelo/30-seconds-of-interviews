@@ -15,8 +15,11 @@ export const scrollToTop = () => {
   }
 }
 
-export const expertiseStrings = [
-  'junior',
-  'intermediate',
-  'senior'
-]
+export const EXPERTISE_STRINGS = ["junior", "intermediate", "senior"]
+
+export const TAG_NAMES = {
+  javascript: "JavaScript",
+  html: "HTML",
+  css: "CSS",
+  node: "Node"
+}
