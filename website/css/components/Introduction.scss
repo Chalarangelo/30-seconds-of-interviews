@@ -1,0 +1,16 @@
+@import "../_vars.scss";
+
+.Introduction {
+    position: relative;
+    background: white;
+    padding: 5% 5%;
+    border-radius: 12px;
+    box-shadow: 0 0.4rem 0.8rem -0.1rem rgba(0, 32, 128, 0.1), 0 0 0 1px #f0f2f7;
+    line-height: 1.8;
+    font-size: 18px;
+    text-align: center;
+    margin-bottom: 20px;
+    margin-left: 10%;
+    margin-right: 10%;
+    overflow: hidden;
+}
