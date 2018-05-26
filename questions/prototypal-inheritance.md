@@ -18,4 +18,4 @@ In the prototypal inheritance paradigm, object instances inherit directly from o
 
 <!-- tags: (javascript) -->
 
-<!-- expertise: (intermediate) -->
+<!-- expertise: (1) -->

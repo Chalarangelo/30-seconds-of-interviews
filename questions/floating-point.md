@@ -19,4 +19,4 @@ It evaluates to `false` because JavaScript uses the IEEE 754 standard for Math a
 
 <!-- tags: (javascript) -->
 
-<!-- expertise: (intermediate) -->
+<!-- expertise: (1) -->

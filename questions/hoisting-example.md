@@ -24,4 +24,4 @@ Due to hoisting, the local variable `foo` is declared before the `console.log` m
 
 <!-- tags: (javascript) -->
 
-<!-- expertise: (intermediate) -->
+<!-- expertise: (1) -->

@@ -40,10 +40,11 @@ attempt("questions.json generation", () => {
         .slice(contents.indexOf("##### Additional links") + 23)
         .trim()
         .split("\n")
+        .filter(v => /(\/\*[\w\'\s\r\n\*]*\*\/)|(\/\/[\w\s\']*)|(\<![\-\-\s\w\>\/]*\>)/.test(v))
         .map(v => v.replace("* ", ""))
         .filter(v => v.trim() !== "" && !v.includes("tags")),
       tags: (contents.match(/<!--\s*tags:\s*\((.+)\)/) || [])[1].split(","),
-      expertise: (contents.match(/<!--\s*expertise:\s*\((.+)\)/) || [])[1],
+      expertise: parseInt((contents.match(/<!--\s*expertise:\s*\((.+)\)/) || [])[1]),
       questionCodeBlocks: getCodeBlocks(question),
       answerCodeBlocks: getCodeBlocks(answer)
     }

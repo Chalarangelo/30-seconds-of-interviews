@@ -18,4 +18,4 @@ The `rel="noopener"` is an attribute used in `<a>` elements (hyperlinks). It pre
 
 <!-- tags: (html) -->
 
-<!-- expertise: (intermediate) -->
+<!-- expertise: (1) -->

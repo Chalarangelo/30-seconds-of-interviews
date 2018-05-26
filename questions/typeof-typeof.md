@@ -18,4 +18,4 @@ It evaluates to `"string"`.
 
 <!-- tags: (javascript) -->
 
-<!-- expertise: (intermediate) -->
+<!-- expertise: (1) -->

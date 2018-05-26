@@ -19,4 +19,4 @@ Functional programming is a paradigm in which programs are built in a declarativ
 
 <!-- tags: (javascript) -->
 
-<!-- expertise: (senior) -->
+<!-- expertise: (2) -->

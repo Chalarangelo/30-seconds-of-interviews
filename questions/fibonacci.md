@@ -20,4 +20,4 @@ const fibonacci = n =>
 
 <!-- tags: (javascript) -->
 
-<!-- expertise: (intermediate) -->
+<!-- expertise: (1) -->
