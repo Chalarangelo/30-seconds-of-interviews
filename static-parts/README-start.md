@@ -22,9 +22,17 @@
 
 Interviews are daunting and can make even the most seasoned expert forget things under pressure. Review and learn what questions are commonly encountered in interviews curated by the community that's answered them and go prepared for anything they'll ask. By bringing together experience and real-world examples, you can go from being nervous to being prepared for that next big opportunity.
 
+## View online
+
+https://30secondsofinterviews.org
+
+
 ## Contributing
+
+> 30 seconds of interviews is a community effort, so feel free to contribute in any way you can. Every contribution helps!
 
 Do you have an excellent idea or know some cool questions that aren't on the list? Read the [contribution guidelines](https://github.com/fejes713/30-seconds-of-interviews/blob/master/CONTRIBUTING.md) and submit a pull request.
 
+Join our [Gitter channel](https://gitter.im/30-seconds-of-interviews/Lobby) to help with the development of the project.
 
 ## Table of Contents
