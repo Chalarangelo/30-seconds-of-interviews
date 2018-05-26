@@ -7,13 +7,29 @@ export const cc = (constant, conditionalClasses = constant) => {
   return typeof constant === "object" ? res : constant + res
 }
 
-export const scrollToTop = () => {
-  const c = document.documentElement.scrollTop || document.body.scrollTop
-  if (c > 0) {
-    requestAnimationFrame(scrollToTop)
-    scrollTo(0, c - c / 8)
+export const scrollToTop = (() => {
+  let isScrolling = false
+  let isScrollingTimeout
+  addEventListener(
+    "wheel",
+    () => {
+      isScrolling = true
+      clearTimeout(isScrollingTimeout)
+      isScrollingTimeout = setTimeout(() => {
+        isScrolling = false
+      }, 100)
+    },
+    { passive: true }
+  )
+
+  return () => {
+    const c = document.documentElement.scrollTop || document.body.scrollTop
+    if (!isScrolling && c > 0) {
+      requestAnimationFrame(scrollToTop)
+      scrollTo(0, c - c / 8)
+    }
   }
-}
+})()
 
 export const EXPERTISE_STRINGS = ["junior", "intermediate", "senior"]
 
