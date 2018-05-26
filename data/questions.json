@@ -1,5 +1,27 @@
 [
   {
+    "name": "async-defer-attributes.md",
+    "question": "What are `defer` and `async` attributes on a `<script>` tag?",
+    "answer": "If neither attribute is present, the script is downloaded and executed synchronously, and will halt parsing of the document until it has finished executing (default behavior). Scripts are downloaded and executed in the order\nthey are encountered.\n\nThe `defer` attribute downloads the script while the document is still parsing but waits until the document has finished parsing before executing it, equivalent to executing inside a `DOMContentLoaded` event listener. `defer` scripts\nwill execute in order.\n\nThe `async` attribute downloads the script during parsing the document but will pause the parser to execute the script before it has fully finished parsing. `async` scripts will not necessarily execute in order.\n\nNote: both attributes must only be used if the script has a `src` attribute (i.e. not an inline script).\n\n```html\n<script src=\"myscript.js\"></script>\n<script src=\"myscript.js\" defer></script>\n<script src=\"myscript.js\" async></script>\n```",
+    "goodToHear": [
+      "Placing a `defer` script in the `<head>` allows the browser to download the script while the page is still parsing, and is therefore a better option than placing the script before the end of the body.",
+      "If the scripts rely on each other, use `defer`.",
+      "If the script is independent use, `async`.",
+      "Use `defer` if the DOM must be ready and the contents are not placed within a `DOMContentLoaded` listener."
+    ],
+    "links": [
+      "[MDN docs for callbacks](https://developer.mozilla.org/en-US/docs/Glossary/Callback_function)"
+    ],
+    "tags": [
+      "html"
+    ],
+    "expertise": 1,
+    "questionCodeBlocks": [],
+    "answerCodeBlocks": [
+      "```html\n<script src=\"myscript.js\"></script>\n<script src=\"myscript.js\" defer></script>\n<script src=\"myscript.js\" async></script>\n```"
+    ]
+  },
+  {
     "name": "bem.md",
     "question": "What is CSS BEM?",
     "answer": "The BEM methodology is another naming convention for CSS classes. The BEM stands for Block, Element, Modifier which is an explanation for its structure. Block is a standalone component that is reusable across projects. Elements and modifiers are part of the block with no standalone meaning. Here is the example of the typical syntax:\n\n```css\n/* block component */\n.block {\n}\n\n/* element */\n.block__element {\n}\n\n/* modifier */\n.block__element--modifier {\n}\n```",
@@ -18,6 +40,26 @@
     "questionCodeBlocks": [],
     "answerCodeBlocks": [
       "```css\n/* block component */\n.block {\n}\n\n/* element */\n.block__element {\n}\n\n/* modifier */\n.block__element--modifier {\n}\n```"
+    ]
+  },
+  {
+    "name": "callbacks.md",
+    "question": "What is a callback?",
+    "answer": "Callbacks are functions passed as an argument to another function to be executed once an event has occurred or a certain task is complete, often used in asynchronous code. Callback functions are invoked later by a piece of code but can be declared on initialization without being invoked.\n\nEvent listeners are callbacks that are only executed when a specific event occurs.\n\n```js\nfunction onClick() {\n  console.log(\"The user clicked on the page.\")\n}\ndocument.addEventListener(\"click\", onClick)\n```",
+    "goodToHear": [
+      "Functions are first-class objects in JavaScript",
+      "Callbacks vs Promises"
+    ],
+    "links": [
+      "[MDN docs for callbacks](https://developer.mozilla.org/en-US/docs/Glossary/Callback_function)"
+    ],
+    "tags": [
+      "javascript"
+    ],
+    "expertise": 1,
+    "questionCodeBlocks": [],
+    "answerCodeBlocks": [
+      "```js\nfunction onClick() {\n  console.log(\"The user clicked on the page.\")\n}\ndocument.addEventListener(\"click\", onClick)\n```"
     ]
   },
   {
@@ -116,6 +158,43 @@
       "css"
     ],
     "expertise": 1,
+    "questionCodeBlocks": [],
+    "answerCodeBlocks": []
+  },
+  {
+    "name": "dom.md",
+    "question": "What is the DOM?",
+    "answer": "The DOM (Document Object Model) is an API that represents the structure of HTML and XML documents. The document\nis represented by a node tree (such as elements, text nodes, comments), where each node is an object that can be manipulated via JavaScript to change their styles, contents, placement in the tree, or interacted with through event listeners.",
+    "goodToHear": [
+      "The DOM was designed to be independent of any particular programming language, making the structural representation of the document available from a single, consistent API",
+      "The DOM is constructed progressively in the browser as a page loads, which is why scripts are often placed at the bottom of a page, in the `<head>` with a `defer` attribute, or inside a `DOMContentLoaded` event listener. Scripts that manipulate DOM nodes should be run after the DOM has been constructed to avoid errors."
+    ],
+    "links": [
+      "[MDN docs for DOM](https://developer.mozilla.org/en-US/docs/DOM)"
+    ],
+    "tags": [
+      "javascript"
+    ],
+    "expertise": 1,
+    "questionCodeBlocks": [],
+    "answerCodeBlocks": []
+  },
+  {
+    "name": "double-vs-triple-equals.md",
+    "question": "What is the difference between `==` and `===`?",
+    "answer": "When using triple equals in JavaScript we are testing for strict equality. This means both the type and the value we are comparing have to be the same. On the other hand, double equals first performs type coercion and then checks for loose equality.",
+    "goodToHear": [
+      "Whenever possible, use triple equals to test equality",
+      "Type coercion - converts values into a common type",
+      "Mention of falsy values and their comparison"
+    ],
+    "links": [
+      "[MDN docs for comparison operators](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Comparison_Operators)"
+    ],
+    "tags": [
+      "javascript"
+    ],
+    "expertise": 0,
     "questionCodeBlocks": [],
     "answerCodeBlocks": []
   },
@@ -332,6 +411,24 @@
     "answerCodeBlocks": []
   },
   {
+    "name": "nan.md",
+    "question": "What is the only value not equal to itself in JavaScript?",
+    "answer": "`NaN` (Not-a-Number) is the only value not equal to itself when comparing with any of the comparison operators. `NaN` is often the result of meaningless math computations, so two `NaN` values make no sense to be considered equal.",
+    "goodToHear": [
+      "The functions `isNaN()` and `Number.isNaN()`",
+      "`const isNaN = x => x !== x`"
+    ],
+    "links": [
+      "[MDN docs for `NaN`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NaN)"
+    ],
+    "tags": [
+      "javascript"
+    ],
+    "expertise": 2,
+    "questionCodeBlocks": [],
+    "answerCodeBlocks": []
+  },
+  {
     "name": "node-event-loop.md",
     "question": "What is the event loop in Node.js?",
     "answer": "The event loop handles all async callbacks. Callbacks are queued in a loop, while other code runs, and will run one by one when the response for each one has been received.",
@@ -479,26 +576,6 @@
       "css"
     ],
     "expertise": 1,
-    "questionCodeBlocks": [],
-    "answerCodeBlocks": []
-  },
-  {
-    "name": "type-comparison.md",
-    "question": "What is the difference between `==` and `===`?",
-    "answer": "When using triple equals in JavaScript we are testing for strict equality. This means both the type and the value we are comparing have to be the same. On the other hand, double equals first performs type coercion and then checks for loose equality.",
-    "goodToHear": [
-      "Whenever possible, use triple equals to test equality",
-      "Type coercion - converts values into a common type",
-      "Mention of falsy values and their comparison",
-      "`NaN` is not equivalent to anything, not even itself"
-    ],
-    "links": [
-      "[MDN docs for comparison operators](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Comparison_Operators)"
-    ],
-    "tags": [
-      "javascript"
-    ],
-    "expertise": 0,
     "questionCodeBlocks": [],
     "answerCodeBlocks": []
   },
