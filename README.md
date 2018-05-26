@@ -1,11 +1,7 @@
-<a href="https://30secondsofinterviews.org"><img src="logo.png" alt="30 seconds of interviews logo" width="600"></a>
+<a href="https://30secondsofinterviews.org"><img src="logo.png" alt="30 seconds of interviews logo"></a>
 
 <h1 align="center">
-  <br>
-  <br>
   30 seconds of interviews
-  <br>
-  <br>
 </h1>
 
 <h4 align="center">A curated collection of common interview questions to help you prepare for your next interview.</h4>
