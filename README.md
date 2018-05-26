@@ -18,9 +18,14 @@
 
 <br>
 
-This repository contains short answers to most common questions asked in a full-stack interview. Each explanation is written with the motto _you can understand it in 30 seconds_.
+## Foreword
+
+Interviews are daunting and can make even the most seasoned expert forget things under pressure. Review and learn what questions are commonly encountered in interviews curated by the community that's answered them and go prepared for anything they'll ask. By bringing together experience and real-world examples, you can go from being nervous to being prepared for that next big opportunity.
+
+## Contributing
 
 Do you have an excellent idea or know some cool questions that aren't on the list? Read the [contribution guidelines](https://github.com/fejes713/30-seconds-of-interviews/blob/master/CONTRIBUTING.md) and submit a pull request.
+
 
 ## Table of Contents
 
@@ -1321,4 +1326,6 @@ The event loop handles all async callbacks. Callbacks are queued in a loop, whil
 
 ---
 
+## License
 
+[MIT](LICENSE). Copyright (c) [Stefan Feješ](https://stefanfejes.com/).
