@@ -11,6 +11,6 @@ When working with the DOM manipulation libraries like jQuery, the data of an app
 
 * Explanation of templating languages and JSX
 
-<!-- tags: (js) -->
+<!-- tags: (javascript) -->
 
 <!-- expertise: (2) -->
