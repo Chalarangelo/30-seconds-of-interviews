@@ -2,6 +2,21 @@
 
 .FilterButton {
   margin: 8px 4px;
+  padding: 10px 0;
+  flex: 1 0 calc(50% - 8px);
+
+  @media (min-width: $breakpoint-md) {
+    flex: 0 1 auto;
+    padding: 10px 15px;
+  }
+
+  &.is-all {
+    flex-basis: calc(100% - 8px);
+
+    @media (min-width: $breakpoint-md) {
+      flex-basis: auto;
+    }
+  }
 
   &.is-active {
     background: #3b3754;
