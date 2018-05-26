@@ -9,7 +9,6 @@ When using triple equals in JavaScript we are testing for strict equality. This 
 * Whenever possible, use triple equals to test equality
 * Type coercion - converts values into a common type
 * Mention of falsy values and their comparison
-* `NaN` is not equivalent to anything, not even itself
 
 ##### Additional links
 
