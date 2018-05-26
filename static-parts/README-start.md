@@ -1,6 +1,7 @@
+<a href="https://30secondsofinterviews.org"><img src="logo.png" alt="30 seconds of interviews logo" width="600"></a>
+
 <h1 align="center">
   <br>
-  <a href="https://30secondsofinterviews.org"><img src="logo.svg" alt="30 seconds of interviews logo" width="600"></a>
   <br>
   30 seconds of interviews
   <br>
