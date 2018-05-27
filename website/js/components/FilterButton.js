@@ -1,5 +1,5 @@
 import { h } from "hyperapp"
-import { cc, TAG_NAMES } from "../utils"
+import { cc } from "../utils"
 import feather from "feather-icons"
 
 export default ({ type, icon }, children) => (state, actions) => (
@@ -10,7 +10,7 @@ export default ({ type, icon }, children) => (state, actions) => (
     })}
     onclick={() => actions.setFilter(type)}
     data-tooltip={
-      type === "all" ? "No filter" : `Display only ${TAG_NAMES[type]} questions`
+      type === "all" ? "No filter" : `Display only ${type} questions`
     }
   >
     {children}

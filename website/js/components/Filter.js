@@ -1,24 +1,29 @@
 import { h } from "hyperapp"
 import FilterButton from "./FilterButton"
+import SortButton from "./SortButton"
+import { TAG_NAMES } from "../utils"
 
 export default () => (
   <div class="Filter">
     <div class="container">
-      <FilterButton type="all" icon="check">
+      <FilterButton type={TAG_NAMES.all} icon="check">
         All
       </FilterButton>
-      <FilterButton type="html" icon="layout">
+      <FilterButton type={TAG_NAMES.html} icon="layout">
         HTML
       </FilterButton>
-      <FilterButton type="css" icon="feather">
+      <FilterButton type={TAG_NAMES.css} icon="feather">
         CSS
       </FilterButton>
-      <FilterButton type="javascript" icon="code">
+      <FilterButton type={TAG_NAMES.javascript} icon="code">
         JavaScript
       </FilterButton>
-      <FilterButton type="node" icon="server">
+      <FilterButton type={TAG_NAMES.node} icon="server">
         Node
       </FilterButton>
+      <SortButton>
+        Sort By
+      </SortButton>
     </div>
   </div>
 )
