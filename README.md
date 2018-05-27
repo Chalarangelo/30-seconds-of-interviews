@@ -196,7 +196,7 @@ An example can be the following snippet, which after 100ms prints out the result
 ```js
 new Promise((resolve, reject) => {
   setTimeout(() => {
-    resolve('result')
+    resolve("result")
   }, 100)
 })
   .then(console.log)
@@ -277,10 +277,10 @@ function isDeepEqual(obj1, obj2, testPrototypes = false) {
 
   const prototypesAreEqual = testPrototypes
     ? isDeepEqual(
-        Object.getPrototypeOf(obj1),
-        Object.getPrototypeOf(obj2),
-        true
-      )
+      Object.getPrototypeOf(obj1),
+      Object.getPrototypeOf(obj2),
+      true
+    )
     : true
 
   const obj1Props = Object.getOwnPropertyNames(obj1)
@@ -348,13 +348,13 @@ This technique is very common in JavaScript libraries. It creates a closure arou
 
 ```js
 const myLibrary = function () {
-  var privateVariable = 2;
+  var privateVariable = 2
   return {
-    publicMethod: () => privateVariable;
-  };
-}();
-privateVariable; // ReferenceError
-myLibrary.publicMethod(); // 2
+    publicMethod: () => privateVariable
+  }
+}()
+privateVariable // ReferenceError
+myLibrary.publicMethod() // 2
 ```
 
 
@@ -722,28 +722,30 @@ This practice is also called the _Node.js error convention_, and this kind of ca
 ```js
 var isTrue = function(value, callback) {
   if (value === true) {
-    callback(null, "Value was true.");
+    callback(null, "Value was true.")
   } else {
-    callback(new Error("Value is not true!"));
+    callback(new Error("Value is not true!"))
   }
 }
 
 var callback = function (error, retval) {
   if (error) {
-    console.log(error);
-    return;
+    console.log(error)
+    return
   }
-  console.log(retval);
+  console.log(retval)
 }
 
-isTrue(false, callback);
-isTrue(true,  callback);
+isTrue(false, callback)
+isTrue(true,  callback)
 
-{ stack: [Getter/Setter],
-  arguments: undefined,
-  type: undefined,
-  message: 'Value is not true!' }
-Value was true.
+/*
+  { stack: [Getter/Setter],
+    arguments: undefined,
+    type: undefined,
+    message: 'Value is not true!' }
+  Value was true.
+*/
 ```
 
 
@@ -1525,16 +1527,16 @@ A closure is a function defined inside another function and has access to its le
 
 ```js
 getData(function(a){  
-    getMoreData(a, function(b){
-        getMoreData(b, function(c){ 
-            getMoreData(c, function(d){ 
-                getMoreData(d, function(e){ 
-                    ...
-                });
-            });
-        });
-    });
-});
+  getMoreData(a, function(b){
+    getMoreData(b, function(c){ 
+      getMoreData(c, function(d){ 
+        getMoreData(d, function(e){ 
+          //  ...
+        })
+      })
+    })
+  })
+})
 ```
 
 <details>
@@ -2028,28 +2030,30 @@ This practice is also called the _Node.js error convention_, and this kind of ca
 ```js
 var isTrue = function(value, callback) {
   if (value === true) {
-    callback(null, "Value was true.");
+    callback(null, "Value was true.")
   } else {
-    callback(new Error("Value is not true!"));
+    callback(new Error("Value is not true!"))
   }
 }
 
 var callback = function (error, retval) {
   if (error) {
-    console.log(error);
-    return;
+    console.log(error)
+    return
   }
-  console.log(retval);
+  console.log(retval)
 }
 
-isTrue(false, callback);
-isTrue(true,  callback);
+isTrue(false, callback)
+isTrue(true,  callback)
 
-{ stack: [Getter/Setter],
-  arguments: undefined,
-  type: undefined,
-  message: 'Value is not true!' }
-Value was true.
+/*
+  { stack: [Getter/Setter],
+    arguments: undefined,
+    type: undefined,
+    message: 'Value is not true!' }
+  Value was true.
+*/
 ```
 
 
@@ -2075,16 +2079,16 @@ Value was true.
 
 ```js
 getData(function(a){  
-    getMoreData(a, function(b){
-        getMoreData(b, function(c){ 
-            getMoreData(c, function(d){ 
-                getMoreData(d, function(e){ 
-                    ...
-                });
-            });
-        });
-    });
-});
+  getMoreData(a, function(b){
+    getMoreData(b, function(c){ 
+      getMoreData(c, function(d){ 
+        getMoreData(d, function(e){ 
+          //  ...
+        })
+      })
+    })
+  })
+})
 ```
 
 <details>

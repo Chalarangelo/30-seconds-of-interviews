@@ -1,4 +1,4 @@
-/* eslint no-console: 0 */
+/* eslint no-console: 0, no-cond-assign: 0 */
 
 const fs = require("fs-extra")
 const path = require("path")
@@ -27,6 +27,7 @@ const readQuestions = () =>
   attempt("read questions", () =>
     fs
       .readdirSync(QUESTIONS_PATH)
+      .filter(f => !f.includes("eslint"))
       .sort((a, b) => (a.toLowerCase() < b.toLowerCase() ? -1 : 1))
       .reduce((acc, name) => {
         acc[name] = fs
@@ -51,8 +52,7 @@ const getCodeBlocks = str => {
   const regex = /```[.\S\s]*?```/g
   const results = []
   let m = null
-  while ((regex.exec(str)) !== null) {
-    m = regex.exec(str)
+  while ((m = regex.exec(str)) !== null) {
     if (m.index === regex.lastIndex) {
       regex.lastIndex+=1
     }
