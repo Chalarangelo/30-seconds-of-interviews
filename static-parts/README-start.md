@@ -24,7 +24,7 @@ Interviews are daunting and can make even the most seasoned expert forget things
 
 ## View online
 
-
+<a href="https://30secondsofinterviews.org"><img src="website-promo.png" alt="30 seconds of interviews promo"></a>
 
 ## Contributing
 
