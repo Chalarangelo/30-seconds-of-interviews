@@ -1,8 +1,8 @@
 import questions from "../../data/questions.json"
-import { filterStrings, sortByStrings } from './utils'
+import { TAG_NAMES, SORTBY_STRINGS } from './utils'
 
 export default {
   questions,
-  filter: filterStrings.all,
-  sortBy: sortByStrings.expertise
+  filter: TAG_NAMES.all,
+  sortBy: SORTBY_STRINGS.expertise
 }
