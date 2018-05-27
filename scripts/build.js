@@ -97,11 +97,22 @@ try {
 		})
 	})
 
+	// sort questionsInTag by size
+	tags = Object.keys(questionsInTag)
+	tags.sort(
+		(tag1, tag2) =>
+			questionsInTag[tag1].length == questionsInTag[tag2].length
+				? 0
+				: questionsInTag[tag1].length < questionsInTag[tag2].length
+					? 1
+					: -1
+	)
+
 	// write Table of Contents
-	Object.keys(questionsInTag).forEach(tagKey => {
+	tags.forEach(tagKey => {
 		taggedQuestions = questionsInTag[tagKey]
 		output += hX(3, TAG_NAMES[tagKey])
-		output += detailsTOC("View content", taggedQuestions)
+		output += detailsTOC("View contents", taggedQuestions)
 	})
 
 	// delimeter after TOC
@@ -109,8 +120,9 @@ try {
 
 	// write actual questions
 	Object.keys(questionsInTag).forEach(tagKey => {
-		taggedQuestions = questionsInTag[tagKey]
+    taggedQuestions = questionsInTag[tagKey]
 		taggedQuestions.forEach(question => {
+      output += hX(3, question.question)
 			output += detailsQuestion("View answer", question)
 			output += `\n\n<br>[⬆ Back to top](#table-of-contents)\n\n`
 		})
