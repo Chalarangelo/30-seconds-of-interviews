@@ -1,7 +1,7 @@
-<a href="https://30secondsofinterviews.org"><img src="logo.jpg" alt="30 seconds of interviews logo"></a>
+<a href="https://30secondsofinterviews.org"><img src="logo.jpg" alt="30 Seconds of Interviews logo"></a>
 
 <h1 align="center">
-  30 seconds of interviews
+  30 Seconds of Interviews
 </h1>
 
 <h4 align="center">A curated collection of common interview questions to help you prepare for your next interview.</h4>
@@ -24,7 +24,7 @@ Interviews are daunting and can make even the most seasoned expert forget things
 
 ## View online
 
-<a href="https://30secondsofinterviews.org"><img src="website-promo.png" alt="30 seconds of interviews promo"></a>
+<a href="https://30secondsofinterviews.org"><img src="promo.jpg" alt="30 Seconds of Interviews promo"></a>
 
 ## Contributing
 

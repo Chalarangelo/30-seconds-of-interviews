@@ -1,7 +1,7 @@
-<a href="https://30secondsofinterviews.org"><img src="logo.jpg" alt="30 seconds of interviews logo"></a>
+<a href="https://30secondsofinterviews.org"><img src="logo.jpg" alt="30 Seconds of Interviews logo"></a>
 
 <h1 align="center">
-  30 seconds of interviews
+  30 Seconds of Interviews
 </h1>
 
 <h4 align="center">A curated collection of common interview questions to help you prepare for your next interview.</h4>
@@ -24,7 +24,7 @@ Interviews are daunting and can make even the most seasoned expert forget things
 
 ## View online
 
-<a href="https://30secondsofinterviews.org"><img src="website-promo.png" alt="30 seconds of interviews promo"></a>
+<a href="https://30secondsofinterviews.org"><img src="promo.jpg" alt="30 Seconds of Interviews promo"></a>
 
 ## Contributing
 
@@ -43,20 +43,7 @@ Join our [Gitter channel](https://gitter.im/30-seconds-of-interviews/Lobby) to h
 <summary>View contents</summary>
 
 * [How can you avoid callback hells?
-
-```js
-getData(function(a){  
-    getMoreData(a, function(b){
-        getMoreData(b, function(c){ 
-            getMoreData(c, function(d){ 
-                getMoreData(d, function(e){ 
-                    ...
-                });
-            });
-        });
-    });
-});
-```](#how-can-you-avoid-callback-hells-js-get-data-function-a-get-more-data-a-function-b-get-more-data-b-function-c-get-more-data-c-function-d-get-more-data-d-function-e)
+](#how-can-you-avoid-callback-hells-js-get-data-function-a-get-more-data-a-function-b-get-more-data-b-function-c-get-more-data-c-function-d-get-more-data-d-function-e)
 * [What is a callback?](#what-is-a-callback)
 * [How do you clone an object in JavaScript?](#how-do-you-clone-an-object-in-java-script)
 * [What is a closure?](#what-is-a-closure)
@@ -69,81 +56,33 @@ getData(function(a){
 * [What is the difference between the array methods `map()` and `forEach()`?](#what-is-the-difference-between-the-array-methods-map-and-for-each)
 * [What is functional programming?](#what-is-functional-programming)
 * [What will the console log in this example?
-
-```js
-var foo = 1
-var foobar = function() {
-  console.log(foo)
-  var foo = 2
-}
-foobar()
-```](#what-will-the-console-log-in-this-example-js-var-foo-1-var-foobar-function-console-log-foo-var-foo-2-foobar)
+](#what-will-the-console-log-in-this-example-js-var-foo-1-var-foobar-function-console-log-foo-var-foo-2-foobar)
 * [How does hoisting work in JavaScript?](#how-does-hoisting-work-in-java-script)
 * [Create a function that masks a string of characters with `#` except for the last four (4) characters.
-
-```js
-mask("123456789") // "#####6789"
-```](#create-a-function-that-masks-a-string-of-characters-with-except-for-the-last-four-4-characters-js-mask-123456789-6789)
+](#create-a-function-that-masks-a-string-of-characters-with-except-for-the-last-four-4-characters-js-mask-123456789-6789)
 * [Explain the difference between mutability and immutability, and mutating vs non-mutating methods.](#explain-the-difference-between-mutability-and-immutability-and-mutating-vs-non-mutating-methods)
 * [What is the only value not equal to itself in JavaScript?](#what-is-the-only-value-not-equal-to-itself-in-java-script)
 * [NodeJS uses a callback pattern in many instances where if an error were returned it will pass it as the first argument to the callback. What are the advantages of this pattern?
-
-```js
-fs.readFile(filePath, function(err, data) {  
-  if (err) {
-    // handle the error, the return is important here
-    // so execution stops here
-    return console.log(err)
-  }
-  // use the data object
-  console.log(data)
-})
-```](#node-js-uses-a-callback-pattern-in-many-instances-where-if-an-error-were-returned-it-will-pass-it-as-the-first-argument-to-the-callback-what-are-the-advantages-of-this-pattern-js-fs-read-file-file-path-function-err-data-if-err-handle-the-error-the-return-is-important-here-so-execution-stops-here-return-console-log-err-use-the-data-object-console-log-data)
+](#node-js-uses-a-callback-pattern-in-many-instances-where-if-an-error-were-returned-it-will-pass-it-as-the-first-argument-to-the-callback-what-are-the-advantages-of-this-pattern-js-fs-read-file-file-path-function-err-data-if-err-handle-the-error-the-return-is-important-here-so-execution-stops-here-return-console-log-err-use-the-data-object-console-log-data)
 * [What is the event loop in Node.js?](#what-is-the-event-loop-in-node-js)
 * [What are the differences between `null` and `undefined`?](#what-are-the-differences-between-null-and-undefined)
 * [Describe the different ways to create an object. When should certain ways be preferred over others?](#describe-the-different-ways-to-create-an-object-when-should-certain-ways-be-preferred-over-others)
 * [What is the difference between a parameter and an argument?](#what-is-the-difference-between-a-parameter-and-an-argument)
 * [Does JavaScript pass by value or by reference?](#does-java-script-pass-by-value-or-by-reference)
 * [Create a function `pipe` that performs left-to-right function composition by returning a function that accepts one argument.
-
-```js
-const square = v => v * v
-const double = v => v * 2
-const addOne = v => v + 1
-const res = pipe(square, double, addOne)
-res(3) // 19; addOne(double(square(3)))
-```](#create-a-function-pipe-that-performs-left-to-right-function-composition-by-returning-a-function-that-accepts-one-argument-js-const-square-v-v-v-const-double-v-v-2-const-add-one-v-v-1-const-res-pipe-square-double-add-one-res-3-19-add-one-double-square-3)
+](#create-a-function-pipe-that-performs-left-to-right-function-composition-by-returning-a-function-that-accepts-one-argument-js-const-square-v-v-v-const-double-v-v-2-const-add-one-v-v-1-const-res-pipe-square-double-add-one-res-3-19-add-one-double-square-3)
 * [In which states can a Promise be?](#in-which-states-can-a-promise-be)
 * [What are Promises?](#what-are-promises)
 * [How does prototypal inheritance differ from classical inheritance?](#how-does-prototypal-inheritance-differ-from-classical-inheritance)
 * [What is the output of the following code?
-
-```js
-const a = [1, 2, 3]
-const b = [1, 2, 3]
-const c = "1,2,3"
-
-console.log(a == c)
-console.log(a == b)
-```](#what-is-the-output-of-the-following-code-js-const-a-1-2-3-const-b-1-2-3-const-c-1-2-3-console-log-a-c-console-log-a-b)
+](#what-is-the-output-of-the-following-code-js-const-a-1-2-3-const-b-1-2-3-const-c-1-2-3-console-log-a-c-console-log-a-b)
 * [What does the following function return?
-
-```js
-function greet() {
-  return
-  {
-    message: "hello"
-  }
-}
-```](#what-does-the-following-function-return-js-function-greet-return-message-hello)
+](#what-does-the-following-function-return-js-function-greet-return-message-hello)
 * [Explain the difference between a static method and an instance method.](#explain-the-difference-between-a-static-method-and-an-instance-method)
 * [What is the difference between synchronous and asynchronous code in JavaScript?](#what-is-the-difference-between-synchronous-and-asynchronous-code-in-java-script)
 * [How does `this` work?](#how-does-this-work)
 * [What does the following code evaluate to?
-
-```js
-typeof typeof 0
-```](#what-does-the-following-code-evaluate-to-js-typeof-typeof-0)
+](#what-does-the-following-code-evaluate-to-js-typeof-typeof-0)
 * [What are JavaScript data types?](#what-are-java-script-data-types)
 * [What is the purpose of JavaScript UI libraries/frameworks like React, Vue, Angular, Hyperapp, etc?](#what-is-the-purpose-of-java-script-ui-libraries-frameworks-like-react-vue-angular-hyperapp-etc)
 * [What does `'use strict'` do and what are some of the key benefits to using it?](#what-does-use-strict-do-and-what-are-some-of-the-key-benefits-to-using-it)
@@ -161,14 +100,7 @@ typeof typeof 0
 * [What are the advantages of using CSS preprocessors?](#what-are-the-advantages-of-using-css-preprocessors)
 * [Can you describe how CSS specificity works?](#can-you-describe-how-css-specificity-works)
 * [Using flexbox, create a 3-column layout where each column takes up a `col-{n} / 12` ratio of the container.
-
-```html
-<div class="row">
-  <div class="col-2"></div>
-  <div class="col-7"></div>
-  <div class="col-3"></div>
-</div>
-```](#using-flexbox-create-a-3-column-layout-where-each-column-takes-up-a-col-n-12-ratio-of-the-container-html-div-class-row-div-class-col-2-div-div-class-col-7-div-div-class-col-3-div-div)
+](#using-flexbox-create-a-3-column-layout-where-each-column-takes-up-a-col-n-12-ratio-of-the-container-html-div-class-row-div-class-col-2-div-div-class-col-7-div-div-class-col-3-div-div)
 * [What is a focus ring? What is the correct solution to handle them?](#what-is-a-focus-ring-what-is-the-correct-solution-to-handle-them)
 * [Can you name the four types of `@media` properties?](#can-you-name-the-four-types-of-media-properties)
 * [What are the advantages of using CSS sprites and how would one utilize them?](#what-are-the-advantages-of-using-css-sprites-and-how-would-one-utilize-them)
@@ -195,33 +127,9 @@ typeof typeof 0
 <summary>View contents</summary>
 
 * [How can you avoid callback hells?
-
-```js
-getData(function(a){  
-    getMoreData(a, function(b){
-        getMoreData(b, function(c){ 
-            getMoreData(c, function(d){ 
-                getMoreData(d, function(e){ 
-                    ...
-                });
-            });
-        });
-    });
-});
-```](#how-can-you-avoid-callback-hells-js-get-data-function-a-get-more-data-a-function-b-get-more-data-b-function-c-get-more-data-c-function-d-get-more-data-d-function-e)
+](#how-can-you-avoid-callback-hells-js-get-data-function-a-get-more-data-a-function-b-get-more-data-b-function-c-get-more-data-c-function-d-get-more-data-d-function-e)
 * [NodeJS uses a callback pattern in many instances where if an error were returned it will pass it as the first argument to the callback. What are the advantages of this pattern?
-
-```js
-fs.readFile(filePath, function(err, data) {  
-  if (err) {
-    // handle the error, the return is important here
-    // so execution stops here
-    return console.log(err)
-  }
-  // use the data object
-  console.log(data)
-})
-```](#node-js-uses-a-callback-pattern-in-many-instances-where-if-an-error-were-returned-it-will-pass-it-as-the-first-argument-to-the-callback-what-are-the-advantages-of-this-pattern-js-fs-read-file-file-path-function-err-data-if-err-handle-the-error-the-return-is-important-here-so-execution-stops-here-return-console-log-err-use-the-data-object-console-log-data)
+](#node-js-uses-a-callback-pattern-in-many-instances-where-if-an-error-were-returned-it-will-pass-it-as-the-first-argument-to-the-callback-what-are-the-advantages-of-this-pattern-js-fs-read-file-file-path-function-err-data-if-err-handle-the-error-the-return-is-important-here-so-execution-stops-here-return-console-log-err-use-the-data-object-console-log-data)
 * [What is the event loop in Node.js?](#what-is-the-event-loop-in-node-js)
 </details>
 
