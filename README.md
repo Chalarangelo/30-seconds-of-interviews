@@ -129,43 +129,25 @@ Join our [Gitter channel](https://gitter.im/30-seconds-of-interviews/Lobby) to h
 ---
 
 ## JavaScript
-### How can you avoid callback hells?
-
-```js
-getData(function(a){  
-    getMoreData(a, function(b){
-        getMoreData(b, function(c){ 
-            getMoreData(c, function(d){ 
-                getMoreData(d, function(e){ 
-                    ...
-                });
-            });
-        });
-    });
-});
-```
+### What is the difference between the equality operators `==` and `===`?
 
 <details>
 <summary>View answer</summary>
-There are lots of ways to solve the issue of callback hells:
-
-* modularization: break callbacks into independent functions
-* use a control flow library, like async
-* use generators with Promises
-* use async/await (from v7 on)
+Triple equals (`===`) checks for strict equality, which means both the type and value must be the same. Double equals (`==`) on the other hand first performs type coercion so that both operands are of the same type and then applies strict comparison.
 
 
 #### Good to hear
 
 
-* As an efficient JavaScript developer, you have to avoid the constantly growing indentation level, produce clean and readable code and be able to handle complex flows.
+* Whenever possible, use triple equals to test equality because loose equality `==` can have unintuitive results
+* Type coercion means the values are converted into the same type
+* Mention of falsy values and their comparison
 
 
 ##### Additional links
 
 
-* [Avoiding Callback Hell in Node.js](http://stackabuse.com/avoiding-callback-hell-in-node-js/)
-* [Asynchronous JavaScript: From Callback Hell to Async and Await](https://blog.hellojs.org/asynchronous-javascript-from-callback-hell-to-async-and-await-9b9ceb63c8e8)
+* [MDN docs for comparison operators](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Comparison_Operators)
 </details>
 
 
@@ -173,33 +155,30 @@ There are lots of ways to solve the issue of callback hells:
 <br>[⬆ Back to top](#table-of-contents)
 
 
-### What is a callback?
+### In which states can a Promise be?
 
 <details>
 <summary>View answer</summary>
-Callbacks are functions passed as an argument to another function to be executed once an event has occurred or a certain task is complete, often used in asynchronous code. Callback functions are invoked later by a piece of code but can be declared on initialization without being invoked.
+A `Promise` is in one of these states:
 
-Event listeners are callbacks that are only executed when a specific event occurs.
+* pending: initial state, neither fulfilled nor rejected.
+* fulfilled: meaning that the operation completed successfully.
+* rejected: meaning that the operation failed.
 
-```js
-function onClick() {
-  console.log("The user clicked on the page.")
-}
-document.addEventListener("click", onClick)
-```
+A pending promise can either be fulfilled with a value, or rejected with a reason (error). 
+When either of these options happens, the associated handlers queued up by a promise's then method are called.
 
 
 #### Good to hear
 
 
-* Functions are first-class objects in JavaScript
-* Callbacks vs Promises
+
 
 
 ##### Additional links
 
 
-* [MDN docs for callbacks](https://developer.mozilla.org/en-US/docs/Glossary/Callback_function)
+* [Official Web Docs - Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)
 </details>
 
 
@@ -207,39 +186,34 @@ document.addEventListener("click", onClick)
 <br>[⬆ Back to top](#table-of-contents)
 
 
-### How do you clone an object in JavaScript?
+### What are Promises?
 
 <details>
 <summary>View answer</summary>
-Using the object spread operator `...`, the object's own enumerable properties can be copied
-into the new object. This creates a shallow clone of the object.
+The `Promise` object represents the eventual completion (or failure) of an asynchronous operation, and its resulting value.
+An example can be the following snippet, which after 100ms prints out the result string to the standard output. Also, note the catch, which can be used for error handling. `Promise`s are chainable.
 
 ```js
-const obj = { a: 1, b: 2 }
-const shallowClone = { ...obj }
+new Promise((resolve, reject) => {
+  setTimeout(() => {
+    resolve('result')
+  }, 100)
+})
+  .then(console.log)
+  .catch(console.error)
 ```
-
-With this technique, prototypes are ignored. In addition, nested objects are not cloned, but rather their references get copied, so nested objects still refer to the same objects as the original. Deep-cloning is much more complex in order to effectively clone any type of object (Date, RegExp, Function, Set, etc) that may be nested within the object.
-
-Other alternatives include:
-
-* `JSON.parse(JSON.stringify(obj))` can be used to deep-clone a simple object, but it is CPU-intensive and only accepts valid JSON (therefore it strips functions and does not allow circular references).
-* `Object.assign({}, obj)` is another alternative.
-* `Object.keys(obj).reduce((acc, key) => (acc[key] = obj[key], acc), {})` is another more verbose alternative that shows the concept in greater depth.
 
 
 #### Good to hear
 
 
-* JavaScript passes objects by reference, meaning that nested objects get their references copied, instead of their values.
-* The same method can be used to merge two objects.
+* Take a look into the other questions regarding `Promise`s!
 
 
 ##### Additional links
 
 
-* [MDN docs for Object.assign()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign)
-* [Clone an object in vanilla JS](http://voidcanvas.com/clone-an-object-in-vanilla-js-in-depth/)
+* [Master the JavaScript Interview: What is a Promise?](https://medium.com/javascript-scene/master-the-javascript-interview-what-is-a-promise-27fc71e772618)
 </details>
 
 
@@ -247,31 +221,26 @@ Other alternatives include:
 <br>[⬆ Back to top](#table-of-contents)
 
 
-### What is a closure?
+### What are the differences between `null` and `undefined`?
 
 <details>
 <summary>View answer</summary>
-A closure is a function defined inside another function and has access to its lexical scope even when it is executing outside its lexical scope. The closure has access to variables in three scopes:
-
-* Variables declared in its own scope
-* Variables declared in the scope of the parent function
-* Variables declared in the global scope
+In JavaScript, two values discretely represent nothing - `undefined` and `null`. The concrete difference between them is that `null` is explicit, while `undefined` is implicit. When a property does not exist or a variable has not been given a value, the value is `undefined`. `null` is set as the value to explicitly indicate “no value”. In essence, `undefined` is used when the nothing is not known, and `null` is used when the nothing is known.
 
 
 #### Good to hear
 
 
-* Closures are useful because they let you associate data with a function that operates on that data.
-* A closure can substitute an object with only a single method.
-* Closures can be used to emulate private methods.
+* `typeof undefined` returns `undefined`
+* `typeof null` returns `object`. However, it is still a primitive value
+* `undefined == null` equals to `true`
 
 
 ##### Additional links
 
 
-* [MDN docs for closures](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures)
-* [What is a closure](https://medium.com/javascript-scene/master-the-javascript-interview-what-is-a-closure-b2f0d2152b36)
-* [I never understood JavaScript closures](https://medium.com/dailyjs/i-never-understood-javascript-closures-9663703368e8)
+* [MDN docs for null](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null)
+* [MDN docs for undefined](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined)
 </details>
 
 
@@ -371,25 +340,35 @@ is represented by a node tree (such as elements, text nodes, comments), where ea
 <br>[⬆ Back to top](#table-of-contents)
 
 
-### What is the difference between the equality operators `==` and `===`?
+### What is the reason for wrapping the entire contents of a JavaScript source file in a function?
 
 <details>
 <summary>View answer</summary>
-Triple equals (`===`) checks for strict equality, which means both the type and value must be the same. Double equals (`==`) on the other hand first performs type coercion so that both operands are of the same type and then applies strict comparison.
+This technique is very common in JavaScript libraries. It creates a closure around the entire contents of the file which creates a private namespace and thereby helps avoid potential name clashes between different JavaScript modules and libraries. The function is usually immediately invoked so that the namespace (library name) is assigned the return value of the function.
+
+```js
+const myLibrary = function () {
+  var privateVariable = 2;
+  return {
+    publicMethod: () => privateVariable;
+  };
+}();
+privateVariable; // ReferenceError
+myLibrary.publicMethod(); // 2
+```
 
 
 #### Good to hear
 
 
-* Whenever possible, use triple equals to test equality because loose equality `==` can have unintuitive results
-* Type coercion means the values are converted into the same type
-* Mention of falsy values and their comparison
+* Used among many popular JavaScript libraries
+* Creates a private namespace
 
 
 ##### Additional links
 
 
-* [MDN docs for comparison operators](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Comparison_Operators)
+* [MDN docs for closures](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures)
 </details>
 
 
@@ -397,25 +376,26 @@ Triple equals (`===`) checks for strict equality, which means both the type and 
 <br>[⬆ Back to top](#table-of-contents)
 
 
-### What is event-driven programming?
+### What are JavaScript data types?
 
 <details>
 <summary>View answer</summary>
-Event-driven programming is building an application that is based on and responds to events. Whenever an event occurs, the application responds by running a callback function, which is registered to that event and context.
+The latest ECMAScript standard defines seven data types, six of them being primitive: `Boolean`, `Null`, `Undefined`, `Number`, `String`, `Symbol` and one non-primitive data type: `Object`.
 
 
 #### Good to hear
 
 
-* Responds to events that occur by running a callback function
-* Follows a publish-subscribe pattern
+* Mention of newly added `Symbol` data type
+* `Array`, `Date` and `function` are all of type `object`
+* Functions in JavaScript are objects with the capability of being callable
 
 
 ##### Additional links
 
 
-* [MDN docs on Events and Handlers](https://developer.mozilla.org/en-US/docs/Web/Guide/Events/Overview_of_Events_and_Handlers)
-* [Understanding Node.js event-driven architecture](https://medium.freecodecamp.org/understanding-node-js-event-driven-architecture-223292fcbc2d)
+* [MDN docs for data types and data structures](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures)
+* [Understanding Data Types in JavaScript](https://www.digitalocean.com/community/tutorials/understanding-data-types-in-javascript)
 </details>
 
 
@@ -518,27 +498,29 @@ Both methods iterate through the elements of an array. `map()` maps each element
 <br>[⬆ Back to top](#table-of-contents)
 
 
-### What is functional programming?
+### What does the following code evaluate to?
+
+```js
+typeof typeof 0
+```
 
 <details>
 <summary>View answer</summary>
-Functional programming is a paradigm in which programs are built in a declarative manner using pure functions that avoid shared state and mutable data. Functions that always return the same value for the same input and don't produce side effects are the pillar of functional programming. Many programmers consider this to be the best approach to software development as it reduces bugs and cognitive load.
+It evaluates to `"string"`.
+
+`typeof 0` evaluates to the string `"number"` and therefore `typeof "number"` evaluates to `"string"`.
 
 
 #### Good to hear
 
 
-* Cleaner, more concise development experience
-* Simple function composition
-* Features of JavaScript that enable functional programming (`.map`, `.reduce` etc.)
-* JavaScript is multi-paradigm programming language (Object-Oriented Programming and Functional Programming live in harmony)
+
 
 
 ##### Additional links
 
 
-* [Javascript and Functional Programming: An Introduction](https://hackernoon.com/javascript-and-functional-programming-an-introduction-286aa625e26d)
-* [Master the JavaScript Interview: What is Functional Programming?](https://medium.com/javascript-scene/master-the-javascript-interview-what-is-functional-programming-7f218c68b3a0)
+* [MDN docs for typeof](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/typeof)
 </details>
 
 
@@ -649,36 +631,28 @@ const mask = (str, maskChar = "#") =>
 <br>[⬆ Back to top](#table-of-contents)
 
 
-### Explain the difference between mutability and immutability, and mutating vs non-mutating methods.
+### What is the difference between synchronous and asynchronous code in JavaScript?
 
 <details>
 <summary>View answer</summary>
-"Mutability" means a value is subject to change. "Immutability" means a value cannot change.
+Synchronous means each operation must wait for the previous one to complete.
 
-Objects are mutable, while primitive values (strings, numbers, etc) are immutable. This means any operation performed on a primitive value does not change the original value.
+Asynchronous means an operation can occur while another operation is still being processed.
 
-All `String.prototype` methods do not have an effect on the original string and return a new string. On the other hand, while some methods of `Array.prototype` do not mutate the original array reference and produce a fresh array, some cause mutations.
-
-```js
-const myString = "hello!"
-myString.replace("!", "") // returns a new string, cannot mutate the original value
-
-const originalArray = [1, 2, 3]
-originalArray.push(4) // mutates originalArray, now [1, 2, 3, 4]
-originalArray.concat(4) // returns a new array, does not mutate the original
-```
+In JavaScript, all code is synchronous due to the single-threaded nature of it. However, asynchronous operations not part of the program (such as `XMLHttpRequest` or `setTimeout`) are processed outside of the main thread because they are controlled by native code (browser APIs), but callbacks part of the program will still be executed synchronously.
 
 
 #### Good to hear
 
 
-* List of mutating and non-mutating array methods
+* JavaScript has a concurrency model based on an "event loop".
+* Functions like `alert` block the main thread so that no user input is registered until the user closes it.
 
 
 ##### Additional links
 
 
-* [Mutating vs non-mutating array methods](https://lorenstewart.me/2017/01/22/javascript-array-methods-mutating-vs-non-mutating/)
+
 </details>
 
 
@@ -686,24 +660,32 @@ originalArray.concat(4) // returns a new array, does not mutate the original
 <br>[⬆ Back to top](#table-of-contents)
 
 
-### What is the only value not equal to itself in JavaScript?
+### What does the following function return?
+
+```js
+function greet() {
+  return
+  {
+    message: "hello"
+  }
+}
+```
 
 <details>
 <summary>View answer</summary>
-`NaN` (Not-a-Number) is the only value not equal to itself when comparing with any of the comparison operators. `NaN` is often the result of meaningless math computations, so two `NaN` values make no sense to be considered equal.
+Because of JavaScript's automatic semicolon insertion (ASI), the compiler places a semicolon after `return` keyword and therefore it returns `undefined` without an error being thrown.
 
 
 #### Good to hear
 
 
-* The difference between `isNaN()` and `Number.isNaN()`
-* `const isNaN = x => x !== x`
+* Automatic semicolon placement can lead to time-consuming bugs
 
 
 ##### Additional links
 
 
-* [MDN docs for `NaN`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NaN)
+* [Automatic semicolon insertion in JavaScript](http://2ality.com/2011/05/semicolon-insertion.html)
 </details>
 
 
@@ -783,23 +765,34 @@ Value was true.
 <br>[⬆ Back to top](#table-of-contents)
 
 
-### What is the event loop in Node.js?
+### What is the output of the following code?
+
+```js
+const a = [1, 2, 3]
+const b = [1, 2, 3]
+const c = "1,2,3"
+
+console.log(a == c)
+console.log(a == b)
+```
 
 <details>
 <summary>View answer</summary>
-The event loop handles all async callbacks. Callbacks are queued in a loop, while other code runs, and will run one by one when the response for each one has been received.
+The first `console.log` outputs `true` because JavaScript's compiler performs type conversion and therefore it compares to strings by their value. On the other hand, the second `console.log` outputs `false` because Arrays are Objects and Objects are compared by reference.
 
 
 #### Good to hear
 
 
-* The event loop allows Node.js to perform non-blocking I/O operations, despite the fact that JavaScript is single-threaded
+* JavaScript performs automatic type conversion
+* Objects are compared by reference
+* Primitives are compared by value
 
 
 ##### Additional links
 
 
-* [Node.js docs on event loop, timers and process.nextTick()](https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick/)
+* [JavaScript Value vs Reference](https://medium.com/dailyjs/back-to-roots-javascript-value-vs-reference-8fb69d587a18)
 </details>
 
 
@@ -807,26 +800,33 @@ The event loop handles all async callbacks. Callbacks are queued in a loop, whil
 <br>[⬆ Back to top](#table-of-contents)
 
 
-### What are the differences between `null` and `undefined`?
+### What is a callback?
 
 <details>
 <summary>View answer</summary>
-In JavaScript, two values discretely represent nothing - `undefined` and `null`. The concrete difference between them is that `null` is explicit, while `undefined` is implicit. When a property does not exist or a variable has not been given a value, the value is `undefined`. `null` is set as the value to explicitly indicate “no value”. In essence, `undefined` is used when the nothing is not known, and `null` is used when the nothing is known.
+Callbacks are functions passed as an argument to another function to be executed once an event has occurred or a certain task is complete, often used in asynchronous code. Callback functions are invoked later by a piece of code but can be declared on initialization without being invoked.
+
+Event listeners are callbacks that are only executed when a specific event occurs.
+
+```js
+function onClick() {
+  console.log("The user clicked on the page.")
+}
+document.addEventListener("click", onClick)
+```
 
 
 #### Good to hear
 
 
-* `typeof undefined` returns `undefined`
-* `typeof null` returns `object`. However, it is still a primitive value
-* `undefined == null` equals to `true`
+* Functions are first-class objects in JavaScript
+* Callbacks vs Promises
 
 
 ##### Additional links
 
 
-* [MDN docs for null](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null)
-* [MDN docs for undefined](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined)
+* [MDN docs for callbacks](https://developer.mozilla.org/en-US/docs/Glossary/Callback_function)
 </details>
 
 
@@ -987,108 +987,6 @@ JavaScript always passes by value. However, with objects, the value is a referen
 <br>[⬆ Back to top](#table-of-contents)
 
 
-### Create a function `pipe` that performs left-to-right function composition by returning a function that accepts one argument.
-
-```js
-const square = v => v * v
-const double = v => v * 2
-const addOne = v => v + 1
-const res = pipe(square, double, addOne)
-res(3) // 19; addOne(double(square(3)))
-```
-
-<details>
-<summary>View answer</summary>
-Gather all supplied arguments using the rest operator `...` and return a unary function that uses `Array.prototype.reduce()` to run the value through the series of functions before returning the final value.
-
-```js
-const pipe = (...fns) => x => fns.reduce((v, fn) => fn(v), x)
-```
-
-
-#### Good to hear
-
-
-* Function composition is the process of combining two or more functions to produce a new function.
-
-
-##### Additional links
-
-
-* [What is function composition?](https://medium.com/javascript-scene/master-the-javascript-interview-what-is-function-composition-20dfb109a1a0)
-</details>
-
-
-
-<br>[⬆ Back to top](#table-of-contents)
-
-
-### In which states can a Promise be?
-
-<details>
-<summary>View answer</summary>
-A `Promise` is in one of these states:
-
-* pending: initial state, neither fulfilled nor rejected.
-* fulfilled: meaning that the operation completed successfully.
-* rejected: meaning that the operation failed.
-
-A pending promise can either be fulfilled with a value, or rejected with a reason (error). 
-When either of these options happens, the associated handlers queued up by a promise's then method are called.
-
-
-#### Good to hear
-
-
-
-
-
-##### Additional links
-
-
-* [Official Web Docs - Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)
-</details>
-
-
-
-<br>[⬆ Back to top](#table-of-contents)
-
-
-### What are Promises?
-
-<details>
-<summary>View answer</summary>
-The `Promise` object represents the eventual completion (or failure) of an asynchronous operation, and its resulting value.
-An example can be the following snippet, which after 100ms prints out the result string to the standard output. Also, note the catch, which can be used for error handling. `Promise`s are chainable.
-
-```js
-new Promise((resolve, reject) => {
-  setTimeout(() => {
-    resolve('result')
-  }, 100)
-})
-  .then(console.log)
-  .catch(console.error)
-```
-
-
-#### Good to hear
-
-
-* Take a look into the other questions regarding `Promise`s!
-
-
-##### Additional links
-
-
-* [Master the JavaScript Interview: What is a Promise?](https://medium.com/javascript-scene/master-the-javascript-interview-what-is-a-promise-27fc71e772618)
-</details>
-
-
-
-<br>[⬆ Back to top](#table-of-contents)
-
-
 ### How does prototypal inheritance differ from classical inheritance?
 
 <details>
@@ -1117,332 +1015,39 @@ In the prototypal inheritance paradigm, object instances inherit directly from o
 <br>[⬆ Back to top](#table-of-contents)
 
 
-### What is the output of the following code?
+### How do you clone an object in JavaScript?
+
+<details>
+<summary>View answer</summary>
+Using the object spread operator `...`, the object's own enumerable properties can be copied
+into the new object. This creates a shallow clone of the object.
 
 ```js
-const a = [1, 2, 3]
-const b = [1, 2, 3]
-const c = "1,2,3"
-
-console.log(a == c)
-console.log(a == b)
+const obj = { a: 1, b: 2 }
+const shallowClone = { ...obj }
 ```
 
-<details>
-<summary>View answer</summary>
-The first `console.log` outputs `true` because JavaScript's compiler performs type conversion and therefore it compares to strings by their value. On the other hand, the second `console.log` outputs `false` because Arrays are Objects and Objects are compared by reference.
+With this technique, prototypes are ignored. In addition, nested objects are not cloned, but rather their references get copied, so nested objects still refer to the same objects as the original. Deep-cloning is much more complex in order to effectively clone any type of object (Date, RegExp, Function, Set, etc) that may be nested within the object.
+
+Other alternatives include:
+
+* `JSON.parse(JSON.stringify(obj))` can be used to deep-clone a simple object, but it is CPU-intensive and only accepts valid JSON (therefore it strips functions and does not allow circular references).
+* `Object.assign({}, obj)` is another alternative.
+* `Object.keys(obj).reduce((acc, key) => (acc[key] = obj[key], acc), {})` is another more verbose alternative that shows the concept in greater depth.
 
 
 #### Good to hear
 
 
-* JavaScript performs automatic type conversion
-* Objects are compared by reference
-* Primitives are compared by value
+* JavaScript passes objects by reference, meaning that nested objects get their references copied, instead of their values.
+* The same method can be used to merge two objects.
 
 
 ##### Additional links
 
 
-* [JavaScript Value vs Reference](https://medium.com/dailyjs/back-to-roots-javascript-value-vs-reference-8fb69d587a18)
-</details>
-
-
-
-<br>[⬆ Back to top](#table-of-contents)
-
-
-### What does the following function return?
-
-```js
-function greet() {
-  return
-  {
-    message: "hello"
-  }
-}
-```
-
-<details>
-<summary>View answer</summary>
-Because of JavaScript's automatic semicolon insertion (ASI), the compiler places a semicolon after `return` keyword and therefore it returns `undefined` without an error being thrown.
-
-
-#### Good to hear
-
-
-* Automatic semicolon placement can lead to time-consuming bugs
-
-
-##### Additional links
-
-
-* [Automatic semicolon insertion in JavaScript](http://2ality.com/2011/05/semicolon-insertion.html)
-</details>
-
-
-
-<br>[⬆ Back to top](#table-of-contents)
-
-
-### Explain the difference between a static method and an instance method.
-
-<details>
-<summary>View answer</summary>
-Static methods belong to a class and don't act on instances, while instance methods belong to the class prototype which is inherited by all instances of the class and acts on them.
-
-```js
-Array.isArray // static method of Array
-Array.prototype.push // instance method of Array
-```
-
-In this case, the `Array.isArray` method does not make sense as an instance method of arrays because we already know the value is an array when working with it.
-
-Instance methods could technically work as static methods, but provide terser syntax:
-
-```js
-const arr = [1, 2, 3]
-arr.push(4)
-Array.push(arr, 4)
-```
-
-
-#### Good to hear
-
-
-* How to create static and instance methods with ES2015 class syntax
-
-
-##### Additional links
-
-
-* [Classes on MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes)
-</details>
-
-
-
-<br>[⬆ Back to top](#table-of-contents)
-
-
-### What is the difference between synchronous and asynchronous code in JavaScript?
-
-<details>
-<summary>View answer</summary>
-Synchronous means each operation must wait for the previous one to complete.
-
-Asynchronous means an operation can occur while another operation is still being processed.
-
-In JavaScript, all code is synchronous due to the single-threaded nature of it. However, asynchronous operations not part of the program (such as `XMLHttpRequest` or `setTimeout`) are processed outside of the main thread because they are controlled by native code (browser APIs), but callbacks part of the program will still be executed synchronously.
-
-
-#### Good to hear
-
-
-* JavaScript has a concurrency model based on an "event loop".
-* Functions like `alert` block the main thread so that no user input is registered until the user closes it.
-
-
-##### Additional links
-
-
-
-</details>
-
-
-
-<br>[⬆ Back to top](#table-of-contents)
-
-
-### How does `this` work?
-
-<details>
-<summary>View answer</summary>
-The `this` keyword is an object that represents the context of an executing function. Regular functions can have their `this` value changed with `.call`, `.apply` and `.bind`. Arrow functions implicitly bind `this` so that it refers to the context of its lexical environment, regardless of whether or not its context is set explicitly with `call`.
-
-Here are some common examples of `this`:
-
-```js
-// Object literals
-var myObject = {
-  regularFunction: function() {
-    return this
-  },
-  arrowFunction: () => {
-    return this
-  }
-}
-myObject.regularFunction() // myObject
-myObject.arrowFunction() // NOT myObject
-const withoutContextFunction = myObject.regularFunction
-withoutContextFunction() // NOT myObject
-
-// Event listeners
-document.body.addEventListener("click", function() {
-  console.log(this) // document.body
-})
-
-// Classes
-class myClass {
-  constructor() {
-    console.log(this) // myClassInstance
-  }
-}
-var myClassInstance = new myClass()
-
-// Manual
-var myFunction = function() {
-  return this
-}
-myFunction.call({ customThis: true }) // { customThis: true }
-
-// Unwanted `this`
-var obj = {
-  arr: [1, 2, 3],
-  doubleArr() {
-    return this.arr.map(function(value) {
-      // this === this.arr
-      return this.double(value)
-    })
-  },
-  double() {
-    return value * 2
-  }
-}
-obj.doubleArr() // Uncaught TypeError: this.double is not a function
-```
-
-
-#### Good to hear
-
-
-* In non-strict mode, global `this` is the global object (`window` in browsers), while in non-strict mode global `this` is `undefined`.
-* `Function.prototype.call` and `Function.prototype.apply` set the `this` context of an executing function as the first argument, with `call` accepting a variadic number of arguments thereafter, and `apply` accepting an array as the second argument which are fed to the function in a variadic manner.
-* `Function.prototype.bind` returns a new function that enforces the `this` context as the first argument which cannot be changed by other functions.
-* If a function requires its `this` context to be changed based on how it is called, you must use the `function` keyword. Use arrow functions when you want `this` to be the surrounding (lexical) context.
-
-
-##### Additional links
-
-
-* [`this` on MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this)
-</details>
-
-
-
-<br>[⬆ Back to top](#table-of-contents)
-
-
-### What does the following code evaluate to?
-
-```js
-typeof typeof 0
-```
-
-<details>
-<summary>View answer</summary>
-It evaluates to `"string"`.
-
-`typeof 0` evaluates to the string `"number"` and therefore `typeof "number"` evaluates to `"string"`.
-
-
-#### Good to hear
-
-
-
-
-
-##### Additional links
-
-
-* [MDN docs for typeof](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/typeof)
-</details>
-
-
-
-<br>[⬆ Back to top](#table-of-contents)
-
-
-### What are JavaScript data types?
-
-<details>
-<summary>View answer</summary>
-The latest ECMAScript standard defines seven data types, six of them being primitive: `Boolean`, `Null`, `Undefined`, `Number`, `String`, `Symbol` and one non-primitive data type: `Object`.
-
-
-#### Good to hear
-
-
-* Mention of newly added `Symbol` data type
-* `Array`, `Date` and `function` are all of type `object`
-* Functions in JavaScript are objects with the capability of being callable
-
-
-##### Additional links
-
-
-* [MDN docs for data types and data structures](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures)
-* [Understanding Data Types in JavaScript](https://www.digitalocean.com/community/tutorials/understanding-data-types-in-javascript)
-</details>
-
-
-
-<br>[⬆ Back to top](#table-of-contents)
-
-
-### What is the purpose of JavaScript UI libraries/frameworks like React, Vue, Angular, Hyperapp, etc?
-
-<details>
-<summary>View answer</summary>
-The main purpose is to avoid manipulating the DOM directly and keep the state of an application
-in sync with the UI easily. Additionally, they provide the ability to create components that can be reused when they have similar functionality with minor differences, avoiding duplication which would require multiple changes whenever the structure of a component which is reused in multiple places needs to be updated.
-
-When working with DOM manipulation libraries like jQuery, the data of an application is generally kept in the DOM itself, often as class names or `data` attributes. Manipulating the DOM to update the UI involves many extra steps and can introduce subtle bugs over time. Keeping the state separate and letting a framework handle the UI updates when the state changes reduces cognitive load, i.e. saying you want the UI to look a certain way when the state is a certain value is the declarative way of creating an application, instead of manually updating the UI to reflect the new state (imperative).
-
-
-#### Good to hear
-
-
-* The virtual DOM is a representation of the real DOM tree in the form of plain objects, which allows a library to write code as if the entire document is thrown away and rebuilt on each change, while the real DOM only updates what needs to be changed. Comparing the new virtual DOM against the previous one leads to high efficiency as changing real DOM nodes is costly compared to recalculating the virtual DOM.
-* JSX is an extension to JavaScript that provides XML-like syntax to create virtual DOM objects which is transformed to function calls by a transpiler. It simplifies control flow (if statements/ternary expressions) compared to tagged template literals.
-
-
-##### Additional links
-
-
-* [Virtual DOM in Hyperapp](https://github.com/hyperapp/hyperapp#view)
-</details>
-
-
-
-<br>[⬆ Back to top](#table-of-contents)
-
-
-### What does `'use strict'` do and what are some of the key benefits to using it?
-
-<details>
-<summary>View answer</summary>
-Including `'use strict'` at the beginning of your JavaScript source file enables strict mode, which enfores more strict parsing and error handling of JavaScript code. It is considered a good practice and offers a lot of benefits, such as:
-
-* Easier debugging due to eliminating silent errors.
-* Disallows variable redefinition.
-* Prevents accidental global variables.
-* Oftentimes provides increased performance over identical code that is not running in strict mode.
-* Simplifies `eval()` and `arguments`.
-* Helps make JavaScript more secure.
-
-
-#### Good to hear
-
-
-* Eliminates `this` coercion, throwing an error when `this` references a value of `null` or `undefined`.
-* Throws an error on invalid usage of `delete`.
-* Prohibits some syntax likely to be defined in future versions of ECMAScript
-
-
-##### Additional links
-
-
-* [MDN docs for strict mode](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode)
+* [MDN docs for Object.assign()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign)
+* [Clone an object in vanilla JS](http://voidcanvas.com/clone-an-object-in-vanilla-js-in-depth/)
 </details>
 
 
@@ -1529,35 +1134,430 @@ myObject = "hello" // Error
 <br>[⬆ Back to top](#table-of-contents)
 
 
-### What is the reason for wrapping the entire contents of a JavaScript source file in a function?
+### What is functional programming?
 
 <details>
 <summary>View answer</summary>
-This technique is very common in JavaScript libraries. It creates a closure around the entire contents of the file which creates a private namespace and thereby helps avoid potential name clashes between different JavaScript modules and libraries. The function is usually immediately invoked so that the namespace (library name) is assigned the return value of the function.
+Functional programming is a paradigm in which programs are built in a declarative manner using pure functions that avoid shared state and mutable data. Functions that always return the same value for the same input and don't produce side effects are the pillar of functional programming. Many programmers consider this to be the best approach to software development as it reduces bugs and cognitive load.
+
+
+#### Good to hear
+
+
+* Cleaner, more concise development experience
+* Simple function composition
+* Features of JavaScript that enable functional programming (`.map`, `.reduce` etc.)
+* JavaScript is multi-paradigm programming language (Object-Oriented Programming and Functional Programming live in harmony)
+
+
+##### Additional links
+
+
+* [Javascript and Functional Programming: An Introduction](https://hackernoon.com/javascript-and-functional-programming-an-introduction-286aa625e26d)
+* [Master the JavaScript Interview: What is Functional Programming?](https://medium.com/javascript-scene/master-the-javascript-interview-what-is-functional-programming-7f218c68b3a0)
+</details>
+
+
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
+### Create a function `pipe` that performs left-to-right function composition by returning a function that accepts one argument.
 
 ```js
-const myLibrary = function () {
-  var privateVariable = 2;
-  return {
-    publicMethod: () => privateVariable;
-  };
-}();
-privateVariable; // ReferenceError
-myLibrary.publicMethod(); // 2
+const square = v => v * v
+const double = v => v * 2
+const addOne = v => v + 1
+const res = pipe(square, double, addOne)
+res(3) // 19; addOne(double(square(3)))
+```
+
+<details>
+<summary>View answer</summary>
+Gather all supplied arguments using the rest operator `...` and return a unary function that uses `Array.prototype.reduce()` to run the value through the series of functions before returning the final value.
+
+```js
+const pipe = (...fns) => x => fns.reduce((v, fn) => fn(v), x)
 ```
 
 
 #### Good to hear
 
 
-* Used among many popular JavaScript libraries
-* Creates a private namespace
+* Function composition is the process of combining two or more functions to produce a new function.
+
+
+##### Additional links
+
+
+* [What is function composition?](https://medium.com/javascript-scene/master-the-javascript-interview-what-is-function-composition-20dfb109a1a0)
+</details>
+
+
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
+### What is the only value not equal to itself in JavaScript?
+
+<details>
+<summary>View answer</summary>
+`NaN` (Not-a-Number) is the only value not equal to itself when comparing with any of the comparison operators. `NaN` is often the result of meaningless math computations, so two `NaN` values make no sense to be considered equal.
+
+
+#### Good to hear
+
+
+* The difference between `isNaN()` and `Number.isNaN()`
+* `const isNaN = x => x !== x`
+
+
+##### Additional links
+
+
+* [MDN docs for `NaN`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NaN)
+</details>
+
+
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
+### Explain the difference between a static method and an instance method.
+
+<details>
+<summary>View answer</summary>
+Static methods belong to a class and don't act on instances, while instance methods belong to the class prototype which is inherited by all instances of the class and acts on them.
+
+```js
+Array.isArray // static method of Array
+Array.prototype.push // instance method of Array
+```
+
+In this case, the `Array.isArray` method does not make sense as an instance method of arrays because we already know the value is an array when working with it.
+
+Instance methods could technically work as static methods, but provide terser syntax:
+
+```js
+const arr = [1, 2, 3]
+arr.push(4)
+Array.push(arr, 4)
+```
+
+
+#### Good to hear
+
+
+* How to create static and instance methods with ES2015 class syntax
+
+
+##### Additional links
+
+
+* [Classes on MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes)
+</details>
+
+
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
+### Explain the difference between mutability and immutability, and mutating vs non-mutating methods.
+
+<details>
+<summary>View answer</summary>
+"Mutability" means a value is subject to change. "Immutability" means a value cannot change.
+
+Objects are mutable, while primitive values (strings, numbers, etc) are immutable. This means any operation performed on a primitive value does not change the original value.
+
+All `String.prototype` methods do not have an effect on the original string and return a new string. On the other hand, while some methods of `Array.prototype` do not mutate the original array reference and produce a fresh array, some cause mutations.
+
+```js
+const myString = "hello!"
+myString.replace("!", "") // returns a new string, cannot mutate the original value
+
+const originalArray = [1, 2, 3]
+originalArray.push(4) // mutates originalArray, now [1, 2, 3, 4]
+originalArray.concat(4) // returns a new array, does not mutate the original
+```
+
+
+#### Good to hear
+
+
+* List of mutating and non-mutating array methods
+
+
+##### Additional links
+
+
+* [Mutating vs non-mutating array methods](https://lorenstewart.me/2017/01/22/javascript-array-methods-mutating-vs-non-mutating/)
+</details>
+
+
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
+### How does `this` work?
+
+<details>
+<summary>View answer</summary>
+The `this` keyword is an object that represents the context of an executing function. Regular functions can have their `this` value changed with `.call`, `.apply` and `.bind`. Arrow functions implicitly bind `this` so that it refers to the context of its lexical environment, regardless of whether or not its context is set explicitly with `call`.
+
+Here are some common examples of `this`:
+
+```js
+// Object literals
+var myObject = {
+  regularFunction: function() {
+    return this
+  },
+  arrowFunction: () => {
+    return this
+  }
+}
+myObject.regularFunction() // myObject
+myObject.arrowFunction() // NOT myObject
+const withoutContextFunction = myObject.regularFunction
+withoutContextFunction() // NOT myObject
+
+// Event listeners
+document.body.addEventListener("click", function() {
+  console.log(this) // document.body
+})
+
+// Classes
+class myClass {
+  constructor() {
+    console.log(this) // myClassInstance
+  }
+}
+var myClassInstance = new myClass()
+
+// Manual
+var myFunction = function() {
+  return this
+}
+myFunction.call({ customThis: true }) // { customThis: true }
+
+// Unwanted `this`
+var obj = {
+  arr: [1, 2, 3],
+  doubleArr() {
+    return this.arr.map(function(value) {
+      // this === this.arr
+      return this.double(value)
+    })
+  },
+  double() {
+    return value * 2
+  }
+}
+obj.doubleArr() // Uncaught TypeError: this.double is not a function
+```
+
+
+#### Good to hear
+
+
+* In non-strict mode, global `this` is the global object (`window` in browsers), while in non-strict mode global `this` is `undefined`.
+* `Function.prototype.call` and `Function.prototype.apply` set the `this` context of an executing function as the first argument, with `call` accepting a variadic number of arguments thereafter, and `apply` accepting an array as the second argument which are fed to the function in a variadic manner.
+* `Function.prototype.bind` returns a new function that enforces the `this` context as the first argument which cannot be changed by other functions.
+* If a function requires its `this` context to be changed based on how it is called, you must use the `function` keyword. Use arrow functions when you want `this` to be the surrounding (lexical) context.
+
+
+##### Additional links
+
+
+* [`this` on MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this)
+</details>
+
+
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
+### What is the event loop in Node.js?
+
+<details>
+<summary>View answer</summary>
+The event loop handles all async callbacks. Callbacks are queued in a loop, while other code runs, and will run one by one when the response for each one has been received.
+
+
+#### Good to hear
+
+
+* The event loop allows Node.js to perform non-blocking I/O operations, despite the fact that JavaScript is single-threaded
+
+
+##### Additional links
+
+
+* [Node.js docs on event loop, timers and process.nextTick()](https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick/)
+</details>
+
+
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
+### What is event-driven programming?
+
+<details>
+<summary>View answer</summary>
+Event-driven programming is building an application that is based on and responds to events. Whenever an event occurs, the application responds by running a callback function, which is registered to that event and context.
+
+
+#### Good to hear
+
+
+* Responds to events that occur by running a callback function
+* Follows a publish-subscribe pattern
+
+
+##### Additional links
+
+
+* [MDN docs on Events and Handlers](https://developer.mozilla.org/en-US/docs/Web/Guide/Events/Overview_of_Events_and_Handlers)
+* [Understanding Node.js event-driven architecture](https://medium.freecodecamp.org/understanding-node-js-event-driven-architecture-223292fcbc2d)
+</details>
+
+
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
+### What is the purpose of JavaScript UI libraries/frameworks like React, Vue, Angular, Hyperapp, etc?
+
+<details>
+<summary>View answer</summary>
+The main purpose is to avoid manipulating the DOM directly and keep the state of an application
+in sync with the UI easily. Additionally, they provide the ability to create components that can be reused when they have similar functionality with minor differences, avoiding duplication which would require multiple changes whenever the structure of a component which is reused in multiple places needs to be updated.
+
+When working with DOM manipulation libraries like jQuery, the data of an application is generally kept in the DOM itself, often as class names or `data` attributes. Manipulating the DOM to update the UI involves many extra steps and can introduce subtle bugs over time. Keeping the state separate and letting a framework handle the UI updates when the state changes reduces cognitive load, i.e. saying you want the UI to look a certain way when the state is a certain value is the declarative way of creating an application, instead of manually updating the UI to reflect the new state (imperative).
+
+
+#### Good to hear
+
+
+* The virtual DOM is a representation of the real DOM tree in the form of plain objects, which allows a library to write code as if the entire document is thrown away and rebuilt on each change, while the real DOM only updates what needs to be changed. Comparing the new virtual DOM against the previous one leads to high efficiency as changing real DOM nodes is costly compared to recalculating the virtual DOM.
+* JSX is an extension to JavaScript that provides XML-like syntax to create virtual DOM objects which is transformed to function calls by a transpiler. It simplifies control flow (if statements/ternary expressions) compared to tagged template literals.
+
+
+##### Additional links
+
+
+* [Virtual DOM in Hyperapp](https://github.com/hyperapp/hyperapp#view)
+</details>
+
+
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
+### What does `'use strict'` do and what are some of the key benefits to using it?
+
+<details>
+<summary>View answer</summary>
+Including `'use strict'` at the beginning of your JavaScript source file enables strict mode, which enfores more strict parsing and error handling of JavaScript code. It is considered a good practice and offers a lot of benefits, such as:
+
+* Easier debugging due to eliminating silent errors.
+* Disallows variable redefinition.
+* Prevents accidental global variables.
+* Oftentimes provides increased performance over identical code that is not running in strict mode.
+* Simplifies `eval()` and `arguments`.
+* Helps make JavaScript more secure.
+
+
+#### Good to hear
+
+
+* Eliminates `this` coercion, throwing an error when `this` references a value of `null` or `undefined`.
+* Throws an error on invalid usage of `delete`.
+* Prohibits some syntax likely to be defined in future versions of ECMAScript
+
+
+##### Additional links
+
+
+* [MDN docs for strict mode](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode)
+</details>
+
+
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
+### What is a closure?
+
+<details>
+<summary>View answer</summary>
+A closure is a function defined inside another function and has access to its lexical scope even when it is executing outside its lexical scope. The closure has access to variables in three scopes:
+
+* Variables declared in its own scope
+* Variables declared in the scope of the parent function
+* Variables declared in the global scope
+
+
+#### Good to hear
+
+
+* Closures are useful because they let you associate data with a function that operates on that data.
+* A closure can substitute an object with only a single method.
+* Closures can be used to emulate private methods.
 
 
 ##### Additional links
 
 
 * [MDN docs for closures](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures)
+* [What is a closure](https://medium.com/javascript-scene/master-the-javascript-interview-what-is-a-closure-b2f0d2152b36)
+* [I never understood JavaScript closures](https://medium.com/dailyjs/i-never-understood-javascript-closures-9663703368e8)
+</details>
+
+
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
+### How can you avoid callback hells?
+
+```js
+getData(function(a){  
+    getMoreData(a, function(b){
+        getMoreData(b, function(c){ 
+            getMoreData(c, function(d){ 
+                getMoreData(d, function(e){ 
+                    ...
+                });
+            });
+        });
+    });
+});
+```
+
+<details>
+<summary>View answer</summary>
+There are lots of ways to solve the issue of callback hells:
+
+* modularization: break callbacks into independent functions
+* use a control flow library, like async
+* use generators with Promises
+* use async/await (from v7 on)
+
+
+#### Good to hear
+
+
+* As an efficient JavaScript developer, you have to avoid the constantly growing indentation level, produce clean and readable code and be able to handle complex flows.
+
+
+##### Additional links
+
+
+* [Avoiding Callback Hell in Node.js](http://stackabuse.com/avoiding-callback-hell-in-node-js/)
+* [Asynchronous JavaScript: From Callback Hell to Async and Await](https://blog.hellojs.org/asynchronous-javascript-from-callback-hell-to-async-and-await-9b9ceb63c8e8)
 </details>
 
 
@@ -1654,38 +1654,6 @@ CSS preprocessors add useful functionality that native CSS does not have, and ge
 <br>[⬆ Back to top](#table-of-contents)
 
 
-### Can you describe how CSS specificity works?
-
-<details>
-<summary>View answer</summary>
-Assuming the browser has already determined the set of rules for an element, each rule is assigned a matrix of values, which correspond to the following from highest to lowest specificity:
-
-* Inline rules (binary - 1 or 0)
-* Number of id selectors
-* Number of class, pseudo-class and attribute selectors
-* Number of tags and pseudo-element selectors
-
-When two selectors are compared, the comparison is made on a per-column basis (e.g. an id selector will always be higher than any amount of class selectors, as ids have higher specificity than classes). In cases of equal specificity between multiple rules, the rules that comes last in the page's style sheet is deemed more specific and therefore applied to the element.
-
-
-#### Good to hear
-
-
-* Specificity matrix: [inline, id, class/pseudo-class/attribute, tag/pseudo-element]
-* In cases of equal specificity, last rule is applied
-
-
-##### Additional links
-
-
-* [CSS Specificity](https://www.smashingmagazine.com/2007/07/css-specificity-things-you-should-know/)
-</details>
-
-
-
-<br>[⬆ Back to top](#table-of-contents)
-
-
 ### Using flexbox, create a 3-column layout where each column takes up a `col-{n} / 12` ratio of the container.
 
 ```html
@@ -1737,36 +1705,6 @@ Set the `.row` parent to `display: flex;` and use the `flex` shorthand property 
 <br>[⬆ Back to top](#table-of-contents)
 
 
-### What is a focus ring? What is the correct solution to handle them?
-
-<details>
-<summary>View answer</summary>
-A focus ring is a visible outline given to focusable elements such as buttons and anchor tags. It varies depending on the vendor, but generally it appears as a blue outline around the element to indicate it is currently focused.
-
-In the past, many people specified `outline: 0;` on the element to remove the focus ring. However, this causes accessibility issues for keyboard users because the focus state may not be clear. When not specified though, it causes an unappealing blue ring to appear around an element.
-
-In recent times, frameworks like Bootstrap have opted to use a more appealing `box-shadow` outline to replace the default focus ring. However, this is still not ideal for mouse users.
-
-The best solution is an upcoming pseudo-selector `:focus-visible` which can be polyfilled today with JavaScript. It will only show a focus ring if the user is using a keyboard and leave it hidden for mouse users. This keeps both aesthetics for mouse use and accessibility for keyboard use.
-
-
-#### Good to hear
-
-
-
-
-
-##### Additional links
-
-
-* [:focus-visible](https://css-tricks.com/focus-visible-and-backwards-compatibility/)
-</details>
-
-
-
-<br>[⬆ Back to top](#table-of-contents)
-
-
 ### Can you name the four types of `@media` properties?
 
 <details>
@@ -1788,33 +1726,6 @@ The best solution is an upcoming pseudo-selector `:focus-visible` which can be p
 
 * [MDN docs for `@media` rule](https://developer.mozilla.org/en-US/docs/Web/CSS/@media)
 * [MDN docs for using media queries](https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries)
-</details>
-
-
-
-<br>[⬆ Back to top](#table-of-contents)
-
-
-### What are the advantages of using CSS sprites and how would one utilize them?
-
-<details>
-<summary>View answer</summary>
-CSS sprites combine multiple images into one image, limiting the amount of HTTP requests a browser has to make, thus improving load times.
-
-To utilize a spritesheet in CSS, one would use certain properties, such as `background-image`, `background-position` and `background-size` to ultimately alter the `background` of a CSS selector or an element.
-
-
-#### Good to hear
-
-
-* CSS sprites combine multiple images into one, which improves page load times by limiting requests
-* `background-image`, `background-position` and `background-size` can be used to utilize a spritesheet
-
-
-##### Additional links
-
-
-* [CSS Sprites explained by CSS Tricks](https://css-tricks.com/css-sprites/)
 </details>
 
 
@@ -1849,7 +1760,120 @@ When elements overlap, z-order determines which one covers the other.
 <br>[⬆ Back to top](#table-of-contents)
 
 
+### Can you describe how CSS specificity works?
+
+<details>
+<summary>View answer</summary>
+Assuming the browser has already determined the set of rules for an element, each rule is assigned a matrix of values, which correspond to the following from highest to lowest specificity:
+
+* Inline rules (binary - 1 or 0)
+* Number of id selectors
+* Number of class, pseudo-class and attribute selectors
+* Number of tags and pseudo-element selectors
+
+When two selectors are compared, the comparison is made on a per-column basis (e.g. an id selector will always be higher than any amount of class selectors, as ids have higher specificity than classes). In cases of equal specificity between multiple rules, the rules that comes last in the page's style sheet is deemed more specific and therefore applied to the element.
+
+
+#### Good to hear
+
+
+* Specificity matrix: [inline, id, class/pseudo-class/attribute, tag/pseudo-element]
+* In cases of equal specificity, last rule is applied
+
+
+##### Additional links
+
+
+* [CSS Specificity](https://www.smashingmagazine.com/2007/07/css-specificity-things-you-should-know/)
+</details>
+
+
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
+### What are the advantages of using CSS sprites and how would one utilize them?
+
+<details>
+<summary>View answer</summary>
+CSS sprites combine multiple images into one image, limiting the amount of HTTP requests a browser has to make, thus improving load times.
+
+To utilize a spritesheet in CSS, one would use certain properties, such as `background-image`, `background-position` and `background-size` to ultimately alter the `background` of a CSS selector or an element.
+
+
+#### Good to hear
+
+
+* CSS sprites combine multiple images into one, which improves page load times by limiting requests
+* `background-image`, `background-position` and `background-size` can be used to utilize a spritesheet
+
+
+##### Additional links
+
+
+* [CSS Sprites explained by CSS Tricks](https://css-tricks.com/css-sprites/)
+</details>
+
+
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
+### What is a focus ring? What is the correct solution to handle them?
+
+<details>
+<summary>View answer</summary>
+A focus ring is a visible outline given to focusable elements such as buttons and anchor tags. It varies depending on the vendor, but generally it appears as a blue outline around the element to indicate it is currently focused.
+
+In the past, many people specified `outline: 0;` on the element to remove the focus ring. However, this causes accessibility issues for keyboard users because the focus state may not be clear. When not specified though, it causes an unappealing blue ring to appear around an element.
+
+In recent times, frameworks like Bootstrap have opted to use a more appealing `box-shadow` outline to replace the default focus ring. However, this is still not ideal for mouse users.
+
+The best solution is an upcoming pseudo-selector `:focus-visible` which can be polyfilled today with JavaScript. It will only show a focus ring if the user is using a keyboard and leave it hidden for mouse users. This keeps both aesthetics for mouse use and accessibility for keyboard use.
+
+
+#### Good to hear
+
+
+
+
+
+##### Additional links
+
+
+* [:focus-visible](https://css-tricks.com/focus-visible-and-backwards-compatibility/)
+</details>
+
+
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
 ## HTML
+### What is the purpose of `alt` attribute on images?
+
+<details>
+<summary>View answer</summary>
+The `alt` attribute provides alternative information for an image if a user cannot view it. If the image is for decorative purposes only, the `alt` attribute should be empty. On the other hand, if image contains information the `alt` attribute should describe image.
+
+
+#### Good to hear
+
+
+* Decorative images should have empty `alt` tag
+
+
+##### Additional links
+
+
+* [A good basis for accessibility](https://developer.mozilla.org/en-US/docs/Learn/Accessibility/HTML)
+</details>
+
+
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
 ### What are `defer` and `async` attributes on a `<script>` tag?
 
 <details>
@@ -1948,30 +1972,6 @@ Some of the key differences are:
 <br>[⬆ Back to top](#table-of-contents)
 
 
-### What is the purpose of `alt` attribute on images?
-
-<details>
-<summary>View answer</summary>
-The `alt` attribute provides alternative information for an image if a user cannot view it. If the image is for decorative purposes only, the `alt` attribute should be empty. On the other hand, if image contains information the `alt` attribute should describe image.
-
-
-#### Good to hear
-
-
-* Decorative images should have empty `alt` tag
-
-
-##### Additional links
-
-
-* [A good basis for accessibility](https://developer.mozilla.org/en-US/docs/Learn/Accessibility/HTML)
-</details>
-
-
-
-<br>[⬆ Back to top](#table-of-contents)
-
-
 ### Where and why is the `rel="noopener"` attribute used?
 
 <details>
@@ -1999,50 +1999,6 @@ The `rel="noopener"` is an attribute used in `<a>` elements (hyperlinks). It pre
 
 
 ## Node
-### How can you avoid callback hells?
-
-```js
-getData(function(a){  
-    getMoreData(a, function(b){
-        getMoreData(b, function(c){ 
-            getMoreData(c, function(d){ 
-                getMoreData(d, function(e){ 
-                    ...
-                });
-            });
-        });
-    });
-});
-```
-
-<details>
-<summary>View answer</summary>
-There are lots of ways to solve the issue of callback hells:
-
-* modularization: break callbacks into independent functions
-* use a control flow library, like async
-* use generators with Promises
-* use async/await (from v7 on)
-
-
-#### Good to hear
-
-
-* As an efficient JavaScript developer, you have to avoid the constantly growing indentation level, produce clean and readable code and be able to handle complex flows.
-
-
-##### Additional links
-
-
-* [Avoiding Callback Hell in Node.js](http://stackabuse.com/avoiding-callback-hell-in-node-js/)
-* [Asynchronous JavaScript: From Callback Hell to Async and Await](https://blog.hellojs.org/asynchronous-javascript-from-callback-hell-to-async-and-await-9b9ceb63c8e8)
-</details>
-
-
-
-<br>[⬆ Back to top](#table-of-contents)
-
-
 ### NodeJS uses a callback pattern in many instances where if an error were returned it will pass it as the first argument to the callback. What are the advantages of this pattern?
 
 ```js
@@ -2108,6 +2064,50 @@ Value was true.
 
 * [The Node.js Way - Understanding Error-First Callbacks](http://fredkschott.com/post/2014/03/understanding-error-first-callbacks-in-node-js/)
 * [What are the error conventions?](https://docs.nodejitsu.com/articles/errors/what-are-the-error-conventions)
+</details>
+
+
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
+### How can you avoid callback hells?
+
+```js
+getData(function(a){  
+    getMoreData(a, function(b){
+        getMoreData(b, function(c){ 
+            getMoreData(c, function(d){ 
+                getMoreData(d, function(e){ 
+                    ...
+                });
+            });
+        });
+    });
+});
+```
+
+<details>
+<summary>View answer</summary>
+There are lots of ways to solve the issue of callback hells:
+
+* modularization: break callbacks into independent functions
+* use a control flow library, like async
+* use generators with Promises
+* use async/await (from v7 on)
+
+
+#### Good to hear
+
+
+* As an efficient JavaScript developer, you have to avoid the constantly growing indentation level, produce clean and readable code and be able to handle complex flows.
+
+
+##### Additional links
+
+
+* [Avoiding Callback Hell in Node.js](http://stackabuse.com/avoiding-callback-hell-in-node-js/)
+* [Asynchronous JavaScript: From Callback Hell to Async and Await](https://blog.hellojs.org/asynchronous-javascript-from-callback-hell-to-async-and-await-9b9ceb63c8e8)
 </details>
 
 
