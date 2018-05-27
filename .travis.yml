@@ -1,3 +1,4 @@
+os: osx
 language: node_js
 cache:
   directories:
@@ -7,7 +8,9 @@ node_js:
 script:
 - npm run builder
 - npm run extractor
+- rm -rf docs
 - npm run build
+- touch docs/.nojekyll
 after_success:
 - chmod +x .travis/push.sh
 - .travis/push.sh
