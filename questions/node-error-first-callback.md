@@ -1,4 +1,4 @@
-### What is an error-first callback and why should I use it?
+### NodeJS uses a callback pattern in many instances where if an error were returned it will pass it as the first argument to the callback. What are the advantages of this pattern?
 
 ```js
 fs.readFile(filePath, function(err, data) {  
@@ -14,7 +14,13 @@ fs.readFile(filePath, function(err, data) {
 
 #### Answer
 
-In Node.js, it is considered standard practice to handle errors in asynchronous functions by returning them as the first argument to the current function's callback. If there is an error, the first parameter is passed an Error object with all the details. Otherwise, the first parameter is null.
+Advantages include:
+
+* Not needing to process data if there is no need to even reference it
+* Having a consistent API leads to more adoption
+* Ability to easily adapt a callback pattern that will lead to more maintainable code
+
+As you can see from below example, the callback is called with null as its first argument if there is no error. However, if there is an error, you create an Error object, which then becomes the callback's only parameter. The callback function allows a user to easily know whether or not an error occurred. 
 
 This practice is also called the _Node.js error convention_, and this kind of callback implementations are called _error-first callbacks_.
 
@@ -45,11 +51,9 @@ isTrue(true,  callback);
 Value was true.
 ```
 
-As you can see from the example, the callback is called with null as its first argument if there is no error. However, if there is an error, you create an Error object, which then becomes the callback's only parameter. The callback function shows the reason for this: it allows a user to easily know whether or not an error occurred. If null was not the first argument passed on success, the user would need to check the object being returned and determine themselves whether or not the object constituted an error - a much more complex and less user-friendly approach.
-
 #### Good to hear
 
-This is just a convention. Node could use the convention that you suggest as well - with the exception that you wouldn't be able to return an error object as an intended value on success as you noticed, which may or may not be a problem, depending on your particular requirements.
+* This is just a convention. However, you should stick to it.
 
 ##### Additional links
 
