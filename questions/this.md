@@ -58,10 +58,14 @@ obj.doubleArr() // Uncaught TypeError: this.double is not a function
 
 #### Good to hear
 
-* Global `this` in strict and non-strict mode
-* Differences between `call`, `apply` and `bind`
-* Cases where a method will not have the correct `this` context
-* When to use arrow functions and regular functions
+* In non-strict mode, global `this` is the global object (`window` in browsers), while in non-strict mode global `this` is `undefined`.
+* `Function.prototype.call` and `Function.prototype.apply` set the `this` context of an executing function as the first argument, with `call` accepting a variadic number of arguments thereafter, and `apply` accepting an array as the second argument which are fed to the function in a variadic manner.
+* `Function.prototype.bind` returns a new function that enforces the `this` context as the first argument which cannot be changed by other functions.
+* If a function requires its `this` context to be changed based on how it is called, you must use the `function` keyword. Use arrow functions when you want `this` to be the surrounding (lexical) context.
+
+##### Additional links
+
+* [`this` on MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this)
 
 <!-- tags: (javascript) -->
 
