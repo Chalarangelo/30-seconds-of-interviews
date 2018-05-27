@@ -6,7 +6,8 @@
   "scripts": {
     "builder": "node ./scripts/build.js",
     "extractor": "node ./scripts/extract.js",
-    "dev": "parcel website/index.html"
+    "dev": "parcel website/index.html",
+    "build": "parcel build website/index.html -d docs/"
   },
   "repository": {
     "type": "git",
