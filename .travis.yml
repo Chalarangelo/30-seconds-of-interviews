@@ -7,6 +7,7 @@ node_js:
 script:
 - npm run builder
 - npm run extractor
+- npm run build
 after_success:
 - chmod +x .travis/push.sh
 - .travis/push.sh
