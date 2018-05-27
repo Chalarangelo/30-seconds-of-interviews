@@ -22,6 +22,7 @@ code {
   max-width: 1000px;
   padding: 0 4%;
   margin: 0 auto;
+  position: relative;
 
   @media (min-width: $breakpoint-md) {
     padding: 0 25px;
