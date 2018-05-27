@@ -37,7 +37,7 @@ Join our [Gitter channel](https://gitter.im/30-seconds-of-interviews/Lobby) to h
 ## Table of Contents
 
 
-### Javascript 
+### JavaScript 
 
 <details>
 <summary>View contents</summary>
@@ -77,7 +77,7 @@ Join our [Gitter channel](https://gitter.im/30-seconds-of-interviews/Lobby) to h
 * [ What is the reason for wrapping the entire contents of a JavaScript source file in a function?](#what-is-the-reason-for-wrapping-the-entire-contents-of-a-javascript-source-file-in-a-function) 
 </details>
 
-### Css 
+### CSS 
 
 <details>
 <summary>View contents</summary>
@@ -91,7 +91,7 @@ Join our [Gitter channel](https://gitter.im/30-seconds-of-interviews/Lobby) to h
 * [ How does Z index function?](#how-does-z-index-function) 
 </details>
 
-### Html 
+### HTML 
 
 <details>
 <summary>View contents</summary>
@@ -115,7 +115,7 @@ Join our [Gitter channel](https://gitter.im/30-seconds-of-interviews/Lobby) to h
 
 ---
 
-## Javascript
+## JavaScript
 
 ### What is a callback?
 
@@ -1297,7 +1297,7 @@ myLibrary.publicMethod(); // 2
 
 ---
 
-## Css
+## CSS
 
 ### What is CSS BEM?
 
@@ -1528,7 +1528,7 @@ When elements overlap, z-order determines which one covers the other.
 
 ---
 
-## Html
+## HTML
 
 ### What are `defer` and `async` attributes on a `<script>` tag?
 
