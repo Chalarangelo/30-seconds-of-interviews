@@ -4,7 +4,7 @@ import feather from "feather-icons"
 
 export default ({ type, icon }, children) => (state, actions) => (
   <button
-    class={cc(`btn FilterButton is-${type}`, {
+    class={cc(`btn FilterButton is-${type.toLowerCase()}`, {
       "is-active": state.filter === type,
       "is-all": type === "all"
     })}
