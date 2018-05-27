@@ -1,5 +1,27 @@
 [
   {
+    "name": "async-defer-attributes.md",
+    "question": "What are `defer` and `async` attributes on a `<script>` tag?",
+    "answer": "If neither attribute is present, the script is downloaded and executed synchronously, and will halt parsing of the document until it has finished executing (default behavior). Scripts are downloaded and executed in the order\nthey are encountered.\n\nThe `defer` attribute downloads the script while the document is still parsing but waits until the document has finished parsing before executing it, equivalent to executing inside a `DOMContentLoaded` event listener. `defer` scripts will execute in order.\n\nThe `async` attribute downloads the script during parsing the document but will pause the parser to execute the script before it has fully finished parsing. `async` scripts will not necessarily execute in order.\n\nNote: both attributes must only be used if the script has a `src` attribute (i.e. not an inline script).\n\n```html\n<script src=\"myscript.js\"></script>\n<script src=\"myscript.js\" defer></script>\n<script src=\"myscript.js\" async></script>\n```",
+    "goodToHear": [
+      "Placing a `defer` script in the `<head>` allows the browser to download the script while the page is still parsing, and is therefore a better option than placing the script before the end of the body.",
+      "If the scripts rely on each other, use `defer`.",
+      "If the script is independent, use `async`.",
+      "Use `defer` if the DOM must be ready and the contents are not placed within a `DOMContentLoaded` listener."
+    ],
+    "links": [
+      "[async vs defer attributes](http://www.growingwiththeweb.com/2014/02/async-vs-defer-attributes.html)"
+    ],
+    "tags": [
+      "html"
+    ],
+    "expertise": 1,
+    "questionCodeBlocks": [],
+    "answerCodeBlocks": [
+      "```html\n<script src=\"myscript.js\"></script>\n<script src=\"myscript.js\" defer></script>\n<script src=\"myscript.js\" async></script>\n```"
+    ]
+  },
+  {
     "name": "bem.md",
     "question": "What is CSS BEM?",
     "answer": "The BEM methodology is another naming convention for CSS classes. The BEM stands for Block, Element, Modifier which is an explanation for its structure. Block is a standalone component that is reusable across projects. Elements and modifiers are part of the block with no standalone meaning. Here is the example of the typical syntax:\n\n```css\n/* block component */\n.block {\n}\n\n/* element */\n.block__element {\n}\n\n/* modifier */\n.block__element--modifier {\n}\n```",
@@ -18,6 +40,47 @@
     "questionCodeBlocks": [],
     "answerCodeBlocks": [
       "```css\n/* block component */\n.block {\n}\n\n/* element */\n.block__element {\n}\n\n/* modifier */\n.block__element--modifier {\n}\n```"
+    ]
+  },
+  {
+    "name": "callback-hell.md",
+    "question": "How can you avoid callback hells?\n\n```js\ngetData(function(a){  \n    getMoreData(a, function(b){\n        getMoreData(b, function(c){ \n            getMoreData(c, function(d){ \n                getMoreData(d, function(e){ \n                    ...\n                });\n            });\n        });\n    });\n});\n```",
+    "answer": "There are lots of ways to solve the issue of callback hells:\n\n* modularization: break callbacks into independent functions\n* use a control flow library, like async\n* use generators with Promises\n* use async/await (from v7 on)",
+    "goodToHear": [
+      "As an efficient JavaScript developer, you have to avoid the constantly growing indentation level, produce clean and readable code and be able to handle complex flows."
+    ],
+    "links": [
+      "[Avoiding Callback Hell in Node.js](http://stackabuse.com/avoiding-callback-hell-in-node-js/)",
+      "[Asynchronous JavaScript: From Callback Hell to Async and Await](https://blog.hellojs.org/asynchronous-javascript-from-callback-hell-to-async-and-await-9b9ceb63c8e8)"
+    ],
+    "tags": [
+      "node",
+      " javascript"
+    ],
+    "expertise": 2,
+    "questionCodeBlocks": [
+      "```js\ngetData(function(a){  \n    getMoreData(a, function(b){\n        getMoreData(b, function(c){ \n            getMoreData(c, function(d){ \n                getMoreData(d, function(e){ \n                    ...\n                });\n            });\n        });\n    });\n});\n```"
+    ],
+    "answerCodeBlocks": []
+  },
+  {
+    "name": "callbacks.md",
+    "question": "What is a callback?",
+    "answer": "Callbacks are functions passed as an argument to another function to be executed once an event has occurred or a certain task is complete, often used in asynchronous code. Callback functions are invoked later by a piece of code but can be declared on initialization without being invoked.\n\nEvent listeners are callbacks that are only executed when a specific event occurs.\n\n```js\nfunction onClick() {\n  console.log(\"The user clicked on the page.\")\n}\ndocument.addEventListener(\"click\", onClick)\n```",
+    "goodToHear": [
+      "Functions are first-class objects in JavaScript",
+      "Callbacks vs Promises"
+    ],
+    "links": [
+      "[MDN docs for callbacks](https://developer.mozilla.org/en-US/docs/Glossary/Callback_function)"
+    ],
+    "tags": [
+      "javascript"
+    ],
+    "expertise": 1,
+    "questionCodeBlocks": [],
+    "answerCodeBlocks": [
+      "```js\nfunction onClick() {\n  console.log(\"The user clicked on the page.\")\n}\ndocument.addEventListener(\"click\", onClick)\n```"
     ]
   },
   {
@@ -116,6 +179,44 @@
       "css"
     ],
     "expertise": 1,
+    "questionCodeBlocks": [],
+    "answerCodeBlocks": []
+  },
+  {
+    "name": "dom.md",
+    "question": "What is the DOM?",
+    "answer": "The DOM (Document Object Model) is an API that represents the structure of HTML and XML documents. The document\nis represented by a node tree (such as elements, text nodes, comments), where each node is an object that can be manipulated via JavaScript to change their styles, contents, placement in the tree, or interacted with through event listeners.",
+    "goodToHear": [
+      "The DOM was designed to be independent of any particular programming language, making the structural representation of the document available from a single, consistent API",
+      "The DOM is constructed progressively in the browser as a page loads, which is why scripts are often placed at the bottom of a page, in the `<head>` with a `defer` attribute, or inside a `DOMContentLoaded` event listener. Scripts that manipulate DOM nodes should be run after the DOM has been constructed to avoid errors."
+    ],
+    "links": [
+      "[MDN docs for DOM](https://developer.mozilla.org/en-US/docs/DOM)"
+    ],
+    "tags": [
+      "html",
+      "javascript"
+    ],
+    "expertise": 1,
+    "questionCodeBlocks": [],
+    "answerCodeBlocks": []
+  },
+  {
+    "name": "double-vs-triple-equals.md",
+    "question": "What is the difference between `==` and `===`?",
+    "answer": "When using triple equals in JavaScript we are testing for strict equality. This means both the type and the value we are comparing have to be the same. On the other hand, double equals first performs type coercion and then checks for loose equality.",
+    "goodToHear": [
+      "Whenever possible, use triple equals to test equality",
+      "Type coercion - converts values into a common type",
+      "Mention of falsy values and their comparison"
+    ],
+    "links": [
+      "[MDN docs for comparison operators](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Comparison_Operators)"
+    ],
+    "tags": [
+      "javascript"
+    ],
+    "expertise": 0,
     "questionCodeBlocks": [],
     "answerCodeBlocks": []
   },
@@ -316,6 +417,25 @@
     "answerCodeBlocks": []
   },
   {
+    "name": "mask.md",
+    "question": "Create a function that masks a string of characters with `#` except for the last four (4) characters.\n\n```js\nmask(\"123456789\") // \"#####6789\"\n```",
+    "answer": "> There are many ways to solve this problem, this is just one one of them.\n\nUsing `String.prototype.slice()`, we can grab a portion of the string from index `0` (first character) to index `-4` (5th last character) and calculate the resulting length, using `String.prototype.repeat()` to repeat the mask character that many times. Then, using `String.prototype.slice()` once more, we can concatenate the last 4 characters by passing `-4` as an argument.\n\n```js\nconst mask = (str, maskChar = \"#\") =>\n  maskChar.repeat(str.slice(0, -4).length) + str.slice(-4)\n```",
+    "goodToHear": [
+      "Short, one-line functional solutions to problems should be preferred provided they are efficient"
+    ],
+    "links": [],
+    "tags": [
+      "javascript"
+    ],
+    "expertise": 1,
+    "questionCodeBlocks": [
+      "```js\nmask(\"123456789\") // \"#####6789\"\n```"
+    ],
+    "answerCodeBlocks": [
+      "```js\nconst mask = (str, maskChar = \"#\") =>\n  maskChar.repeat(str.slice(0, -4).length) + str.slice(-4)\n```"
+    ]
+  },
+  {
     "name": "media-properties.md",
     "question": "Can you name the four types of `@media` properties?",
     "answer": "* `all`, which applies to all media type devices\n* `print`, which only applies to printers\n* `screen`, which only applies to screens (desktops, tablets, mobile etc.)\n* `speech`, which only applies to screenreaders",
@@ -330,6 +450,66 @@
     "expertise": 0,
     "questionCodeBlocks": [],
     "answerCodeBlocks": []
+  },
+  {
+    "name": "mutable-vs-immutable.md",
+    "question": "Explain the difference between mutability and immutability, and mutating vs non-mutating methods.",
+    "answer": "\"Mutability\" means a value is subject to change. \"Immutability\" means a value cannot change.\n\nObjects are mutable, while primitive values (strings, numbers, etc) are immutable. This means any operations performed on a primitive value does not change the original value.\n\nAll `String.prototype` methods do not have an effect on the original string and return a new string. On the other hand, while some methods of `Array.prototype` do not mutate the original array reference and produce a fresh array, some cause mutations.\n\n```js\nconst myString = \"hello!\"\nmyString.replace(\"!\", \"\") // returns a new string, cannot mutate the original value\n\nconst originalArray = [1, 2, 3]\noriginalArray.push(4) // mutates originalArray, now [1, 2, 3, 4]\noriginalArray.concat(4) // returns a new array, does not mutate the original\n```",
+    "goodToHear": [
+      "List of mutating and non-mutating array methods"
+    ],
+    "links": [
+      "[Mutating vs non-mutating array methods](https://lorenstewart.me/2017/01/22/javascript-array-methods-mutating-vs-non-mutating/)"
+    ],
+    "tags": [
+      "javascript"
+    ],
+    "expertise": 2,
+    "questionCodeBlocks": [],
+    "answerCodeBlocks": [
+      "```js\nconst myString = \"hello!\"\nmyString.replace(\"!\", \"\") // returns a new string, cannot mutate the original value\n\nconst originalArray = [1, 2, 3]\noriginalArray.push(4) // mutates originalArray, now [1, 2, 3, 4]\noriginalArray.concat(4) // returns a new array, does not mutate the original\n```"
+    ]
+  },
+  {
+    "name": "nan.md",
+    "question": "What is the only value not equal to itself in JavaScript?",
+    "answer": "`NaN` (Not-a-Number) is the only value not equal to itself when comparing with any of the comparison operators. `NaN` is often the result of meaningless math computations, so two `NaN` values make no sense to be considered equal.",
+    "goodToHear": [
+      "The functions `isNaN()` and `Number.isNaN()`",
+      "`const isNaN = x => x !== x`"
+    ],
+    "links": [
+      "[MDN docs for `NaN`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NaN)"
+    ],
+    "tags": [
+      "javascript"
+    ],
+    "expertise": 2,
+    "questionCodeBlocks": [],
+    "answerCodeBlocks": []
+  },
+  {
+    "name": "node-error-first-callback.md",
+    "question": "NodeJS uses a callback pattern in many instances where if an error were returned it will pass it as the first argument to the callback. What are the advantages of this pattern?\n\n```js\nfs.readFile(filePath, function(err, data) {  \n  if (err) {\n    // handle the error, the return is important here\n    // so execution stops here\n    return console.log(err)\n  }\n  // use the data object\n  console.log(data)\n})\n```",
+    "answer": "Advantages include:\n\n* Not needing to process data if there is no need to even reference it\n* Having a consistent API leads to more adoption\n* Ability to easily adapt a callback pattern that will lead to more maintainable code\n\nAs you can see from below example, the callback is called with null as its first argument if there is no error. However, if there is an error, you create an Error object, which then becomes the callback's only parameter. The callback function allows a user to easily know whether or not an error occurred. \n\nThis practice is also called the _Node.js error convention_, and this kind of callback implementations are called _error-first callbacks_.\n\n```js\nvar isTrue = function(value, callback) {\n  if (value === true) {\n    callback(null, \"Value was true.\");\n  } else {\n    callback(new Error(\"Value is not true!\"));\n  }\n}\n\nvar callback = function (error, retval) {\n  if (error) {\n    console.log(error);\n    return;\n  }\n  console.log(retval);\n}\n\nisTrue(false, callback);\nisTrue(true,  callback);\n\n{ stack: [Getter/Setter],\n  arguments: undefined,\n  type: undefined,\n  message: 'Value is not true!' }\nValue was true.\n```",
+    "goodToHear": [
+      "This is just a convention. However, you should stick to it."
+    ],
+    "links": [
+      "[The Node.js Way - Understanding Error-First Callbacks](http://fredkschott.com/post/2014/03/understanding-error-first-callbacks-in-node-js/)",
+      "[What are the error conventions?](https://docs.nodejitsu.com/articles/errors/what-are-the-error-conventions)"
+    ],
+    "tags": [
+      "node",
+      " javascript"
+    ],
+    "expertise": 1,
+    "questionCodeBlocks": [
+      "```js\nfs.readFile(filePath, function(err, data) {  \n  if (err) {\n    // handle the error, the return is important here\n    // so execution stops here\n    return console.log(err)\n  }\n  // use the data object\n  console.log(data)\n})\n```"
+    ],
+    "answerCodeBlocks": [
+      "```js\nvar isTrue = function(value, callback) {\n  if (value === true) {\n    callback(null, \"Value was true.\");\n  } else {\n    callback(new Error(\"Value is not true!\"));\n  }\n}\n\nvar callback = function (error, retval) {\n  if (error) {\n    console.log(error);\n    return;\n  }\n  console.log(retval);\n}\n\nisTrue(false, callback);\nisTrue(true,  callback);\n\n{ stack: [Getter/Setter],\n  arguments: undefined,\n  type: undefined,\n  message: 'Value is not true!' }\nValue was true.\n```"
+    ]
   },
   {
     "name": "node-event-loop.md",
@@ -370,6 +550,48 @@
     "answerCodeBlocks": []
   },
   {
+    "name": "object-creation.md",
+    "question": "Describe the different ways to create an object. When should certain ways be preferred over others?",
+    "answer": "##### Object literal\n\nOften used to store one occurrence of data.\n\n```js\nconst person = {\n  name: \"John\",\n  age: 50,\n  birthday() {\n    this.age++\n  }\n}\nperson.birthday() // person.age === 51\n```\n\n##### Constructor\n\nOften used when you need to create multiple instances of an object, each with their own data that other instances of the class cannot affect. The `new` operator must be used before invoking the constructor or the global object will be mutated.\n\n```js\nfunction Person(name, age) {\n  this.name = name\n  this.age = age\n}\nPerson.prototype.birthday = function() {\n  this.age++\n}\nconst person1 = new Person(\"John\", 50)\nconst person2 = new Person(\"Sally\", 20)\nperson1.birthday() // person1.age === 51\nperson2.birthday() // person2.age === 21\n```\n\n##### Factory function\n\nCreates a new object similar to a constructor, but can store private data using a closure. There is also no need to use `new` before invoking the function or the `this` keyword. Factory functions usually discard the idea of prototypes and keep all properties and methods as own properties of the object.\n\n```js\nconst createPerson = (name, age) => {\n  const birthday = () => person.age++\n  const person = { name, age, birthday }\n  return person\n}\nconst person = createPerson(\"John\", 50)\nperson.birthday() // person.age === 51\n```\n\n##### `Object.create()`\n\nSets the prototype of the newly created object.\n\n```js\nconst personProto = {\n  birthday() {\n    this.age++\n  }\n}\nconst person = Object.create(personProto)\nperson.age = 50\nperson.birthday() // person.age === 51\n```\n\nA second argument can also be supplied to `Object.create()` which acts as a descriptor for the new properties to be defined.\n\n```js\nObject.create(personProto, {\n  age: {\n    value: 50,\n    writable: true,\n    enumerable: true\n  }\n})\n```",
+    "goodToHear": [
+      "Prototypes are objects that other objects inherit properties and methods from.",
+      "Factory functions offer private properties and methods through a closure but increase memory usage as a tradeoff, while classes do not have private properties or methods but reduce memory impact by reusing a single prototype object."
+    ],
+    "links": [
+      "[Factory functions vs constructor functions vs classes](https://medium.com/javascript-scene/javascript-factory-functions-vs-constructor-functions-vs-classes-2f22ceddf33e)"
+    ],
+    "tags": [
+      "javascript"
+    ],
+    "expertise": 1,
+    "questionCodeBlocks": [],
+    "answerCodeBlocks": [
+      "```js\nconst person = {\n  name: \"John\",\n  age: 50,\n  birthday() {\n    this.age++\n  }\n}\nperson.birthday() // person.age === 51\n```",
+      "```js\nfunction Person(name, age) {\n  this.name = name\n  this.age = age\n}\nPerson.prototype.birthday = function() {\n  this.age++\n}\nconst person1 = new Person(\"John\", 50)\nconst person2 = new Person(\"Sally\", 20)\nperson1.birthday() // person1.age === 51\nperson2.birthday() // person2.age === 21\n```",
+      "```js\nconst createPerson = (name, age) => {\n  const birthday = () => person.age++\n  const person = { name, age, birthday }\n  return person\n}\nconst person = createPerson(\"John\", 50)\nperson.birthday() // person.age === 51\n```",
+      "```js\nconst personProto = {\n  birthday() {\n    this.age++\n  }\n}\nconst person = Object.create(personProto)\nperson.age = 50\nperson.birthday() // person.age === 51\n```",
+      "```js\nObject.create(personProto, {\n  age: {\n    value: 50,\n    writable: true,\n    enumerable: true\n  }\n})\n```"
+    ]
+  },
+  {
+    "name": "parameter-vs-argument.md",
+    "question": "What is the difference between a parameter and an argument?",
+    "answer": "Parameters are the variable names of the function definition, while arguments are the values given to a function when it is invoked.\n\n```js\nfunction myFunction(parameter1, parameter2) {\n  console.log(arguments[0]) // \"argument1\"\n}\nmyFunction(\"argument1\", \"argument2\")\n```",
+    "goodToHear": [
+      "`arguments` is an array-like object containing information about the arguments supplied to an invoked function.",
+      "`myFunction.length` describes the arity of a function (how many parameters it has, regardless of how many arguments it is supplied)."
+    ],
+    "links": [],
+    "tags": [
+      "javascript"
+    ],
+    "expertise": 1,
+    "questionCodeBlocks": [],
+    "answerCodeBlocks": [
+      "```js\nfunction myFunction(parameter1, parameter2) {\n  console.log(arguments[0]) // \"argument1\"\n}\nmyFunction(\"argument1\", \"argument2\")\n```"
+    ]
+  },
+  {
     "name": "pass-by-value-reference.md",
     "question": "Does JavaScript pass by value or by reference?",
     "answer": "JavaScript always passes by value. However, with objects, the value is a reference to the object.",
@@ -385,6 +607,61 @@
     "expertise": 1,
     "questionCodeBlocks": [],
     "answerCodeBlocks": []
+  },
+  {
+    "name": "pipe.md",
+    "question": "Create a function `pipe` that performs left-to-right function composition by returning a function that accepts one argument.\n\n```js\nconst square = v => v * v\nconst double = v => v * 2\nconst addOne = v => v + 1\nconst res = pipe(square, double, addOne)\nres(3) // 19; addOne(double(square(3)))\n```",
+    "answer": "Gather all supplied arguments using the rest operator `...` and return a unary function that uses `Array.prototype.reduce()` to run the value through the series of functions before returning the final value.\n\n```js\nconst pipe = (...fns) => x => fns.reduce((v, fn) => fn(v), x)\n```",
+    "goodToHear": [
+      "Function composition is the process of combining two or more functions to produce a new function."
+    ],
+    "links": [
+      "[What is function composition?](https://medium.com/javascript-scene/master-the-javascript-interview-what-is-function-composition-20dfb109a1a0)"
+    ],
+    "tags": [
+      "javascript"
+    ],
+    "expertise": 2,
+    "questionCodeBlocks": [
+      "```js\nconst square = v => v * v\nconst double = v => v * 2\nconst addOne = v => v + 1\nconst res = pipe(square, double, addOne)\nres(3) // 19; addOne(double(square(3)))\n```"
+    ],
+    "answerCodeBlocks": [
+      "```js\nconst pipe = (...fns) => x => fns.reduce((v, fn) => fn(v), x)\n```"
+    ]
+  },
+  {
+    "name": "promise-states.md",
+    "question": "In which states can a Promise be?",
+    "answer": "A `Promise` is in one of these states:\n\n* pending: initial state, neither fulfilled nor rejected.\n* fulfilled: meaning that the operation completed successfully.\n* rejected: meaning that the operation failed.\n\nA pending promise can either be fulfilled with a value, or rejected with a reason (error). \nWhen either of these options happens, the associated handlers queued up by a promise's then method are called.",
+    "goodToHear": [],
+    "links": [
+      "[Official Web Docs - Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)"
+    ],
+    "tags": [
+      "javascript"
+    ],
+    "expertise": 0,
+    "questionCodeBlocks": [],
+    "answerCodeBlocks": []
+  },
+  {
+    "name": "promises.md",
+    "question": "What are Promises?",
+    "answer": "The `Promise` object represents the eventual completion (or failure) of an asynchronous operation, and its resulting value.\nAn example can be the following snippet, which after 100ms prints out the result string to the standard output. Also, note the catch, which can be used for error handling. `Promise`s are chainable.\n\n```js\nnew Promise((resolve, reject) => {\n  setTimeout(() => {\n    resolve('result')\n  }, 100)\n})\n  .then(console.log)\n  .catch(console.error)\n```",
+    "goodToHear": [
+      "Take a look into the other questions regarding `Promise`s!"
+    ],
+    "links": [
+      "[Master the JavaScript Interview: What is a Promise?](https://medium.com/javascript-scene/master-the-javascript-interview-what-is-a-promise-27fc71e772618)"
+    ],
+    "tags": [
+      "javascript"
+    ],
+    "expertise": 0,
+    "questionCodeBlocks": [],
+    "answerCodeBlocks": [
+      "```js\nnew Promise((resolve, reject) => {\n  setTimeout(() => {\n    resolve('result')\n  }, 100)\n})\n  .then(console.log)\n  .catch(console.error)\n```"
+    ]
   },
   {
     "name": "prototypal-inheritance.md",
@@ -483,24 +760,62 @@
     "answerCodeBlocks": []
   },
   {
-    "name": "type-comparison.md",
-    "question": "What is the difference between `==` and `===`?",
-    "answer": "When using triple equals in JavaScript we are testing for strict equality. This means both the type and the value we are comparing have to be the same. On the other hand, double equals first performs type coercion and then checks for loose equality.",
+    "name": "static-vs-instance-method.md",
+    "question": "Explain the difference between a static method and an instance method.",
+    "answer": "Static methods belong to a class and don't act on instances, while instance methods belong to the class prototype which is inherited by all instances of the class and acts on them.\n\n```js\nArray.isArray // static method of Array\nArray.prototype.push // instance method of Array\n```\n\nIn this case, the `Array.isArray` method does not make sense as an instance method of arrays because we already know the value is an array when working with it.\n\nInstance methods could technically work as static methods, but provide terser syntax:\n\n```js\nconst arr = [1, 2, 3]\narr.push(4)\nArray.push(arr, 4)\n```",
     "goodToHear": [
-      "Whenever possible, use triple equals to test equality",
-      "Type coercion - converts values into a common type",
-      "Mention of falsy values and their comparison",
-      "`NaN` is not equivalent to anything, not even itself"
+      "How to create static and instance methods with ES2015 class syntax"
     ],
     "links": [
-      "[MDN docs for comparison operators](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Comparison_Operators)"
+      "[Classes on MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes)"
     ],
     "tags": [
       "javascript"
     ],
-    "expertise": 0,
+    "expertise": 2,
+    "questionCodeBlocks": [],
+    "answerCodeBlocks": [
+      "```js\nArray.isArray // static method of Array\nArray.prototype.push // instance method of Array\n```",
+      "```js\nconst arr = [1, 2, 3]\narr.push(4)\nArray.push(arr, 4)\n```"
+    ]
+  },
+  {
+    "name": "sync-vs-async.md",
+    "question": "What is the difference between synchronous and asynchronous code in JavaScript?",
+    "answer": "Synchronous means each operation must wait for the previous one to complete.\n\nAsynchronous means an operation can occur while another operation is still being processed.\n\nIn JavaScript, all code is synchronous due to the single-threaded nature of it. However, asynchronous operations not part of the program (such as `XMLHttpRequest` or `setTimeout`) are processed outside of the main thread because they are controlled by native code (browser APIs), but callbacks part of the program will still be executed synchronously.",
+    "goodToHear": [
+      "JavaScript has a concurrency model based on an \"event loop\".",
+      "Functions like `alert` block the main thread so that no user input is registered until the user closes it."
+    ],
+    "links": [],
+    "tags": [
+      "javascript"
+    ],
+    "expertise": 1,
     "questionCodeBlocks": [],
     "answerCodeBlocks": []
+  },
+  {
+    "name": "this.md",
+    "question": "How does `this` work?",
+    "answer": "The `this` keyword is an object that represents the context of an executing function. Regular functions can have their `this` value changed with `.call`, `.apply` and `.bind`. Arrow functions implicitly bind `this` so that it refers to the context of its lexical environment, regardless of whether or not its context is set explicitly with `call`.\n\nHere are some common examples of `this`:\n\n```js\n// Object literals\nvar myObject = {\n  regularFunction: function() {\n    return this\n  },\n  arrowFunction: () => {\n    return this\n  }\n}\nmyObject.regularFunction() // myObject\nmyObject.arrowFunction() // NOT myObject\nconst withoutContextFunction = myObject.regularFunction\nwithoutContextFunction() // NOT myObject\n\n// Event listeners\ndocument.body.addEventListener(\"click\", function() {\n  console.log(this) // document.body\n})\n\n// Classes\nclass myClass {\n  constructor() {\n    console.log(this) // myClassInstance\n  }\n}\nvar myClassInstance = new myClass()\n\n// Manual\nvar myFunction = function() {\n  return this\n}\nmyFunction.call({ customThis: true }) // { customThis: true }\n\n// Unwanted `this`\nvar obj = {\n  arr: [1, 2, 3],\n  doubleArr() {\n    return this.arr.map(function(value) {\n      // this === this.arr\n      return this.double(value)\n    })\n  },\n  double() {\n    return value * 2\n  }\n}\nobj.doubleArr() // Uncaught TypeError: this.double is not a function\n```",
+    "goodToHear": [
+      "In non-strict mode, global `this` is the global object (`window` in browsers), while in non-strict mode global `this` is `undefined`.",
+      "`Function.prototype.call` and `Function.prototype.apply` set the `this` context of an executing function as the first argument, with `call` accepting a variadic number of arguments thereafter, and `apply` accepting an array as the second argument which are fed to the function in a variadic manner.",
+      "`Function.prototype.bind` returns a new function that enforces the `this` context as the first argument which cannot be changed by other functions.",
+      "If a function requires its `this` context to be changed based on how it is called, you must use the `function` keyword. Use arrow functions when you want `this` to be the surrounding (lexical) context."
+    ],
+    "links": [
+      "[`this` on MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this)"
+    ],
+    "tags": [
+      "javascript"
+    ],
+    "expertise": 2,
+    "questionCodeBlocks": [],
+    "answerCodeBlocks": [
+      "```js\n// Object literals\nvar myObject = {\n  regularFunction: function() {\n    return this\n  },\n  arrowFunction: () => {\n    return this\n  }\n}\nmyObject.regularFunction() // myObject\nmyObject.arrowFunction() // NOT myObject\nconst withoutContextFunction = myObject.regularFunction\nwithoutContextFunction() // NOT myObject\n\n// Event listeners\ndocument.body.addEventListener(\"click\", function() {\n  console.log(this) // document.body\n})\n\n// Classes\nclass myClass {\n  constructor() {\n    console.log(this) // myClassInstance\n  }\n}\nvar myClassInstance = new myClass()\n\n// Manual\nvar myFunction = function() {\n  return this\n}\nmyFunction.call({ customThis: true }) // { customThis: true }\n\n// Unwanted `this`\nvar obj = {\n  arr: [1, 2, 3],\n  doubleArr() {\n    return this.arr.map(function(value) {\n      // this === this.arr\n      return this.double(value)\n    })\n  },\n  double() {\n    return value * 2\n  }\n}\nobj.doubleArr() // Uncaught TypeError: this.double is not a function\n```"
+    ]
   },
   {
     "name": "typeof-typeof.md",
@@ -536,6 +851,24 @@
       "javascript"
     ],
     "expertise": 1,
+    "questionCodeBlocks": [],
+    "answerCodeBlocks": []
+  },
+  {
+    "name": "ui-library-framework-purpose.md",
+    "question": "What is the purpose of JavaScript UI libraries/frameworks like React, Vue, Angular, Hyperapp, etc?",
+    "answer": "The main purpose is to avoid manipulating the DOM directly and keep the state of an application\nin sync with the UI easily. Additionally, they provide the ability to create components that can be reused when they have similar functionality with minor differences, avoiding duplication which would require multiple changes whenever the structure of a component which is reused in multiple places needs to be updated.\n\nWhen working with DOM manipulation libraries like jQuery, the data of an application is generally kept in the DOM itself, often as class names or `data` attributes. Manipulating the DOM to update the UI involves many extra steps and can introduce subtle bugs over time. Keeping the state separate and letting a framework handle the UI updates when the state changes reduces cognitive load, i.e. saying you want the UI to look a certain way when the state is a certain value is the declarative way of creating an application, instead of manually updating the UI to reflect the new state (imperative).",
+    "goodToHear": [
+      "The virtual DOM is a representation of the real DOM tree in the form of plain objects, which allows a library to write code as if the entire document is thrown away and rebuilt on each change, while the real DOM only updates what needs to be changed. Comparing the new virtual DOM against the previous one leads to high efficiency as changing real DOM nodes is costly compared to recalculating the virtual DOM.",
+      "JSX is an extension to JavaScript that provides XML-like syntax to create virtual DOM objects which is transformed to function calls by a transpiler. It simplifies control flow (if statements/ternary expressions) compared to tagged template literals."
+    ],
+    "links": [
+      "[Virtual DOM in Hyperapp](https://github.com/hyperapp/hyperapp#view)"
+    ],
+    "tags": [
+      "javascript"
+    ],
+    "expertise": 2,
     "questionCodeBlocks": [],
     "answerCodeBlocks": []
   },

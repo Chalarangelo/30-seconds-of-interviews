@@ -1,5 +1,9 @@
 @import "../_vars.scss";
 
+.Question-wrapper {
+  position: relative;
+}
+
 .Question {
   position: relative;
   background: white;
@@ -9,13 +13,14 @@
   line-height: 1.8;
   font-size: 18px;
   margin-bottom: 20px;
+  overflow: hidden;
 
   @media (min-width: $breakpoint-md) {
     padding: 40px;
   }
 
   &:last-child {
-    margin-bottom: 40px;
+    margin-bottom: 32px;
   }
 
   &__heading {
@@ -45,11 +50,33 @@
       margin-bottom: 0;
     }
 
+    h5 {
+      margin-bottom: -10px;
+      margin-top: 20px;
+      font-size: 20px;
+    }
+
     ul {
       margin-top: 5px;
       padding-left: 25px;
 
       p {
+        margin: 0;
+      }
+    }
+
+    blockquote {
+      margin: 0;
+      margin-top: 15px;
+      border-left: 2px solid #5ac983;
+      background: transparentize(#43a065, 0.95);
+      color: #43a065;
+      padding: 10px 0;
+      font-weight: 500;
+      font-size: 90%;
+
+      > p {
+        padding-left: 15px;
         margin: 0;
       }
     }
@@ -68,15 +95,40 @@
     border-radius: 30px;
     line-height: 1;
     text-transform: uppercase;
-    font-size: 12px;
+    font-size: 13px;
     font-weight: bold;
     background: white;
     color: #8385aa;
     line-height: 1;
     outline: 0;
     border-top: 1px solid darken(#f0f2f7, 4%);
+    z-index: 1;
+  }
 
-    &.is-senior {
+  &__tag {
+    position: absolute;
+    top: 0;
+    right: -65px;
+    transform: rotate(45deg);
+    color: white;
+    width: 125px;
+    height: 40px;
+    background: #333;
+
+    &.is-html {
+      background: $gradient-html;
+    }
+
+    &.is-css {
+      background: $gradient-css;
+    }
+
+    &.is-javascript {
+      background: $gradient-javascript;
+    }
+
+    &.is-node {
+      background: $gradient-node;
     }
   }
 }
