@@ -50,11 +50,33 @@
       margin-bottom: 0;
     }
 
+    h5 {
+      margin-bottom: -10px;
+      margin-top: 20px;
+      font-size: 20px;
+    }
+
     ul {
       margin-top: 5px;
       padding-left: 25px;
 
       p {
+        margin: 0;
+      }
+    }
+
+    blockquote {
+      margin: 0;
+      margin-top: 15px;
+      border-left: 2px solid #5ac983;
+      background: transparentize(#43a065, 0.95);
+      color: #43a065;
+      padding: 10px 0;
+      font-weight: 500;
+      font-size: 90%;
+
+      > p {
+        padding-left: 15px;
         margin: 0;
       }
     }

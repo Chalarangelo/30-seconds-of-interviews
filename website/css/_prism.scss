@@ -54,10 +54,13 @@ pre[class*="language-"] {
 }
 
 .token.atrule,
-.token.keyword,
+.token.keyword {
+  color: #7633f2;
+}
+
 .token.operator {
   background: none;
-  color: #7633f2;
+  color: #009ea2;
 }
 
 .token.number,
