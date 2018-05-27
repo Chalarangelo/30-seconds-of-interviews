@@ -122,6 +122,7 @@ try {
 
 	// write actual questions
 	Object.keys(questionsInTag).forEach(tagKey => {
+		output += hX(2, TAG_NAMES[tagKey])
 		taggedQuestions = questionsInTag[tagKey]
 		taggedQuestions.forEach(question => {
 			output += hX(3, question.question)
