@@ -6,7 +6,7 @@
 
 #### Good to hear
 
-* The functions `isNaN()` and `Number.isNaN()`
+* The difference between `isNaN()` and `Number.isNaN()`
 * `const isNaN = x => x !== x`
 
 ##### Additional links
