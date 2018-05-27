@@ -5,7 +5,6 @@ const chalk = require("chalk")
 const util = require("./util.js")
 const { QUESTIONS_PATH, TAG_NAMES } = util
 
-const QUESTIONS_PATH = "./questions"
 const STATIC_PARTS_PATH = "./static-parts"
 
 let tagOrder = ["javascript", "css", "html"]
