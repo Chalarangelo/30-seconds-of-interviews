@@ -8,28 +8,6 @@ const { TAG_NAMES } = util
 
 const STATIC_PARTS_PATH = "./static-parts"
 
-const formatOptions = code => {
-	return {
-		text: code,
-		eslintConfig: {
-			parserOptions: {
-				ecmaVersion: 7
-			},
-			rules: {
-				semi: ["error", "never"]
-			}
-		},
-		prettierOptions: {
-			bracketSpacing: true,
-			printWidth: 80,
-			tabWidth: 2
-		},
-		fallbackPrettierOptions: {
-			singleQuote: false
-		}
-	}
-}
-
 let tagOrder = ["javascript", "css", "html"]
 let questionTags = {}
 let startPart = ""
