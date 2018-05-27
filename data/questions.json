@@ -24,11 +24,9 @@
   {
     "name": "bem.md",
     "question": "What is CSS BEM?",
-    "answer": "The BEM methodology is another naming convention for CSS classes. The BEM stands for Block, Element, Modifier which is an explanation for its structure. Block is a standalone component that is reusable across projects. Elements and modifiers are part of the block with no standalone meaning. Here is the example of the typical syntax:\n\n```css\n/* block component */\n.block {\n}\n\n/* element */\n.block__element {\n}\n\n/* modifier */\n.block__element--modifier {\n}\n```",
+    "answer": "The BEM methodology is a naming convention for CSS classes in order to keep CSS more maintainable by defining namespaces to solve scoping issues. BEM stands for Block Element Modifier which is an explanation for its structure. A Block is a standalone component that is reusable across projects and acts as a \"namespace\" for sub components (Elements). Modifiers are used as flags when a Block or Element is in a certain state or is different in structure or style.\n\n```css\n/* block component */\n.block {\n}\n\n/* element */\n.block__element {\n}\n\n/* modifier */\n.block__element--modifier {\n}\n```\n\nHere is an example with the class names on markup:\n\n```html\n<nav class=\"navbar\">\n  <a href=\"/\" class=\"navbar__link navbar__link--active\"></a>\n  <a href=\"/\" class=\"navbar__link\"></a>\n  <a href=\"/\" class=\"navbar__link\"></a>\n</nav>\n```\n\nIn this case, `navbar` is the Block, `navbar__link` is an Element that makes no sense outside of the `navbar` component, and `navbar__link--active` is a Modifier that indicates a different state for the `navbar__link` Element.\n\nSince Modifiers are verbose, many opt to use `is-*` flags instead as modifiers.\n\n```html\n<a href=\"/\" class=\"navbar__link is-active\"></a>\n```\n\nThese must be chained to the Element and never alone however, or there will be scope issues.\n\n```css\n.navbar__link.is-active {\n}\n```",
     "goodToHear": [
-      "Block is a top-level abstraction of a new component",
-      "Elements make no sense to be alone - they are tightly dependent on blocks",
-      "Modifier is a flag added to block or element so it makes them a bit more specific"
+      "Alternative solutions to scope issues like CSS-in-JS"
     ],
     "links": [
       "[Writing clean and maintainable CSS](https://hackernoon.com/writing-clean-and-maintainable-css-using-bem-methodology-1dcbf810a664)"
@@ -39,7 +37,10 @@
     "expertise": 0,
     "questionCodeBlocks": [],
     "answerCodeBlocks": [
-      "```css\n/* block component */\n.block {\n}\n\n/* element */\n.block__element {\n}\n\n/* modifier */\n.block__element--modifier {\n}\n```"
+      "```css\n/* block component */\n.block {\n}\n\n/* element */\n.block__element {\n}\n\n/* modifier */\n.block__element--modifier {\n}\n```",
+      "```html\n<nav class=\"navbar\">\n  <a href=\"/\" class=\"navbar__link navbar__link--active\"></a>\n  <a href=\"/\" class=\"navbar__link\"></a>\n  <a href=\"/\" class=\"navbar__link\"></a>\n</nav>\n```",
+      "```html\n<a href=\"/\" class=\"navbar__link is-active\"></a>\n```",
+      "```css\n.navbar__link.is-active {\n}\n```"
     ]
   },
   {
@@ -55,7 +56,7 @@
     ],
     "tags": [
       "node",
-      " javascript"
+      "javascript"
     ],
     "expertise": 2,
     "questionCodeBlocks": [
@@ -203,11 +204,11 @@
   },
   {
     "name": "double-vs-triple-equals.md",
-    "question": "What is the difference between `==` and `===`?",
-    "answer": "When using triple equals in JavaScript we are testing for strict equality. This means both the type and the value we are comparing have to be the same. On the other hand, double equals first performs type coercion and then checks for loose equality.",
+    "question": "What is the difference between the equality operators `==` and `===`?",
+    "answer": "Triple equals (`===`) checks for strict equality, which means both the type and value must be the same. Double equals (`==`) on the other hand first performs type coercion so that both operands are of the same type and then applies strict comparison.",
     "goodToHear": [
-      "Whenever possible, use triple equals to test equality",
-      "Type coercion - converts values into a common type",
+      "Whenever possible, use triple equals to test equality because loose equality `==` can have unintuitive results",
+      "Type coercion means the values are converted into the same type",
       "Mention of falsy values and their comparison"
     ],
     "links": [
@@ -242,7 +243,7 @@
   {
     "name": "fibonacci.md",
     "question": "Generate an array, containing the Fibonacci sequence, up until the nth term.",
-    "answer": "Create an empty array of the specific length. Use Array.reduce() to add values into the array, using the sum of the last two values, except for the first two.\n\n```js\nconst fibonacci = n =>\n  Array.from({ length: n }).reduce(\n    (acc, val, i) => acc.concat(i > 1 ? acc[i - 1] + acc[i - 2] : i),\n    []\n  )\n```",
+    "answer": "Initialize an empty array of length `n`. Use `Array.prototype.reduce()` to add values into the array, using the sum of the last two values, except for the first two.\n\n```js\nconst fibonacci = n =>\n  [...Array(n)].reduce(\n    (acc, val, i) => acc.concat(i > 1 ? acc[i - 1] + acc[i - 2] : i),\n    []\n  )\n```",
     "goodToHear": [],
     "links": [
       "[Similar problem](https://github.com/Chalarangelo/30-seconds-of-code/blob/master/snippets_archive/fibonacciUntilNum.md)"
@@ -253,13 +254,13 @@
     "expertise": 1,
     "questionCodeBlocks": [],
     "answerCodeBlocks": [
-      "```js\nconst fibonacci = n =>\n  Array.from({ length: n }).reduce(\n    (acc, val, i) => acc.concat(i > 1 ? acc[i - 1] + acc[i - 2] : i),\n    []\n  )\n```"
+      "```js\nconst fibonacci = n =>\n  [...Array(n)].reduce(\n    (acc, val, i) => acc.concat(i > 1 ? acc[i - 1] + acc[i - 2] : i),\n    []\n  )\n```"
     ]
   },
   {
     "name": "flex-layout.md",
-    "question": "Use flexbox to create a 3-column layout where each of the columns has a width of 2/12, 7/12 and 3/12 of the screen width respectively. Use the following HTML code as a guide.\n\n```html\n<div class=\"flex-grid\">\n  <div class=\"col-2\"></div>\n  <div class=\"col-7\"></div>\n  <div class=\"col-3\"></div>\n</div>\n```",
-    "answer": "We only need to set the `display` property of the `flex-grid` element to `flex` and then apply the appropriate values for each column, using the `flex` property like this:\n\n```css\n.flex-grid {\n  display: flex;\n}\n\n.col-2 {\n  flex: 2;\n}\n\n.col-7 {\n  flex: 7;\n}\n\n.col-3 {\n  flex: 3;\n}\n```",
+    "question": "Using flexbox, create a 3-column layout where each column takes up a `col-{n} / 12` ratio of the container.\n\n```html\n<div class=\"row\">\n  <div class=\"col-2\"></div>\n  <div class=\"col-7\"></div>\n  <div class=\"col-3\"></div>\n</div>\n```",
+    "answer": "Set the `.row` parent to `display: flex;` and use the `flex` shorthand property to give the column classes a `flex-grow` value that corresponds to its ratio value.\n\n```css\n.row {\n  display: flex;\n}\n\n.col-2 {\n  flex: 2;\n}\n\n.col-7 {\n  flex: 7;\n}\n\n.col-3 {\n  flex: 3;\n}\n```",
     "goodToHear": [],
     "links": [
       "[MDN docs for basic concepts of flexbox](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Basic_Concepts_of_Flexbox)",
@@ -270,16 +271,16 @@
     ],
     "expertise": 0,
     "questionCodeBlocks": [
-      "```html\n<div class=\"flex-grid\">\n  <div class=\"col-2\"></div>\n  <div class=\"col-7\"></div>\n  <div class=\"col-3\"></div>\n</div>\n```"
+      "```html\n<div class=\"row\">\n  <div class=\"col-2\"></div>\n  <div class=\"col-7\"></div>\n  <div class=\"col-3\"></div>\n</div>\n```"
     ],
     "answerCodeBlocks": [
-      "```css\n.flex-grid {\n  display: flex;\n}\n\n.col-2 {\n  flex: 2;\n}\n\n.col-7 {\n  flex: 7;\n}\n\n.col-3 {\n  flex: 3;\n}\n```"
+      "```css\n.row {\n  display: flex;\n}\n\n.col-2 {\n  flex: 2;\n}\n\n.col-7 {\n  flex: 7;\n}\n\n.col-3 {\n  flex: 3;\n}\n```"
     ]
   },
   {
     "name": "floating-point.md",
     "question": "What does `0.1 + 0.2 === 0.3` evaluate to?",
-    "answer": "It evaluates to `false` because JavaScript uses the IEEE 754 standard for Math and it makes use of 64-bit floating numbers. This causes precision errors when doing decimal calculations, in short, due to computers working in Base 2 while decimal is Base 10.\n\n```js\n0.1 + 0.2 // 0.300000004\n```",
+    "answer": "It evaluates to `false` because JavaScript uses the IEEE 754 standard for Math and it makes use of 64-bit floating numbers. This causes precision errors when doing decimal calculations, in short, due to computers working in Base 2 while decimal is Base 10.\n\n```js\n0.1 + 0.2 // 0.30000000000000004\n```\n\nA solution to this problem would be to use a function that determines if two numbers are approximately equal by defining an error margin (epsilon) value that the difference between two values should be less than.\n\n```js\nconst approxEqual = (n1, n2, epsilon = 0.0001) => Math.abs(n1 - n2) < epsilon\napproxEqual(0.1 + 0.2, 0.3) // true\n```",
     "goodToHear": [
       "A simple solution to this problem"
     ],
@@ -293,8 +294,24 @@
     "expertise": 1,
     "questionCodeBlocks": [],
     "answerCodeBlocks": [
-      "```js\n0.1 + 0.2 // 0.300000004\n```"
+      "```js\n0.1 + 0.2 // 0.30000000000000004\n```",
+      "```js\nconst approxEqual = (n1, n2, epsilon = 0.0001) => Math.abs(n1 - n2) < epsilon\napproxEqual(0.1 + 0.2, 0.3) // true\n```"
     ]
+  },
+  {
+    "name": "focus-ring.md",
+    "question": "What is a focus ring? What is the correct solution to handle them?",
+    "answer": "A focus ring is a visible outline given to focusable elements such as buttons and anchor tags. It varies depending on the vendor, but generally it appears as a blue outline around the element to indicate it is currently focused.\n\nIn the past, many people specified `outline: 0;` on the element to remove the focus ring. However, this causes accessibility issues for keyboard users because the focus state may not be clear. When not specified though, it causes an unappealing blue ring to appear around an element.\n\nIn recent times, frameworks like Bootstrap have opted to use a more appealing `box-shadow` outline to replace the default focus ring. However, this is still not ideal for mouse users.\n\nThe best solution is an upcoming pseudo-selector `:focus-visible` which can be polyfilled today with JavaScript. It will only show a focus ring if the user is using a keyboard and leave it hidden for mouse users. This keeps both aesthetics for mouse use and accessibility for keyboard use.",
+    "goodToHear": [],
+    "links": [
+      "[:focus-visible](https://css-tricks.com/focus-visible-and-backwards-compatibility/)"
+    ],
+    "tags": [
+      "css"
+    ],
+    "expertise": 2,
+    "questionCodeBlocks": [],
+    "answerCodeBlocks": []
   },
   {
     "name": "for-each-map.md",
@@ -319,7 +336,7 @@
   {
     "name": "functional-programming.md",
     "question": "What is functional programming?",
-    "answer": "Functional programming is a paradigm in which programs are built in a declarative manner using pure functions that avoid shared state and mutable data. Functions that always return the same value for the same input and don't produce side effects are the pillar of functional programming. Many programmers consider this to be the best approach to software development as it reduces bugs and mental overhead.",
+    "answer": "Functional programming is a paradigm in which programs are built in a declarative manner using pure functions that avoid shared state and mutable data. Functions that always return the same value for the same input and don't produce side effects are the pillar of functional programming. Many programmers consider this to be the best approach to software development as it reduces bugs and cognitive load.",
     "goodToHear": [
       "Cleaner, more concise development experience",
       "Simple function composition",
@@ -340,7 +357,7 @@
   {
     "name": "hoisting-example.md",
     "question": "What will the console log in this example?\n\n```js\nvar foo = 1\nvar foobar = function() {\n  console.log(foo)\n  var foo = 2\n}\nfoobar()\n```",
-    "answer": "Due to hoisting, the local variable `foo` is declared before the `console.log` method is called. This means the local variable `foo` is passed as an argument to `log` instead of the global one declared outside of the function. However, since the value is not hoisted with the variable declaration, the output will be `undefined`, not `2`.",
+    "answer": "Due to hoisting, the local variable `foo` is declared before the `console.log` method is called. This means the local variable `foo` is passed as an argument to `console.log()` instead of the global one declared outside of the function. However, since the value is not hoisted with the variable declaration, the output will be `undefined`, not `2`.",
     "goodToHear": [
       "Hoisting is JavaScript’s default behavior of moving declarations to the top",
       "Mention of `strict` mode"
@@ -454,7 +471,7 @@
   {
     "name": "mutable-vs-immutable.md",
     "question": "Explain the difference between mutability and immutability, and mutating vs non-mutating methods.",
-    "answer": "\"Mutability\" means a value is subject to change. \"Immutability\" means a value cannot change.\n\nObjects are mutable, while primitive values (strings, numbers, etc) are immutable. This means any operations performed on a primitive value does not change the original value.\n\nAll `String.prototype` methods do not have an effect on the original string and return a new string. On the other hand, while some methods of `Array.prototype` do not mutate the original array reference and produce a fresh array, some cause mutations.\n\n```js\nconst myString = \"hello!\"\nmyString.replace(\"!\", \"\") // returns a new string, cannot mutate the original value\n\nconst originalArray = [1, 2, 3]\noriginalArray.push(4) // mutates originalArray, now [1, 2, 3, 4]\noriginalArray.concat(4) // returns a new array, does not mutate the original\n```",
+    "answer": "\"Mutability\" means a value is subject to change. \"Immutability\" means a value cannot change.\n\nObjects are mutable, while primitive values (strings, numbers, etc) are immutable. This means any operation performed on a primitive value does not change the original value.\n\nAll `String.prototype` methods do not have an effect on the original string and return a new string. On the other hand, while some methods of `Array.prototype` do not mutate the original array reference and produce a fresh array, some cause mutations.\n\n```js\nconst myString = \"hello!\"\nmyString.replace(\"!\", \"\") // returns a new string, cannot mutate the original value\n\nconst originalArray = [1, 2, 3]\noriginalArray.push(4) // mutates originalArray, now [1, 2, 3, 4]\noriginalArray.concat(4) // returns a new array, does not mutate the original\n```",
     "goodToHear": [
       "List of mutating and non-mutating array methods"
     ],
@@ -475,7 +492,7 @@
     "question": "What is the only value not equal to itself in JavaScript?",
     "answer": "`NaN` (Not-a-Number) is the only value not equal to itself when comparing with any of the comparison operators. `NaN` is often the result of meaningless math computations, so two `NaN` values make no sense to be considered equal.",
     "goodToHear": [
-      "The functions `isNaN()` and `Number.isNaN()`",
+      "The difference between `isNaN()` and `Number.isNaN()`",
       "`const isNaN = x => x !== x`"
     ],
     "links": [
@@ -501,7 +518,7 @@
     ],
     "tags": [
       "node",
-      " javascript"
+      "javascript"
     ],
     "expertise": 1,
     "questionCodeBlocks": [
@@ -890,6 +907,29 @@
     "expertise": 2,
     "questionCodeBlocks": [],
     "answerCodeBlocks": []
+  },
+  {
+    "name": "var-let-const.md",
+    "question": "What are the differences between `var`, `let`, `const` and no keyword statements?",
+    "answer": "##### No keyword prefix\n\nWhen no keyword is prefixed before a variable declaration, it is either assigning a global variable if one does not exist, or reassigns an already declared variable. In non-strict mode, it will assign the variable as a property of the global object `this` (`window` in browsers). In strict mode, it will throw an error to prevent unwanted global variables from being created.\n\n##### var\n\n`var` was the default statement to declare a variable until ES2015. It creates a function-scoped variable that can be reassigned and redeclared. However, due to its lack of block scoping, it can cause issues if the variable is being reused in a loop that contains an asynchronous callback because the variable will continue to exist outside of the block scope.\n\nBelow, by the time the the `setTimeout` callback executes, the loop has already finished and the `i` variable is `10`, so all ten callbacks reference the same variable available in the function scope.\n\n```js\nfor (var i = 0; i < 10; i++) {\n  setTimeout(() => {\n    console.log(i) // logs `10` ten times\n  })\n}\n\n/* ==================== Solutions with `var` ==================== */\nfor (var i = 0; i < 10; i++) {\n  // Passed as an argument will use the value as-is in that point in time\n  setTimeout(console.log, 0, i)\n}\n\nfor (var i = 0; i < 10; i++) {\n  // Create a new function scope that will use the value as-is in that point in time\n  ;(i => {\n    setTimeout(() => {\n      console.log(i)\n    })\n  })(i)\n}\n```\n\n##### let\n\n`let` was introduced in ES2015 and is the new preferred way to declare variables that will be reassigned later. Trying to redeclare a variable again will throw an error. It is block-scoped so that using it in a loop will keep it scoped to the iteration.\n\n```js\nfor (let i = 0; i < 10; i++) {\n  setTimeout(() => {\n    console.log(i) // logs 0, 1, 2, 3, ...\n  })\n}\n```\n\n##### const\n\n`const` was introduced in ES2015 and is the new preferred default way to declare all variables if they won't be reassigned later, even for objects that will be mutated (as long as the reference to the object does not change). It is block-scoped and cannot be reassigned.\n\n```js\nconst myObject = {}\nmyObject.prop = \"hello!\" // No error\nmyObject = \"hello\" // Error\n```",
+    "goodToHear": [
+      "All declarations are hoisted to the top of their scope",
+      "Show a common issue with using `var` and how `let` can solve it, as well as a solution that keeps `var`.",
+      "`var` should be avoided whenever possible and prefer `const` as the default declaration statement for all variables unless they will be reassigned later, then use `let` if so."
+    ],
+    "links": [
+      "[`let` vs `const`](https://wesbos.com/let-vs-const/)"
+    ],
+    "tags": [
+      "javascript"
+    ],
+    "expertise": 1,
+    "questionCodeBlocks": [],
+    "answerCodeBlocks": [
+      "```js\nfor (var i = 0; i < 10; i++) {\n  setTimeout(() => {\n    console.log(i) // logs `10` ten times\n  })\n}\n\n/* ==================== Solutions with `var` ==================== */\nfor (var i = 0; i < 10; i++) {\n  // Passed as an argument will use the value as-is in that point in time\n  setTimeout(console.log, 0, i)\n}\n\nfor (var i = 0; i < 10; i++) {\n  // Create a new function scope that will use the value as-is in that point in time\n  ;(i => {\n    setTimeout(() => {\n      console.log(i)\n    })\n  })(i)\n}\n```",
+      "```js\nfor (let i = 0; i < 10; i++) {\n  setTimeout(() => {\n    console.log(i) // logs 0, 1, 2, 3, ...\n  })\n}\n```",
+      "```js\nconst myObject = {}\nmyObject.prop = \"hello!\" // No error\nmyObject = \"hello\" // Error\n```"
+    ]
   },
   {
     "name": "wrap-content.md",
