@@ -4,6 +4,13 @@ const chalk = require("chalk")
 
 const QUESTIONS_PATH = "./questions"
 
+const TAG_NAMES = {
+  javascript: "JavaScript",
+  css: "CSS",
+  html: "HTML",
+  node: "Node"
+}
+
 const attempt = (task, cb) => {
   try {
     return cb()
@@ -57,5 +64,6 @@ module.exports = {
   toKebabCase,
   capitalize,
   getCodeBlocks,
-  QUESTIONS_PATH
+  QUESTIONS_PATH,
+  TAG_NAMES
 }
