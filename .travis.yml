@@ -6,10 +6,10 @@ cache:
 node_js:
 - node
 script:
-- npm run builder
-- npm run extractor
+- yarn builder
+- yarn extractor
 - rm -rf docs
-- npm run build
+- yarn build
 - touch docs/.nojekyll
 - chmod +x .travis/write_cname.sh
 - cd docs/ && ./../.travis/write_cname.sh
