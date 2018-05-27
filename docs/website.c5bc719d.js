@@ -45,4 +45,4 @@ var e,t=arguments[3];!function(t){"use strict";var n={newline:/^\n+/,code:/^( {4
 },{"hyperapp":19,"./components/Header":27,"./components/Introduction":28,"./components/Filter":29,"./components/Questions":30,"./components/BackToTopButton":31}],6:[function(require,module,exports) {
 "use strict";require("./css/index"),require("./js/browser"),require("focus-visible");var e=require("prismjs"),r=d(e),i=require("hyperapp"),s=require("./js/state"),t=d(s),u=require("./js/actions"),o=d(u),l=require("./js/view"),a=d(l);function d(e){return e&&e.__esModule?e:{default:e}}var n=(0,i.app)(t.default,o.default,a.default,document.body);setTimeout(function(){r.default.highlightAll();var e=document.querySelector(".BackToTopButton");addEventListener("scroll",function(){e.classList[window.scrollY>750?"add":"remove"]("is-visible")})});
 },{"./css/index":23,"./js/browser":9,"focus-visible":17,"prismjs":18,"hyperapp":19,"./js/state":10,"./js/actions":11,"./js/view":12}]},{},[6], null)
-//# sourceMappingURL=../website.7c09eb5a.map
+//# sourceMappingURL=website.7c09eb5a.map
