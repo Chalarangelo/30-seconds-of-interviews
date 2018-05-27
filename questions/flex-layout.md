@@ -1,7 +1,7 @@
-### Use flexbox to create a 3-column layout where each of the columns has a width of 2/12, 7/12 and 3/12 of the screen width respectively. Use the following HTML code as a guide.
+### Using flexbox, create a 3-column layout where each column takes up a `col-{n} / 12` ratio of the container.
 
 ```html
-<div class="flex-grid">
+<div class="row">
   <div class="col-2"></div>
   <div class="col-7"></div>
   <div class="col-3"></div>
@@ -10,10 +10,10 @@
 
 #### Answer
 
-We only need to set the `display` property of the `flex-grid` element to `flex` and then apply the appropriate values for each column, using the `flex` property like this:
+Set the `.row` parent to `display: flex;` and use the `flex` shorthand property to give the column classes a `flex-grow` value that corresponds to its ratio value.
 
 ```css
-.flex-grid {
+.row {
   display: flex;
 }
 
