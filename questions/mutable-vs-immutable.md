@@ -4,7 +4,7 @@
 
 "Mutability" means a value is subject to change. "Immutability" means a value cannot change.
 
-Objects are mutable, while primitive values (strings, numbers, etc) are immutable. This means any operations performed on a primitive value does not change the original value.
+Objects are mutable, while primitive values (strings, numbers, etc) are immutable. This means any operation performed on a primitive value does not change the original value.
 
 All `String.prototype` methods do not have an effect on the original string and return a new string. On the other hand, while some methods of `Array.prototype` do not mutate the original array reference and produce a fresh array, some cause mutations.
 
