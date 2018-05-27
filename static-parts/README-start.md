@@ -1,4 +1,4 @@
-<a href="https://30secondsofinterviews.org"><img src="logo.png" alt="30 seconds of interviews logo"></a>
+<a href="https://30secondsofinterviews.org"><img src="logo.jpg" alt="30 seconds of interviews logo"></a>
 
 <h1 align="center">
   30 seconds of interviews
@@ -25,7 +25,6 @@ Interviews are daunting and can make even the most seasoned expert forget things
 ## View online
 
 https://30secondsofinterviews.org
-
 
 ## Contributing
 
