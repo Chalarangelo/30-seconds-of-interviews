@@ -31,13 +31,22 @@ export const scrollToTop = (() => {
   }
 })()
 
+export const nextValInObj = (obj, key) => {
+  let keys = Object.keys(obj),
+    i = Object.values(obj).indexOf(key);
+  return typeof (i !== -1 && keys[i + 1] && obj[keys[i + 1]]) === "undefined"
+    ? Object.values(obj)[0]
+    : i !== -1 && keys[i + 1] && obj[keys[i + 1]];
+}
+
 export const EXPERTISE_STRINGS = ["junior", "intermediate", "senior"]
 
 export const TAG_NAMES = {
   javascript: "JavaScript",
   html: "HTML",
   css: "CSS",
-  node: "Node"
+  node: "Node",
+  all: "all"
 }
 
 export const SORTBY_STRINGS = {
