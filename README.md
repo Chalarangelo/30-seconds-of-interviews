@@ -63,8 +63,6 @@ Join our [Gitter channel](https://gitter.im/30-seconds-of-interviews/Lobby) to h
 * [ What is the difference between a parameter and an argument?](#what-is-the-difference-between-a-parameter-and-an-argument) 
 * [ Does JavaScript pass by value or by reference?](#does-javascript-pass-by-value-or-by-reference) 
 * [ Create a function `pipe` that performs left-to-right function composition by returning a function that accepts one argument.](#create-a-function-pipe-that-performs-left-to-right-function-composition-by-returning-a-function-that-accepts-one-argument) 
-* [ In which states can a Promise be?](#in-which-states-can-a-promise-be) 
-* [ What are Promises?](#what-are-promises) 
 * [ How does prototypal inheritance differ from classical inheritance?](#how-does-prototypal-inheritance-differ-from-classical-inheritance) 
 * [ What is the output of the following code?](#what-is-the-output-of-the-following-code) 
 * [ What does the following function return?](#what-does-the-following-function-return) 
@@ -109,8 +107,6 @@ Join our [Gitter channel](https://gitter.im/30-seconds-of-interviews/Lobby) to h
 <details>
 <summary>View contents</summary>
 
-* [ How can you avoid callback hells?](#how-can-you-avoid-callback-hells) 
-* [ NodeJS uses a callback pattern in many instances where if an error were returned it will pass it as the first argument to the callback. What are the advantages of this pattern?](#nodejs-uses-a-callback-pattern-in-many-instances-where-if-an-error-were-returned-it-will-pass-it-as-the-first-argument-to-the-callback-what-are-the-advantages-of-this-pattern) 
 * [ What is the event loop in Node.js?](#what-is-the-event-loop-in-node-js) 
 </details>
 
@@ -834,70 +830,6 @@ const pipe = (...fns) => x => fns.reduce((v, fn) => fn(v), x)
 <!-- tags: (javascript) -->
 
 <!-- expertise: (2) -->
-</details> 
-
-<br>[⬆ Back to top](#table-of-contents)
-
-### In which states can a Promise be?
-
-#### Answer
-
-<details>
-<summary>View answer</summary>
-
-A `Promise` is in one of these states:
-
-* pending: initial state, neither fulfilled nor rejected.
-* fulfilled: meaning that the operation completed successfully.
-* rejected: meaning that the operation failed.
-
-A pending promise can either be fulfilled with a value, or rejected with a reason (error). 
-When either of these options happens, the associated handlers queued up by a promise's then method are called. 
-
-#### Good to hear
-
-##### Additional links
-
-* [Official Web Docs - Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)
-
-<!-- tags: (javascript) -->
-
-<!-- expertise: (0) -->
-</details> 
-
-<br>[⬆ Back to top](#table-of-contents)
-
-### What are Promises?
-
-#### Answer
-
-<details>
-<summary>View answer</summary>
-
-The `Promise` object represents the eventual completion (or failure) of an asynchronous operation, and its resulting value.
-An example can be the following snippet, which after 100ms prints out the result string to the standard output. Also, note the catch, which can be used for error handling. `Promise`s are chainable.
-
-```js
-new Promise((resolve, reject) => {
-  setTimeout(() => {
-    resolve('result')
-  }, 100)
-})
-  .then(console.log)
-  .catch(console.error)
-```
-
-#### Good to hear
-
-* Take a look into the other questions regarding `Promise`s!
-
-##### Additional links
-
-* [Master the JavaScript Interview: What is a Promise?](https://medium.com/javascript-scene/master-the-javascript-interview-what-is-a-promise-27fc71e772618)
-
-<!-- tags: (javascript) -->
-
-<!-- expertise: (0) -->
 </details> 
 
 <br>[⬆ Back to top](#table-of-contents)
@@ -1687,122 +1619,6 @@ The `rel="noopener"` is an attribute used in `<a>` elements (hyperlinks). It pre
 ---
 
 ## Node
-
-### How can you avoid callback hells?
-
-```js
-getData(function(a){  
-    getMoreData(a, function(b){
-        getMoreData(b, function(c){ 
-            getMoreData(c, function(d){ 
-                getMoreData(d, function(e){ 
-                    ...
-                });
-            });
-        });
-    });
-});
-```
-
-#### Answer
-
-<details>
-<summary>View answer</summary>
-
-There are lots of ways to solve the issue of callback hells:
-
-* modularization: break callbacks into independent functions
-* use a control flow library, like async
-* use generators with Promises
-* use async/await (from v7 on)
-
-#### Good to hear
-
-* As an efficient JavaScript developer, you have to avoid the constantly growing indentation level, produce clean and readable code and be able to handle complex flows.
-
-##### Additional links
-
-* [Avoiding Callback Hell in Node.js](http://stackabuse.com/avoiding-callback-hell-in-node-js/)
-* [Asynchronous JavaScript: From Callback Hell to Async and Await](https://blog.hellojs.org/asynchronous-javascript-from-callback-hell-to-async-and-await-9b9ceb63c8e8)
-
-<!-- tags: (node, javascript) -->
-
-<!-- expertise: (2) -->
-</details> 
-
-<br>[⬆ Back to top](#table-of-contents)
-
-### NodeJS uses a callback pattern in many instances where if an error were returned it will pass it as the first argument to the callback. What are the advantages of this pattern?
-
-```js
-fs.readFile(filePath, function(err, data) {  
-  if (err) {
-    // handle the error, the return is important here
-    // so execution stops here
-    return console.log(err)
-  }
-  // use the data object
-  console.log(data)
-})
-```
-
-#### Answer
-
-<details>
-<summary>View answer</summary>
-
-Advantages include:
-
-* Not needing to process data if there is no need to even reference it
-* Having a consistent API leads to more adoption
-* Ability to easily adapt a callback pattern that will lead to more maintainable code
-
-As you can see from below example, the callback is called with null as its first argument if there is no error. However, if there is an error, you create an Error object, which then becomes the callback's only parameter. The callback function allows a user to easily know whether or not an error occurred. 
-
-This practice is also called the _Node.js error convention_, and this kind of callback implementations are called _error-first callbacks_.
-
-```js
-var isTrue = function(value, callback) {
-  if (value === true) {
-    callback(null, "Value was true.");
-  } else {
-    callback(new Error("Value is not true!"));
-  }
-}
-
-var callback = function (error, retval) {
-  if (error) {
-    console.log(error);
-    return;
-  }
-  console.log(retval);
-}
-
-isTrue(false, callback);
-isTrue(true,  callback);
-
-{ stack: [Getter/Setter],
-  arguments: undefined,
-  type: undefined,
-  message: 'Value is not true!' }
-Value was true.
-```
-
-#### Good to hear
-
-* This is just a convention. However, you should stick to it.
-
-##### Additional links
-
-* [The Node.js Way - Understanding Error-First Callbacks](http://fredkschott.com/post/2014/03/understanding-error-first-callbacks-in-node-js/)
-* [What are the error conventions?](https://docs.nodejitsu.com/articles/errors/what-are-the-error-conventions)
-
-<!-- tags: (node, javascript) -->
-
-<!-- expertise: (1) -->
-</details> 
-
-<br>[⬆ Back to top](#table-of-contents)
 
 ### What is the event loop in Node.js?
 
