@@ -1,14 +1,16 @@
-import "./css/index"
-import "./js/browser"
-import "focus-visible"
-import Prism from "prismjs"
+/* eslint no-restricted-globals: 0 */
 
 import { app } from "hyperapp"
+import Prism from "prismjs"
+import "focus-visible"
+import "./css/index.scss"
+import "./js/browser"
+
 import state from "./js/state"
 import actions from "./js/actions"
 import view from "./js/view"
 
-const main = app(state, actions, view, document.body)
+const main = app(state, actions, view, document.body) // eslint-disable-line no-unused-vars
 
 setTimeout(() => {
   Prism.highlightAll()

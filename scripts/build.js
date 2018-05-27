@@ -1,15 +1,18 @@
+/* eslint-disable */
+
 // This script generates the README file
 const fs = require("fs-extra")
 const path = require("path")
 const chalk = require("chalk")
 const util = require("./util.js")
+
 const { QUESTIONS_PATH, TAG_NAMES } = util
 
 const STATIC_PARTS_PATH = "./static-parts"
 
-let tagOrder = ["javascript", "css", "html"]
+const tagOrder = [ "javascript", "css", "html" ]
 let questions = {}
-let questionTags = {}
+const questionTags = {}
 let startPart = ""
 let endPart = ""
 let output = ""
@@ -34,11 +37,11 @@ try {
 
 try {
   // add static part for start
-  output += `${startPart + "\n"}`
+  output += `${`${startPart  }\n`}`
 
   // add table of contents
-  for (let questionKey in questions) {
-    let tags = /tags:\s+\((.*)\)/g
+  for (const questionKey in questions) {
+    const tags = /tags:\s+\((.*)\)/g
       .exec(questions[questionKey])[1]
       .split(",")
       .map(v => v.trim())
@@ -50,25 +53,25 @@ try {
     output += `\n### ${
       TAG_NAMES[tag]
     } \n\n<details>\n<summary>View contents</summary>\n\n`
-    let taggedSnippets = Object.keys(questionTags).filter(
+    const taggedSnippets = Object.keys(questionTags).filter(
       v => questionTags[v][0] === tag
     )
-    for (let taggedSnippet of taggedSnippets) {
-      let title = /###.+/g.exec(questions[taggedSnippet])[0]
+    for (const taggedSnippet of taggedSnippets) {
+      const title = /###.+/g.exec(questions[taggedSnippet])[0]
       output += `* [${title.replace("###", "")}](#${util.toKebabCase(
         title.toLowerCase()
       )}) \n`
     }
-    output += `</details>\n`
+    output += "</details>\n"
   }
   output += "\n---\n"
 
   for (tag of tagOrder) {
     output += `\n## ${TAG_NAMES[tag]}\n\n`
-    let taggedSnippets = Object.keys(questionTags).filter(
+    const taggedSnippets = Object.keys(questionTags).filter(
       v => questionTags[v][0] === tag
     )
-    for (let taggedSnippet of taggedSnippets) {
+    for (const taggedSnippet of taggedSnippets) {
       output += `${questions[taggedSnippet].replace(
         /####\s+Answer/g,
         "#### Answer\n\n<details>\n<summary>View answer</summary>"
@@ -83,7 +86,7 @@ try {
   // }
 
   // add static part for end
-  output += `\n${endPart + "\n"}`
+  output += `\n${`${endPart  }\n`}`
 
   fs.writeFileSync("README.md", output)
 } catch (err) {

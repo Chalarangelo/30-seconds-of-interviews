@@ -27,28 +27,30 @@ This practice is also called the _Node.js error convention_, and this kind of ca
 ```js
 var isTrue = function(value, callback) {
   if (value === true) {
-    callback(null, "Value was true.");
+    callback(null, "Value was true.")
   } else {
-    callback(new Error("Value is not true!"));
+    callback(new Error("Value is not true!"))
   }
 }
 
 var callback = function (error, retval) {
   if (error) {
-    console.log(error);
-    return;
+    console.log(error)
+    return
   }
-  console.log(retval);
+  console.log(retval)
 }
 
-isTrue(false, callback);
-isTrue(true,  callback);
+isTrue(false, callback)
+isTrue(true,  callback)
 
-{ stack: [Getter/Setter],
-  arguments: undefined,
-  type: undefined,
-  message: 'Value is not true!' }
-Value was true.
+/*
+  { stack: [Getter/Setter],
+    arguments: undefined,
+    type: undefined,
+    message: 'Value is not true!' }
+  Value was true.
+*/
 ```
 
 #### Good to hear
