@@ -124,6 +124,7 @@ try {
 	tags.forEach(tagKey => {
 		output += hX(2, TAG_NAMES[tagKey])
 		taggedQuestions = questionsInTag[tagKey]
+		taggedQuestions.sort((q1, q2) => q1.expertise - q2.expertise)
 		taggedQuestions.forEach(question => {
 			output += hX(3, question.question)
 			output += detailsQuestion("View answer", question)
