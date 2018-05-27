@@ -2,10 +2,9 @@
 const fs = require("fs-extra")
 const path = require("path")
 const chalk = require("chalk")
-const format = require("prettier-eslint")
 const util = require("./util.js")
 const questions = require("../data/questions.json")
-const { QUESTIONS_PATH, TAG_NAMES } = util
+const { TAG_NAMES } = util
 
 const STATIC_PARTS_PATH = "./static-parts"
 
@@ -63,8 +62,6 @@ const detailsQuestion = (title, question) => {
 }
 
 console.time("Builder")
-
-// questions = util.readQuestions(QUESTIONS_PATH)
 
 try {
 	startPart = fs.readFileSync(
@@ -124,6 +121,7 @@ try {
 	tags.forEach(tagKey => {
 		output += hX(2, TAG_NAMES[tagKey])
 		taggedQuestions = questionsInTag[tagKey]
+		// sort questions by expertise
 		taggedQuestions.sort((q1, q2) => q1.expertise - q2.expertise)
 		taggedQuestions.forEach(question => {
 			output += hX(3, question.question)
