@@ -46,7 +46,7 @@ Join our [Gitter channel](https://gitter.im/30-seconds-of-interviews/Lobby) to h
 * [ How do you clone an object in JavaScript?](#how-do-you-clone-an-object-in-javascript) 
 * [ What is a closure?](#what-is-a-closure) 
 * [ How do you compare two objects in JavaScript?](#how-do-you-compare-two-objects-in-javascript) 
-* [ What is the difference between `==` and `===`?](#what-is-the-difference-between-and) 
+* [ What is the difference between the equality operators `==` and `===`?](#what-is-the-difference-between-the-equality-operators-and) 
 * [ What is event-driven programming?](#what-is-event-driven-programming) 
 * [ Generate an array, containing the Fibonacci sequence, up until the nth term.](#generate-an-array-containing-the-fibonacci-sequence-up-until-the-nth-term) 
 * [ What does `0.1 + 0.2 === 0.3` evaluate to?](#what-does-0-1-0-2-0-3-evaluate-to) 
@@ -74,6 +74,7 @@ Join our [Gitter channel](https://gitter.im/30-seconds-of-interviews/Lobby) to h
 * [ What are JavaScript data types?](#what-are-javascript-data-types) 
 * [ What is the purpose of JavaScript UI libraries/frameworks like React, Vue, Angular, Hyperapp, etc?](#what-is-the-purpose-of-javascript-ui-libraries-frameworks-like-react-vue-angular-hyperapp-etc) 
 * [ What does `'use strict'` do and what are some of the key benefits to using it?](#what-does-use-strict-do-and-what-are-some-of-the-key-benefits-to-using-it) 
+* [ What are the differences between `var`, `let`, `const` and no keyword statements?](#what-are-the-differences-between-var-let-const-and-no-keyword-statements) 
 * [ What is the reason for wrapping the entire contents of a JavaScript source file in a function?](#what-is-the-reason-for-wrapping-the-entire-contents-of-a-javascript-source-file-in-a-function) 
 </details>
 
@@ -85,7 +86,8 @@ Join our [Gitter channel](https://gitter.im/30-seconds-of-interviews/Lobby) to h
 * [ What is CSS BEM?](#what-is-css-bem) 
 * [ What are the advantages of using CSS preprocessors?](#what-are-the-advantages-of-using-css-preprocessors) 
 * [ Can you describe how CSS specificity works?](#can-you-describe-how-css-specificity-works) 
-* [ Use flexbox to create a 3-column layout where each of the columns has a width of 2/12, 7/12 and 3/12 of the screen width respectively. Use the following HTML code as a guide.](#use-flexbox-to-create-a-3-column-layout-where-each-of-the-columns-has-a-width-of-2-12-7-12-and-3-12-of-the-screen-width-respectively-use-the-following-html-code-as-a-guide) 
+* [ Using flexbox, create a 3-column layout where each column takes up a `col-{n} / 12` ratio of the container.](#using-flexbox-create-a-3-column-layout-where-each-column-takes-up-a-col-n-12-ratio-of-the-container) 
+* [ What is a focus ring? What is the correct solution to handle them?](#what-is-a-focus-ring-what-is-the-correct-solution-to-handle-them) 
 * [ Can you name the four types of `@media` properties?](#can-you-name-the-four-types-of-media-properties) 
 * [ What are the advantages of using CSS sprites and how would one utilize them?](#what-are-the-advantages-of-using-css-sprites-and-how-would-one-utilize-them) 
 * [ How does Z index function?](#how-does-z-index-function) 
@@ -293,19 +295,19 @@ function isDeepEqual(obj1, obj2, testPrototypes = false) {
 
 <br>[⬆ Back to top](#table-of-contents)
 
-### What is the difference between `==` and `===`?
+### What is the difference between the equality operators `==` and `===`?
 
 #### Answer
 
 <details>
 <summary>View answer</summary>
 
-When using triple equals in JavaScript we are testing for strict equality. This means both the type and the value we are comparing have to be the same. On the other hand, double equals first performs type coercion and then checks for loose equality.
+Triple equals (`===`) checks for strict equality, which means both the type and value must be the same. Double equals (`==`) on the other hand first performs type coercion so that both operands are of the same type and then applies strict comparison.
 
 #### Good to hear
 
-* Whenever possible, use triple equals to test equality
-* Type coercion - converts values into a common type
+* Whenever possible, use triple equals to test equality because loose equality `==` can have unintuitive results
+* Type coercion means the values are converted into the same type
 * Mention of falsy values and their comparison
 
 ##### Additional links
@@ -352,11 +354,11 @@ Event-driven programming is building an application that is based on and respond
 <details>
 <summary>View answer</summary>
 
-Create an empty array of the specific length. Use Array.reduce() to add values into the array, using the sum of the last two values, except for the first two.
+Initialize an empty array of length `n`. Use `Array.prototype.reduce()` to add values into the array, using the sum of the last two values, except for the first two.
 
 ```js
 const fibonacci = n =>
-  Array.from({ length: n }).reduce(
+  [...Array(n)].reduce(
     (acc, val, i) => acc.concat(i > 1 ? acc[i - 1] + acc[i - 2] : i),
     []
   )
@@ -385,7 +387,14 @@ const fibonacci = n =>
 It evaluates to `false` because JavaScript uses the IEEE 754 standard for Math and it makes use of 64-bit floating numbers. This causes precision errors when doing decimal calculations, in short, due to computers working in Base 2 while decimal is Base 10.
 
 ```js
-0.1 + 0.2 // 0.300000004
+0.1 + 0.2 // 0.30000000000000004
+```
+
+A solution to this problem would be to use a function that determines if two numbers are approximately equal by defining an error margin (epsilon) value that the difference between two values should be less than.
+
+```js
+const approxEqual = (n1, n2, epsilon = 0.0001) => Math.abs(n1 - n2) < epsilon
+approxEqual(0.1 + 0.2, 0.3) // true
 ```
 
 #### Good to hear
@@ -438,7 +447,7 @@ Both methods iterate through the elements of an array. `map()` maps each element
 <details>
 <summary>View answer</summary>
 
-Functional programming is a paradigm in which programs are built in a declarative manner using pure functions that avoid shared state and mutable data. Functions that always return the same value for the same input and don't produce side effects are the pillar of functional programming. Many programmers consider this to be the best approach to software development as it reduces bugs and mental overhead.
+Functional programming is a paradigm in which programs are built in a declarative manner using pure functions that avoid shared state and mutable data. Functions that always return the same value for the same input and don't produce side effects are the pillar of functional programming. Many programmers consider this to be the best approach to software development as it reduces bugs and cognitive load.
 
 #### Good to hear
 
@@ -476,7 +485,7 @@ foobar()
 <details>
 <summary>View answer</summary>
 
-Due to hoisting, the local variable `foo` is declared before the `console.log` method is called. This means the local variable `foo` is passed as an argument to `log` instead of the global one declared outside of the function. However, since the value is not hoisted with the variable declaration, the output will be `undefined`, not `2`.
+Due to hoisting, the local variable `foo` is declared before the `console.log` method is called. This means the local variable `foo` is passed as an argument to `console.log()` instead of the global one declared outside of the function. However, since the value is not hoisted with the variable declaration, the output will be `undefined`, not `2`.
 
 #### Good to hear
 
@@ -570,7 +579,7 @@ const mask = (str, maskChar = "#") =>
 
 "Mutability" means a value is subject to change. "Immutability" means a value cannot change.
 
-Objects are mutable, while primitive values (strings, numbers, etc) are immutable. This means any operations performed on a primitive value does not change the original value.
+Objects are mutable, while primitive values (strings, numbers, etc) are immutable. This means any operation performed on a primitive value does not change the original value.
 
 All `String.prototype` methods do not have an effect on the original string and return a new string. On the other hand, while some methods of `Array.prototype` do not mutate the original array reference and produce a fresh array, some cause mutations.
 
@@ -609,7 +618,7 @@ originalArray.concat(4) // returns a new array, does not mutate the original
 
 #### Good to hear
 
-* The functions `isNaN()` and `Number.isNaN()`
+* The difference between `isNaN()` and `Number.isNaN()`
 * `const isNaN = x => x !== x`
 
 ##### Additional links
@@ -1258,6 +1267,85 @@ Including `'use strict'` at the beginning of your JavaScript source file enables
 
 <br>[⬆ Back to top](#table-of-contents)
 
+### What are the differences between `var`, `let`, `const` and no keyword statements?
+
+#### Answer
+
+<details>
+<summary>View answer</summary>
+
+##### No keyword prefix
+
+When no keyword is prefixed before a variable declaration, it is either assigning a global variable if one does not exist, or reassigns an already declared variable. In non-strict mode, it will assign the variable as a property of the global object `this` (`window` in browsers). In strict mode, it will throw an error to prevent unwanted global variables from being created.
+
+##### var
+
+`var` was the default statement to declare a variable until ES2015. It creates a function-scoped variable that can be reassigned and redeclared. However, due to its lack of block scoping, it can cause issues if the variable is being reused in a loop that contains an asynchronous callback because the variable will continue to exist outside of the block scope.
+
+Below, by the time the the `setTimeout` callback executes, the loop has already finished and the `i` variable is `10`, so all ten callbacks reference the same variable available in the function scope.
+
+```js
+for (var i = 0; i < 10; i++) {
+  setTimeout(() => {
+    console.log(i) // logs `10` ten times
+  })
+}
+
+/* ==================== Solutions with `var` ==================== */
+for (var i = 0; i < 10; i++) {
+  // Passed as an argument will use the value as-is in that point in time
+  setTimeout(console.log, 0, i)
+}
+
+for (var i = 0; i < 10; i++) {
+  // Create a new function scope that will use the value as-is in that point in time
+  ;(i => {
+    setTimeout(() => {
+      console.log(i)
+    })
+  })(i)
+}
+```
+
+##### let
+
+`let` was introduced in ES2015 and is the new preferred way to declare variables that will be reassigned later. Trying to redeclare a variable again will throw an error. It is block-scoped so that using it in a loop will keep it scoped to the iteration.
+
+```js
+for (let i = 0; i < 10; i++) {
+  setTimeout(() => {
+    console.log(i) // logs 0, 1, 2, 3, ...
+  })
+}
+```
+
+##### const
+
+`const` was introduced in ES2015 and is the new preferred default way to declare all variables if they won't be reassigned later, even for objects that will be mutated (as long as the reference to the object does not change). It is block-scoped and cannot be reassigned.
+
+```js
+const myObject = {}
+myObject.prop = "hello!" // No error
+myObject = "hello" // Error
+```
+
+#### Good to hear
+
+* All declarations are hoisted to the top of their scope
+* Show a common issue with using `var` and how `let` can solve it, as well as a solution that keeps `var`.
+* `var` should be avoided whenever possible and prefer `const` as the default declaration statement for all variables unless they will be reassigned later, then use `let` if so.
+
+##### Additional links
+
+* [`let` vs `const`](https://wesbos.com/let-vs-const/)
+
+<!-- tags: (javascript) -->
+
+<!-- expertise: (1) -->
+</details> 
+
+<br>[⬆ Back to top](#table-of-contents)
+
 ### What is the reason for wrapping the entire contents of a JavaScript source file in a function?
 
 #### Answer
@@ -1306,7 +1394,7 @@ myLibrary.publicMethod(); // 2
 <details>
 <summary>View answer</summary>
 
-The BEM methodology is another naming convention for CSS classes. The BEM stands for Block, Element, Modifier which is an explanation for its structure. Block is a standalone component that is reusable across projects. Elements and modifiers are part of the block with no standalone meaning. Here is the example of the typical syntax:
+The BEM methodology is a naming convention for CSS classes in order to keep CSS more maintainable by defining namespaces to solve scoping issues. BEM stands for Block Element Modifier which is an explanation for its structure. A Block is a standalone component that is reusable across projects and acts as a "namespace" for sub components (Elements). Modifiers are used as flags when a Block or Element is in a certain state or is different in structure or style.
 
 ```css
 /* block component */
@@ -1322,11 +1410,34 @@ The BEM methodology is another naming convention for CSS classes. The BEM stands
 }
 ```
 
+Here is an example with the class names on markup:
+
+```html
+<nav class="navbar">
+  <a href="/" class="navbar__link navbar__link--active"></a>
+  <a href="/" class="navbar__link"></a>
+  <a href="/" class="navbar__link"></a>
+</nav>
+```
+
+In this case, `navbar` is the Block, `navbar__link` is an Element that makes no sense outside of the `navbar` component, and `navbar__link--active` is a Modifier that indicates a different state for the `navbar__link` Element.
+
+Since Modifiers are verbose, many opt to use `is-*` flags instead as modifiers.
+
+```html
+<a href="/" class="navbar__link is-active"></a>
+```
+
+These must be chained to the Element and never alone however, or there will be scope issues.
+
+```css
+.navbar__link.is-active {
+}
+```
+
 #### Good to hear
 
-* Block is a top-level abstraction of a new component
-* Elements make no sense to be alone - they are tightly dependent on blocks
-* Modifier is a flag added to block or element so it makes them a bit more specific
+* Alternative solutions to scope issues like CSS-in-JS
 
 ##### Additional links
 
@@ -1396,10 +1507,10 @@ When two selectors are compared, the comparison is made on a per-column basis (e
 
 <br>[⬆ Back to top](#table-of-contents)
 
-### Use flexbox to create a 3-column layout where each of the columns has a width of 2/12, 7/12 and 3/12 of the screen width respectively. Use the following HTML code as a guide.
+### Using flexbox, create a 3-column layout where each column takes up a `col-{n} / 12` ratio of the container.
 
 ```html
-<div class="flex-grid">
+<div class="row">
   <div class="col-2"></div>
   <div class="col-7"></div>
   <div class="col-3"></div>
@@ -1411,10 +1522,10 @@ When two selectors are compared, the comparison is made on a per-column basis (e
 <details>
 <summary>View answer</summary>
 
-We only need to set the `display` property of the `flex-grid` element to `flex` and then apply the appropriate values for each column, using the `flex` property like this:
+Set the `.row` parent to `display: flex;` and use the `flex` shorthand property to give the column classes a `flex-grow` value that corresponds to its ratio value.
 
 ```css
-.flex-grid {
+.row {
   display: flex;
 }
 
@@ -1441,6 +1552,34 @@ We only need to set the `display` property of the `flex-grid` element to `flex` 
 <!-- tags: (css) -->
 
 <!-- expertise: (0) -->
+</details> 
+
+<br>[⬆ Back to top](#table-of-contents)
+
+### What is a focus ring? What is the correct solution to handle them?
+
+#### Answer
+
+<details>
+<summary>View answer</summary>
+
+A focus ring is a visible outline given to focusable elements such as buttons and anchor tags. It varies depending on the vendor, but generally it appears as a blue outline around the element to indicate it is currently focused.
+
+In the past, many people specified `outline: 0;` on the element to remove the focus ring. However, this causes accessibility issues for keyboard users because the focus state may not be clear. When not specified though, it causes an unappealing blue ring to appear around an element.
+
+In recent times, frameworks like Bootstrap have opted to use a more appealing `box-shadow` outline to replace the default focus ring. However, this is still not ideal for mouse users.
+
+The best solution is an upcoming pseudo-selector `:focus-visible` which can be polyfilled today with JavaScript. It will only show a focus ring if the user is using a keyboard and leave it hidden for mouse users. This keeps both aesthetics for mouse use and accessibility for keyboard use.
+
+#### Good to hear
+
+##### Additional links
+
+* [:focus-visible](https://css-tricks.com/focus-visible-and-backwards-compatibility/)
+
+<!-- tags: (css) -->
+
+<!-- expertise: (2) -->
 </details> 
 
 <br>[⬆ Back to top](#table-of-contents)
