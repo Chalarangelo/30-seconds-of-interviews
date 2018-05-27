@@ -7,7 +7,6 @@ node_js:
 - node
 install:
 - yarn install
-- yarn autoclean --force
 script:
 - yarn builder
 - yarn extractor
