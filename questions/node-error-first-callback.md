@@ -62,6 +62,6 @@ isTrue(true,  callback)
 * [The Node.js Way - Understanding Error-First Callbacks](http://fredkschott.com/post/2014/03/understanding-error-first-callbacks-in-node-js/)
 * [What are the error conventions?](https://docs.nodejitsu.com/articles/errors/what-are-the-error-conventions)
 
-<!-- tags: (node, javascript) -->
+<!-- tags: (node,javascript) -->
 
 <!-- expertise: (1) -->
