@@ -7,7 +7,7 @@
     "builder": "node ./scripts/build.js",
     "extractor": "node ./scripts/extract.js",
     "dev": "parcel website/index.html",
-    "build": "parcel build website/index.html -d docs/"
+    "build": "parcel build website/index.html -d docs/ --public-url ./30-seconds-of-interviews/"
   },
   "repository": {
     "type": "git",
