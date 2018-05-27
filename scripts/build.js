@@ -44,7 +44,9 @@ const detailsTOC = (title, questionsArray) => {
 	let list = questionsArray
 		.map(
 			question =>
-				`* [${question.question.split("\`\`\`")[0].replace("\n","")}](#${util.toKebabCase(question.question)})`
+				`* [${question.question
+					.split("\`\`\`")[0]
+					.replace("\n", "")}](#${util.toKebabCase(question.question)})`
 		)
 		.join("\n")
 	return `\n\n<details>\n<summary>${title}</summary>${list}\n</details>\n\n`
@@ -120,9 +122,9 @@ try {
 
 	// write actual questions
 	Object.keys(questionsInTag).forEach(tagKey => {
-    taggedQuestions = questionsInTag[tagKey]
+		taggedQuestions = questionsInTag[tagKey]
 		taggedQuestions.forEach(question => {
-      output += hX(3, question.question)
+			output += hX(3, question.question)
 			output += detailsQuestion("View answer", question)
 			output += `\n\n<br>[⬆ Back to top](#table-of-contents)\n\n`
 		})
