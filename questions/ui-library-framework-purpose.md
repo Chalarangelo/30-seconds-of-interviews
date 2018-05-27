@@ -9,7 +9,12 @@ When working with the DOM manipulation libraries like jQuery, the data of an app
 
 #### Good to hear
 
-* Explanation of templating languages and JSX
+* The virtual DOM is a representation of the real DOM tree in the form of plain objects, which allows a library to write code as if the entire document is thrown away and rebuilt on each change, while the real DOM only updates what needs to be changed. Comparing the new virtual DOM against the previous one leads to high efficiency as changing real DOM nodes is costly compared to recalculating the virtual DOM.
+* JSX is an extension to JavaScript that provides XML-like syntax to create virtual DOM objects which is transformed to function calls by a transpiler. It simplifies control flow (if statements/ternary expressions) compared to tagged template literals.
+
+##### Additional links
+
+* [Virtual DOM in Hyperapp](https://github.com/hyperapp/hyperapp#view)
 
 <!-- tags: (javascript) -->
 
