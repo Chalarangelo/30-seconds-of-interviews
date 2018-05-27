@@ -128,580 +128,6 @@ Join our [Gitter channel](https://gitter.im/30-seconds-of-interviews/Lobby) to h
 
 ---
 
-## HTML
-### What are `defer` and `async` attributes on a `<script>` tag?
-
-<details>
-<summary>View answer</summary>
-If neither attribute is present, the script is downloaded and executed synchronously, and will halt parsing of the document until it has finished executing (default behavior). Scripts are downloaded and executed in the order
-they are encountered.
-
-The `defer` attribute downloads the script while the document is still parsing but waits until the document has finished parsing before executing it, equivalent to executing inside a `DOMContentLoaded` event listener. `defer` scripts will execute in order.
-
-The `async` attribute downloads the script during parsing the document but will pause the parser to execute the script before it has fully finished parsing. `async` scripts will not necessarily execute in order.
-
-Note: both attributes must only be used if the script has a `src` attribute (i.e. not an inline script).
-
-```html
-<script src="myscript.js"></script>
-<script src="myscript.js" defer></script>
-<script src="myscript.js" async></script>
-```
-
-
-#### Good to hear
-
-
-* Placing a `defer` script in the `<head>` allows the browser to download the script while the page is still parsing, and is therefore a better option than placing the script before the end of the body.
-* If the scripts rely on each other, use `defer`.
-* If the script is independent, use `async`.
-* Use `defer` if the DOM must be ready and the contents are not placed within a `DOMContentLoaded` listener.
-
-
-##### Additional links
-
-
-* [async vs defer attributes](http://www.growingwiththeweb.com/2014/02/async-vs-defer-attributes.html)
-</details>
-
-
-
-<br>[⬆ Back to top](#table-of-contents)
-
-
-### What is the DOM?
-
-<details>
-<summary>View answer</summary>
-The DOM (Document Object Model) is an API that represents the structure of HTML and XML documents. The document
-is represented by a node tree (such as elements, text nodes, comments), where each node is an object that can be manipulated via JavaScript to change their styles, contents, placement in the tree, or interacted with through event listeners.
-
-
-#### Good to hear
-
-
-* The DOM was designed to be independent of any particular programming language, making the structural representation of the document available from a single, consistent API
-* The DOM is constructed progressively in the browser as a page loads, which is why scripts are often placed at the bottom of a page, in the `<head>` with a `defer` attribute, or inside a `DOMContentLoaded` event listener. Scripts that manipulate DOM nodes should be run after the DOM has been constructed to avoid errors.
-
-
-##### Additional links
-
-
-* [MDN docs for DOM](https://developer.mozilla.org/en-US/docs/DOM)
-</details>
-
-
-
-<br>[⬆ Back to top](#table-of-contents)
-
-
-### What are some differences that XHTML has compared to HTML?
-
-<details>
-<summary>View answer</summary>
-Some of the key differences are:
-
-* An XHTML element must have an XHTML `<DOCTYPE>`
-* Attributes values must be enclosed in quotes
-* Attribute minimization is forbidden (e.g. one has to use `checked="checked"` instead of `checked`)
-* Elements must always be properly nested
-* Elements must always be closed
-* Special characters must be escaped
-
-
-#### Good to hear
-
-
-* Any element can be self-closed
-* Tags ands attributes are case-sensitive, usually lowercase
-
-
-##### Additional links
-
-
-* [W3Schools docs for HTML and XHTML](https://www.w3schools.com/html/html_xhtml.asp)
-</details>
-
-
-
-<br>[⬆ Back to top](#table-of-contents)
-
-
-### What is the purpose of `alt` attribute on images?
-
-<details>
-<summary>View answer</summary>
-The `alt` attribute provides alternative information for an image if a user cannot view it. If the image is for decorative purposes only, the `alt` attribute should be empty. On the other hand, if image contains information the `alt` attribute should describe image.
-
-
-#### Good to hear
-
-
-* Decorative images should have empty `alt` tag
-
-
-##### Additional links
-
-
-* [A good basis for accessibility](https://developer.mozilla.org/en-US/docs/Learn/Accessibility/HTML)
-</details>
-
-
-
-<br>[⬆ Back to top](#table-of-contents)
-
-
-### Where and why is the `rel="noopener"` attribute used?
-
-<details>
-<summary>View answer</summary>
-The `rel="noopener"` is an attribute used in `<a>` elements (hyperlinks). It prevents pages from having a `window.opener` property, which would otherwise point to the page from where the link was opened and would allow the page opened from the hyperlink to manipulate the page where the hyperlink is.
-
-
-#### Good to hear
-
-
-* `rel="noopener"` is applied to hyperlinks.
-* `rel="noopener"` prevents opened links from manipulating the source page.
-
-
-##### Additional links
-
-
-* [Open external anchors using rel="noopener"](https://developers.google.com/web/tools/lighthouse/audits/noopener)
-* [About rel="noopener"](https://mathiasbynens.github.io/rel-noopener/)
-</details>
-
-
-
-<br>[⬆ Back to top](#table-of-contents)
-
-
-## CSS
-### What is CSS BEM?
-
-<details>
-<summary>View answer</summary>
-The BEM methodology is a naming convention for CSS classes in order to keep CSS more maintainable by defining namespaces to solve scoping issues. BEM stands for Block Element Modifier which is an explanation for its structure. A Block is a standalone component that is reusable across projects and acts as a "namespace" for sub components (Elements). Modifiers are used as flags when a Block or Element is in a certain state or is different in structure or style.
-
-```css
-/* block component */
-.block {
-}
-
-/* element */
-.block__element {
-}
-
-/* modifier */
-.block__element--modifier {
-}
-```
-
-Here is an example with the class names on markup:
-
-```html
-<nav class="navbar">
-  <a href="/" class="navbar__link navbar__link--active"></a>
-  <a href="/" class="navbar__link"></a>
-  <a href="/" class="navbar__link"></a>
-</nav>
-```
-
-In this case, `navbar` is the Block, `navbar__link` is an Element that makes no sense outside of the `navbar` component, and `navbar__link--active` is a Modifier that indicates a different state for the `navbar__link` Element.
-
-Since Modifiers are verbose, many opt to use `is-*` flags instead as modifiers.
-
-```html
-<a href="/" class="navbar__link is-active"></a>
-```
-
-These must be chained to the Element and never alone however, or there will be scope issues.
-
-```css
-.navbar__link.is-active {
-}
-```
-
-
-#### Good to hear
-
-
-* Alternative solutions to scope issues like CSS-in-JS
-
-
-##### Additional links
-
-
-* [Writing clean and maintainable CSS](https://hackernoon.com/writing-clean-and-maintainable-css-using-bem-methodology-1dcbf810a664)
-</details>
-
-
-
-<br>[⬆ Back to top](#table-of-contents)
-
-
-### What are the advantages of using CSS preprocessors?
-
-<details>
-<summary>View answer</summary>
-CSS preprocessors add useful functionality that native CSS does not have, and generally make CSS neater and more maintainable by enabling DRY (Don't Repeat Yourself) principles. Their terse syntax for nested selectors cuts down on repeated code. They provide variables for consistent theming (however, CSS variables have largely replaced this functionality) and additional tools like color functions (`lighten`, `darken`, `transparentize`, etc), variables, mixins, and loops that make CSS more like a real programming language and gives the developer more power to generate complex CSS.
-
-
-#### Good to hear
-
-
-* They allow us to write more maintainable and scalable CSS
-* Some disadvantages of using CSS preprocessors (setup, re-compilation time can be slow etc.)
-
-
-##### Additional links
-
-
-* [CSS Preprocessors](https://medium.com/@garyfagan/css-preprocessors-6f226fa16f27)
-</details>
-
-
-
-<br>[⬆ Back to top](#table-of-contents)
-
-
-### Can you describe how CSS specificity works?
-
-<details>
-<summary>View answer</summary>
-Assuming the browser has already determined the set of rules for an element, each rule is assigned a matrix of values, which correspond to the following from highest to lowest specificity:
-
-* Inline rules (binary - 1 or 0)
-* Number of id selectors
-* Number of class, pseudo-class and attribute selectors
-* Number of tags and pseudo-element selectors
-
-When two selectors are compared, the comparison is made on a per-column basis (e.g. an id selector will always be higher than any amount of class selectors, as ids have higher specificity than classes). In cases of equal specificity between multiple rules, the rules that comes last in the page's style sheet is deemed more specific and therefore applied to the element.
-
-
-#### Good to hear
-
-
-* Specificity matrix: [inline, id, class/pseudo-class/attribute, tag/pseudo-element]
-* In cases of equal specificity, last rule is applied
-
-
-##### Additional links
-
-
-* [CSS Specificity](https://www.smashingmagazine.com/2007/07/css-specificity-things-you-should-know/)
-</details>
-
-
-
-<br>[⬆ Back to top](#table-of-contents)
-
-
-### Using flexbox, create a 3-column layout where each column takes up a `col-{n} / 12` ratio of the container.
-
-```html
-<div class="row">
-  <div class="col-2"></div>
-  <div class="col-7"></div>
-  <div class="col-3"></div>
-</div>
-```
-
-<details>
-<summary>View answer</summary>
-Set the `.row` parent to `display: flex;` and use the `flex` shorthand property to give the column classes a `flex-grow` value that corresponds to its ratio value.
-
-```css
-.row {
-  display: flex;
-}
-
-.col-2 {
-  flex: 2;
-}
-
-.col-7 {
-  flex: 7;
-}
-
-.col-3 {
-  flex: 3;
-}
-```
-
-
-#### Good to hear
-
-
-
-
-
-##### Additional links
-
-
-* [MDN docs for basic concepts of flexbox](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Basic_Concepts_of_Flexbox)
-* [A complete guide to Flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
-</details>
-
-
-
-<br>[⬆ Back to top](#table-of-contents)
-
-
-### What is a focus ring? What is the correct solution to handle them?
-
-<details>
-<summary>View answer</summary>
-A focus ring is a visible outline given to focusable elements such as buttons and anchor tags. It varies depending on the vendor, but generally it appears as a blue outline around the element to indicate it is currently focused.
-
-In the past, many people specified `outline: 0;` on the element to remove the focus ring. However, this causes accessibility issues for keyboard users because the focus state may not be clear. When not specified though, it causes an unappealing blue ring to appear around an element.
-
-In recent times, frameworks like Bootstrap have opted to use a more appealing `box-shadow` outline to replace the default focus ring. However, this is still not ideal for mouse users.
-
-The best solution is an upcoming pseudo-selector `:focus-visible` which can be polyfilled today with JavaScript. It will only show a focus ring if the user is using a keyboard and leave it hidden for mouse users. This keeps both aesthetics for mouse use and accessibility for keyboard use.
-
-
-#### Good to hear
-
-
-
-
-
-##### Additional links
-
-
-* [:focus-visible](https://css-tricks.com/focus-visible-and-backwards-compatibility/)
-</details>
-
-
-
-<br>[⬆ Back to top](#table-of-contents)
-
-
-### Can you name the four types of `@media` properties?
-
-<details>
-<summary>View answer</summary>
-* `all`, which applies to all media type devices
-* `print`, which only applies to printers
-* `screen`, which only applies to screens (desktops, tablets, mobile etc.)
-* `speech`, which only applies to screenreaders
-
-
-#### Good to hear
-
-
-
-
-
-##### Additional links
-
-
-* [MDN docs for `@media` rule](https://developer.mozilla.org/en-US/docs/Web/CSS/@media)
-* [MDN docs for using media queries](https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries)
-</details>
-
-
-
-<br>[⬆ Back to top](#table-of-contents)
-
-
-### What are the advantages of using CSS sprites and how would one utilize them?
-
-<details>
-<summary>View answer</summary>
-CSS sprites combine multiple images into one image, limiting the amount of HTTP requests a browser has to make, thus improving load times.
-
-To utilize a spritesheet in CSS, one would use certain properties, such as `background-image`, `background-position` and `background-size` to ultimately alter the `background` of a CSS selector or an element.
-
-
-#### Good to hear
-
-
-* CSS sprites combine multiple images into one, which improves page load times by limiting requests
-* `background-image`, `background-position` and `background-size` can be used to utilize a spritesheet
-
-
-##### Additional links
-
-
-* [CSS Sprites explained by CSS Tricks](https://css-tricks.com/css-sprites/)
-</details>
-
-
-
-<br>[⬆ Back to top](#table-of-contents)
-
-
-### How does Z index function?
-
-<details>
-<summary>View answer</summary>
-When elements overlap, z-order determines which one covers the other.
-
-
-#### Good to hear
-
-
-* `z-index` only applies to positioned elements (except `static`)
-* How to organize z-indexes on large scale projects
-
-
-##### Additional links
-
-
-* [MDN docs for z-index](https://developer.mozilla.org/en-US/docs/Web/CSS/z-index)
-* [Understanding CSS z-index](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Positioning/Understanding_z_index)
-* [What No One Told You About Z-Index](https://philipwalton.com/articles/what-no-one-told-you-about-z-index/)
-</details>
-
-
-
-<br>[⬆ Back to top](#table-of-contents)
-
-
-## Node
-### How can you avoid callback hells?
-
-```js
-getData(function(a){  
-    getMoreData(a, function(b){
-        getMoreData(b, function(c){ 
-            getMoreData(c, function(d){ 
-                getMoreData(d, function(e){ 
-                    ...
-                });
-            });
-        });
-    });
-});
-```
-
-<details>
-<summary>View answer</summary>
-There are lots of ways to solve the issue of callback hells:
-
-* modularization: break callbacks into independent functions
-* use a control flow library, like async
-* use generators with Promises
-* use async/await (from v7 on)
-
-
-#### Good to hear
-
-
-* As an efficient JavaScript developer, you have to avoid the constantly growing indentation level, produce clean and readable code and be able to handle complex flows.
-
-
-##### Additional links
-
-
-* [Avoiding Callback Hell in Node.js](http://stackabuse.com/avoiding-callback-hell-in-node-js/)
-* [Asynchronous JavaScript: From Callback Hell to Async and Await](https://blog.hellojs.org/asynchronous-javascript-from-callback-hell-to-async-and-await-9b9ceb63c8e8)
-</details>
-
-
-
-<br>[⬆ Back to top](#table-of-contents)
-
-
-### NodeJS uses a callback pattern in many instances where if an error were returned it will pass it as the first argument to the callback. What are the advantages of this pattern?
-
-```js
-fs.readFile(filePath, function(err, data) {  
-  if (err) {
-    // handle the error, the return is important here
-    // so execution stops here
-    return console.log(err)
-  }
-  // use the data object
-  console.log(data)
-})
-```
-
-<details>
-<summary>View answer</summary>
-Advantages include:
-
-* Not needing to process data if there is no need to even reference it
-* Having a consistent API leads to more adoption
-* Ability to easily adapt a callback pattern that will lead to more maintainable code
-
-As you can see from below example, the callback is called with null as its first argument if there is no error. However, if there is an error, you create an Error object, which then becomes the callback's only parameter. The callback function allows a user to easily know whether or not an error occurred. 
-
-This practice is also called the _Node.js error convention_, and this kind of callback implementations are called _error-first callbacks_.
-
-```js
-var isTrue = function(value, callback) {
-  if (value === true) {
-    callback(null, "Value was true.");
-  } else {
-    callback(new Error("Value is not true!"));
-  }
-}
-
-var callback = function (error, retval) {
-  if (error) {
-    console.log(error);
-    return;
-  }
-  console.log(retval);
-}
-
-isTrue(false, callback);
-isTrue(true,  callback);
-
-{ stack: [Getter/Setter],
-  arguments: undefined,
-  type: undefined,
-  message: 'Value is not true!' }
-Value was true.
-```
-
-
-#### Good to hear
-
-
-* This is just a convention. However, you should stick to it.
-
-
-##### Additional links
-
-
-* [The Node.js Way - Understanding Error-First Callbacks](http://fredkschott.com/post/2014/03/understanding-error-first-callbacks-in-node-js/)
-* [What are the error conventions?](https://docs.nodejitsu.com/articles/errors/what-are-the-error-conventions)
-</details>
-
-
-
-<br>[⬆ Back to top](#table-of-contents)
-
-
-### What is the event loop in Node.js?
-
-<details>
-<summary>View answer</summary>
-The event loop handles all async callbacks. Callbacks are queued in a loop, while other code runs, and will run one by one when the response for each one has been received.
-
-
-#### Good to hear
-
-
-* The event loop allows Node.js to perform non-blocking I/O operations, despite the fact that JavaScript is single-threaded
-
-
-##### Additional links
-
-
-* [Node.js docs on event loop, timers and process.nextTick()](https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick/)
-</details>
-
-
-
-<br>[⬆ Back to top](#table-of-contents)
-
-
 ## JavaScript
 ### How can you avoid callback hells?
 
@@ -2132,6 +1558,580 @@ myLibrary.publicMethod(); // 2
 
 
 * [MDN docs for closures](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures)
+</details>
+
+
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
+## CSS
+### What is CSS BEM?
+
+<details>
+<summary>View answer</summary>
+The BEM methodology is a naming convention for CSS classes in order to keep CSS more maintainable by defining namespaces to solve scoping issues. BEM stands for Block Element Modifier which is an explanation for its structure. A Block is a standalone component that is reusable across projects and acts as a "namespace" for sub components (Elements). Modifiers are used as flags when a Block or Element is in a certain state or is different in structure or style.
+
+```css
+/* block component */
+.block {
+}
+
+/* element */
+.block__element {
+}
+
+/* modifier */
+.block__element--modifier {
+}
+```
+
+Here is an example with the class names on markup:
+
+```html
+<nav class="navbar">
+  <a href="/" class="navbar__link navbar__link--active"></a>
+  <a href="/" class="navbar__link"></a>
+  <a href="/" class="navbar__link"></a>
+</nav>
+```
+
+In this case, `navbar` is the Block, `navbar__link` is an Element that makes no sense outside of the `navbar` component, and `navbar__link--active` is a Modifier that indicates a different state for the `navbar__link` Element.
+
+Since Modifiers are verbose, many opt to use `is-*` flags instead as modifiers.
+
+```html
+<a href="/" class="navbar__link is-active"></a>
+```
+
+These must be chained to the Element and never alone however, or there will be scope issues.
+
+```css
+.navbar__link.is-active {
+}
+```
+
+
+#### Good to hear
+
+
+* Alternative solutions to scope issues like CSS-in-JS
+
+
+##### Additional links
+
+
+* [Writing clean and maintainable CSS](https://hackernoon.com/writing-clean-and-maintainable-css-using-bem-methodology-1dcbf810a664)
+</details>
+
+
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
+### What are the advantages of using CSS preprocessors?
+
+<details>
+<summary>View answer</summary>
+CSS preprocessors add useful functionality that native CSS does not have, and generally make CSS neater and more maintainable by enabling DRY (Don't Repeat Yourself) principles. Their terse syntax for nested selectors cuts down on repeated code. They provide variables for consistent theming (however, CSS variables have largely replaced this functionality) and additional tools like color functions (`lighten`, `darken`, `transparentize`, etc), variables, mixins, and loops that make CSS more like a real programming language and gives the developer more power to generate complex CSS.
+
+
+#### Good to hear
+
+
+* They allow us to write more maintainable and scalable CSS
+* Some disadvantages of using CSS preprocessors (setup, re-compilation time can be slow etc.)
+
+
+##### Additional links
+
+
+* [CSS Preprocessors](https://medium.com/@garyfagan/css-preprocessors-6f226fa16f27)
+</details>
+
+
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
+### Can you describe how CSS specificity works?
+
+<details>
+<summary>View answer</summary>
+Assuming the browser has already determined the set of rules for an element, each rule is assigned a matrix of values, which correspond to the following from highest to lowest specificity:
+
+* Inline rules (binary - 1 or 0)
+* Number of id selectors
+* Number of class, pseudo-class and attribute selectors
+* Number of tags and pseudo-element selectors
+
+When two selectors are compared, the comparison is made on a per-column basis (e.g. an id selector will always be higher than any amount of class selectors, as ids have higher specificity than classes). In cases of equal specificity between multiple rules, the rules that comes last in the page's style sheet is deemed more specific and therefore applied to the element.
+
+
+#### Good to hear
+
+
+* Specificity matrix: [inline, id, class/pseudo-class/attribute, tag/pseudo-element]
+* In cases of equal specificity, last rule is applied
+
+
+##### Additional links
+
+
+* [CSS Specificity](https://www.smashingmagazine.com/2007/07/css-specificity-things-you-should-know/)
+</details>
+
+
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
+### Using flexbox, create a 3-column layout where each column takes up a `col-{n} / 12` ratio of the container.
+
+```html
+<div class="row">
+  <div class="col-2"></div>
+  <div class="col-7"></div>
+  <div class="col-3"></div>
+</div>
+```
+
+<details>
+<summary>View answer</summary>
+Set the `.row` parent to `display: flex;` and use the `flex` shorthand property to give the column classes a `flex-grow` value that corresponds to its ratio value.
+
+```css
+.row {
+  display: flex;
+}
+
+.col-2 {
+  flex: 2;
+}
+
+.col-7 {
+  flex: 7;
+}
+
+.col-3 {
+  flex: 3;
+}
+```
+
+
+#### Good to hear
+
+
+
+
+
+##### Additional links
+
+
+* [MDN docs for basic concepts of flexbox](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Basic_Concepts_of_Flexbox)
+* [A complete guide to Flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
+</details>
+
+
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
+### What is a focus ring? What is the correct solution to handle them?
+
+<details>
+<summary>View answer</summary>
+A focus ring is a visible outline given to focusable elements such as buttons and anchor tags. It varies depending on the vendor, but generally it appears as a blue outline around the element to indicate it is currently focused.
+
+In the past, many people specified `outline: 0;` on the element to remove the focus ring. However, this causes accessibility issues for keyboard users because the focus state may not be clear. When not specified though, it causes an unappealing blue ring to appear around an element.
+
+In recent times, frameworks like Bootstrap have opted to use a more appealing `box-shadow` outline to replace the default focus ring. However, this is still not ideal for mouse users.
+
+The best solution is an upcoming pseudo-selector `:focus-visible` which can be polyfilled today with JavaScript. It will only show a focus ring if the user is using a keyboard and leave it hidden for mouse users. This keeps both aesthetics for mouse use and accessibility for keyboard use.
+
+
+#### Good to hear
+
+
+
+
+
+##### Additional links
+
+
+* [:focus-visible](https://css-tricks.com/focus-visible-and-backwards-compatibility/)
+</details>
+
+
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
+### Can you name the four types of `@media` properties?
+
+<details>
+<summary>View answer</summary>
+* `all`, which applies to all media type devices
+* `print`, which only applies to printers
+* `screen`, which only applies to screens (desktops, tablets, mobile etc.)
+* `speech`, which only applies to screenreaders
+
+
+#### Good to hear
+
+
+
+
+
+##### Additional links
+
+
+* [MDN docs for `@media` rule](https://developer.mozilla.org/en-US/docs/Web/CSS/@media)
+* [MDN docs for using media queries](https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries)
+</details>
+
+
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
+### What are the advantages of using CSS sprites and how would one utilize them?
+
+<details>
+<summary>View answer</summary>
+CSS sprites combine multiple images into one image, limiting the amount of HTTP requests a browser has to make, thus improving load times.
+
+To utilize a spritesheet in CSS, one would use certain properties, such as `background-image`, `background-position` and `background-size` to ultimately alter the `background` of a CSS selector or an element.
+
+
+#### Good to hear
+
+
+* CSS sprites combine multiple images into one, which improves page load times by limiting requests
+* `background-image`, `background-position` and `background-size` can be used to utilize a spritesheet
+
+
+##### Additional links
+
+
+* [CSS Sprites explained by CSS Tricks](https://css-tricks.com/css-sprites/)
+</details>
+
+
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
+### How does Z index function?
+
+<details>
+<summary>View answer</summary>
+When elements overlap, z-order determines which one covers the other.
+
+
+#### Good to hear
+
+
+* `z-index` only applies to positioned elements (except `static`)
+* How to organize z-indexes on large scale projects
+
+
+##### Additional links
+
+
+* [MDN docs for z-index](https://developer.mozilla.org/en-US/docs/Web/CSS/z-index)
+* [Understanding CSS z-index](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Positioning/Understanding_z_index)
+* [What No One Told You About Z-Index](https://philipwalton.com/articles/what-no-one-told-you-about-z-index/)
+</details>
+
+
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
+## HTML
+### What are `defer` and `async` attributes on a `<script>` tag?
+
+<details>
+<summary>View answer</summary>
+If neither attribute is present, the script is downloaded and executed synchronously, and will halt parsing of the document until it has finished executing (default behavior). Scripts are downloaded and executed in the order
+they are encountered.
+
+The `defer` attribute downloads the script while the document is still parsing but waits until the document has finished parsing before executing it, equivalent to executing inside a `DOMContentLoaded` event listener. `defer` scripts will execute in order.
+
+The `async` attribute downloads the script during parsing the document but will pause the parser to execute the script before it has fully finished parsing. `async` scripts will not necessarily execute in order.
+
+Note: both attributes must only be used if the script has a `src` attribute (i.e. not an inline script).
+
+```html
+<script src="myscript.js"></script>
+<script src="myscript.js" defer></script>
+<script src="myscript.js" async></script>
+```
+
+
+#### Good to hear
+
+
+* Placing a `defer` script in the `<head>` allows the browser to download the script while the page is still parsing, and is therefore a better option than placing the script before the end of the body.
+* If the scripts rely on each other, use `defer`.
+* If the script is independent, use `async`.
+* Use `defer` if the DOM must be ready and the contents are not placed within a `DOMContentLoaded` listener.
+
+
+##### Additional links
+
+
+* [async vs defer attributes](http://www.growingwiththeweb.com/2014/02/async-vs-defer-attributes.html)
+</details>
+
+
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
+### What is the DOM?
+
+<details>
+<summary>View answer</summary>
+The DOM (Document Object Model) is an API that represents the structure of HTML and XML documents. The document
+is represented by a node tree (such as elements, text nodes, comments), where each node is an object that can be manipulated via JavaScript to change their styles, contents, placement in the tree, or interacted with through event listeners.
+
+
+#### Good to hear
+
+
+* The DOM was designed to be independent of any particular programming language, making the structural representation of the document available from a single, consistent API
+* The DOM is constructed progressively in the browser as a page loads, which is why scripts are often placed at the bottom of a page, in the `<head>` with a `defer` attribute, or inside a `DOMContentLoaded` event listener. Scripts that manipulate DOM nodes should be run after the DOM has been constructed to avoid errors.
+
+
+##### Additional links
+
+
+* [MDN docs for DOM](https://developer.mozilla.org/en-US/docs/DOM)
+</details>
+
+
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
+### What are some differences that XHTML has compared to HTML?
+
+<details>
+<summary>View answer</summary>
+Some of the key differences are:
+
+* An XHTML element must have an XHTML `<DOCTYPE>`
+* Attributes values must be enclosed in quotes
+* Attribute minimization is forbidden (e.g. one has to use `checked="checked"` instead of `checked`)
+* Elements must always be properly nested
+* Elements must always be closed
+* Special characters must be escaped
+
+
+#### Good to hear
+
+
+* Any element can be self-closed
+* Tags ands attributes are case-sensitive, usually lowercase
+
+
+##### Additional links
+
+
+* [W3Schools docs for HTML and XHTML](https://www.w3schools.com/html/html_xhtml.asp)
+</details>
+
+
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
+### What is the purpose of `alt` attribute on images?
+
+<details>
+<summary>View answer</summary>
+The `alt` attribute provides alternative information for an image if a user cannot view it. If the image is for decorative purposes only, the `alt` attribute should be empty. On the other hand, if image contains information the `alt` attribute should describe image.
+
+
+#### Good to hear
+
+
+* Decorative images should have empty `alt` tag
+
+
+##### Additional links
+
+
+* [A good basis for accessibility](https://developer.mozilla.org/en-US/docs/Learn/Accessibility/HTML)
+</details>
+
+
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
+### Where and why is the `rel="noopener"` attribute used?
+
+<details>
+<summary>View answer</summary>
+The `rel="noopener"` is an attribute used in `<a>` elements (hyperlinks). It prevents pages from having a `window.opener` property, which would otherwise point to the page from where the link was opened and would allow the page opened from the hyperlink to manipulate the page where the hyperlink is.
+
+
+#### Good to hear
+
+
+* `rel="noopener"` is applied to hyperlinks.
+* `rel="noopener"` prevents opened links from manipulating the source page.
+
+
+##### Additional links
+
+
+* [Open external anchors using rel="noopener"](https://developers.google.com/web/tools/lighthouse/audits/noopener)
+* [About rel="noopener"](https://mathiasbynens.github.io/rel-noopener/)
+</details>
+
+
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
+## Node
+### How can you avoid callback hells?
+
+```js
+getData(function(a){  
+    getMoreData(a, function(b){
+        getMoreData(b, function(c){ 
+            getMoreData(c, function(d){ 
+                getMoreData(d, function(e){ 
+                    ...
+                });
+            });
+        });
+    });
+});
+```
+
+<details>
+<summary>View answer</summary>
+There are lots of ways to solve the issue of callback hells:
+
+* modularization: break callbacks into independent functions
+* use a control flow library, like async
+* use generators with Promises
+* use async/await (from v7 on)
+
+
+#### Good to hear
+
+
+* As an efficient JavaScript developer, you have to avoid the constantly growing indentation level, produce clean and readable code and be able to handle complex flows.
+
+
+##### Additional links
+
+
+* [Avoiding Callback Hell in Node.js](http://stackabuse.com/avoiding-callback-hell-in-node-js/)
+* [Asynchronous JavaScript: From Callback Hell to Async and Await](https://blog.hellojs.org/asynchronous-javascript-from-callback-hell-to-async-and-await-9b9ceb63c8e8)
+</details>
+
+
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
+### NodeJS uses a callback pattern in many instances where if an error were returned it will pass it as the first argument to the callback. What are the advantages of this pattern?
+
+```js
+fs.readFile(filePath, function(err, data) {  
+  if (err) {
+    // handle the error, the return is important here
+    // so execution stops here
+    return console.log(err)
+  }
+  // use the data object
+  console.log(data)
+})
+```
+
+<details>
+<summary>View answer</summary>
+Advantages include:
+
+* Not needing to process data if there is no need to even reference it
+* Having a consistent API leads to more adoption
+* Ability to easily adapt a callback pattern that will lead to more maintainable code
+
+As you can see from below example, the callback is called with null as its first argument if there is no error. However, if there is an error, you create an Error object, which then becomes the callback's only parameter. The callback function allows a user to easily know whether or not an error occurred. 
+
+This practice is also called the _Node.js error convention_, and this kind of callback implementations are called _error-first callbacks_.
+
+```js
+var isTrue = function(value, callback) {
+  if (value === true) {
+    callback(null, "Value was true.");
+  } else {
+    callback(new Error("Value is not true!"));
+  }
+}
+
+var callback = function (error, retval) {
+  if (error) {
+    console.log(error);
+    return;
+  }
+  console.log(retval);
+}
+
+isTrue(false, callback);
+isTrue(true,  callback);
+
+{ stack: [Getter/Setter],
+  arguments: undefined,
+  type: undefined,
+  message: 'Value is not true!' }
+Value was true.
+```
+
+
+#### Good to hear
+
+
+* This is just a convention. However, you should stick to it.
+
+
+##### Additional links
+
+
+* [The Node.js Way - Understanding Error-First Callbacks](http://fredkschott.com/post/2014/03/understanding-error-first-callbacks-in-node-js/)
+* [What are the error conventions?](https://docs.nodejitsu.com/articles/errors/what-are-the-error-conventions)
+</details>
+
+
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
+### What is the event loop in Node.js?
+
+<details>
+<summary>View answer</summary>
+The event loop handles all async callbacks. Callbacks are queued in a loop, while other code runs, and will run one by one when the response for each one has been received.
+
+
+#### Good to hear
+
+
+* The event loop allows Node.js to perform non-blocking I/O operations, despite the fact that JavaScript is single-threaded
+
+
+##### Additional links
+
+
+* [Node.js docs on event loop, timers and process.nextTick()](https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick/)
 </details>
 
 
