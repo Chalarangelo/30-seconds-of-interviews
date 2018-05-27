@@ -1,18 +1,12 @@
 import { h } from "hyperapp"
-import { cc } from "../utils"
+import { cc, TAG_NAMES } from "../utils"
 import feather from "feather-icons"
-
-const TAG_NAMES = {
-  javascript: "JavaScript",
-  css: "CSS",
-  html: "HTML",
-  node: "Node"
-}
 
 export default ({ type, icon }, children) => (state, actions) => (
   <button
-    class={cc("btn FilterButton", {
-      "is-active": state.filter === type
+    class={cc(`btn FilterButton is-${type}`, {
+      "is-active": state.filter === type,
+      "is-all": type === "all"
     })}
     onclick={() => actions.setFilter(type)}
     data-tooltip={

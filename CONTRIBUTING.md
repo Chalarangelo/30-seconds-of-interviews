@@ -23,6 +23,6 @@
 
 * We weren't sure how to name files inside `questions` directory. If you have any idea, let us know
 
-* Currently, we support 3 categories of questions: _javascript_, _css_, and _html_
+* Currently, we support 4 categories of questions: _javascript_, _css_, _html_ and _node_
   * We would like to expand the project to include more categories
   * Some of the planned categories are _general_, _security_, _database_
