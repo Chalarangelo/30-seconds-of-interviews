@@ -29,6 +29,7 @@
     "marked": "^0.3.19",
     "modern-normalize": "^0.4.0",
     "npm": "^6.0.0",
+    "prettier-eslint": "^8.8.1",
     "prismjs": "^1.14.0"
   },
   "devDependencies": {
