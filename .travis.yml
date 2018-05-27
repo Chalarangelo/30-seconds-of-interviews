@@ -11,6 +11,9 @@ script:
 - rm -rf docs
 - npm run build
 - touch docs/.nojekyll
+- chmod +x .travis/write_cname.sh
+- cd docs/ && ./../.travis/write_cname.sh
+- cd ../
 after_success:
 - chmod +x .travis/push.sh
 - .travis/push.sh
