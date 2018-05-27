@@ -396,6 +396,25 @@
     "answerCodeBlocks": []
   },
   {
+    "name": "mask.md",
+    "question": "Create a function that masks a string of characters with `#` except for the last four (4) characters.\n\n```js\nmask(\"123456789\") // \"#####6789\"\n```",
+    "answer": "> There are many ways to solve this problem, this is just one one of them.\n\nUsing `String.prototype.slice()`, we can grab a portion of the string from index `0` (first character) to index `-4` (5th last character) and calculate the resulting length, using `String.prototype.repeat()` to repeat the mask character that many times. Then, using `String.prototype.slice()` once more, we can concatenate the last 4 characters by passing `-4` as an argument.\n\n```js\nconst mask = (str, maskChar = \"#\") =>\n  maskChar.repeat(str.slice(0, -4).length) + str.slice(-4)\n```",
+    "goodToHear": [
+      "Short, one-line functional solutions to problems should be preferred provided they are efficient"
+    ],
+    "links": [],
+    "tags": [
+      "javascript"
+    ],
+    "expertise": 1,
+    "questionCodeBlocks": [
+      "```js\nmask(\"123456789\") // \"#####6789\"\n```"
+    ],
+    "answerCodeBlocks": [
+      "```js\nconst mask = (str, maskChar = \"#\") =>\n  maskChar.repeat(str.slice(0, -4).length) + str.slice(-4)\n```"
+    ]
+  },
+  {
     "name": "media-properties.md",
     "question": "Can you name the four types of `@media` properties?",
     "answer": "* `all`, which applies to all media type devices\n* `print`, which only applies to printers\n* `screen`, which only applies to screens (desktops, tablets, mobile etc.)\n* `speech`, which only applies to screenreaders",
@@ -410,6 +429,25 @@
     "expertise": 0,
     "questionCodeBlocks": [],
     "answerCodeBlocks": []
+  },
+  {
+    "name": "mutable-vs-immutable.md",
+    "question": "Explain the difference between mutability and immutability, and mutating vs non-mutating methods.",
+    "answer": "\"Mutability\" means a value is subject to change. \"Immutability\" means a value cannot change.\n\nObjects are mutable, while primitive values (strings, numbers, etc) are immutable. This means any operations performed on a primitive value does not change the original value.\n\nAll `String.prototype` methods do not have an effect on the original string and return a new string. On the other hand, while some methods of `Array.prototype` do not mutate the original array reference and produce a fresh array, some cause mutations.\n\n```js\nconst myString = \"hello!\"\nmyString.replace(\"!\", \"\") // returns a new string, cannot mutate the original value\n\nconst originalArray = [1, 2, 3]\noriginalArray.push(4) // mutates originalArray, now [1, 2, 3, 4]\noriginalArray.concat(4) // returns a new array, does not mutate the original\n```",
+    "goodToHear": [
+      "List of mutating and non-mutating array methods"
+    ],
+    "links": [
+      "[Mutating vs non-mutating array methods](https://lorenstewart.me/2017/01/22/javascript-array-methods-mutating-vs-non-mutating/)"
+    ],
+    "tags": [
+      "javascript"
+    ],
+    "expertise": 2,
+    "questionCodeBlocks": [],
+    "answerCodeBlocks": [
+      "```js\nconst myString = \"hello!\"\nmyString.replace(\"!\", \"\") // returns a new string, cannot mutate the original value\n\nconst originalArray = [1, 2, 3]\noriginalArray.push(4) // mutates originalArray, now [1, 2, 3, 4]\noriginalArray.concat(4) // returns a new array, does not mutate the original\n```"
+    ]
   },
   {
     "name": "nan.md",
@@ -468,6 +506,48 @@
     "answerCodeBlocks": []
   },
   {
+    "name": "object-creation.md",
+    "question": "Describe the different ways to create an object. When should certain ways be preferred over others?",
+    "answer": "##### Object literal\n\nOften used to store one occurrence of data.\n\n```js\nconst person = {\n  name: \"John\",\n  age: 50,\n  birthday() {\n    this.age++\n  }\n}\nperson.birthday() // person.age === 51\n```\n\n##### Constructor\n\nOften used when you need to create multiple instances of an object, each with their own data that other instances of the class cannot affect. The `new` operator must be used before invoking the constructor or the global object will be mutated.\n\n```js\nfunction Person(name, age) {\n  this.name = name\n  this.age = age\n}\nPerson.prototype.birthday = function() {\n  this.age++\n}\nconst person1 = new Person(\"John\", 50)\nconst person2 = new Person(\"Sally\", 20)\nperson1.birthday() // person1.age === 51\nperson2.birthday() // person2.age === 21\n```\n\n##### Factory function\n\nCreates a new object similar to a constructor, but can store private data using a closure. There is also no need to use `new` before invoking the function or the `this` keyword. Factory functions usually discard the idea of prototypes and keep all properties and methods as own properties of the object.\n\n```js\nconst createPerson = (name, age) => {\n  const birthday = () => person.age++\n  const person = { name, age, birthday }\n  return person\n}\nconst person = createPerson(\"John\", 50)\nperson.birthday() // person.age === 51\n```\n\n##### `Object.create()`\n\nSets the prototype of the newly created object.\n\n```js\nconst personProto = {\n  birthday() {\n    this.age++\n  }\n}\nconst person = Object.create(personProto)\nperson.age = 50\nperson.birthday() // person.age === 51\n```\n\nA second argument can also be supplied to `Object.create()` which acts as a descriptor for the new properties to be defined.\n\n```js\nObject.create(personProto, {\n  age: {\n    value: 50,\n    writable: true,\n    enumerable: true\n  }\n})\n```",
+    "goodToHear": [
+      "Prototypes are objects that other objects inherit properties and methods from.",
+      "Factory functions offer private properties and methods through a closure but increase memory usage as a tradeoff, while classes do not have private properties or methods but reduce memory impact by reusing a single prototype object."
+    ],
+    "links": [
+      "[Factory functions vs constructor functions vs classes](https://medium.com/javascript-scene/javascript-factory-functions-vs-constructor-functions-vs-classes-2f22ceddf33e)"
+    ],
+    "tags": [
+      "javascript"
+    ],
+    "expertise": 1,
+    "questionCodeBlocks": [],
+    "answerCodeBlocks": [
+      "```js\nconst person = {\n  name: \"John\",\n  age: 50,\n  birthday() {\n    this.age++\n  }\n}\nperson.birthday() // person.age === 51\n```",
+      "```js\nfunction Person(name, age) {\n  this.name = name\n  this.age = age\n}\nPerson.prototype.birthday = function() {\n  this.age++\n}\nconst person1 = new Person(\"John\", 50)\nconst person2 = new Person(\"Sally\", 20)\nperson1.birthday() // person1.age === 51\nperson2.birthday() // person2.age === 21\n```",
+      "```js\nconst createPerson = (name, age) => {\n  const birthday = () => person.age++\n  const person = { name, age, birthday }\n  return person\n}\nconst person = createPerson(\"John\", 50)\nperson.birthday() // person.age === 51\n```",
+      "```js\nconst personProto = {\n  birthday() {\n    this.age++\n  }\n}\nconst person = Object.create(personProto)\nperson.age = 50\nperson.birthday() // person.age === 51\n```",
+      "```js\nObject.create(personProto, {\n  age: {\n    value: 50,\n    writable: true,\n    enumerable: true\n  }\n})\n```"
+    ]
+  },
+  {
+    "name": "parameter-vs-argument.md",
+    "question": "What is the difference between a parameter and an argument?",
+    "answer": "Parameters are the variable names of the function definition, while arguments are the values given to a function when it is invoked.\n\n```js\nfunction myFunction(parameter1, parameter2) {\n  console.log(arguments[0]) // \"argument1\"\n}\nmyFunction(\"argument1\", \"argument2\")\n```",
+    "goodToHear": [
+      "`arguments` is an array-like object containing information about the arguments supplied to an invoked function.",
+      "`myFunction.length` describes the arity of a function (how many parameters it has, regardless of how many arguments it is supplied)."
+    ],
+    "links": [],
+    "tags": [
+      "javascript"
+    ],
+    "expertise": 1,
+    "questionCodeBlocks": [],
+    "answerCodeBlocks": [
+      "```js\nfunction myFunction(parameter1, parameter2) {\n  console.log(arguments[0]) // \"argument1\"\n}\nmyFunction(\"argument1\", \"argument2\")\n```"
+    ]
+  },
+  {
     "name": "pass-by-value-reference.md",
     "question": "Does JavaScript pass by value or by reference?",
     "answer": "JavaScript always passes by value. However, with objects, the value is a reference to the object.",
@@ -483,6 +563,27 @@
     "expertise": 1,
     "questionCodeBlocks": [],
     "answerCodeBlocks": []
+  },
+  {
+    "name": "pipe.md",
+    "question": "Create a function `pipe` that performs left-to-right function composition by returning a function that accepts one argument.\n\n```js\nconst square = v => v * v\nconst double = v => v * 2\nconst addOne = v => v + 1\nconst res = pipe(square, double, addOne)\nres(3) // 19; addOne(double(square(3)))\n```",
+    "answer": "Gather all supplied arguments using the rest operator `...` and return a unary function that uses `Array.prototype.reduce()` to run the value through the series of functions before returning the final value.\n\n```js\nconst pipe = (...fns) => x => fns.reduce((v, fn) => fn(v), x)\n```",
+    "goodToHear": [
+      "Function composition is the process of combining two or more functions to produce a new function."
+    ],
+    "links": [
+      "[What is function composition?](https://medium.com/javascript-scene/master-the-javascript-interview-what-is-function-composition-20dfb109a1a0)"
+    ],
+    "tags": [
+      "javascript"
+    ],
+    "expertise": 2,
+    "questionCodeBlocks": [
+      "```js\nconst square = v => v * v\nconst double = v => v * 2\nconst addOne = v => v + 1\nconst res = pipe(square, double, addOne)\nres(3) // 19; addOne(double(square(3)))\n```"
+    ],
+    "answerCodeBlocks": [
+      "```js\nconst pipe = (...fns) => x => fns.reduce((v, fn) => fn(v), x)\n```"
+    ]
   },
   {
     "name": "prototypal-inheritance.md",
@@ -581,31 +682,53 @@
     "answerCodeBlocks": []
   },
   {
+    "name": "static-vs-instance-method.md",
+    "question": "Explain the difference between a static method and an instance method.",
+    "answer": "Static methods belong to a class and don't act on instances, while instance methods belong to the class prototype which is inherited by all instances of the class and acts on them.\n\n```js\nArray.isArray // static method of Array\nArray.prototype.push // instance method of Array\n```\n\nIn this case, the `Array.isArray` method does not make sense as an instance method of arrays because we already know the value is an array when working with it.\n\nInstance methods could technically work as static methods, but provide terser syntax:\n\n```js\nconst arr = [1, 2, 3]\narr.push(4)\nArray.push(arr, 4)\n```",
+    "goodToHear": [
+      "How to create static and instance methods with ES2015 class syntax"
+    ],
+    "links": [
+      "[Classes on MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes)"
+    ],
+    "tags": [
+      "javascript"
+    ],
+    "expertise": 2,
+    "questionCodeBlocks": [],
+    "answerCodeBlocks": [
+      "```js\nArray.isArray // static method of Array\nArray.prototype.push // instance method of Array\n```",
+      "```js\nconst arr = [1, 2, 3]\narr.push(4)\nArray.push(arr, 4)\n```"
+    ]
+  },
+  {
+    "name": "sync-vs-async.md",
+    "question": "What is the difference between synchronous and asynchronous code in JavaScript?",
+    "answer": "Synchronous means each operation must wait for the previous one to complete.\n\nAsynchronous means an operation can occur while another operation is still being processed.\n\nIn JavaScript, all code is synchronous due to the single-threaded nature of it. However, asynchronous operations not part of the program (such as `XMLHttpRequest` or `setTimeout`) are processed outside of the main thread because they are controlled by native code (browser APIs), but callbacks part of the program will still be executed synchronously.",
+    "goodToHear": [
+      "JavaScript has a concurrency model based on an \"event loop\".",
+      "Functions like `alert` block the main thread so that no user input is registered until the user closes it."
+    ],
+    "links": [],
+    "tags": [
+      "javascript"
+    ],
+    "expertise": 1,
+    "questionCodeBlocks": [],
+    "answerCodeBlocks": []
+  },
+  {
     "name": "this.md",
     "question": "How does `this` work?",
     "answer": "The `this` keyword is an object that represents the context of an executing function. Regular functions can have their `this` value changed with `.call`, `.apply` and `.bind`. Arrow functions implicitly bind `this` so that it refers to the context of its lexical environment, regardless of whether or not its context is set explicitly with `call`.\n\nHere are some common examples of `this`:\n\n```js\n// Object literals\nvar myObject = {\n  regularFunction: function() {\n    return this\n  },\n  arrowFunction: () => {\n    return this\n  }\n}\nmyObject.regularFunction() // myObject\nmyObject.arrowFunction() // NOT myObject\nconst withoutContextFunction = myObject.regularFunction\nwithoutContextFunction() // NOT myObject\n\n// Event listeners\ndocument.body.addEventListener(\"click\", function() {\n  console.log(this) // document.body\n})\n\n// Classes\nclass myClass {\n  constructor() {\n    console.log(this) // myClassInstance\n  }\n}\nvar myClassInstance = new myClass()\n\n// Manual\nvar myFunction = function() {\n  return this\n}\nmyFunction.call({ customThis: true }) // { customThis: true }\n\n// Unwanted `this`\nvar obj = {\n  arr: [1, 2, 3],\n  doubleArr() {\n    return this.arr.map(function(value) {\n      // this === this.arr\n      return this.double(value)\n    })\n  },\n  double() {\n    return value * 2\n  }\n}\nobj.doubleArr() // Uncaught TypeError: this.double is not a function\n```",
     "goodToHear": [
-      "Global `this` in strict and non-strict mode",
-      "Differences between `call`, `apply` and `bind`",
-      "Cases where a method will not have the correct `this` context",
-      "When to use arrow functions and regular functions",
-      "<!-- tags: (javascript) -->",
-      "<!-- expertise: (2) -->"
+      "In non-strict mode, global `this` is the global object (`window` in browsers), while in non-strict mode global `this` is `undefined`.",
+      "`Function.prototype.call` and `Function.prototype.apply` set the `this` context of an executing function as the first argument, with `call` accepting a variadic number of arguments thereafter, and `apply` accepting an array as the second argument which are fed to the function in a variadic manner.",
+      "`Function.prototype.bind` returns a new function that enforces the `this` context as the first argument which cannot be changed by other functions.",
+      "If a function requires its `this` context to be changed based on how it is called, you must use the `function` keyword. Use arrow functions when you want `this` to be the surrounding (lexical) context."
     ],
     "links": [
-      "// Object literals",
-      "myObject.regularFunction() // myObject",
-      "myObject.arrowFunction() // NOT myObject",
-      "withoutContextFunction() // NOT myObject",
-      "// Event listeners",
-      "  console.log(this) // document.body",
-      "// Classes",
-      "    console.log(this) // myClassInstance",
-      "// Manual",
-      "myFunction.call({ customThis: true }) // { customThis: true }",
-      "// Unwanted `this`",
-      "      // this === this.arr",
-      "obj.doubleArr() // Uncaught TypeError: this.double is not a function"
+      "[`this` on MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this)"
     ],
     "tags": [
       "javascript"
@@ -656,13 +779,14 @@
   {
     "name": "ui-library-framework-purpose.md",
     "question": "What is the purpose of JavaScript UI libraries/frameworks like React, Vue, Angular, Hyperapp, etc?",
-    "answer": "The main purpose is to avoid manipulating the DOM directly and keep the state of an application\nin sync with the UI easily. Additionally, they provide the ability to create components that can be reused when they have similar functionality with minor differences, avoiding duplication which would require multiple changes whenever the structure of a component which is reused in multiple places needs to be updated.\n\nWhen working with the DOM manipulation libraries like jQuery, the data of an application is generally kept in the DOM itself, often as class names or `data` attributes. Manipulating the DOM to update the UI involves many extra steps and can introduce subtle bugs over time. Keeping the state separate and letting a framework handle the UI updates when the state changes reduces cognitive load, i.e. saying you want the UI to look a certain way when the state is a certain value is the declarative way of creating an application, instead of manually updating the UI to reflect the new state (imperative).",
+    "answer": "The main purpose is to avoid manipulating the DOM directly and keep the state of an application\nin sync with the UI easily. Additionally, they provide the ability to create components that can be reused when they have similar functionality with minor differences, avoiding duplication which would require multiple changes whenever the structure of a component which is reused in multiple places needs to be updated.\n\nWhen working with DOM manipulation libraries like jQuery, the data of an application is generally kept in the DOM itself, often as class names or `data` attributes. Manipulating the DOM to update the UI involves many extra steps and can introduce subtle bugs over time. Keeping the state separate and letting a framework handle the UI updates when the state changes reduces cognitive load, i.e. saying you want the UI to look a certain way when the state is a certain value is the declarative way of creating an application, instead of manually updating the UI to reflect the new state (imperative).",
     "goodToHear": [
-      "Explanation of templating languages and JSX",
-      "<!-- tags: (javascript) -->",
-      "<!-- expertise: (2) -->"
+      "The virtual DOM is a representation of the real DOM tree in the form of plain objects, which allows a library to write code as if the entire document is thrown away and rebuilt on each change, while the real DOM only updates what needs to be changed. Comparing the new virtual DOM against the previous one leads to high efficiency as changing real DOM nodes is costly compared to recalculating the virtual DOM.",
+      "JSX is an extension to JavaScript that provides XML-like syntax to create virtual DOM objects which is transformed to function calls by a transpiler. It simplifies control flow (if statements/ternary expressions) compared to tagged template literals."
     ],
-    "links": [],
+    "links": [
+      "[Virtual DOM in Hyperapp](https://github.com/hyperapp/hyperapp#view)"
+    ],
     "tags": [
       "javascript"
     ],
