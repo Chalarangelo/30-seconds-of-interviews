@@ -1,5 +1,3 @@
-/* eslint no-useless-escape: 0, no-console: 0 */
-
 // This script converts question markdown files into JSON format
 const fs = require("fs-extra")
 const path = require("path")
