@@ -8,7 +8,7 @@ An example can be the following snippet, which after 100ms prints out the result
 ```js
 new Promise((resolve, reject) => {
   setTimeout(() => {
-    resolve('result')
+    resolve("result")
   }, 100)
 })
   .then(console.log)

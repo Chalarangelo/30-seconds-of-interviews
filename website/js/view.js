@@ -5,7 +5,7 @@ import Filter from "./components/Filter"
 import Questions from "./components/Questions"
 import BackToTopButton from "./components/BackToTopButton"
 
-export default (state, actions) => (
+export default () => (
   <div>
     <BackToTopButton />
     <Header />

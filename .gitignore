@@ -60,3 +60,6 @@ typings/
 # parcel
 .cache
 dist
+
+# editor
+.vscode
