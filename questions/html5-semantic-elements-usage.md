@@ -16,7 +16,7 @@
 
 ##### Additional links
 
-* [HTML 5.2 WWW Specifications](https://www.w3.org/TR/html52/)
+* [HTML 5 Semantic Elements](https://www.w3schools.com/html/html5_semantic_elements.asp)
 
 <!-- tags: (html) -->
 
