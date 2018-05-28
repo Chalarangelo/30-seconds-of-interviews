@@ -1,8 +1,61 @@
 import questions from "../../data/questions.json"
-import { TAG_NAMES, SORTBY_STRINGS } from './utils'
 
 export default {
   questions,
-  filter: TAG_NAMES.all,
-  sortBy: SORTBY_STRINGS.expertise
+  filter: {
+    category: "All",
+    expertise: "All",
+    dropdowns: [
+      {
+        name: "Category",
+        isOpen: false,
+        position: "left",
+        items: [
+          {
+            name: "All",
+            icon: "check"
+          },
+          {
+            name: "HTML",
+            icon: "layout"
+          },
+          {
+            name: "CSS",
+            icon: "feather"
+          },
+          {
+            name: "JavaScript",
+            icon: "code"
+          },
+          {
+            name: "Node",
+            icon: "server"
+          }
+        ]
+      },
+      {
+        name: "Expertise",
+        isOpen: false,
+        position: "right",
+        items: [
+          {
+            name: "All",
+            icon: "check"
+          },
+          {
+            name: "Junior",
+            icon: "star"
+          },
+          {
+            name: "Intermediate",
+            icon: "star"
+          },
+          {
+            name: "Senior",
+            icon: "star"
+          }
+        ]
+      }
+    ]
+  }
 }

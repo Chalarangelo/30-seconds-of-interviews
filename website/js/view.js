@@ -9,7 +9,6 @@ export default (state, actions) => (
   <div>
     <BackToTopButton />
     <Header />
-    <Introduction />
     <Filter />
     <Questions />
   </div>

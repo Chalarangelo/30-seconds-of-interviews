@@ -23,7 +23,7 @@ export default ({
         class="btn Question__button"
         onclick={() => actions.onAnswerButtonClick({ name, isOpen })}
       >
-        {isOpen ? "Hide" : "Show"} answer
+        <span>{isOpen ? "Hide" : "Show"} answer</span>
         <i
           class={cc({ "is-rotated": isOpen })}
           innerHTML={feather.icons["chevron-down"].toSvg({

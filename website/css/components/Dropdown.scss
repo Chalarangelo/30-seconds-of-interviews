@@ -1,0 +1,50 @@
+@import "../_vars.scss";
+
+.Dropdown {
+  position: relative;
+
+  &:not(:last-child) {
+    margin-right: 10px;
+  }
+
+  &__button {
+    padding: 12px 15px;
+    border-radius: 0 0 4px 4px;
+    border-top: none;
+  }
+
+  &__items {
+    position: absolute;
+    background: white;
+    top: calc(100% + 5px);
+    z-index: 2;
+    visibility: hidden;
+    box-shadow: 0 16px 24px -4px rgba(0, 32, 128, 0.2);
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    width: 175px;
+    border-radius: 0 0 8px 8px;
+    border: 1px solid #c8cbf2;
+    overflow: hidden;
+    border-radius: 4px;
+
+    &.is-open {
+      visibility: visible;
+    }
+
+    &.is-right {
+      right: 0;
+    }
+  }
+
+  &__label {
+    display: block;
+    font-weight: bold;
+    background: #c8cbf2;
+    padding: 5px;
+    border-radius: 4px 4px 0 0;
+    text-align: center;
+    font-size: 14px;
+  }
+}
