@@ -1,45 +1,31 @@
-stages:
-  - name: lint
-    if: type IN (push, pull_request) AND (NOT branch = master)
-  - name: deploy
-    if: type IS cron
 jobs:
   include:
-    - if: type IS cron
-      stage: deploy
+    - stage: conditional_build
       language: node_js
       node_js:
         - node
       install:
         - yarn install
       script:
+        - test $TRAVIS_EVENT_TYPE = push -o $TRAVIS_EVENT_TYPE = pull_request \
+          && test $TRAVIS_BRANCH != master \
+          && echo -e "\e[95mNot a CRON triggered build, thus only checking for errors." 
         - yarn lint --fix
         - yarn extractor
         - yarn builder
-        - rm -rf docs
-        - yarn build
-        - touch docs/.nojekyll
-        - chmod +x .travis/write_cname.sh
-        - cd docs/ && ./../.travis/write_cname.sh
-        - cd ../
+        - test $TRAVIS_EVENT_TYPE = cron \
+          && echo -e "\e[95mCRON triggered build, thus building website." \
+          && rm -rf docs \
+          && yarn build \
+          && touch docs/.nojekyll \
+          && chmod +x .travis/write_cname.sh \
+          && cd docs/ && ./../.travis/write_cname.sh \
+          && cd ../ 
       after_success:
-        - chmod +x .travis/push.sh
-        - ./.travis/push.sh
-      cache:  # duplicate as matrix expansion currently doesn't support conditional jobs
-        directories:
-          - node_modules
-    - if: type IN (push, pull_request) AND (NOT branch = master)
-      stage: lint
-      language: node_js
-      node_js:
-        - node
-      install:
-        - yarn install
-      script:
-        - yarn lint --fix
-        - yarn extractor
-        - yarn builder
+        - test $TRAVIS_EVENT_TYPE = cron \
+          && echo -e "\e[95mDeploying to Repository" \
+          && chmod +x .travis/push.sh \
+          && ./.travis/push.sh
       cache:
         directories:
           - node_modules
-    
