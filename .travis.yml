@@ -1,22 +1,42 @@
-os: osx
-language: node_js
-cache:
-  directories:
-    - node_modules
-node_js:
-  - node
-install:
-  - yarn install
-script:
-  - yarn lint --fix
-  - yarn extractor
-  - yarn builder
-  - rm -rf docs
-  - yarn build
-  - touch docs/.nojekyll
-  - chmod +x .travis/write_cname.sh
-  - cd docs/ && ./../.travis/write_cname.sh
-  - cd ../
-after_success:
-  - chmod +x .travis/push.sh
-  - .travis/push.sh
+jobs:
+  include:
+    - stage: deploy
+      if: type IS cron
+      os: osx
+      language: node_js
+      node_js:
+        - node
+      install:
+        - yarn install
+      script:
+        - yarn lint --fix
+        - yarn extractor
+        - yarn builder
+        - rm -rf docs
+        - yarn build
+        - touch docs/.nojekyll
+        - chmod +x .travis/write_cname.sh
+        - cd docs/ && ./../.travis/write_cname.sh
+        - cd ../
+      after_success:
+        - chmod +x .travis/push.sh
+        - .travis/push
+      cache:  # duplicate as matrix expansion currently doesn't support conditional jobs
+        directories:
+          - node_modules
+    - stage: lint
+      if: type IN (push, pull_request)
+      os: osx 
+      language: node_js
+      node_js:
+        - node
+      install:
+        - yarn install
+      script:
+        - yarn lint --fix
+        - yarn extractor
+        - yarn builder
+      cache:
+        directories:
+          - node_modules
+    
