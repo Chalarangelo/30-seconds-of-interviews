@@ -1,4 +1,4 @@
-### Can a web page contain multiple <header> elements? What about <footer> elements?
+### Can a web page contain multiple `<header>` elements? What about `<footer>` elements?
 
 #### Answer
 
@@ -10,8 +10,8 @@ Yes to both. The W3 documents state that the tags represent the header(`<header>
 
 ##### Additional links
 
-* [HTML 5.2 WWW Specifications](https://stackoverflow.com/questions/4837269/html5-using-header-or-footer-tag-twice?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa)
+* [StackOverflow - Using header or footer tag twice](https://stackoverflow.com/questions/4837269/html5-using-header-or-footer-tag-twice?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa)
 
 <!-- tags: (html) -->
 
-<!-- expertise: (1) -->
+<!-- expertise: (0) -->
