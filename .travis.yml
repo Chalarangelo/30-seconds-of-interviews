@@ -1,6 +1,10 @@
 jobs:
   include:
     - stage: conditional_build
+      notifications:
+        email:
+          on_success: [change]
+          on_failure: [change]
       language: node_js
       node_js:
         - node
