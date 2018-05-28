@@ -73,7 +73,7 @@ Join our [Gitter channel](https://gitter.im/30-seconds-of-interviews/Lobby) to h
 * [What are Promises?](#what-are-promises)
 * [How does prototypal inheritance differ from classical inheritance?](#how-does-prototypal-inheritance-differ-from-classical-inheritance)
 * [What is the output of the following code?
-](#what-is-the-output-of-the-following-code-js-const-a-1-2-3-const-b-1-2-3-const-c-1-2-3-console-log-a-c-console-log-a-b)
+](#what-is-the-output-of-the-following-code-js-const-a-1-2-3-const-b-1-2-3-const-c-1-2-3-eslint-eqeqeq-0-console-log-a-c-console-log-a-b)
 * [What does the following function return?
 ](#what-does-the-following-function-return-js-function-greet-return-message-hello)
 * [Explain the difference between a static method and an instance method.](#explain-the-difference-between-a-static-method-and-an-instance-method)
@@ -774,6 +774,7 @@ const a = [1, 2, 3]
 const b = [1, 2, 3]
 const c = "1,2,3"
 
+/* eslint eqeqeq: 0 */
 console.log(a == c)
 console.log(a == b)
 ```
