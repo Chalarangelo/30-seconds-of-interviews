@@ -26,6 +26,8 @@ Interviews are daunting and can make even the most seasoned expert forget things
 
 <a href="https://30secondsofinterviews.org"><img src="promo.jpg" alt="30 Seconds of Interviews promo"></a>
 
+## Sponsors
+
 ## Contributing
 
 > 30 seconds of interviews is a community effort, so feel free to contribute in any way you can. Every contribution helps!
