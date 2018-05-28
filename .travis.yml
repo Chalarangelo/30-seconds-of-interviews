@@ -10,24 +10,17 @@ jobs:
         - node
       install:
         - yarn install
-      script:
-        - test $TRAVIS_BRANCH != master && (test $TRAVIS_EVENT_TYPE = push || test $TRAVIS_EVENT_TYPE = pull_request) \
-          && echo -e "\e[95mNot a CRON triggered build, thus only checking for errors." 
+      before_script:
+        - chmod +x .travis/checkIfCron.sh && ./.travis/checkIfCron.sh
         - yarn lint --fix
         - yarn extractor
         - yarn builder
-        - test $TRAVIS_EVENT_TYPE = cron \
-          && echo -e "\e[95mCRON triggered build, thus building website." \
-          && rm -rf docs \
-          && yarn build \
-          && touch docs/.nojekyll \
-          && chmod +x .travis/write_cname.sh \
-          && cd docs/ && ./../.travis/write_cname.sh \
-          && cd ../ 
-      after_success:
-        - test $TRAVIS_EVENT_TYPE = cron \
-          && echo -e "\e[95mDeploying to Repository" \
-          && chmod +x .travis/push.sh \
+      script:
+        - chmod +x .travis/build.sh && ./.travis/build.sh
+      after_script:
+        - test $TRAVIS_EVENT_TYPE = cron 
+          && echo -e "\e[95mDeploying to Repository" 
+          && chmod +x .travis/push.sh 
           && ./.travis/push.sh
       cache:
         directories:
