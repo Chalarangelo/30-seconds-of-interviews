@@ -12,14 +12,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/fejes713/30-seconds-of-interviews.git"
+    "url": "https://github.com/fejes713/30-seconds-of-interviews"
   },
   "author": "Stefan Fejes (ns.fejes.stefan@gmail.com)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/fejes713/30-seconds-of-interviews/issues"
   },
-  "homepage": "https://github.com/fejes713/30-seconds-of-interviews#readme",
+  "homepage": "https://30secondsofinterviews.org/",
   "dependencies": {
     "babel-preset-stage-3": "^6.24.1",
     "chalk": "^2.4.1",
