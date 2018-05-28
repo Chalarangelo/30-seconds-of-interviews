@@ -1,3 +1,8 @@
+stages:
+  - name: deploy
+    if: type IS cron
+  - name: lint
+    if: type IN (push, pull_request) AND (NOT branch = master)
 jobs:
   include:
     - stage: deploy
@@ -20,7 +25,7 @@ jobs:
         - cd ../
       after_success:
         - chmod +x .travis/push.sh
-        - .travis/push
+        - ./.travis/push.sh
       cache:  # duplicate as matrix expansion currently doesn't support conditional jobs
         directories:
           - node_modules
