@@ -69,7 +69,7 @@ Join our [Gitter channel](https://gitter.im/30-seconds-of-interviews/Lobby) to h
 * [In which states can a Promise be?](#in-which-states-can-a-promise-be)
 * [What are Promises?](#what-are-promises)
 * [How does prototypal inheritance differ from classical inheritance?](#how-does-prototypal-inheritance-differ-from-classical-inheritance)
-* [What is the output of the following code?](#what-is-the-output-of-the-following-code-js-const-a-1-2-3-const-b-1-2-3-const-c-1-2-3-console-log-a-c-console-log-a-b)
+* [What is the output of the following code?](#what-is-the-output-of-the-following-code-js-const-a-1-2-3-const-b-1-2-3-const-c-1-2-3-eslint-eqeqeq-0-console-log-a-c-console-log-a-b)
 * [What does the following function return?](#what-does-the-following-function-return-js-function-greet-return-message-hello)
 * [Explain the difference between a static method and an instance method.](#explain-the-difference-between-a-static-method-and-an-instance-method)
 * [What is the difference between synchronous and asynchronous code in JavaScript?](#what-is-the-difference-between-synchronous-and-asynchronous-code-in-java-script)
@@ -196,7 +196,7 @@ An example can be the following snippet, which after 100ms prints out the result
 ```js
 new Promise((resolve, reject) => {
   setTimeout(() => {
-    resolve('result')
+    resolve("result")
   }, 100)
 })
   .then(console.log)
@@ -279,10 +279,10 @@ function isDeepEqual(obj1, obj2, testPrototypes = false) {
 
   const prototypesAreEqual = testPrototypes
     ? isDeepEqual(
-        Object.getPrototypeOf(obj1),
-        Object.getPrototypeOf(obj2),
-        true
-      )
+      Object.getPrototypeOf(obj1),
+      Object.getPrototypeOf(obj2),
+      true
+    )
     : true
 
   const obj1Props = Object.getOwnPropertyNames(obj1)
@@ -352,13 +352,13 @@ This technique is very common in JavaScript libraries. It creates a closure arou
 
 ```js
 const myLibrary = function () {
-  var privateVariable = 2;
+  var privateVariable = 2
   return {
-    publicMethod: () => privateVariable;
-  };
-}();
-privateVariable; // ReferenceError
-myLibrary.publicMethod(); // 2
+    publicMethod: () => privateVariable
+  }
+}()
+privateVariable // ReferenceError
+myLibrary.publicMethod() // 2
 ```
 
 
@@ -737,28 +737,30 @@ This practice is also called the _Node.js error convention_, and this kind of ca
 ```js
 var isTrue = function(value, callback) {
   if (value === true) {
-    callback(null, "Value was true.");
+    callback(null, "Value was true.")
   } else {
-    callback(new Error("Value is not true!"));
+    callback(new Error("Value is not true!"))
   }
 }
 
 var callback = function (error, retval) {
   if (error) {
-    console.log(error);
-    return;
+    console.log(error)
+    return
   }
-  console.log(retval);
+  console.log(retval)
 }
 
-isTrue(false, callback);
-isTrue(true,  callback);
+isTrue(false, callback)
+isTrue(true,  callback)
 
-{ stack: [Getter/Setter],
-  arguments: undefined,
-  type: undefined,
-  message: 'Value is not true!' }
-Value was true.
+/*
+  { stack: [Getter/Setter],
+    arguments: undefined,
+    type: undefined,
+    message: 'Value is not true!' }
+  Value was true.
+*/
 ```
 
 
@@ -787,6 +789,7 @@ const a = [1, 2, 3]
 const b = [1, 2, 3]
 const c = "1,2,3"
 
+/* eslint eqeqeq: 0 */
 console.log(a == c)
 console.log(a == b)
 ```
@@ -1559,16 +1562,16 @@ A closure is a function defined inside another function and has access to its le
 
 ```js
 getData(function(a){  
-    getMoreData(a, function(b){
-        getMoreData(b, function(c){ 
-            getMoreData(c, function(d){ 
-                getMoreData(d, function(e){ 
-                    ...
-                });
-            });
-        });
-    });
-});
+  getMoreData(a, function(b){
+    getMoreData(b, function(c){ 
+      getMoreData(c, function(d){ 
+        getMoreData(d, function(e){ 
+          //  ...
+        })
+      })
+    })
+  })
+})
 ```
 
 <details>
@@ -2077,28 +2080,30 @@ This practice is also called the _Node.js error convention_, and this kind of ca
 ```js
 var isTrue = function(value, callback) {
   if (value === true) {
-    callback(null, "Value was true.");
+    callback(null, "Value was true.")
   } else {
-    callback(new Error("Value is not true!"));
+    callback(new Error("Value is not true!"))
   }
 }
 
 var callback = function (error, retval) {
   if (error) {
-    console.log(error);
-    return;
+    console.log(error)
+    return
   }
-  console.log(retval);
+  console.log(retval)
 }
 
-isTrue(false, callback);
-isTrue(true,  callback);
+isTrue(false, callback)
+isTrue(true,  callback)
 
-{ stack: [Getter/Setter],
-  arguments: undefined,
-  type: undefined,
-  message: 'Value is not true!' }
-Value was true.
+/*
+  { stack: [Getter/Setter],
+    arguments: undefined,
+    type: undefined,
+    message: 'Value is not true!' }
+  Value was true.
+*/
 ```
 
 
@@ -2124,16 +2129,16 @@ Value was true.
 
 ```js
 getData(function(a){  
-    getMoreData(a, function(b){
-        getMoreData(b, function(c){ 
-            getMoreData(c, function(d){ 
-                getMoreData(d, function(e){ 
-                    ...
-                });
-            });
-        });
-    });
-});
+  getMoreData(a, function(b){
+    getMoreData(b, function(c){ 
+      getMoreData(c, function(d){ 
+        getMoreData(d, function(e){ 
+          //  ...
+        })
+      })
+    })
+  })
+})
 ```
 
 <details>

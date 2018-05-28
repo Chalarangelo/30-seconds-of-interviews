@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 // This script generates the README file
 const fs = require("fs-extra")
 const path = require("path")

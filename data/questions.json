@@ -45,7 +45,7 @@
   },
   {
     "name": "callback-hell.md",
-    "question": "How can you avoid callback hells?\n\n```js\ngetData(function(a){  \n    getMoreData(a, function(b){\n        getMoreData(b, function(c){ \n            getMoreData(c, function(d){ \n                getMoreData(d, function(e){ \n                    ...\n                });\n            });\n        });\n    });\n});\n```",
+    "question": "How can you avoid callback hells?\n\n```js\ngetData(function(a){  \n  getMoreData(a, function(b){\n    getMoreData(b, function(c){ \n      getMoreData(c, function(d){ \n        getMoreData(d, function(e){ \n          //  ...\n        })\n      })\n    })\n  })\n})\n```",
     "answer": "There are lots of ways to solve the issue of callback hells:\n\n* modularization: break callbacks into independent functions\n* use a control flow library, like async\n* use generators with Promises\n* use async/await (from v7 on)",
     "goodToHear": [
       "As an efficient JavaScript developer, you have to avoid the constantly growing indentation level, produce clean and readable code and be able to handle complex flows."
@@ -60,7 +60,7 @@
     ],
     "expertise": 2,
     "questionCodeBlocks": [
-      "```js\ngetData(function(a){  \n    getMoreData(a, function(b){\n        getMoreData(b, function(c){ \n            getMoreData(c, function(d){ \n                getMoreData(d, function(e){ \n                    ...\n                });\n            });\n        });\n    });\n});\n```"
+      "```js\ngetData(function(a){  \n  getMoreData(a, function(b){\n    getMoreData(b, function(c){ \n      getMoreData(c, function(d){ \n        getMoreData(d, function(e){ \n          //  ...\n        })\n      })\n    })\n  })\n})\n```"
     ],
     "answerCodeBlocks": []
   },
@@ -129,7 +129,7 @@
   {
     "name": "comparing-objects.md",
     "question": "How do you compare two objects in JavaScript?",
-    "answer": "Even though two different objects can have the same properties with equal values, they are not considered equal when compared using `==` or `===`. This is because they are being compared by their reference (location in memory), unlike primitive values which are compared by value.\n\nIn order to test if two objects are equal in structure, a helper function is required. It will\niterate through the own properties of each object to test if they have the same values, including nested objects.\nOptionally, the prototypes of the objects may also be tested for equivalence by passing `true` as the 3rd argument.\n\nNote: this technique does not attempt to test equivalence of data structures other than\nplain objects, arrays, functions, dates and primitive values.\n\n```js\nfunction isDeepEqual(obj1, obj2, testPrototypes = false) {\n  if (obj1 === obj2) {\n    return true\n  }\n\n  if (typeof obj1 === \"function\" && typeof obj2 === \"function\") {\n    return obj1.toString() === obj2.toString()\n  }\n\n  if (obj1 instanceof Date && obj2 instanceof Date) {\n    return obj1.getTime() === obj2.getTime()\n  }\n\n  const prototypesAreEqual = testPrototypes\n    ? isDeepEqual(\n        Object.getPrototypeOf(obj1),\n        Object.getPrototypeOf(obj2),\n        true\n      )\n    : true\n\n  const obj1Props = Object.getOwnPropertyNames(obj1)\n  const obj2Props = Object.getOwnPropertyNames(obj2)\n\n  return (\n    obj1Props.length === obj2Props.length &&\n    prototypesAreEqual &&\n    obj1Props.every(prop => isDeepEqual(obj1[prop], obj2[prop]))\n  )\n}\n```",
+    "answer": "Even though two different objects can have the same properties with equal values, they are not considered equal when compared using `==` or `===`. This is because they are being compared by their reference (location in memory), unlike primitive values which are compared by value.\n\nIn order to test if two objects are equal in structure, a helper function is required. It will\niterate through the own properties of each object to test if they have the same values, including nested objects.\nOptionally, the prototypes of the objects may also be tested for equivalence by passing `true` as the 3rd argument.\n\nNote: this technique does not attempt to test equivalence of data structures other than\nplain objects, arrays, functions, dates and primitive values.\n\n```js\nfunction isDeepEqual(obj1, obj2, testPrototypes = false) {\n  if (obj1 === obj2) {\n    return true\n  }\n\n  if (typeof obj1 === \"function\" && typeof obj2 === \"function\") {\n    return obj1.toString() === obj2.toString()\n  }\n\n  if (obj1 instanceof Date && obj2 instanceof Date) {\n    return obj1.getTime() === obj2.getTime()\n  }\n\n  const prototypesAreEqual = testPrototypes\n    ? isDeepEqual(\n      Object.getPrototypeOf(obj1),\n      Object.getPrototypeOf(obj2),\n      true\n    )\n    : true\n\n  const obj1Props = Object.getOwnPropertyNames(obj1)\n  const obj2Props = Object.getOwnPropertyNames(obj2)\n\n  return (\n    obj1Props.length === obj2Props.length &&\n    prototypesAreEqual &&\n    obj1Props.every(prop => isDeepEqual(obj1[prop], obj2[prop]))\n  )\n}\n```",
     "goodToHear": [
       "Primitives like strings and numbers are compared by their value",
       "Objects on the other hand are compared by their reference (location in memory)"
@@ -144,7 +144,7 @@
     "expertise": 1,
     "questionCodeBlocks": [],
     "answerCodeBlocks": [
-      "```js\nfunction isDeepEqual(obj1, obj2, testPrototypes = false) {\n  if (obj1 === obj2) {\n    return true\n  }\n\n  if (typeof obj1 === \"function\" && typeof obj2 === \"function\") {\n    return obj1.toString() === obj2.toString()\n  }\n\n  if (obj1 instanceof Date && obj2 instanceof Date) {\n    return obj1.getTime() === obj2.getTime()\n  }\n\n  const prototypesAreEqual = testPrototypes\n    ? isDeepEqual(\n        Object.getPrototypeOf(obj1),\n        Object.getPrototypeOf(obj2),\n        true\n      )\n    : true\n\n  const obj1Props = Object.getOwnPropertyNames(obj1)\n  const obj2Props = Object.getOwnPropertyNames(obj2)\n\n  return (\n    obj1Props.length === obj2Props.length &&\n    prototypesAreEqual &&\n    obj1Props.every(prop => isDeepEqual(obj1[prop], obj2[prop]))\n  )\n}\n```"
+      "```js\nfunction isDeepEqual(obj1, obj2, testPrototypes = false) {\n  if (obj1 === obj2) {\n    return true\n  }\n\n  if (typeof obj1 === \"function\" && typeof obj2 === \"function\") {\n    return obj1.toString() === obj2.toString()\n  }\n\n  if (obj1 instanceof Date && obj2 instanceof Date) {\n    return obj1.getTime() === obj2.getTime()\n  }\n\n  const prototypesAreEqual = testPrototypes\n    ? isDeepEqual(\n      Object.getPrototypeOf(obj1),\n      Object.getPrototypeOf(obj2),\n      true\n    )\n    : true\n\n  const obj1Props = Object.getOwnPropertyNames(obj1)\n  const obj2Props = Object.getOwnPropertyNames(obj2)\n\n  return (\n    obj1Props.length === obj2Props.length &&\n    prototypesAreEqual &&\n    obj1Props.every(prop => isDeepEqual(obj1[prop], obj2[prop]))\n  )\n}\n```"
     ]
   },
   {
@@ -508,7 +508,7 @@
   {
     "name": "node-error-first-callback.md",
     "question": "NodeJS uses a callback pattern in many instances where if an error were returned it will pass it as the first argument to the callback. What are the advantages of this pattern?\n\n```js\nfs.readFile(filePath, function(err, data) {  \n  if (err) {\n    // handle the error, the return is important here\n    // so execution stops here\n    return console.log(err)\n  }\n  // use the data object\n  console.log(data)\n})\n```",
-    "answer": "Advantages include:\n\n* Not needing to process data if there is no need to even reference it\n* Having a consistent API leads to more adoption\n* Ability to easily adapt a callback pattern that will lead to more maintainable code\n\nAs you can see from below example, the callback is called with null as its first argument if there is no error. However, if there is an error, you create an Error object, which then becomes the callback's only parameter. The callback function allows a user to easily know whether or not an error occurred. \n\nThis practice is also called the _Node.js error convention_, and this kind of callback implementations are called _error-first callbacks_.\n\n```js\nvar isTrue = function(value, callback) {\n  if (value === true) {\n    callback(null, \"Value was true.\");\n  } else {\n    callback(new Error(\"Value is not true!\"));\n  }\n}\n\nvar callback = function (error, retval) {\n  if (error) {\n    console.log(error);\n    return;\n  }\n  console.log(retval);\n}\n\nisTrue(false, callback);\nisTrue(true,  callback);\n\n{ stack: [Getter/Setter],\n  arguments: undefined,\n  type: undefined,\n  message: 'Value is not true!' }\nValue was true.\n```",
+    "answer": "Advantages include:\n\n* Not needing to process data if there is no need to even reference it\n* Having a consistent API leads to more adoption\n* Ability to easily adapt a callback pattern that will lead to more maintainable code\n\nAs you can see from below example, the callback is called with null as its first argument if there is no error. However, if there is an error, you create an Error object, which then becomes the callback's only parameter. The callback function allows a user to easily know whether or not an error occurred. \n\nThis practice is also called the _Node.js error convention_, and this kind of callback implementations are called _error-first callbacks_.\n\n```js\nvar isTrue = function(value, callback) {\n  if (value === true) {\n    callback(null, \"Value was true.\")\n  } else {\n    callback(new Error(\"Value is not true!\"))\n  }\n}\n\nvar callback = function (error, retval) {\n  if (error) {\n    console.log(error)\n    return\n  }\n  console.log(retval)\n}\n\nisTrue(false, callback)\nisTrue(true,  callback)\n\n/*\n  { stack: [Getter/Setter],\n    arguments: undefined,\n    type: undefined,\n    message: 'Value is not true!' }\n  Value was true.\n*/\n```",
     "goodToHear": [
       "This is just a convention. However, you should stick to it."
     ],
@@ -525,7 +525,7 @@
       "```js\nfs.readFile(filePath, function(err, data) {  \n  if (err) {\n    // handle the error, the return is important here\n    // so execution stops here\n    return console.log(err)\n  }\n  // use the data object\n  console.log(data)\n})\n```"
     ],
     "answerCodeBlocks": [
-      "```js\nvar isTrue = function(value, callback) {\n  if (value === true) {\n    callback(null, \"Value was true.\");\n  } else {\n    callback(new Error(\"Value is not true!\"));\n  }\n}\n\nvar callback = function (error, retval) {\n  if (error) {\n    console.log(error);\n    return;\n  }\n  console.log(retval);\n}\n\nisTrue(false, callback);\nisTrue(true,  callback);\n\n{ stack: [Getter/Setter],\n  arguments: undefined,\n  type: undefined,\n  message: 'Value is not true!' }\nValue was true.\n```"
+      "```js\nvar isTrue = function(value, callback) {\n  if (value === true) {\n    callback(null, \"Value was true.\")\n  } else {\n    callback(new Error(\"Value is not true!\"))\n  }\n}\n\nvar callback = function (error, retval) {\n  if (error) {\n    console.log(error)\n    return\n  }\n  console.log(retval)\n}\n\nisTrue(false, callback)\nisTrue(true,  callback)\n\n/*\n  { stack: [Getter/Setter],\n    arguments: undefined,\n    type: undefined,\n    message: 'Value is not true!' }\n  Value was true.\n*/\n```"
     ]
   },
   {
@@ -664,7 +664,7 @@
   {
     "name": "promises.md",
     "question": "What are Promises?",
-    "answer": "The `Promise` object represents the eventual completion (or failure) of an asynchronous operation, and its resulting value.\nAn example can be the following snippet, which after 100ms prints out the result string to the standard output. Also, note the catch, which can be used for error handling. `Promise`s are chainable.\n\n```js\nnew Promise((resolve, reject) => {\n  setTimeout(() => {\n    resolve('result')\n  }, 100)\n})\n  .then(console.log)\n  .catch(console.error)\n```",
+    "answer": "The `Promise` object represents the eventual completion (or failure) of an asynchronous operation, and its resulting value.\nAn example can be the following snippet, which after 100ms prints out the result string to the standard output. Also, note the catch, which can be used for error handling. `Promise`s are chainable.\n\n```js\nnew Promise((resolve, reject) => {\n  setTimeout(() => {\n    resolve(\"result\")\n  }, 100)\n})\n  .then(console.log)\n  .catch(console.error)\n```",
     "goodToHear": [
       "Take a look into the other questions regarding `Promise`s!"
     ],
@@ -677,7 +677,7 @@
     "expertise": 0,
     "questionCodeBlocks": [],
     "answerCodeBlocks": [
-      "```js\nnew Promise((resolve, reject) => {\n  setTimeout(() => {\n    resolve('result')\n  }, 100)\n})\n  .then(console.log)\n  .catch(console.error)\n```"
+      "```js\nnew Promise((resolve, reject) => {\n  setTimeout(() => {\n    resolve(\"result\")\n  }, 100)\n})\n  .then(console.log)\n  .catch(console.error)\n```"
     ]
   },
   {
@@ -701,7 +701,7 @@
   },
   {
     "name": "reference-example.md",
-    "question": "What is the output of the following code?\n\n```js\nconst a = [1, 2, 3]\nconst b = [1, 2, 3]\nconst c = \"1,2,3\"\n\nconsole.log(a == c)\nconsole.log(a == b)\n```",
+    "question": "What is the output of the following code?\n\n```js\nconst a = [1, 2, 3]\nconst b = [1, 2, 3]\nconst c = \"1,2,3\"\n\n/* eslint eqeqeq: 0 */\nconsole.log(a == c)\nconsole.log(a == b)\n```",
     "answer": "The first `console.log` outputs `true` because JavaScript's compiler performs type conversion and therefore it compares to strings by their value. On the other hand, the second `console.log` outputs `false` because Arrays are Objects and Objects are compared by reference.",
     "goodToHear": [
       "JavaScript performs automatic type conversion",
@@ -716,7 +716,7 @@
     ],
     "expertise": 1,
     "questionCodeBlocks": [
-      "```js\nconst a = [1, 2, 3]\nconst b = [1, 2, 3]\nconst c = \"1,2,3\"\n\nconsole.log(a == c)\nconsole.log(a == b)\n```"
+      "```js\nconst a = [1, 2, 3]\nconst b = [1, 2, 3]\nconst c = \"1,2,3\"\n\n/* eslint eqeqeq: 0 */\nconsole.log(a == c)\nconsole.log(a == b)\n```"
     ],
     "answerCodeBlocks": []
   },
@@ -934,7 +934,7 @@
   {
     "name": "wrap-content.md",
     "question": "What is the reason for wrapping the entire contents of a JavaScript source file in a function?",
-    "answer": "This technique is very common in JavaScript libraries. It creates a closure around the entire contents of the file which creates a private namespace and thereby helps avoid potential name clashes between different JavaScript modules and libraries. The function is usually immediately invoked so that the namespace (library name) is assigned the return value of the function.\n\n```js\nconst myLibrary = function () {\n  var privateVariable = 2;\n  return {\n    publicMethod: () => privateVariable;\n  };\n}();\nprivateVariable; // ReferenceError\nmyLibrary.publicMethod(); // 2\n```",
+    "answer": "This technique is very common in JavaScript libraries. It creates a closure around the entire contents of the file which creates a private namespace and thereby helps avoid potential name clashes between different JavaScript modules and libraries. The function is usually immediately invoked so that the namespace (library name) is assigned the return value of the function.\n\n```js\nconst myLibrary = function () {\n  var privateVariable = 2\n  return {\n    publicMethod: () => privateVariable\n  }\n}()\nprivateVariable // ReferenceError\nmyLibrary.publicMethod() // 2\n```",
     "goodToHear": [
       "Used among many popular JavaScript libraries",
       "Creates a private namespace"
@@ -948,7 +948,7 @@
     "expertise": 1,
     "questionCodeBlocks": [],
     "answerCodeBlocks": [
-      "```js\nconst myLibrary = function () {\n  var privateVariable = 2;\n  return {\n    publicMethod: () => privateVariable;\n  };\n}();\nprivateVariable; // ReferenceError\nmyLibrary.publicMethod(); // 2\n```"
+      "```js\nconst myLibrary = function () {\n  var privateVariable = 2\n  return {\n    publicMethod: () => privateVariable\n  }\n}()\nprivateVariable // ReferenceError\nmyLibrary.publicMethod() // 2\n```"
     ]
   },
   {
