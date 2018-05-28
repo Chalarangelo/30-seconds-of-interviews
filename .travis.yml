@@ -8,8 +8,8 @@ node_js:
 install:
   - yarn install
 script:
-  - yarn builder
   - yarn extractor
+  - yarn builder
   - rm -rf docs
   - yarn build
   - touch docs/.nojekyll
