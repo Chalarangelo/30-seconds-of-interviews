@@ -4,18 +4,18 @@ cache:
   directories:
     - node_modules
 node_js:
-- node
+  - node
 install:
-- yarn install
+  - yarn install
 script:
-- yarn builder
-- yarn extractor
-- rm -rf docs
-- yarn build
-- touch docs/.nojekyll
-- chmod +x .travis/write_cname.sh
-- cd docs/ && ./../.travis/write_cname.sh
-- cd ../
+  - yarn builder
+  - yarn extractor
+  - rm -rf docs
+  - yarn build
+  - touch docs/.nojekyll
+  - chmod +x .travis/write_cname.sh
+  - cd docs/ && ./../.travis/write_cname.sh
+  - cd ../
 after_success:
-- chmod +x .travis/push.sh
-- .travis/push.sh
+  - chmod +x .travis/push.sh
+  - .travis/push.sh
