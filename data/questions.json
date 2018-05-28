@@ -399,6 +399,42 @@
     ]
   },
   {
+    "name": "html-multiple-header-footers.md",
+    "question": "Can a web page contain multiple `<header>` elements? What about `<footer>` elements?",
+    "answer": "Yes to both. The W3 documents state that the tags represent the header(`<header>`) and footer(`<footer>`) areas of their nearest ancestor \"section\". So not only can the page `<body>` contain a header and a footer, but so can every `<article>` and `<section>` element.",
+    "goodToHear": [
+      "W3 recommends having as many as you want, but only 1 of each for each \"section\" of your page, i.e. body, section etc."
+    ],
+    "links": [
+      "[StackOverflow - Using header or footer tag twice](https://stackoverflow.com/questions/4837269/html5-using-header-or-footer-tag-twice?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa)"
+    ],
+    "tags": [
+      "html"
+    ],
+    "expertise": 0,
+    "questionCodeBlocks": [],
+    "answerCodeBlocks": []
+  },
+  {
+    "name": "html-specification-implementation.md",
+    "question": "Discuss the differences between an HTML specification and a browser’s implementation thereof.",
+    "answer": "HTML specifications such as `HTML5` define a set of rules that a document must adhere to in order to be “valid” according to that specification. In addition, a specification provides instructions on how a browser must interpret and render such a document.\n\nA browser is said to “support” a specification if it handles valid documents according to the rules of the specification. As of yet, no browser supports all aspects of the `HTML5` specification (although all of the major browser support most of it), and as a result, it is necessary for the developer to confirm whether the aspect they are making use of will be supported by all of the browsers on which they hope to display their content. This is why cross-browser support continues to be a headache for developers, despite the improved specificiations.",
+    "goodToHear": [
+      "`HTML5` defines some rules to follow for an invalid `HTML5` document (i.e., one that contains syntactical errors)",
+      "However, invalid documents may contain anything, so it's impossible for the specification to handle all possibilities comprehensively. ",
+      "Thus, many decisions about how to handle malformed documents are left up to the browser."
+    ],
+    "links": [
+      "[HTML 5.2 WWW Specifications](https://www.w3.org/TR/html52/)"
+    ],
+    "tags": [
+      "html"
+    ],
+    "expertise": 1,
+    "questionCodeBlocks": [],
+    "answerCodeBlocks": []
+  },
+  {
     "name": "html-vs-xhtml.md",
     "question": "What are some differences that XHTML has compared to HTML?",
     "answer": "Some of the key differences are:\n\n* An XHTML element must have an XHTML `<DOCTYPE>`\n* Attributes values must be enclosed in quotes\n* Attribute minimization is forbidden (e.g. one has to use `checked=\"checked\"` instead of `checked`)\n* Elements must always be properly nested\n* Elements must always be closed\n* Special characters must be escaped",
@@ -413,6 +449,42 @@
       "html"
     ],
     "expertise": 1,
+    "questionCodeBlocks": [],
+    "answerCodeBlocks": []
+  },
+  {
+    "name": "html5-semantic-elements-usage.md",
+    "question": "Briefly describe the correct usage of the following HTML5 semantic elements: `<header>`, `<article>`,` <section>`, `<footer>`",
+    "answer": "* <header> is used to contain introductory and navigational information about a section of the page. This can include the section heading, the author’s name, time and date of publication, table of contents, or other navigational information.\n\n* <article> is meant to house a self-contained composition that can logically be independently recreated outside of the page without losing it’s meaining. Individual blog posts or news stories are good examples.\n\n* <section> is a flexible container for holding content that shares a common informational theme or purpose.\n\n* <footer> is used to hold information that should appear at the end of a section of content and contain additional information about the section. Author’s name, copyright information, and related links are typical examples of such content.",
+    "goodToHear": [
+      "Other semantic elements are `<form>` and `<table>`"
+    ],
+    "links": [
+      "[HTML 5 Semantic Elements](https://www.w3schools.com/html/html5_semantic_elements.asp)"
+    ],
+    "tags": [
+      "html"
+    ],
+    "expertise": 0,
+    "questionCodeBlocks": [],
+    "answerCodeBlocks": []
+  },
+  {
+    "name": "html5-web-storage.md",
+    "question": "What is HTML5 Web Storage? Explain `localStorage` and `sessionStorage`.",
+    "answer": "With HTML5, web pages can store data locally within the user’s browser.\nThe data is stored in name/value pairs, and a web page can only access data stored by itself.\n\n**Differences between `localStorage` and `sessionStorage` regarding lifetime:**\n\n* Data stored through `localStorage` is permanent: it does not expire and remains stored on the user’s computer until a web app deletes it or the user asks the browser to delete it.\n* `sessionStorage` has the same lifetime as the top-level window or browser tab in which the data got stored. When the tab is permanently closed, any data stored through `sessionStorage` is deleted.\n\n**Differences between `localStorage` and `sessionStorage` regarding storage scope:**\nBoth forms of storage are scoped to the document origin so that documents with different origins will never share the stored objects.\n\n* `sessionStorage` is also scoped on a per-window basis. Two browser tabs with documents from the same origin have separate `sessionStorage` data.\n* Unlike in `localStorage`, the same scripts from the same origin can't access each other's `sessionStorage` when opened in different tabs.",
+    "goodToHear": [
+      "Earlier, this was done with cookies. ",
+      "The storage limit is far larger (at least 5MB) than with cookies and its faster.",
+      "The data is never transferred to the server and can only be used if the client specifically asks for it."
+    ],
+    "links": [
+      "[W3Schools - HTML5 Webstorage](https://www.w3schools.com/html/html5_webstorage.asp)"
+    ],
+    "tags": [
+      "html"
+    ],
+    "expertise": 2,
     "questionCodeBlocks": [],
     "answerCodeBlocks": []
   },
