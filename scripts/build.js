@@ -21,9 +21,10 @@ const detailsTOC = (title, questionsArray) => {
 	let list = questionsArray
 		.map(
 			question =>
-				`* [${question.question
-					.split("\`\`\`")[0]
-					.replace("\n", "")}](#${util.toKebabCase(question.question)})`
+        `* [${question.question
+          .replace("\n", "")
+					.split("\`\`\`")[0].trim()
+					}](#${util.toKebabCase(question.question)})`
 		)
 		.join("\n")
 	return `\n\n<details>\n<summary>${title}</summary>${list}\n</details>\n\n`
