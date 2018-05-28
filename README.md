@@ -73,7 +73,11 @@ Join our [Gitter channel](https://gitter.im/30-seconds-of-interviews/Lobby) to h
 * [What are Promises?](#what-are-promises)
 * [How does prototypal inheritance differ from classical inheritance?](#how-does-prototypal-inheritance-differ-from-classical-inheritance)
 * [What is the output of the following code?
+<<<<<<< HEAD
 ](#what-is-the-output-of-the-following-code-js-const-a-1-2-3-const-b-1-2-3-const-c-1-2-3-eslint-eqeqeq-0-console-log-a-c-console-log-a-b)
+=======
+](#what-is-the-output-of-the-following-code-js-const-a-1-2-3-const-b-1-2-3-const-c-1-2-3-console-log-a-c-console-log-a-b)
+>>>>>>> b12bd06b6c02e115fe59d761f78526bc0ae024eb
 * [What does the following function return?
 ](#what-does-the-following-function-return-js-function-greet-return-message-hello)
 * [Explain the difference between a static method and an instance method.](#explain-the-difference-between-a-static-method-and-an-instance-method)
@@ -196,7 +200,11 @@ An example can be the following snippet, which after 100ms prints out the result
 ```js
 new Promise((resolve, reject) => {
   setTimeout(() => {
+<<<<<<< HEAD
     resolve("result")
+=======
+    resolve('result')
+>>>>>>> b12bd06b6c02e115fe59d761f78526bc0ae024eb
   }, 100)
 })
   .then(console.log)
@@ -348,6 +356,7 @@ This technique is very common in JavaScript libraries. It creates a closure arou
 
 ```js
 const myLibrary = function () {
+<<<<<<< HEAD
   var privateVariable = 2
   return {
     publicMethod: () => privateVariable
@@ -355,6 +364,15 @@ const myLibrary = function () {
 }()
 privateVariable // ReferenceError
 myLibrary.publicMethod() // 2
+=======
+  var privateVariable = 2;
+  return {
+    publicMethod: () => privateVariable;
+  };
+}();
+privateVariable; // ReferenceError
+myLibrary.publicMethod(); // 2
+>>>>>>> b12bd06b6c02e115fe59d761f78526bc0ae024eb
 ```
 
 
@@ -382,6 +400,7 @@ myLibrary.publicMethod() // 2
 <summary>View answer</summary>
 The latest ECMAScript standard defines seven data types, six of them being primitive: `Boolean`, `Null`, `Undefined`, `Number`, `String`, `Symbol` and one non-primitive data type: `Object`.
 
+<<<<<<< HEAD
 
 #### Good to hear
 
@@ -405,6 +424,31 @@ The latest ECMAScript standard defines seven data types, six of them being primi
 
 ### Generate an array, containing the Fibonacci sequence, up until the nth term.
 
+=======
+
+#### Good to hear
+
+
+* Mention of newly added `Symbol` data type
+* `Array`, `Date` and `function` are all of type `object`
+* Functions in JavaScript are objects with the capability of being callable
+
+
+##### Additional links
+
+
+* [MDN docs for data types and data structures](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures)
+* [Understanding Data Types in JavaScript](https://www.digitalocean.com/community/tutorials/understanding-data-types-in-javascript)
+</details>
+
+
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
+### Generate an array, containing the Fibonacci sequence, up until the nth term.
+
+>>>>>>> b12bd06b6c02e115fe59d761f78526bc0ae024eb
 <details>
 <summary>View answer</summary>
 Initialize an empty array of length `n`. Use `Array.prototype.reduce()` to add values into the array, using the sum of the last two values, except for the first two.
@@ -722,14 +766,21 @@ This practice is also called the _Node.js error convention_, and this kind of ca
 ```js
 var isTrue = function(value, callback) {
   if (value === true) {
+<<<<<<< HEAD
     callback(null, "Value was true.")
   } else {
     callback(new Error("Value is not true!"))
+=======
+    callback(null, "Value was true.");
+  } else {
+    callback(new Error("Value is not true!"));
+>>>>>>> b12bd06b6c02e115fe59d761f78526bc0ae024eb
   }
 }
 
 var callback = function (error, retval) {
   if (error) {
+<<<<<<< HEAD
     console.log(error)
     return
   }
@@ -746,6 +797,22 @@ isTrue(true,  callback)
     message: 'Value is not true!' }
   Value was true.
 */
+=======
+    console.log(error);
+    return;
+  }
+  console.log(retval);
+}
+
+isTrue(false, callback);
+isTrue(true,  callback);
+
+{ stack: [Getter/Setter],
+  arguments: undefined,
+  type: undefined,
+  message: 'Value is not true!' }
+Value was true.
+>>>>>>> b12bd06b6c02e115fe59d761f78526bc0ae024eb
 ```
 
 
@@ -774,7 +841,10 @@ const a = [1, 2, 3]
 const b = [1, 2, 3]
 const c = "1,2,3"
 
+<<<<<<< HEAD
 /* eslint eqeqeq: 0 */
+=======
+>>>>>>> b12bd06b6c02e115fe59d761f78526bc0ae024eb
 console.log(a == c)
 console.log(a == b)
 ```
@@ -827,6 +897,7 @@ document.addEventListener("click", onClick)
 
 
 ##### Additional links
+<<<<<<< HEAD
 
 
 * [MDN docs for callbacks](https://developer.mozilla.org/en-US/docs/Glossary/Callback_function)
@@ -839,6 +910,20 @@ document.addEventListener("click", onClick)
 
 ### Describe the different ways to create an object. When should certain ways be preferred over others?
 
+=======
+
+
+* [MDN docs for callbacks](https://developer.mozilla.org/en-US/docs/Glossary/Callback_function)
+</details>
+
+
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
+### Describe the different ways to create an object. When should certain ways be preferred over others?
+
+>>>>>>> b12bd06b6c02e115fe59d761f78526bc0ae024eb
 <details>
 <summary>View answer</summary>
 ##### Object literal
@@ -1065,6 +1150,12 @@ Other alternatives include:
 ##### No keyword prefix
 
 When no keyword is prefixed before a variable declaration, it is either assigning a global variable if one does not exist, or reassigns an already declared variable. In non-strict mode, it will assign the variable as a property of the global object `this` (`window` in browsers). In strict mode, it will throw an error to prevent unwanted global variables from being created.
+<<<<<<< HEAD
+
+##### var
+
+`var` was the default statement to declare a variable until ES2015. It creates a function-scoped variable that can be reassigned and redeclared. However, due to its lack of block scoping, it can cause issues if the variable is being reused in a loop that contains an asynchronous callback because the variable will continue to exist outside of the block scope.
+=======
 
 ##### var
 
@@ -1125,6 +1216,64 @@ myObject = "hello" // Error
 * Show a common issue with using `var` and how `let` can solve it, as well as a solution that keeps `var`.
 * `var` should be avoided whenever possible and prefer `const` as the default declaration statement for all variables unless they will be reassigned later, then use `let` if so.
 
+>>>>>>> b12bd06b6c02e115fe59d761f78526bc0ae024eb
+
+Below, by the time the the `setTimeout` callback executes, the loop has already finished and the `i` variable is `10`, so all ten callbacks reference the same variable available in the function scope.
+
+<<<<<<< HEAD
+```js
+for (var i = 0; i < 10; i++) {
+  setTimeout(() => {
+    console.log(i) // logs `10` ten times
+  })
+}
+
+/* ==================== Solutions with `var` ==================== */
+for (var i = 0; i < 10; i++) {
+  // Passed as an argument will use the value as-is in that point in time
+  setTimeout(console.log, 0, i)
+}
+
+for (var i = 0; i < 10; i++) {
+  // Create a new function scope that will use the value as-is in that point in time
+  ;(i => {
+    setTimeout(() => {
+      console.log(i)
+    })
+  })(i)
+}
+```
+
+##### let
+
+`let` was introduced in ES2015 and is the new preferred way to declare variables that will be reassigned later. Trying to redeclare a variable again will throw an error. It is block-scoped so that using it in a loop will keep it scoped to the iteration.
+
+```js
+for (let i = 0; i < 10; i++) {
+  setTimeout(() => {
+    console.log(i) // logs 0, 1, 2, 3, ...
+  })
+}
+```
+
+##### const
+
+`const` was introduced in ES2015 and is the new preferred default way to declare all variables if they won't be reassigned later, even for objects that will be mutated (as long as the reference to the object does not change). It is block-scoped and cannot be reassigned.
+
+```js
+const myObject = {}
+myObject.prop = "hello!" // No error
+myObject = "hello" // Error
+```
+
+
+#### Good to hear
+
+
+* All declarations are hoisted to the top of their scope
+* Show a common issue with using `var` and how `let` can solve it, as well as a solution that keeps `var`.
+* `var` should be avoided whenever possible and prefer `const` as the default declaration statement for all variables unless they will be reassigned later, then use `let` if so.
+
 
 ##### Additional links
 
@@ -1132,6 +1281,12 @@ myObject = "hello" // Error
 * [`let` vs `const`](https://wesbos.com/let-vs-const/)
 </details>
 
+=======
+
+* [`let` vs `const`](https://wesbos.com/let-vs-const/)
+</details>
+
+>>>>>>> b12bd06b6c02e115fe59d761f78526bc0ae024eb
 
 
 <br>[⬆ Back to top](#table-of-contents)
@@ -1528,6 +1683,7 @@ A closure is a function defined inside another function and has access to its le
 
 ```js
 getData(function(a){  
+<<<<<<< HEAD
   getMoreData(a, function(b){
     getMoreData(b, function(c){ 
       getMoreData(c, function(d){ 
@@ -1538,6 +1694,18 @@ getData(function(a){
     })
   })
 })
+=======
+    getMoreData(a, function(b){
+        getMoreData(b, function(c){ 
+            getMoreData(c, function(d){ 
+                getMoreData(d, function(e){ 
+                    ...
+                });
+            });
+        });
+    });
+});
+>>>>>>> b12bd06b6c02e115fe59d761f78526bc0ae024eb
 ```
 
 <details>
@@ -1626,6 +1794,7 @@ These must be chained to the Element and never alone however, or there will be s
 
 * [Writing clean and maintainable CSS](https://hackernoon.com/writing-clean-and-maintainable-css-using-bem-methodology-1dcbf810a664)
 </details>
+<<<<<<< HEAD
 
 
 
@@ -1656,6 +1825,141 @@ CSS preprocessors add useful functionality that native CSS does not have, and ge
 
 <br>[⬆ Back to top](#table-of-contents)
 
+
+### Using flexbox, create a 3-column layout where each column takes up a `col-{n} / 12` ratio of the container.
+
+```html
+<div class="row">
+  <div class="col-2"></div>
+  <div class="col-7"></div>
+  <div class="col-3"></div>
+</div>
+```
+
+<details>
+<summary>View answer</summary>
+Set the `.row` parent to `display: flex;` and use the `flex` shorthand property to give the column classes a `flex-grow` value that corresponds to its ratio value.
+
+```css
+.row {
+  display: flex;
+}
+
+.col-2 {
+  flex: 2;
+}
+
+.col-7 {
+  flex: 7;
+}
+
+.col-3 {
+  flex: 3;
+}
+```
+
+
+#### Good to hear
+
+
+
+
+
+##### Additional links
+
+
+* [MDN docs for basic concepts of flexbox](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Basic_Concepts_of_Flexbox)
+* [A complete guide to Flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
+</details>
+
+
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
+### Can you name the four types of `@media` properties?
+
+<details>
+<summary>View answer</summary>
+* `all`, which applies to all media type devices
+* `print`, which only applies to printers
+* `screen`, which only applies to screens (desktops, tablets, mobile etc.)
+* `speech`, which only applies to screenreaders
+
+
+#### Good to hear
+
+
+
+
+
+##### Additional links
+
+
+* [MDN docs for `@media` rule](https://developer.mozilla.org/en-US/docs/Web/CSS/@media)
+* [MDN docs for using media queries](https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries)
+</details>
+=======
+>>>>>>> b12bd06b6c02e115fe59d761f78526bc0ae024eb
+
+
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
+<<<<<<< HEAD
+### How does Z index function?
+
+<details>
+<summary>View answer</summary>
+When elements overlap, z-order determines which one covers the other.
+
+=======
+### What are the advantages of using CSS preprocessors?
+
+<details>
+<summary>View answer</summary>
+CSS preprocessors add useful functionality that native CSS does not have, and generally make CSS neater and more maintainable by enabling DRY (Don't Repeat Yourself) principles. Their terse syntax for nested selectors cuts down on repeated code. They provide variables for consistent theming (however, CSS variables have largely replaced this functionality) and additional tools like color functions (`lighten`, `darken`, `transparentize`, etc), variables, mixins, and loops that make CSS more like a real programming language and gives the developer more power to generate complex CSS.
+>>>>>>> b12bd06b6c02e115fe59d761f78526bc0ae024eb
+
+
+#### Good to hear
+
+
+<<<<<<< HEAD
+* `z-index` only applies to positioned elements (except `static`)
+* How to organize z-indexes on large scale projects
+
+=======
+* They allow us to write more maintainable and scalable CSS
+* Some disadvantages of using CSS preprocessors (setup, re-compilation time can be slow etc.)
+>>>>>>> b12bd06b6c02e115fe59d761f78526bc0ae024eb
+
+
+##### Additional links
+
+<<<<<<< HEAD
+
+* [MDN docs for z-index](https://developer.mozilla.org/en-US/docs/Web/CSS/z-index)
+* [Understanding CSS z-index](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Positioning/Understanding_z_index)
+* [What No One Told You About Z-Index](https://philipwalton.com/articles/what-no-one-told-you-about-z-index/)
+</details>
+
+=======
+
+* [CSS Preprocessors](https://medium.com/@garyfagan/css-preprocessors-6f226fa16f27)
+</details>
+
+>>>>>>> b12bd06b6c02e115fe59d761f78526bc0ae024eb
+
+
+<br>[⬆ Back to top](#table-of-contents)
+
+<<<<<<< HEAD
+
+### Can you describe how CSS specificity works?
+
+=======
 
 ### Using flexbox, create a 3-column layout where each column takes up a `col-{n} / 12` ratio of the container.
 
@@ -1765,6 +2069,7 @@ When elements overlap, z-order determines which one covers the other.
 
 ### Can you describe how CSS specificity works?
 
+>>>>>>> b12bd06b6c02e115fe59d761f78526bc0ae024eb
 <details>
 <summary>View answer</summary>
 Assuming the browser has already determined the set of rules for an element, each rule is assigned a matrix of values, which correspond to the following from highest to lowest specificity:
@@ -2080,6 +2385,7 @@ isTrue(true,  callback)
 
 ```js
 getData(function(a){  
+<<<<<<< HEAD
   getMoreData(a, function(b){
     getMoreData(b, function(c){ 
       getMoreData(c, function(d){ 
@@ -2090,6 +2396,18 @@ getData(function(a){
     })
   })
 })
+=======
+    getMoreData(a, function(b){
+        getMoreData(b, function(c){ 
+            getMoreData(c, function(d){ 
+                getMoreData(d, function(e){ 
+                    ...
+                });
+            });
+        });
+    });
+});
+>>>>>>> b12bd06b6c02e115fe59d761f78526bc0ae024eb
 ```
 
 <details>

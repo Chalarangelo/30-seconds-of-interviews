@@ -9,8 +9,8 @@ install:
   - yarn install
 script:
   - yarn lint --fix
-  - yarn builder
   - yarn extractor
+  - yarn builder
   - rm -rf docs
   - yarn build
   - touch docs/.nojekyll
