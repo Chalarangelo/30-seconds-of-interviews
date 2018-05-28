@@ -83,6 +83,23 @@ Join our [Gitter channel](https://gitter.im/30-seconds-of-interviews/Lobby) to h
 </details>
 
 
+### HTML
+
+<details>
+<summary>View contents</summary>
+
+* [What are `defer` and `async` attributes on a `<script>` tag?](#what-are-defer-and-async-attributes-on-a-script-tag)
+* [What is the DOM?](#what-is-the-dom)
+* [Can a web page contain multiple `<header>` elements? What about `<footer>` elements?](#can-a-web-page-contain-multiple-header-elements-what-about-footer-elements)
+* [Discuss the differences between an HTML specification and a browser’s implementation thereof.](#discuss-the-differences-between-an-html-specification-and-a-browser-s-implementation-thereof)
+* [What are some differences that XHTML has compared to HTML?](#what-are-some-differences-that-xhtml-has-compared-to-html)
+* [Briefly describe the correct usage of the following HTML5 semantic elements: `<header>`, `<article>`,` <section>`, `<footer>`](#briefly-describe-the-correct-usage-of-the-following-h-t-m-l-5-semantic-elements-header-article-section-footer)
+* [What is HTML5 Web Storage? Explain `localStorage` and `sessionStorage`.](#what-is-h-t-m-l-5-web-storage-explain-local-storage-and-session-storage)
+* [What is the purpose of `alt` attribute on images?](#what-is-the-purpose-of-alt-attribute-on-images)
+* [Where and why is the `rel="noopener"` attribute used?](#where-and-why-is-the-rel-noopener-attribute-used)
+</details>
+
+
 ### CSS
 
 <details>
@@ -96,19 +113,6 @@ Join our [Gitter channel](https://gitter.im/30-seconds-of-interviews/Lobby) to h
 * [Can you name the four types of `@media` properties?](#can-you-name-the-four-types-of-media-properties)
 * [What are the advantages of using CSS sprites and how would one utilize them?](#what-are-the-advantages-of-using-css-sprites-and-how-would-one-utilize-them)
 * [How does Z index function?](#how-does-z-index-function)
-</details>
-
-
-### HTML
-
-<details>
-<summary>View contents</summary>
-
-* [What are `defer` and `async` attributes on a `<script>` tag?](#what-are-defer-and-async-attributes-on-a-script-tag)
-* [What is the DOM?](#what-is-the-dom)
-* [What are some differences that XHTML has compared to HTML?](#what-are-some-differences-that-xhtml-has-compared-to-html)
-* [What is the purpose of `alt` attribute on images?](#what-is-the-purpose-of-alt-attribute-on-images)
-* [Where and why is the `rel="noopener"` attribute used?](#where-and-why-is-the-rel-noopener-attribute-used)
 </details>
 
 
@@ -1603,6 +1607,284 @@ There are lots of ways to solve the issue of callback hells:
 <br>[⬆ Back to top](#table-of-contents)
 
 
+## HTML
+### Can a web page contain multiple `<header>` elements? What about `<footer>` elements?
+
+<details>
+<summary>View answer</summary>
+
+Yes to both. The W3 documents state that the tags represent the header(`<header>`) and footer(`<footer>`) areas of their nearest ancestor "section". So not only can the page `<body>` contain a header and a footer, but so can every `<article>` and `<section>` element.
+
+
+#### Good to hear
+
+
+* W3 recommends having as many as you want, but only 1 of each for each "section" of your page, i.e. body, section etc.
+
+
+##### Additional links
+
+
+* [StackOverflow - Using header or footer tag twice](https://stackoverflow.com/questions/4837269/html5-using-header-or-footer-tag-twice?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa)
+</details>
+
+
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
+### Briefly describe the correct usage of the following HTML5 semantic elements: `<header>`, `<article>`,` <section>`, `<footer>`
+
+<details>
+<summary>View answer</summary>
+
+* <header> is used to contain introductory and navigational information about a section of the page. This can include the section heading, the author’s name, time and date of publication, table of contents, or other navigational information.
+
+* <article> is meant to house a self-contained composition that can logically be independently recreated outside of the page without losing it’s meaining. Individual blog posts or news stories are good examples.
+
+* <section> is a flexible container for holding content that shares a common informational theme or purpose.
+
+* <footer> is used to hold information that should appear at the end of a section of content and contain additional information about the section. Author’s name, copyright information, and related links are typical examples of such content.
+
+
+#### Good to hear
+
+
+* Other semantic elements are `<form>` and `<table>`
+
+
+##### Additional links
+
+
+* [HTML 5 Semantic Elements](https://www.w3schools.com/html/html5_semantic_elements.asp)
+</details>
+
+
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
+### What is the purpose of `alt` attribute on images?
+
+<details>
+<summary>View answer</summary>
+
+The `alt` attribute provides alternative information for an image if a user cannot view it. If the image is for decorative purposes only, the `alt` attribute should be empty. On the other hand, if image contains information the `alt` attribute should describe image.
+
+
+#### Good to hear
+
+
+* Decorative images should have empty `alt` tag
+
+
+##### Additional links
+
+
+* [A good basis for accessibility](https://developer.mozilla.org/en-US/docs/Learn/Accessibility/HTML)
+</details>
+
+
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
+### What are `defer` and `async` attributes on a `<script>` tag?
+
+<details>
+<summary>View answer</summary>
+
+If neither attribute is present, the script is downloaded and executed synchronously, and will halt parsing of the document until it has finished executing (default behavior). Scripts are downloaded and executed in the order
+they are encountered.
+
+The `defer` attribute downloads the script while the document is still parsing but waits until the document has finished parsing before executing it, equivalent to executing inside a `DOMContentLoaded` event listener. `defer` scripts will execute in order.
+
+The `async` attribute downloads the script during parsing the document but will pause the parser to execute the script before it has fully finished parsing. `async` scripts will not necessarily execute in order.
+
+Note: both attributes must only be used if the script has a `src` attribute (i.e. not an inline script).
+
+```html
+<script src="myscript.js"></script>
+<script src="myscript.js" defer></script>
+<script src="myscript.js" async></script>
+```
+
+
+#### Good to hear
+
+
+* Placing a `defer` script in the `<head>` allows the browser to download the script while the page is still parsing, and is therefore a better option than placing the script before the end of the body.
+* If the scripts rely on each other, use `defer`.
+* If the script is independent, use `async`.
+* Use `defer` if the DOM must be ready and the contents are not placed within a `DOMContentLoaded` listener.
+
+
+##### Additional links
+
+
+* [async vs defer attributes](http://www.growingwiththeweb.com/2014/02/async-vs-defer-attributes.html)
+</details>
+
+
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
+### What is the DOM?
+
+<details>
+<summary>View answer</summary>
+
+The DOM (Document Object Model) is an API that represents the structure of HTML and XML documents. The document
+is represented by a node tree (such as elements, text nodes, comments), where each node is an object that can be manipulated via JavaScript to change their styles, contents, placement in the tree, or interacted with through event listeners.
+
+
+#### Good to hear
+
+
+* The DOM was designed to be independent of any particular programming language, making the structural representation of the document available from a single, consistent API
+* The DOM is constructed progressively in the browser as a page loads, which is why scripts are often placed at the bottom of a page, in the `<head>` with a `defer` attribute, or inside a `DOMContentLoaded` event listener. Scripts that manipulate DOM nodes should be run after the DOM has been constructed to avoid errors.
+
+
+##### Additional links
+
+
+* [MDN docs for DOM](https://developer.mozilla.org/en-US/docs/DOM)
+</details>
+
+
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
+### Discuss the differences between an HTML specification and a browser’s implementation thereof.
+
+<details>
+<summary>View answer</summary>
+
+HTML specifications such as `HTML5` define a set of rules that a document must adhere to in order to be “valid” according to that specification. In addition, a specification provides instructions on how a browser must interpret and render such a document.
+
+A browser is said to “support” a specification if it handles valid documents according to the rules of the specification. As of yet, no browser supports all aspects of the `HTML5` specification (although all of the major browser support most of it), and as a result, it is necessary for the developer to confirm whether the aspect they are making use of will be supported by all of the browsers on which they hope to display their content. This is why cross-browser support continues to be a headache for developers, despite the improved specificiations.
+
+
+#### Good to hear
+
+
+* `HTML5` defines some rules to follow for an invalid `HTML5` document (i.e., one that contains syntactical errors)
+* However, invalid documents may contain anything, so it's impossible for the specification to handle all possibilities comprehensively. 
+* Thus, many decisions about how to handle malformed documents are left up to the browser.
+
+
+##### Additional links
+
+
+* [HTML 5.2 WWW Specifications](https://www.w3.org/TR/html52/)
+</details>
+
+
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
+### What are some differences that XHTML has compared to HTML?
+
+<details>
+<summary>View answer</summary>
+
+Some of the key differences are:
+
+* An XHTML element must have an XHTML `<DOCTYPE>`
+* Attributes values must be enclosed in quotes
+* Attribute minimization is forbidden (e.g. one has to use `checked="checked"` instead of `checked`)
+* Elements must always be properly nested
+* Elements must always be closed
+* Special characters must be escaped
+
+
+#### Good to hear
+
+
+* Any element can be self-closed
+* Tags ands attributes are case-sensitive, usually lowercase
+
+
+##### Additional links
+
+
+* [W3Schools docs for HTML and XHTML](https://www.w3schools.com/html/html_xhtml.asp)
+</details>
+
+
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
+### Where and why is the `rel="noopener"` attribute used?
+
+<details>
+<summary>View answer</summary>
+
+The `rel="noopener"` is an attribute used in `<a>` elements (hyperlinks). It prevents pages from having a `window.opener` property, which would otherwise point to the page from where the link was opened and would allow the page opened from the hyperlink to manipulate the page where the hyperlink is.
+
+
+#### Good to hear
+
+
+* `rel="noopener"` is applied to hyperlinks.
+* `rel="noopener"` prevents opened links from manipulating the source page.
+
+
+##### Additional links
+
+
+* [Open external anchors using rel="noopener"](https://developers.google.com/web/tools/lighthouse/audits/noopener)
+* [About rel="noopener"](https://mathiasbynens.github.io/rel-noopener/)
+</details>
+
+
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
+### What is HTML5 Web Storage? Explain `localStorage` and `sessionStorage`.
+
+<details>
+<summary>View answer</summary>
+
+With HTML5, web pages can store data locally within the user’s browser.
+The data is stored in name/value pairs, and a web page can only access data stored by itself.
+
+**Differences between `localStorage` and `sessionStorage` regarding lifetime:**
+
+* Data stored through `localStorage` is permanent: it does not expire and remains stored on the user’s computer until a web app deletes it or the user asks the browser to delete it.
+* `sessionStorage` has the same lifetime as the top-level window or browser tab in which the data got stored. When the tab is permanently closed, any data stored through `sessionStorage` is deleted.
+
+**Differences between `localStorage` and `sessionStorage` regarding storage scope:**
+Both forms of storage are scoped to the document origin so that documents with different origins will never share the stored objects.
+
+* `sessionStorage` is also scoped on a per-window basis. Two browser tabs with documents from the same origin have separate `sessionStorage` data.
+* Unlike in `localStorage`, the same scripts from the same origin can't access each other's `sessionStorage` when opened in different tabs.
+
+
+#### Good to hear
+
+
+* Earlier, this was done with cookies. 
+* The storage limit is far larger (at least 5MB) than with cookies and its faster.
+* The data is never transferred to the server and can only be used if the client specifically asks for it.
+
+
+##### Additional links
+
+
+* [W3Schools - HTML5 Webstorage](https://www.w3schools.com/html/html5_webstorage.asp)
+</details>
+
+
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
 ## CSS
 ### What is CSS BEM?
 
@@ -1888,160 +2170,6 @@ The best solution is an upcoming pseudo-selector `:focus-visible` which can be p
 
 
 * [:focus-visible](https://css-tricks.com/focus-visible-and-backwards-compatibility/)
-</details>
-
-
-
-<br>[⬆ Back to top](#table-of-contents)
-
-
-## HTML
-### What is the purpose of `alt` attribute on images?
-
-<details>
-<summary>View answer</summary>
-
-The `alt` attribute provides alternative information for an image if a user cannot view it. If the image is for decorative purposes only, the `alt` attribute should be empty. On the other hand, if image contains information the `alt` attribute should describe image.
-
-
-#### Good to hear
-
-
-* Decorative images should have empty `alt` tag
-
-
-##### Additional links
-
-
-* [A good basis for accessibility](https://developer.mozilla.org/en-US/docs/Learn/Accessibility/HTML)
-</details>
-
-
-
-<br>[⬆ Back to top](#table-of-contents)
-
-
-### What are `defer` and `async` attributes on a `<script>` tag?
-
-<details>
-<summary>View answer</summary>
-
-If neither attribute is present, the script is downloaded and executed synchronously, and will halt parsing of the document until it has finished executing (default behavior). Scripts are downloaded and executed in the order
-they are encountered.
-
-The `defer` attribute downloads the script while the document is still parsing but waits until the document has finished parsing before executing it, equivalent to executing inside a `DOMContentLoaded` event listener. `defer` scripts will execute in order.
-
-The `async` attribute downloads the script during parsing the document but will pause the parser to execute the script before it has fully finished parsing. `async` scripts will not necessarily execute in order.
-
-Note: both attributes must only be used if the script has a `src` attribute (i.e. not an inline script).
-
-```html
-<script src="myscript.js"></script>
-<script src="myscript.js" defer></script>
-<script src="myscript.js" async></script>
-```
-
-
-#### Good to hear
-
-
-* Placing a `defer` script in the `<head>` allows the browser to download the script while the page is still parsing, and is therefore a better option than placing the script before the end of the body.
-* If the scripts rely on each other, use `defer`.
-* If the script is independent, use `async`.
-* Use `defer` if the DOM must be ready and the contents are not placed within a `DOMContentLoaded` listener.
-
-
-##### Additional links
-
-
-* [async vs defer attributes](http://www.growingwiththeweb.com/2014/02/async-vs-defer-attributes.html)
-</details>
-
-
-
-<br>[⬆ Back to top](#table-of-contents)
-
-
-### What is the DOM?
-
-<details>
-<summary>View answer</summary>
-
-The DOM (Document Object Model) is an API that represents the structure of HTML and XML documents. The document
-is represented by a node tree (such as elements, text nodes, comments), where each node is an object that can be manipulated via JavaScript to change their styles, contents, placement in the tree, or interacted with through event listeners.
-
-
-#### Good to hear
-
-
-* The DOM was designed to be independent of any particular programming language, making the structural representation of the document available from a single, consistent API
-* The DOM is constructed progressively in the browser as a page loads, which is why scripts are often placed at the bottom of a page, in the `<head>` with a `defer` attribute, or inside a `DOMContentLoaded` event listener. Scripts that manipulate DOM nodes should be run after the DOM has been constructed to avoid errors.
-
-
-##### Additional links
-
-
-* [MDN docs for DOM](https://developer.mozilla.org/en-US/docs/DOM)
-</details>
-
-
-
-<br>[⬆ Back to top](#table-of-contents)
-
-
-### What are some differences that XHTML has compared to HTML?
-
-<details>
-<summary>View answer</summary>
-
-Some of the key differences are:
-
-* An XHTML element must have an XHTML `<DOCTYPE>`
-* Attributes values must be enclosed in quotes
-* Attribute minimization is forbidden (e.g. one has to use `checked="checked"` instead of `checked`)
-* Elements must always be properly nested
-* Elements must always be closed
-* Special characters must be escaped
-
-
-#### Good to hear
-
-
-* Any element can be self-closed
-* Tags ands attributes are case-sensitive, usually lowercase
-
-
-##### Additional links
-
-
-* [W3Schools docs for HTML and XHTML](https://www.w3schools.com/html/html_xhtml.asp)
-</details>
-
-
-
-<br>[⬆ Back to top](#table-of-contents)
-
-
-### Where and why is the `rel="noopener"` attribute used?
-
-<details>
-<summary>View answer</summary>
-
-The `rel="noopener"` is an attribute used in `<a>` elements (hyperlinks). It prevents pages from having a `window.opener` property, which would otherwise point to the page from where the link was opened and would allow the page opened from the hyperlink to manipulate the page where the hyperlink is.
-
-
-#### Good to hear
-
-
-* `rel="noopener"` is applied to hyperlinks.
-* `rel="noopener"` prevents opened links from manipulating the source page.
-
-
-##### Additional links
-
-
-* [Open external anchors using rel="noopener"](https://developers.google.com/web/tools/lighthouse/audits/noopener)
-* [About rel="noopener"](https://mathiasbynens.github.io/rel-noopener/)
 </details>
 
 
