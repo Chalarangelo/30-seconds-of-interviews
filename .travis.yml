@@ -1,13 +1,12 @@
 stages:
-  - name: deploy
-    if: type IS cron
   - name: lint
     if: type IN (push, pull_request) AND (NOT branch = master)
+  - name: deploy
+    if: type IS cron
 jobs:
   include:
-    - stage: deploy
-      if: type IS cron
-      os: osx
+    - if: type IS cron
+      stage: deploy
       language: node_js
       node_js:
         - node
@@ -29,9 +28,8 @@ jobs:
       cache:  # duplicate as matrix expansion currently doesn't support conditional jobs
         directories:
           - node_modules
-    - stage: lint
-      if: type IN (push, pull_request) AND (NOT branch = master)
-      os: osx 
+    - if: type IN (push, pull_request) AND (NOT branch = master)
+      stage: lint
       language: node_js
       node_js:
         - node
