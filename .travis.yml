@@ -25,7 +25,7 @@ jobs:
         directories:
           - node_modules
     - stage: lint
-      if: type IN (push, pull_request)
+      if: type IN (push, pull_request) AND (NOT branch = master)
       os: osx 
       language: node_js
       node_js:
