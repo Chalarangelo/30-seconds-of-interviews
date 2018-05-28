@@ -9,10 +9,11 @@ export default {
 		)
 	}),
 	setFilter: value => {
-		requestAnimationFrame(() => setTimeout(Prism.highlightAll));
-		return { filter: value };
+		requestAnimationFrame(() => setTimeout(Prism.highlightAll))
+		return { filter: value }
 	},
 	setSortBy: value => state => {
-		return { sortBy: nextValInObj(SORTBY_STRINGS, state.sortBy) };
+    requestAnimationFrame(() => setTimeout(Prism.highlightAll))
+		return { sortBy: nextValInObj(SORTBY_STRINGS, state.sortBy) }
 	}
 };
