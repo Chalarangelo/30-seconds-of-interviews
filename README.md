@@ -40,8 +40,9 @@ Join our [Gitter channel](https://gitter.im/30-seconds-of-interviews/Lobby) to h
 ### JavaScript
 
 <details>
-<summary>View contents</summary>* [How can you avoid callback hells?
-](#how-can-you-avoid-callback-hells-js-get-data-function-a-get-more-data-a-function-b-get-more-data-b-function-c-get-more-data-c-function-d-get-more-data-d-function-e)
+<summary>View contents</summary>
+
+* [How can you avoid callback hells?](#how-can-you-avoid-callback-hells-js-get-data-function-a-get-more-data-a-function-b-get-more-data-b-function-c-get-more-data-c-function-d-get-more-data-d-function-e)
 * [What is a callback?](#what-is-a-callback)
 * [How do you clone an object in JavaScript?](#how-do-you-clone-an-object-in-java-script)
 * [What is a closure?](#what-is-a-closure)
@@ -53,34 +54,27 @@ Join our [Gitter channel](https://gitter.im/30-seconds-of-interviews/Lobby) to h
 * [What does `0.1 + 0.2 === 0.3` evaluate to?](#what-does-0-1-0-2-0-3-evaluate-to)
 * [What is the difference between the array methods `map()` and `forEach()`?](#what-is-the-difference-between-the-array-methods-map-and-for-each)
 * [What is functional programming?](#what-is-functional-programming)
-* [What will the console log in this example?
-](#what-will-the-console-log-in-this-example-js-var-foo-1-var-foobar-function-console-log-foo-var-foo-2-foobar)
+* [What will the console log in this example?](#what-will-the-console-log-in-this-example-js-var-foo-1-var-foobar-function-console-log-foo-var-foo-2-foobar)
 * [How does hoisting work in JavaScript?](#how-does-hoisting-work-in-java-script)
-* [Create a function that masks a string of characters with `#` except for the last four (4) characters.
-](#create-a-function-that-masks-a-string-of-characters-with-except-for-the-last-four-4-characters-js-mask-123456789-6789)
+* [Create a function that masks a string of characters with `#` except for the last four (4) characters.](#create-a-function-that-masks-a-string-of-characters-with-except-for-the-last-four-4-characters-js-mask-123456789-6789)
 * [Explain the difference between mutability and immutability, and mutating vs non-mutating methods.](#explain-the-difference-between-mutability-and-immutability-and-mutating-vs-non-mutating-methods)
 * [What is the only value not equal to itself in JavaScript?](#what-is-the-only-value-not-equal-to-itself-in-java-script)
-* [NodeJS uses a callback pattern in many instances where if an error were returned it will pass it as the first argument to the callback. What are the advantages of this pattern?
-](#node-js-uses-a-callback-pattern-in-many-instances-where-if-an-error-were-returned-it-will-pass-it-as-the-first-argument-to-the-callback-what-are-the-advantages-of-this-pattern-js-fs-read-file-file-path-function-err-data-if-err-handle-the-error-the-return-is-important-here-so-execution-stops-here-return-console-log-err-use-the-data-object-console-log-data)
+* [NodeJS uses a callback pattern in many instances where if an error were returned it will pass it as the first argument to the callback. What are the advantages of this pattern?](#node-js-uses-a-callback-pattern-in-many-instances-where-if-an-error-were-returned-it-will-pass-it-as-the-first-argument-to-the-callback-what-are-the-advantages-of-this-pattern-js-fs-read-file-file-path-function-err-data-if-err-handle-the-error-the-return-is-important-here-so-execution-stops-here-return-console-log-err-use-the-data-object-console-log-data)
 * [What is the event loop in Node.js?](#what-is-the-event-loop-in-node-js)
 * [What are the differences between `null` and `undefined`?](#what-are-the-differences-between-null-and-undefined)
 * [Describe the different ways to create an object. When should certain ways be preferred over others?](#describe-the-different-ways-to-create-an-object-when-should-certain-ways-be-preferred-over-others)
 * [What is the difference between a parameter and an argument?](#what-is-the-difference-between-a-parameter-and-an-argument)
 * [Does JavaScript pass by value or by reference?](#does-java-script-pass-by-value-or-by-reference)
-* [Create a function `pipe` that performs left-to-right function composition by returning a function that accepts one argument.
-](#create-a-function-pipe-that-performs-left-to-right-function-composition-by-returning-a-function-that-accepts-one-argument-js-const-square-v-v-v-const-double-v-v-2-const-add-one-v-v-1-const-res-pipe-square-double-add-one-res-3-19-add-one-double-square-3)
+* [Create a function `pipe` that performs left-to-right function composition by returning a function that accepts one argument.](#create-a-function-pipe-that-performs-left-to-right-function-composition-by-returning-a-function-that-accepts-one-argument-js-const-square-v-v-v-const-double-v-v-2-const-add-one-v-v-1-const-res-pipe-square-double-add-one-res-3-19-add-one-double-square-3)
 * [In which states can a Promise be?](#in-which-states-can-a-promise-be)
 * [What are Promises?](#what-are-promises)
 * [How does prototypal inheritance differ from classical inheritance?](#how-does-prototypal-inheritance-differ-from-classical-inheritance)
-* [What is the output of the following code?
-](#what-is-the-output-of-the-following-code-js-const-a-1-2-3-const-b-1-2-3-const-c-1-2-3-console-log-a-c-console-log-a-b)
-* [What does the following function return?
-](#what-does-the-following-function-return-js-function-greet-return-message-hello)
+* [What is the output of the following code?](#what-is-the-output-of-the-following-code-js-const-a-1-2-3-const-b-1-2-3-const-c-1-2-3-console-log-a-c-console-log-a-b)
+* [What does the following function return?](#what-does-the-following-function-return-js-function-greet-return-message-hello)
 * [Explain the difference between a static method and an instance method.](#explain-the-difference-between-a-static-method-and-an-instance-method)
 * [What is the difference between synchronous and asynchronous code in JavaScript?](#what-is-the-difference-between-synchronous-and-asynchronous-code-in-java-script)
 * [How does `this` work?](#how-does-this-work)
-* [What does the following code evaluate to?
-](#what-does-the-following-code-evaluate-to-js-typeof-typeof-0)
+* [What does the following code evaluate to?](#what-does-the-following-code-evaluate-to-js-typeof-typeof-0)
 * [What are JavaScript data types?](#what-are-java-script-data-types)
 * [What is the purpose of JavaScript UI libraries/frameworks like React, Vue, Angular, Hyperapp, etc?](#what-is-the-purpose-of-java-script-ui-libraries-frameworks-like-react-vue-angular-hyperapp-etc)
 * [What does `'use strict'` do and what are some of the key benefits to using it?](#what-does-use-strict-do-and-what-are-some-of-the-key-benefits-to-using-it)
@@ -92,11 +86,12 @@ Join our [Gitter channel](https://gitter.im/30-seconds-of-interviews/Lobby) to h
 ### CSS
 
 <details>
-<summary>View contents</summary>* [What is CSS BEM?](#what-is-css-bem)
+<summary>View contents</summary>
+
+* [What is CSS BEM?](#what-is-css-bem)
 * [What are the advantages of using CSS preprocessors?](#what-are-the-advantages-of-using-css-preprocessors)
 * [Can you describe how CSS specificity works?](#can-you-describe-how-css-specificity-works)
-* [Using flexbox, create a 3-column layout where each column takes up a `col-{n} / 12` ratio of the container.
-](#using-flexbox-create-a-3-column-layout-where-each-column-takes-up-a-col-n-12-ratio-of-the-container-html-div-class-row-div-class-col-2-div-div-class-col-7-div-div-class-col-3-div-div)
+* [Using flexbox, create a 3-column layout where each column takes up a `col-{n} / 12` ratio of the container.](#using-flexbox-create-a-3-column-layout-where-each-column-takes-up-a-col-n-12-ratio-of-the-container-html-div-class-row-div-class-col-2-div-div-class-col-7-div-div-class-col-3-div-div)
 * [What is a focus ring? What is the correct solution to handle them?](#what-is-a-focus-ring-what-is-the-correct-solution-to-handle-them)
 * [Can you name the four types of `@media` properties?](#can-you-name-the-four-types-of-media-properties)
 * [What are the advantages of using CSS sprites and how would one utilize them?](#what-are-the-advantages-of-using-css-sprites-and-how-would-one-utilize-them)
@@ -107,7 +102,9 @@ Join our [Gitter channel](https://gitter.im/30-seconds-of-interviews/Lobby) to h
 ### HTML
 
 <details>
-<summary>View contents</summary>* [What are `defer` and `async` attributes on a `<script>` tag?](#what-are-defer-and-async-attributes-on-a-script-tag)
+<summary>View contents</summary>
+
+* [What are `defer` and `async` attributes on a `<script>` tag?](#what-are-defer-and-async-attributes-on-a-script-tag)
 * [What is the DOM?](#what-is-the-dom)
 * [What are some differences that XHTML has compared to HTML?](#what-are-some-differences-that-xhtml-has-compared-to-html)
 * [What is the purpose of `alt` attribute on images?](#what-is-the-purpose-of-alt-attribute-on-images)
@@ -118,10 +115,10 @@ Join our [Gitter channel](https://gitter.im/30-seconds-of-interviews/Lobby) to h
 ### Node
 
 <details>
-<summary>View contents</summary>* [How can you avoid callback hells?
-](#how-can-you-avoid-callback-hells-js-get-data-function-a-get-more-data-a-function-b-get-more-data-b-function-c-get-more-data-c-function-d-get-more-data-d-function-e)
-* [NodeJS uses a callback pattern in many instances where if an error were returned it will pass it as the first argument to the callback. What are the advantages of this pattern?
-](#node-js-uses-a-callback-pattern-in-many-instances-where-if-an-error-were-returned-it-will-pass-it-as-the-first-argument-to-the-callback-what-are-the-advantages-of-this-pattern-js-fs-read-file-file-path-function-err-data-if-err-handle-the-error-the-return-is-important-here-so-execution-stops-here-return-console-log-err-use-the-data-object-console-log-data)
+<summary>View contents</summary>
+
+* [How can you avoid callback hells?](#how-can-you-avoid-callback-hells-js-get-data-function-a-get-more-data-a-function-b-get-more-data-b-function-c-get-more-data-c-function-d-get-more-data-d-function-e)
+* [NodeJS uses a callback pattern in many instances where if an error were returned it will pass it as the first argument to the callback. What are the advantages of this pattern?](#node-js-uses-a-callback-pattern-in-many-instances-where-if-an-error-were-returned-it-will-pass-it-as-the-first-argument-to-the-callback-what-are-the-advantages-of-this-pattern-js-fs-read-file-file-path-function-err-data-if-err-handle-the-error-the-return-is-important-here-so-execution-stops-here-return-console-log-err-use-the-data-object-console-log-data)
 * [What is the event loop in Node.js?](#what-is-the-event-loop-in-node-js)
 </details>
 
@@ -133,6 +130,7 @@ Join our [Gitter channel](https://gitter.im/30-seconds-of-interviews/Lobby) to h
 
 <details>
 <summary>View answer</summary>
+
 Triple equals (`===`) checks for strict equality, which means both the type and value must be the same. Double equals (`==`) on the other hand first performs type coercion so that both operands are of the same type and then applies strict comparison.
 
 
@@ -159,6 +157,7 @@ Triple equals (`===`) checks for strict equality, which means both the type and 
 
 <details>
 <summary>View answer</summary>
+
 A `Promise` is in one of these states:
 
 * pending: initial state, neither fulfilled nor rejected.
@@ -190,6 +189,7 @@ When either of these options happens, the associated handlers queued up by a pro
 
 <details>
 <summary>View answer</summary>
+
 The `Promise` object represents the eventual completion (or failure) of an asynchronous operation, and its resulting value.
 An example can be the following snippet, which after 100ms prints out the result string to the standard output. Also, note the catch, which can be used for error handling. `Promise`s are chainable.
 
@@ -225,6 +225,7 @@ new Promise((resolve, reject) => {
 
 <details>
 <summary>View answer</summary>
+
 In JavaScript, two values discretely represent nothing - `undefined` and `null`. The concrete difference between them is that `null` is explicit, while `undefined` is implicit. When a property does not exist or a variable has not been given a value, the value is `undefined`. `null` is set as the value to explicitly indicate “no value”. In essence, `undefined` is used when the nothing is not known, and `null` is used when the nothing is known.
 
 
@@ -252,6 +253,7 @@ In JavaScript, two values discretely represent nothing - `undefined` and `null`.
 
 <details>
 <summary>View answer</summary>
+
 Even though two different objects can have the same properties with equal values, they are not considered equal when compared using `==` or `===`. This is because they are being compared by their reference (location in memory), unlike primitive values which are compared by value.
 
 In order to test if two objects are equal in structure, a helper function is required. It will
@@ -318,6 +320,7 @@ function isDeepEqual(obj1, obj2, testPrototypes = false) {
 
 <details>
 <summary>View answer</summary>
+
 The DOM (Document Object Model) is an API that represents the structure of HTML and XML documents. The document
 is represented by a node tree (such as elements, text nodes, comments), where each node is an object that can be manipulated via JavaScript to change their styles, contents, placement in the tree, or interacted with through event listeners.
 
@@ -344,6 +347,7 @@ is represented by a node tree (such as elements, text nodes, comments), where ea
 
 <details>
 <summary>View answer</summary>
+
 This technique is very common in JavaScript libraries. It creates a closure around the entire contents of the file which creates a private namespace and thereby helps avoid potential name clashes between different JavaScript modules and libraries. The function is usually immediately invoked so that the namespace (library name) is assigned the return value of the function.
 
 ```js
@@ -380,6 +384,7 @@ myLibrary.publicMethod(); // 2
 
 <details>
 <summary>View answer</summary>
+
 The latest ECMAScript standard defines seven data types, six of them being primitive: `Boolean`, `Null`, `Undefined`, `Number`, `String`, `Symbol` and one non-primitive data type: `Object`.
 
 
@@ -407,6 +412,7 @@ The latest ECMAScript standard defines seven data types, six of them being primi
 
 <details>
 <summary>View answer</summary>
+
 Initialize an empty array of length `n`. Use `Array.prototype.reduce()` to add values into the array, using the sum of the last two values, except for the first two.
 
 ```js
@@ -439,6 +445,7 @@ const fibonacci = n =>
 
 <details>
 <summary>View answer</summary>
+
 It evaluates to `false` because JavaScript uses the IEEE 754 standard for Math and it makes use of 64-bit floating numbers. This causes precision errors when doing decimal calculations, in short, due to computers working in Base 2 while decimal is Base 10.
 
 ```js
@@ -475,6 +482,7 @@ approxEqual(0.1 + 0.2, 0.3) // true
 
 <details>
 <summary>View answer</summary>
+
 Both methods iterate through the elements of an array. `map()` maps each element to new element by invoking the callback function on each element and returns a new array. On the other hand, `forEach()` invokes the callback function for each element but does not return a new array. `forEach()` is generally used when causing a side effect on each iteration, whereas `map()` is a common functional programming technique.
 
 
@@ -506,6 +514,7 @@ typeof typeof 0
 
 <details>
 <summary>View answer</summary>
+
 It evaluates to `"string"`.
 
 `typeof 0` evaluates to the string `"number"` and therefore `typeof "number"` evaluates to `"string"`.
@@ -541,6 +550,7 @@ foobar()
 
 <details>
 <summary>View answer</summary>
+
 Due to hoisting, the local variable `foo` is declared before the `console.log` method is called. This means the local variable `foo` is passed as an argument to `console.log()` instead of the global one declared outside of the function. However, since the value is not hoisted with the variable declaration, the output will be `undefined`, not `2`.
 
 
@@ -566,6 +576,7 @@ Due to hoisting, the local variable `foo` is declared before the `console.log` m
 
 <details>
 <summary>View answer</summary>
+
 Hoisting is a JavaScript mechanism where variables and function declarations are put into memory during the compile phase. This means that no matter where functions and variables are declared, they are moved to the top of their scope regardless of whether their scope is global or local.
 
 ```js
@@ -604,6 +615,7 @@ mask("123456789") // "#####6789"
 
 <details>
 <summary>View answer</summary>
+
 > There are many ways to solve this problem, this is just one one of them.
 
 Using `String.prototype.slice()`, we can grab a portion of the string from index `0` (first character) to index `-4` (5th last character) and calculate the resulting length, using `String.prototype.repeat()` to repeat the mask character that many times. Then, using `String.prototype.slice()` once more, we can concatenate the last 4 characters by passing `-4` as an argument.
@@ -635,6 +647,7 @@ const mask = (str, maskChar = "#") =>
 
 <details>
 <summary>View answer</summary>
+
 Synchronous means each operation must wait for the previous one to complete.
 
 Asynchronous means an operation can occur while another operation is still being processed.
@@ -673,6 +686,7 @@ function greet() {
 
 <details>
 <summary>View answer</summary>
+
 Because of JavaScript's automatic semicolon insertion (ASI), the compiler places a semicolon after `return` keyword and therefore it returns `undefined` without an error being thrown.
 
 
@@ -709,6 +723,7 @@ fs.readFile(filePath, function(err, data) {
 
 <details>
 <summary>View answer</summary>
+
 Advantages include:
 
 * Not needing to process data if there is no need to even reference it
@@ -778,6 +793,7 @@ console.log(a == b)
 
 <details>
 <summary>View answer</summary>
+
 The first `console.log` outputs `true` because JavaScript's compiler performs type conversion and therefore it compares to strings by their value. On the other hand, the second `console.log` outputs `false` because Arrays are Objects and Objects are compared by reference.
 
 
@@ -804,6 +820,7 @@ The first `console.log` outputs `true` because JavaScript's compiler performs ty
 
 <details>
 <summary>View answer</summary>
+
 Callbacks are functions passed as an argument to another function to be executed once an event has occurred or a certain task is complete, often used in asynchronous code. Callback functions are invoked later by a piece of code but can be declared on initialization without being invoked.
 
 Event listeners are callbacks that are only executed when a specific event occurs.
@@ -838,6 +855,7 @@ document.addEventListener("click", onClick)
 
 <details>
 <summary>View answer</summary>
+
 ##### Object literal
 
 Often used to store one occurrence of data.
@@ -935,6 +953,7 @@ Object.create(personProto, {
 
 <details>
 <summary>View answer</summary>
+
 Parameters are the variable names of the function definition, while arguments are the values given to a function when it is invoked.
 
 ```js
@@ -967,6 +986,7 @@ myFunction("argument1", "argument2")
 
 <details>
 <summary>View answer</summary>
+
 JavaScript always passes by value. However, with objects, the value is a reference to the object.
 
 
@@ -991,6 +1011,7 @@ JavaScript always passes by value. However, with objects, the value is a referen
 
 <details>
 <summary>View answer</summary>
+
 In the classical inheritance paradigm, object instances inherit their properties and functions from a class, which acts as a blueprint for the object. Object instances are typically created using a constructor and the `new` keyword.
 
 In the prototypal inheritance paradigm, object instances inherit directly from other objects and are typically created using factory functions or `Object.create()`. Finally, object instances can be composed from many different objects, allowing for selective inheritance.
@@ -1019,6 +1040,7 @@ In the prototypal inheritance paradigm, object instances inherit directly from o
 
 <details>
 <summary>View answer</summary>
+
 Using the object spread operator `...`, the object's own enumerable properties can be copied
 into the new object. This creates a shallow clone of the object.
 
@@ -1059,6 +1081,7 @@ Other alternatives include:
 
 <details>
 <summary>View answer</summary>
+
 ##### No keyword prefix
 
 When no keyword is prefixed before a variable declaration, it is either assigning a global variable if one does not exist, or reassigns an already declared variable. In non-strict mode, it will assign the variable as a property of the global object `this` (`window` in browsers). In strict mode, it will throw an error to prevent unwanted global variables from being created.
@@ -1138,6 +1161,7 @@ myObject = "hello" // Error
 
 <details>
 <summary>View answer</summary>
+
 Functional programming is a paradigm in which programs are built in a declarative manner using pure functions that avoid shared state and mutable data. Functions that always return the same value for the same input and don't produce side effects are the pillar of functional programming. Many programmers consider this to be the best approach to software development as it reduces bugs and cognitive load.
 
 
@@ -1174,6 +1198,7 @@ res(3) // 19; addOne(double(square(3)))
 
 <details>
 <summary>View answer</summary>
+
 Gather all supplied arguments using the rest operator `...` and return a unary function that uses `Array.prototype.reduce()` to run the value through the series of functions before returning the final value.
 
 ```js
@@ -1202,6 +1227,7 @@ const pipe = (...fns) => x => fns.reduce((v, fn) => fn(v), x)
 
 <details>
 <summary>View answer</summary>
+
 `NaN` (Not-a-Number) is the only value not equal to itself when comparing with any of the comparison operators. `NaN` is often the result of meaningless math computations, so two `NaN` values make no sense to be considered equal.
 
 
@@ -1227,6 +1253,7 @@ const pipe = (...fns) => x => fns.reduce((v, fn) => fn(v), x)
 
 <details>
 <summary>View answer</summary>
+
 Static methods belong to a class and don't act on instances, while instance methods belong to the class prototype which is inherited by all instances of the class and acts on them.
 
 ```js
@@ -1266,6 +1293,7 @@ Array.push(arr, 4)
 
 <details>
 <summary>View answer</summary>
+
 "Mutability" means a value is subject to change. "Immutability" means a value cannot change.
 
 Objects are mutable, while primitive values (strings, numbers, etc) are immutable. This means any operation performed on a primitive value does not change the original value.
@@ -1303,6 +1331,7 @@ originalArray.concat(4) // returns a new array, does not mutate the original
 
 <details>
 <summary>View answer</summary>
+
 The `this` keyword is an object that represents the context of an executing function. Regular functions can have their `this` value changed with `.call`, `.apply` and `.bind`. Arrow functions implicitly bind `this` so that it refers to the context of its lexical environment, regardless of whether or not its context is set explicitly with `call`.
 
 Here are some common examples of `this`:
@@ -1382,6 +1411,7 @@ obj.doubleArr() // Uncaught TypeError: this.double is not a function
 
 <details>
 <summary>View answer</summary>
+
 The event loop handles all async callbacks. Callbacks are queued in a loop, while other code runs, and will run one by one when the response for each one has been received.
 
 
@@ -1406,6 +1436,7 @@ The event loop handles all async callbacks. Callbacks are queued in a loop, whil
 
 <details>
 <summary>View answer</summary>
+
 Event-driven programming is building an application that is based on and responds to events. Whenever an event occurs, the application responds by running a callback function, which is registered to that event and context.
 
 
@@ -1432,6 +1463,7 @@ Event-driven programming is building an application that is based on and respond
 
 <details>
 <summary>View answer</summary>
+
 The main purpose is to avoid manipulating the DOM directly and keep the state of an application
 in sync with the UI easily. Additionally, they provide the ability to create components that can be reused when they have similar functionality with minor differences, avoiding duplication which would require multiple changes whenever the structure of a component which is reused in multiple places needs to be updated.
 
@@ -1460,6 +1492,7 @@ When working with DOM manipulation libraries like jQuery, the data of an applica
 
 <details>
 <summary>View answer</summary>
+
 Including `'use strict'` at the beginning of your JavaScript source file enables strict mode, which enfores more strict parsing and error handling of JavaScript code. It is considered a good practice and offers a lot of benefits, such as:
 
 * Easier debugging due to eliminating silent errors.
@@ -1493,6 +1526,7 @@ Including `'use strict'` at the beginning of your JavaScript source file enables
 
 <details>
 <summary>View answer</summary>
+
 A closure is a function defined inside another function and has access to its lexical scope even when it is executing outside its lexical scope. The closure has access to variables in three scopes:
 
 * Variables declared in its own scope
@@ -1539,6 +1573,7 @@ getData(function(a){
 
 <details>
 <summary>View answer</summary>
+
 There are lots of ways to solve the issue of callback hells:
 
 * modularization: break callbacks into independent functions
@@ -1570,6 +1605,7 @@ There are lots of ways to solve the issue of callback hells:
 
 <details>
 <summary>View answer</summary>
+
 The BEM methodology is a naming convention for CSS classes in order to keep CSS more maintainable by defining namespaces to solve scoping issues. BEM stands for Block Element Modifier which is an explanation for its structure. A Block is a standalone component that is reusable across projects and acts as a "namespace" for sub components (Elements). Modifiers are used as flags when a Block or Element is in a certain state or is different in structure or style.
 
 ```css
@@ -1633,6 +1669,7 @@ These must be chained to the Element and never alone however, or there will be s
 
 <details>
 <summary>View answer</summary>
+
 CSS preprocessors add useful functionality that native CSS does not have, and generally make CSS neater and more maintainable by enabling DRY (Don't Repeat Yourself) principles. Their terse syntax for nested selectors cuts down on repeated code. They provide variables for consistent theming (however, CSS variables have largely replaced this functionality) and additional tools like color functions (`lighten`, `darken`, `transparentize`, etc), variables, mixins, and loops that make CSS more like a real programming language and gives the developer more power to generate complex CSS.
 
 
@@ -1666,6 +1703,7 @@ CSS preprocessors add useful functionality that native CSS does not have, and ge
 
 <details>
 <summary>View answer</summary>
+
 Set the `.row` parent to `display: flex;` and use the `flex` shorthand property to give the column classes a `flex-grow` value that corresponds to its ratio value.
 
 ```css
@@ -1709,6 +1747,7 @@ Set the `.row` parent to `display: flex;` and use the `flex` shorthand property 
 
 <details>
 <summary>View answer</summary>
+
 * `all`, which applies to all media type devices
 * `print`, which only applies to printers
 * `screen`, which only applies to screens (desktops, tablets, mobile etc.)
@@ -1737,6 +1776,7 @@ Set the `.row` parent to `display: flex;` and use the `flex` shorthand property 
 
 <details>
 <summary>View answer</summary>
+
 When elements overlap, z-order determines which one covers the other.
 
 
@@ -1764,6 +1804,7 @@ When elements overlap, z-order determines which one covers the other.
 
 <details>
 <summary>View answer</summary>
+
 Assuming the browser has already determined the set of rules for an element, each rule is assigned a matrix of values, which correspond to the following from highest to lowest specificity:
 
 * Inline rules (binary - 1 or 0)
@@ -1796,6 +1837,7 @@ When two selectors are compared, the comparison is made on a per-column basis (e
 
 <details>
 <summary>View answer</summary>
+
 CSS sprites combine multiple images into one image, limiting the amount of HTTP requests a browser has to make, thus improving load times.
 
 To utilize a spritesheet in CSS, one would use certain properties, such as `background-image`, `background-position` and `background-size` to ultimately alter the `background` of a CSS selector or an element.
@@ -1823,6 +1865,7 @@ To utilize a spritesheet in CSS, one would use certain properties, such as `back
 
 <details>
 <summary>View answer</summary>
+
 A focus ring is a visible outline given to focusable elements such as buttons and anchor tags. It varies depending on the vendor, but generally it appears as a blue outline around the element to indicate it is currently focused.
 
 In the past, many people specified `outline: 0;` on the element to remove the focus ring. However, this causes accessibility issues for keyboard users because the focus state may not be clear. When not specified though, it causes an unappealing blue ring to appear around an element.
@@ -1854,6 +1897,7 @@ The best solution is an upcoming pseudo-selector `:focus-visible` which can be p
 
 <details>
 <summary>View answer</summary>
+
 The `alt` attribute provides alternative information for an image if a user cannot view it. If the image is for decorative purposes only, the `alt` attribute should be empty. On the other hand, if image contains information the `alt` attribute should describe image.
 
 
@@ -1878,6 +1922,7 @@ The `alt` attribute provides alternative information for an image if a user cann
 
 <details>
 <summary>View answer</summary>
+
 If neither attribute is present, the script is downloaded and executed synchronously, and will halt parsing of the document until it has finished executing (default behavior). Scripts are downloaded and executed in the order
 they are encountered.
 
@@ -1918,6 +1963,7 @@ Note: both attributes must only be used if the script has a `src` attribute (i.e
 
 <details>
 <summary>View answer</summary>
+
 The DOM (Document Object Model) is an API that represents the structure of HTML and XML documents. The document
 is represented by a node tree (such as elements, text nodes, comments), where each node is an object that can be manipulated via JavaScript to change their styles, contents, placement in the tree, or interacted with through event listeners.
 
@@ -1944,6 +1990,7 @@ is represented by a node tree (such as elements, text nodes, comments), where ea
 
 <details>
 <summary>View answer</summary>
+
 Some of the key differences are:
 
 * An XHTML element must have an XHTML `<DOCTYPE>`
@@ -1976,6 +2023,7 @@ Some of the key differences are:
 
 <details>
 <summary>View answer</summary>
+
 The `rel="noopener"` is an attribute used in `<a>` elements (hyperlinks). It prevents pages from having a `window.opener` property, which would otherwise point to the page from where the link was opened and would allow the page opened from the hyperlink to manipulate the page where the hyperlink is.
 
 
@@ -2015,6 +2063,7 @@ fs.readFile(filePath, function(err, data) {
 
 <details>
 <summary>View answer</summary>
+
 Advantages include:
 
 * Not needing to process data if there is no need to even reference it
@@ -2089,6 +2138,7 @@ getData(function(a){
 
 <details>
 <summary>View answer</summary>
+
 There are lots of ways to solve the issue of callback hells:
 
 * modularization: break callbacks into independent functions
@@ -2119,6 +2169,7 @@ There are lots of ways to solve the issue of callback hells:
 
 <details>
 <summary>View answer</summary>
+
 The event loop handles all async callbacks. Callbacks are queued in a loop, while other code runs, and will run one by one when the response for each one has been received.
 
 
