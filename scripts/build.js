@@ -37,7 +37,7 @@ const detailsQuestion = (title, question) => {
 	// add Additional links
 	answer += `\n\n${hX(5, "Additional links")}\n\n`
 	answer += `\n${question.links.map(link => `* ${link}`).join("\n")}`
-	return `\n\n<details>\n<summary>${title}</summary>\n${answer}\n</details>\n\n`
+	return `\n\n<details>\n<summary>${title}</summary>\n\n${answer}\n</details>\n\n`
 }
 
 console.time("Builder")
