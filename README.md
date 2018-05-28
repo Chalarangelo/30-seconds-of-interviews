@@ -40,7 +40,9 @@ Join our [Gitter channel](https://gitter.im/30-seconds-of-interviews/Lobby) to h
 ### JavaScript
 
 <details>
-<summary>View contents</summary>* [How can you avoid callback hells?](#how-can-you-avoid-callback-hells-js-get-data-function-a-get-more-data-a-function-b-get-more-data-b-function-c-get-more-data-c-function-d-get-more-data-d-function-e)
+<summary>View contents</summary>
+
+* [How can you avoid callback hells?](#how-can-you-avoid-callback-hells-js-get-data-function-a-get-more-data-a-function-b-get-more-data-b-function-c-get-more-data-c-function-d-get-more-data-d-function-e)
 * [What is a callback?](#what-is-a-callback)
 * [How do you clone an object in JavaScript?](#how-do-you-clone-an-object-in-java-script)
 * [What is a closure?](#what-is-a-closure)
@@ -84,7 +86,9 @@ Join our [Gitter channel](https://gitter.im/30-seconds-of-interviews/Lobby) to h
 ### CSS
 
 <details>
-<summary>View contents</summary>* [What is CSS BEM?](#what-is-css-bem)
+<summary>View contents</summary>
+
+* [What is CSS BEM?](#what-is-css-bem)
 * [What are the advantages of using CSS preprocessors?](#what-are-the-advantages-of-using-css-preprocessors)
 * [Can you describe how CSS specificity works?](#can-you-describe-how-css-specificity-works)
 * [Using flexbox, create a 3-column layout where each column takes up a `col-{n} / 12` ratio of the container.](#using-flexbox-create-a-3-column-layout-where-each-column-takes-up-a-col-n-12-ratio-of-the-container-html-div-class-row-div-class-col-2-div-div-class-col-7-div-div-class-col-3-div-div)
@@ -98,7 +102,9 @@ Join our [Gitter channel](https://gitter.im/30-seconds-of-interviews/Lobby) to h
 ### HTML
 
 <details>
-<summary>View contents</summary>* [What are `defer` and `async` attributes on a `<script>` tag?](#what-are-defer-and-async-attributes-on-a-script-tag)
+<summary>View contents</summary>
+
+* [What are `defer` and `async` attributes on a `<script>` tag?](#what-are-defer-and-async-attributes-on-a-script-tag)
 * [What is the DOM?](#what-is-the-dom)
 * [What are some differences that XHTML has compared to HTML?](#what-are-some-differences-that-xhtml-has-compared-to-html)
 * [What is the purpose of `alt` attribute on images?](#what-is-the-purpose-of-alt-attribute-on-images)
@@ -109,7 +115,9 @@ Join our [Gitter channel](https://gitter.im/30-seconds-of-interviews/Lobby) to h
 ### Node
 
 <details>
-<summary>View contents</summary>* [How can you avoid callback hells?](#how-can-you-avoid-callback-hells-js-get-data-function-a-get-more-data-a-function-b-get-more-data-b-function-c-get-more-data-c-function-d-get-more-data-d-function-e)
+<summary>View contents</summary>
+
+* [How can you avoid callback hells?](#how-can-you-avoid-callback-hells-js-get-data-function-a-get-more-data-a-function-b-get-more-data-b-function-c-get-more-data-c-function-d-get-more-data-d-function-e)
 * [NodeJS uses a callback pattern in many instances where if an error were returned it will pass it as the first argument to the callback. What are the advantages of this pattern?](#node-js-uses-a-callback-pattern-in-many-instances-where-if-an-error-were-returned-it-will-pass-it-as-the-first-argument-to-the-callback-what-are-the-advantages-of-this-pattern-js-fs-read-file-file-path-function-err-data-if-err-handle-the-error-the-return-is-important-here-so-execution-stops-here-return-console-log-err-use-the-data-object-console-log-data)
 * [What is the event loop in Node.js?](#what-is-the-event-loop-in-node-js)
 </details>

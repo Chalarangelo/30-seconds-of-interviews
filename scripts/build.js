@@ -27,7 +27,7 @@ const detailsTOC = (title, questionsArray) => {
 					}](#${util.toKebabCase(question.question)})`
 		)
 		.join("\n")
-	return `\n\n<details>\n<summary>${title}</summary>${list}\n</details>\n\n`
+	return `\n\n<details>\n<summary>${title}</summary>\n\n${list}\n</details>\n\n`
 }
 const detailsQuestion = (title, question) => {
 	let answer = question.answer
