@@ -7,6 +7,7 @@
 body {
   background: #f6f7fd;
   color: #51526f;
+  line-height: 1.6;
 }
 
 code {
@@ -18,9 +19,35 @@ code {
   overflow-wrap: break-word;
 }
 
+a {
+  position: relative;
+  color: #3065e4;
+  text-decoration: none;
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: calc(100% + 2px);
+    left: 0;
+    height: 1px;
+    width: 100%;
+    transform: scaleX(0);
+    transition: transform 0.25s ease-out, color 0.25s;
+    background: #4885ff;
+  }
+
+  &:hover {
+    color: #4885ff;
+
+    &::after {
+      transform: scaleX(1);
+    }
+  }
+}
+
 .container {
   max-width: 1000px;
-  padding: 0 4%;
+  padding: 0 2%;
   margin: 0 auto;
   position: relative;
 
@@ -57,12 +84,15 @@ code {
   }
 
   &__icon {
-    vertical-align: -5px;
-    margin-left: 8px;
+    vertical-align: -6px;
   }
 
   .is-rotated svg {
     transform: rotate(180deg);
+  }
+
+  span {
+    margin-right: 8px;
   }
 }
 
