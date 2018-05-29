@@ -1,11 +1,11 @@
 @import "../_vars.scss";
 
 .Questions {
-  padding: 25px 0;
+  margin-bottom: 125px;
 
-  &__empty {
-    font-size: 18px;
-    margin-top: 0;
+  &__list {
+    list-style-type: none;
+    padding: 0;
   }
 
   .container {
