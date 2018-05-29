@@ -22,6 +22,7 @@ export default () => state => {
         expertise: state.filter.expertise
       })
     )
+    .sort((q1, q2) => q1.expertise - q2.expertise)  
     .map(q => <Question {...q} />)
 
   return (
