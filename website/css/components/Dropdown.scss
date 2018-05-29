@@ -1,0 +1,58 @@
+@import "../_vars.scss";
+
+.Dropdown {
+  position: relative;
+
+  &:not(:last-child) {
+    margin-right: 10px;
+  }
+
+  &__button {
+    padding: 12px 15px;
+    border-radius: 0 0 4px 4px;
+    border-top: none;
+    font-size: 15px;
+    width: 100%;
+
+    @media (min-width: $breakpoint-sm) {
+      font-size: 17px;
+    }
+  }
+
+  &__items {
+    position: absolute;
+    background: white;
+    top: calc(100% + 5px);
+    z-index: 2;
+    visibility: hidden;
+    box-shadow: 0 16px 24px -4px rgba(0, 32, 128, 0.2);
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    width: 200px;
+    border-radius: 0 0 8px 8px;
+    border: 1px solid #c8cbf2;
+    overflow: hidden;
+    border-radius: 4px;
+
+    &.is-open {
+      visibility: visible;
+    }
+
+    &.is-right {
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+
+  &__label {
+    display: block;
+    font-weight: bold;
+    background: linear-gradient(130deg, #87bbf1, #6242fb);
+    color: white;
+    padding: 6px 20px;
+    border-radius: 4px 4px 0 0;
+    text-align: center;
+    font-size: 15px;
+  }
+}

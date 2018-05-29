@@ -14,10 +14,13 @@ const main = app(state, actions, view, document.body) // eslint-disable-line no-
 
 setTimeout(() => {
   Prism.highlightAll()
+
   const backToTopButton = document.querySelector(".BackToTopButton")
   addEventListener("scroll", () => {
     backToTopButton.classList[window.scrollY > 750 ? "add" : "remove"](
       "is-visible"
     )
   })
+
+  addEventListener("click", main.filter.onDocumentClick)
 })

@@ -3,6 +3,11 @@
 .Questions {
   padding: 25px 0;
 
+  &__empty {
+    font-size: 18px;
+    margin-top: 0;
+  }
+
   .container {
     padding: 0 2%;
   }

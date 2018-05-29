@@ -1,27 +1,45 @@
 import { h } from "hyperapp"
 import Question from "./Question"
-import { SORTBY_STRINGS } from "../utils"
+import { EXPERTISE_STRINGS } from "../utils"
 
-const sortComparison = (q1, q2, sortCondition) => {
-  switch(sortCondition) {
-  case SORTBY_STRINGS.expertise:
-    return q1.expertise - q2.expertise
-  case SORTBY_STRINGS.alpha:
-    return q1.name === q2.name ? 0 : q1.name > q2.name ? 1 : -1
-  case SORTBY_STRINGS.nonalpha:
-    return q1.name === q2.name ? 0 : q1.name < q2.name ? 1 : -1
-  default:
-    return null
-  }
+export default () => state => {
+  const questions = state.questions
+    .filter(
+      q =>
+        state.filter.category.toLowerCase() === "all" ||
+        q.tags.includes(state.filter.category.toLowerCase())
+    )
+    .sort((q1, q2) => {
+      switch (state.filter.expertise.toLowerCase()) {
+        case EXPERTISE_STRINGS[0]:
+          return q1.expertise - q2.expertise
+        case EXPERTISE_STRINGS[2]:
+          return q2.expertise - q1.expertise
+        default:
+          return 1
+      }
+    })
+    .map(q => <Question {...q} />)
+
+  return (
+    <main class="Questions">
+      <div class="container">
+        {questions.length ? (
+          questions
+        ) : (
+          <p class="Questions__empty">
+            There are no questions based on the current filter at this point in
+            time. Feel free to{" "}
+            <a
+              href="https://github.com/fejes713/30-seconds-of-interviews/"
+              target="_blank"
+              rel="noopener"
+            >
+              contribute a question!
+            </a>
+          </p>
+        )}
+      </div>
+    </main>
+  )
 }
-
-export default () => state => (
-  <main class="Questions">
-    <div class="container">
-      {state.questions
-        .filter(q => q.tags.includes(state.filter.toLowerCase()) || state.filter === "all")
-        .sort((q1, q2) => sortComparison(q1, q2, state.sortBy))
-        .map(q => <Question {...q} />)}
-    </div>
-  </main>
-)
