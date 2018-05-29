@@ -6,13 +6,12 @@ const {
   attempt,
   readQuestions,
   getCodeBlocks,
-  QUESTIONS_PATH
 } = require("./util")
 
 console.time("Extractor")
 
 attempt("questions.json generation", () => {
-  const output = Object.entries(readQuestions()).map(([name, contents]) => {
+  const output = Object.entries(readQuestions()).map(([ name, contents ]) => {
     const question = contents
       .slice(0 + 4, contents.indexOf("#### Answer"))
       .trim()
@@ -22,7 +21,7 @@ attempt("questions.json generation", () => {
         contents.indexOf("#### Good to hear")
       )
       .trim()
-
+      
     return {
       name,
       question,
@@ -49,7 +48,7 @@ attempt("questions.json generation", () => {
         .filter(v => v.trim() !== "" && !v.includes("tags")),
       tags: (contents.match(/<!--\s*tags:\s*\((.+)\)/) || [])[1].split(","),
       expertise: parseInt(
-        (contents.match(/<!--\s*expertise:\s*\((.+)\)/) || [])[1]
+        (contents.match(/<!--\s*expertise:\s*\((.+)\)/) || [])[1], 10
       ),
       questionCodeBlocks: getCodeBlocks(question),
       answerCodeBlocks: getCodeBlocks(answer)

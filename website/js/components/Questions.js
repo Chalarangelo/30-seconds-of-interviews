@@ -1,6 +1,19 @@
 import { h } from "hyperapp"
 import Question from "./Question"
-import { SORTBY_STRINGS } from '../utils'
+import { SORTBY_STRINGS } from "../utils"
+
+const sortComparison = (q1, q2, sortCondition) => {
+  switch(sortCondition) {
+  case SORTBY_STRINGS.expertise:
+    return q1.expertise - q2.expertise
+  case SORTBY_STRINGS.alpha:
+    return q1.name === q2.name ? 0 : q1.name > q2.name ? 1 : -1
+  case SORTBY_STRINGS.nonalpha:
+    return q1.name === q2.name ? 0 : q1.name < q2.name ? 1 : -1
+  default:
+    return null
+  }
+}
 
 export default () => state => (
   <main class="Questions">
@@ -12,17 +25,3 @@ export default () => state => (
     </div>
   </main>
 )
-
-const sortComparison = (q1, q2, sortCondition) => {
-  switch(sortCondition) {
-    case SORTBY_STRINGS.expertise:
-      return q1.expertise - q2.expertise
-      break
-    case SORTBY_STRINGS.alpha:
-      return q1.name === q2.name ? 0 : q1.name > q2.name ? 1 : -1
-      break
-    case SORTBY_STRINGS.nonalpha:
-      return q1.name === q2.name ? 0 : q1.name < q2.name ? 1 : -1
-      break
-  }
-}
