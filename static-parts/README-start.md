@@ -12,6 +12,7 @@
   <a href="https://gitter.im/30-seconds-of-interviews/Lobby"><img src="https://img.shields.io/badge/gitter-join%20chat%20%E2%86%92-brightgreen.svg" alt="gitter"></a>
     <a href="https://github.com/fejes713/30-seconds-of-interviews/blob/master/CONTRIBUTING.md"><img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg" alt="PRs welcome"></a>
   <a href="https://travis-ci.com/fejes713/30-seconds-of-interviews"><img src="https://travis-ci.com/fejes713/30-seconds-of-interviews.svg?token=uZrzJhwCxqfwx7TdXzc4&branch=master" alt="travis"></a>
+  <a href="https://www.patreon.com/fejes713"><img src="https://img.shields.io/badge/Patreon-support%20us-orange.svg" alt="patreon"></a>
   <a href=""><img src="https://img.shields.io/badge/producthunt-vote-orange.svg" alt="producthunt"></a>
   <a href="https://github.com/fejes713/30-seconds-of-interviews/blob/master/LICENSE"><img src="https://img.shields.io/badge/licence-MIT-blue.svg" alt="licence"></a>
 </p>
@@ -26,7 +27,11 @@ Interviews are daunting and can make even the most seasoned expert forget things
 
 <a href="https://30secondsofinterviews.org"><img src="promo.jpg" alt="30 Seconds of Interviews promo"></a>
 
+<br>
+
 ## Sponsors
+
+All financial support on [Patreon](https://www.patreon.com/fejes713) will be equally split between core colaborators on projects in the way of purchasing educational materials and courses.
 
 ## Contributing
 
