@@ -12,7 +12,7 @@
     border-radius: 0 0 4px 4px;
     border-top: none;
     font-size: 15px;
-    
+
     @media (min-width: $breakpoint-sm) {
       font-size: 17px;
     }
@@ -28,7 +28,7 @@
     list-style-type: none;
     padding: 0;
     margin: 0;
-    width: 175px;
+    width: 200px;
     border-radius: 0 0 8px 8px;
     border: 1px solid #c8cbf2;
     overflow: hidden;
@@ -39,7 +39,8 @@
     }
 
     &.is-right {
-      right: 0;
+      left: 50%;
+      transform: translateX(-50%);
     }
   }
 
