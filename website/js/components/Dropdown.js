@@ -3,17 +3,12 @@ import { cc } from "../utils"
 import DropdownItem from "./DropdownItem"
 import Icon from "./Icon"
 
-export default ({ name, items, isOpen, position }) => (state, actions) => (
+export default ({ name, items, isOpen, position }) => state => (
   <div class="Dropdown">
     <div>
       <label class="Dropdown__label">{name}</label>
     </div>
-    <button
-      class={cc("btn Dropdown__button", {
-        "is-open": isOpen
-      })}
-      onmousedown={() => actions.filter.toggleDropdown(name)}
-    >
+    <button class="btn Dropdown__button">
       <span>{state.filter[name.toLowerCase()]}</span>
       <Icon class="btn__icon" name="chevron-down" />
     </button>
