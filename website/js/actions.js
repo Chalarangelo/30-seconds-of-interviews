@@ -1,11 +1,4 @@
-import Prism from "prismjs"
 import { scrollToTop } from "./utils"
-
-// TODO: Find a better solution to highlighting on state change...
-const highlightCode = () => {
-  requestAnimationFrame(() => setTimeout(Prism.highlightAll))
-  return true
-}
 
 export default {
   scrollBackToTop: scrollToTop,
@@ -23,7 +16,7 @@ export default {
             isOpen: false
           }))
     }),
-    set: ({ dropdown, name }) => highlightCode() && { [dropdown]: name },
+    set: ({ dropdown, name }) => ({ [dropdown]: name }),
     toggleDropdown: name => state => ({
       dropdowns: state.dropdowns.map(d => ({
         ...d,

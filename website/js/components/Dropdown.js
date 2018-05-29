@@ -1,7 +1,7 @@
 import { h } from "hyperapp"
-import feather from "feather-icons"
 import { cc } from "../utils"
 import DropdownItem from "./DropdownItem"
+import Icon from "./Icon"
 
 export default ({ name, items, isOpen, position }) => (state, actions) => (
   <div class="Dropdown">
@@ -15,11 +15,7 @@ export default ({ name, items, isOpen, position }) => (state, actions) => (
       onmousedown={() => actions.filter.toggleDropdown(name)}
     >
       <span>{state.filter[name.toLowerCase()]}</span>
-      <i
-        innerHTML={feather.icons["chevron-down"].toSvg({
-          class: "btn__icon"
-        })}
-      />
+      <Icon class="btn__icon" name="chevron-down" />
     </button>
     <ul
       class={cc("Dropdown__items", {

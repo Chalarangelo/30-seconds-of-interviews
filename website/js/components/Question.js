@@ -1,7 +1,7 @@
 import { h } from "hyperapp"
-import marked from "marked"
-import feather from "feather-icons"
 import { cc, EXPERTISE_STRINGS } from "../utils"
+import Icon from "./Icon"
+import Markdown from "./Markdown"
 
 export default ({
   name,
@@ -18,23 +18,21 @@ export default ({
     </div>
     <div class="Question">
       <div class={`Question__tag is-${tags[0]}`} />
-      <div class="Question__heading" innerHTML={marked(`## ${question}`)} />
+      <Markdown class="Question__heading" content={`## ${question}`} />
       <button
         class="btn Question__button"
         onclick={() => actions.onAnswerButtonClick({ name, isOpen })}
       >
         <span>{isOpen ? "Hide" : "Show"} answer</span>
-        <i
-          class={cc({ "is-rotated": isOpen })}
-          innerHTML={feather.icons["chevron-down"].toSvg({
-            class: "btn__icon"
-          })}
+        <Icon
+          class={cc("btn__icon", { "is-rotated": isOpen })}
+          name="chevron-down"
         />
       </button>
       <div class={cc("Question__answer", { "is-open": isOpen })}>
-        <div innerHTML={marked(answer)} />
+        <Markdown content={answer} />
         {goodToHear.length ? <h4>Good to hear</h4> : null}
-        <ul>{goodToHear.map(i => <li innerHTML={marked(i)} />)}</ul>
+        <ul>{goodToHear.map(i => <Markdown node="li" content={i} />)}</ul>
       </div>
     </div>
   </div>
