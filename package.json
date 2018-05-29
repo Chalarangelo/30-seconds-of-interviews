@@ -7,18 +7,19 @@
     "builder": "node ./scripts/build.js",
     "extractor": "node ./scripts/extract.js",
     "dev": "parcel website/index.html",
-    "build": "parcel build website/index.html -d docs/ --public-url ./"
+    "build": "parcel build website/index.html -d docs/ --public-url ./",
+    "lint": "eslint --ext md,js ."
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/fejes713/30-seconds-of-interviews.git"
+    "url": "https://github.com/fejes713/30-seconds-of-interviews"
   },
   "author": "Stefan Fejes (ns.fejes.stefan@gmail.com)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/fejes713/30-seconds-of-interviews/issues"
   },
-  "homepage": "https://github.com/fejes713/30-seconds-of-interviews#readme",
+  "homepage": "https://30secondsofinterviews.org/",
   "dependencies": {
     "babel-preset-stage-3": "^6.24.1",
     "chalk": "^2.4.1",
@@ -33,6 +34,12 @@
     "prismjs": "^1.14.0"
   },
   "devDependencies": {
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.12.0",
+    "eslint-plugin-react": "^7.8.2",
+    "eslint": "^4.19.1",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-markdown": "^1.0.0-beta.6",
     "node-sass": "^4.9.0",
     "parcel-bundler": "^1.8.1"
   }

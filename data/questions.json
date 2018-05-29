@@ -45,7 +45,7 @@
   },
   {
     "name": "callback-hell.md",
-    "question": "How can you avoid callback hells?\n\n```js\ngetData(function(a){  \n    getMoreData(a, function(b){\n        getMoreData(b, function(c){ \n            getMoreData(c, function(d){ \n                getMoreData(d, function(e){ \n                    ...\n                });\n            });\n        });\n    });\n});\n```",
+    "question": "How can you avoid callback hells?\n\n```js\ngetData(function(a){  \n  getMoreData(a, function(b){\n    getMoreData(b, function(c){ \n      getMoreData(c, function(d){ \n        getMoreData(d, function(e){ \n          //  ...\n        })\n      })\n    })\n  })\n})\n```",
     "answer": "There are lots of ways to solve the issue of callback hells:\n\n* modularization: break callbacks into independent functions\n* use a control flow library, like async\n* use generators with Promises\n* use async/await (from v7 on)",
     "goodToHear": [
       "As an efficient JavaScript developer, you have to avoid the constantly growing indentation level, produce clean and readable code and be able to handle complex flows."
@@ -56,11 +56,11 @@
     ],
     "tags": [
       "node",
-      " javascript"
+      "javascript"
     ],
     "expertise": 2,
     "questionCodeBlocks": [
-      "```js\ngetData(function(a){  \n    getMoreData(a, function(b){\n        getMoreData(b, function(c){ \n            getMoreData(c, function(d){ \n                getMoreData(d, function(e){ \n                    ...\n                });\n            });\n        });\n    });\n});\n```"
+      "```js\ngetData(function(a){  \n  getMoreData(a, function(b){\n    getMoreData(b, function(c){ \n      getMoreData(c, function(d){ \n        getMoreData(d, function(e){ \n          //  ...\n        })\n      })\n    })\n  })\n})\n```"
     ],
     "answerCodeBlocks": []
   },
@@ -129,7 +129,7 @@
   {
     "name": "comparing-objects.md",
     "question": "How do you compare two objects in JavaScript?",
-    "answer": "Even though two different objects can have the same properties with equal values, they are not considered equal when compared using `==` or `===`. This is because they are being compared by their reference (location in memory), unlike primitive values which are compared by value.\n\nIn order to test if two objects are equal in structure, a helper function is required. It will\niterate through the own properties of each object to test if they have the same values, including nested objects.\nOptionally, the prototypes of the objects may also be tested for equivalence by passing `true` as the 3rd argument.\n\nNote: this technique does not attempt to test equivalence of data structures other than\nplain objects, arrays, functions, dates and primitive values.\n\n```js\nfunction isDeepEqual(obj1, obj2, testPrototypes = false) {\n  if (obj1 === obj2) {\n    return true\n  }\n\n  if (typeof obj1 === \"function\" && typeof obj2 === \"function\") {\n    return obj1.toString() === obj2.toString()\n  }\n\n  if (obj1 instanceof Date && obj2 instanceof Date) {\n    return obj1.getTime() === obj2.getTime()\n  }\n\n  const prototypesAreEqual = testPrototypes\n    ? isDeepEqual(\n        Object.getPrototypeOf(obj1),\n        Object.getPrototypeOf(obj2),\n        true\n      )\n    : true\n\n  const obj1Props = Object.getOwnPropertyNames(obj1)\n  const obj2Props = Object.getOwnPropertyNames(obj2)\n\n  return (\n    obj1Props.length === obj2Props.length &&\n    prototypesAreEqual &&\n    obj1Props.every(prop => isDeepEqual(obj1[prop], obj2[prop]))\n  )\n}\n```",
+    "answer": "Even though two different objects can have the same properties with equal values, they are not considered equal when compared using `==` or `===`. This is because they are being compared by their reference (location in memory), unlike primitive values which are compared by value.\n\nIn order to test if two objects are equal in structure, a helper function is required. It will\niterate through the own properties of each object to test if they have the same values, including nested objects.\nOptionally, the prototypes of the objects may also be tested for equivalence by passing `true` as the 3rd argument.\n\nNote: this technique does not attempt to test equivalence of data structures other than\nplain objects, arrays, functions, dates and primitive values.\n\n```js\nfunction isDeepEqual(obj1, obj2, testPrototypes = false) {\n  if (obj1 === obj2) {\n    return true\n  }\n\n  if (typeof obj1 === \"function\" && typeof obj2 === \"function\") {\n    return obj1.toString() === obj2.toString()\n  }\n\n  if (obj1 instanceof Date && obj2 instanceof Date) {\n    return obj1.getTime() === obj2.getTime()\n  }\n\n  const prototypesAreEqual = testPrototypes\n    ? isDeepEqual(\n      Object.getPrototypeOf(obj1),\n      Object.getPrototypeOf(obj2),\n      true\n    )\n    : true\n\n  const obj1Props = Object.getOwnPropertyNames(obj1)\n  const obj2Props = Object.getOwnPropertyNames(obj2)\n\n  return (\n    obj1Props.length === obj2Props.length &&\n    prototypesAreEqual &&\n    obj1Props.every(prop => isDeepEqual(obj1[prop], obj2[prop]))\n  )\n}\n```",
     "goodToHear": [
       "Primitives like strings and numbers are compared by their value",
       "Objects on the other hand are compared by their reference (location in memory)"
@@ -144,7 +144,7 @@
     "expertise": 1,
     "questionCodeBlocks": [],
     "answerCodeBlocks": [
-      "```js\nfunction isDeepEqual(obj1, obj2, testPrototypes = false) {\n  if (obj1 === obj2) {\n    return true\n  }\n\n  if (typeof obj1 === \"function\" && typeof obj2 === \"function\") {\n    return obj1.toString() === obj2.toString()\n  }\n\n  if (obj1 instanceof Date && obj2 instanceof Date) {\n    return obj1.getTime() === obj2.getTime()\n  }\n\n  const prototypesAreEqual = testPrototypes\n    ? isDeepEqual(\n        Object.getPrototypeOf(obj1),\n        Object.getPrototypeOf(obj2),\n        true\n      )\n    : true\n\n  const obj1Props = Object.getOwnPropertyNames(obj1)\n  const obj2Props = Object.getOwnPropertyNames(obj2)\n\n  return (\n    obj1Props.length === obj2Props.length &&\n    prototypesAreEqual &&\n    obj1Props.every(prop => isDeepEqual(obj1[prop], obj2[prop]))\n  )\n}\n```"
+      "```js\nfunction isDeepEqual(obj1, obj2, testPrototypes = false) {\n  if (obj1 === obj2) {\n    return true\n  }\n\n  if (typeof obj1 === \"function\" && typeof obj2 === \"function\") {\n    return obj1.toString() === obj2.toString()\n  }\n\n  if (obj1 instanceof Date && obj2 instanceof Date) {\n    return obj1.getTime() === obj2.getTime()\n  }\n\n  const prototypesAreEqual = testPrototypes\n    ? isDeepEqual(\n      Object.getPrototypeOf(obj1),\n      Object.getPrototypeOf(obj2),\n      true\n    )\n    : true\n\n  const obj1Props = Object.getOwnPropertyNames(obj1)\n  const obj2Props = Object.getOwnPropertyNames(obj2)\n\n  return (\n    obj1Props.length === obj2Props.length &&\n    prototypesAreEqual &&\n    obj1Props.every(prop => isDeepEqual(obj1[prop], obj2[prop]))\n  )\n}\n```"
     ]
   },
   {
@@ -399,6 +399,42 @@
     ]
   },
   {
+    "name": "html-multiple-header-footers.md",
+    "question": "Can a web page contain multiple `<header>` elements? What about `<footer>` elements?",
+    "answer": "Yes to both. The W3 documents state that the tags represent the header(`<header>`) and footer(`<footer>`) areas of their nearest ancestor \"section\". So not only can the page `<body>` contain a header and a footer, but so can every `<article>` and `<section>` element.",
+    "goodToHear": [
+      "W3 recommends having as many as you want, but only 1 of each for each \"section\" of your page, i.e. body, section etc."
+    ],
+    "links": [
+      "[StackOverflow - Using header or footer tag twice](https://stackoverflow.com/questions/4837269/html5-using-header-or-footer-tag-twice?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa)"
+    ],
+    "tags": [
+      "html"
+    ],
+    "expertise": 0,
+    "questionCodeBlocks": [],
+    "answerCodeBlocks": []
+  },
+  {
+    "name": "html-specification-implementation.md",
+    "question": "Discuss the differences between an HTML specification and a browser’s implementation thereof.",
+    "answer": "HTML specifications such as `HTML5` define a set of rules that a document must adhere to in order to be “valid” according to that specification. In addition, a specification provides instructions on how a browser must interpret and render such a document.\n\nA browser is said to “support” a specification if it handles valid documents according to the rules of the specification. As of yet, no browser supports all aspects of the `HTML5` specification (although all of the major browser support most of it), and as a result, it is necessary for the developer to confirm whether the aspect they are making use of will be supported by all of the browsers on which they hope to display their content. This is why cross-browser support continues to be a headache for developers, despite the improved specificiations.",
+    "goodToHear": [
+      "`HTML5` defines some rules to follow for an invalid `HTML5` document (i.e., one that contains syntactical errors)",
+      "However, invalid documents may contain anything, so it's impossible for the specification to handle all possibilities comprehensively. ",
+      "Thus, many decisions about how to handle malformed documents are left up to the browser."
+    ],
+    "links": [
+      "[HTML 5.2 WWW Specifications](https://www.w3.org/TR/html52/)"
+    ],
+    "tags": [
+      "html"
+    ],
+    "expertise": 1,
+    "questionCodeBlocks": [],
+    "answerCodeBlocks": []
+  },
+  {
     "name": "html-vs-xhtml.md",
     "question": "What are some differences that XHTML has compared to HTML?",
     "answer": "Some of the key differences are:\n\n* An XHTML element must have an XHTML `<DOCTYPE>`\n* Attributes values must be enclosed in quotes\n* Attribute minimization is forbidden (e.g. one has to use `checked=\"checked\"` instead of `checked`)\n* Elements must always be properly nested\n* Elements must always be closed\n* Special characters must be escaped",
@@ -413,6 +449,42 @@
       "html"
     ],
     "expertise": 1,
+    "questionCodeBlocks": [],
+    "answerCodeBlocks": []
+  },
+  {
+    "name": "html5-semantic-elements-usage.md",
+    "question": "Briefly describe the correct usage of the following HTML5 semantic elements: `<header>`, `<article>`,` <section>`, `<footer>`",
+    "answer": "* <header> is used to contain introductory and navigational information about a section of the page. This can include the section heading, the author’s name, time and date of publication, table of contents, or other navigational information.\n\n* <article> is meant to house a self-contained composition that can logically be independently recreated outside of the page without losing it’s meaining. Individual blog posts or news stories are good examples.\n\n* <section> is a flexible container for holding content that shares a common informational theme or purpose.\n\n* <footer> is used to hold information that should appear at the end of a section of content and contain additional information about the section. Author’s name, copyright information, and related links are typical examples of such content.",
+    "goodToHear": [
+      "Other semantic elements are `<form>` and `<table>`"
+    ],
+    "links": [
+      "[HTML 5 Semantic Elements](https://www.w3schools.com/html/html5_semantic_elements.asp)"
+    ],
+    "tags": [
+      "html"
+    ],
+    "expertise": 0,
+    "questionCodeBlocks": [],
+    "answerCodeBlocks": []
+  },
+  {
+    "name": "html5-web-storage.md",
+    "question": "What is HTML5 Web Storage? Explain `localStorage` and `sessionStorage`.",
+    "answer": "With HTML5, web pages can store data locally within the user’s browser.\nThe data is stored in name/value pairs, and a web page can only access data stored by itself.\n\n**Differences between `localStorage` and `sessionStorage` regarding lifetime:**\n\n* Data stored through `localStorage` is permanent: it does not expire and remains stored on the user’s computer until a web app deletes it or the user asks the browser to delete it.\n* `sessionStorage` has the same lifetime as the top-level window or browser tab in which the data got stored. When the tab is permanently closed, any data stored through `sessionStorage` is deleted.\n\n**Differences between `localStorage` and `sessionStorage` regarding storage scope:**\nBoth forms of storage are scoped to the document origin so that documents with different origins will never share the stored objects.\n\n* `sessionStorage` is also scoped on a per-window basis. Two browser tabs with documents from the same origin have separate `sessionStorage` data.\n* Unlike in `localStorage`, the same scripts from the same origin can't access each other's `sessionStorage` when opened in different tabs.",
+    "goodToHear": [
+      "Earlier, this was done with cookies. ",
+      "The storage limit is far larger (at least 5MB) than with cookies and its faster.",
+      "The data is never transferred to the server and can only be used if the client specifically asks for it."
+    ],
+    "links": [
+      "[W3Schools - HTML5 Webstorage](https://www.w3schools.com/html/html5_webstorage.asp)"
+    ],
+    "tags": [
+      "html"
+    ],
+    "expertise": 2,
     "questionCodeBlocks": [],
     "answerCodeBlocks": []
   },
@@ -508,7 +580,7 @@
   {
     "name": "node-error-first-callback.md",
     "question": "NodeJS uses a callback pattern in many instances where if an error were returned it will pass it as the first argument to the callback. What are the advantages of this pattern?\n\n```js\nfs.readFile(filePath, function(err, data) {  \n  if (err) {\n    // handle the error, the return is important here\n    // so execution stops here\n    return console.log(err)\n  }\n  // use the data object\n  console.log(data)\n})\n```",
-    "answer": "Advantages include:\n\n* Not needing to process data if there is no need to even reference it\n* Having a consistent API leads to more adoption\n* Ability to easily adapt a callback pattern that will lead to more maintainable code\n\nAs you can see from below example, the callback is called with null as its first argument if there is no error. However, if there is an error, you create an Error object, which then becomes the callback's only parameter. The callback function allows a user to easily know whether or not an error occurred. \n\nThis practice is also called the _Node.js error convention_, and this kind of callback implementations are called _error-first callbacks_.\n\n```js\nvar isTrue = function(value, callback) {\n  if (value === true) {\n    callback(null, \"Value was true.\");\n  } else {\n    callback(new Error(\"Value is not true!\"));\n  }\n}\n\nvar callback = function (error, retval) {\n  if (error) {\n    console.log(error);\n    return;\n  }\n  console.log(retval);\n}\n\nisTrue(false, callback);\nisTrue(true,  callback);\n\n{ stack: [Getter/Setter],\n  arguments: undefined,\n  type: undefined,\n  message: 'Value is not true!' }\nValue was true.\n```",
+    "answer": "Advantages include:\n\n* Not needing to process data if there is no need to even reference it\n* Having a consistent API leads to more adoption\n* Ability to easily adapt a callback pattern that will lead to more maintainable code\n\nAs you can see from below example, the callback is called with null as its first argument if there is no error. However, if there is an error, you create an Error object, which then becomes the callback's only parameter. The callback function allows a user to easily know whether or not an error occurred. \n\nThis practice is also called the _Node.js error convention_, and this kind of callback implementations are called _error-first callbacks_.\n\n```js\nvar isTrue = function(value, callback) {\n  if (value === true) {\n    callback(null, \"Value was true.\")\n  } else {\n    callback(new Error(\"Value is not true!\"))\n  }\n}\n\nvar callback = function (error, retval) {\n  if (error) {\n    console.log(error)\n    return\n  }\n  console.log(retval)\n}\n\nisTrue(false, callback)\nisTrue(true,  callback)\n\n/*\n  { stack: [Getter/Setter],\n    arguments: undefined,\n    type: undefined,\n    message: 'Value is not true!' }\n  Value was true.\n*/\n```",
     "goodToHear": [
       "This is just a convention. However, you should stick to it."
     ],
@@ -518,14 +590,14 @@
     ],
     "tags": [
       "node",
-      " javascript"
+      "javascript"
     ],
     "expertise": 1,
     "questionCodeBlocks": [
       "```js\nfs.readFile(filePath, function(err, data) {  \n  if (err) {\n    // handle the error, the return is important here\n    // so execution stops here\n    return console.log(err)\n  }\n  // use the data object\n  console.log(data)\n})\n```"
     ],
     "answerCodeBlocks": [
-      "```js\nvar isTrue = function(value, callback) {\n  if (value === true) {\n    callback(null, \"Value was true.\");\n  } else {\n    callback(new Error(\"Value is not true!\"));\n  }\n}\n\nvar callback = function (error, retval) {\n  if (error) {\n    console.log(error);\n    return;\n  }\n  console.log(retval);\n}\n\nisTrue(false, callback);\nisTrue(true,  callback);\n\n{ stack: [Getter/Setter],\n  arguments: undefined,\n  type: undefined,\n  message: 'Value is not true!' }\nValue was true.\n```"
+      "```js\nvar isTrue = function(value, callback) {\n  if (value === true) {\n    callback(null, \"Value was true.\")\n  } else {\n    callback(new Error(\"Value is not true!\"))\n  }\n}\n\nvar callback = function (error, retval) {\n  if (error) {\n    console.log(error)\n    return\n  }\n  console.log(retval)\n}\n\nisTrue(false, callback)\nisTrue(true,  callback)\n\n/*\n  { stack: [Getter/Setter],\n    arguments: undefined,\n    type: undefined,\n    message: 'Value is not true!' }\n  Value was true.\n*/\n```"
     ]
   },
   {
@@ -664,7 +736,7 @@
   {
     "name": "promises.md",
     "question": "What are Promises?",
-    "answer": "The `Promise` object represents the eventual completion (or failure) of an asynchronous operation, and its resulting value.\nAn example can be the following snippet, which after 100ms prints out the result string to the standard output. Also, note the catch, which can be used for error handling. `Promise`s are chainable.\n\n```js\nnew Promise((resolve, reject) => {\n  setTimeout(() => {\n    resolve('result')\n  }, 100)\n})\n  .then(console.log)\n  .catch(console.error)\n```",
+    "answer": "The `Promise` object represents the eventual completion (or failure) of an asynchronous operation, and its resulting value.\nAn example can be the following snippet, which after 100ms prints out the result string to the standard output. Also, note the catch, which can be used for error handling. `Promise`s are chainable.\n\n```js\nnew Promise((resolve, reject) => {\n  setTimeout(() => {\n    resolve(\"result\")\n  }, 100)\n})\n  .then(console.log)\n  .catch(console.error)\n```",
     "goodToHear": [
       "Take a look into the other questions regarding `Promise`s!"
     ],
@@ -677,7 +749,7 @@
     "expertise": 0,
     "questionCodeBlocks": [],
     "answerCodeBlocks": [
-      "```js\nnew Promise((resolve, reject) => {\n  setTimeout(() => {\n    resolve('result')\n  }, 100)\n})\n  .then(console.log)\n  .catch(console.error)\n```"
+      "```js\nnew Promise((resolve, reject) => {\n  setTimeout(() => {\n    resolve(\"result\")\n  }, 100)\n})\n  .then(console.log)\n  .catch(console.error)\n```"
     ]
   },
   {
@@ -701,7 +773,7 @@
   },
   {
     "name": "reference-example.md",
-    "question": "What is the output of the following code?\n\n```js\nconst a = [1, 2, 3]\nconst b = [1, 2, 3]\nconst c = \"1,2,3\"\n\nconsole.log(a == c)\nconsole.log(a == b)\n```",
+    "question": "What is the output of the following code?\n\n```js\nconst a = [1, 2, 3]\nconst b = [1, 2, 3]\nconst c = \"1,2,3\"\n\n/* eslint eqeqeq: 0 */\nconsole.log(a == c)\nconsole.log(a == b)\n```",
     "answer": "The first `console.log` outputs `true` because JavaScript's compiler performs type conversion and therefore it compares to strings by their value. On the other hand, the second `console.log` outputs `false` because Arrays are Objects and Objects are compared by reference.",
     "goodToHear": [
       "JavaScript performs automatic type conversion",
@@ -716,7 +788,7 @@
     ],
     "expertise": 1,
     "questionCodeBlocks": [
-      "```js\nconst a = [1, 2, 3]\nconst b = [1, 2, 3]\nconst c = \"1,2,3\"\n\nconsole.log(a == c)\nconsole.log(a == b)\n```"
+      "```js\nconst a = [1, 2, 3]\nconst b = [1, 2, 3]\nconst c = \"1,2,3\"\n\n/* eslint eqeqeq: 0 */\nconsole.log(a == c)\nconsole.log(a == b)\n```"
     ],
     "answerCodeBlocks": []
   },
@@ -934,7 +1006,7 @@
   {
     "name": "wrap-content.md",
     "question": "What is the reason for wrapping the entire contents of a JavaScript source file in a function?",
-    "answer": "This technique is very common in JavaScript libraries. It creates a closure around the entire contents of the file which creates a private namespace and thereby helps avoid potential name clashes between different JavaScript modules and libraries. The function is usually immediately invoked so that the namespace (library name) is assigned the return value of the function.\n\n```js\nconst myLibrary = function () {\n  var privateVariable = 2;\n  return {\n    publicMethod: () => privateVariable;\n  };\n}();\nprivateVariable; // ReferenceError\nmyLibrary.publicMethod(); // 2\n```",
+    "answer": "This technique is very common in JavaScript libraries. It creates a closure around the entire contents of the file which creates a private namespace and thereby helps avoid potential name clashes between different JavaScript modules and libraries. The function is usually immediately invoked so that the namespace (library name) is assigned the return value of the function.\n\n```js\nconst myLibrary = function () {\n  var privateVariable = 2\n  return {\n    publicMethod: () => privateVariable\n  }\n}()\nprivateVariable // ReferenceError\nmyLibrary.publicMethod() // 2\n```",
     "goodToHear": [
       "Used among many popular JavaScript libraries",
       "Creates a private namespace"
@@ -948,7 +1020,7 @@
     "expertise": 1,
     "questionCodeBlocks": [],
     "answerCodeBlocks": [
-      "```js\nconst myLibrary = function () {\n  var privateVariable = 2;\n  return {\n    publicMethod: () => privateVariable;\n  };\n}();\nprivateVariable; // ReferenceError\nmyLibrary.publicMethod(); // 2\n```"
+      "```js\nconst myLibrary = function () {\n  var privateVariable = 2\n  return {\n    publicMethod: () => privateVariable\n  }\n}()\nprivateVariable // ReferenceError\nmyLibrary.publicMethod() // 2\n```"
     ]
   },
   {

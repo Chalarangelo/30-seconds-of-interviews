@@ -12,9 +12,9 @@ export default {
       dropdowns: target.closest(".Dropdown__button")
         ? dropdowns
         : dropdowns.map(d => ({
-            ...d,
-            isOpen: false
-          }))
+          ...d,
+          isOpen: false
+        }))
     }),
     set: ({ dropdown, name }) => ({ [dropdown]: name }),
     toggleDropdown: name => state => ({

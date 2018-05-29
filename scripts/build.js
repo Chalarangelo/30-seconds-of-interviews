@@ -3,20 +3,43 @@ const fs = require("fs-extra")
 const path = require("path")
 const chalk = require("chalk")
 const util = require("./util.js")
-const { QUESTIONS_PATH, TAG_NAMES } = util
+const questions = require("../data/questions.json")
+
+const { TAG_NAMES } = util
 
 const STATIC_PARTS_PATH = "./static-parts"
 
-let tagOrder = ["javascript", "css", "html"]
-let questions = {}
-let questionTags = {}
 let startPart = ""
 let endPart = ""
 let output = ""
 
-console.time("Builder")
+// methods for converting to markdown
+const hX = (n, text) => `\n${"#".repeat(n)} ${text}`
 
-questions = util.readQuestions(QUESTIONS_PATH)
+const detailsTOC = (title, questionsArray) => {
+  const list = questionsArray
+    .map(
+      question =>
+        `* [${question.question
+          .replace("\n", "")
+          .split("\`\`\`")[0].trim() // for questions with code blocks, only take the question
+        }](#${util.toKebabCase(question.question)})`
+    )
+    .join("\n")
+  return `\n\n<details>\n<summary>${title}</summary>\n\n${list}\n</details>\n\n`
+}
+const detailsQuestion = (title, question) => {
+  let answer = question.answer.toString()
+  // add Good to Hear
+  answer += `\n\n${hX(4, "Good to hear")}\n\n`
+  answer += `\n${question.goodToHear.map(s => `* ${s}`).join("\n")}`
+  // add Additional links
+  answer += `\n\n${hX(5, "Additional links")}\n\n`
+  answer += `\n${question.links.map(link => `* ${link}`).join("\n")}`
+  return `\n\n<details>\n<summary>${title}</summary>\n\n${answer}\n</details>\n\n`
+}
+
+console.time("Builder")
 
 try {
   startPart = fs.readFileSync(
@@ -34,56 +57,59 @@ try {
 
 try {
   // add static part for start
-  output += `${startPart + "\n"}`
+  output += `${`${startPart  }\n`}`
 
-  // add table of contents
-  for (let questionKey in questions) {
-    let tags = /tags:\s+\((.*)\)/g
-      .exec(questions[questionKey])[1]
-      .split(",")
-      .map(v => v.trim())
-    questionTags[questionKey] = tags
-    tags.forEach(v => (tagOrder.includes(v) ? "" : tagOrder.push(v)))
-  }
+  const questionsInTag = {}
 
-  for (tag of tagOrder) {
-    output += `\n### ${
-      TAG_NAMES[tag]
-    } \n\n<details>\n<summary>View contents</summary>\n\n`
-    let taggedSnippets = Object.keys(questionTags).filter(
-      v => questionTags[v][0] === tag
-    )
-    for (let taggedSnippet of taggedSnippets) {
-      let title = /###.+/g.exec(questions[taggedSnippet])[0]
-      output += `* [${title.replace("###", "")}](#${util.toKebabCase(
-        title.toLowerCase()
-      )}) \n`
-    }
-    output += `</details>\n`
-  }
+  // put questions into respective tag-keyed arrays
+  questions.forEach(question => {
+    question.tags.forEach(tag => {
+      if (Object.keys(questionsInTag).includes(tag)) {
+        questionsInTag[tag].push(question)
+      } else {
+        const newArr = []
+        newArr.push(question)
+        questionsInTag[tag] = newArr
+      }
+    })
+  })
+
+  // sort questionsInTag by size
+  const tags = Object.keys(questionsInTag)
+  tags.sort(
+    (tag1, tag2) =>
+      questionsInTag[tag1].length === questionsInTag[tag2].length
+        ? 0
+        : questionsInTag[tag1].length < questionsInTag[tag2].length
+          ? 1
+          : -1
+  )
+
+  // write Table of Contents
+  tags.forEach(tagKey => {
+    const taggedQuestions = questionsInTag[tagKey]
+    output += hX(3, TAG_NAMES[tagKey])
+    output += detailsTOC("View contents", taggedQuestions)
+  })
+
+  // delimeter after TOC
   output += "\n---\n"
 
-  for (tag of tagOrder) {
-    output += `\n## ${TAG_NAMES[tag]}\n\n`
-    let taggedSnippets = Object.keys(questionTags).filter(
-      v => questionTags[v][0] === tag
-    )
-    for (let taggedSnippet of taggedSnippets) {
-      output += `${questions[taggedSnippet].replace(
-        /####\s+Answer/g,
-        "#### Answer\n\n<details>\n<summary>View answer</summary>"
-      )}</details> \n\n<br>[⬆ Back to top](#table-of-contents)\n\n`
-    }
-    output += "\n---\n"
-  }
-
-  // loop over questions and add them to output
-  // for (let questionKey in questions) {
-  //   output += `${questions[questionKey]}`;
-  // }
+  // write actual questions
+  tags.forEach(tagKey => {
+    output += hX(2, TAG_NAMES[tagKey])
+    const taggedQuestions = questionsInTag[tagKey]
+    // sort questions by expertise
+    taggedQuestions.sort((q1, q2) => q1.expertise - q2.expertise)
+    taggedQuestions.forEach(question => {
+      output += hX(3, question.question)
+      output += detailsQuestion("View answer", question)
+      output += "\n\n<br>[⬆ Back to top](#table-of-contents)\n\n"
+    })
+  })
 
   // add static part for end
-  output += `\n${endPart + "\n"}`
+  output += `\n${`${endPart  }\n`}`
 
   fs.writeFileSync("README.md", output)
 } catch (err) {

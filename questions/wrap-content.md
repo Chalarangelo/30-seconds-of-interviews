@@ -6,13 +6,13 @@ This technique is very common in JavaScript libraries. It creates a closure arou
 
 ```js
 const myLibrary = function () {
-  var privateVariable = 2;
+  var privateVariable = 2
   return {
-    publicMethod: () => privateVariable;
-  };
-}();
-privateVariable; // ReferenceError
-myLibrary.publicMethod(); // 2
+    publicMethod: () => privateVariable
+  }
+}()
+privateVariable // ReferenceError
+myLibrary.publicMethod() // 2
 ```
 
 #### Good to hear

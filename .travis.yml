@@ -1,21 +1,27 @@
-os: osx
-language: node_js
-cache:
-  directories:
-    - node_modules
-node_js:
-- node
-install:
-- yarn install
-script:
-- yarn builder
-- yarn extractor
-- rm -rf docs
-- yarn build
-- touch docs/.nojekyll
-- chmod +x .travis/write_cname.sh
-- cd docs/ && ./../.travis/write_cname.sh
-- cd ../
-after_success:
-- chmod +x .travis/push.sh
-- .travis/push.sh
+jobs:
+  include:
+    - stage: conditional_build
+      notifications:
+        email:
+          on_success: [change]
+          on_failure: [change]
+      language: node_js
+      node_js:
+        - node
+      install:
+        - yarn install
+      before_script:
+        - chmod +x .travis/checkIfCron.sh && ./.travis/checkIfCron.sh
+        - yarn lint --fix
+        - yarn extractor
+        - yarn builder
+      script:
+        - chmod +x .travis/build.sh && ./.travis/build.sh
+      after_script:
+        - test $TRAVIS_EVENT_TYPE = cron 
+          && echo -e "\e[95mDeploying to Repository" 
+          && chmod +x .travis/push.sh 
+          && ./.travis/push.sh
+      cache:
+        directories:
+          - node_modules

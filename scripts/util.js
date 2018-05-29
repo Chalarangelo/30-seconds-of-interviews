@@ -1,3 +1,5 @@
+/* eslint no-console: 0, no-cond-assign: 0 */
+
 const fs = require("fs-extra")
 const path = require("path")
 const chalk = require("chalk")
@@ -17,6 +19,7 @@ const attempt = (task, cb) => {
   } catch (e) {
     console.log(`${chalk.red("ERROR!")} During ${task}: ${e}`)
     process.exit(1)
+    return null
   }
 }
 
@@ -24,6 +27,7 @@ const readQuestions = () =>
   attempt("read questions", () =>
     fs
       .readdirSync(QUESTIONS_PATH)
+      .filter(f => !f.includes("eslint"))
       .sort((a, b) => (a.toLowerCase() < b.toLowerCase() ? -1 : 1))
       .reduce((acc, name) => {
         acc[name] = fs
@@ -40,18 +44,19 @@ const toKebabCase = str =>
     .map(x => x.toLowerCase())
     .join("-")
 
-const capitalize = ([first, ...rest], lowerRest = false) =>
+const capitalize = ([ first, ...rest ], lowerRest = false) =>
   first.toUpperCase() +
   (lowerRest ? rest.join("").toLowerCase() : rest.join(""))
 
 const getCodeBlocks = str => {
   const regex = /```[.\S\s]*?```/g
-  let results = []
+  const results = []
+  let m = null
   while ((m = regex.exec(str)) !== null) {
     if (m.index === regex.lastIndex) {
-      regex.lastIndex++
+      regex.lastIndex+=1
     }
-    m.forEach((match, groupIndex) => {
+    m.forEach((match, groupIndex) => { // eslint-disable-line no-unused-vars
       results.push(match)
     })
   }
