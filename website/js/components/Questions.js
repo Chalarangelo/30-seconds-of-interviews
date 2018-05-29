@@ -2,17 +2,6 @@ import { h } from "hyperapp"
 import Question from "./Question"
 import { EXPERTISE_STRINGS } from "../utils"
 
-const filterBy = ({ q, category, expertise }) => {
-  const isOfCorrectCategory =
-    category.toLowerCase() === "all" || q.tags.includes(category.toLowerCase())
-
-  const isOfCorrectExpertise =
-    expertise.toLowerCase() === "all" ||
-    EXPERTISE_STRINGS[q.expertise] === expertise.toLowerCase()
-
-  return isOfCorrectCategory && isOfCorrectExpertise
-}
-
 export default () => state => {
   const questions = state.questions
     .filter(
@@ -24,10 +13,10 @@ export default () => state => {
       switch (state.filter.expertise.toLowerCase()) {
         case EXPERTISE_STRINGS[0]:
           return q1.expertise - q2.expertise
-          break
         case EXPERTISE_STRINGS[2]:
           return q2.expertise - q1.expertise
-          break
+        default:
+          return 1
       }
     })
     .map(q => <Question {...q} />)

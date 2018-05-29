@@ -17,9 +17,10 @@ export default {
           }
         }
       }
+      return null
     },
     set: ({ dropdown, name }) => ({ [dropdown]: name }),
-    toggleDropdown: name => state => ({
+    toggleDropdown: () => state => ({
       dropdown: {
         ...state.dropdown,
         isOpen: !state.dropdown.isOpen
