@@ -5,6 +5,7 @@ export default {
   filter: {
     category: "All",
     expertise: "Junior",
+    sortAlpha: true,    
     dropdown: {
       name: "Category",
       isOpen: false,

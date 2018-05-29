@@ -1,15 +1,16 @@
 import { h } from "hyperapp"
-import feather from "feather-icons"
+import Icon from "./Icon"
 
-export default ({},children) => (state, actions) => ( // eslint-disable-line no-empty-pattern
-  <button
-    class={"btn SortButton"}
-    onclick={() => actions.setSortBy()}
-    data-tooltip={
-      `Sort ${state.sortBy}`
-    }
-  >
-    {children}
-    <i innerHTML={feather.icons["align-right"].toSvg({ class: "btn__icon" })} />
-  </button>
+export default () => (state, actions) => (
+  <div class="Dropdown">
+    <div>
+      <label class="Dropdown__label">Sort by</label>
+    </div>
+    <button class="btn Dropdown__button"
+      onclick={() => actions.filter.onSortDirectionChange()}
+    >
+      <span>Expertise</span>
+      {state.filter.sortAlpha ? <Icon class="btn__icon" name="arrow-down" /> : <Icon class="btn__icon" name="arrow-up" />}
+    </button>
+  </div>
 )

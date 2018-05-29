@@ -8,6 +8,7 @@ export default {
     )
   }),
   filter: {
+    onSortDirectionChange: () => state => ({ sortAlpha: !state.sortAlpha }),
     onDocumentClick: event => state => {
       if (!event.target.closest(".Dropdown__button")) {
         return {
