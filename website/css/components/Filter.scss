@@ -1,16 +1,9 @@
 @import "../_vars.scss";
 
 .Filter {
-  padding: 25px 0;
+  margin-top: 25px;
 
   .container {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    padding: 0 2%;
-
-    @media (min-width: $breakpoint-md) {
-      padding: 0 25px;
-    }
   }
 }
