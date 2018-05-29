@@ -16,7 +16,7 @@ export default ({
     <div class={`Question__badge is-${EXPERTISE_STRINGS[expertise]}`}>
       {EXPERTISE_STRINGS[expertise]}
     </div>
-    <div class="Question">
+    <div class="Question" key={name}>
       <div class={`Question__tag is-${tags[0]}`} />
       <Markdown class="Question__heading" content={`## ${question}`} />
       <button

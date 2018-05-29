@@ -1,5 +1,6 @@
 import { h } from "hyperapp"
-import feather from "feather-icons"
+import {cc} from "../utils"
+import Icon from "./Icon"
 
 export default ({ name, icon, dropdown }) => (state, actions) => (
   <button
@@ -8,7 +9,7 @@ export default ({ name, icon, dropdown }) => (state, actions) => (
       actions.filter.set({ dropdown: dropdown.toLowerCase(), name })
     }
   >
-    <i innerHTML={feather.icons[icon].toSvg({ class: "DropdownItem__icon" })} />
+    <Icon name={icon} class={`DropdownItem__icon is-${name.toLowerCase()}`} />
     <span>{name}</span>
   </button>
 )

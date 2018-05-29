@@ -12,6 +12,5 @@ const setInnerHTML = html => el => {
 export default ({ node = "div", content, ...props }) =>
   h(node, {
     ...props,
-    oncreate: setInnerHTML(marked(content)),
-    onupdate: setInnerHTML(marked(content))
+    oncreate: setInnerHTML(marked(content))
   })

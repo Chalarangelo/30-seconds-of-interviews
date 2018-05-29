@@ -12,6 +12,10 @@
   &:hover {
     background: #8385aa;
     color: white;
+    
+    .DropdownItem__icon {
+      color: white;
+    }
   }
 
   &__icon {
@@ -19,5 +23,21 @@
     margin-right: 8px;
     width: 20px;
     height: 20px;
+    
+    &.is-html {
+      color: $color-html;
+    }
+    
+    &.is-css {
+      color: $color-css;
+    }
+    
+    &.is-javascript {
+      color: $color-javascript;
+    }
+    
+    &.is-node {
+      color: $color-node;
+    }
   }
 }

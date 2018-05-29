@@ -11,6 +11,11 @@
     padding: 12px 15px;
     border-radius: 0 0 4px 4px;
     border-top: none;
+    font-size: 15px;
+    
+    @media (min-width: $breakpoint-sm) {
+      font-size: 17px;
+    }
   }
 
   &__items {
@@ -41,10 +46,11 @@
   &__label {
     display: block;
     font-weight: bold;
-    background: #c8cbf2;
-    padding: 5px;
+    background: linear-gradient(130deg, #f187d1, #6242fb);
+    color: white;
+    padding: 4px;
     border-radius: 4px 4px 0 0;
     text-align: center;
-    font-size: 14px;
+    font-size: 13px;
   }
 }
