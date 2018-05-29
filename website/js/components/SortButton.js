@@ -1,11 +1,10 @@
 import { h } from "hyperapp"
-import { cc } from "../utils"
 import feather from "feather-icons"
 
-export default ({ sortBy }, children) => (state, actions) => (
+export default ({},children) => (state, actions) => ( // eslint-disable-line no-empty-pattern
   <button
     class={"btn SortButton"}
-    onclick={() => actions.setSortBy(sortBy)}
+    onclick={() => actions.setSortBy()}
     data-tooltip={
       `Sort ${state.sortBy}`
     }

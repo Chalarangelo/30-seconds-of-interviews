@@ -1,6 +1,6 @@
 import { h } from "hyperapp"
-import { cc } from "../utils"
 import feather from "feather-icons"
+import { cc } from "../utils"
 
 export default ({ type, icon }, children) => (state, actions) => (
   <button
