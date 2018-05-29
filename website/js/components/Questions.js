@@ -15,9 +15,13 @@ export default () => state => (
           .sort((q1, q2) => {
             switch (state.filter.expertise.toLowerCase()) {
               case EXPERTISE_STRINGS[0]:
-                return q1.expertise - q2.expertise
+                return state.filter.sortAlpha
+                  ? q1.expertise - q2.expertise
+                  : q2.expertise - q1.expertise
               case EXPERTISE_STRINGS[2]:
-                return q2.expertise - q1.expertise
+                return state.filter.sortAlpha
+                  ? q2.expertise - q1.expertise
+                  : q1.expertise - q2.expertise
               default:
                 return 1
             }
