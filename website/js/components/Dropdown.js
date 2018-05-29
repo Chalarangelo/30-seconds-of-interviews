@@ -3,7 +3,7 @@ import { cc } from "../utils"
 import DropdownItem from "./DropdownItem"
 import Icon from "./Icon"
 
-export default ({ name, items, isOpen, position }) => (state, actions) => (
+export default ({ name, items, isOpen, position }) => state => (
   <div class="Dropdown">
     <div>
       <label class="Dropdown__label">{name}</label>
