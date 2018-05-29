@@ -1,6 +1,5 @@
 import { h } from "hyperapp"
 import feather from "feather-icons"
-import { cc } from "../utils"
 
 export default ({ name, icon, dropdown }) => (state, actions) => (
   <button

@@ -5,7 +5,7 @@ module.exports = {
     "node": true
   },
   "extends": [
-    "airbnb-base", 
+    "airbnb-base",
     "prettier"
   ],
   "plugins": [
@@ -28,11 +28,11 @@ module.exports = {
       2
     ],
     "no-plusplus": [
-      "error", 
+      "error",
       { "allowForLoopAfterthoughts": true }
     ],
     'no-unused-vars': [
-      2, 
+      2,
       { 'varsIgnorePattern': 'h' }
     ],
     "linebreak-style": [
@@ -50,17 +50,21 @@ module.exports = {
     "array-bracket-spacing": [
       "error",
       "always",
-      { 
-        "singleValue": false 
+      {
+        "singleValue": false
       }
     ],
     "object-curly-spacing": [
       "error",
       "always",
-      { 
+      {
         "arraysInObjects": false,
         "objectsInObjects": false
       }
+    ],
+    "no-param-reassign": [
+      "error",
+      { "props": false }
     ]
   }
-};
+}
