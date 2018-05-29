@@ -1,6 +1,6 @@
 import { h } from "hyperapp"
-import feather from "feather-icons"
 import { cc } from "../utils"
+import Icon from "./Icon"
 
 export default () => (state, actions) => (
   <button
@@ -9,10 +9,6 @@ export default () => (state, actions) => (
     })}
     onclick={actions.scrollBackToTop}
   >
-    <i
-      innerHTML={feather.icons["arrow-up"].toSvg({
-        class: "BackToTopButton__icon"
-      })}
-    />
+    <Icon name="arrow-up" class="BackToTopButton__icon" />
   </button>
 )

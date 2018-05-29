@@ -9,21 +9,21 @@ export default {
   }),
   filter: {
     onDocumentClick: event => state => {
-      if (!event.target.closest(".Dropdown__button") && state.dropdowns.some(d => d.isOpen)) {
+      if (!event.target.closest(".Dropdown__button")) {
         return {
-          dropdowns: state.dropdowns.map(d => ({
-            ...d,
+          dropdown: {
+            ...state.dropdown,
             isOpen: false
-          }))
+          }
         }
       }
     },
     set: ({ dropdown, name }) => ({ [dropdown]: name }),
     toggleDropdown: name => state => ({
-      dropdowns: state.dropdowns.map(d => ({
-        ...d,
-        isOpen: d.name === name ? !d.isOpen : false
-      }))
+      dropdown: {
+        ...state.dropdown,
+        isOpen: !state.dropdown.isOpen
+      }
     })
   }
 }

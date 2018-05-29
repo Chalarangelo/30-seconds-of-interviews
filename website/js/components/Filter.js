@@ -4,7 +4,7 @@ import Dropdown from "./Dropdown"
 export default () => state => (
   <div class="Filter">
     <div class="container">
-      {state.filter.dropdowns.map(d => <Dropdown {...d} />)}
+      <Dropdown {...state.filter.dropdown} />
     </div>
   </div>
 )

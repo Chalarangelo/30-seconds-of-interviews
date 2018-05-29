@@ -12,6 +12,7 @@
     border-radius: 0 0 4px 4px;
     border-top: none;
     font-size: 15px;
+    width: 100%;
 
     @media (min-width: $breakpoint-sm) {
       font-size: 17px;
@@ -47,11 +48,11 @@
   &__label {
     display: block;
     font-weight: bold;
-    background: linear-gradient(130deg, #f187d1, #6242fb);
+    background: linear-gradient(130deg, #87bbf1, #6242fb);
     color: white;
-    padding: 4px;
+    padding: 6px 20px;
     border-radius: 4px 4px 0 0;
     text-align: center;
-    font-size: 13px;
+    font-size: 15px;
   }
 }
