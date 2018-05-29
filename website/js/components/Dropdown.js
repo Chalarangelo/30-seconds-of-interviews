@@ -8,12 +8,7 @@ export default ({ name, items, isOpen, position }) => (state, actions) => (
     <div>
       <label class="Dropdown__label">{name}</label>
     </div>
-    <button
-      class={cc("btn Dropdown__button", {
-        "is-open": isOpen
-      })}
-      onmousedown={() => actions.filter.toggleDropdown(name)}
-    >
+    <button class="btn Dropdown__button">
       <span>{state.filter[name.toLowerCase()]}</span>
       <Icon class="btn__icon" name="chevron-down" />
     </button>
