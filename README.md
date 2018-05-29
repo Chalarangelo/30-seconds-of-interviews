@@ -12,6 +12,7 @@
   <a href="https://gitter.im/30-seconds-of-interviews/Lobby"><img src="https://img.shields.io/badge/gitter-join%20chat%20%E2%86%92-brightgreen.svg" alt="gitter"></a>
     <a href="https://github.com/fejes713/30-seconds-of-interviews/blob/master/CONTRIBUTING.md"><img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg" alt="PRs welcome"></a>
   <a href="https://travis-ci.com/fejes713/30-seconds-of-interviews"><img src="https://travis-ci.com/fejes713/30-seconds-of-interviews.svg?token=uZrzJhwCxqfwx7TdXzc4&branch=master" alt="travis"></a>
+  <a href="https://www.patreon.com/fejes713"><img src="https://img.shields.io/badge/Patreon-support%20us-orange.svg" alt="patreon"></a>
   <a href=""><img src="https://img.shields.io/badge/producthunt-vote-orange.svg" alt="producthunt"></a>
   <a href="https://github.com/fejes713/30-seconds-of-interviews/blob/master/LICENSE"><img src="https://img.shields.io/badge/licence-MIT-blue.svg" alt="licence"></a>
 </p>
@@ -25,6 +26,12 @@ Interviews are daunting and can make even the most seasoned expert forget things
 ## View online
 
 <a href="https://30secondsofinterviews.org"><img src="promo.jpg" alt="30 Seconds of Interviews promo"></a>
+
+<br>
+
+## Sponsors
+
+All financial support on [Patreon](https://www.patreon.com/fejes713) will be equally split between core colaborators on projects in the way of purchasing educational materials and courses.
 
 ## Contributing
 
@@ -1638,13 +1645,13 @@ Yes to both. The W3 documents state that the tags represent the header(`<header>
 <details>
 <summary>View answer</summary>
 
-* <header> is used to contain introductory and navigational information about a section of the page. This can include the section heading, the author’s name, time and date of publication, table of contents, or other navigational information.
+* `<header>` is used to contain introductory and navigational information about a section of the page. This can include the section heading, the author’s name, time and date of publication, table of contents, or other navigational information.
 
-* <article> is meant to house a self-contained composition that can logically be independently recreated outside of the page without losing it’s meaining. Individual blog posts or news stories are good examples.
+* `<article>` is meant to house a self-contained composition that can logically be independently recreated outside of the page without losing it’s meaining. Individual blog posts or news stories are good examples.
 
-* <section> is a flexible container for holding content that shares a common informational theme or purpose.
+* `<section>` is a flexible container for holding content that shares a common informational theme or purpose.
 
-* <footer> is used to hold information that should appear at the end of a section of content and contain additional information about the section. Author’s name, copyright information, and related links are typical examples of such content.
+* `<footer>` is used to hold information that should appear at the end of a section of content and contain additional information about the section. Author’s name, copyright information, and related links are typical examples of such content.
 
 
 #### Good to hear
