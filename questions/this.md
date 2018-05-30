@@ -1,51 +1,76 @@
-### How does `this` work?
+### What is the `this` keyword and how does it work?
 
 #### Answer
 
-The `this` keyword is an object that represents the context of an executing function. Regular functions can have their `this` value changed with `.call`, `.apply` and `.bind`. Arrow functions implicitly bind `this` so that it refers to the context of its lexical environment, regardless of whether or not its context is set explicitly with `call`.
+The `this` keyword is an object that represents the context of an executing function. Regular functions can have their `this` value changed with the methods `call()`, `apply()` and `bind()`. Arrow functions implicitly bind `this` so that it refers to the context of its lexical environment, regardless of whether or not its context is set explicitly with `call()`.
 
 Here are some common examples of `this`:
 
+##### Object literals
+
+`this` refers to the object itself inside regular functions if the object precedes the invocation of the function.
+
+Properties set as `this` do not refer to the object.
+
 ```js
-// Object literals
 var myObject = {
+  property: this,
   regularFunction: function() {
     return this
   },
   arrowFunction: () => {
     return this
-  }
+  },
+  iife: (function() {
+    return this
+  })()
 }
 myObject.regularFunction() // myObject
-myObject.arrowFunction() // NOT myObject
-const withoutContextFunction = myObject.regularFunction
-withoutContextFunction() // NOT myObject
+myObject["regularFunction"]() // my Object
 
-// Event listeners
+myObject.property // NOT myObject; lexical `this`
+myObject.arrowFunction() // NOT myObject; lexical `this`
+myObject.iife() // NOT myObject; lexical `this`
+const regularFunction = myObject.regularFunction
+regularFunction() // NOT myObject; lexical `this`
+```
+
+##### Event listeners
+
+```js
 document.body.addEventListener("click", function() {
   console.log(this) // document.body
 })
+```
 
-// Classes
+##### Constructors
+
+```js
 class myClass {
   constructor() {
     console.log(this) // myClassInstance
   }
 }
 var myClassInstance = new myClass()
+```
 
-// Manual
+##### Manual
+
+```js
 var myFunction = function() {
   return this
 }
 myFunction.call({ customThis: true }) // { customThis: true }
+```
 
-// Unwanted `this`
+##### Unwanted `this`
+
+```js
 var obj = {
   arr: [1, 2, 3],
   doubleArr() {
     return this.arr.map(function(value) {
-      // this === this.arr
+      // this is now this.arr
       return this.double(value)
     })
   },

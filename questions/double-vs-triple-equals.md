@@ -6,9 +6,9 @@ Triple equals (`===`) checks for strict equality, which means both the type and 
 
 #### Good to hear
 
-* Whenever possible, use triple equals to test equality because loose equality `==` can have unintuitive results
-* Type coercion means the values are converted into the same type
-* Mention of falsy values and their comparison
+* Whenever possible, use triple equals to test equality because loose equality `==` can have unintuitive results.
+* Type coercion means the values are converted into the same type.
+* Mention of falsy values and their comparison.
 
 ##### Additional links
 
