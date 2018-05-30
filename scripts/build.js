@@ -25,7 +25,7 @@ const detailsTOC = (title, questionsArray) => {
             .replace("\n", "")
             .split("```")[0]
             .trim() // for questions with code blocks, only take the question
-        }](#${util.toKebabCase(question.question)})`
+        }](#${util.getAnchor(question.question)})`
     )
     .join("\n")
   return `\n\n<details>\n<summary>${title}</summary>\n\n${list}\n</details>\n\n`
