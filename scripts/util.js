@@ -64,10 +64,18 @@ const getCodeBlocks = str => {
   return results
 }
 
+const getAnchor = val =>
+  toKebabCase(
+    val
+      .replace("()", "")
+      .toLowerCase()
+      .replace("`", "")
+  )
+
 module.exports = {
   attempt,
   readQuestions,
-  toKebabCase,
+  getAnchor,
   capitalize,
   getCodeBlocks,
   QUESTIONS_PATH,
