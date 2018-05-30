@@ -1,7 +1,5 @@
 /* eslint no-restricted-globals: 0 */
-
 import { app } from "hyperapp"
-import Prism from "prismjs"
 import "focus-visible"
 import "./css/index.scss"
 import "./js/browser"
@@ -19,6 +17,4 @@ setTimeout(() => {
       "is-visible"
     )
   })
-
-  addEventListener("click", main.filter.onDocumentClick)
 })

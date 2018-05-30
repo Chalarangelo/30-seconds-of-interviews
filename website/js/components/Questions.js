@@ -1,6 +1,5 @@
 import { h } from "hyperapp"
 import Question from "./Question"
-import { EXPERTISE_STRINGS } from "../utils"
 
 export default () => state => (
   <main class="Questions">
