@@ -16,12 +16,8 @@ pre[class*="language-"] {
   padding: 0;
   margin-bottom: 16px;
 
-  @media (min-width: $breakpoint-xs) {
+  @media (min-width: $breakpoint-sm) {
     font-size: 16px;
-  }
-
-  @media (min-width: $breakpoint-md) {
-    font-size: 17px;
   }
 }
 

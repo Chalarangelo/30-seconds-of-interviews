@@ -4,7 +4,7 @@
 
 The `this` keyword is an object that represents the context of an executing function. Regular functions can have their `this` value changed with the methods `call()`, `apply()` and `bind()`. Arrow functions implicitly bind `this` so that it refers to the context of its lexical environment, regardless of whether or not its context is set explicitly with `call()`.
 
-Here are some common examples of `this`:
+Here are some common examples of how `this` works:
 
 ##### Object literals
 
@@ -37,6 +37,8 @@ regularFunction() // NOT myObject; lexical `this`
 
 ##### Event listeners
 
+`this` refers to the element given listening to the event.
+
 ```js
 document.body.addEventListener("click", function() {
   console.log(this) // document.body
@@ -44,6 +46,8 @@ document.body.addEventListener("click", function() {
 ```
 
 ##### Constructors
+
+`this` refers to the newly created object.
 
 ```js
 class Example {
@@ -56,6 +60,8 @@ const myExample = new Example()
 
 ##### Manual
 
+With `call()` and `apply()`, `this` refers to the object passed as the first argument.
+
 ```js
 var myFunction = function() {
   return this
@@ -64,6 +70,8 @@ myFunction.call({ customThis: true }) // { customThis: true }
 ```
 
 ##### Unwanted `this`
+
+Because `this` can change depending on the scope, it can have unexpected values when using regular functions.
 
 ```js
 var obj = {
@@ -83,7 +91,7 @@ obj.doubleArr() // Uncaught TypeError: this.double is not a function
 
 #### Good to hear
 
-* In non-strict mode, global `this` is the global object (`window` in browsers), while in non-strict mode global `this` is `undefined`.
+* In non-strict mode, global `this` is the global object (`window` in browsers), while in strict mode global `this` is `undefined`.
 * `Function.prototype.call` and `Function.prototype.apply` set the `this` context of an executing function as the first argument, with `call` accepting a variadic number of arguments thereafter, and `apply` accepting an array as the second argument which are fed to the function in a variadic manner.
 * `Function.prototype.bind` returns a new function that enforces the `this` context as the first argument which cannot be changed by other functions.
 * If a function requires its `this` context to be changed based on how it is called, you must use the `function` keyword. Use arrow functions when you want `this` to be the surrounding (lexical) context.

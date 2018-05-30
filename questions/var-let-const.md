@@ -2,9 +2,9 @@
 
 #### Answer
 
-##### No keyword prefix
+##### No keyword
 
-When no keyword is prefixed before a variable declaration, it is either assigning a global variable if one does not exist, or reassigns an already declared variable. In non-strict mode, it will assign the variable as a property of the global object `this` (`window` in browsers). In strict mode, it will throw an error to prevent unwanted global variables from being created.
+When no keyword exists before a variable assignment, it is either assigning a global variable if one does not exist, or reassigns an already declared variable. In non-strict mode, if the variable has not yet been declared, it will assign the variable as a property of the global object (`window` in browsers). In strict mode, it will throw an error to prevent unwanted global variables from being created.
 
 ##### var
 
@@ -15,18 +15,21 @@ Below, by the time the the `setTimeout` callback executes, the loop has already 
 ```js
 for (var i = 0; i < 10; i++) {
   setTimeout(() => {
-    console.log(i) // logs `10` ten times
+    // logs `10` ten times
+    console.log(i)
   })
 }
 
-/* ==================== Solutions with `var` ==================== */
+/* Solutions with `var` */
 for (var i = 0; i < 10; i++) {
-  // Passed as an argument will use the value as-is in that point in time
+  // Passed as an argument will use the value as-is in
+  // that point in time
   setTimeout(console.log, 0, i)
 }
 
 for (var i = 0; i < 10; i++) {
-  // Create a new function scope that will use the value as-is in that point in time
+  // Create a new function scope that will use the value
+  // as-is in that point in time
   ;(i => {
     setTimeout(() => {
       console.log(i)
@@ -42,7 +45,8 @@ for (var i = 0; i < 10; i++) {
 ```js
 for (let i = 0; i < 10; i++) {
   setTimeout(() => {
-    console.log(i) // logs 0, 1, 2, 3, ...
+    // logs 0, 1, 2, 3, ...
+    console.log(i)
   })
 }
 ```
@@ -59,7 +63,7 @@ myObject = "hello" // Error
 
 #### Good to hear
 
-* All declarations are hoisted to the top of their scope
+* All declarations are hoisted to the top of their scope.
 * Show a common issue with using `var` and how `let` can solve it, as well as a solution that keeps `var`.
 * `var` should be avoided whenever possible and prefer `const` as the default declaration statement for all variables unless they will be reassigned later, then use `let` if so.
 
