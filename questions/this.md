@@ -37,7 +37,7 @@ regularFunction() // NOT myObject; lexical `this`
 
 ##### Event listeners
 
-`this` refers to the element given listening to the event.
+`this` refers to the element listening to the event.
 
 ```js
 document.body.addEventListener("click", function() {
