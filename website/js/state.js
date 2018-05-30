@@ -5,11 +5,9 @@ export default {
   filter: {
     category: "All",
     expertise: "Junior",
-    sortAlpha: true,    
+    sortAscending: true,
     dropdown: {
       name: "Category",
-      isOpen: false,
-      position: "left",
       items: [
         {
           name: "All",

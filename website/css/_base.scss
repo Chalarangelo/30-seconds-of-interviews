@@ -24,7 +24,7 @@ a {
   color: #3065e4;
   text-decoration: none;
 
-  &::after {
+  &:not(.btn)::after {
     content: "";
     position: absolute;
     top: calc(100% + 2px);

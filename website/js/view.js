@@ -1,8 +1,8 @@
 import { h } from "hyperapp"
+import BackToTopButton from "./components/BackToTopButton"
 import Header from "./components/Header"
 import Filter from "./components/Filter"
 import Questions from "./components/Questions"
-import BackToTopButton from "./components/BackToTopButton"
 
 export default () => (
   <div>

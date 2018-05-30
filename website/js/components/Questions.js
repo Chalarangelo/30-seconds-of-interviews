@@ -12,20 +12,12 @@ export default () => state => (
               state.filter.category.toLowerCase() === "all" ||
               q.tags.includes(state.filter.category.toLowerCase())
           )
-          .sort((q1, q2) => {
-            switch (state.filter.expertise.toLowerCase()) {
-              case EXPERTISE_STRINGS[0]:
-                return state.filter.sortAlpha
-                  ? q1.expertise - q2.expertise
-                  : q2.expertise - q1.expertise
-              case EXPERTISE_STRINGS[2]:
-                return state.filter.sortAlpha
-                  ? q2.expertise - q1.expertise
-                  : q1.expertise - q2.expertise
-              default:
-                return 1
-            }
-          })
+          .sort(
+            (q1, q2) =>
+              state.filter.sortAscending
+                ? q1.expertise - q2.expertise
+                : q2.expertise - q1.expertise
+          )
           .map(q => <Question {...q} />)}
       </ul>
     </div>
