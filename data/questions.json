@@ -45,8 +45,8 @@
   },
   {
     "name": "callback-hell.md",
-    "question": "How can you avoid callback hells?\n\n```js\ngetData(function(a){  \n  getMoreData(a, function(b){\n    getMoreData(b, function(c){ \n      getMoreData(c, function(d){ \n        getMoreData(d, function(e){ \n          //  ...\n        })\n      })\n    })\n  })\n})\n```",
-    "answer": "There are lots of ways to solve the issue of callback hells:\n\n* modularization: break callbacks into independent functions\n* use a control flow library, like async\n* use generators with Promises\n* use async/await (from v7 on)",
+    "question": "How can you avoid callback hells?\n\n```js\ngetData(function(a) {\n  getMoreData(a, function(b) {\n    getMoreData(b, function(c) {\n      getMoreData(c, function(d) {\n        getMoreData(d, function(e) {\n          // ...\n        })\n      })\n    })\n  })\n})\n```",
+    "answer": "Refactoring the functions to return promises and using `async/await` is usually the best option. Instead of supplying the functions with callbacks that cause deep nesting, they return a promise that can be `await`ed and will be resolved once the data has arrived, allowing the next line of code to be evaluated in a sync-like fashion.\n\nThe above code can be restructured like so:\n\n```js\nasync function asyncAwaitVersion() {\n  const a = await getData()\n  const b = await getMoreData(a)\n  const c = await getMoreData(b)\n  const d = await getMoreData(c)\n  const e = await getMoreData(e)\n  // ...\n}\n```\n\nBefore ES2017 brought `async/await`, promise chaining was used instead (whether ES2015's native ones or a library before that):\n\n```js\ngetData()\n  .then(getMoreData)\n  .then(getMoreData)\n  .then(getMoreData)\n  .then(getMoreData)\n  .then(...)\n```\n\nThere are lots of ways to solve the issue of callback hells:\n\n* modularization: break callbacks into independent functions\n* use a control flow library, like async\n* use generators with Promises\n* use async/await (from v7 on)",
     "goodToHear": [
       "As an efficient JavaScript developer, you have to avoid the constantly growing indentation level, produce clean and readable code and be able to handle complex flows."
     ],
@@ -60,14 +60,17 @@
     ],
     "expertise": 2,
     "questionCodeBlocks": [
-      "```js\ngetData(function(a){  \n  getMoreData(a, function(b){\n    getMoreData(b, function(c){ \n      getMoreData(c, function(d){ \n        getMoreData(d, function(e){ \n          //  ...\n        })\n      })\n    })\n  })\n})\n```"
+      "```js\ngetData(function(a) {\n  getMoreData(a, function(b) {\n    getMoreData(b, function(c) {\n      getMoreData(c, function(d) {\n        getMoreData(d, function(e) {\n          // ...\n        })\n      })\n    })\n  })\n})\n```"
     ],
-    "answerCodeBlocks": []
+    "answerCodeBlocks": [
+      "```js\nasync function asyncAwaitVersion() {\n  const a = await getData()\n  const b = await getMoreData(a)\n  const c = await getMoreData(b)\n  const d = await getMoreData(c)\n  const e = await getMoreData(e)\n  // ...\n}\n```",
+      "```js\ngetData()\n  .then(getMoreData)\n  .then(getMoreData)\n  .then(getMoreData)\n  .then(getMoreData)\n  .then(...)\n```"
+    ]
   },
   {
     "name": "callbacks.md",
     "question": "What is a callback?",
-    "answer": "Callbacks are functions passed as an argument to another function to be executed once an event has occurred or a certain task is complete, often used in asynchronous code. Callback functions are invoked later by a piece of code but can be declared on initialization without being invoked.\n\nEvent listeners are callbacks that are only executed when a specific event occurs.\n\n```js\nfunction onClick() {\n  console.log(\"The user clicked on the page.\")\n}\ndocument.addEventListener(\"click\", onClick)\n```",
+    "answer": "Callbacks are functions passed as an argument to another function to be executed once an event has occurred or a certain task is complete, often used in asynchronous code. Callback functions are invoked later by a piece of code but can be declared on initialization without being invoked.\n\nAs an example, event listeners are callbacks that are only executed when a specific event occurs.\n\n```js\nfunction onClick() {\n  console.log(\"The user clicked on the page.\")\n}\ndocument.addEventListener(\"click\", onClick)\n```",
     "goodToHear": [
       "Functions are first-class objects in JavaScript",
       "Callbacks vs Promises"
@@ -107,12 +110,12 @@
   },
   {
     "name": "closures.md",
-    "question": "What is a closure?",
-    "answer": "A closure is a function defined inside another function and has access to its lexical scope even when it is executing outside its lexical scope. The closure has access to variables in three scopes:\n\n* Variables declared in its own scope\n* Variables declared in the scope of the parent function\n* Variables declared in the global scope",
+    "question": "What is a closure? Can you give a useful example of one?",
+    "answer": "A closure is a function defined inside another function and has access to its lexical scope even when it is executing outside its lexical scope. The closure has access to variables in three scopes:\n\n* Variables declared in its own scope\n* Variables declared in the scope of the parent function\n* Variables declared in the global scope\n\nIn JavaScript, all functions are closures because they have access to the outer scope, but most functions don't utilise the usefulness of closures: the persistence of state. Closures are also sometimes called stateful functions because of this.\n\nIn addition, closures are the only way to store private data that can't be accessed from the outside in JavaScript. They are the key to the UMD (Universal Module Definition) pattern, which is frequently used in libraries that only expose a public API but keep the implementation details private, preventing name collisions with other libraries or the user's own code.",
     "goodToHear": [
       "Closures are useful because they let you associate data with a function that operates on that data.",
       "A closure can substitute an object with only a single method.",
-      "Closures can be used to emulate private methods."
+      "Closures can be used to emulate private properties and methods."
     ],
     "links": [
       "[MDN docs for closures](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures)",
@@ -129,7 +132,7 @@
   {
     "name": "comparing-objects.md",
     "question": "How do you compare two objects in JavaScript?",
-    "answer": "Even though two different objects can have the same properties with equal values, they are not considered equal when compared using `==` or `===`. This is because they are being compared by their reference (location in memory), unlike primitive values which are compared by value.\n\nIn order to test if two objects are equal in structure, a helper function is required. It will\niterate through the own properties of each object to test if they have the same values, including nested objects.\nOptionally, the prototypes of the objects may also be tested for equivalence by passing `true` as the 3rd argument.\n\nNote: this technique does not attempt to test equivalence of data structures other than\nplain objects, arrays, functions, dates and primitive values.\n\n```js\nfunction isDeepEqual(obj1, obj2, testPrototypes = false) {\n  if (obj1 === obj2) {\n    return true\n  }\n\n  if (typeof obj1 === \"function\" && typeof obj2 === \"function\") {\n    return obj1.toString() === obj2.toString()\n  }\n\n  if (obj1 instanceof Date && obj2 instanceof Date) {\n    return obj1.getTime() === obj2.getTime()\n  }\n\n  const prototypesAreEqual = testPrototypes\n    ? isDeepEqual(\n      Object.getPrototypeOf(obj1),\n      Object.getPrototypeOf(obj2),\n      true\n    )\n    : true\n\n  const obj1Props = Object.getOwnPropertyNames(obj1)\n  const obj2Props = Object.getOwnPropertyNames(obj2)\n\n  return (\n    obj1Props.length === obj2Props.length &&\n    prototypesAreEqual &&\n    obj1Props.every(prop => isDeepEqual(obj1[prop], obj2[prop]))\n  )\n}\n```",
+    "answer": "Even though two different objects can have the same properties with equal values, they are not considered equal when compared using `==` or `===`. This is because they are being compared by their reference (location in memory), unlike primitive values which are compared by value.\n\nIn order to test if two objects are equal in structure, a helper function is required. It will\niterate through the own properties of each object to test if they have the same values, including nested objects.\nOptionally, the prototypes of the objects may also be tested for equivalence by passing `true` as the 3rd argument.\n\nNote: this technique does not attempt to test equivalence of data structures other than\nplain objects, arrays, functions, dates and primitive values.\n\n```js\nfunction isDeepEqual(obj1, obj2, testPrototypes = false) {\n  if (obj1 === obj2) {\n    return true\n  }\n\n  if (typeof obj1 === \"function\" && typeof obj2 === \"function\") {\n    return obj1.toString() === obj2.toString()\n  }\n\n  if (obj1 instanceof Date && obj2 instanceof Date) {\n    return obj1.getTime() === obj2.getTime()\n  }\n\n  const prototypesAreEqual = testPrototypes\n    ? isDeepEqual(\n        Object.getPrototypeOf(obj1),\n        Object.getPrototypeOf(obj2),\n        true\n      )\n    : true\n\n  const obj1Props = Object.getOwnPropertyNames(obj1)\n  const obj2Props = Object.getOwnPropertyNames(obj2)\n\n  return (\n    obj1Props.length === obj2Props.length &&\n    prototypesAreEqual &&\n    obj1Props.every(prop => isDeepEqual(obj1[prop], obj2[prop]))\n  )\n}\n```",
     "goodToHear": [
       "Primitives like strings and numbers are compared by their value",
       "Objects on the other hand are compared by their reference (location in memory)"
@@ -144,13 +147,13 @@
     "expertise": 1,
     "questionCodeBlocks": [],
     "answerCodeBlocks": [
-      "```js\nfunction isDeepEqual(obj1, obj2, testPrototypes = false) {\n  if (obj1 === obj2) {\n    return true\n  }\n\n  if (typeof obj1 === \"function\" && typeof obj2 === \"function\") {\n    return obj1.toString() === obj2.toString()\n  }\n\n  if (obj1 instanceof Date && obj2 instanceof Date) {\n    return obj1.getTime() === obj2.getTime()\n  }\n\n  const prototypesAreEqual = testPrototypes\n    ? isDeepEqual(\n      Object.getPrototypeOf(obj1),\n      Object.getPrototypeOf(obj2),\n      true\n    )\n    : true\n\n  const obj1Props = Object.getOwnPropertyNames(obj1)\n  const obj2Props = Object.getOwnPropertyNames(obj2)\n\n  return (\n    obj1Props.length === obj2Props.length &&\n    prototypesAreEqual &&\n    obj1Props.every(prop => isDeepEqual(obj1[prop], obj2[prop]))\n  )\n}\n```"
+      "```js\nfunction isDeepEqual(obj1, obj2, testPrototypes = false) {\n  if (obj1 === obj2) {\n    return true\n  }\n\n  if (typeof obj1 === \"function\" && typeof obj2 === \"function\") {\n    return obj1.toString() === obj2.toString()\n  }\n\n  if (obj1 instanceof Date && obj2 instanceof Date) {\n    return obj1.getTime() === obj2.getTime()\n  }\n\n  const prototypesAreEqual = testPrototypes\n    ? isDeepEqual(\n        Object.getPrototypeOf(obj1),\n        Object.getPrototypeOf(obj2),\n        true\n      )\n    : true\n\n  const obj1Props = Object.getOwnPropertyNames(obj1)\n  const obj2Props = Object.getOwnPropertyNames(obj2)\n\n  return (\n    obj1Props.length === obj2Props.length &&\n    prototypesAreEqual &&\n    obj1Props.every(prop => isDeepEqual(obj1[prop], obj2[prop]))\n  )\n}\n```"
     ]
   },
   {
     "name": "css-preprocessors.md",
     "question": "What are the advantages of using CSS preprocessors?",
-    "answer": "CSS preprocessors add useful functionality that native CSS does not have, and generally make CSS neater and more maintainable by enabling DRY (Don't Repeat Yourself) principles. Their terse syntax for nested selectors cuts down on repeated code. They provide variables for consistent theming (however, CSS variables have largely replaced this functionality) and additional tools like color functions (`lighten`, `darken`, `transparentize`, etc), variables, mixins, and loops that make CSS more like a real programming language and gives the developer more power to generate complex CSS.",
+    "answer": "CSS preprocessors add useful functionality that native CSS does not have, and generally make CSS neater and more maintainable by enabling DRY (Don't Repeat Yourself) principles. Their terse syntax for nested selectors cuts down on repeated code. They provide variables for consistent theming (however, CSS variables have largely replaced this functionality) and additional tools like color functions (`lighten`, `darken`, `transparentize`, etc), mixins, and loops that make CSS more like a real programming language and gives the developer more power to generate complex CSS.",
     "goodToHear": [
       "They allow us to write more maintainable and scalable CSS",
       "Some disadvantages of using CSS preprocessors (setup, re-compilation time can be slow etc.)"
@@ -179,17 +182,19 @@
     "tags": [
       "css"
     ],
-    "expertise": 1,
+    "expertise": 2,
     "questionCodeBlocks": [],
     "answerCodeBlocks": []
   },
   {
     "name": "dom.md",
     "question": "What is the DOM?",
-    "answer": "The DOM (Document Object Model) is an API that represents the structure of HTML and XML documents. The document\nis represented by a node tree (such as elements, text nodes, comments), where each node is an object that can be manipulated via JavaScript to change their styles, contents, placement in the tree, or interacted with through event listeners.",
+    "answer": "The DOM (Document Object Model) is a cross-platform API that treats HTML and XML documents as a tree structure consisting of nodes. These nodes (such as elements and text nodes) are objects that can be programmatically manipulated and any visible changes made to them are reflected live in the document. In a browser, this API is available to JavaScript where DOM nodes can be manipulated to change their styles, contents, placement in the document, or interacted with through event listeners.",
     "goodToHear": [
-      "The DOM was designed to be independent of any particular programming language, making the structural representation of the document available from a single, consistent API",
-      "The DOM is constructed progressively in the browser as a page loads, which is why scripts are often placed at the bottom of a page, in the `<head>` with a `defer` attribute, or inside a `DOMContentLoaded` event listener. Scripts that manipulate DOM nodes should be run after the DOM has been constructed to avoid errors."
+      "The DOM was designed to be independent of any particular programming language, making the structural representation of the document available from a single, consistent API.",
+      "The DOM is constructed progressively in the browser as a page loads, which is why scripts are often placed at the bottom of a page, in the `<head>` with a `defer` attribute, or inside a `DOMContentLoaded` event listener. Scripts that manipulate DOM nodes should be run after the DOM has been constructed to avoid errors.",
+      "`document.getElementById()` and `document.querySelector()` are common functions for selecting DOM nodes.",
+      "Setting the `innerHTML` property to a new value runs the string through the HTML parser, offering an easy way to append dynamic HTML content to a node."
     ],
     "links": [
       "[MDN docs for DOM](https://developer.mozilla.org/en-US/docs/DOM)"
@@ -207,9 +212,9 @@
     "question": "What is the difference between the equality operators `==` and `===`?",
     "answer": "Triple equals (`===`) checks for strict equality, which means both the type and value must be the same. Double equals (`==`) on the other hand first performs type coercion so that both operands are of the same type and then applies strict comparison.",
     "goodToHear": [
-      "Whenever possible, use triple equals to test equality because loose equality `==` can have unintuitive results",
-      "Type coercion means the values are converted into the same type",
-      "Mention of falsy values and their comparison"
+      "Whenever possible, use triple equals to test equality because loose equality `==` can have unintuitive results.",
+      "Type coercion means the values are converted into the same type.",
+      "Mention of falsy values and their comparison."
     ],
     "links": [
       "[MDN docs for comparison operators](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Comparison_Operators)"
@@ -224,10 +229,11 @@
   {
     "name": "event-driven-programming.md",
     "question": "What is event-driven programming?",
-    "answer": "Event-driven programming is building an application that is based on and responds to events. Whenever an event occurs, the application responds by running a callback function, which is registered to that event and context.",
+    "answer": "Event-driven programming is a paradigm that involves building applications that send and receive events. When the program emits events, the program responds by running any callback functions that are registered to that event and context, passing in associated data to the function. With this pattern, events can be emitted into the wild without throwing errors even if no functions are subscribed to it.\n\nA common example of this is the pattern of elements listening to DOM events such as `click` and `mouseenter`, where a callback function is run when the event occurs.\n\n```js\ndocument.addEventListener(\"click\", function(event) {\n  // This callback function is run when the user\n  // clicks on the document.\n})\n```\n\nWithout the context of the DOM, the pattern may look like this:\n\n```js\nconst hub = createEventHub()\nhub.on(\"message\", function(data) {\n  console.log(`${data.username} said ${data.text}`)\n})\nhub.emit(\"message\", {\n  username: \"John\",\n  text: \"Hello?\"\n})\n```\n\nWith this implementation, `on` is the way to _subscribe_ to an event, while `emit` is the way to _publish_ the event.",
     "goodToHear": [
-      "Responds to events that occur by running a callback function",
-      "Follows a publish-subscribe pattern"
+      "Follows a publish-subscribe pattern.",
+      "Responds to events that occur by running any callback functions subscribed to the event.",
+      "Show how to create a simple pub-sub implementation with JavaScript."
     ],
     "links": [
       "[MDN docs on Events and Handlers](https://developer.mozilla.org/en-US/docs/Web/Guide/Events/Overview_of_Events_and_Handlers)",
@@ -238,7 +244,10 @@
     ],
     "expertise": 2,
     "questionCodeBlocks": [],
-    "answerCodeBlocks": []
+    "answerCodeBlocks": [
+      "```js\ndocument.addEventListener(\"click\", function(event) {\n  // This callback function is run when the user\n  // clicks on the document.\n})\n```",
+      "```js\nconst hub = createEventHub()\nhub.on(\"message\", function(data) {\n  console.log(`${data.username} said ${data.text}`)\n})\nhub.emit(\"message\", {\n  username: \"John\",\n  text: \"Hello?\"\n})\n```"
+    ]
   },
   {
     "name": "fibonacci.md",
@@ -377,13 +386,10 @@
   {
     "name": "hoisting.md",
     "question": "How does hoisting work in JavaScript?",
-    "answer": "Hoisting is a JavaScript mechanism where variables and function declarations are put into memory during the compile phase. This means that no matter where functions and variables are declared, they are moved to the top of their scope regardless of whether their scope is global or local.\n\n```js\nconsole.log(hoist) // Output: undefined\nvar hoist = \"The variable has been hoisted.\"\n```",
+    "answer": "Hoisting is a JavaScript mechanism where variable and function declarations are put into memory during the compile phase. This means that no matter where functions and variables are declared, they are moved to the top of their scope regardless of whether their scope is global or local.\n\nHowever, the value is not hoisted with the declaration.\n\nThe following snippet:\n\n```js\nconsole.log(hoist)\nvar hoist = \"value\"\n```\n\nis equivalent to:\n\n```js\nvar hoist\nconsole.log(hoist)\nhoist = \"value\"\n```\n\nTherefore logging `hoist` outputs `undefined` to the console, not `\"value\"`.\n\nHoisting also allows you to invoke a function declaration before it appears to be declared in a program.\n\n```js\nmyFunction() // No error; logs \"hello\"\nfunction myFunction() {\n  console.log(\"hello\")\n}\n```\n\nBut be wary of function expressions that are assigned to a variable:\n\n```js\nmyFunction() // Error: `myFunction` is not a function\nvar myFunction = function() {\n  console.log(\"hello\")\n}\n```",
     "goodToHear": [
       "Hoisting is JavaScript’s default behavior of moving declarations to the top",
-      "Functions are hoisted before variables",
-      "Mention of `strict` mode",
-      "`const` variables must be both declared and initialised before use",
-      "`let` variables must be declared before use"
+      "Functions declarations are hoisted before variable declarations"
     ],
     "links": [
       "[MDN docs for hoisting](https://developer.mozilla.org/en-US/docs/Glossary/Hoisting)",
@@ -395,7 +401,10 @@
     "expertise": 1,
     "questionCodeBlocks": [],
     "answerCodeBlocks": [
-      "```js\nconsole.log(hoist) // Output: undefined\nvar hoist = \"The variable has been hoisted.\"\n```"
+      "```js\nconsole.log(hoist)\nvar hoist = \"value\"\n```",
+      "```js\nvar hoist\nconsole.log(hoist)\nhoist = \"value\"\n```",
+      "```js\nmyFunction() // No error; logs \"hello\"\nfunction myFunction() {\n  console.log(\"hello\")\n}\n```",
+      "```js\nmyFunction() // Error: `myFunction` is not a function\nvar myFunction = function() {\n  console.log(\"hello\")\n}\n```"
     ]
   },
   {
@@ -421,7 +430,7 @@
     "answer": "HTML specifications such as `HTML5` define a set of rules that a document must adhere to in order to be “valid” according to that specification. In addition, a specification provides instructions on how a browser must interpret and render such a document.\n\nA browser is said to “support” a specification if it handles valid documents according to the rules of the specification. As of yet, no browser supports all aspects of the `HTML5` specification (although all of the major browser support most of it), and as a result, it is necessary for the developer to confirm whether the aspect they are making use of will be supported by all of the browsers on which they hope to display their content. This is why cross-browser support continues to be a headache for developers, despite the improved specificiations.",
     "goodToHear": [
       "`HTML5` defines some rules to follow for an invalid `HTML5` document (i.e., one that contains syntactical errors)",
-      "However, invalid documents may contain anything, so it's impossible for the specification to handle all possibilities comprehensively. ",
+      "However, invalid documents may contain anything, so it's impossible for the specification to handle all possibilities comprehensively.",
       "Thus, many decisions about how to handle malformed documents are left up to the browser."
     ],
     "links": [
@@ -454,7 +463,7 @@
   },
   {
     "name": "html5-semantic-elements-usage.md",
-    "question": "Briefly describe the correct usage of the following HTML5 semantic elements: `<header>`, `<article>`,` <section>`, `<footer>`",
+    "question": "Briefly describe the correct usage of the following HTML5 semantic elements: `<header>`, `<article>`,`<section>`, `<footer>`",
     "answer": "* `<header>` is used to contain introductory and navigational information about a section of the page. This can include the section heading, the author’s name, time and date of publication, table of contents, or other navigational information.\n\n* `<article>` is meant to house a self-contained composition that can logically be independently recreated outside of the page without losing it’s meaining. Individual blog posts or news stories are good examples.\n\n* `<section>` is a flexible container for holding content that shares a common informational theme or purpose.\n\n* `<footer>` is used to hold information that should appear at the end of a section of content and contain additional information about the section. Author’s name, copyright information, and related links are typical examples of such content.",
     "goodToHear": [
       "Other semantic elements are `<form>` and `<table>`"
@@ -474,7 +483,7 @@
     "question": "What is HTML5 Web Storage? Explain `localStorage` and `sessionStorage`.",
     "answer": "With HTML5, web pages can store data locally within the user’s browser.\nThe data is stored in name/value pairs, and a web page can only access data stored by itself.\n\n**Differences between `localStorage` and `sessionStorage` regarding lifetime:**\n\n* Data stored through `localStorage` is permanent: it does not expire and remains stored on the user’s computer until a web app deletes it or the user asks the browser to delete it.\n* `sessionStorage` has the same lifetime as the top-level window or browser tab in which the data got stored. When the tab is permanently closed, any data stored through `sessionStorage` is deleted.\n\n**Differences between `localStorage` and `sessionStorage` regarding storage scope:**\nBoth forms of storage are scoped to the document origin so that documents with different origins will never share the stored objects.\n\n* `sessionStorage` is also scoped on a per-window basis. Two browser tabs with documents from the same origin have separate `sessionStorage` data.\n* Unlike in `localStorage`, the same scripts from the same origin can't access each other's `sessionStorage` when opened in different tabs.",
     "goodToHear": [
-      "Earlier, this was done with cookies. ",
+      "Earlier, this was done with cookies.",
       "The storage limit is far larger (at least 5MB) than with cookies and its faster.",
       "The data is never transferred to the server and can only be used if the client specifically asks for it."
     ],
@@ -487,6 +496,26 @@
     "expertise": 2,
     "questionCodeBlocks": [],
     "answerCodeBlocks": []
+  },
+  {
+    "name": "iife.md",
+    "question": "What is the reason for wrapping the entire contents of a JavaScript source file in a function that is immediately invoked?",
+    "answer": "This technique is very common in JavaScript libraries. It creates a closure around the entire contents of the file which creates a private namespace and thereby helps avoid potential name clashes between different JavaScript modules and libraries. The function is immediately invoked so that the namespace (library name) is assigned the return value of the function.\n\n```js\nconst myLibrary = (function() {\n  var privateVariable = 2\n  return {\n    publicMethod: () => privateVariable\n  }\n})()\nprivateVariable // ReferenceError\nmyLibrary.publicMethod() // 2\n```",
+    "goodToHear": [
+      "Used among many popular JavaScript libraries",
+      "Creates a private namespace"
+    ],
+    "links": [
+      "[MDN docs for closures](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures)"
+    ],
+    "tags": [
+      "javascript"
+    ],
+    "expertise": 1,
+    "questionCodeBlocks": [],
+    "answerCodeBlocks": [
+      "```js\nconst myLibrary = (function() {\n  var privateVariable = 2\n  return {\n    publicMethod: () => privateVariable\n  }\n})()\nprivateVariable // ReferenceError\nmyLibrary.publicMethod() // 2\n```"
+    ]
   },
   {
     "name": "image-accessibility.md",
@@ -579,8 +608,8 @@
   },
   {
     "name": "node-error-first-callback.md",
-    "question": "NodeJS uses a callback pattern in many instances where if an error were returned it will pass it as the first argument to the callback. What are the advantages of this pattern?\n\n```js\nfs.readFile(filePath, function(err, data) {  \n  if (err) {\n    // handle the error, the return is important here\n    // so execution stops here\n    return console.log(err)\n  }\n  // use the data object\n  console.log(data)\n})\n```",
-    "answer": "Advantages include:\n\n* Not needing to process data if there is no need to even reference it\n* Having a consistent API leads to more adoption\n* Ability to easily adapt a callback pattern that will lead to more maintainable code\n\nAs you can see from below example, the callback is called with null as its first argument if there is no error. However, if there is an error, you create an Error object, which then becomes the callback's only parameter. The callback function allows a user to easily know whether or not an error occurred. \n\nThis practice is also called the _Node.js error convention_, and this kind of callback implementations are called _error-first callbacks_.\n\n```js\nvar isTrue = function(value, callback) {\n  if (value === true) {\n    callback(null, \"Value was true.\")\n  } else {\n    callback(new Error(\"Value is not true!\"))\n  }\n}\n\nvar callback = function (error, retval) {\n  if (error) {\n    console.log(error)\n    return\n  }\n  console.log(retval)\n}\n\nisTrue(false, callback)\nisTrue(true,  callback)\n\n/*\n  { stack: [Getter/Setter],\n    arguments: undefined,\n    type: undefined,\n    message: 'Value is not true!' }\n  Value was true.\n*/\n```",
+    "question": "NodeJS uses a callback pattern in many instances where if an error were returned it will pass it as the first argument to the callback. What are the advantages of this pattern?\n\n```js\nfs.readFile(filePath, function(err, data) {\n  if (err) {\n    // handle the error, the return is important here\n    // so execution stops here\n    return console.log(err)\n  }\n  // use the data object\n  console.log(data)\n})\n```",
+    "answer": "Advantages include:\n\n* Not needing to process data if there is no need to even reference it\n* Having a consistent API leads to more adoption\n* Ability to easily adapt a callback pattern that will lead to more maintainable code\n\nAs you can see from below example, the callback is called with null as its first argument if there is no error. However, if there is an error, you create an Error object, which then becomes the callback's only parameter. The callback function allows a user to easily know whether or not an error occurred.\n\nThis practice is also called the _Node.js error convention_, and this kind of callback implementations are called _error-first callbacks_.\n\n```js\nvar isTrue = function(value, callback) {\n  if (value === true) {\n    callback(null, \"Value was true.\")\n  } else {\n    callback(new Error(\"Value is not true!\"))\n  }\n}\n\nvar callback = function(error, retval) {\n  if (error) {\n    console.log(error)\n    return\n  }\n  console.log(retval)\n}\n\nisTrue(false, callback)\nisTrue(true, callback)\n\n/*\n  { stack: [Getter/Setter],\n    arguments: undefined,\n    type: undefined,\n    message: 'Value is not true!' }\n  Value was true.\n*/\n```",
     "goodToHear": [
       "This is just a convention. However, you should stick to it."
     ],
@@ -594,10 +623,10 @@
     ],
     "expertise": 1,
     "questionCodeBlocks": [
-      "```js\nfs.readFile(filePath, function(err, data) {  \n  if (err) {\n    // handle the error, the return is important here\n    // so execution stops here\n    return console.log(err)\n  }\n  // use the data object\n  console.log(data)\n})\n```"
+      "```js\nfs.readFile(filePath, function(err, data) {\n  if (err) {\n    // handle the error, the return is important here\n    // so execution stops here\n    return console.log(err)\n  }\n  // use the data object\n  console.log(data)\n})\n```"
     ],
     "answerCodeBlocks": [
-      "```js\nvar isTrue = function(value, callback) {\n  if (value === true) {\n    callback(null, \"Value was true.\")\n  } else {\n    callback(new Error(\"Value is not true!\"))\n  }\n}\n\nvar callback = function (error, retval) {\n  if (error) {\n    console.log(error)\n    return\n  }\n  console.log(retval)\n}\n\nisTrue(false, callback)\nisTrue(true,  callback)\n\n/*\n  { stack: [Getter/Setter],\n    arguments: undefined,\n    type: undefined,\n    message: 'Value is not true!' }\n  Value was true.\n*/\n```"
+      "```js\nvar isTrue = function(value, callback) {\n  if (value === true) {\n    callback(null, \"Value was true.\")\n  } else {\n    callback(new Error(\"Value is not true!\"))\n  }\n}\n\nvar callback = function(error, retval) {\n  if (error) {\n    console.log(error)\n    return\n  }\n  console.log(retval)\n}\n\nisTrue(false, callback)\nisTrue(true, callback)\n\n/*\n  { stack: [Getter/Setter],\n    arguments: undefined,\n    type: undefined,\n    message: 'Value is not true!' }\n  Value was true.\n*/\n```"
     ]
   },
   {
@@ -620,12 +649,12 @@
   },
   {
     "name": "null-vs-undefined.md",
-    "question": "What are the differences between `null` and `undefined`?",
+    "question": "What is the difference between `null` and `undefined`?",
     "answer": "In JavaScript, two values discretely represent nothing - `undefined` and `null`. The concrete difference between them is that `null` is explicit, while `undefined` is implicit. When a property does not exist or a variable has not been given a value, the value is `undefined`. `null` is set as the value to explicitly indicate “no value”. In essence, `undefined` is used when the nothing is not known, and `null` is used when the nothing is known.",
     "goodToHear": [
-      "`typeof undefined` returns `undefined`",
-      "`typeof null` returns `object`. However, it is still a primitive value",
-      "`undefined == null` equals to `true`"
+      "`typeof undefined` evaluates to `\"undefined\"`.",
+      "`typeof null` evaluates `\"object\"`. However, it is still a primitive value and this is considered an implementation bug in JavaScript.",
+      "`undefined == null` evaluates to `true`."
     ],
     "links": [
       "[MDN docs for null](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null)",
@@ -721,7 +750,7 @@
   {
     "name": "promise-states.md",
     "question": "In which states can a Promise be?",
-    "answer": "A `Promise` is in one of these states:\n\n* pending: initial state, neither fulfilled nor rejected.\n* fulfilled: meaning that the operation completed successfully.\n* rejected: meaning that the operation failed.\n\nA pending promise can either be fulfilled with a value, or rejected with a reason (error). \nWhen either of these options happens, the associated handlers queued up by a promise's then method are called.",
+    "answer": "A `Promise` is in one of these states:\n\n* pending: initial state, neither fulfilled nor rejected.\n* fulfilled: meaning that the operation completed successfully.\n* rejected: meaning that the operation failed.\n\nA pending promise can either be fulfilled with a value, or rejected with a reason (error).\nWhen either of these options happens, the associated handlers queued up by a promise's then method are called.",
     "goodToHear": [],
     "links": [
       "[Official Web Docs - Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)"
@@ -746,7 +775,7 @@
     "tags": [
       "javascript"
     ],
-    "expertise": 0,
+    "expertise": 1,
     "questionCodeBlocks": [],
     "answerCodeBlocks": [
       "```js\nnew Promise((resolve, reject) => {\n  setTimeout(() => {\n    resolve(\"result\")\n  }, 100)\n})\n  .then(console.log)\n  .catch(console.error)\n```"
@@ -770,6 +799,29 @@
     "expertise": 1,
     "questionCodeBlocks": [],
     "answerCodeBlocks": []
+  },
+  {
+    "name": "pure-functions.md",
+    "question": "What is a pure function?",
+    "answer": "A pure function is function that satisfies these two conditions:\n\n* Given the same input, the function returns the same output.\n* The function doesn't cause side effects outside of the function's scope (i.e. mutate data outside the function or data supplied to the function).\n\nPure functions can mutate local data within the function as long as it satisfies the two conditions above.\n\n##### Pure\n\n```js\nconst a = (x, y) => x + y\nconst b = (arr, value) => arr.concat(value)\nconst c = arr => [...arr].sort((a, b) => a - b)\n```\n\n##### Impure\n\n```js\nconst a = (x, y) => x + y + Math.random()\nconst b = (arr, value) => (arr.push(value), arr)\nconst c = arr => arr.sort((a, b) => a - b)\n```",
+    "goodToHear": [
+      "Pure functions are easier to reason about due to their reliability.",
+      "All functions should be pure unless explicitly causing a side effect (i.e. `setInnerHTML`).",
+      "If a function does not return a value, it is an indication that it is causing side effects."
+    ],
+    "links": [
+      "[MDN docs for `null`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null)",
+      "[MDN docs for `undefined`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined)"
+    ],
+    "tags": [
+      "javascript"
+    ],
+    "expertise": 2,
+    "questionCodeBlocks": [],
+    "answerCodeBlocks": [
+      "```js\nconst a = (x, y) => x + y\nconst b = (arr, value) => arr.concat(value)\nconst c = arr => [...arr].sort((a, b) => a - b)\n```",
+      "```js\nconst a = (x, y) => x + y + Math.random()\nconst b = (arr, value) => (arr.push(value), arr)\nconst c = arr => arr.sort((a, b) => a - b)\n```"
+    ]
   },
   {
     "name": "reference-example.md",
@@ -832,11 +884,10 @@
   },
   {
     "name": "sprites.md",
-    "question": "What are the advantages of using CSS sprites and how would one utilize them?",
-    "answer": "CSS sprites combine multiple images into one image, limiting the amount of HTTP requests a browser has to make, thus improving load times.\n\nTo utilize a spritesheet in CSS, one would use certain properties, such as `background-image`, `background-position` and `background-size` to ultimately alter the `background` of a CSS selector or an element.",
+    "question": "What are the advantages of using CSS sprites and how are they utilized?",
+    "answer": "CSS sprites combine multiple images into one image, limiting the number of HTTP requests a browser has to make, thus improving load times. Even under the new HTTP/2 protocol, this remains true.\n\nUnder HTTP/1.1, at most one request is allowed per TCP connection. With HTTP/1.1, modern browsers open multiple parallel connections (between 2 to 8) but it is limited. With HTTP/2, all requests between the browser and the server are multiplexed on a single TCP connection. This means the cost of opening and closing multiple connections is mitigated, resulting in a better usage of the TCP connection and limits the impact of latency between the client and server. It could then become possible to load tens of images in parallel on the same TCP connection.\n\nHowever, according to [benchmark results](https://blog.octo.com/en/http2-arrives-but-sprite-sets-aint-no-dead/), although HTTP/2 offers 50% improvement over HTTP/1.1, in most cases the sprite set is still faster to load than individual images.\n\nTo utilize a spritesheet in CSS, one would use certain properties, such as `background-image`, `background-position` and `background-size` to ultimately alter the `background` of an element.",
     "goodToHear": [
-      "CSS sprites combine multiple images into one, which improves page load times by limiting requests",
-      "`background-image`, `background-position` and `background-size` can be used to utilize a spritesheet"
+      "`background-image`, `background-position` and `background-size` can be used to utilize a spritesheet."
     ],
     "links": [
       "[CSS Sprites explained by CSS Tricks](https://css-tricks.com/css-sprites/)"
@@ -886,8 +937,8 @@
   },
   {
     "name": "this.md",
-    "question": "How does `this` work?",
-    "answer": "The `this` keyword is an object that represents the context of an executing function. Regular functions can have their `this` value changed with `.call`, `.apply` and `.bind`. Arrow functions implicitly bind `this` so that it refers to the context of its lexical environment, regardless of whether or not its context is set explicitly with `call`.\n\nHere are some common examples of `this`:\n\n```js\n// Object literals\nvar myObject = {\n  regularFunction: function() {\n    return this\n  },\n  arrowFunction: () => {\n    return this\n  }\n}\nmyObject.regularFunction() // myObject\nmyObject.arrowFunction() // NOT myObject\nconst withoutContextFunction = myObject.regularFunction\nwithoutContextFunction() // NOT myObject\n\n// Event listeners\ndocument.body.addEventListener(\"click\", function() {\n  console.log(this) // document.body\n})\n\n// Classes\nclass myClass {\n  constructor() {\n    console.log(this) // myClassInstance\n  }\n}\nvar myClassInstance = new myClass()\n\n// Manual\nvar myFunction = function() {\n  return this\n}\nmyFunction.call({ customThis: true }) // { customThis: true }\n\n// Unwanted `this`\nvar obj = {\n  arr: [1, 2, 3],\n  doubleArr() {\n    return this.arr.map(function(value) {\n      // this === this.arr\n      return this.double(value)\n    })\n  },\n  double() {\n    return value * 2\n  }\n}\nobj.doubleArr() // Uncaught TypeError: this.double is not a function\n```",
+    "question": "What is the `this` keyword and how does it work?",
+    "answer": "The `this` keyword is an object that represents the context of an executing function. Regular functions can have their `this` value changed with the methods `call()`, `apply()` and `bind()`. Arrow functions implicitly bind `this` so that it refers to the context of its lexical environment, regardless of whether or not its context is set explicitly with `call()`.\n\nHere are some common examples of `this`:\n\n##### Object literals\n\n`this` refers to the object itself inside regular functions if the object precedes the invocation of the function.\n\nProperties set as `this` do not refer to the object.\n\n```js\nvar myObject = {\n  property: this,\n  regularFunction: function() {\n    return this\n  },\n  arrowFunction: () => {\n    return this\n  },\n  iife: (function() {\n    return this\n  })()\n}\nmyObject.regularFunction() // myObject\nmyObject[\"regularFunction\"]() // my Object\n\nmyObject.property // NOT myObject; lexical `this`\nmyObject.arrowFunction() // NOT myObject; lexical `this`\nmyObject.iife() // NOT myObject; lexical `this`\nconst regularFunction = myObject.regularFunction\nregularFunction() // NOT myObject; lexical `this`\n```\n\n##### Event listeners\n\n```js\ndocument.body.addEventListener(\"click\", function() {\n  console.log(this) // document.body\n})\n```\n\n##### Constructors\n\n```js\nclass myClass {\n  constructor() {\n    console.log(this) // myClassInstance\n  }\n}\nvar myClassInstance = new myClass()\n```\n\n##### Manual\n\n```js\nvar myFunction = function() {\n  return this\n}\nmyFunction.call({ customThis: true }) // { customThis: true }\n```\n\n##### Unwanted `this`\n\n```js\nvar obj = {\n  arr: [1, 2, 3],\n  doubleArr() {\n    return this.arr.map(function(value) {\n      // this is now this.arr\n      return this.double(value)\n    })\n  },\n  double() {\n    return value * 2\n  }\n}\nobj.doubleArr() // Uncaught TypeError: this.double is not a function\n```",
     "goodToHear": [
       "In non-strict mode, global `this` is the global object (`window` in browsers), while in non-strict mode global `this` is `undefined`.",
       "`Function.prototype.call` and `Function.prototype.apply` set the `this` context of an executing function as the first argument, with `call` accepting a variadic number of arguments thereafter, and `apply` accepting an array as the second argument which are fed to the function in a variadic manner.",
@@ -903,7 +954,11 @@
     "expertise": 2,
     "questionCodeBlocks": [],
     "answerCodeBlocks": [
-      "```js\n// Object literals\nvar myObject = {\n  regularFunction: function() {\n    return this\n  },\n  arrowFunction: () => {\n    return this\n  }\n}\nmyObject.regularFunction() // myObject\nmyObject.arrowFunction() // NOT myObject\nconst withoutContextFunction = myObject.regularFunction\nwithoutContextFunction() // NOT myObject\n\n// Event listeners\ndocument.body.addEventListener(\"click\", function() {\n  console.log(this) // document.body\n})\n\n// Classes\nclass myClass {\n  constructor() {\n    console.log(this) // myClassInstance\n  }\n}\nvar myClassInstance = new myClass()\n\n// Manual\nvar myFunction = function() {\n  return this\n}\nmyFunction.call({ customThis: true }) // { customThis: true }\n\n// Unwanted `this`\nvar obj = {\n  arr: [1, 2, 3],\n  doubleArr() {\n    return this.arr.map(function(value) {\n      // this === this.arr\n      return this.double(value)\n    })\n  },\n  double() {\n    return value * 2\n  }\n}\nobj.doubleArr() // Uncaught TypeError: this.double is not a function\n```"
+      "```js\nvar myObject = {\n  property: this,\n  regularFunction: function() {\n    return this\n  },\n  arrowFunction: () => {\n    return this\n  },\n  iife: (function() {\n    return this\n  })()\n}\nmyObject.regularFunction() // myObject\nmyObject[\"regularFunction\"]() // my Object\n\nmyObject.property // NOT myObject; lexical `this`\nmyObject.arrowFunction() // NOT myObject; lexical `this`\nmyObject.iife() // NOT myObject; lexical `this`\nconst regularFunction = myObject.regularFunction\nregularFunction() // NOT myObject; lexical `this`\n```",
+      "```js\ndocument.body.addEventListener(\"click\", function() {\n  console.log(this) // document.body\n})\n```",
+      "```js\nclass myClass {\n  constructor() {\n    console.log(this) // myClassInstance\n  }\n}\nvar myClassInstance = new myClass()\n```",
+      "```js\nvar myFunction = function() {\n  return this\n}\nmyFunction.call({ customThis: true }) // { customThis: true }\n```",
+      "```js\nvar obj = {\n  arr: [1, 2, 3],\n  doubleArr() {\n    return this.arr.map(function(value) {\n      // this is now this.arr\n      return this.double(value)\n    })\n  },\n  double() {\n    return value * 2\n  }\n}\nobj.doubleArr() // Uncaught TypeError: this.double is not a function\n```"
     ]
   },
   {
@@ -946,7 +1001,7 @@
   {
     "name": "ui-library-framework-purpose.md",
     "question": "What is the purpose of JavaScript UI libraries/frameworks like React, Vue, Angular, Hyperapp, etc?",
-    "answer": "The main purpose is to avoid manipulating the DOM directly and keep the state of an application\nin sync with the UI easily. Additionally, they provide the ability to create components that can be reused when they have similar functionality with minor differences, avoiding duplication which would require multiple changes whenever the structure of a component which is reused in multiple places needs to be updated.\n\nWhen working with DOM manipulation libraries like jQuery, the data of an application is generally kept in the DOM itself, often as class names or `data` attributes. Manipulating the DOM to update the UI involves many extra steps and can introduce subtle bugs over time. Keeping the state separate and letting a framework handle the UI updates when the state changes reduces cognitive load, i.e. saying you want the UI to look a certain way when the state is a certain value is the declarative way of creating an application, instead of manually updating the UI to reflect the new state (imperative).",
+    "answer": "The main purpose is to avoid manipulating the DOM directly and keep the state of an application\nin sync with the UI easily. Additionally, they provide the ability to create components that can be reused when they have similar functionality with minor differences, avoiding duplication which would require multiple changes whenever the structure of a component which is reused in multiple places needs to be updated.\n\nWhen working with DOM manipulation libraries like jQuery, the data of an application is generally kept in the DOM itself, often as class names or `data` attributes. Manipulating the DOM to update the UI involves many extra steps and can introduce subtle bugs over time. Keeping the state separate and letting a framework handle the UI updates when the state changes reduces cognitive load. Saying you want the UI to look a certain way when the state is a certain value is the declarative way of creating an application, instead of the imperative way of manually updating the UI to reflect the new state.",
     "goodToHear": [
       "The virtual DOM is a representation of the real DOM tree in the form of plain objects, which allows a library to write code as if the entire document is thrown away and rebuilt on each change, while the real DOM only updates what needs to be changed. Comparing the new virtual DOM against the previous one leads to high efficiency as changing real DOM nodes is costly compared to recalculating the virtual DOM.",
       "JSX is an extension to JavaScript that provides XML-like syntax to create virtual DOM objects which is transformed to function calls by a transpiler. It simplifies control flow (if statements/ternary expressions) compared to tagged template literals."
@@ -1001,26 +1056,6 @@
       "```js\nfor (var i = 0; i < 10; i++) {\n  setTimeout(() => {\n    console.log(i) // logs `10` ten times\n  })\n}\n\n/* ==================== Solutions with `var` ==================== */\nfor (var i = 0; i < 10; i++) {\n  // Passed as an argument will use the value as-is in that point in time\n  setTimeout(console.log, 0, i)\n}\n\nfor (var i = 0; i < 10; i++) {\n  // Create a new function scope that will use the value as-is in that point in time\n  ;(i => {\n    setTimeout(() => {\n      console.log(i)\n    })\n  })(i)\n}\n```",
       "```js\nfor (let i = 0; i < 10; i++) {\n  setTimeout(() => {\n    console.log(i) // logs 0, 1, 2, 3, ...\n  })\n}\n```",
       "```js\nconst myObject = {}\nmyObject.prop = \"hello!\" // No error\nmyObject = \"hello\" // Error\n```"
-    ]
-  },
-  {
-    "name": "wrap-content.md",
-    "question": "What is the reason for wrapping the entire contents of a JavaScript source file in a function?",
-    "answer": "This technique is very common in JavaScript libraries. It creates a closure around the entire contents of the file which creates a private namespace and thereby helps avoid potential name clashes between different JavaScript modules and libraries. The function is usually immediately invoked so that the namespace (library name) is assigned the return value of the function.\n\n```js\nconst myLibrary = function () {\n  var privateVariable = 2\n  return {\n    publicMethod: () => privateVariable\n  }\n}()\nprivateVariable // ReferenceError\nmyLibrary.publicMethod() // 2\n```",
-    "goodToHear": [
-      "Used among many popular JavaScript libraries",
-      "Creates a private namespace"
-    ],
-    "links": [
-      "[MDN docs for closures](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures)"
-    ],
-    "tags": [
-      "javascript"
-    ],
-    "expertise": 1,
-    "questionCodeBlocks": [],
-    "answerCodeBlocks": [
-      "```js\nconst myLibrary = function () {\n  var privateVariable = 2\n  return {\n    publicMethod: () => privateVariable\n  }\n}()\nprivateVariable // ReferenceError\nmyLibrary.publicMethod() // 2\n```"
     ]
   },
   {
