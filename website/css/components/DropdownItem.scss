@@ -10,15 +10,6 @@
   color: inherit;
   transition: background 0.1s, color 0.1s;
 
-  &:hover {
-    background: #8385aa;
-    color: white;
-
-    .DropdownItem__icon {
-      color: white;
-    }
-  }
-
   &.is-active {
     color: white;
     background: #92bbff;
@@ -54,6 +45,19 @@
 
     &.is-node {
       color: $color-node;
+    }
+  }
+}
+
+html:not(.browser-touch) {
+  .DropdownItem {
+    &:hover {
+      background: #8385aa;
+      color: white;
+
+      .DropdownItem__icon {
+        color: white;
+      }
     }
   }
 }
