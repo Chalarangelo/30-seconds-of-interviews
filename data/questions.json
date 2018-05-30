@@ -46,7 +46,7 @@
   {
     "name": "callback-hell.md",
     "question": "How can you avoid callback hells?\n\n```js\ngetData(function(a) {\n  getMoreData(a, function(b) {\n    getMoreData(b, function(c) {\n      getMoreData(c, function(d) {\n        getMoreData(d, function(e) {\n          // ...\n        })\n      })\n    })\n  })\n})\n```",
-    "answer": "Refactoring the functions to return promises and using `async/await` is usually the best option. Instead of supplying the functions with callbacks that cause deep nesting, they return a promise that can be `await`ed and will be resolved once the data has arrived, allowing the next line of code to be evaluated in a sync-like fashion.\n\nThe above code can be restructured like so:\n\n```js\nasync function asyncAwaitVersion() {\n  const a = await getData()\n  const b = await getMoreData(a)\n  const c = await getMoreData(b)\n  const d = await getMoreData(c)\n  const e = await getMoreData(e)\n  // ...\n}\n```\n\nBefore ES2017 brought `async/await`, promise chaining was used instead (whether ES2015's native ones or a library before that):\n\n```js\ngetData()\n  .then(getMoreData)\n  .then(getMoreData)\n  .then(getMoreData)\n  .then(getMoreData)\n  .then(...)\n```\n\nThere are lots of ways to solve the issue of callback hells:\n\n* modularization: break callbacks into independent functions\n* use a control flow library, like async\n* use generators with Promises\n* use async/await (from v7 on)",
+    "answer": "Refactoring the functions to return promises and using `async/await` is usually the best option. Instead of supplying the functions with callbacks that cause deep nesting, they return a promise that can be `await`ed and will be resolved once the data has arrived, allowing the next line of code to be evaluated in a sync-like fashion.\n\nThe above code can be restructured like so:\n\n```js\nasync function asyncAwaitVersion() {\n  const a = await getData()\n  const b = await getMoreData(a)\n  const c = await getMoreData(b)\n  const d = await getMoreData(c)\n  const e = await getMoreData(e)\n  // ...\n}\n```\n\nThere are lots of ways to solve the issue of callback hells:\n\n* Modularization: break callbacks into independent functions\n* Use a control flow library, like async\n* Use generators with Promises\n* Use async/await (from v7 on)",
     "goodToHear": [
       "As an efficient JavaScript developer, you have to avoid the constantly growing indentation level, produce clean and readable code and be able to handle complex flows."
     ],
@@ -63,8 +63,7 @@
       "```js\ngetData(function(a) {\n  getMoreData(a, function(b) {\n    getMoreData(b, function(c) {\n      getMoreData(c, function(d) {\n        getMoreData(d, function(e) {\n          // ...\n        })\n      })\n    })\n  })\n})\n```"
     ],
     "answerCodeBlocks": [
-      "```js\nasync function asyncAwaitVersion() {\n  const a = await getData()\n  const b = await getMoreData(a)\n  const c = await getMoreData(b)\n  const d = await getMoreData(c)\n  const e = await getMoreData(e)\n  // ...\n}\n```",
-      "```js\ngetData()\n  .then(getMoreData)\n  .then(getMoreData)\n  .then(getMoreData)\n  .then(getMoreData)\n  .then(...)\n```"
+      "```js\nasync function asyncAwaitVersion() {\n  const a = await getData()\n  const b = await getMoreData(a)\n  const c = await getMoreData(b)\n  const d = await getMoreData(c)\n  const e = await getMoreData(e)\n  // ...\n}\n```"
     ]
   },
   {
@@ -825,7 +824,7 @@
   },
   {
     "name": "reference-example.md",
-    "question": "What is the output of the following code?\n\n```js\nconst a = [1, 2, 3]\nconst b = [1, 2, 3]\nconst c = \"1,2,3\"\n\n/* eslint eqeqeq: 0 */\nconsole.log(a == c)\nconsole.log(a == b)\n```",
+    "question": "What is the output of the following code?\n\n```js\nconst a = [1, 2, 3]\nconst b = [1, 2, 3]\nconst c = \"1,2,3\"\n\nconsole.log(a == c)\nconsole.log(a == b)\n```",
     "answer": "The first `console.log` outputs `true` because JavaScript's compiler performs type conversion and therefore it compares to strings by their value. On the other hand, the second `console.log` outputs `false` because Arrays are Objects and Objects are compared by reference.",
     "goodToHear": [
       "JavaScript performs automatic type conversion",
@@ -840,7 +839,7 @@
     ],
     "expertise": 1,
     "questionCodeBlocks": [
-      "```js\nconst a = [1, 2, 3]\nconst b = [1, 2, 3]\nconst c = \"1,2,3\"\n\n/* eslint eqeqeq: 0 */\nconsole.log(a == c)\nconsole.log(a == b)\n```"
+      "```js\nconst a = [1, 2, 3]\nconst b = [1, 2, 3]\nconst c = \"1,2,3\"\n\nconsole.log(a == c)\nconsole.log(a == b)\n```"
     ],
     "answerCodeBlocks": []
   },
@@ -938,9 +937,9 @@
   {
     "name": "this.md",
     "question": "What is the `this` keyword and how does it work?",
-    "answer": "The `this` keyword is an object that represents the context of an executing function. Regular functions can have their `this` value changed with the methods `call()`, `apply()` and `bind()`. Arrow functions implicitly bind `this` so that it refers to the context of its lexical environment, regardless of whether or not its context is set explicitly with `call()`.\n\nHere are some common examples of `this`:\n\n##### Object literals\n\n`this` refers to the object itself inside regular functions if the object precedes the invocation of the function.\n\nProperties set as `this` do not refer to the object.\n\n```js\nvar myObject = {\n  property: this,\n  regularFunction: function() {\n    return this\n  },\n  arrowFunction: () => {\n    return this\n  },\n  iife: (function() {\n    return this\n  })()\n}\nmyObject.regularFunction() // myObject\nmyObject[\"regularFunction\"]() // my Object\n\nmyObject.property // NOT myObject; lexical `this`\nmyObject.arrowFunction() // NOT myObject; lexical `this`\nmyObject.iife() // NOT myObject; lexical `this`\nconst regularFunction = myObject.regularFunction\nregularFunction() // NOT myObject; lexical `this`\n```\n\n##### Event listeners\n\n```js\ndocument.body.addEventListener(\"click\", function() {\n  console.log(this) // document.body\n})\n```\n\n##### Constructors\n\n```js\nclass myClass {\n  constructor() {\n    console.log(this) // myClassInstance\n  }\n}\nvar myClassInstance = new myClass()\n```\n\n##### Manual\n\n```js\nvar myFunction = function() {\n  return this\n}\nmyFunction.call({ customThis: true }) // { customThis: true }\n```\n\n##### Unwanted `this`\n\n```js\nvar obj = {\n  arr: [1, 2, 3],\n  doubleArr() {\n    return this.arr.map(function(value) {\n      // this is now this.arr\n      return this.double(value)\n    })\n  },\n  double() {\n    return value * 2\n  }\n}\nobj.doubleArr() // Uncaught TypeError: this.double is not a function\n```",
+    "answer": "The `this` keyword is an object that represents the context of an executing function. Regular functions can have their `this` value changed with the methods `call()`, `apply()` and `bind()`. Arrow functions implicitly bind `this` so that it refers to the context of its lexical environment, regardless of whether or not its context is set explicitly with `call()`.\n\nHere are some common examples of how `this` works:\n\n##### Object literals\n\n`this` refers to the object itself inside regular functions if the object precedes the invocation of the function.\n\nProperties set as `this` do not refer to the object.\n\n```js\nvar myObject = {\n  property: this,\n  regularFunction: function() {\n    return this\n  },\n  arrowFunction: () => {\n    return this\n  },\n  iife: (function() {\n    return this\n  })()\n}\nmyObject.regularFunction() // myObject\nmyObject[\"regularFunction\"]() // my Object\n\nmyObject.property // NOT myObject; lexical `this`\nmyObject.arrowFunction() // NOT myObject; lexical `this`\nmyObject.iife() // NOT myObject; lexical `this`\nconst regularFunction = myObject.regularFunction\nregularFunction() // NOT myObject; lexical `this`\n```\n\n##### Event listeners\n\n`this` refers to the element listening to the event.\n\n```js\ndocument.body.addEventListener(\"click\", function() {\n  console.log(this) // document.body\n})\n```\n\n##### Constructors\n\n`this` refers to the newly created object.\n\n```js\nclass Example {\n  constructor() {\n    console.log(this) // myExample\n  }\n}\nconst myExample = new Example()\n```\n\n##### Manual\n\nWith `call()` and `apply()`, `this` refers to the object passed as the first argument.\n\n```js\nvar myFunction = function() {\n  return this\n}\nmyFunction.call({ customThis: true }) // { customThis: true }\n```\n\n##### Unwanted `this`\n\nBecause `this` can change depending on the scope, it can have unexpected values when using regular functions.\n\n```js\nvar obj = {\n  arr: [1, 2, 3],\n  doubleArr() {\n    return this.arr.map(function(value) {\n      // this is now this.arr\n      return this.double(value)\n    })\n  },\n  double() {\n    return value * 2\n  }\n}\nobj.doubleArr() // Uncaught TypeError: this.double is not a function\n```",
     "goodToHear": [
-      "In non-strict mode, global `this` is the global object (`window` in browsers), while in non-strict mode global `this` is `undefined`.",
+      "In non-strict mode, global `this` is the global object (`window` in browsers), while in strict mode global `this` is `undefined`.",
       "`Function.prototype.call` and `Function.prototype.apply` set the `this` context of an executing function as the first argument, with `call` accepting a variadic number of arguments thereafter, and `apply` accepting an array as the second argument which are fed to the function in a variadic manner.",
       "`Function.prototype.bind` returns a new function that enforces the `this` context as the first argument which cannot be changed by other functions.",
       "If a function requires its `this` context to be changed based on how it is called, you must use the `function` keyword. Use arrow functions when you want `this` to be the surrounding (lexical) context."
@@ -956,7 +955,7 @@
     "answerCodeBlocks": [
       "```js\nvar myObject = {\n  property: this,\n  regularFunction: function() {\n    return this\n  },\n  arrowFunction: () => {\n    return this\n  },\n  iife: (function() {\n    return this\n  })()\n}\nmyObject.regularFunction() // myObject\nmyObject[\"regularFunction\"]() // my Object\n\nmyObject.property // NOT myObject; lexical `this`\nmyObject.arrowFunction() // NOT myObject; lexical `this`\nmyObject.iife() // NOT myObject; lexical `this`\nconst regularFunction = myObject.regularFunction\nregularFunction() // NOT myObject; lexical `this`\n```",
       "```js\ndocument.body.addEventListener(\"click\", function() {\n  console.log(this) // document.body\n})\n```",
-      "```js\nclass myClass {\n  constructor() {\n    console.log(this) // myClassInstance\n  }\n}\nvar myClassInstance = new myClass()\n```",
+      "```js\nclass Example {\n  constructor() {\n    console.log(this) // myExample\n  }\n}\nconst myExample = new Example()\n```",
       "```js\nvar myFunction = function() {\n  return this\n}\nmyFunction.call({ customThis: true }) // { customThis: true }\n```",
       "```js\nvar obj = {\n  arr: [1, 2, 3],\n  doubleArr() {\n    return this.arr.map(function(value) {\n      // this is now this.arr\n      return this.double(value)\n    })\n  },\n  double() {\n    return value * 2\n  }\n}\nobj.doubleArr() // Uncaught TypeError: this.double is not a function\n```"
     ]
@@ -1038,9 +1037,9 @@
   {
     "name": "var-let-const.md",
     "question": "What are the differences between `var`, `let`, `const` and no keyword statements?",
-    "answer": "##### No keyword prefix\n\nWhen no keyword is prefixed before a variable declaration, it is either assigning a global variable if one does not exist, or reassigns an already declared variable. In non-strict mode, it will assign the variable as a property of the global object `this` (`window` in browsers). In strict mode, it will throw an error to prevent unwanted global variables from being created.\n\n##### var\n\n`var` was the default statement to declare a variable until ES2015. It creates a function-scoped variable that can be reassigned and redeclared. However, due to its lack of block scoping, it can cause issues if the variable is being reused in a loop that contains an asynchronous callback because the variable will continue to exist outside of the block scope.\n\nBelow, by the time the the `setTimeout` callback executes, the loop has already finished and the `i` variable is `10`, so all ten callbacks reference the same variable available in the function scope.\n\n```js\nfor (var i = 0; i < 10; i++) {\n  setTimeout(() => {\n    console.log(i) // logs `10` ten times\n  })\n}\n\n/* ==================== Solutions with `var` ==================== */\nfor (var i = 0; i < 10; i++) {\n  // Passed as an argument will use the value as-is in that point in time\n  setTimeout(console.log, 0, i)\n}\n\nfor (var i = 0; i < 10; i++) {\n  // Create a new function scope that will use the value as-is in that point in time\n  ;(i => {\n    setTimeout(() => {\n      console.log(i)\n    })\n  })(i)\n}\n```\n\n##### let\n\n`let` was introduced in ES2015 and is the new preferred way to declare variables that will be reassigned later. Trying to redeclare a variable again will throw an error. It is block-scoped so that using it in a loop will keep it scoped to the iteration.\n\n```js\nfor (let i = 0; i < 10; i++) {\n  setTimeout(() => {\n    console.log(i) // logs 0, 1, 2, 3, ...\n  })\n}\n```\n\n##### const\n\n`const` was introduced in ES2015 and is the new preferred default way to declare all variables if they won't be reassigned later, even for objects that will be mutated (as long as the reference to the object does not change). It is block-scoped and cannot be reassigned.\n\n```js\nconst myObject = {}\nmyObject.prop = \"hello!\" // No error\nmyObject = \"hello\" // Error\n```",
+    "answer": "##### No keyword\n\nWhen no keyword exists before a variable assignment, it is either assigning a global variable if one does not exist, or reassigns an already declared variable. In non-strict mode, if the variable has not yet been declared, it will assign the variable as a property of the global object (`window` in browsers). In strict mode, it will throw an error to prevent unwanted global variables from being created.\n\n##### var\n\n`var` was the default statement to declare a variable until ES2015. It creates a function-scoped variable that can be reassigned and redeclared. However, due to its lack of block scoping, it can cause issues if the variable is being reused in a loop that contains an asynchronous callback because the variable will continue to exist outside of the block scope.\n\nBelow, by the time the the `setTimeout` callback executes, the loop has already finished and the `i` variable is `10`, so all ten callbacks reference the same variable available in the function scope.\n\n```js\nfor (var i = 0; i < 10; i++) {\n  setTimeout(() => {\n    // logs `10` ten times\n    console.log(i)\n  })\n}\n\n/* Solutions with `var` */\nfor (var i = 0; i < 10; i++) {\n  // Passed as an argument will use the value as-is in\n  // that point in time\n  setTimeout(console.log, 0, i)\n}\n\nfor (var i = 0; i < 10; i++) {\n  // Create a new function scope that will use the value\n  // as-is in that point in time\n  ;(i => {\n    setTimeout(() => {\n      console.log(i)\n    })\n  })(i)\n}\n```\n\n##### let\n\n`let` was introduced in ES2015 and is the new preferred way to declare variables that will be reassigned later. Trying to redeclare a variable again will throw an error. It is block-scoped so that using it in a loop will keep it scoped to the iteration.\n\n```js\nfor (let i = 0; i < 10; i++) {\n  setTimeout(() => {\n    // logs 0, 1, 2, 3, ...\n    console.log(i)\n  })\n}\n```\n\n##### const\n\n`const` was introduced in ES2015 and is the new preferred default way to declare all variables if they won't be reassigned later, even for objects that will be mutated (as long as the reference to the object does not change). It is block-scoped and cannot be reassigned.\n\n```js\nconst myObject = {}\nmyObject.prop = \"hello!\" // No error\nmyObject = \"hello\" // Error\n```",
     "goodToHear": [
-      "All declarations are hoisted to the top of their scope",
+      "All declarations are hoisted to the top of their scope.",
       "Show a common issue with using `var` and how `let` can solve it, as well as a solution that keeps `var`.",
       "`var` should be avoided whenever possible and prefer `const` as the default declaration statement for all variables unless they will be reassigned later, then use `let` if so."
     ],
@@ -1053,29 +1052,9 @@
     "expertise": 1,
     "questionCodeBlocks": [],
     "answerCodeBlocks": [
-      "```js\nfor (var i = 0; i < 10; i++) {\n  setTimeout(() => {\n    console.log(i) // logs `10` ten times\n  })\n}\n\n/* ==================== Solutions with `var` ==================== */\nfor (var i = 0; i < 10; i++) {\n  // Passed as an argument will use the value as-is in that point in time\n  setTimeout(console.log, 0, i)\n}\n\nfor (var i = 0; i < 10; i++) {\n  // Create a new function scope that will use the value as-is in that point in time\n  ;(i => {\n    setTimeout(() => {\n      console.log(i)\n    })\n  })(i)\n}\n```",
-      "```js\nfor (let i = 0; i < 10; i++) {\n  setTimeout(() => {\n    console.log(i) // logs 0, 1, 2, 3, ...\n  })\n}\n```",
+      "```js\nfor (var i = 0; i < 10; i++) {\n  setTimeout(() => {\n    // logs `10` ten times\n    console.log(i)\n  })\n}\n\n/* Solutions with `var` */\nfor (var i = 0; i < 10; i++) {\n  // Passed as an argument will use the value as-is in\n  // that point in time\n  setTimeout(console.log, 0, i)\n}\n\nfor (var i = 0; i < 10; i++) {\n  // Create a new function scope that will use the value\n  // as-is in that point in time\n  ;(i => {\n    setTimeout(() => {\n      console.log(i)\n    })\n  })(i)\n}\n```",
+      "```js\nfor (let i = 0; i < 10; i++) {\n  setTimeout(() => {\n    // logs 0, 1, 2, 3, ...\n    console.log(i)\n  })\n}\n```",
       "```js\nconst myObject = {}\nmyObject.prop = \"hello!\" // No error\nmyObject = \"hello\" // Error\n```"
     ]
-  },
-  {
-    "name": "z-index.md",
-    "question": "How does Z index function?",
-    "answer": "When elements overlap, z-order determines which one covers the other.",
-    "goodToHear": [
-      "`z-index` only applies to positioned elements (except `static`)",
-      "How to organize z-indexes on large scale projects"
-    ],
-    "links": [
-      "[MDN docs for z-index](https://developer.mozilla.org/en-US/docs/Web/CSS/z-index)",
-      "[Understanding CSS z-index](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Positioning/Understanding_z_index)",
-      "[What No One Told You About Z-Index](https://philipwalton.com/articles/what-no-one-told-you-about-z-index/)"
-    ],
-    "tags": [
-      "css"
-    ],
-    "expertise": 0,
-    "questionCodeBlocks": [],
-    "answerCodeBlocks": []
   }
 ]
