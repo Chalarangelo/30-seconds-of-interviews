@@ -27,10 +27,10 @@ function isDeepEqual(obj1, obj2, testPrototypes = false) {
 
   const prototypesAreEqual = testPrototypes
     ? isDeepEqual(
-      Object.getPrototypeOf(obj1),
-      Object.getPrototypeOf(obj2),
-      true
-    )
+        Object.getPrototypeOf(obj1),
+        Object.getPrototypeOf(obj2),
+        true
+      )
     : true
 
   const obj1Props = Object.getOwnPropertyNames(obj1)

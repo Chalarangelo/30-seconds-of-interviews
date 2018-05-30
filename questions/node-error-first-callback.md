@@ -1,7 +1,7 @@
 ### NodeJS uses a callback pattern in many instances where if an error were returned it will pass it as the first argument to the callback. What are the advantages of this pattern?
 
 ```js
-fs.readFile(filePath, function(err, data) {  
+fs.readFile(filePath, function(err, data) {
   if (err) {
     // handle the error, the return is important here
     // so execution stops here
@@ -20,7 +20,7 @@ Advantages include:
 * Having a consistent API leads to more adoption
 * Ability to easily adapt a callback pattern that will lead to more maintainable code
 
-As you can see from below example, the callback is called with null as its first argument if there is no error. However, if there is an error, you create an Error object, which then becomes the callback's only parameter. The callback function allows a user to easily know whether or not an error occurred. 
+As you can see from below example, the callback is called with null as its first argument if there is no error. However, if there is an error, you create an Error object, which then becomes the callback's only parameter. The callback function allows a user to easily know whether or not an error occurred.
 
 This practice is also called the _Node.js error convention_, and this kind of callback implementations are called _error-first callbacks_.
 
@@ -33,7 +33,7 @@ var isTrue = function(value, callback) {
   }
 }
 
-var callback = function (error, retval) {
+var callback = function(error, retval) {
   if (error) {
     console.log(error)
     return
@@ -42,7 +42,7 @@ var callback = function (error, retval) {
 }
 
 isTrue(false, callback)
-isTrue(true,  callback)
+isTrue(true, callback)
 
 /*
   { stack: [Getter/Setter],

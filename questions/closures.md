@@ -1,4 +1,4 @@
-### What is a closure?
+### What is a closure? Can you give a useful example of one?
 
 #### Answer
 
@@ -8,11 +8,15 @@ A closure is a function defined inside another function and has access to its le
 * Variables declared in the scope of the parent function
 * Variables declared in the global scope
 
+In JavaScript, all functions are closures because they have access to the outer scope, but most functions don't utilise the usefulness of closures: the persistence of state. Closures are also sometimes called stateful functions because of this.
+
+In addition, closures are the only way to store private data that can't be accessed from the outside in JavaScript. They are the key to the UMD (Universal Module Definition) pattern, which is frequently used in libraries that only expose a public API but keep the implementation details private, preventing name collisions with other libraries or the user's own code.
+
 #### Good to hear
 
 * Closures are useful because they let you associate data with a function that operates on that data.
 * A closure can substitute an object with only a single method.
-* Closures can be used to emulate private methods.
+* Closures can be used to emulate private properties and methods.
 
 ##### Additional links
 
