@@ -1,6 +1,7 @@
 {
   "name": "30-seconds-of-interviews",
-  "description": "The curated collection of common interview questions to help you prepare for your next interview.",
+  "description":
+    "The curated collection of common interview questions to help you prepare for your next interview.",
   "version": "0.0.1",
   "main": "index.js",
   "scripts": {
@@ -8,7 +9,11 @@
     "extractor": "node ./scripts/extract.js",
     "dev": "parcel website/index.html",
     "build": "parcel build website/index.html -d docs/ --public-url ./",
-    "lint": "eslint --ext md,js ."
+    "lint": "eslint --fix --ext js .",
+    "formatQuestions":
+      "prettier-eslint --write \"questions/*.md\" --log-level \"info\"",
+    "format":
+      "prettier-eslint --write \"scripts/*.js\" && prettier-eslint --write \"website/**/*.js\""
   },
   "repository": {
     "type": "git",
@@ -41,6 +46,7 @@
     "eslint-plugin-markdown": "^1.0.0-beta.6",
     "eslint-plugin-react": "^7.8.2",
     "node-sass": "^4.9.0",
-    "parcel-bundler": "^1.8.1"
+    "parcel-bundler": "^1.8.1",
+    "prettier-eslint-cli": "^4.7.1"
   }
 }

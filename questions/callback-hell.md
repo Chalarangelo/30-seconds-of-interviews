@@ -1,12 +1,12 @@
 ### How can you avoid callback hells?
 
 ```js
-getData(function(a){  
-  getMoreData(a, function(b){
-    getMoreData(b, function(c){ 
-      getMoreData(c, function(d){ 
-        getMoreData(d, function(e){ 
-          //  ...
+getData(function(a) {
+  getMoreData(a, function(b) {
+    getMoreData(b, function(c) {
+      getMoreData(c, function(d) {
+        getMoreData(d, function(e) {
+          // ...
         })
       })
     })
@@ -15,6 +15,32 @@ getData(function(a){
 ```
 
 #### Answer
+
+Refactoring the functions to return promises and using `async/await` is usually the best option. Instead of supplying the functions with callbacks that cause deep nesting, they return a promise that can be `await`ed and will be resolved once the data has arrived, allowing the next line of code to be evaluated in a sync-like fashion.
+
+The above code can be restructured like so:
+
+```js
+async function asyncAwaitVersion() {
+  const a = await getData()
+  const b = await getMoreData(a)
+  const c = await getMoreData(b)
+  const d = await getMoreData(c)
+  const e = await getMoreData(e)
+  // ...
+}
+```
+
+Before ES2017 brought `async/await`, promise chaining was used instead (whether ES2015's native ones or a library before that):
+
+```js
+getData()
+  .then(getMoreData)
+  .then(getMoreData)
+  .then(getMoreData)
+  .then(getMoreData)
+  .then(...)
+```
 
 There are lots of ways to solve the issue of callback hells:
 

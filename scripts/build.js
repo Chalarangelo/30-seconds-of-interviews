@@ -20,9 +20,11 @@ const detailsTOC = (title, questionsArray) => {
   const list = questionsArray
     .map(
       question =>
-        `* [${question.question
-          .replace("\n", "")
-          .split("\`\`\`")[0].trim() // for questions with code blocks, only take the question
+        `* [${
+          question.question
+            .replace("\n", "")
+            .split("```")[0]
+            .trim() // for questions with code blocks, only take the question
         }](#${util.toKebabCase(question.question)})`
     )
     .join("\n")
@@ -57,7 +59,7 @@ try {
 
 try {
   // add static part for start
-  output += `${`${startPart  }\n`}`
+  output += `${`${startPart}\n`}`
 
   const questionsInTag = {}
 
@@ -109,7 +111,7 @@ try {
   })
 
   // add static part for end
-  output += `\n${`${endPart  }\n`}`
+  output += `\n${`${endPart}\n`}`
 
   fs.writeFileSync("README.md", output)
 } catch (err) {

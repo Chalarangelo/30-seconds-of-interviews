@@ -1,4 +1,4 @@
-### What are the differences between `null` and `undefined`?
+### What is the difference between `null` and `undefined`?
 
 #### Answer
 
@@ -6,9 +6,9 @@ In JavaScript, two values discretely represent nothing - `undefined` and `null`.
 
 #### Good to hear
 
-* `typeof undefined` returns `undefined`
-* `typeof null` returns `object`. However, it is still a primitive value
-* `undefined == null` equals to `true`
+* `typeof undefined` evaluates to `"undefined"`.
+* `typeof null` evaluates `"object"`. However, it is still a primitive value and this is considered an implementation bug in JavaScript.
+* `undefined == null` evaluates to `true`.
 
 ##### Additional links
 
