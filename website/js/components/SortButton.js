@@ -14,11 +14,10 @@ export default () => (state, actions) => (
       } order`}
     >
       <span>Expertise</span>
-      {state.filter.sortAscending ? (
-        <Icon class="btn__icon" name="arrow-up" />
-      ) : (
-        <Icon class="btn__icon" name="arrow-down" />
-      )}
+      <Icon
+        class="btn__icon"
+        name={state.filter.sortAscending ? "arrow-down" : "arrow-up"}
+      />
     </button>
   </div>
 )
