@@ -1,4 +1,4 @@
-### Briefly describe the correct usage of the following HTML5 semantic elements: `<header>`, `<article>`,` <section>`, `<footer>`
+### Briefly describe the correct usage of the following HTML5 semantic elements: `<header>`, `<article>`,`<section>`, `<footer>`
 
 #### Answer
 

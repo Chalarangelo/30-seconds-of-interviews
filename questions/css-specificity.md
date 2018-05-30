@@ -22,4 +22,4 @@ When two selectors are compared, the comparison is made on a per-column basis (e
 
 <!-- tags: (css) -->
 
-<!-- expertise: (1) -->
+<!-- expertise: (2) -->
