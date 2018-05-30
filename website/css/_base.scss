@@ -69,14 +69,8 @@ a {
   outline: 0;
   cursor: pointer;
 
-  &:hover {
-    background: #8385aa;
-    color: white;
-    border-color: #8385aa;
-  }
-
   &:active {
-    box-shadow: inset 0 2px 2px 2px rgba(0, 0, 0, 0.2);
+    box-shadow: inset 0 4px 4px 0px rgba(0, 32, 128, 0.1);
   }
 
   &.focus-visible {
@@ -89,6 +83,16 @@ a {
 
   span {
     margin-right: 8px;
+  }
+}
+
+html:not(.browser-touch) {
+  .btn {
+    &:hover {
+      background: #8385aa;
+      color: white;
+      border-color: #8385aa;
+    }
   }
 }
 

@@ -1,3 +1,5 @@
+import { onUserInputChange } from "./utils"
+
 const html = document.documentElement.classList
 
 if (window.chrome) {
@@ -10,4 +12,8 @@ document.addEventListener("touchstart", function x() {
     document.body.style.cursor = "pointer"
   }
   document.removeEventListener("touchstart", x)
+})
+
+onUserInputChange(type => {
+  html[type === "touch" ? "add" : "remove"]("browser-touch")
 })
