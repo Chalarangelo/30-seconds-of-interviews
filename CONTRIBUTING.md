@@ -8,6 +8,7 @@
   * Don't sweat if you don't know the answer to the question. Simply put **TODO** as an answer, and someone will try to answer it
   * Try to keep answers **short** and **straight to the point**. They should be understandable in under 30 seconds
   * Summarize your answer in short thesis in **good to hear** section.
+  * Every code snippet and html tag should be enclosed in markdown code blocks.
   * Of course, 30 seconds is not enough to fully cover a specific topic so include up to three additional links that further describe the mentioned topic
 * [Open issue](https://github.com/fejes713/30-seconds-of-interviews/issues/new)
   * If you would like to see a new feature(eg. a new category of questions)
