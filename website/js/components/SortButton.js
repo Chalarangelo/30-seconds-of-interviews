@@ -9,13 +9,15 @@ export default () => (state, actions) => (
     <button
       class="btn Dropdown__button"
       onclick={() => actions.filter.onSortDirectionChange()}
+      data-tooltip={`${
+        state.filter.sortAscending ? "Ascending" : "Descending"
+      } order`}
     >
       <span>Expertise</span>
-      {state.filter.sortAlpha ? (
-        <Icon class="btn__icon" name="arrow-down" />
-      ) : (
-        <Icon class="btn__icon" name="arrow-up" />
-      )}
+      <Icon
+        class="btn__icon"
+        name={state.filter.sortAscending ? "arrow-down" : "arrow-up"}
+      />
     </button>
   </div>
 )

@@ -26,7 +26,7 @@ export default ({
         <span>{isOpen ? "Hide" : "Show"} answer</span>
         <Icon
           class={cc("btn__icon", { "is-rotated": isOpen })}
-          name="chevron-down"
+          name={isOpen ? "chevron-up" : "chevron-down"}
         />
       </button>
       <div class={cc("Question__answer", { "is-open": isOpen })}>

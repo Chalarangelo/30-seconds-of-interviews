@@ -1,14 +1,14 @@
 @import "../_vars.scss";
 
 .Header {
+  position: relative;
   background: url("../img/header.svg"),
     radial-gradient(
       circle at 52% 50%,
       #f0afef,
       #b977c1 35px,
       #593173,
-      #20164d 160px,
-      #12072d
+      #20164d 160px
     );
   background-repeat: no-repeat;
   background-size: cover;
@@ -22,14 +22,48 @@
         #f0afef,
         #b977c1 40px,
         #593173,
-        #20164d 195px,
-        #12072d
+        #20164d 195px
       );
     background-size: 100% 100%;
     height: 550px;
   }
 
-  &__tagline {
+  &__lower {
+    position: relative;
+    background: #20164d;
+    padding-bottom: 75px;
+    margin-top: -35px;
     text-align: center;
+
+    &::after {
+      content: "";
+      background-image: url(data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMjQgMjQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZS1taXRlcmxpbWl0PSIxLjQxNCI+PHBhdGggZD0iTTEyIDEybDEyIDEySDBsMTItMTJ6IiBmaWxsPSIjZjZmN2ZkIi8+PC9zdmc+);
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      height: 24px;
+      background-size: 24px 24px;
+      width: 100%;
+      pointer-events: none;
+    }
+  }
+
+  &__github {
+    background: none;
+    border-color: #6874ff;
+    color: #6874ff;
+    padding: 12px 24px;
+    white-space: nowrap;
+
+    &:hover {
+      background: #6874ff;
+      border-color: #6874ff;
+      color: white;
+    }
+  }
+
+  &__github-star {
+    vertical-align: -6px;
+    margin-right: 8px;
   }
 }
