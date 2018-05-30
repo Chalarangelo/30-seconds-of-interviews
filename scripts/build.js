@@ -25,11 +25,17 @@ const detailsTOC = (title, questionsArray) => {
             .replace("\n", "")
             .split("```")[0]
             .trim() // for questions with code blocks, only take the question
-        }](#${util.getAnchor(question.question)})`
+        }](#${util.getAnchor(
+          question.question
+            .replace("\n", "")
+            .split("```")[0]
+            .trim()
+        )})`
     )
     .join("\n")
   return `\n\n<details>\n<summary>${title}</summary>\n\n${list}\n</details>\n\n`
 }
+
 const detailsQuestion = (title, question) => {
   let answer = question.answer.toString()
   // add Good to Hear
