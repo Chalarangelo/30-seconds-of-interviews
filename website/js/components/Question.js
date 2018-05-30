@@ -24,10 +24,13 @@ export default ({
         onclick={() => actions.onAnswerButtonClick({ name, isOpen })}
       >
         <span>{isOpen ? "Hide" : "Show"} answer</span>
-        <Icon
-          class={cc("btn__icon", { "is-rotated": isOpen })}
-          name={isOpen ? "chevron-up" : "chevron-down"}
-        />
+        <i
+          class={cc("Question__button-icon", {
+            "is-rotated": isOpen
+          })}
+        >
+          <Icon class="btn__icon" name="chevron-down" />
+        </i>
       </button>
       <div class={cc("Question__answer", { "is-open": isOpen })}>
         <Markdown content={answer} />
