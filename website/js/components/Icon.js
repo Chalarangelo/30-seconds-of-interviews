@@ -6,6 +6,4 @@ const setInnerHTML = html => el => {
 }
 const svg = ({ name, ...props }) => feather.icons[name].toSvg(props)
 
-export default props => (
-  <i oncreate={setInnerHTML(svg(props))} onupdate={setInnerHTML(svg(props))} />
-)
+export default props => <i oncreate={setInnerHTML(svg(props))} />
