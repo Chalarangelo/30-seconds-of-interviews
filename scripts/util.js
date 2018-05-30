@@ -37,13 +37,6 @@ const readQuestions = () =>
       }, {})
   )
 
-const toKebabCase = str =>
-  str &&
-  str
-    .match(/[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+/g)
-    .map(x => x.toLowerCase())
-    .join("-")
-
 const capitalize = ([ first, ...rest ], lowerRest = false) =>
   first.toUpperCase() +
   (lowerRest ? rest.join("").toLowerCase() : rest.join(""))
@@ -64,13 +57,21 @@ const getCodeBlocks = str => {
   return results
 }
 
-const getAnchor = val =>
-  toKebabCase(
-    val
-      .replace("()", "")
-      .toLowerCase()
-      .replace("`", "")
-  )
+const lower = string => string.toLowerCase()
+
+const getAnchor = string => {
+  const re = /[\u2000-\u206F\u2E00-\u2E7F\\'!"#$%&()*+,./:;<=>?@[\]^`{|}~]/g
+  const replacement = "-"
+  const whitespace = /\s/g
+
+  if (typeof string !== "string") return ""
+  const anchor = string.replace(/[A-Z]+/g, lower)
+  return anchor
+    .trim()
+    .replace(re, "")
+    .replace(whitespace, replacement)
+}
+
 
 module.exports = {
   attempt,
