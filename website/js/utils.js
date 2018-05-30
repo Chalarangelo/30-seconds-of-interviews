@@ -41,7 +41,7 @@ export const nextValInObj = (obj, key) => {
     : i !== -1 && keys[i + 1] && obj[keys[i + 1]]
 }
 
-export const EXPERTISE_STRINGS = ["junior", "intermediate", "senior"]
+export const EXPERTISE_STRINGS = [ "junior", "intermediate", "senior" ]
 
 export const TAG_NAMES = {
   javascript: "JavaScript",
@@ -58,20 +58,21 @@ export const SORTBY_STRINGS = {
 }
 
 export const onUserInputChange = callback => {
-  let type = "mouse",
-    lastTime = 0
+  let type = "mouse"
+  let lastTime = 0
   const mousemoveHandler = () => {
     const now = performance.now()
-    if (now - lastTime < 20)
-      (type = "mouse"),
-        callback(type),
-        document.removeEventListener("mousemove", mousemoveHandler)
+    if (now - lastTime < 20) {
+      type = "mouse"
+      callback(type)
+      document.removeEventListener("mousemove", mousemoveHandler)
+    }
     lastTime = now
   }
   document.addEventListener("touchstart", () => {
     if (type === "touch") return
-    ;(type = "touch"),
-      callback(type),
-      document.addEventListener("mousemove", mousemoveHandler)
+    type = "touch"
+    callback(type)
+    document.addEventListener("mousemove", mousemoveHandler)
   })
 }
