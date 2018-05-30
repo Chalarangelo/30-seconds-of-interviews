@@ -3,7 +3,7 @@ import { cc } from "../utils"
 import DropdownItem from "./DropdownItem"
 import Icon from "./Icon"
 
-export default ({ name, items, isOpen, position }) => (state) => (
+export default ({ name, items, isOpen, position }) => state => (
   <div class="Dropdown">
     <div>
       <label class="Dropdown__label">{name}</label>
@@ -18,7 +18,7 @@ export default ({ name, items, isOpen, position }) => (state) => (
         "is-right": position === "right"
       })}
     >
-      {items.map((item) => (
+      {items.map(item => (
         <li>
           <DropdownItem {...item} dropdown={name} />
         </li>

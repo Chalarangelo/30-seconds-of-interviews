@@ -27,7 +27,7 @@ const readQuestions = () =>
   attempt("read questions", () =>
     fs
       .readdirSync(QUESTIONS_PATH)
-      .filter((f) => !f.includes("eslint"))
+      .filter(f => !f.includes("eslint"))
       .sort((a, b) => (a.toLowerCase() < b.toLowerCase() ? -1 : 1))
       .reduce((acc, name) => {
         acc[name] = fs
@@ -37,18 +37,18 @@ const readQuestions = () =>
       }, {})
   )
 
-const toKebabCase = (str) =>
+const toKebabCase = str =>
   str &&
   str
     .match(/[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+/g)
-    .map((x) => x.toLowerCase())
+    .map(x => x.toLowerCase())
     .join("-")
 
 const capitalize = ([ first, ...rest ], lowerRest = false) =>
   first.toUpperCase() +
   (lowerRest ? rest.join("").toLowerCase() : rest.join(""))
 
-const getCodeBlocks = (str) => {
+const getCodeBlocks = str => {
   const regex = /```[.\S\s]*?```/g
   const results = []
   let m = null
@@ -57,7 +57,7 @@ const getCodeBlocks = (str) => {
       regex.lastIndex += 1
     }
     // eslint-disable-next-line no-unused-vars
-    m.forEach((match, groupIndex) => { 
+    m.forEach((match, groupIndex) => {
       results.push(match)
     })
   }

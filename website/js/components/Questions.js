@@ -2,13 +2,13 @@ import { h } from "hyperapp"
 import Question from "./Question"
 import { EXPERTISE_STRINGS } from "../utils"
 
-export default () => (state) => (
+export default () => state => (
   <main class="Questions">
     <div class="container">
       <ul class="Questions__list">
         {state.questions
           .filter(
-            (q) =>
+            q =>
               state.filter.category.toLowerCase() === "all" ||
               q.tags.includes(state.filter.category.toLowerCase())
           )
@@ -26,7 +26,7 @@ export default () => (state) => (
                 return 1
             }
           })
-          .map((q) => <Question {...q} />)}
+          .map(q => <Question {...q} />)}
       </ul>
     </div>
   </main>

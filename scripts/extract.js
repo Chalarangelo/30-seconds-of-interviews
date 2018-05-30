@@ -29,19 +29,19 @@ attempt("questions.json generation", () => {
         )
         .trim()
         .split("\n")
-        .map((v) => v.replace("* ", ""))
-        .filter((v) => v.trim() !== ""),
+        .map(v => v.replace("* ", ""))
+        .filter(v => v.trim() !== ""),
       links: contents
         .slice(contents.indexOf("##### Additional links") + 23)
         .trim()
         .split("\n")
-        .filter((v) =>
+        .filter(v =>
           /(\/\*[\w\'\s\r\n\*]*\*\/)|(\/\/[\w\s\']*)|(\<![\-\-\s\w\>\/]*\>)/.test(
             v
           )
         )
-        .map((v) => v.replace("* ", ""))
-        .filter((v) => v.trim() !== "" && !v.includes("tags")),
+        .map(v => v.replace("* ", ""))
+        .filter(v => v.trim() !== "" && !v.includes("tags")),
       tags: (contents.match(/<!--\s*tags:\s*\((.+)\)/) || [])[1].split(","),
       expertise: parseInt(
         (contents.match(/<!--\s*expertise:\s*\((.+)\)/) || [])[1],

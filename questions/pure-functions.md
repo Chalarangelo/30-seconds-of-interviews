@@ -14,7 +14,7 @@ Pure functions can mutate local data within the function as long as it satisfies
 ```js
 const a = (x, y) => x + y
 const b = (arr, value) => arr.concat(value)
-const c = (arr) => [...arr].sort((a, b) => a - b)
+const c = arr => [...arr].sort((a, b) => a - b)
 ```
 
 ##### Impure
@@ -22,7 +22,7 @@ const c = (arr) => [...arr].sort((a, b) => a - b)
 ```js
 const a = (x, y) => x + y + Math.random()
 const b = (arr, value) => (arr.push(value), arr)
-const c = (arr) => arr.sort((a, b) => a - b)
+const c = arr => arr.sort((a, b) => a - b)
 ```
 
 #### Good to hear

@@ -19,7 +19,7 @@ const hX = (n, text) => `\n${"#".repeat(n)} ${text}`
 const detailsTOC = (title, questionsArray) => {
   const list = questionsArray
     .map(
-      (question) =>
+      question =>
         `* [${
           question.question
             .replace("\n", "")
@@ -34,10 +34,10 @@ const detailsQuestion = (title, question) => {
   let answer = question.answer.toString()
   // add Good to Hear
   answer += `\n\n${hX(4, "Good to hear")}\n\n`
-  answer += `\n${question.goodToHear.map((s) => `* ${s}`).join("\n")}`
+  answer += `\n${question.goodToHear.map(s => `* ${s}`).join("\n")}`
   // add Additional links
   answer += `\n\n${hX(5, "Additional links")}\n\n`
-  answer += `\n${question.links.map((link) => `* ${link}`).join("\n")}`
+  answer += `\n${question.links.map(link => `* ${link}`).join("\n")}`
   return `\n\n<details>\n<summary>${title}</summary>\n\n${answer}\n</details>\n\n`
 }
 
@@ -64,8 +64,8 @@ try {
   const questionsInTag = {}
 
   // put questions into respective tag-keyed arrays
-  questions.forEach((question) => {
-    question.tags.forEach((tag) => {
+  questions.forEach(question => {
+    question.tags.forEach(tag => {
       if (Object.keys(questionsInTag).includes(tag)) {
         questionsInTag[tag].push(question)
       } else {
@@ -88,7 +88,7 @@ try {
   )
 
   // write Table of Contents
-  tags.forEach((tagKey) => {
+  tags.forEach(tagKey => {
     const taggedQuestions = questionsInTag[tagKey]
     output += hX(3, TAG_NAMES[tagKey])
     output += detailsTOC("View contents", taggedQuestions)
@@ -98,12 +98,12 @@ try {
   output += "\n---\n"
 
   // write actual questions
-  tags.forEach((tagKey) => {
+  tags.forEach(tagKey => {
     output += hX(2, TAG_NAMES[tagKey])
     const taggedQuestions = questionsInTag[tagKey]
     // sort questions by expertise
     taggedQuestions.sort((q1, q2) => q1.expertise - q2.expertise)
-    taggedQuestions.forEach((question) => {
+    taggedQuestions.forEach(question => {
       output += hX(3, question.question)
       output += detailsQuestion("View answer", question)
       output += "\n\n<br>[⬆ Back to top](#table-of-contents)\n\n"

@@ -39,7 +39,7 @@ function isDeepEqual(obj1, obj2, testPrototypes = false) {
   return (
     obj1Props.length === obj2Props.length &&
     prototypesAreEqual &&
-    obj1Props.every((prop) => isDeepEqual(obj1[prop], obj2[prop]))
+    obj1Props.every(prop => isDeepEqual(obj1[prop], obj2[prop]))
   )
 }
 ```

@@ -32,7 +32,7 @@ export default ({
       <div class={cc("Question__answer", { "is-open": isOpen })}>
         <Markdown content={answer} />
         {goodToHear.length ? <h4>Good to hear</h4> : null}
-        <ul>{goodToHear.map((i) => <Markdown node="li" content={i} />)}</ul>
+        <ul>{goodToHear.map(i => <Markdown node="li" content={i} />)}</ul>
       </div>
     </div>
   </div>
