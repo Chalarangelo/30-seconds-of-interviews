@@ -2,9 +2,9 @@ import { h } from "hyperapp"
 import marked from "marked"
 import Prism from "prismjs"
 
-const setInnerHTML = html => el => {
+const setInnerHTML = (html) => (el) => {
   el.innerHTML = html
-  Array.from(el.querySelectorAll("code[class^='lang']")).forEach(e =>
+  Array.from(el.querySelectorAll("code[class^='lang']")).forEach((e) =>
     Prism.highlightElement(e)
   )
 }

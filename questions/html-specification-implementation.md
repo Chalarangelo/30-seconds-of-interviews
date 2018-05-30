@@ -9,7 +9,7 @@ A browser is said to “support” a specification if it handles valid documents
 #### Good to hear
 
 * `HTML5` defines some rules to follow for an invalid `HTML5` document (i.e., one that contains syntactical errors)
-* However, invalid documents may contain anything, so it's impossible for the specification to handle all possibilities comprehensively. 
+* However, invalid documents may contain anything, so it's impossible for the specification to handle all possibilities comprehensively.
 * Thus, many decisions about how to handle malformed documents are left up to the browser.
 
 ##### Additional links

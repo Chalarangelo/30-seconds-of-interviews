@@ -18,7 +18,7 @@ Both forms of storage are scoped to the document origin so that documents with d
 
 #### Good to hear
 
-* Earlier, this was done with cookies. 
+* Earlier, this was done with cookies.
 * The storage limit is far larger (at least 5MB) than with cookies and its faster.
 * The data is never transferred to the server and can only be used if the client specifically asks for it.
 

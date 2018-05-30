@@ -2,11 +2,7 @@
 const fs = require("fs-extra")
 const path = require("path")
 const chalk = require("chalk")
-const {
-  attempt,
-  readQuestions,
-  getCodeBlocks,
-} = require("./util")
+const { attempt, readQuestions, getCodeBlocks } = require("./util")
 
 console.time("Extractor")
 
@@ -21,7 +17,7 @@ attempt("questions.json generation", () => {
         contents.indexOf("#### Good to hear")
       )
       .trim()
-      
+
     return {
       name,
       question,
@@ -33,22 +29,23 @@ attempt("questions.json generation", () => {
         )
         .trim()
         .split("\n")
-        .map(v => v.replace("* ", ""))
-        .filter(v => v.trim() !== ""),
+        .map((v) => v.replace("* ", ""))
+        .filter((v) => v.trim() !== ""),
       links: contents
         .slice(contents.indexOf("##### Additional links") + 23)
         .trim()
         .split("\n")
-        .filter(v =>
+        .filter((v) =>
           /(\/\*[\w\'\s\r\n\*]*\*\/)|(\/\/[\w\s\']*)|(\<![\-\-\s\w\>\/]*\>)/.test(
             v
           )
         )
-        .map(v => v.replace("* ", ""))
-        .filter(v => v.trim() !== "" && !v.includes("tags")),
+        .map((v) => v.replace("* ", ""))
+        .filter((v) => v.trim() !== "" && !v.includes("tags")),
       tags: (contents.match(/<!--\s*tags:\s*\((.+)\)/) || [])[1].split(","),
       expertise: parseInt(
-        (contents.match(/<!--\s*expertise:\s*\((.+)\)/) || [])[1], 10
+        (contents.match(/<!--\s*expertise:\s*\((.+)\)/) || [])[1],
+        10
       ),
       questionCodeBlocks: getCodeBlocks(question),
       answerCodeBlocks: getCodeBlocks(answer)

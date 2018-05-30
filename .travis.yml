@@ -12,7 +12,8 @@ jobs:
         - yarn install
       before_script:
         - chmod +x .travis/checkIfCron.sh && ./.travis/checkIfCron.sh
-        - yarn lint --fix
+        - chmod +x .travis/lintweb.sh && ./.travis/lintweb.sh
+        - yarn formatQuestions
         - yarn extractor
         - yarn builder
       script:

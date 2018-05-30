@@ -27,7 +27,7 @@ for (var i = 0; i < 10; i++) {
 
 for (var i = 0; i < 10; i++) {
   // Create a new function scope that will use the value as-is in that point in time
-  ;(i => {
+  ;((i) => {
     setTimeout(() => {
       console.log(i)
     })
