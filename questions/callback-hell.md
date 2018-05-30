@@ -31,23 +31,12 @@ async function asyncAwaitVersion() {
 }
 ```
 
-Before ES2017 brought `async/await`, promise chaining was used instead (whether ES2015's native ones or a library before that):
-
-```js
-getData()
-  .then(getMoreData)
-  .then(getMoreData)
-  .then(getMoreData)
-  .then(getMoreData)
-  .then(...)
-```
-
 There are lots of ways to solve the issue of callback hells:
 
-* modularization: break callbacks into independent functions
-* use a control flow library, like async
-* use generators with Promises
-* use async/await (from v7 on)
+* Modularization: break callbacks into independent functions
+* Use a control flow library, like async
+* Use generators with Promises
+* Use async/await (from v7 on)
 
 #### Good to hear
 

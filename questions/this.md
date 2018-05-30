@@ -46,12 +46,12 @@ document.body.addEventListener("click", function() {
 ##### Constructors
 
 ```js
-class myClass {
+class Example {
   constructor() {
-    console.log(this) // myClassInstance
+    console.log(this) // myExample
   }
 }
-var myClassInstance = new myClass()
+const myExample = new Example()
 ```
 
 ##### Manual
