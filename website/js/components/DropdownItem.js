@@ -10,9 +10,7 @@ export default ({ name, icon, dropdown }) => (state, actions) => {
       class={cc(`DropdownItem is-${name.toLowerCase()}`, {
         "is-active": state.filter[dropdown.toLowerCase()] === name
       })}
-      onclick={() =>
-        actions.filter.set({ dropdown: dropdown.toLowerCase(), name })
-      }
+      onclick={() => actions.filter.set(name)}
     >
       {[...Array(dropdownIndex === -1 ? 1 : dropdownIndex + 1)].map(() => (
         <Icon
