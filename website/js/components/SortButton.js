@@ -1,4 +1,5 @@
 import { h } from "hyperapp"
+import { cc } from "../utils"
 import Icon from "./Icon"
 
 export default () => (state, actions) => (
@@ -14,10 +15,13 @@ export default () => (state, actions) => (
       } order`}
     >
       <span>Expertise</span>
-      <Icon
-        class="btn__icon"
-        name={state.filter.sortAscending ? "arrow-down" : "arrow-up"}
-      />
+      <i
+        class={cc("Dropdown__button-icon", {
+          "is-rotated": state.filter.sortAscending
+        })}
+      >
+        <Icon class="btn__icon" name="arrow-down" />
+      </i>
     </button>
   </div>
 )
