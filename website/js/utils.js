@@ -56,3 +56,23 @@ export const SORTBY_STRINGS = {
   alpha: "alphabetically",
   nonalpha: "unalphabetically"
 }
+
+export const onUserInputChange = callback => {
+  let type = "mouse"
+  let lastTime = 0
+  const mousemoveHandler = () => {
+    const now = performance.now()
+    if (now - lastTime < 20) {
+      type = "mouse"
+      callback(type)
+      document.removeEventListener("mousemove", mousemoveHandler)
+    }
+    lastTime = now
+  }
+  document.addEventListener("touchstart", () => {
+    if (type === "touch") return
+    type = "touch"
+    callback(type)
+    document.addEventListener("mousemove", mousemoveHandler)
+  })
+}
