@@ -3,6 +3,7 @@ import BackToTopButton from "./components/BackToTopButton"
 import Header from "./components/Header"
 import Filter from "./components/Filter"
 import Questions from "./components/Questions"
+import Footer from "./components/Footer"
 
 export default () => (
   <div>
@@ -10,5 +11,6 @@ export default () => (
     <Header />
     <Filter />
     <Questions />
+    <Footer />
   </div>
 )
