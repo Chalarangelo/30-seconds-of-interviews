@@ -2897,9 +2897,9 @@ humanize-ms@^1.2.1:
   dependencies:
     ms "^2.0.0"
 
-hyperapp@^1.2.5:
-  version "1.2.5"
-  resolved "https://registry.yarnpkg.com/hyperapp/-/hyperapp-1.2.5.tgz#81eab50089413a6c0e85899abc2b9cd23393b9cc"
+hyperapp@^1.2.6:
+  version "1.2.6"
+  resolved "https://registry.yarnpkg.com/hyperapp/-/hyperapp-1.2.6.tgz#fa3b42dad88e50f962b9d9f922dfa7bef3c8ebc8"
 
 iconv-lite@^0.4.17, iconv-lite@^0.4.4:
   version "0.4.23"
