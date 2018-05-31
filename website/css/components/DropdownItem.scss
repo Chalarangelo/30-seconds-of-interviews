@@ -50,7 +50,7 @@
 }
 
 html:not(.browser-touch) {
-  .DropdownItem {
+  .DropdownItem:not(.is-active) {
     &:hover {
       background: #8385aa;
       color: white;
