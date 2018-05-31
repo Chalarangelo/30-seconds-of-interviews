@@ -2,6 +2,8 @@ import { h } from "hyperapp"
 import marked from "marked"
 import Prism from "prismjs"
 
+const markStore = Object.create(null)
+
 const setInnerHTML = html => el => {
   el.innerHTML = html
   Array.from(el.querySelectorAll("code[class^='lang']")).forEach(e =>
@@ -9,8 +11,13 @@ const setInnerHTML = html => el => {
   )
 }
 
+const memoMarked = content => {
+  const result = markStore[content]
+  return result ? result : (markStore[content] = marked(content))
+}
+
 export default ({ node = "div", content, ...props }) =>
   h(node, {
     ...props,
-    oncreate: setInnerHTML(marked(content))
+    oncreate: setInnerHTML(memoMarked(content))
   })
