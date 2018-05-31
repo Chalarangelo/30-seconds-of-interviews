@@ -12,11 +12,11 @@ export default ({
   isOpen,
   expertise
 }) => (state, actions) => (
-  <div class="Question-wrapper">
+  <div class="Question-wrapper" key={name}>
     <div class={`Question__badge is-${EXPERTISE_STRINGS[expertise]}`}>
       {EXPERTISE_STRINGS[expertise]}
     </div>
-    <div class="Question" key={name}>
+    <div class="Question">
       <div class={`Question__tag is-${tags[0]}`} />
       <Markdown class="Question__heading" content={`## ${question}`} />
       <button
