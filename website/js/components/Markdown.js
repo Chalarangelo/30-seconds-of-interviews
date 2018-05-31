@@ -13,7 +13,7 @@ const setInnerHTML = html => el => {
 
 const memoMarked = content => {
   const result = markStore[content]
-  return result ? result : (markStore[content] = marked(content))
+  return result || (markStore[content] = marked(content))
 }
 
 export default ({ node = "div", content, ...props }) =>
