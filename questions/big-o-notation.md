@@ -92,7 +92,7 @@ The execution time rises extremely fast with even just 1 addition to the array.
 
 <!-- Whenever possible, link a more detailed explanation. -->
 
-- [Strategies for cache-busting CSS](https://css-tricks.com/strategies-for-cache-busting-css/)
+- [Big O Notation in JavaScript](https://medium.com/cesars-tech-insights/big-o-notation-javascript-25c79f50b19b)
 
 <!-- tags: (javascript) -->
 
