@@ -1,4 +1,4 @@
-### NodeJS uses a callback pattern in many instances where if an error were returned it will pass it as the first argument to the callback. What are the advantages of this pattern?
+### NodeJS often uses a callback pattern if an error is encountered during execution. This error is passed as the first argument to the callback. What are the advantages of this pattern?
 
 ```js
 fs.readFile(filePath, function(err, data) {
