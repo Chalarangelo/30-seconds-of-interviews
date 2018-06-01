@@ -4,7 +4,7 @@
 
 Big O notation is used in Computer Science to describe time complexity of an algorithm. The best algorithms will execute the fastest and have the simplest complexity.
 
-Algorithms don't always perform the same and vary based on the data they are supplied. While in some cases they will execute quickly, in other cases they will execute slowly, even with the same number of elements to deal with.
+Algorithms don't always perform the same and may vary based on the data they are supplied. While in some cases they will execute quickly, in other cases they will execute slowly, even with the same number of elements to deal with.
 
 In these examples, the base time is `1ms` to make it more familiar.
 
@@ -28,13 +28,13 @@ Linear time complexity. The execution time will increase linearly with the numbe
 
 - 1000 elements = `1000ms`
 
-##### O(1-N)
+##### O([1, N])
 
 ```js
 arr.some(fn)
 ```
 
-- 1000 elements = `1ms <= x <= 1000 ms`
+- 1000 elements = `1ms <= x <= 1000ms`
 
 The execution time varies depending on the data supplied to the function, it may return very early or very late. The best case here is O(1) and the worst case is O(N).
 
