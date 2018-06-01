@@ -27,6 +27,6 @@ Destroying: `/posts/:id` => DELETE
 - [What is REST — A Simple Explanation for Beginners, Part 1: Introduction
   ](https://medium.com/extend/what-is-rest-a-simple-explanation-for-beginners-part-1-introduction-b4a072f8740f)
 
-<!-- tags: (javascript) -->
+<!-- tags: (node) -->
 
 <!-- expertise: (1) -->
