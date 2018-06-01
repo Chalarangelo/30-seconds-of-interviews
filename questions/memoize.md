@@ -21,7 +21,8 @@ const memoize = fn => {
 
 #### Good to hear
 
-- Downsides of the above technique including returning a unary function even if the function can take multiple arguments.
+- The above technique returns a unary function even if the function can take multiple arguments.
+- The first function call will be slower than usual because of the overhead created by checking if a cached result exists and setting a result before returning the value.
 - Memoization increases performance on subsequent function calls but still needs to do work on the first call.
 
 ##### Additional links
