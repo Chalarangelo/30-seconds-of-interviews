@@ -142,7 +142,7 @@ Join our [Gitter channel](https://gitter.im/30-seconds-of-interviews/Lobby) to h
 </details>
 
 
-### undefined
+### Security
 
 <details>
 <summary>View contents</summary>
@@ -2916,7 +2916,7 @@ The event loop handles all async callbacks. Callbacks are queued in a loop, whil
 <br>[⬆ Back to top](#table-of-contents)
 
 
-## undefined
+## Security
 ### What is a cross-site scripting attack (XSS) and how do you prevent it?
 
 <details>
