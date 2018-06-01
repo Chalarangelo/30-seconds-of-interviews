@@ -2,7 +2,7 @@
 
 #### Answer
 
-The `alt` attribute provides alternative information for an image if a user cannot view it. The `alt` attribute should by used to describe any images except those which only serve a decorative purposes, in which case it should be left empty.
+The `alt` attribute provides alternative information for an image if a user cannot view it. The `alt` attribute should be used to describe any images except those which only serve a decorative purposes, in which case it should be left empty.
 
 #### Good to hear
 
