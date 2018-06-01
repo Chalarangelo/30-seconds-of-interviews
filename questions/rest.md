@@ -11,10 +11,10 @@ Generally, this concept is used in web applications to manage state. With most a
 
 Here is an example of the URL and HTTP method with a `posts` resource:
 
-Reading: `/posts/` => GET
-Creating: `/posts/new` => POST
-Updating: `/posts/:id` => PUT
-Destroying: `/posts/:id` => DELETE
+- Reading: `/posts/` => GET
+- Creating: `/posts/new` => POST
+- Updating: `/posts/:id` => PUT
+- Destroying: `/posts/:id` => DELETE
 
 #### Good to hear
 
