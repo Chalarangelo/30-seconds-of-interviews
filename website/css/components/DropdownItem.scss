@@ -46,6 +46,10 @@
     &.is-node {
       color: $color-node;
     }
+
+    &.is-security {
+      color: #333;
+    }
   }
 }
 
