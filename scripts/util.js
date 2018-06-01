@@ -10,6 +10,7 @@ const TAG_NAMES = {
   javascript: "JavaScript",
   css: "CSS",
   html: "HTML",
+  security: "Security",
   node: "Node"
 }
 
