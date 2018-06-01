@@ -392,9 +392,9 @@ XSS refers to client-side code injection where the attacker injects malicious sc
 
 For example, a comment system will be at risk if it does not validate or escape user input. If the comment contains unescaped HTML, the comment can inject a `<script>` tag into the website that other users will execute against their knowledge.
 
-- The malicious script has access to cookies which are often used to store session tokens. If an attacker can obtain a user’s session cookie, they can impersonate the user.
-- The script can arbitrarily manipulate the DOM of the page the script is executing in, allowing the attacker to insert pieces of content that appear to be a real part of the website.
-- The script can use AJAX to send HTTP requests with arbitrary content to arbitrary destinations.
+* The malicious script has access to cookies which are often used to store session tokens. If an attacker can obtain a user’s session cookie, they can impersonate the user.
+* The script can arbitrarily manipulate the DOM of the page the script is executing in, allowing the attacker to insert pieces of content that appear to be a real part of the website.
+* The script can use AJAX to send HTTP requests with arbitrary content to arbitrary destinations.
 
 
 #### Good to hear
@@ -426,8 +426,8 @@ DOM events provide useful information about the element that initiated the event
 
 This provides two main benefits:
 
-- It increases performance and reduces memory consumption by only needing to register a single event listener to handle potentially thousands of elements.
-- If elements are dynamically added to the parent, there is no need to register new event listeners for them.
+* It increases performance and reduces memory consumption by only needing to register a single event listener to handle potentially thousands of elements.
+* If elements are dynamically added to the parent, there is no need to register new event listeners for them.
 
 Instead of:
 
@@ -1375,7 +1375,7 @@ originalArray.concat(4) // returns a new array, does not mutate the original
 
 Big O notation is used in Computer Science to describe time complexity of an algorithm. The best algorithms will execute the fastest and have the simplest complexity.
 
-Algorithms don't always perform the same and vary based on the data they are supplied. While in some cases they will execute quickly, in other cases they will execute slowly, even with the same number of elements to deal with.
+Algorithms don't always perform the same and may vary based on the data they are supplied. While in some cases they will execute quickly, in other cases they will execute slowly, even with the same number of elements to deal with.
 
 In these examples, the base time is `1ms` to make it more familiar.
 
@@ -1387,7 +1387,7 @@ arr[arr.length - 1]
 
 Constant time complexity. No matter how many elements the array has, it will theoretically take (excluding real-world variation) the same amount of time to execute.
 
-- 1000 elements = `1ms`
+* 1000 elements = `1ms`
 
 ##### O(N)
 
@@ -1397,15 +1397,15 @@ arr.filter(fn)
 
 Linear time complexity. The execution time will increase linearly with the number of elements the array has. If the array has 1000 elements and the function takes 1ms to execute, 7000 elements will take 7ms to execute. This is because the function must iterate through all elements of the array before returning a result.
 
-- 1000 elements = `1000ms`
+* 1000 elements = `1000ms`
 
-##### O(1-N)
+##### O([1, N])
 
 ```js
 arr.some(fn)
 ```
 
-- 1000 elements = `1ms <= x <= 1000 ms`
+* 1000 elements = `1ms <= x <= 1000ms`
 
 The execution time varies depending on the data supplied to the function, it may return very early or very late. The best case here is O(1) and the worst case is O(N).
 
@@ -1417,7 +1417,7 @@ arr.sort(fn)
 
 Browsers usually implement the quicksort algorithm for the `sort()` method which is logN time complexity. This is very efficient for large collections.
 
-- 1000 elements = `3ms`
+* 1000 elements = `3ms`
 
 ##### O(N^2)
 
@@ -1431,7 +1431,7 @@ for (let i = 0; i < arr.length; i++) {
 
 The execution time rises quadratically with the number of elements. Usually the result of nesting loops.
 
-- 1000 elements = `1000000ms`
+* 1000 elements = `1000000ms`
 
 ##### O(N!)
 
@@ -1527,7 +1527,7 @@ const c = arr => arr.sort((a, b) => a - b)
 <details>
 <summary>View answer</summary>
 
-Recursion is the repeated application of a process. In JavaScript, recursion involves functions that call themselves repeatedly until they reach a base condition. The base condition breaks the out of the recursion loop because otherwise the function would call itself indefinitely. Recursion is very useful when working with data structures that contain nesting where the number of levels deep is unknown.
+Recursion is the repeated application of a process. In JavaScript, recursion involves functions that call themselves repeatedly until they reach a base condition. The base condition breaks out of the recursion loop because otherwise the function would call itself indefinitely. Recursion is very useful when working with data structures that contain nesting where the number of levels deep is unknown.
 
 For example, you may have a thread of comments returned from a database that exist in a flat array but need to be nested for display in the UI. Each comment is either a top-level comment (no parent) or is a reply to a parent comment. Comments can be a reply of a reply of a reply... we have no knowledge beforehand the number of levels deep a comment may be. This is where recursion can help.
 
@@ -1555,7 +1555,7 @@ nest(comments)
 */
 ```
 
-In the above example, the base condition is met if `filter()` returns an empty array. The chained `map()` will never be called which contains the callback to invoke the function recursively, thereby breaking the loop.
+In the above example, the base condition is met if `filter()` returns an empty array. The chained `map()` won't invoke the callback function which contains the recursive call, thereby breaking the loop.
 
 
 #### Good to hear
@@ -2151,7 +2151,7 @@ Cache busting is the process of forcing the browser to download the new files. T
 
 A common technique to force the browser to re-download the file is to append a query string to the end of the file.
 
-- `src="js/script.js"` => `src="js/script.js?v=2"`
+* `src="js/script.js"` => `src="js/script.js?v=2"`
 
 The browser considers it a different file but prevents the need to change the file name.
 
@@ -2803,15 +2803,15 @@ REST (REpresentational State Transfer) is a software design pattern for network 
 
 Generally, this concept is used in web applications to manage state. With most applications, there is a common theme of reading, creating, updating, and destroying data. Data is modularized into separate tables like `posts`, `users`, `comments`, and a RESTful API exposes access to this data with:
 
-- An identifier for the resource. This is known as the endpoint or URL for the resource.
-- The operation the server should perform on that resource in the form of an HTTP method or verb. The common HTTP methods are GET, POST, PUT, and DELETE.
+* An identifier for the resource. This is known as the endpoint or URL for the resource.
+* The operation the server should perform on that resource in the form of an HTTP method or verb. The common HTTP methods are GET, POST, PUT, and DELETE.
 
 Here is an example of the URL and HTTP method with a `posts` resource:
 
-- Reading: `/posts/` => GET
-- Creating: `/posts/new` => POST
-- Updating: `/posts/:id` => PUT
-- Destroying: `/posts/:id` => DELETE
+* Reading: `/posts/` => GET
+* Creating: `/posts/new` => POST
+* Updating: `/posts/:id` => PUT
+* Destroying: `/posts/:id` => DELETE
 
 
 #### Good to hear
@@ -2926,9 +2926,9 @@ XSS refers to client-side code injection where the attacker injects malicious sc
 
 For example, a comment system will be at risk if it does not validate or escape user input. If the comment contains unescaped HTML, the comment can inject a `<script>` tag into the website that other users will execute against their knowledge.
 
-- The malicious script has access to cookies which are often used to store session tokens. If an attacker can obtain a user’s session cookie, they can impersonate the user.
-- The script can arbitrarily manipulate the DOM of the page the script is executing in, allowing the attacker to insert pieces of content that appear to be a real part of the website.
-- The script can use AJAX to send HTTP requests with arbitrary content to arbitrary destinations.
+* The malicious script has access to cookies which are often used to store session tokens. If an attacker can obtain a user’s session cookie, they can impersonate the user.
+* The script can arbitrarily manipulate the DOM of the page the script is executing in, allowing the attacker to insert pieces of content that appear to be a real part of the website.
+* The script can use AJAX to send HTTP requests with arbitrary content to arbitrary destinations.
 
 
 #### Good to hear
