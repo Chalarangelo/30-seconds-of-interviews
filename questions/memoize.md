@@ -21,15 +21,15 @@ const memoize = fn => {
 
 #### Good to hear
 
-- The above technique returns a unary function even if the function can take multiple arguments.
-- The first function call will be slower than usual because of the overhead created by checking if a cached result exists and setting a result before returning the value.
-- Memoization increases performance on subsequent function calls but still needs to do work on the first call.
+* The above technique returns a unary function even if the function can take multiple arguments.
+* The first function call will be slower than usual because of the overhead created by checking if a cached result exists and setting a result before returning the value.
+* Memoization increases performance on subsequent function calls but still needs to do work on the first call.
 
 ##### Additional links
 
 <!-- Whenever possible, link a more detailed explanation. -->
 
-- [Implementing memoization in JavaScript](https://www.sitepoint.com/implementing-memoization-in-javascript/)
+* [Implementing memoization in JavaScript](https://www.sitepoint.com/implementing-memoization-in-javascript/)
 
 <!-- tags: (javascript) -->
 

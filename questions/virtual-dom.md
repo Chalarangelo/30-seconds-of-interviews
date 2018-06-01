@@ -44,13 +44,13 @@ Once the changes between the old VDOM and new VDOM have been calculated by the d
 
 #### Good to hear
 
-- Why accessing the DOM can be so costly.
+* Why accessing the DOM can be so costly.
 
 ##### Additional links
 
 <!-- Whenever possible, link a more detailed explanation. -->
 
-- [The difference between Virtual DOM and DOM](http://reactkungfu.com/2015/10/the-difference-between-virtual-dom-and-dom/)
+* [The difference between Virtual DOM and DOM](http://reactkungfu.com/2015/10/the-difference-between-virtual-dom-and-dom/)
 
 <!-- tags: (javascript) -->
 

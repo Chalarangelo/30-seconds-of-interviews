@@ -10,7 +10,7 @@ Cache busting is the process of forcing the browser to download the new files. T
 
 A common technique to force the browser to re-download the file is to append a query string to the end of the file.
 
-- `src="js/script.js"` => `src="js/script.js?v=2"`
+* `src="js/script.js"` => `src="js/script.js?v=2"`
 
 The browser considers it a different file but prevents the need to change the file name.
 
@@ -20,7 +20,7 @@ The browser considers it a different file but prevents the need to change the fi
 
 <!-- Whenever possible, link a more detailed explanation. -->
 
-- [Strategies for cache-busting CSS](https://css-tricks.com/strategies-for-cache-busting-css/)
+* [Strategies for cache-busting CSS](https://css-tricks.com/strategies-for-cache-busting-css/)
 
 <!-- tags: (html) -->
 
