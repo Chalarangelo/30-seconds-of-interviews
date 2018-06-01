@@ -4,12 +4,18 @@
 
 Memoization is the process of caching the output of function calls so that subsequent calls are faster. Calling the function again with the same input will return the cached output without needing to do the calculation again.
 
-A simple implementation in JavaScript looks like this:
+A basic implementation in JavaScript looks like this:
 
 ```js
 const memoize = fn => {
-  const cache = Object.create(null)
-  return value => (value in cache ? cache[value] : (cache[value] = fn(value)))
+  const cache = new Map()
+  return value => {
+    const cachedResult = cache.get(value)
+    if (cachedResult !== undefined) return cachedResult
+    const result = fn(value)
+    cache.set(value, result)
+    return result
+  }
 }
 ```
 
