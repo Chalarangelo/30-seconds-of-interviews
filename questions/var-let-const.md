@@ -63,13 +63,14 @@ myObject = "hello" // Error
 
 #### Good to hear
 
-* All declarations are hoisted to the top of their scope.
-* Show a common issue with using `var` and how `let` can solve it, as well as a solution that keeps `var`.
-* `var` should be avoided whenever possible and prefer `const` as the default declaration statement for all variables unless they will be reassigned later, then use `let` if so.
+- All declarations are hoisted to the top of their scope.
+- However, with `let` and `const` there is a concept called the temporal dead zone (TDZ). While the declarations are still hoisted, there is a period between entering scope and being declared where they cannot be accessed.
+- Show a common issue with using `var` and how `let` can solve it, as well as a solution that keeps `var`.
+- `var` should be avoided whenever possible and prefer `const` as the default declaration statement for all variables unless they will be reassigned later, then use `let` if so.
 
 ##### Additional links
 
-* [`let` vs `const`](https://wesbos.com/let-vs-const/)
+- [`let` vs `const`](https://wesbos.com/let-vs-const/)
 
 <!-- tags: (javascript) -->
 

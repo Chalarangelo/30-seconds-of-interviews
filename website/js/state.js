@@ -28,6 +28,10 @@ export default {
         {
           name: "Node",
           icon: "server"
+        },
+        {
+          name: "Security",
+          icon: "shield"
         }
       ]
     }
