@@ -44,6 +44,45 @@
     ]
   },
   {
+    "name": "big-o-notation.md",
+    "question": "What is Big O Notation?",
+    "answer": "Big O notation is used in Computer Science to describe time complexity of an algorithm. The best algorithms will execute the fastest and have the simplest complexity.\n\nAlgorithms don't always perform the same and vary based on the data they are supplied. While in some cases they will execute quickly, in other cases they will execute slowly, even with the same number of elements to deal with.\n\nIn these examples, the base time is `1ms` to make it more familiar.\n\n##### O(1)\n\n```js\narr[arr.length - 1]\n```\n\nConstant time complexity. No matter how many elements the array has, it will theoretically take (excluding real-world variation) the same amount of time to execute.\n\n- 1000 elements = `1ms`\n\n##### O(N)\n\n```js\narr.filter(fn)\n```\n\nLinear time complexity. The execution time will increase linearly with the number of elements the array has. If the array has 1000 elements and the function takes 1ms to execute, 7000 elements will take 7ms to execute. This is because the function must iterate through all elements of the array before returning a result.\n\n- 1000 elements = `1000ms`\n\n##### O(1-N)\n\n```js\narr.some(fn)\n```\n\n- 1000 elements = `1ms <= x <= 1000 ms`\n\nThe execution time varies depending on the data supplied to the function, it may return very early or very late. The best case here is O(1) and the worst case is O(N).\n\n##### O(logN)\n\n```js\narr.sort(fn)\n```\n\nBrowsers usually implement the quicksort algorithm for the `sort()` method which is logN time complexity. This is very efficient for large collections.\n\n- 1000 elements = `3ms`\n\n##### O(N^2)\n\n```js\nfor (let i = 0; i < arr.length; i++) {\n  for (let j = 0; j < arr.length; j++) {\n    // ...\n  }\n}\n```\n\nThe execution time rises quadratically with the number of elements. Usually the result of nesting loops.\n\n- 1000 elements = `1000000ms`\n\n##### O(N!)\n\n```js\nconst permutations = arr => {\n  if (arr.length <= 2) return arr.length === 2 ? [arr, [arr[1], arr[0]]] : arr\n  return arr.reduce(\n    (acc, item, i) =>\n      acc.concat(\n        permutations([...arr.slice(0, i), ...arr.slice(i + 1)]).map(val => [\n          item,\n          ...val\n        ])\n      ),\n    []\n  )\n}\n```\n\nThe execution time rises extremely fast with even just 1 addition to the array.\n\n1000 elements = `Infinity` (practically) ms",
+    "goodToHear": [
+      "Be wary of nesting loops as execution time increases exponentially."
+    ],
+    "links": [
+      "[Big O Notation in JavaScript](https://medium.com/cesars-tech-insights/big-o-notation-javascript-25c79f50b19b)"
+    ],
+    "tags": [
+      "javascript"
+    ],
+    "expertise": 2,
+    "questionCodeBlocks": [],
+    "answerCodeBlocks": [
+      "```js\narr[arr.length - 1]\n```",
+      "```js\narr.filter(fn)\n```",
+      "```js\narr.some(fn)\n```",
+      "```js\narr.sort(fn)\n```",
+      "```js\nfor (let i = 0; i < arr.length; i++) {\n  for (let j = 0; j < arr.length; j++) {\n    // ...\n  }\n}\n```",
+      "```js\nconst permutations = arr => {\n  if (arr.length <= 2) return arr.length === 2 ? [arr, [arr[1], arr[0]]] : arr\n  return arr.reduce(\n    (acc, item, i) =>\n      acc.concat(\n        permutations([...arr.slice(0, i), ...arr.slice(i + 1)]).map(val => [\n          item,\n          ...val\n        ])\n      ),\n    []\n  )\n}\n```"
+    ]
+  },
+  {
+    "name": "cache-busting.md",
+    "question": "What is the purpose of cache busting and how can you achieve it?",
+    "answer": "Browsers have a cache to temporarily store files on websites so they don't need to be re-downloaded again when switching between pages or reloading the same page. The server is set up to send headers that tell the browser to store the file for a given amount of time. This greatly increases website speed and preserves bandwidth.\n\nHowever, it can cause problems when the website has been changed by developers because the user's cache still references old files. This can either leave them with old functionality or break a website if the cached CSS and JavaScript files are referencing elements that no longer exist, have moved or have been renamed.\n\nCache busting is the process of forcing the browser to download the new files. This is done by naming the file something different to the old file.\n\nA common technique to force the browser to re-download the file is to append a query string to the end of the file.\n\n- `src=\"js/script.js\"` => `src=\"js/script.js?v=2\"`\n\nThe browser considers it a different file but prevents the need to change the file name.",
+    "goodToHear": [],
+    "links": [
+      "[Strategies for cache-busting CSS](https://css-tricks.com/strategies-for-cache-busting-css/)"
+    ],
+    "tags": [
+      "html"
+    ],
+    "expertise": 0,
+    "questionCodeBlocks": [],
+    "answerCodeBlocks": []
+  },
+  {
     "name": "callback-hell.md",
     "question": "How can you avoid callback hells?\n\n```js\ngetData(function(a) {\n  getMoreData(a, function(b) {\n    getMoreData(b, function(c) {\n      getMoreData(c, function(d) {\n        getMoreData(d, function(e) {\n          // ...\n        })\n      })\n    })\n  })\n})\n```",
     "answer": "Refactoring the functions to return promises and using `async/await` is usually the best option. Instead of supplying the functions with callbacks that cause deep nesting, they return a promise that can be `await`ed and will be resolved once the data has arrived, allowing the next line of code to be evaluated in a sync-like fashion.\n\nThe above code can be restructured like so:\n\n```js\nasync function asyncAwaitVersion() {\n  const a = await getData()\n  const b = await getMoreData(a)\n  const c = await getMoreData(b)\n  const d = await getMoreData(c)\n  const e = await getMoreData(e)\n  // ...\n}\n```\n\nThere are lots of ways to solve the issue of callback hells:\n\n* Modularization: break callbacks into independent functions\n* Use a control flow library, like async\n* Use generators with Promises\n* Use async/await (from v7 on)",
@@ -224,6 +263,26 @@
     "expertise": 0,
     "questionCodeBlocks": [],
     "answerCodeBlocks": []
+  },
+  {
+    "name": "event-delegation.md",
+    "question": "What is event delegation and why is it useful? Can you show an example of how to use it?",
+    "answer": "Event delegation is a technique of delegating events to a single common ancestor. Due to event bubbling, events \"bubble\" up the DOM tree by executing any handlers progressively on each ancestor element up to the root that may be listening to it.\n\nDOM events provide useful information about the element that initiated the event via `Event.target`. This allows the parent element to handle behavior as though the target element was listening to the event, rather than all children of the parent or the parent itself.\n\nThis provides two main benefits:\n\n- It increases performance and reduces memory consumption by only needing to register a single event listener to handle potentially thousands of elements.\n- If elements are dynamically added to the parent, there is no need to register new event listeners for them.\n\nInstead of:\n\n```js\ndocument.querySelectorAll(\"span\").forEach(span => {\n  span.addEventListener(\"click\", handleSpanClick)\n})\n```\n\nEvent delegation involves using a condition to ensure the child target matches our desired element:\n\n```js\ndocument.addEventListener(\"click\", e => {\n  if (e.target.matches(\"span\")) {\n    handleSpanClick()\n  }\n})\n```",
+    "goodToHear": [
+      "The difference between event bubbling and capturing"
+    ],
+    "links": [
+      "[Event Delegation](https://davidwalsh.name/event-delegate)"
+    ],
+    "tags": [
+      "javascript"
+    ],
+    "expertise": 1,
+    "questionCodeBlocks": [],
+    "answerCodeBlocks": [
+      "```js\ndocument.querySelectorAll(\"span\").forEach(span => {\n  span.addEventListener(\"click\", handleSpanClick)\n})\n```",
+      "```js\ndocument.addEventListener(\"click\", e => {\n  if (e.target.matches(\"span\")) {\n    handleSpanClick()\n  }\n})\n```"
+    ]
   },
   {
     "name": "event-driven-programming.md",
@@ -414,7 +473,7 @@
       "W3 recommends having as many as you want, but only 1 of each for each \"section\" of your page, i.e. body, section etc."
     ],
     "links": [
-      "[StackOverflow - Using header or footer tag twice](https://stackoverflow.com/questions/4837269/html5-using-header-or-footer-tag-twice?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa)"
+      "[StackOverflow Using header or footer tag twice](https://stackoverflow.com/questions/4837269/html5-using-header-or-footer-tag-twice?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa)"
     ],
     "tags": [
       "html"
@@ -487,7 +546,7 @@
       "The data is never transferred to the server and can only be used if the client specifically asks for it."
     ],
     "links": [
-      "[W3Schools - HTML5 Webstorage](https://www.w3schools.com/html/html5_webstorage.asp)"
+      "[W3Schools HTML5 Webstorage](https://www.w3schools.com/html/html5_webstorage.asp)"
     ],
     "tags": [
       "html"
@@ -569,6 +628,27 @@
     "answerCodeBlocks": []
   },
   {
+    "name": "memoize.md",
+    "question": "What is memoization?",
+    "answer": "Memoization is the process of caching the output of function calls so that subsequent calls are faster. Calling the function again with the same input will return the cached output without needing to do the calculation again.\n\nA basic implementation in JavaScript looks like this:\n\n```js\nconst memoize = fn => {\n  const cache = new Map()\n  return value => {\n    const cachedResult = cache.get(value)\n    if (cachedResult !== undefined) return cachedResult\n    const result = fn(value)\n    cache.set(value, result)\n    return result\n  }\n}\n```",
+    "goodToHear": [
+      "The above technique returns a unary function even if the function can take multiple arguments.",
+      "The first function call will be slower than usual because of the overhead created by checking if a cached result exists and setting a result before returning the value.",
+      "Memoization increases performance on subsequent function calls but still needs to do work on the first call."
+    ],
+    "links": [
+      "[Implementing memoization in JavaScript](https://www.sitepoint.com/implementing-memoization-in-javascript/)"
+    ],
+    "tags": [
+      "javascript"
+    ],
+    "expertise": 2,
+    "questionCodeBlocks": [],
+    "answerCodeBlocks": [
+      "```js\nconst memoize = fn => {\n  const cache = new Map()\n  return value => {\n    const cachedResult = cache.get(value)\n    if (cachedResult !== undefined) return cachedResult\n    const result = fn(value)\n    cache.set(value, result)\n    return result\n  }\n}\n```"
+    ]
+  },
+  {
     "name": "mutable-vs-immutable.md",
     "question": "Explain the difference between mutability and immutability, and mutating vs non-mutating methods.",
     "answer": "\"Mutability\" means a value is subject to change. \"Immutability\" means a value cannot change.\n\nObjects are mutable, while primitive values (strings, numbers, etc) are immutable. This means any operation performed on a primitive value does not change the original value.\n\nAll `String.prototype` methods do not have an effect on the original string and return a new string. On the other hand, while some methods of `Array.prototype` do not mutate the original array reference and produce a fresh array, some cause mutations.\n\n```js\nconst myString = \"hello!\"\nmyString.replace(\"!\", \"\") // returns a new string, cannot mutate the original value\n\nconst originalArray = [1, 2, 3]\noriginalArray.push(4) // mutates originalArray, now [1, 2, 3, 4]\noriginalArray.concat(4) // returns a new array, does not mutate the original\n```",
@@ -613,7 +693,7 @@
       "This is just a convention. However, you should stick to it."
     ],
     "links": [
-      "[The Node.js Way - Understanding Error-First Callbacks](http://fredkschott.com/post/2014/03/understanding-error-first-callbacks-in-node-js/)",
+      "[The Node.js Way Understanding Error-First Callbacks](http://fredkschott.com/post/2014/03/understanding-error-first-callbacks-in-node-js/)",
       "[What are the error conventions?](https://docs.nodejitsu.com/articles/errors/what-are-the-error-conventions)"
     ],
     "tags": [
@@ -752,7 +832,7 @@
     "answer": "A `Promise` is in one of these states:\n\n* pending: initial state, neither fulfilled nor rejected.\n* fulfilled: meaning that the operation completed successfully.\n* rejected: meaning that the operation failed.\n\nA pending promise can either be fulfilled with a value, or rejected with a reason (error).\nWhen either of these options happens, the associated handlers queued up by a promise's then method are called.",
     "goodToHear": [],
     "links": [
-      "[Official Web Docs - Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)"
+      "[Official Web Docs Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)"
     ],
     "tags": [
       "javascript"
@@ -823,6 +903,26 @@
     ]
   },
   {
+    "name": "recursion.md",
+    "question": "What is recursion and when is it useful?",
+    "answer": "Recursion is the repeated application of a process. In JavaScript, recursion involves functions that call themselves repeatedly until they reach a base condition. The base condition breaks the out of the recursion loop because otherwise the function would call itself indefinitely. Recursion is very useful when working with data structures that contain nesting where the number of levels deep is unknown.\n\nFor example, you may have a thread of comments returned from a database that exist in a flat array but need to be nested for display in the UI. Each comment is either a top-level comment (no parent) or is a reply to a parent comment. Comments can be a reply of a reply of a reply... we have no knowledge beforehand the number of levels deep a comment may be. This is where recursion can help.\n\n```js\nconst nest = (items, id = null, link = \"parent_id\") =>\n  items\n    .filter(item => item[link] === id)\n    .map(item => ({ ...item, children: nest(items, item.id) }))\n\nconst comments = [\n  { id: 1, parent_id: null, text: \"First reply to post.\" },\n  { id: 2, parent_id: 1, text: \"First reply to comment #1.\" },\n  { id: 3, parent_id: 1, text: \"Second reply to comment #1.\" },\n  { id: 4, parent_id: 3, text: \"First reply to comment #3.\" },\n  { id: 5, parent_id: 4, text: \"First reply to comment #4.\" },\n  { id: 6, aprent_id: null, text: \"Second reply to post.\" }\n]\n\nnest(comments)\n/*\n[\n  { id: 1, parent_id: null, text: \"First reply to post.\", children: [...] },\n  { id: 6, parent_id: null, text: \"Second reply to post.\" children: [] }\n]\n*/\n```\n\nIn the above example, the base condition is met if `filter()` returns an empty array. The chained `map()` will never be called which contains the callback to invoke the function recursively, thereby breaking the loop.",
+    "goodToHear": [
+      "Recursion is useful when working with data structures containing an unknown number of nested structures.",
+      "Recursion must have a base condition to be met that breaks out of the loop or it will call itself indefinitely."
+    ],
+    "links": [
+      "[In plain English, what is recursion?](https://softwareengineering.stackexchange.com/questions/25052/in-plain-english-what-is-recursion)"
+    ],
+    "tags": [
+      "javascript"
+    ],
+    "expertise": 2,
+    "questionCodeBlocks": [],
+    "answerCodeBlocks": [
+      "```js\nconst nest = (items, id = null, link = \"parent_id\") =>\n  items\n    .filter(item => item[link] === id)\n    .map(item => ({ ...item, children: nest(items, item.id) }))\n\nconst comments = [\n  { id: 1, parent_id: null, text: \"First reply to post.\" },\n  { id: 2, parent_id: 1, text: \"First reply to comment #1.\" },\n  { id: 3, parent_id: 1, text: \"Second reply to comment #1.\" },\n  { id: 4, parent_id: 3, text: \"First reply to comment #3.\" },\n  { id: 5, parent_id: 4, text: \"First reply to comment #4.\" },\n  { id: 6, aprent_id: null, text: \"Second reply to post.\" }\n]\n\nnest(comments)\n/*\n[\n  { id: 1, parent_id: null, text: \"First reply to post.\", children: [...] },\n  { id: 6, parent_id: null, text: \"Second reply to post.\" children: [] }\n]\n*/\n```"
+    ]
+  },
+  {
     "name": "reference-example.md",
     "question": "What is the output of the following code?\n\n```js\nconst a = [1, 2, 3]\nconst b = [1, 2, 3]\nconst c = \"1,2,3\"\n\nconsole.log(a == c)\nconsole.log(a == b)\n```",
     "answer": "The first `console.log` outputs `true` because JavaScript's compiler performs type conversion and therefore it compares to strings by their value. On the other hand, the second `console.log` outputs `false` because Arrays are Objects and Objects are compared by reference.",
@@ -857,6 +957,23 @@
     ],
     "tags": [
       "html"
+    ],
+    "expertise": 1,
+    "questionCodeBlocks": [],
+    "answerCodeBlocks": []
+  },
+  {
+    "name": "rest.md",
+    "question": "What is REST?",
+    "answer": "REST (REpresentational State Transfer) is a software design pattern for network architecture. A RESTful web application exposes data in the form of information about its resources.\n\nGenerally, this concept is used in web applications to manage state. With most applications, there is a common theme of reading, creating, updating, and destroying data. Data is modularized into separate tables like `posts`, `users`, `comments`, and a RESTful API exposes access to this data with:\n\n- An identifier for the resource. This is known as the endpoint or URL for the resource.\n- The operation the server should perform on that resource in the form of an HTTP method or verb. The common HTTP methods are GET, POST, PUT, and DELETE.\n\nHere is an example of the URL and HTTP method with a `posts` resource:\n\n- Reading: `/posts/` => GET\n- Creating: `/posts/new` => POST\n- Updating: `/posts/:id` => PUT\n- Destroying: `/posts/:id` => DELETE",
+    "goodToHear": [
+      "Alternatives to this pattern like GraphQL"
+    ],
+    "links": [
+      "  ](https://medium.com/extend/what-is-rest-a-simple-explanation-for-beginners-part-1-introduction-b4a072f8740f)"
+    ],
+    "tags": [
+      "node"
     ],
     "expertise": 1,
     "questionCodeBlocks": [],
@@ -1040,6 +1157,7 @@
     "answer": "##### No keyword\n\nWhen no keyword exists before a variable assignment, it is either assigning a global variable if one does not exist, or reassigns an already declared variable. In non-strict mode, if the variable has not yet been declared, it will assign the variable as a property of the global object (`window` in browsers). In strict mode, it will throw an error to prevent unwanted global variables from being created.\n\n##### var\n\n`var` was the default statement to declare a variable until ES2015. It creates a function-scoped variable that can be reassigned and redeclared. However, due to its lack of block scoping, it can cause issues if the variable is being reused in a loop that contains an asynchronous callback because the variable will continue to exist outside of the block scope.\n\nBelow, by the time the the `setTimeout` callback executes, the loop has already finished and the `i` variable is `10`, so all ten callbacks reference the same variable available in the function scope.\n\n```js\nfor (var i = 0; i < 10; i++) {\n  setTimeout(() => {\n    // logs `10` ten times\n    console.log(i)\n  })\n}\n\n/* Solutions with `var` */\nfor (var i = 0; i < 10; i++) {\n  // Passed as an argument will use the value as-is in\n  // that point in time\n  setTimeout(console.log, 0, i)\n}\n\nfor (var i = 0; i < 10; i++) {\n  // Create a new function scope that will use the value\n  // as-is in that point in time\n  ;(i => {\n    setTimeout(() => {\n      console.log(i)\n    })\n  })(i)\n}\n```\n\n##### let\n\n`let` was introduced in ES2015 and is the new preferred way to declare variables that will be reassigned later. Trying to redeclare a variable again will throw an error. It is block-scoped so that using it in a loop will keep it scoped to the iteration.\n\n```js\nfor (let i = 0; i < 10; i++) {\n  setTimeout(() => {\n    // logs 0, 1, 2, 3, ...\n    console.log(i)\n  })\n}\n```\n\n##### const\n\n`const` was introduced in ES2015 and is the new preferred default way to declare all variables if they won't be reassigned later, even for objects that will be mutated (as long as the reference to the object does not change). It is block-scoped and cannot be reassigned.\n\n```js\nconst myObject = {}\nmyObject.prop = \"hello!\" // No error\nmyObject = \"hello\" // Error\n```",
     "goodToHear": [
       "All declarations are hoisted to the top of their scope.",
+      "However, with `let` and `const` there is a concept called the temporal dead zone (TDZ). While the declarations are still hoisted, there is a period between entering scope and being declared where they cannot be accessed.",
       "Show a common issue with using `var` and how `let` can solve it, as well as a solution that keeps `var`.",
       "`var` should be avoided whenever possible and prefer `const` as the default declaration statement for all variables unless they will be reassigned later, then use `let` if so."
     ],
@@ -1056,5 +1174,44 @@
       "```js\nfor (let i = 0; i < 10; i++) {\n  setTimeout(() => {\n    // logs 0, 1, 2, 3, ...\n    console.log(i)\n  })\n}\n```",
       "```js\nconst myObject = {}\nmyObject.prop = \"hello!\" // No error\nmyObject = \"hello\" // Error\n```"
     ]
+  },
+  {
+    "name": "virtual-dom.md",
+    "question": "What is a virtual DOM and why is it used in libraries/frameworks?",
+    "answer": "The virtual DOM (VDOM) is a representation of the real DOM in the form of plain JavaScript objects. These objects have properties to describe the real DOM nodes they represent: the node name, its attributes, and child nodes.\n\n```html\n<div class=\"counter\">\n  <h1>0</h1>\n  <button>-</button>\n  <button>+</button>\n</div>\n```\n\nThe above markup's virtual DOM representation might look like this:\n\n```js\n{\n  nodeName: \"div\",\n  attributes: { class: \"counter\" },\n  children: [\n    {\n      nodeName: \"h1\",\n      attributes: {},\n      children: [0]\n    },\n    {\n      nodeName: \"button\",\n      attributes: {},\n      children: [\"-\"]\n    },\n    {\n      nodeName: \"button\",\n      attributes: {},\n      children: [\"+\"]\n    }\n  ]\n}\n```\n\nThe library/framework uses the virtual DOM as a means to improve performance. When the state of an application changes, the real DOM needs to be updated to reflect it. However, changing real DOM nodes is costly compared to recalculating the virtual DOM. The previous virtual DOM can be compared to the new virtual DOM very quickly in comparison.\n\nOnce the changes between the old VDOM and new VDOM have been calculated by the diffing engine of the framework, the real DOM can be patched efficiently in the least time possible to match the new state of the application.",
+    "goodToHear": [
+      "Why accessing the DOM can be so costly."
+    ],
+    "links": [
+      "[The difference between Virtual DOM and DOM](http://reactkungfu.com/2015/10/the-difference-between-virtual-dom-and-dom/)"
+    ],
+    "tags": [
+      "javascript"
+    ],
+    "expertise": 2,
+    "questionCodeBlocks": [],
+    "answerCodeBlocks": [
+      "```html\n<div class=\"counter\">\n  <h1>0</h1>\n  <button>-</button>\n  <button>+</button>\n</div>\n```",
+      "```js\n{\n  nodeName: \"div\",\n  attributes: { class: \"counter\" },\n  children: [\n    {\n      nodeName: \"h1\",\n      attributes: {},\n      children: [0]\n    },\n    {\n      nodeName: \"button\",\n      attributes: {},\n      children: [\"-\"]\n    },\n    {\n      nodeName: \"button\",\n      attributes: {},\n      children: [\"+\"]\n    }\n  ]\n}\n```"
+    ]
+  },
+  {
+    "name": "xss.md",
+    "question": "What is a cross-site scripting attack (XSS) and how do you prevent it?",
+    "answer": "XSS refers to client-side code injection where the attacker injects malicious scripts into a legitimate website or web application. This is often achieved when the application does not validate user input and freely injects dynamic HTML content.\n\nFor example, a comment system will be at risk if it does not validate or escape user input. If the comment contains unescaped HTML, the comment can inject a `<script>` tag into the website that other users will execute against their knowledge.\n\n- The malicious script has access to cookies which are often used to store session tokens. If an attacker can obtain a user’s session cookie, they can impersonate the user.\n- The script can arbitrarily manipulate the DOM of the page the script is executing in, allowing the attacker to insert pieces of content that appear to be a real part of the website.\n- The script can use AJAX to send HTTP requests with arbitrary content to arbitrary destinations.",
+    "goodToHear": [
+      "On the client, using `textContent` instead of `innerHTML` prevents the browser from running the string through the HTML parser which would execute scripts in it.",
+      "On the server, escaping HTML tags will prevent the browser from parsing the user input as actual HTML and therefore won't execute the script."
+    ],
+    "links": [
+      "[Cross-Site Scripting Attack (XSS)](https://www.acunetix.com/websitesecurity/cross-site-scripting/)"
+    ],
+    "tags": [
+      "security",
+      "javascript"
+    ],
+    "expertise": 1,
+    "questionCodeBlocks": [],
+    "answerCodeBlocks": []
   }
 ]
