@@ -7,7 +7,7 @@ const { attempt, readQuestions, getCodeBlocks } = require("./util")
 console.time("Extractor")
 
 attempt("questions.json generation", () => {
-  const output = Object.entries(readQuestions()).map(([ name, contents ]) => {
+  const output = Object.entries(readQuestions()).map(([name, contents]) => {
     const question = contents
       .slice(0 + 4, contents.indexOf("#### Answer"))
       .trim()
@@ -29,7 +29,7 @@ attempt("questions.json generation", () => {
         )
         .trim()
         .split("\n")
-        .map(v => v.replace("* ", ""))
+        .map(v => v.replace(/[*-] /g, ""))
         .filter(v => v.trim() !== ""),
       links: contents
         .slice(contents.indexOf("##### Additional links") + 23)
@@ -40,7 +40,7 @@ attempt("questions.json generation", () => {
             v
           )
         )
-        .map(v => v.replace("* ", ""))
+        .map(v => v.replace(/[*-] /g, ""))
         .filter(v => v.trim() !== "" && !v.includes("tags")),
       tags: (contents.match(/<!--\s*tags:\s*\((.+)\)/) || [])[1].split(","),
       expertise: parseInt(
