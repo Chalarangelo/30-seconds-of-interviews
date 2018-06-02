@@ -30,7 +30,7 @@ myObject["regularFunction"]() // my Object
 
 myObject.property // NOT myObject; lexical `this`
 myObject.arrowFunction() // NOT myObject; lexical `this`
-myObject.iife() // NOT myObject; lexical `this`
+myObject.iife // NOT myObject; lexical `this`
 const regularFunction = myObject.regularFunction
 regularFunction() // NOT myObject; lexical `this`
 ```
