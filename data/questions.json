@@ -578,9 +578,10 @@
   {
     "name": "image-accessibility.md",
     "question": "What is the purpose of `alt` attribute on images?",
-    "answer": "The `alt` attribute provides alternative information for an image if a user cannot view it. If the image is for decorative purposes only, the `alt` attribute should be empty. On the other hand, if image contains information the `alt` attribute should describe image.",
+    "answer": "The `alt` attribute provides alternative information for an image if a user cannot view it. The `alt` attribute should be used to describe any images except those which only serve a decorative purposes, in which case it should be left empty.",
     "goodToHear": [
-      "Decorative images should have empty `alt` tag"
+      "Decorative images should have empty `alt` attribute.",
+      "Web crawlers use `alt` tags to understand image content, so they are are considered important for Search Engine Optimization (SEO)."
     ],
     "links": [
       "[A good basis for accessibility](https://developer.mozilla.org/en-US/docs/Learn/Accessibility/HTML)"
@@ -687,7 +688,7 @@
   },
   {
     "name": "node-error-first-callback.md",
-    "question": "NodeJS uses a callback pattern in many instances where if an error were returned it will pass it as the first argument to the callback. What are the advantages of this pattern?\n\n```js\nfs.readFile(filePath, function(err, data) {\n  if (err) {\n    // handle the error, the return is important here\n    // so execution stops here\n    return console.log(err)\n  }\n  // use the data object\n  console.log(data)\n})\n```",
+    "question": "NodeJS often uses a callback pattern where if an error is encountered during execution, this error is passed as the first argument to the callback. What are the advantages of this pattern?\n\n```js\nfs.readFile(filePath, function(err, data) {\n  if (err) {\n    // handle the error, the return is important here\n    // so execution stops here\n    return console.log(err)\n  }\n  // use the data object\n  console.log(data)\n})\n```",
     "answer": "Advantages include:\n\n* Not needing to process data if there is no need to even reference it\n* Having a consistent API leads to more adoption\n* Ability to easily adapt a callback pattern that will lead to more maintainable code\n\nAs you can see from below example, the callback is called with null as its first argument if there is no error. However, if there is an error, you create an Error object, which then becomes the callback's only parameter. The callback function allows a user to easily know whether or not an error occurred.\n\nThis practice is also called the _Node.js error convention_, and this kind of callback implementations are called _error-first callbacks_.\n\n```js\nvar isTrue = function(value, callback) {\n  if (value === true) {\n    callback(null, \"Value was true.\")\n  } else {\n    callback(new Error(\"Value is not true!\"))\n  }\n}\n\nvar callback = function(error, retval) {\n  if (error) {\n    console.log(error)\n    return\n  }\n  console.log(retval)\n}\n\nisTrue(false, callback)\nisTrue(true, callback)\n\n/*\n  { stack: [Getter/Setter],\n    arguments: undefined,\n    type: undefined,\n    message: 'Value is not true!' }\n  Value was true.\n*/\n```",
     "goodToHear": [
       "This is just a convention. However, you should stick to it."
@@ -752,10 +753,16 @@
     "answer": "##### Object literal\n\nOften used to store one occurrence of data.\n\n```js\nconst person = {\n  name: \"John\",\n  age: 50,\n  birthday() {\n    this.age++\n  }\n}\nperson.birthday() // person.age === 51\n```\n\n##### Constructor\n\nOften used when you need to create multiple instances of an object, each with their own data that other instances of the class cannot affect. The `new` operator must be used before invoking the constructor or the global object will be mutated.\n\n```js\nfunction Person(name, age) {\n  this.name = name\n  this.age = age\n}\nPerson.prototype.birthday = function() {\n  this.age++\n}\nconst person1 = new Person(\"John\", 50)\nconst person2 = new Person(\"Sally\", 20)\nperson1.birthday() // person1.age === 51\nperson2.birthday() // person2.age === 21\n```\n\n##### Factory function\n\nCreates a new object similar to a constructor, but can store private data using a closure. There is also no need to use `new` before invoking the function or the `this` keyword. Factory functions usually discard the idea of prototypes and keep all properties and methods as own properties of the object.\n\n```js\nconst createPerson = (name, age) => {\n  const birthday = () => person.age++\n  const person = { name, age, birthday }\n  return person\n}\nconst person = createPerson(\"John\", 50)\nperson.birthday() // person.age === 51\n```\n\n##### `Object.create()`\n\nSets the prototype of the newly created object.\n\n```js\nconst personProto = {\n  birthday() {\n    this.age++\n  }\n}\nconst person = Object.create(personProto)\nperson.age = 50\nperson.birthday() // person.age === 51\n```\n\nA second argument can also be supplied to `Object.create()` which acts as a descriptor for the new properties to be defined.\n\n```js\nObject.create(personProto, {\n  age: {\n    value: 50,\n    writable: true,\n    enumerable: true\n  }\n})\n```",
     "goodToHear": [
       "Prototypes are objects that other objects inherit properties and methods from.",
-      "Factory functions offer private properties and methods through a closure but increase memory usage as a tradeoff, while classes do not have private properties or methods but reduce memory impact by reusing a single prototype object."
+      "Factory functions offer private properties and methods through a closure but increase memory usage as a tradeoff, while classes do not have private properties or methods but reduce memory impact by reusing a single prototype object.",
+      "<!-tags: (javascript) -->",
+      "<!-expertise: (1) -->"
     ],
     "links": [
-      "[Factory functions vs constructor functions vs classes](https://medium.com/javascript-scene/javascript-factory-functions-vs-constructor-functions-vs-classes-2f22ceddf33e)"
+      "person.birthday() // person.age === 51",
+      "person1.birthday() // person1.age === 51",
+      "person2.birthday() // person2.age === 21",
+      "person.birthday() // person.age === 51",
+      "person.birthday() // person.age === 51"
     ],
     "tags": [
       "javascript"
@@ -863,14 +870,15 @@
   {
     "name": "prototypal-inheritance.md",
     "question": "How does prototypal inheritance differ from classical inheritance?",
-    "answer": "In the classical inheritance paradigm, object instances inherit their properties and functions from a class, which acts as a blueprint for the object. Object instances are typically created using a constructor and the `new` keyword.\n\nIn the prototypal inheritance paradigm, object instances inherit directly from other objects and are typically created using factory functions or `Object.create()`. Finally, object instances can be composed from many different objects, allowing for selective inheritance.",
+    "answer": "In the classical inheritance paradigm, object instances inherit their properties and functions from a class, which acts as a blueprint for the object. Object instances are typically created using a constructor and the `new` keyword.\n\nIn the prototypal inheritance paradigm, object instances inherit directly from other objects and are typically created using factory functions or `Object.create()`.\n\n##### Additional links\n\n* [MDN docs for inheritance and the prototype chain](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Inheritance_and_the_prototype_chain)\n\n<!-- tags: (javascript) -->\n\n<!-- expertise: (1) -->",
     "goodToHear": [
-      "Classes create hierarches and taxonomies.",
-      "Prototypal inheritance allows for a flat prototype delegation hierarchy."
+      "otypal inheritance differ from classical inheritance?",
+      "#### Answer",
+      "In the classical inheritance paradigm, object instances inherit their properties and functions from a class, which acts as a blueprint for the object. Object instances are typically created using a constructor and the `new` keyword.",
+      "In the prototypal inheritance paradigm, object instances inherit directly from other objects and are typically created using factory functions or `Object.create()`."
     ],
     "links": [
-      "[MDN docs for inheritance and the prototype chain](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Inheritance_and_the_prototype_chain)",
-      "[Differences between class and prototypal inheritance](https://medium.com/javascript-scene/master-the-javascript-interview-what-s-the-difference-between-class-prototypal-inheritance-e4cd0a7562e9)"
+      "[MDN docs for inheritance and the prototype chain](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Inheritance_and_the_prototype_chain)"
     ],
     "tags": [
       "javascript"
@@ -1054,7 +1062,7 @@
   {
     "name": "this.md",
     "question": "What is the `this` keyword and how does it work?",
-    "answer": "The `this` keyword is an object that represents the context of an executing function. Regular functions can have their `this` value changed with the methods `call()`, `apply()` and `bind()`. Arrow functions implicitly bind `this` so that it refers to the context of its lexical environment, regardless of whether or not its context is set explicitly with `call()`.\n\nHere are some common examples of how `this` works:\n\n##### Object literals\n\n`this` refers to the object itself inside regular functions if the object precedes the invocation of the function.\n\nProperties set as `this` do not refer to the object.\n\n```js\nvar myObject = {\n  property: this,\n  regularFunction: function() {\n    return this\n  },\n  arrowFunction: () => {\n    return this\n  },\n  iife: (function() {\n    return this\n  })()\n}\nmyObject.regularFunction() // myObject\nmyObject[\"regularFunction\"]() // my Object\n\nmyObject.property // NOT myObject; lexical `this`\nmyObject.arrowFunction() // NOT myObject; lexical `this`\nmyObject.iife() // NOT myObject; lexical `this`\nconst regularFunction = myObject.regularFunction\nregularFunction() // NOT myObject; lexical `this`\n```\n\n##### Event listeners\n\n`this` refers to the element listening to the event.\n\n```js\ndocument.body.addEventListener(\"click\", function() {\n  console.log(this) // document.body\n})\n```\n\n##### Constructors\n\n`this` refers to the newly created object.\n\n```js\nclass Example {\n  constructor() {\n    console.log(this) // myExample\n  }\n}\nconst myExample = new Example()\n```\n\n##### Manual\n\nWith `call()` and `apply()`, `this` refers to the object passed as the first argument.\n\n```js\nvar myFunction = function() {\n  return this\n}\nmyFunction.call({ customThis: true }) // { customThis: true }\n```\n\n##### Unwanted `this`\n\nBecause `this` can change depending on the scope, it can have unexpected values when using regular functions.\n\n```js\nvar obj = {\n  arr: [1, 2, 3],\n  doubleArr() {\n    return this.arr.map(function(value) {\n      // this is now this.arr\n      return this.double(value)\n    })\n  },\n  double() {\n    return value * 2\n  }\n}\nobj.doubleArr() // Uncaught TypeError: this.double is not a function\n```",
+    "answer": "The `this` keyword is an object that represents the context of an executing function. Regular functions can have their `this` value changed with the methods `call()`, `apply()` and `bind()`. Arrow functions implicitly bind `this` so that it refers to the context of its lexical environment, regardless of whether or not its context is set explicitly with `call()`.\n\nHere are some common examples of how `this` works:\n\n##### Object literals\n\n`this` refers to the object itself inside regular functions if the object precedes the invocation of the function.\n\nProperties set as `this` do not refer to the object.\n\n```js\nvar myObject = {\n  property: this,\n  regularFunction: function() {\n    return this\n  },\n  arrowFunction: () => {\n    return this\n  },\n  iife: (function() {\n    return this\n  })()\n}\nmyObject.regularFunction() // myObject\nmyObject[\"regularFunction\"]() // my Object\n\nmyObject.property // NOT myObject; lexical `this`\nmyObject.arrowFunction() // NOT myObject; lexical `this`\nmyObject.iife // NOT myObject; lexical `this`\nconst regularFunction = myObject.regularFunction\nregularFunction() // NOT myObject; lexical `this`\n```\n\n##### Event listeners\n\n`this` refers to the element listening to the event.\n\n```js\ndocument.body.addEventListener(\"click\", function() {\n  console.log(this) // document.body\n})\n```\n\n##### Constructors\n\n`this` refers to the newly created object.\n\n```js\nclass Example {\n  constructor() {\n    console.log(this) // myExample\n  }\n}\nconst myExample = new Example()\n```\n\n##### Manual\n\nWith `call()` and `apply()`, `this` refers to the object passed as the first argument.\n\n```js\nvar myFunction = function() {\n  return this\n}\nmyFunction.call({ customThis: true }) // { customThis: true }\n```\n\n##### Unwanted `this`\n\nBecause `this` can change depending on the scope, it can have unexpected values when using regular functions.\n\n```js\nvar obj = {\n  arr: [1, 2, 3],\n  doubleArr() {\n    return this.arr.map(function(value) {\n      // this is now this.arr\n      return this.double(value)\n    })\n  },\n  double() {\n    return value * 2\n  }\n}\nobj.doubleArr() // Uncaught TypeError: this.double is not a function\n```",
     "goodToHear": [
       "In non-strict mode, global `this` is the global object (`window` in browsers), while in strict mode global `this` is `undefined`.",
       "`Function.prototype.call` and `Function.prototype.apply` set the `this` context of an executing function as the first argument, with `call` accepting a variadic number of arguments thereafter, and `apply` accepting an array as the second argument which are fed to the function in a variadic manner.",
@@ -1070,7 +1078,7 @@
     "expertise": 2,
     "questionCodeBlocks": [],
     "answerCodeBlocks": [
-      "```js\nvar myObject = {\n  property: this,\n  regularFunction: function() {\n    return this\n  },\n  arrowFunction: () => {\n    return this\n  },\n  iife: (function() {\n    return this\n  })()\n}\nmyObject.regularFunction() // myObject\nmyObject[\"regularFunction\"]() // my Object\n\nmyObject.property // NOT myObject; lexical `this`\nmyObject.arrowFunction() // NOT myObject; lexical `this`\nmyObject.iife() // NOT myObject; lexical `this`\nconst regularFunction = myObject.regularFunction\nregularFunction() // NOT myObject; lexical `this`\n```",
+      "```js\nvar myObject = {\n  property: this,\n  regularFunction: function() {\n    return this\n  },\n  arrowFunction: () => {\n    return this\n  },\n  iife: (function() {\n    return this\n  })()\n}\nmyObject.regularFunction() // myObject\nmyObject[\"regularFunction\"]() // my Object\n\nmyObject.property // NOT myObject; lexical `this`\nmyObject.arrowFunction() // NOT myObject; lexical `this`\nmyObject.iife // NOT myObject; lexical `this`\nconst regularFunction = myObject.regularFunction\nregularFunction() // NOT myObject; lexical `this`\n```",
       "```js\ndocument.body.addEventListener(\"click\", function() {\n  console.log(this) // document.body\n})\n```",
       "```js\nclass Example {\n  constructor() {\n    console.log(this) // myExample\n  }\n}\nconst myExample = new Example()\n```",
       "```js\nvar myFunction = function() {\n  return this\n}\nmyFunction.call({ customThis: true }) // { customThis: true }\n```",
