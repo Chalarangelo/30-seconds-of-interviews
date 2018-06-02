@@ -40,7 +40,7 @@
 
 <!-- expertise: (0,1,2) -->
 <!-- Expertise levels:
-	0: junior
+	0: easy
 	1: intermediate
-	2: senior
+	2: hard
 -->
