@@ -6,8 +6,8 @@ The `alt` attribute provides alternative information for an image if a user cann
 
 #### Good to hear
 
-* Decorative images should have empty `alt` attribute. 
-* Web crawlers use `alt` tags to understand image content, so they are are considered important for Search Engine Optimization (SEO). 
+* Decorative images should have empty `alt` attribute.
+* Web crawlers use `alt` tags to understand image content, so they are are considered important for Search Engine Optimization (SEO).
 
 ##### Additional links
 

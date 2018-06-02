@@ -70,7 +70,7 @@ Join our [Gitter channel](https://gitter.im/30-seconds-of-interviews/Lobby) to h
 * [What is memoization?](#what-is-memoization)
 * [Explain the difference between mutability and immutability, and mutating vs non-mutating methods.](#explain-the-difference-between-mutability-and-immutability-and-mutating-vs-non-mutating-methods)
 * [What is the only value not equal to itself in JavaScript?](#what-is-the-only-value-not-equal-to-itself-in-javascript)
-* [NodeJS uses a callback pattern in many instances where if an error were returned it will pass it as the first argument to the callback. What are the advantages of this pattern?](#nodejs-uses-a-callback-pattern-in-many-instances-where-if-an-error-were-returned-it-will-pass-it-as-the-first-argument-to-the-callback-what-are-the-advantages-of-this-pattern)
+* [NodeJS often uses a callback pattern where if an error is encountered during execution, this error is passed as the first argument to the callback. What are the advantages of this pattern?](#nodejs-often-uses-a-callback-pattern-where-if-an-error-is-encountered-during-execution-this-error-is-passed-as-the-first-argument-to-the-callback-what-are-the-advantages-of-this-pattern)
 * [What is the event loop in Node.js?](#what-is-the-event-loop-in-nodejs)
 * [What is the difference between `null` and `undefined`?](#what-is-the-difference-between-null-and-undefined)
 * [Describe the different ways to create an object. When should certain ways be preferred over others?](#describe-the-different-ways-to-create-an-object-when-should-certain-ways-be-preferred-over-others)
@@ -136,7 +136,7 @@ Join our [Gitter channel](https://gitter.im/30-seconds-of-interviews/Lobby) to h
 <summary>View contents</summary>
 
 * [How can you avoid callback hells?](#how-can-you-avoid-callback-hells)
-* [NodeJS uses a callback pattern in many instances where if an error were returned it will pass it as the first argument to the callback. What are the advantages of this pattern?](#nodejs-uses-a-callback-pattern-in-many-instances-where-if-an-error-were-returned-it-will-pass-it-as-the-first-argument-to-the-callback-what-are-the-advantages-of-this-pattern)
+* [NodeJS often uses a callback pattern where if an error is encountered during execution, this error is passed as the first argument to the callback. What are the advantages of this pattern?](#nodejs-often-uses-a-callback-pattern-where-if-an-error-is-encountered-during-execution-this-error-is-passed-as-the-first-argument-to-the-callback-what-are-the-advantages-of-this-pattern)
 * [What is the event loop in Node.js?](#what-is-the-event-loop-in-nodejs)
 * [What is REST?](#what-is-rest)
 </details>
@@ -213,7 +213,7 @@ When either of these options happens, the associated handlers queued up by a pro
 <br>[⬆ Back to top](#table-of-contents)
 
 
-### NodeJS uses a callback pattern in many instances where if an error were returned it will pass it as the first argument to the callback. What are the advantages of this pattern?
+### NodeJS often uses a callback pattern where if an error is encountered during execution, this error is passed as the first argument to the callback. What are the advantages of this pattern?
 
 ```js
 fs.readFile(filePath, function(err, data) {
@@ -883,12 +883,18 @@ Object.create(personProto, {
 
 * Prototypes are objects that other objects inherit properties and methods from.
 * Factory functions offer private properties and methods through a closure but increase memory usage as a tradeoff, while classes do not have private properties or methods but reduce memory impact by reusing a single prototype object.
+* <!-tags: (javascript) -->
+* <!-expertise: (1) -->
 
 
 ##### Additional links
 
 
-* [Factory functions vs constructor functions vs classes](https://medium.com/javascript-scene/javascript-factory-functions-vs-constructor-functions-vs-classes-2f22ceddf33e)
+* person.birthday() // person.age === 51
+* person1.birthday() // person1.age === 51
+* person2.birthday() // person2.age === 21
+* person.birthday() // person.age === 51
+* person.birthday() // person.age === 51
 </details>
 
 
@@ -1038,21 +1044,30 @@ new Promise((resolve, reject) => {
 
 In the classical inheritance paradigm, object instances inherit their properties and functions from a class, which acts as a blueprint for the object. Object instances are typically created using a constructor and the `new` keyword.
 
-In the prototypal inheritance paradigm, object instances inherit directly from other objects and are typically created using factory functions or `Object.create()`. Finally, object instances can be composed from many different objects, allowing for selective inheritance.
+In the prototypal inheritance paradigm, object instances inherit directly from other objects and are typically created using factory functions or `Object.create()`.
+
+##### Additional links
+
+* [MDN docs for inheritance and the prototype chain](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Inheritance_and_the_prototype_chain)
+
+<!-- tags: (javascript) -->
+
+<!-- expertise: (1) -->
 
 
 #### Good to hear
 
 
-* Classes create hierarches and taxonomies.
-* Prototypal inheritance allows for a flat prototype delegation hierarchy.
+* otypal inheritance differ from classical inheritance?
+* #### Answer
+* In the classical inheritance paradigm, object instances inherit their properties and functions from a class, which acts as a blueprint for the object. Object instances are typically created using a constructor and the `new` keyword.
+* In the prototypal inheritance paradigm, object instances inherit directly from other objects and are typically created using factory functions or `Object.create()`.
 
 
 ##### Additional links
 
 
 * [MDN docs for inheritance and the prototype chain](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Inheritance_and_the_prototype_chain)
-* [Differences between class and prototypal inheritance](https://medium.com/javascript-scene/master-the-javascript-interview-what-s-the-difference-between-class-prototypal-inheritance-e4cd0a7562e9)
 </details>
 
 
@@ -1798,7 +1813,7 @@ myObject["regularFunction"]() // my Object
 
 myObject.property // NOT myObject; lexical `this`
 myObject.arrowFunction() // NOT myObject; lexical `this`
-myObject.iife() // NOT myObject; lexical `this`
+myObject.iife // NOT myObject; lexical `this`
 const regularFunction = myObject.regularFunction
 regularFunction() // NOT myObject; lexical `this`
 ```
@@ -2234,13 +2249,14 @@ Yes to both. The W3 documents state that the tags represent the header(`<header>
 <details>
 <summary>View answer</summary>
 
-The `alt` attribute provides alternative information for an image if a user cannot view it. If the image is for decorative purposes only, the `alt` attribute should be empty. On the other hand, if image contains information the `alt` attribute should describe image.
+The `alt` attribute provides alternative information for an image if a user cannot view it. The `alt` attribute should be used to describe any images except those which only serve a decorative purposes, in which case it should be left empty.
 
 
 #### Good to hear
 
 
-* Decorative images should have empty `alt` tag
+* Decorative images should have empty `alt` attribute.
+* Web crawlers use `alt` tags to understand image content, so they are are considered important for Search Engine Optimization (SEO).
 
 
 ##### Additional links
@@ -2719,7 +2735,7 @@ The best solution is an upcoming pseudo-selector `:focus-visible` which can be p
 
 
 ## Node
-### NodeJS uses a callback pattern in many instances where if an error were returned it will pass it as the first argument to the callback. What are the advantages of this pattern?
+### NodeJS often uses a callback pattern where if an error is encountered during execution, this error is passed as the first argument to the callback. What are the advantages of this pattern?
 
 ```js
 fs.readFile(filePath, function(err, data) {
