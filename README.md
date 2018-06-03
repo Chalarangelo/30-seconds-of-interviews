@@ -55,6 +55,7 @@ Join our [Gitter channel](https://gitter.im/30-seconds-of-interviews/Lobby) to h
 * [How do you clone an object in JavaScript?](#how-do-you-clone-an-object-in-javascript)
 * [What is a closure? Can you give a useful example of one?](#what-is-a-closure-can-you-give-a-useful-example-of-one)
 * [How do you compare two objects in JavaScript?](#how-do-you-compare-two-objects-in-javascript)
+* [What is CORS?](#what-is-cors)
 * [What is the DOM?](#what-is-the-dom)
 * [What is the difference between the equality operators `==` and `===`?](#what-is-the-difference-between-the-equality-operators--and-)
 * [What is event delegation and why is it useful? Can you show an example of how to use it?](#what-is-event-delegation-and-why-is-it-useful-can-you-show-an-example-of-how-to-use-it)
@@ -123,6 +124,7 @@ Join our [Gitter channel](https://gitter.im/30-seconds-of-interviews/Lobby) to h
 * [What is CSS BEM?](#what-is-css-bem)
 * [What are the advantages of using CSS preprocessors?](#what-are-the-advantages-of-using-css-preprocessors)
 * [Can you describe how CSS specificity works?](#can-you-describe-how-css-specificity-works)
+* [What is the difference between `em` and `rem` units?](#what-is-the-difference-between-em-and-rem-units)
 * [Using flexbox, create a 3-column layout where each column takes up a `col-{n} / 12` ratio of the container.](#using-flexbox-create-a-3-column-layout-where-each-column-takes-up-a-col-n--12-ratio-of-the-container)
 * [What is a focus ring? What is the correct solution to handle them?](#what-is-a-focus-ring-what-is-the-correct-solution-to-handle-them)
 * [Can you name the four types of `@media` properties?](#can-you-name-the-four-types-of-media-properties)
@@ -213,74 +215,35 @@ When either of these options happens, the associated handlers queued up by a pro
 <br>[⬆ Back to top](#table-of-contents)
 
 
-### NodeJS often uses a callback pattern where if an error is encountered during execution, this error is passed as the first argument to the callback. What are the advantages of this pattern?
+### Create a function that masks a string of characters with `#` except for the last four (4) characters.
 
 ```js
-fs.readFile(filePath, function(err, data) {
-  if (err) {
-    // handle the error, the return is important here
-    // so execution stops here
-    return console.log(err)
-  }
-  // use the data object
-  console.log(data)
-})
+mask("123456789") // "#####6789"
 ```
 
 <details>
 <summary>View answer</summary>
 
-Advantages include:
+> There are many ways to solve this problem, this is just one one of them.
 
-* Not needing to process data if there is no need to even reference it
-* Having a consistent API leads to more adoption
-* Ability to easily adapt a callback pattern that will lead to more maintainable code
-
-As you can see from below example, the callback is called with null as its first argument if there is no error. However, if there is an error, you create an Error object, which then becomes the callback's only parameter. The callback function allows a user to easily know whether or not an error occurred.
-
-This practice is also called the _Node.js error convention_, and this kind of callback implementations are called _error-first callbacks_.
+Using `String.prototype.slice()`, we can grab a portion of the string from index `0` (first character) to index `-4` (5th last character) and calculate the resulting length, using `String.prototype.repeat()` to repeat the mask character that many times. Then, using `String.prototype.slice()` once more, we can concatenate the last 4 characters by passing `-4` as an argument.
 
 ```js
-var isTrue = function(value, callback) {
-  if (value === true) {
-    callback(null, "Value was true.")
-  } else {
-    callback(new Error("Value is not true!"))
-  }
-}
-
-var callback = function(error, retval) {
-  if (error) {
-    console.log(error)
-    return
-  }
-  console.log(retval)
-}
-
-isTrue(false, callback)
-isTrue(true, callback)
-
-/*
-  { stack: [Getter/Setter],
-    arguments: undefined,
-    type: undefined,
-    message: 'Value is not true!' }
-  Value was true.
-*/
+const mask = (str, maskChar = "#") =>
+  maskChar.repeat(str.slice(0, -4).length) + str.slice(-4)
 ```
 
 
 #### Good to hear
 
 
-* This is just a convention. However, you should stick to it.
+* Short, one-line functional solutions to problems should be preferred provided they are efficient
 
 
 ##### Additional links
 
 
-* [The Node.js Way Understanding Error-First Callbacks](http://fredkschott.com/post/2014/03/understanding-error-first-callbacks-in-node-js/)
-* [What are the error conventions?](https://docs.nodejitsu.com/articles/errors/what-are-the-error-conventions)
+
 </details>
 
 
@@ -348,6 +311,36 @@ function isDeepEqual(obj1, obj2, testPrototypes = false) {
 
 * [Object Equality in JavaScript](http://adripofjavascript.com/blog/drips/object-equality-in-javascript.html)
 * [Deep comparison between two values](https://30secondsofcode.org/object#equals)
+</details>
+
+
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
+### What is CORS?
+
+<details>
+<summary>View answer</summary>
+
+Cross-Origin Resource Sharing or CORS is a mechanism that uses additional HTTP headers to grant a browser permission to access resources from a server at an origin different from the website origin.
+
+An exmaple of a cross-origin request is a web application served from `http://mydomain.com` that uses AJAX to make a request for `http://yourdomain.com`.
+
+For security reasons, browsers restrict cross-origin HTTP requests initiated by JavaScript. `XMLHttpRequest` and `fetch` follow the same-origin policy, meaning a web application using those APIs can only request HTTP resources from the same origin the application was accessed, unless the response from the other origin includes the correct CORS headers.
+
+
+#### Good to hear
+
+
+* CORS behavior is not an error,  it’s a security mechanism to protect users.
+* CORS is designed to prevent a malicious website that a user may unintentionally visit from making a request to a legitimate website to read their personal data or perform actions against their will.
+
+
+##### Additional links
+
+
+* [MDN docs for CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS)
 </details>
 
 
@@ -699,42 +692,6 @@ myLibrary.publicMethod() // 2
 <br>[⬆ Back to top](#table-of-contents)
 
 
-### Create a function that masks a string of characters with `#` except for the last four (4) characters.
-
-```js
-mask("123456789") // "#####6789"
-```
-
-<details>
-<summary>View answer</summary>
-
-> There are many ways to solve this problem, this is just one one of them.
-
-Using `String.prototype.slice()`, we can grab a portion of the string from index `0` (first character) to index `-4` (5th last character) and calculate the resulting length, using `String.prototype.repeat()` to repeat the mask character that many times. Then, using `String.prototype.slice()` once more, we can concatenate the last 4 characters by passing `-4` as an argument.
-
-```js
-const mask = (str, maskChar = "#") =>
-  maskChar.repeat(str.slice(0, -4).length) + str.slice(-4)
-```
-
-
-#### Good to hear
-
-
-* Short, one-line functional solutions to problems should be preferred provided they are efficient
-
-
-##### Additional links
-
-
-
-</details>
-
-
-
-<br>[⬆ Back to top](#table-of-contents)
-
-
 ### What is a callback?
 
 <details>
@@ -763,6 +720,81 @@ document.addEventListener("click", onClick)
 
 
 * [MDN docs for callbacks](https://developer.mozilla.org/en-US/docs/Glossary/Callback_function)
+</details>
+
+
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
+### NodeJS often uses a callback pattern where if an error is encountered during execution, this error is passed as the first argument to the callback. What are the advantages of this pattern?
+
+```js
+fs.readFile(filePath, function(err, data) {
+  if (err) {
+    // handle the error, the return is important here
+    // so execution stops here
+    return console.log(err)
+  }
+  // use the data object
+  console.log(data)
+})
+```
+
+<details>
+<summary>View answer</summary>
+
+Advantages include:
+
+* Not needing to process data if there is no need to even reference it
+* Having a consistent API leads to more adoption
+* Ability to easily adapt a callback pattern that will lead to more maintainable code
+
+As you can see from below example, the callback is called with null as its first argument if there is no error. However, if there is an error, you create an Error object, which then becomes the callback's only parameter. The callback function allows a user to easily know whether or not an error occurred.
+
+This practice is also called the _Node.js error convention_, and this kind of callback implementations are called _error-first callbacks_.
+
+```js
+var isTrue = function(value, callback) {
+  if (value === true) {
+    callback(null, "Value was true.")
+  } else {
+    callback(new Error("Value is not true!"))
+  }
+}
+
+var callback = function(error, retval) {
+  if (error) {
+    console.log(error)
+    return
+  }
+  console.log(retval)
+}
+
+isTrue(false, callback)
+isTrue(true, callback)
+
+/*
+  { stack: [Getter/Setter],
+    arguments: undefined,
+    type: undefined,
+    message: 'Value is not true!' }
+  Value was true.
+*/
+```
+
+
+#### Good to hear
+
+
+* This is just a convention. However, you should stick to it.
+
+
+##### Additional links
+
+
+* [The Node.js Way Understanding Error-First Callbacks](http://fredkschott.com/post/2014/03/understanding-error-first-callbacks-in-node-js/)
+* [What are the error conventions?](https://docs.nodejitsu.com/articles/errors/what-are-the-error-conventions)
 </details>
 
 
@@ -1383,104 +1415,36 @@ originalArray.concat(4) // returns a new array, does not mutate the original
 <br>[⬆ Back to top](#table-of-contents)
 
 
-### What is Big O Notation?
+### What is a closure? Can you give a useful example of one?
 
 <details>
 <summary>View answer</summary>
 
-Big O notation is used in Computer Science to describe time complexity of an algorithm. The best algorithms will execute the fastest and have the simplest complexity.
+A closure is a function defined inside another function and has access to its lexical scope even when it is executing outside its lexical scope. The closure has access to variables in three scopes:
 
-Algorithms don't always perform the same and may vary based on the data they are supplied. While in some cases they will execute quickly, in other cases they will execute slowly, even with the same number of elements to deal with.
+* Variables declared in its own scope
+* Variables declared in the scope of the parent function
+* Variables declared in the global scope
 
-In these examples, the base time is `1ms` to make it more familiar.
+In JavaScript, all functions are closures because they have access to the outer scope, but most functions don't utilise the usefulness of closures: the persistence of state. Closures are also sometimes called stateful functions because of this.
 
-##### O(1)
-
-```js
-arr[arr.length - 1]
-```
-
-Constant time complexity. No matter how many elements the array has, it will theoretically take (excluding real-world variation) the same amount of time to execute.
-
-* 1000 elements = `1ms`
-
-##### O(N)
-
-```js
-arr.filter(fn)
-```
-
-Linear time complexity. The execution time will increase linearly with the number of elements the array has. If the array has 1000 elements and the function takes 1ms to execute, 7000 elements will take 7ms to execute. This is because the function must iterate through all elements of the array before returning a result.
-
-* 1000 elements = `1000ms`
-
-##### O([1, N])
-
-```js
-arr.some(fn)
-```
-
-* 1000 elements = `1ms <= x <= 1000ms`
-
-The execution time varies depending on the data supplied to the function, it may return very early or very late. The best case here is O(1) and the worst case is O(N).
-
-##### O(logN)
-
-```js
-arr.sort(fn)
-```
-
-Browsers usually implement the quicksort algorithm for the `sort()` method which is logN time complexity. This is very efficient for large collections.
-
-* 1000 elements = `3ms`
-
-##### O(N^2)
-
-```js
-for (let i = 0; i < arr.length; i++) {
-  for (let j = 0; j < arr.length; j++) {
-    // ...
-  }
-}
-```
-
-The execution time rises quadratically with the number of elements. Usually the result of nesting loops.
-
-* 1000 elements = `1000000ms`
-
-##### O(N!)
-
-```js
-const permutations = arr => {
-  if (arr.length <= 2) return arr.length === 2 ? [arr, [arr[1], arr[0]]] : arr
-  return arr.reduce(
-    (acc, item, i) =>
-      acc.concat(
-        permutations([...arr.slice(0, i), ...arr.slice(i + 1)]).map(val => [
-          item,
-          ...val
-        ])
-      ),
-    []
-  )
-}
-```
-
-The execution time rises extremely fast with even just 1 addition to the array.
-
-1000 elements = `Infinity` (practically) ms
+In addition, closures are the only way to store private data that can't be accessed from the outside in JavaScript. They are the key to the UMD (Universal Module Definition) pattern, which is frequently used in libraries that only expose a public API but keep the implementation details private, preventing name collisions with other libraries or the user's own code.
 
 
 #### Good to hear
 
 
-* Be wary of nesting loops as execution time increases exponentially.
+* Closures are useful because they let you associate data with a function that operates on that data.
+* A closure can substitute an object with only a single method.
+* Closures can be used to emulate private properties and methods.
 
 
 ##### Additional links
 
 
-* [Big O Notation in JavaScript](https://medium.com/cesars-tech-insights/big-o-notation-javascript-25c79f50b19b)
+* [MDN docs for closures](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures)
+* [What is a closure](https://medium.com/javascript-scene/master-the-javascript-interview-what-is-a-closure-b2f0d2152b36)
+* [I never understood JavaScript closures](https://medium.com/dailyjs/i-never-understood-javascript-closures-9663703368e8)
 </details>
 
 
@@ -1651,36 +1615,104 @@ There are lots of ways to solve the issue of callback hells:
 <br>[⬆ Back to top](#table-of-contents)
 
 
-### What is a closure? Can you give a useful example of one?
+### What is Big O Notation?
 
 <details>
 <summary>View answer</summary>
 
-A closure is a function defined inside another function and has access to its lexical scope even when it is executing outside its lexical scope. The closure has access to variables in three scopes:
+Big O notation is used in Computer Science to describe time complexity of an algorithm. The best algorithms will execute the fastest and have the simplest complexity.
 
-* Variables declared in its own scope
-* Variables declared in the scope of the parent function
-* Variables declared in the global scope
+Algorithms don't always perform the same and may vary based on the data they are supplied. While in some cases they will execute quickly, in other cases they will execute slowly, even with the same number of elements to deal with.
 
-In JavaScript, all functions are closures because they have access to the outer scope, but most functions don't utilise the usefulness of closures: the persistence of state. Closures are also sometimes called stateful functions because of this.
+In these examples, the base time is `1ms` to make it more familiar.
 
-In addition, closures are the only way to store private data that can't be accessed from the outside in JavaScript. They are the key to the UMD (Universal Module Definition) pattern, which is frequently used in libraries that only expose a public API but keep the implementation details private, preventing name collisions with other libraries or the user's own code.
+##### O(1)
+
+```js
+arr[arr.length - 1]
+```
+
+Constant time complexity. No matter how many elements the array has, it will theoretically take (excluding real-world variation) the same amount of time to execute.
+
+* 1000 elements = `1ms`
+
+##### O(N)
+
+```js
+arr.filter(fn)
+```
+
+Linear time complexity. The execution time will increase linearly with the number of elements the array has. If the array has 1000 elements and the function takes 1ms to execute, 7000 elements will take 7ms to execute. This is because the function must iterate through all elements of the array before returning a result.
+
+* 1000 elements = `1000ms`
+
+##### O([1, N])
+
+```js
+arr.some(fn)
+```
+
+* 1000 elements = `1ms <= x <= 1000ms`
+
+The execution time varies depending on the data supplied to the function, it may return very early or very late. The best case here is O(1) and the worst case is O(N).
+
+##### O(logN)
+
+```js
+arr.sort(fn)
+```
+
+Browsers usually implement the quicksort algorithm for the `sort()` method which is logN time complexity. This is very efficient for large collections.
+
+* 1000 elements = `3ms`
+
+##### O(N^2)
+
+```js
+for (let i = 0; i < arr.length; i++) {
+  for (let j = 0; j < arr.length; j++) {
+    // ...
+  }
+}
+```
+
+The execution time rises quadratically with the number of elements. Usually the result of nesting loops.
+
+* 1000 elements = `1000000ms`
+
+##### O(N!)
+
+```js
+const permutations = arr => {
+  if (arr.length <= 2) return arr.length === 2 ? [arr, [arr[1], arr[0]]] : arr
+  return arr.reduce(
+    (acc, item, i) =>
+      acc.concat(
+        permutations([...arr.slice(0, i), ...arr.slice(i + 1)]).map(val => [
+          item,
+          ...val
+        ])
+      ),
+    []
+  )
+}
+```
+
+The execution time rises extremely fast with even just 1 addition to the array.
+
+1000 elements = `Infinity` (practically) ms
 
 
 #### Good to hear
 
 
-* Closures are useful because they let you associate data with a function that operates on that data.
-* A closure can substitute an object with only a single method.
-* Closures can be used to emulate private properties and methods.
+* Be wary of nesting loops as execution time increases exponentially.
 
 
 ##### Additional links
 
 
-* [MDN docs for closures](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures)
-* [What is a closure](https://medium.com/javascript-scene/master-the-javascript-interview-what-is-a-closure-b2f0d2152b36)
-* [I never understood JavaScript closures](https://medium.com/dailyjs/i-never-understood-javascript-closures-9663703368e8)
+* [Big O Notation in JavaScript](https://medium.com/cesars-tech-insights/big-o-notation-javascript-25c79f50b19b)
 </details>
 
 
@@ -2632,6 +2664,31 @@ Set the `.row` parent to `display: flex;` and use the `flex` shorthand property 
 
 * [MDN docs for `@media` rule](https://developer.mozilla.org/en-US/docs/Web/CSS/@media)
 * [MDN docs for using media queries](https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries)
+</details>
+
+
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
+### What is the difference between `em` and `rem` units?
+
+<details>
+<summary>View answer</summary>
+
+Both `em` and `rem` units are based on the `font-size` CSS property. The only difference is where they inherit their values from. `em` units inherit their value from the `font-size` of the parent element, while `rem` units inherit their value from the root element (`html`). In most browsers, the `font-size` of root element is set to `16px` by default.
+
+
+#### Good to hear
+
+
+* Benefits of using `em` and `rem` units
+
+
+##### Additional links
+
+
+* [CSS units for font-size: px | em | rem](https://medium.com/code-better/css-units-for-font-size-px-em-rem-79f7e592bb97)
 </details>
 
 
