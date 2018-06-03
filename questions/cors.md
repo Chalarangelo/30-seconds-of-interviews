@@ -2,7 +2,7 @@
 
 #### Answer
 
-Cross-Origin Resource Sharing or CORS is a mechanism that uses additional HTTP headers to grant a browser permission to access resources from a server at an origin different to the website origin.
+Cross-Origin Resource Sharing or CORS is a mechanism that uses additional HTTP headers to grant a browser permission to access resources from a server at an origin different from the website origin.
 
 An exmaple of a cross-origin request is a web application served from http://mydomain.com that uses AJAX to make a request for http://yourdomain.com.
 
