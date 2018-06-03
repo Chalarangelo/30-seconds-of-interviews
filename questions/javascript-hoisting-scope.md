@@ -2,7 +2,9 @@
 
 #### Answer
 
-Either Global or Function scoped. Unlike `let` or `const` they are not Block scoped and can only exist in one of two places because they are assigned a pointed before any evaluation of the code.
+Either Global or Function scoped.
+
+Unlike `let` or `const` they are not Block scoped and can only exist in one of two places because they are assigned a pointed before any evaluation of the code.
 
 #### Good to hear
 
