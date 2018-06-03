@@ -8,7 +8,6 @@ Both `em` and `rem` units are based on the `font-size` CSS property. The only di
 
 * Benefits of using `em` and `rem` units
 
-
 ##### Additional links
 
 * [CSS units for font-size: px | em | rem](https://medium.com/code-better/css-units-for-font-size-px-em-rem-79f7e592bb97)
@@ -16,6 +15,7 @@ Both `em` and `rem` units are based on the `font-size` CSS property. The only di
 <!-- tags: (css) -->
 
 <!-- expertise: (1) -->
+
 <!-- Expertise levels:
 	0: junior
 	1: intermediate

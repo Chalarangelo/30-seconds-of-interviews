@@ -189,6 +189,24 @@
     ]
   },
   {
+    "name": "cors.md",
+    "question": "What is CORS?",
+    "answer": "Cross-Origin Resource Sharing or CORS is a mechanism that uses additional HTTP headers to grant a browser permission to access resources from a server at an origin different from the website origin.\n\nAn exmaple of a cross-origin request is a web application served from `http://mydomain.com` that uses AJAX to make a request for `http://yourdomain.com`.\n\nFor security reasons, browsers restrict cross-origin HTTP requests initiated by JavaScript. `XMLHttpRequest` and `fetch` follow the same-origin policy, meaning a web application using those APIs can only request HTTP resources from the same origin the application was accessed, unless the response from the other origin includes the correct CORS headers.",
+    "goodToHear": [
+      "CORS behavior is not an error,  it’s a security mechanism to protect users.",
+      "CORS is designed to prevent a malicious website that a user may unintentionally visit from making a request to a legitimate website to read their personal data or perform actions against their will."
+    ],
+    "links": [
+      "[MDN docs for CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS)"
+    ],
+    "tags": [
+      "javascript"
+    ],
+    "expertise": 1,
+    "questionCodeBlocks": [],
+    "answerCodeBlocks": []
+  },
+  {
     "name": "css-preprocessors.md",
     "question": "What are the advantages of using CSS preprocessors?",
     "answer": "CSS preprocessors add useful functionality that native CSS does not have, and generally make CSS neater and more maintainable by enabling DRY (Don't Repeat Yourself) principles. Their terse syntax for nested selectors cuts down on repeated code. They provide variables for consistent theming (however, CSS variables have largely replaced this functionality) and additional tools like color functions (`lighten`, `darken`, `transparentize`, etc), mixins, and loops that make CSS more like a real programming language and gives the developer more power to generate complex CSS.",
@@ -261,6 +279,23 @@
       "javascript"
     ],
     "expertise": 0,
+    "questionCodeBlocks": [],
+    "answerCodeBlocks": []
+  },
+  {
+    "name": "em-rem-difference.md",
+    "question": "What is the difference between `em` and `rem` units?",
+    "answer": "Both `em` and `rem` units are based on the `font-size` CSS property. The only difference is where they inherit their values from. `em` units inherit their value from the `font-size` of the parent element, while `rem` units inherit their value from the root element (`html`). In most browsers, the `font-size` of root element is set to `16px` by default.",
+    "goodToHear": [
+      "Benefits of using `em` and `rem` units"
+    ],
+    "links": [
+      "[CSS units for font-size: px | em | rem](https://medium.com/code-better/css-units-for-font-size-px-em-rem-79f7e592bb97)"
+    ],
+    "tags": [
+      "css"
+    ],
+    "expertise": 1,
     "questionCodeBlocks": [],
     "answerCodeBlocks": []
   },
