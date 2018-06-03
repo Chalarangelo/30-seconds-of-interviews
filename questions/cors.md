@@ -2,11 +2,17 @@
 
 #### Answer
 
-Cross-Origin Resource Sharing or CORS is a mechanism which aims to allow requests made on behalf of you and at the same time block some requests made by rogue JavaScript and is triggered whenever you are making an HTTP request to a different: domain, sub-domain, port and protocol.
+Cross-Origin Resource Sharing or CORS is a mechanism that uses additional HTTP headers to grant a browser permission to access resources from a server at an origin different to the website origin.
+
+An exmaple of a cross-origin request is a web application served from http://mydomain.com that uses AJAX to make a request for http://yourdomain.com.
+
+For security reasons, browsers restrict cross-origin HTTP requests initiated by JavaScript. `XMLHttpRequest` and `fetch` follow the same-origin policy, meaning a web application using those APIs can only request HTTP resources from the same origin the application was accessed, unless the response from the other origin includes the correct CORS headers.
+
 
 #### Good to hear
 
-* CORS behavior is not an error,  it’s a mechanism that’s working as expected in order to protect your users
+* CORS behavior is not an error,  it’s a security mechanism to protect users. 
+* CORS is designed to prevent a malicious website that a user may unintentionally visit from making a request to a legitimate website to read their personal data or perform actions against their will.
 
 ##### Additional links
 
