@@ -897,13 +897,8 @@
   {
     "name": "prototypal-inheritance.md",
     "question": "How does prototypal inheritance differ from classical inheritance?",
-    "answer": "In the classical inheritance paradigm, object instances inherit their properties and functions from a class, which acts as a blueprint for the object. Object instances are typically created using a constructor and the `new` keyword.\n\nIn the prototypal inheritance paradigm, object instances inherit directly from other objects and are typically created using factory functions or `Object.create()`.\n\n##### Additional links\n\n* [MDN docs for inheritance and the prototype chain](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Inheritance_and_the_prototype_chain)\n\n<!-- tags: (javascript) -->\n\n<!-- expertise: (1) -->",
-    "goodToHear": [
-      "otypal inheritance differ from classical inheritance?",
-      "#### Answer",
-      "In the classical inheritance paradigm, object instances inherit their properties and functions from a class, which acts as a blueprint for the object. Object instances are typically created using a constructor and the `new` keyword.",
-      "In the prototypal inheritance paradigm, object instances inherit directly from other objects and are typically created using factory functions or `Object.create()`."
-    ],
+    "answer": "In the classical inheritance paradigm, object instances inherit their properties and functions from a class, which acts as a blueprint for the object. Object instances are typically created using a constructor and the `new` keyword.\n\nIn the prototypal inheritance paradigm, object instances inherit directly from other objects and are typically created using factory functions or `Object.create()`.",
+    "goodToHear": [],
     "links": [
       "[MDN docs for inheritance and the prototype chain](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Inheritance_and_the_prototype_chain)"
     ],
