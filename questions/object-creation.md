@@ -81,6 +81,10 @@ Object.create(personProto, {
 * Prototypes are objects that other objects inherit properties and methods from.
 * Factory functions offer private properties and methods through a closure but increase memory usage as a tradeoff, while classes do not have private properties or methods but reduce memory impact by reusing a single prototype object.
 
+##### Additional links
+
+<!-- Whenever possible, link a more detailed explanation. -->
+
 <!-- tags: (javascript) -->
 
 <!-- expertise: (1) -->
