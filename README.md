@@ -915,18 +915,12 @@ Object.create(personProto, {
 
 * Prototypes are objects that other objects inherit properties and methods from.
 * Factory functions offer private properties and methods through a closure but increase memory usage as a tradeoff, while classes do not have private properties or methods but reduce memory impact by reusing a single prototype object.
-* <!-tags: (javascript) -->
-* <!-expertise: (1) -->
 
 
 ##### Additional links
 
 
-* person.birthday() // person.age === 51
-* person1.birthday() // person1.age === 51
-* person2.birthday() // person2.age === 21
-* person.birthday() // person.age === 51
-* person.birthday() // person.age === 51
+
 </details>
 
 
@@ -2288,7 +2282,7 @@ The `alt` attribute provides alternative information for an image if a user cann
 
 
 * Decorative images should have empty `alt` attribute.
-* Web crawlers use `alt` tags to understand image content, so they are are considered important for Search Engine Optimization (SEO).
+* Web crawlers use `alt` tags to understand image content, so they are considered important for Search Engine Optimization (SEO).
 
 
 ##### Additional links
