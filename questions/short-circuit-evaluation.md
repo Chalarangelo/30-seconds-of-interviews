@@ -1,5 +1,7 @@
 ### What is short-circuit evaluation in JavaScript?
 
+#### Answer
+
 Short-circuit evaluation involves logical operations evaluating from left-to-right and stopping early.
 
 ```js
