@@ -4,9 +4,9 @@
 
 There are two main syntactic categories in JavaScript: expressions and statements. A third one is both together, referred to as an expression statement. They are roughly summarized as:
 
-- **Expression**: produces a value
-- **Statement**: performs an action
-- **Expression statement**: produces a value and performs an action
+* **Expression**: produces a value
+* **Statement**: performs an action
+* **Expression statement**: produces a value and performs an action
 
 A general rule of thumb:
 
@@ -62,11 +62,11 @@ This is both an expression and a statement, because we are declaring a variable 
 
 #### Good to hear
 
-- Function declarations vs function expressions
+* Function declarations vs function expressions
 
 ##### Additional links
 
-- [What is the difference between a statement and an expression?](https://stackoverflow.com/questions/12703214/javascript-difference-between-a-statement-and-an-expression)
+* [What is the difference between a statement and an expression?](https://stackoverflow.com/questions/12703214/javascript-difference-between-a-statement-and-an-expression)
 
 <!-- Whenever possible, link a more detailed explanation. -->
 

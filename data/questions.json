@@ -22,6 +22,23 @@
     ]
   },
   {
+    "name": "batches.md",
+    "question": "Create a function `batches` that returns the maximum number of whole batches that can be cooked from a recipe.\n\nIt accepts two objects as arguments: the first object is the recipe for the food, while the second argument is the available ingredients. Each ingredient's value is number representing how many units there are.\n\n`batches(recipe, available)`\n\n```js\n// 0 batches can be made\nbatches(\n  { milk: 100, butter: 50, flour: 5 },\n  { milk: 132, butter: 48, flour: 51 }\n)\nbatches(\n  { milk: 100, flour: 4, sugar: 10, butter: 5 },\n  { milk: 1288, flour: 9, sugar: 95 }\n)\n\n// 1 batch can be made\nbatches(\n  { milk: 100, butter: 50, cheese: 10 },\n  { milk: 198, butter: 52, cheese: 10 }\n)\n\n// 2 batches can be made\nbatches(\n  { milk: 2, sugar: 40, butter: 20 },\n  { milk: 5, sugar: 120, butter: 500 }\n)\n```",
+    "answer": "We must have all ingredients of the recipe available, and in quantities that are more than or equal to the number of units required. If just one of ingredients is not available or lower than needed, we cannot make a single batch.\n\nUse `Object.keys()` to return the ingredients of the recipe as an array, then use `Array.prototype.map()` to map each ingredient to the ratio of available units to the amount required by the recipe. If one of the ingredients required by the recipe is not available at all, the ratio will evaluate to `NaN`, so the logical OR operator can be used to fallback to `0` in this case.\n\nUse the spread `...` operator to feed all the array of ratios into `Math.min()` to determine the lowest ratio. Passing this entire result into `Math.floor()` rounds down to return the maximum number of whole batches.\n\n```js\nconst batches = (recipe, available) =>\n  Math.floor(\n    Math.min(...Object.keys(recipe).map(k => available[k] / recipe[k] || 0))\n  )\n```",
+    "goodToHear": [],
+    "links": [],
+    "tags": [
+      "javascript"
+    ],
+    "expertise": 1,
+    "questionCodeBlocks": [
+      "```js\n// 0 batches can be made\nbatches(\n  { milk: 100, butter: 50, flour: 5 },\n  { milk: 132, butter: 48, flour: 51 }\n)\nbatches(\n  { milk: 100, flour: 4, sugar: 10, butter: 5 },\n  { milk: 1288, flour: 9, sugar: 95 }\n)\n\n// 1 batch can be made\nbatches(\n  { milk: 100, butter: 50, cheese: 10 },\n  { milk: 198, butter: 52, cheese: 10 }\n)\n\n// 2 batches can be made\nbatches(\n  { milk: 2, sugar: 40, butter: 20 },\n  { milk: 5, sugar: 120, butter: 500 }\n)\n```"
+    ],
+    "answerCodeBlocks": [
+      "```js\nconst batches = (recipe, available) =>\n  Math.floor(\n    Math.min(...Object.keys(recipe).map(k => available[k] / recipe[k] || 0))\n  )\n```"
+    ]
+  },
+  {
     "name": "bem.md",
     "question": "What is CSS BEM?",
     "answer": "The BEM methodology is a naming convention for CSS classes in order to keep CSS more maintainable by defining namespaces to solve scoping issues. BEM stands for Block Element Modifier which is an explanation for its structure. A Block is a standalone component that is reusable across projects and acts as a \"namespace\" for sub components (Elements). Modifiers are used as flags when a Block or Element is in a certain state or is different in structure or style.\n\n```css\n/* block component */\n.block {\n}\n\n/* element */\n.block__element {\n}\n\n/* modifier */\n.block__element--modifier {\n}\n```\n\nHere is an example with the class names on markup:\n\n```html\n<nav class=\"navbar\">\n  <a href=\"/\" class=\"navbar__link navbar__link--active\"></a>\n  <a href=\"/\" class=\"navbar__link\"></a>\n  <a href=\"/\" class=\"navbar__link\"></a>\n</nav>\n```\n\nIn this case, `navbar` is the Block, `navbar__link` is an Element that makes no sense outside of the `navbar` component, and `navbar__link--active` is a Modifier that indicates a different state for the `navbar__link` Element.\n\nSince Modifiers are verbose, many opt to use `is-*` flags instead as modifiers.\n\n```html\n<a href=\"/\" class=\"navbar__link is-active\"></a>\n```\n\nThese must be chained to the Element and never alone however, or there will be scope issues.\n\n```css\n.navbar__link.is-active {\n}\n```",
@@ -65,6 +82,23 @@
       "```js\narr.sort(fn)\n```",
       "```js\nfor (let i = 0; i < arr.length; i++) {\n  for (let j = 0; j < arr.length; j++) {\n    // ...\n  }\n}\n```",
       "```js\nconst permutations = arr => {\n  if (arr.length <= 2) return arr.length === 2 ? [arr, [arr[1], arr[0]]] : arr\n  return arr.reduce(\n    (acc, item, i) =>\n      acc.concat(\n        permutations([...arr.slice(0, i), ...arr.slice(i + 1)]).map(val => [\n          item,\n          ...val\n        ])\n      ),\n    []\n  )\n}\n```"
+    ]
+  },
+  {
+    "name": "bind-function.md",
+    "question": "Create a standalone function `bind` that is functionally equivalent to the method `Function.prototype.bind`.\n\n```js\nfunction example() {\n  console.log(this)\n}\nconst boundExample = bind(example, { a: true })\nboundExample.call({ b: true }) // logs { a: true }\n```",
+    "answer": "Return a function that accepts an arbitrary number of arguments by gathering them with the rest `...` operator. From that function, return the result of calling the `fn` with `Function.prototype.apply` to apply the context and the array of arguments to the function.\n\n```js\nconst bind = (fn, context) => (...args) => fn.apply(context, args)\n```",
+    "goodToHear": [],
+    "links": [],
+    "tags": [
+      "javascript"
+    ],
+    "expertise": 1,
+    "questionCodeBlocks": [
+      "```js\nfunction example() {\n  console.log(this)\n}\nconst boundExample = bind(example, { a: true })\nboundExample.call({ b: true }) // logs { a: true }\n```"
+    ],
+    "answerCodeBlocks": [
+      "```js\nconst bind = (fn, context) => (...args) => fn.apply(context, args)\n```"
     ]
   },
   {
@@ -340,6 +374,47 @@
     "answerCodeBlocks": [
       "```js\ndocument.addEventListener(\"click\", function(event) {\n  // This callback function is run when the user\n  // clicks on the document.\n})\n```",
       "```js\nconst hub = createEventHub()\nhub.on(\"message\", function(data) {\n  console.log(`${data.username} said ${data.text}`)\n})\nhub.emit(\"message\", {\n  username: \"John\",\n  text: \"Hello?\"\n})\n```"
+    ]
+  },
+  {
+    "name": "expression-vs-statement.md",
+    "question": "What is the difference between an expression and a statement in JavaScript?",
+    "answer": "There are two main syntactic categories in JavaScript: expressions and statements. A third one is both together, referred to as an expression statement. They are roughly summarized as:\n\n* **Expression**: produces a value\n* **Statement**: performs an action\n* **Expression statement**: produces a value and performs an action\n\nA general rule of thumb:\n\n> If you can print it or assign it to a variable, it’s an expression. If you can’t, it’s a statement.\n\n##### Statements\n\n```js\nlet x = 0\n\nfunction declaration() {}\n\nif (true) {\n}\n```\n\nStatements appear as instructions that do something but don't produce values.\n\n```js\n// Assign `x` to the absolute value of `y`.\nvar x\nif (y >= 0) {\n  x = y\n} else {\n  x = -y\n}\n```\n\nThe only expression in the above code is `y >= 0` which produces a value, either `true` or `false`. A value is not produced by other parts of the code.\n\n##### Expressions\n\nExpressions produce a value. They can be passed around to functions because the interpreter replaces them with the value they resolve to.\n\n```js\n5 + 5 // => 10\n\nlastCharacter(\"input\") // => \"t\"\n\ntrue === true // => true\n```\n\n##### Expression statements\n\nThere is an equivalent version of the set of statements used before as an expression using the conditional operator:\n\n```js\n// Assign `x` as the absolute value of `y`.\nvar x = y >= 0 ? y : -y\n```\n\nThis is both an expression and a statement, because we are declaring a variable `x` (statement) as an evaluation (expression).",
+    "goodToHear": [
+      "Function declarations vs function expressions"
+    ],
+    "links": [
+      "[What is the difference between a statement and an expression?](https://stackoverflow.com/questions/12703214/javascript-difference-between-a-statement-and-an-expression)"
+    ],
+    "tags": [
+      "javascript"
+    ],
+    "expertise": 1,
+    "questionCodeBlocks": [],
+    "answerCodeBlocks": [
+      "```js\nlet x = 0\n\nfunction declaration() {}\n\nif (true) {\n}\n```",
+      "```js\n// Assign `x` to the absolute value of `y`.\nvar x\nif (y >= 0) {\n  x = y\n} else {\n  x = -y\n}\n```",
+      "```js\n5 + 5 // => 10\n\nlastCharacter(\"input\") // => \"t\"\n\ntrue === true // => true\n```",
+      "```js\n// Assign `x` as the absolute value of `y`.\nvar x = y >= 0 ? y : -y\n```"
+    ]
+  },
+  {
+    "name": "falsy-truthy.md",
+    "question": "What are truthy and falsy values in JavaScript?",
+    "answer": "A value is either truthy or falsy depending on how it is evaluated in a Boolean context. Falsy means false-like and truthy means true-like. Essentially, they are values that are coerced to `true` or `false` when performing certain operations.\n\nThere are 6 falsy values in JavaScript. They are:\n\n* `false`\n* `undefined`\n* `null`\n* `\"\"` (empty string),\n* `NaN`\n* `0`\n\nEvery other value is considered truthy.\n\nA value's truthiness can be examined by passing it into the `Boolean` function.\n\n```js\nBoolean(0) // false\n```\n\nThere is a shortcut for this using the logical NOT `!` operator. Using `!` once will convert a value to its inverse boolean equivalent (i.e. not false is true), and `!` once more will convert back, thus effectively converting the value to a boolean.\n\n```js\n!!0 // false\n!![] // true\n```",
+    "goodToHear": [],
+    "links": [
+      "[Truthy on MDN](https://developer.mozilla.org/en/docs/Glossary/Truthy)",
+      "[Falsy on MDN](https://developer.mozilla.org/en-US/docs/Glossary/Falsy)"
+    ],
+    "tags": [
+      "javascript"
+    ],
+    "expertise": 1,
+    "questionCodeBlocks": [],
+    "answerCodeBlocks": [
+      "```js\nBoolean(0) // false\n```",
+      "```js\n!!0 // false\n!![] // true\n```"
     ]
   },
   {
@@ -627,6 +702,27 @@
     "expertise": 0,
     "questionCodeBlocks": [],
     "answerCodeBlocks": []
+  },
+  {
+    "name": "imperative-vs-declarative.md",
+    "question": "Explain the differences between imperative and declarative programming.",
+    "answer": "* Imperative: **how** to achieve something\n* Declarative: **what** should be achieved\n\nA common example of declarative programming is CSS. The developer specifies CSS properties that describe what something should look like rather than how to achieve it. The \"how\" is abstracted away by the browser.\n\nOn the other hand, imperative programming involves the steps required to achieve something. In JavaScript, the differences can be contrasted like so:\n\n##### Imperative\n\n```js\nconst numbers = [1, 2, 3, 4, 5]\nconst numbersDoubled = []\nfor (let i = 0; i < numbers.length; i++) {\n  numbersDoubled[i] = numbers[i] * 2\n}\n```\n\nWet manually loop over the numbers of the array and assign the new index as the number doubled.\n\n##### Declarative\n\n```js\nconst numbers = [1, 2, 3, 4, 5]\nconst numbersDoubled = numbers.map(n => n * 2)\n```\n\nWe declare that the new array is mapped to a new one where each value is doubled.",
+    "goodToHear": [
+      "Declarative programming often works with expressions. Imperative programming frequently uses statements and relies on low-level features that cause mutations, while declarative programming has a strong focus on abstraction and purity.",
+      "Declarative programming is more terse and easier to process at a glance."
+    ],
+    "links": [
+      "[Declarative vs Imperative Programming](https://codeburst.io/declarative-vs-imperative-programming-a8a7c93d9ad2)"
+    ],
+    "tags": [
+      "javascript"
+    ],
+    "expertise": 2,
+    "questionCodeBlocks": [],
+    "answerCodeBlocks": [
+      "```js\nconst numbers = [1, 2, 3, 4, 5]\nconst numbersDoubled = []\nfor (let i = 0; i < numbers.length; i++) {\n  numbersDoubled[i] = numbers[i] * 2\n}\n```",
+      "```js\nconst numbers = [1, 2, 3, 4, 5]\nconst numbersDoubled = numbers.map(n => n * 2)\n```"
+    ]
   },
   {
     "name": "mask.md",
@@ -1027,6 +1123,49 @@
       "```js\nfunction greet() {\n  return\n  {\n    message: \"hello\"\n  }\n}\n```"
     ],
     "answerCodeBlocks": []
+  },
+  {
+    "name": "semicolons.md",
+    "question": "Are semicolons required in JavaScript?",
+    "answer": "Sometimes. Due to JavaScript's automatic semicolon insertion, the interpreter places semicolons after most statements. This means semicolons can be omitted in most cases.\n\nHowever, there are some cases where they are required. They are not required at the beginning of a block, but are if they follow a line and:\n\n1.  The line starts with `[`\n\n```js\nconst previousLine = 3\n;[1, 2, previousLine].map(n => n * 2)\n```\n\n2.  The line starts with `(`\n\n```js\nconst previousLine = 3\n;(function() {\n  // ...\n})()\n```\n\nIn the above cases, the interpreter does not insert a semicolon after `3`, and therefore it will see the `3` as attempting object property access or being invoked as a function, which will throw errors.",
+    "goodToHear": [
+      "Semicolons are usually optional in JavaScript but have edge cases where they are required.",
+      "If you don't use semicolons, tools like Prettier will insert semicolons for you in the places where they are required on save in a text editor to prevent errors."
+    ],
+    "links": [],
+    "tags": [
+      "javascript"
+    ],
+    "expertise": 1,
+    "questionCodeBlocks": [],
+    "answerCodeBlocks": [
+      "```js\nconst previousLine = 3\n;[1, 2, previousLine].map(n => n * 2)\n```",
+      "```js\nconst previousLine = 3\n;(function() {\n  // ...\n})()\n```"
+    ]
+  },
+  {
+    "name": "short-circuit-evaluation.md",
+    "question": "What is short-circuit evaluation in JavaScript?",
+    "answer": "Short-circuit evaluation involves logical operations evaluating from left-to-right and stopping early.\n\n```js\ntrue || false\n```\n\nIn the above sample using logical OR, JavaScript won't look at the second operand `false`, because the expression evaluates to `true` regardless. This is known as short-circuit evaluation.\n\nThis also works for logical AND.\n\n```js\nfalse && true\n```\n\nThis means you can have an expression that throws an error if evaluated, and it won't cause issues.\n\n```js\ntrue || nonexistentFunction()\nfalse && nonexistentFunction()\n```\n\nThis remains true for multiple operations because of left-to-right evaluation.\n\n```js\ntrue || nonexistentFunction() || window.nothing.wouldThrowError\ntrue || window.nothing.wouldThrowError\ntrue\n```\n\nA common use case for this behavior is setting default values. If the first operand is falsy the second operand will be evaluated.\n\n```js\nconst options = {}\nconst setting = options.setting || \"default\"\nsetting // \"default\"\n```\n\nAnother common use case is only evaluating an expression if the first operand is truthy.\n\n```js\n// Instead of:\naddEventListener(\"click\", e => {\n  if (e.target.matches(\"span\")) {\n    handleSpanClick(e)\n  }\n})\n\n// You can take advantage of short-circuit evaluation:\naddEventListener(\"click\", e => e.target.matches(\"span\") && handleSpanClick(e))\n```\n\nIn the above case, if `e.target` does not match the `\"span\"` selector, the function will not be called. This is because the first operand will be falsy, causing the second operand to not be evaluated.",
+    "goodToHear": [
+      "Logical operations do not produce a boolean unless the operand(s) evaluate to a boolean."
+    ],
+    "links": [
+      "[JavaScript: What is short-circuit evaluation?](https://codeburst.io/javascript-what-is-short-circuit-evaluation-ff22b2f5608c)"
+    ],
+    "tags": [
+      "javascript"
+    ],
+    "expertise": 1,
+    "questionCodeBlocks": [],
+    "answerCodeBlocks": [
+      "```js\ntrue || false\n```",
+      "```js\nfalse && true\n```",
+      "```js\ntrue || nonexistentFunction()\nfalse && nonexistentFunction()\n```",
+      "```js\ntrue || nonexistentFunction() || window.nothing.wouldThrowError\ntrue || window.nothing.wouldThrowError\ntrue\n```",
+      "```js\nconst options = {}\nconst setting = options.setting || \"default\"\nsetting // \"default\"\n```",
+      "```js\n// Instead of:\naddEventListener(\"click\", e => {\n  if (e.target.matches(\"span\")) {\n    handleSpanClick(e)\n  }\n})\n\n// You can take advantage of short-circuit evaluation:\naddEventListener(\"click\", e => e.target.matches(\"span\") && handleSpanClick(e))\n```"
+    ]
   },
   {
     "name": "sprites.md",

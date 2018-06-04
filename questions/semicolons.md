@@ -26,8 +26,8 @@ In the above cases, the interpreter does not insert a semicolon after `3`, and t
 
 #### Good to hear
 
-- Semicolons are usually optional in JavaScript but have edge cases where they are required.
-- If you don't use semicolons, tools like Prettier will insert semicolons for you in the places where they are required on save in a text editor to prevent errors.
+* Semicolons are usually optional in JavaScript but have edge cases where they are required.
+* If you don't use semicolons, tools like Prettier will insert semicolons for you in the places where they are required on save in a text editor to prevent errors.
 
 ##### Additional links
 
