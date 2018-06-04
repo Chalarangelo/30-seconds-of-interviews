@@ -1,14 +1,14 @@
-### In Javascript, Hoisting happens to Functions and Variable declared with `var`. Where can they be scoped?
+### In Javascript, Hoisting happens to functions and variables declared with `var`. Where can they be scoped?
 
 #### Answer
 
-Either Global or Function scoped.
+Either globally or in a function.
 
-Unlike `let` or `const` they are not Block scoped and can only exist in one of two places because they are assigned a pointed before any evaluation of the code.
+Unlike `let` or `const` they are not block-scoped and can only exist in either one of them because they are assigned a pointer before any evaluation of the code.
 
 #### Good to hear
 
-* There is more than one type of scope in Javascrit(Global, Function, Block)
+* There is more than one type of scope in Javascript(Global, Function, Block)
 * Hoisting defines the references before actually evaluating the script
 
 ##### Additional links
@@ -19,4 +19,4 @@ Unlike `let` or `const` they are not Block scoped and can only exist in one of t
 
 <!-- tags: (javascript) -->
 
-<!-- expertise: (1) -->
+<!-- expertise: (0) -->
