@@ -1,5 +1,7 @@
 ### What are truthy and falsy values in JavaScript?
 
+#### Answer
+
 A value is either truthy or falsy depending on how it is evaluated in a Boolean context. Falsy means false-like and truthy means true-like. Essentially, they are values that are coerced to `true` or `false` when performing certain operations.
 
 There are 6 falsy values in JavaScript. They are:
