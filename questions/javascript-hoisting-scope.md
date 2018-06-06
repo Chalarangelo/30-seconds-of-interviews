@@ -1,15 +1,17 @@
-### In Javascript, Hoisting happens to functions and variables declared with `var`. Where can they be scoped?
+### In Javascript, Hoisting happens to unassigned functions and variables declared with `var`. Where can they be scoped?
 
 #### Answer
 
-Either globally or in a function.
+Either globally or in a function/local scope.
 
-Unlike `let` or `const` they are not block-scoped and can only exist in either one of them because they are assigned a pointer before any evaluation of the code.
+Unlike `let` or `const`, var and unassigned named functions are not block scoped and can only exist in either one of the non lexical scopes because they are assigned a pointer before any evaluation of the code. If you attempt to access a var declared variable before it's assigned a value you get `undefined` instead of a reference error, and unassigned named functions are able to be called because they are hoisted and compiled at the scope's compile time before the rest of the code is evaluated. Anonymous functions have no reference and can only be called immeadiatly, and assigned functions are only evaluated when they are assigned.
 
 #### Good to hear
 
-* There is more than one type of scope in Javascript(Global, Function, Block)
+* There is more than one type of scope in Javascript(Global, Local, Block)
 * Hoisting defines the references before actually evaluating the script
+* Block scopes are lexical
+* Assigned functions are not hoisted because they are only evaluated at time of assignment
 
 ##### Additional links
 
