@@ -12,7 +12,14 @@ export default ({
   isOpen,
   expertise
 }) => (state, actions) => (
-  <div class="Question-wrapper" key={name}>
+  <li
+    class={cc("Question-wrapper", {
+      "is-visible":
+        state.filter.category.toLowerCase() === "all" ||
+        tags.includes(state.filter.category.toLowerCase())
+    })}
+    key={name}
+  >
     <div class={`Question__badge is-${EXPERTISE_STRINGS[expertise]}`}>
       {EXPERTISE_STRINGS[expertise]}
     </div>
@@ -34,9 +41,9 @@ export default ({
       </button>
       <div class={cc("Question__answer", { "is-open": isOpen })}>
         <Markdown content={answer} />
-        {goodToHear.length ? <h4>Good to hear</h4> : null}
+        {goodToHear.length > 0 && <h4>Good to hear</h4>}
         <ul>{goodToHear.map(i => <Markdown node="li" content={i} />)}</ul>
       </div>
     </div>
-  </div>
+  </li>
 )
