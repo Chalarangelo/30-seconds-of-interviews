@@ -1,5 +1,4 @@
 /* eslint no-restricted-globals: 0 */
-
 export const cc = (constant, conditionalClasses = constant) => {
   const res = Object.keys(conditionalClasses).reduce(
     (acc, className) =>

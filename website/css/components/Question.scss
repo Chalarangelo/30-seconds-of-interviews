@@ -1,7 +1,12 @@
-@import "../_vars.scss";
+ @import "../_vars.scss";
 
 .Question-wrapper {
   position: relative;
+  display: none;
+
+  &.is-visible {
+    display: block;
+  }
 }
 
 .Question {
@@ -88,10 +93,6 @@
   }
 
   &__button-icon {
-    .btn__icon {
-      transition: transform 0.2s ease-out;
-    }
-
     &.is-rotated {
       .btn__icon {
         transform: rotateX(180deg);
