@@ -1,5 +1,4 @@
 /* eslint no-restricted-globals: 0 */
-
 export const cc = (constant, conditionalClasses = constant) => {
   const res = Object.keys(conditionalClasses).reduce(
     (acc, className) =>
@@ -41,7 +40,7 @@ export const nextValInObj = (obj, key) => {
     : i !== -1 && keys[i + 1] && obj[keys[i + 1]]
 }
 
-export const EXPERTISE_STRINGS = [ "junior", "intermediate", "senior" ]
+export const EXPERTISE_STRINGS = ["junior", "intermediate", "senior"]
 
 export const TAG_NAMES = {
   javascript: "JavaScript",
