@@ -4,7 +4,7 @@
 
 Either globally or in a function/local scope.
 
-Unlike `let` or `const`, var and unassigned named functions are not block scoped and can only exist in either one of the non lexical scopes because they are assigned a pointer before any evaluation of the code. If you attempt to access a var declared variable before it's assigned a value you get `undefined` instead of a reference error, and unassigned named functions are able to be called because they are hoisted and compiled at the scope's compile time before the rest of the code is evaluated. Anonymous functions have no reference and can only be called immeadiatly, and assigned functions are only evaluated when they are assigned.
+Unlike `let` or `const`, `var` declerations and unassigned named functions are not lexically scoped and can only exist in either one of the compiled scopes because they are assigned a pointer before any evaluation of the code. If you attempt to access a var declared variable before it's assigned a value you get `undefined` instead of a reference error, and unassigned named functions are able to be called because they are hoisted and compiled at the scope's compile time before the rest of the code is evaluated. Anonymous functions have no reference and can only be called immeadiatly, and assigned functions are only evaluated when they are assigned.
 
 #### Good to hear
 
