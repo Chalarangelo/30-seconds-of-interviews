@@ -12,7 +12,7 @@ Using the length property we can calculate the length of the string to ba masked
 
 ```js
 const mask = (str, maskChar = "#") =>
-  maskChar.repeat(str.length - 4) + str.slice(-4)
+  maskChar.repeat(Math.max(0, str.length - 4)) + str.slice(-4)
 ```
 
 #### Good to hear
