@@ -2463,7 +2463,7 @@ async function asyncAwaitVersion() {
   const b = await getMoreData(a)
   const c = await getMoreData(b)
   const d = await getMoreData(c)
-  const e = await getMoreData(e)
+  const e = await getMoreData(d)
   // ...
 }
 ```
@@ -3332,7 +3332,7 @@ async function asyncAwaitVersion() {
   const b = await getMoreData(a)
   const c = await getMoreData(b)
   const d = await getMoreData(c)
-  const e = await getMoreData(e)
+  const e = await getMoreData(d)
   // ...
 }
 ```
