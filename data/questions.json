@@ -1,5 +1,23 @@
 [
   {
+    "name": "alt-attribute.md",
+    "question": "What is the purpose of the `alt` attribute on images?",
+    "answer": "The `alt` attribute provides alternative information for an image if a user cannot view it. The `alt` attribute should be used to describe any images except those which only serve a decorative purposes, in which case it should be left empty.",
+    "goodToHear": [
+      "Decorative images should have an empty `alt` attribute.",
+      "Web crawlers use `alt` tags to understand image content, so they are considered important for Search Engine Optimization (SEO)."
+    ],
+    "links": [
+      "[A good basis for accessibility](https://developer.mozilla.org/en-US/docs/Learn/Accessibility/HTML)"
+    ],
+    "tags": [
+      "html"
+    ],
+    "expertise": 0,
+    "questionCodeBlocks": [],
+    "answerCodeBlocks": []
+  },
+  {
     "name": "async-defer-attributes.md",
     "question": "What are `defer` and `async` attributes on a `<script>` tag?",
     "answer": "If neither attribute is present, the script is downloaded and executed synchronously, and will halt parsing of the document until it has finished executing (default behavior). Scripts are downloaded and executed in the order\nthey are encountered.\n\nThe `defer` attribute downloads the script while the document is still parsing but waits until the document has finished parsing before executing it, equivalent to executing inside a `DOMContentLoaded` event listener. `defer` scripts will execute in order.\n\nThe `async` attribute downloads the script during parsing the document but will pause the parser to execute the script before it has fully finished parsing. `async` scripts will not necessarily execute in order.\n\nNote: both attributes must only be used if the script has a `src` attribute (i.e. not an inline script).\n\n```html\n<script src=\"myscript.js\"></script>\n<script src=\"myscript.js\" defer></script>\n<script src=\"myscript.js\" async></script>\n```",
@@ -319,7 +337,7 @@
   {
     "name": "em-rem-difference.md",
     "question": "What is the difference between `em` and `rem` units?",
-    "answer": "Both `em` and `rem` units are based on the `font-size` CSS property. The only difference is where they inherit their values from. `em` units inherit their value from the `font-size` of the parent element, while `rem` units inherit their value from the root element (`html`). In most browsers, the `font-size` of root element is set to `16px` by default.",
+    "answer": "Both `em` and `rem` units are based on the `font-size` CSS property. The only difference is where they inherit their values from.\n\n* `em` units inherit their value from the `font-size` of the parent element\n* `rem` units inherit their value from the root element (`html`)\n\nIn most browsers, the `font-size` of the root element is set to `16px` by default.",
     "goodToHear": [
       "Benefits of using `em` and `rem` units"
     ],
@@ -401,7 +419,7 @@
   {
     "name": "falsy-truthy.md",
     "question": "What are truthy and falsy values in JavaScript?",
-    "answer": "A value is either truthy or falsy depending on how it is evaluated in a Boolean context. Falsy means false-like and truthy means true-like. Essentially, they are values that are coerced to `true` or `false` when performing certain operations.\n\nThere are 6 falsy values in JavaScript. They are:\n\n* `false`\n* `undefined`\n* `null`\n* `\"\"` (empty string),\n* `NaN`\n* `0`\n\nEvery other value is considered truthy.\n\nA value's truthiness can be examined by passing it into the `Boolean` function.\n\n```js\nBoolean(0) // false\n```\n\nThere is a shortcut for this using the logical NOT `!` operator. Using `!` once will convert a value to its inverse boolean equivalent (i.e. not false is true), and `!` once more will convert back, thus effectively converting the value to a boolean.\n\n```js\n!!0 // false\n!![] // true\n```",
+    "answer": "A value is either truthy or falsy depending on how it is evaluated in a Boolean context. Falsy means false-like and truthy means true-like. Essentially, they are values that are coerced to `true` or `false` when performing certain operations.\n\nThere are 6 falsy values in JavaScript. They are:\n\n* `false`\n* `undefined`\n* `null`\n* `\"\"` (empty string)\n* `NaN`\n* `0` (both `+0` and `-0`)\n\nEvery other value is considered truthy.\n\nA value's truthiness can be examined by passing it into the `Boolean` function.\n\n```js\nBoolean(\"\") // false\nBoolean([]) // true\n```\n\nThere is a shortcut for this using the logical NOT `!` operator. Using `!` once will convert a value to its inverse boolean equivalent (i.e. not false is true), and `!` once more will convert back, thus effectively converting the value to a boolean.\n\n```js\n!!\"\" // false\n!![] // true\n```",
     "goodToHear": [],
     "links": [
       "[Truthy on MDN](https://developer.mozilla.org/en/docs/Glossary/Truthy)",
@@ -413,8 +431,8 @@
     "expertise": 1,
     "questionCodeBlocks": [],
     "answerCodeBlocks": [
-      "```js\nBoolean(0) // false\n```",
-      "```js\n!!0 // false\n!![] // true\n```"
+      "```js\nBoolean(\"\") // false\nBoolean([]) // true\n```",
+      "```js\n!!\"\" // false\n!![] // true\n```"
     ]
   },
   {
@@ -684,24 +702,6 @@
     "answerCodeBlocks": [
       "```js\nconst myLibrary = (function() {\n  var privateVariable = 2\n  return {\n    publicMethod: () => privateVariable\n  }\n})()\nprivateVariable // ReferenceError\nmyLibrary.publicMethod() // 2\n```"
     ]
-  },
-  {
-    "name": "image-accessibility.md",
-    "question": "What is the purpose of `alt` attribute on images?",
-    "answer": "The `alt` attribute provides alternative information for an image if a user cannot view it. The `alt` attribute should be used to describe any images except those which only serve a decorative purposes, in which case it should be left empty.",
-    "goodToHear": [
-      "Decorative images should have empty `alt` attribute.",
-      "Web crawlers use `alt` tags to understand image content, so they are considered important for Search Engine Optimization (SEO)."
-    ],
-    "links": [
-      "[A good basis for accessibility](https://developer.mozilla.org/en-US/docs/Learn/Accessibility/HTML)"
-    ],
-    "tags": [
-      "html"
-    ],
-    "expertise": 0,
-    "questionCodeBlocks": [],
-    "answerCodeBlocks": []
   },
   {
     "name": "imperative-vs-declarative.md",
