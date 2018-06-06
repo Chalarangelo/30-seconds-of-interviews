@@ -113,6 +113,7 @@ It accepts two objects as arguments: the first object is the recipe for the food
 <details>
 <summary>View contents</summary>
 
+* [What is the purpose of the `alt` attribute on images?](#what-is-the-purpose-of-the-alt-attribute-on-images)
 * [What are `defer` and `async` attributes on a `<script>` tag?](#what-are-defer-and-async-attributes-on-a-script-tag)
 * [What is the purpose of cache busting and how can you achieve it?](#what-is-the-purpose-of-cache-busting-and-how-can-you-achieve-it)
 * [What is the DOM?](#what-is-the-dom)
@@ -121,7 +122,6 @@ It accepts two objects as arguments: the first object is the recipe for the food
 * [What are some differences that XHTML has compared to HTML?](#what-are-some-differences-that-xhtml-has-compared-to-html)
 * [Briefly describe the correct usage of the following HTML5 semantic elements: `<header>`, `<article>`,`<section>`, `<footer>`](#briefly-describe-the-correct-usage-of-the-following-html5-semantic-elements-header-articlesection-footer)
 * [What is HTML5 Web Storage? Explain `localStorage` and `sessionStorage`.](#what-is-html5-web-storage-explain-localstorage-and-sessionstorage)
-* [What is the purpose of `alt` attribute on images?](#what-is-the-purpose-of-alt-attribute-on-images)
 * [Where and why is the `rel="noopener"` attribute used?](#where-and-why-is-the-relnoopener-attribute-used)
 </details>
 
@@ -809,22 +809,23 @@ There are 6 falsy values in JavaScript. They are:
 * `false`
 * `undefined`
 * `null`
-* `""` (empty string),
+* `""` (empty string)
 * `NaN`
-* `0`
+* `0` (both `+0` and `-0`)
 
 Every other value is considered truthy.
 
 A value's truthiness can be examined by passing it into the `Boolean` function.
 
 ```js
-Boolean(0) // false
+Boolean("") // false
+Boolean([]) // true
 ```
 
 There is a shortcut for this using the logical NOT `!` operator. Using `!` once will convert a value to its inverse boolean equivalent (i.e. not false is true), and `!` once more will convert back, thus effectively converting the value to a boolean.
 
 ```js
-!!0 // false
+!!"" // false
 !![] // true
 ```
 
@@ -2584,6 +2585,32 @@ Once the changes between the old VDOM and new VDOM have been calculated by the d
 
 
 ## HTML
+### What is the purpose of the `alt` attribute on images?
+
+<details>
+<summary>View answer</summary>
+
+The `alt` attribute provides alternative information for an image if a user cannot view it. The `alt` attribute should be used to describe any images except those which only serve a decorative purposes, in which case it should be left empty.
+
+
+#### Good to hear
+
+
+* Decorative images should have an empty `alt` attribute.
+* Web crawlers use `alt` tags to understand image content, so they are considered important for Search Engine Optimization (SEO).
+
+
+##### Additional links
+
+
+* [A good basis for accessibility](https://developer.mozilla.org/en-US/docs/Learn/Accessibility/HTML)
+</details>
+
+
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
 ### What is the purpose of cache busting and how can you achieve it?
 
 <details>
@@ -2668,32 +2695,6 @@ Yes to both. The W3 documents state that the tags represent the header(`<header>
 
 
 * [HTML 5 Semantic Elements](https://www.w3schools.com/html/html5_semantic_elements.asp)
-</details>
-
-
-
-<br>[⬆ Back to top](#table-of-contents)
-
-
-### What is the purpose of `alt` attribute on images?
-
-<details>
-<summary>View answer</summary>
-
-The `alt` attribute provides alternative information for an image if a user cannot view it. The `alt` attribute should be used to describe any images except those which only serve a decorative purposes, in which case it should be left empty.
-
-
-#### Good to hear
-
-
-* Decorative images should have empty `alt` attribute.
-* Web crawlers use `alt` tags to understand image content, so they are considered important for Search Engine Optimization (SEO).
-
-
-##### Additional links
-
-
-* [A good basis for accessibility](https://developer.mozilla.org/en-US/docs/Learn/Accessibility/HTML)
 </details>
 
 
@@ -3075,7 +3076,12 @@ Set the `.row` parent to `display: flex;` and use the `flex` shorthand property 
 <details>
 <summary>View answer</summary>
 
-Both `em` and `rem` units are based on the `font-size` CSS property. The only difference is where they inherit their values from. `em` units inherit their value from the `font-size` of the parent element, while `rem` units inherit their value from the root element (`html`). In most browsers, the `font-size` of root element is set to `16px` by default.
+Both `em` and `rem` units are based on the `font-size` CSS property. The only difference is where they inherit their values from.
+
+* `em` units inherit their value from the `font-size` of the parent element
+* `rem` units inherit their value from the root element (`html`)
+
+In most browsers, the `font-size` of the root element is set to `16px` by default.
 
 
 #### Good to hear
