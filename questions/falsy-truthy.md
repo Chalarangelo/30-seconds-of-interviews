@@ -9,22 +9,23 @@ There are 6 falsy values in JavaScript. They are:
 * `false`
 * `undefined`
 * `null`
-* `""` (empty string),
+* `""` (empty string)
 * `NaN`
-* `0`
+* `0` (both `+0` and `-0`)
 
 Every other value is considered truthy.
 
 A value's truthiness can be examined by passing it into the `Boolean` function.
 
 ```js
-Boolean(0) // false
+Boolean("") // false
+Boolean([]) // true
 ```
 
 There is a shortcut for this using the logical NOT `!` operator. Using `!` once will convert a value to its inverse boolean equivalent (i.e. not false is true), and `!` once more will convert back, thus effectively converting the value to a boolean.
 
 ```js
-!!0 // false
+!!"" // false
 !![] // true
 ```
 
