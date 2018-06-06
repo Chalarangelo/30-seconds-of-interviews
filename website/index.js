@@ -8,7 +8,7 @@ import state from "./js/state"
 import actions from "./js/actions"
 import view from "./js/view"
 
-const main = app(state, actions, view, document.body) // eslint-disable-line no-unused-vars
+app(state, actions, view, document.body)
 
 setTimeout(() => {
   const backToTopButton = document.querySelector(".BackToTopButton")
