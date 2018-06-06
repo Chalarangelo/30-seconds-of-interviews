@@ -49,16 +49,24 @@ Join our [Gitter channel](https://gitter.im/30-seconds-of-interviews/Lobby) to h
 <details>
 <summary>View contents</summary>
 
+* [Create a function `batches` that returns the maximum number of whole batches that can be cooked from a recipe.
+It accepts two objects as arguments: the first object is the recipe for the food, while the second argument is the available ingredients. Each ingredient's value is number representing how many units there are.
+
+`batches(recipe, available)`](#create-a-function-batches-that-returns-the-maximum-number-of-whole-batches-that-can-be-cooked-from-a-recipe-it-accepts-two-objects-as-arguments-the-first-object-is-the-recipe-for-the-food-while-the-second-argument-is-the-available-ingredients-each-ingredients-value-is-number-representing-how-many-units-there-are--batchesrecipe-available)
 * [What is Big O Notation?](#what-is-big-o-notation)
+* [Create a standalone function `bind` that is functionally equivalent to the method `Function.prototype.bind`.](#create-a-standalone-function-bind-that-is-functionally-equivalent-to-the-method-functionprototypebind)
 * [How can you avoid callback hells?](#how-can-you-avoid-callback-hells)
 * [What is a callback?](#what-is-a-callback)
 * [How do you clone an object in JavaScript?](#how-do-you-clone-an-object-in-javascript)
 * [What is a closure? Can you give a useful example of one?](#what-is-a-closure-can-you-give-a-useful-example-of-one)
 * [How do you compare two objects in JavaScript?](#how-do-you-compare-two-objects-in-javascript)
+* [What is CORS?](#what-is-cors)
 * [What is the DOM?](#what-is-the-dom)
 * [What is the difference between the equality operators `==` and `===`?](#what-is-the-difference-between-the-equality-operators--and-)
 * [What is event delegation and why is it useful? Can you show an example of how to use it?](#what-is-event-delegation-and-why-is-it-useful-can-you-show-an-example-of-how-to-use-it)
 * [What is event-driven programming?](#what-is-event-driven-programming)
+* [What is the difference between an expression and a statement in JavaScript?](#what-is-the-difference-between-an-expression-and-a-statement-in-javascript)
+* [What are truthy and falsy values in JavaScript?](#what-are-truthy-and-falsy-values-in-javascript)
 * [Generate an array, containing the Fibonacci sequence, up until the nth term.](#generate-an-array-containing-the-fibonacci-sequence-up-until-the-nth-term)
 * [What does `0.1 + 0.2 === 0.3` evaluate to?](#what-does-01--02--03-evaluate-to)
 * [What is the difference between the array methods `map()` and `forEach()`?](#what-is-the-difference-between-the-array-methods-map-and-foreach)
@@ -66,11 +74,12 @@ Join our [Gitter channel](https://gitter.im/30-seconds-of-interviews/Lobby) to h
 * [What will the console log in this example?](#what-will-the-console-log-in-this-example)
 * [How does hoisting work in JavaScript?](#how-does-hoisting-work-in-javascript)
 * [What is the reason for wrapping the entire contents of a JavaScript source file in a function that is immediately invoked?](#what-is-the-reason-for-wrapping-the-entire-contents-of-a-javascript-source-file-in-a-function-that-is-immediately-invoked)
+* [Explain the differences between imperative and declarative programming.](#explain-the-differences-between-imperative-and-declarative-programming)
 * [Create a function that masks a string of characters with `#` except for the last four (4) characters.](#create-a-function-that-masks-a-string-of-characters-with--except-for-the-last-four-4-characters)
 * [What is memoization?](#what-is-memoization)
 * [Explain the difference between mutability and immutability, and mutating vs non-mutating methods.](#explain-the-difference-between-mutability-and-immutability-and-mutating-vs-non-mutating-methods)
 * [What is the only value not equal to itself in JavaScript?](#what-is-the-only-value-not-equal-to-itself-in-javascript)
-* [NodeJS uses a callback pattern in many instances where if an error were returned it will pass it as the first argument to the callback. What are the advantages of this pattern?](#nodejs-uses-a-callback-pattern-in-many-instances-where-if-an-error-were-returned-it-will-pass-it-as-the-first-argument-to-the-callback-what-are-the-advantages-of-this-pattern)
+* [NodeJS often uses a callback pattern where if an error is encountered during execution, this error is passed as the first argument to the callback. What are the advantages of this pattern?](#nodejs-often-uses-a-callback-pattern-where-if-an-error-is-encountered-during-execution-this-error-is-passed-as-the-first-argument-to-the-callback-what-are-the-advantages-of-this-pattern)
 * [What is the event loop in Node.js?](#what-is-the-event-loop-in-nodejs)
 * [What is the difference between `null` and `undefined`?](#what-is-the-difference-between-null-and-undefined)
 * [Describe the different ways to create an object. When should certain ways be preferred over others?](#describe-the-different-ways-to-create-an-object-when-should-certain-ways-be-preferred-over-others)
@@ -84,6 +93,8 @@ Join our [Gitter channel](https://gitter.im/30-seconds-of-interviews/Lobby) to h
 * [What is recursion and when is it useful?](#what-is-recursion-and-when-is-it-useful)
 * [What is the output of the following code?](#what-is-the-output-of-the-following-code)
 * [What does the following function return?](#what-does-the-following-function-return)
+* [Are semicolons required in JavaScript?](#are-semicolons-required-in-javascript)
+* [What is short-circuit evaluation in JavaScript?](#what-is-short-circuit-evaluation-in-javascript)
 * [Explain the difference between a static method and an instance method.](#explain-the-difference-between-a-static-method-and-an-instance-method)
 * [What is the difference between synchronous and asynchronous code in JavaScript?](#what-is-the-difference-between-synchronous-and-asynchronous-code-in-javascript)
 * [What is the `this` keyword and how does it work?](#what-is-the-this-keyword-and-how-does-it-work)
@@ -123,6 +134,7 @@ Join our [Gitter channel](https://gitter.im/30-seconds-of-interviews/Lobby) to h
 * [What is CSS BEM?](#what-is-css-bem)
 * [What are the advantages of using CSS preprocessors?](#what-are-the-advantages-of-using-css-preprocessors)
 * [Can you describe how CSS specificity works?](#can-you-describe-how-css-specificity-works)
+* [What is the difference between `em` and `rem` units?](#what-is-the-difference-between-em-and-rem-units)
 * [Using flexbox, create a 3-column layout where each column takes up a `col-{n} / 12` ratio of the container.](#using-flexbox-create-a-3-column-layout-where-each-column-takes-up-a-col-n--12-ratio-of-the-container)
 * [What is a focus ring? What is the correct solution to handle them?](#what-is-a-focus-ring-what-is-the-correct-solution-to-handle-them)
 * [Can you name the four types of `@media` properties?](#can-you-name-the-four-types-of-media-properties)
@@ -136,7 +148,7 @@ Join our [Gitter channel](https://gitter.im/30-seconds-of-interviews/Lobby) to h
 <summary>View contents</summary>
 
 * [How can you avoid callback hells?](#how-can-you-avoid-callback-hells)
-* [NodeJS uses a callback pattern in many instances where if an error were returned it will pass it as the first argument to the callback. What are the advantages of this pattern?](#nodejs-uses-a-callback-pattern-in-many-instances-where-if-an-error-were-returned-it-will-pass-it-as-the-first-argument-to-the-callback-what-are-the-advantages-of-this-pattern)
+* [NodeJS often uses a callback pattern where if an error is encountered during execution, this error is passed as the first argument to the callback. What are the advantages of this pattern?](#nodejs-often-uses-a-callback-pattern-where-if-an-error-is-encountered-during-execution-this-error-is-passed-as-the-first-argument-to-the-callback-what-are-the-advantages-of-this-pattern)
 * [What is the event loop in Node.js?](#what-is-the-event-loop-in-nodejs)
 * [What is REST?](#what-is-rest)
 </details>
@@ -213,74 +225,252 @@ When either of these options happens, the associated handlers queued up by a pro
 <br>[⬆ Back to top](#table-of-contents)
 
 
-### NodeJS uses a callback pattern in many instances where if an error were returned it will pass it as the first argument to the callback. What are the advantages of this pattern?
+### Create a function `batches` that returns the maximum number of whole batches that can be cooked from a recipe.
+
+It accepts two objects as arguments: the first object is the recipe for the food, while the second argument is the available ingredients. Each ingredient's value is number representing how many units there are.
+
+`batches(recipe, available)`
 
 ```js
-fs.readFile(filePath, function(err, data) {
-  if (err) {
-    // handle the error, the return is important here
-    // so execution stops here
-    return console.log(err)
-  }
-  // use the data object
-  console.log(data)
-})
+// 0 batches can be made
+batches(
+  { milk: 100, butter: 50, flour: 5 },
+  { milk: 132, butter: 48, flour: 51 }
+)
+batches(
+  { milk: 100, flour: 4, sugar: 10, butter: 5 },
+  { milk: 1288, flour: 9, sugar: 95 }
+)
+
+// 1 batch can be made
+batches(
+  { milk: 100, butter: 50, cheese: 10 },
+  { milk: 198, butter: 52, cheese: 10 }
+)
+
+// 2 batches can be made
+batches(
+  { milk: 2, sugar: 40, butter: 20 },
+  { milk: 5, sugar: 120, butter: 500 }
+)
 ```
 
 <details>
 <summary>View answer</summary>
 
-Advantages include:
+We must have all ingredients of the recipe available, and in quantities that are more than or equal to the number of units required. If just one of ingredients is not available or lower than needed, we cannot make a single batch.
 
-* Not needing to process data if there is no need to even reference it
-* Having a consistent API leads to more adoption
-* Ability to easily adapt a callback pattern that will lead to more maintainable code
+Use `Object.keys()` to return the ingredients of the recipe as an array, then use `Array.prototype.map()` to map each ingredient to the ratio of available units to the amount required by the recipe. If one of the ingredients required by the recipe is not available at all, the ratio will evaluate to `NaN`, so the logical OR operator can be used to fallback to `0` in this case.
 
-As you can see from below example, the callback is called with null as its first argument if there is no error. However, if there is an error, you create an Error object, which then becomes the callback's only parameter. The callback function allows a user to easily know whether or not an error occurred.
-
-This practice is also called the _Node.js error convention_, and this kind of callback implementations are called _error-first callbacks_.
+Use the spread `...` operator to feed all the array of ratios into `Math.min()` to determine the lowest ratio. Passing this entire result into `Math.floor()` rounds down to return the maximum number of whole batches.
 
 ```js
-var isTrue = function(value, callback) {
-  if (value === true) {
-    callback(null, "Value was true.")
-  } else {
-    callback(new Error("Value is not true!"))
-  }
-}
-
-var callback = function(error, retval) {
-  if (error) {
-    console.log(error)
-    return
-  }
-  console.log(retval)
-}
-
-isTrue(false, callback)
-isTrue(true, callback)
-
-/*
-  { stack: [Getter/Setter],
-    arguments: undefined,
-    type: undefined,
-    message: 'Value is not true!' }
-  Value was true.
-*/
+const batches = (recipe, available) =>
+  Math.floor(
+    Math.min(...Object.keys(recipe).map(k => available[k] / recipe[k] || 0))
+  )
 ```
 
 
 #### Good to hear
 
 
-* This is just a convention. However, you should stick to it.
+
 
 
 ##### Additional links
 
 
-* [The Node.js Way Understanding Error-First Callbacks](http://fredkschott.com/post/2014/03/understanding-error-first-callbacks-in-node-js/)
-* [What are the error conventions?](https://docs.nodejitsu.com/articles/errors/what-are-the-error-conventions)
+
+</details>
+
+
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
+### What are the differences between `var`, `let`, `const` and no keyword statements?
+
+<details>
+<summary>View answer</summary>
+
+##### No keyword
+
+When no keyword exists before a variable assignment, it is either assigning a global variable if one does not exist, or reassigns an already declared variable. In non-strict mode, if the variable has not yet been declared, it will assign the variable as a property of the global object (`window` in browsers). In strict mode, it will throw an error to prevent unwanted global variables from being created.
+
+##### var
+
+`var` was the default statement to declare a variable until ES2015. It creates a function-scoped variable that can be reassigned and redeclared. However, due to its lack of block scoping, it can cause issues if the variable is being reused in a loop that contains an asynchronous callback because the variable will continue to exist outside of the block scope.
+
+Below, by the time the the `setTimeout` callback executes, the loop has already finished and the `i` variable is `10`, so all ten callbacks reference the same variable available in the function scope.
+
+```js
+for (var i = 0; i < 10; i++) {
+  setTimeout(() => {
+    // logs `10` ten times
+    console.log(i)
+  })
+}
+
+/* Solutions with `var` */
+for (var i = 0; i < 10; i++) {
+  // Passed as an argument will use the value as-is in
+  // that point in time
+  setTimeout(console.log, 0, i)
+}
+
+for (var i = 0; i < 10; i++) {
+  // Create a new function scope that will use the value
+  // as-is in that point in time
+  ;(i => {
+    setTimeout(() => {
+      console.log(i)
+    })
+  })(i)
+}
+```
+
+##### let
+
+`let` was introduced in ES2015 and is the new preferred way to declare variables that will be reassigned later. Trying to redeclare a variable again will throw an error. It is block-scoped so that using it in a loop will keep it scoped to the iteration.
+
+```js
+for (let i = 0; i < 10; i++) {
+  setTimeout(() => {
+    // logs 0, 1, 2, 3, ...
+    console.log(i)
+  })
+}
+```
+
+##### const
+
+`const` was introduced in ES2015 and is the new preferred default way to declare all variables if they won't be reassigned later, even for objects that will be mutated (as long as the reference to the object does not change). It is block-scoped and cannot be reassigned.
+
+```js
+const myObject = {}
+myObject.prop = "hello!" // No error
+myObject = "hello" // Error
+```
+
+
+#### Good to hear
+
+
+* All declarations are hoisted to the top of their scope.
+* However, with `let` and `const` there is a concept called the temporal dead zone (TDZ). While the declarations are still hoisted, there is a period between entering scope and being declared where they cannot be accessed.
+* Show a common issue with using `var` and how `let` can solve it, as well as a solution that keeps `var`.
+* `var` should be avoided whenever possible and prefer `const` as the default declaration statement for all variables unless they will be reassigned later, then use `let` if so.
+
+
+##### Additional links
+
+
+* [`let` vs `const`](https://wesbos.com/let-vs-const/)
+</details>
+
+
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
+### What is a callback?
+
+<details>
+<summary>View answer</summary>
+
+Callbacks are functions passed as an argument to another function to be executed once an event has occurred or a certain task is complete, often used in asynchronous code. Callback functions are invoked later by a piece of code but can be declared on initialization without being invoked.
+
+As an example, event listeners are callbacks that are only executed when a specific event occurs.
+
+```js
+function onClick() {
+  console.log("The user clicked on the page.")
+}
+document.addEventListener("click", onClick)
+```
+
+
+#### Good to hear
+
+
+* Functions are first-class objects in JavaScript
+* Callbacks vs Promises
+
+
+##### Additional links
+
+
+* [MDN docs for callbacks](https://developer.mozilla.org/en-US/docs/Glossary/Callback_function)
+</details>
+
+
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
+### How do you clone an object in JavaScript?
+
+<details>
+<summary>View answer</summary>
+
+Using the object spread operator `...`, the object's own enumerable properties can be copied
+into the new object. This creates a shallow clone of the object.
+
+```js
+const obj = { a: 1, b: 2 }
+const shallowClone = { ...obj }
+```
+
+With this technique, prototypes are ignored. In addition, nested objects are not cloned, but rather their references get copied, so nested objects still refer to the same objects as the original. Deep-cloning is much more complex in order to effectively clone any type of object (Date, RegExp, Function, Set, etc) that may be nested within the object.
+
+Other alternatives include:
+
+* `JSON.parse(JSON.stringify(obj))` can be used to deep-clone a simple object, but it is CPU-intensive and only accepts valid JSON (therefore it strips functions and does not allow circular references).
+* `Object.assign({}, obj)` is another alternative.
+* `Object.keys(obj).reduce((acc, key) => (acc[key] = obj[key], acc), {})` is another more verbose alternative that shows the concept in greater depth.
+
+
+#### Good to hear
+
+
+* JavaScript passes objects by reference, meaning that nested objects get their references copied, instead of their values.
+* The same method can be used to merge two objects.
+
+
+##### Additional links
+
+
+* [MDN docs for Object.assign()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign)
+* [Clone an object in vanilla JS](http://voidcanvas.com/clone-an-object-in-vanilla-js-in-depth/)
+</details>
+
+
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
+### What are JavaScript data types?
+
+<details>
+<summary>View answer</summary>
+
+The latest ECMAScript standard defines seven data types, six of them being primitive: `Boolean`, `Null`, `Undefined`, `Number`, `String`, `Symbol` and one non-primitive data type: `Object`.
+
+
+#### Good to hear
+
+
+* Mention of newly added `Symbol` data type
+* `Array`, `Date` and `function` are all of type `object`
+* Functions in JavaScript are objects with the capability of being callable
+
+
+##### Additional links
+
+
+* [MDN docs for data types and data structures](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures)
+* [Understanding Data Types in JavaScript](https://www.digitalocean.com/community/tutorials/understanding-data-types-in-javascript)
 </details>
 
 
@@ -355,6 +545,36 @@ function isDeepEqual(obj1, obj2, testPrototypes = false) {
 <br>[⬆ Back to top](#table-of-contents)
 
 
+### What is CORS?
+
+<details>
+<summary>View answer</summary>
+
+Cross-Origin Resource Sharing or CORS is a mechanism that uses additional HTTP headers to grant a browser permission to access resources from a server at an origin different from the website origin.
+
+An exmaple of a cross-origin request is a web application served from `http://mydomain.com` that uses AJAX to make a request for `http://yourdomain.com`.
+
+For security reasons, browsers restrict cross-origin HTTP requests initiated by JavaScript. `XMLHttpRequest` and `fetch` follow the same-origin policy, meaning a web application using those APIs can only request HTTP resources from the same origin the application was accessed, unless the response from the other origin includes the correct CORS headers.
+
+
+#### Good to hear
+
+
+* CORS behavior is not an error,  it’s a security mechanism to protect users.
+* CORS is designed to prevent a malicious website that a user may unintentionally visit from making a request to a legitimate website to read their personal data or perform actions against their will.
+
+
+##### Additional links
+
+
+* [MDN docs for CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS)
+</details>
+
+
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
 ### What is the DOM?
 
 <details>
@@ -392,9 +612,9 @@ XSS refers to client-side code injection where the attacker injects malicious sc
 
 For example, a comment system will be at risk if it does not validate or escape user input. If the comment contains unescaped HTML, the comment can inject a `<script>` tag into the website that other users will execute against their knowledge.
 
-- The malicious script has access to cookies which are often used to store session tokens. If an attacker can obtain a user’s session cookie, they can impersonate the user.
-- The script can arbitrarily manipulate the DOM of the page the script is executing in, allowing the attacker to insert pieces of content that appear to be a real part of the website.
-- The script can use AJAX to send HTTP requests with arbitrary content to arbitrary destinations.
+* The malicious script has access to cookies which are often used to store session tokens. If an attacker can obtain a user’s session cookie, they can impersonate the user.
+* The script can arbitrarily manipulate the DOM of the page the script is executing in, allowing the attacker to insert pieces of content that appear to be a real part of the website.
+* The script can use AJAX to send HTTP requests with arbitrary content to arbitrary destinations.
 
 
 #### Good to hear
@@ -426,8 +646,8 @@ DOM events provide useful information about the element that initiated the event
 
 This provides two main benefits:
 
-- It increases performance and reduces memory consumption by only needing to register a single event listener to handle potentially thousands of elements.
-- If elements are dynamically added to the parent, there is no need to register new event listeners for them.
+* It increases performance and reduces memory consumption by only needing to register a single event listener to handle potentially thousands of elements.
+* If elements are dynamically added to the parent, there is no need to register new event listeners for them.
 
 Instead of:
 
@@ -458,6 +678,168 @@ document.addEventListener("click", e => {
 
 
 * [Event Delegation](https://davidwalsh.name/event-delegate)
+</details>
+
+
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
+### What does the following code evaluate to?
+
+```js
+typeof typeof 0
+```
+
+<details>
+<summary>View answer</summary>
+
+It evaluates to `"string"`.
+
+`typeof 0` evaluates to the string `"number"` and therefore `typeof "number"` evaluates to `"string"`.
+
+
+#### Good to hear
+
+
+
+
+
+##### Additional links
+
+
+* [MDN docs for typeof](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/typeof)
+</details>
+
+
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
+### What is the difference between an expression and a statement in JavaScript?
+
+<details>
+<summary>View answer</summary>
+
+There are two main syntactic categories in JavaScript: expressions and statements. A third one is both together, referred to as an expression statement. They are roughly summarized as:
+
+* **Expression**: produces a value
+* **Statement**: performs an action
+* **Expression statement**: produces a value and performs an action
+
+A general rule of thumb:
+
+> If you can print it or assign it to a variable, it’s an expression. If you can’t, it’s a statement.
+
+##### Statements
+
+```js
+let x = 0
+
+function declaration() {}
+
+if (true) {
+}
+```
+
+Statements appear as instructions that do something but don't produce values.
+
+```js
+// Assign `x` to the absolute value of `y`.
+var x
+if (y >= 0) {
+  x = y
+} else {
+  x = -y
+}
+```
+
+The only expression in the above code is `y >= 0` which produces a value, either `true` or `false`. A value is not produced by other parts of the code.
+
+##### Expressions
+
+Expressions produce a value. They can be passed around to functions because the interpreter replaces them with the value they resolve to.
+
+```js
+5 + 5 // => 10
+
+lastCharacter("input") // => "t"
+
+true === true // => true
+```
+
+##### Expression statements
+
+There is an equivalent version of the set of statements used before as an expression using the conditional operator:
+
+```js
+// Assign `x` as the absolute value of `y`.
+var x = y >= 0 ? y : -y
+```
+
+This is both an expression and a statement, because we are declaring a variable `x` (statement) as an evaluation (expression).
+
+
+#### Good to hear
+
+
+* Function declarations vs function expressions
+
+
+##### Additional links
+
+
+* [What is the difference between a statement and an expression?](https://stackoverflow.com/questions/12703214/javascript-difference-between-a-statement-and-an-expression)
+</details>
+
+
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
+### What are truthy and falsy values in JavaScript?
+
+<details>
+<summary>View answer</summary>
+
+A value is either truthy or falsy depending on how it is evaluated in a Boolean context. Falsy means false-like and truthy means true-like. Essentially, they are values that are coerced to `true` or `false` when performing certain operations.
+
+There are 6 falsy values in JavaScript. They are:
+
+* `false`
+* `undefined`
+* `null`
+* `""` (empty string),
+* `NaN`
+* `0`
+
+Every other value is considered truthy.
+
+A value's truthiness can be examined by passing it into the `Boolean` function.
+
+```js
+Boolean(0) // false
+```
+
+There is a shortcut for this using the logical NOT `!` operator. Using `!` once will convert a value to its inverse boolean equivalent (i.e. not false is true), and `!` once more will convert back, thus effectively converting the value to a boolean.
+
+```js
+!!0 // false
+!![] // true
+```
+
+
+#### Good to hear
+
+
+
+
+
+##### Additional links
+
+
+* [Truthy on MDN](https://developer.mozilla.org/en/docs/Glossary/Truthy)
+* [Falsy on MDN](https://developer.mozilla.org/en-US/docs/Glossary/Falsy)
 </details>
 
 
@@ -556,6 +938,36 @@ Both methods iterate through the elements of an array. `map()` maps each element
 * [MDN docs for forEach](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach)
 * [MDN docs for map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map)
 * [JavaScript — Map vs. ForEach](https://codeburst.io/javascript-map-vs-foreach-f38111822c0f)
+</details>
+
+
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
+### What is the difference between synchronous and asynchronous code in JavaScript?
+
+<details>
+<summary>View answer</summary>
+
+Synchronous means each operation must wait for the previous one to complete.
+
+Asynchronous means an operation can occur while another operation is still being processed.
+
+In JavaScript, all code is synchronous due to the single-threaded nature of it. However, asynchronous operations not part of the program (such as `XMLHttpRequest` or `setTimeout`) are processed outside of the main thread because they are controlled by native code (browser APIs), but callbacks part of the program will still be executed synchronously.
+
+
+#### Good to hear
+
+
+* JavaScript has a concurrency model based on an "event loop".
+* Functions like `alert` block the main thread so that no user input is registered until the user closes it.
+
+
+##### Additional links
+
+
+
 </details>
 
 
@@ -699,6 +1111,82 @@ myLibrary.publicMethod() // 2
 <br>[⬆ Back to top](#table-of-contents)
 
 
+### What is short-circuit evaluation in JavaScript?
+
+<details>
+<summary>View answer</summary>
+
+Short-circuit evaluation involves logical operations evaluating from left-to-right and stopping early.
+
+```js
+true || false
+```
+
+In the above sample using logical OR, JavaScript won't look at the second operand `false`, because the expression evaluates to `true` regardless. This is known as short-circuit evaluation.
+
+This also works for logical AND.
+
+```js
+false && true
+```
+
+This means you can have an expression that throws an error if evaluated, and it won't cause issues.
+
+```js
+true || nonexistentFunction()
+false && nonexistentFunction()
+```
+
+This remains true for multiple operations because of left-to-right evaluation.
+
+```js
+true || nonexistentFunction() || window.nothing.wouldThrowError
+true || window.nothing.wouldThrowError
+true
+```
+
+A common use case for this behavior is setting default values. If the first operand is falsy the second operand will be evaluated.
+
+```js
+const options = {}
+const setting = options.setting || "default"
+setting // "default"
+```
+
+Another common use case is only evaluating an expression if the first operand is truthy.
+
+```js
+// Instead of:
+addEventListener("click", e => {
+  if (e.target.matches("span")) {
+    handleSpanClick(e)
+  }
+})
+
+// You can take advantage of short-circuit evaluation:
+addEventListener("click", e => e.target.matches("span") && handleSpanClick(e))
+```
+
+In the above case, if `e.target` does not match the `"span"` selector, the function will not be called. This is because the first operand will be falsy, causing the second operand to not be evaluated.
+
+
+#### Good to hear
+
+
+* Logical operations do not produce a boolean unless the operand(s) evaluate to a boolean.
+
+
+##### Additional links
+
+
+* [JavaScript: What is short-circuit evaluation?](https://codeburst.io/javascript-what-is-short-circuit-evaluation-ff22b2f5608c)
+</details>
+
+
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
 ### Create a function that masks a string of characters with `#` except for the last four (4) characters.
 
 ```js
@@ -735,34 +1223,217 @@ const mask = (str, maskChar = "#") =>
 <br>[⬆ Back to top](#table-of-contents)
 
 
-### What is a callback?
+### Are semicolons required in JavaScript?
 
 <details>
 <summary>View answer</summary>
 
-Callbacks are functions passed as an argument to another function to be executed once an event has occurred or a certain task is complete, often used in asynchronous code. Callback functions are invoked later by a piece of code but can be declared on initialization without being invoked.
+Sometimes. Due to JavaScript's automatic semicolon insertion, the interpreter places semicolons after most statements. This means semicolons can be omitted in most cases.
 
-As an example, event listeners are callbacks that are only executed when a specific event occurs.
+However, there are some cases where they are required. They are not required at the beginning of a block, but are if they follow a line and:
+
+1.  The line starts with `[`
 
 ```js
-function onClick() {
-  console.log("The user clicked on the page.")
+const previousLine = 3
+;[1, 2, previousLine].map(n => n * 2)
+```
+
+2.  The line starts with `(`
+
+```js
+const previousLine = 3
+;(function() {
+  // ...
+})()
+```
+
+In the above cases, the interpreter does not insert a semicolon after `3`, and therefore it will see the `3` as attempting object property access or being invoked as a function, which will throw errors.
+
+
+#### Good to hear
+
+
+* Semicolons are usually optional in JavaScript but have edge cases where they are required.
+* If you don't use semicolons, tools like Prettier will insert semicolons for you in the places where they are required on save in a text editor to prevent errors.
+
+
+##### Additional links
+
+
+
+</details>
+
+
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
+### What does the following function return?
+
+```js
+function greet() {
+  return
+  {
+    message: "hello"
+  }
 }
-document.addEventListener("click", onClick)
+```
+
+<details>
+<summary>View answer</summary>
+
+Because of JavaScript's automatic semicolon insertion (ASI), the compiler places a semicolon after `return` keyword and therefore it returns `undefined` without an error being thrown.
+
+
+#### Good to hear
+
+
+* Automatic semicolon placement can lead to time-consuming bugs
+
+
+##### Additional links
+
+
+* [Automatic semicolon insertion in JavaScript](http://2ality.com/2011/05/semicolon-insertion.html)
+</details>
+
+
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
+### What is the output of the following code?
+
+```js
+const a = [1, 2, 3]
+const b = [1, 2, 3]
+const c = "1,2,3"
+
+console.log(a == c)
+console.log(a == b)
+```
+
+<details>
+<summary>View answer</summary>
+
+The first `console.log` outputs `true` because JavaScript's compiler performs type conversion and therefore it compares to strings by their value. On the other hand, the second `console.log` outputs `false` because Arrays are Objects and Objects are compared by reference.
+
+
+#### Good to hear
+
+
+* JavaScript performs automatic type conversion
+* Objects are compared by reference
+* Primitives are compared by value
+
+
+##### Additional links
+
+
+* [JavaScript Value vs Reference](https://medium.com/dailyjs/back-to-roots-javascript-value-vs-reference-8fb69d587a18)
+</details>
+
+
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
+### NodeJS often uses a callback pattern where if an error is encountered during execution, this error is passed as the first argument to the callback. What are the advantages of this pattern?
+
+```js
+fs.readFile(filePath, function(err, data) {
+  if (err) {
+    // handle the error, the return is important here
+    // so execution stops here
+    return console.log(err)
+  }
+  // use the data object
+  console.log(data)
+})
+```
+
+<details>
+<summary>View answer</summary>
+
+Advantages include:
+
+* Not needing to process data if there is no need to even reference it
+* Having a consistent API leads to more adoption
+* Ability to easily adapt a callback pattern that will lead to more maintainable code
+
+As you can see from below example, the callback is called with null as its first argument if there is no error. However, if there is an error, you create an Error object, which then becomes the callback's only parameter. The callback function allows a user to easily know whether or not an error occurred.
+
+This practice is also called the _Node.js error convention_, and this kind of callback implementations are called _error-first callbacks_.
+
+```js
+var isTrue = function(value, callback) {
+  if (value === true) {
+    callback(null, "Value was true.")
+  } else {
+    callback(new Error("Value is not true!"))
+  }
+}
+
+var callback = function(error, retval) {
+  if (error) {
+    console.log(error)
+    return
+  }
+  console.log(retval)
+}
+
+isTrue(false, callback)
+isTrue(true, callback)
+
+/*
+  { stack: [Getter/Setter],
+    arguments: undefined,
+    type: undefined,
+    message: 'Value is not true!' }
+  Value was true.
+*/
 ```
 
 
 #### Good to hear
 
 
-* Functions are first-class objects in JavaScript
-* Callbacks vs Promises
+* This is just a convention. However, you should stick to it.
 
 
 ##### Additional links
 
 
-* [MDN docs for callbacks](https://developer.mozilla.org/en-US/docs/Glossary/Callback_function)
+* [The Node.js Way Understanding Error-First Callbacks](http://fredkschott.com/post/2014/03/understanding-error-first-callbacks-in-node-js/)
+* [What are the error conventions?](https://docs.nodejitsu.com/articles/errors/what-are-the-error-conventions)
+</details>
+
+
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
+### How does prototypal inheritance differ from classical inheritance?
+
+<details>
+<summary>View answer</summary>
+
+In the classical inheritance paradigm, object instances inherit their properties and functions from a class, which acts as a blueprint for the object. Object instances are typically created using a constructor and the `new` keyword.
+
+In the prototypal inheritance paradigm, object instances inherit directly from other objects and are typically created using factory functions or `Object.create()`.
+
+
+#### Good to hear
+
+
+
+
+
+##### Additional links
+
+
+* [MDN docs for inheritance and the prototype chain](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Inheritance_and_the_prototype_chain)
 </details>
 
 
@@ -888,7 +1559,7 @@ Object.create(personProto, {
 ##### Additional links
 
 
-* [Factory functions vs constructor functions vs classes](https://medium.com/javascript-scene/javascript-factory-functions-vs-constructor-functions-vs-classes-2f22ceddf33e)
+
 </details>
 
 
@@ -954,47 +1625,6 @@ JavaScript always passes by value. However, with objects, the value is a referen
 <br>[⬆ Back to top](#table-of-contents)
 
 
-### How do you clone an object in JavaScript?
-
-<details>
-<summary>View answer</summary>
-
-Using the object spread operator `...`, the object's own enumerable properties can be copied
-into the new object. This creates a shallow clone of the object.
-
-```js
-const obj = { a: 1, b: 2 }
-const shallowClone = { ...obj }
-```
-
-With this technique, prototypes are ignored. In addition, nested objects are not cloned, but rather their references get copied, so nested objects still refer to the same objects as the original. Deep-cloning is much more complex in order to effectively clone any type of object (Date, RegExp, Function, Set, etc) that may be nested within the object.
-
-Other alternatives include:
-
-* `JSON.parse(JSON.stringify(obj))` can be used to deep-clone a simple object, but it is CPU-intensive and only accepts valid JSON (therefore it strips functions and does not allow circular references).
-* `Object.assign({}, obj)` is another alternative.
-* `Object.keys(obj).reduce((acc, key) => (acc[key] = obj[key], acc), {})` is another more verbose alternative that shows the concept in greater depth.
-
-
-#### Good to hear
-
-
-* JavaScript passes objects by reference, meaning that nested objects get their references copied, instead of their values.
-* The same method can be used to merge two objects.
-
-
-##### Additional links
-
-
-* [MDN docs for Object.assign()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign)
-* [Clone an object in vanilla JS](http://voidcanvas.com/clone-an-object-in-vanilla-js-in-depth/)
-</details>
-
-
-
-<br>[⬆ Back to top](#table-of-contents)
-
-
 ### What are Promises?
 
 <details>
@@ -1031,122 +1661,30 @@ new Promise((resolve, reject) => {
 <br>[⬆ Back to top](#table-of-contents)
 
 
-### How does prototypal inheritance differ from classical inheritance?
-
-<details>
-<summary>View answer</summary>
-
-In the classical inheritance paradigm, object instances inherit their properties and functions from a class, which acts as a blueprint for the object. Object instances are typically created using a constructor and the `new` keyword.
-
-In the prototypal inheritance paradigm, object instances inherit directly from other objects and are typically created using factory functions or `Object.create()`. Finally, object instances can be composed from many different objects, allowing for selective inheritance.
-
-
-#### Good to hear
-
-
-* Classes create hierarches and taxonomies.
-* Prototypal inheritance allows for a flat prototype delegation hierarchy.
-
-
-##### Additional links
-
-
-* [MDN docs for inheritance and the prototype chain](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Inheritance_and_the_prototype_chain)
-* [Differences between class and prototypal inheritance](https://medium.com/javascript-scene/master-the-javascript-interview-what-s-the-difference-between-class-prototypal-inheritance-e4cd0a7562e9)
-</details>
-
-
-
-<br>[⬆ Back to top](#table-of-contents)
-
-
-### What is the output of the following code?
+### Create a standalone function `bind` that is functionally equivalent to the method `Function.prototype.bind`.
 
 ```js
-const a = [1, 2, 3]
-const b = [1, 2, 3]
-const c = "1,2,3"
-
-console.log(a == c)
-console.log(a == b)
-```
-
-<details>
-<summary>View answer</summary>
-
-The first `console.log` outputs `true` because JavaScript's compiler performs type conversion and therefore it compares to strings by their value. On the other hand, the second `console.log` outputs `false` because Arrays are Objects and Objects are compared by reference.
-
-
-#### Good to hear
-
-
-* JavaScript performs automatic type conversion
-* Objects are compared by reference
-* Primitives are compared by value
-
-
-##### Additional links
-
-
-* [JavaScript Value vs Reference](https://medium.com/dailyjs/back-to-roots-javascript-value-vs-reference-8fb69d587a18)
-</details>
-
-
-
-<br>[⬆ Back to top](#table-of-contents)
-
-
-### What does the following function return?
-
-```js
-function greet() {
-  return
-  {
-    message: "hello"
-  }
+function example() {
+  console.log(this)
 }
+const boundExample = bind(example, { a: true })
+boundExample.call({ b: true }) // logs { a: true }
 ```
 
 <details>
 <summary>View answer</summary>
 
-Because of JavaScript's automatic semicolon insertion (ASI), the compiler places a semicolon after `return` keyword and therefore it returns `undefined` without an error being thrown.
+Return a function that accepts an arbitrary number of arguments by gathering them with the rest `...` operator. From that function, return the result of calling the `fn` with `Function.prototype.apply` to apply the context and the array of arguments to the function.
+
+```js
+const bind = (fn, context) => (...args) => fn.apply(context, args)
+```
 
 
 #### Good to hear
 
 
-* Automatic semicolon placement can lead to time-consuming bugs
 
-
-##### Additional links
-
-
-* [Automatic semicolon insertion in JavaScript](http://2ality.com/2011/05/semicolon-insertion.html)
-</details>
-
-
-
-<br>[⬆ Back to top](#table-of-contents)
-
-
-### What is the difference between synchronous and asynchronous code in JavaScript?
-
-<details>
-<summary>View answer</summary>
-
-Synchronous means each operation must wait for the previous one to complete.
-
-Asynchronous means an operation can occur while another operation is still being processed.
-
-In JavaScript, all code is synchronous due to the single-threaded nature of it. However, asynchronous operations not part of the program (such as `XMLHttpRequest` or `setTimeout`) are processed outside of the main thread because they are controlled by native code (browser APIs), but callbacks part of the program will still be executed synchronously.
-
-
-#### Good to hear
-
-
-* JavaScript has a concurrency model based on an "event loop".
-* Functions like `alert` block the main thread so that no user input is registered until the user closes it.
 
 
 ##### Additional links
@@ -1160,30 +1698,28 @@ In JavaScript, all code is synchronous due to the single-threaded nature of it. 
 <br>[⬆ Back to top](#table-of-contents)
 
 
-### What does the following code evaluate to?
-
-```js
-typeof typeof 0
-```
+### What is functional programming?
 
 <details>
 <summary>View answer</summary>
 
-It evaluates to `"string"`.
-
-`typeof 0` evaluates to the string `"number"` and therefore `typeof "number"` evaluates to `"string"`.
+Functional programming is a paradigm in which programs are built in a declarative manner using pure functions that avoid shared state and mutable data. Functions that always return the same value for the same input and don't produce side effects are the pillar of functional programming. Many programmers consider this to be the best approach to software development as it reduces bugs and cognitive load.
 
 
 #### Good to hear
 
 
-
+* Cleaner, more concise development experience
+* Simple function composition
+* Features of JavaScript that enable functional programming (`.map`, `.reduce` etc.)
+* JavaScript is multi-paradigm programming language (Object-Oriented Programming and Functional Programming live in harmony)
 
 
 ##### Additional links
 
 
-* [MDN docs for typeof](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/typeof)
+* [Javascript and Functional Programming: An Introduction](https://hackernoon.com/javascript-and-functional-programming-an-introduction-286aa625e26d)
+* [Master the JavaScript Interview: What is Functional Programming?](https://medium.com/javascript-scene/master-the-javascript-interview-what-is-functional-programming-7f218c68b3a0)
 </details>
 
 
@@ -1191,281 +1727,36 @@ It evaluates to `"string"`.
 <br>[⬆ Back to top](#table-of-contents)
 
 
-### What are JavaScript data types?
+### Create a function `pipe` that performs left-to-right function composition by returning a function that accepts one argument.
+
+```js
+const square = v => v * v
+const double = v => v * 2
+const addOne = v => v + 1
+const res = pipe(square, double, addOne)
+res(3) // 19; addOne(double(square(3)))
+```
 
 <details>
 <summary>View answer</summary>
 
-The latest ECMAScript standard defines seven data types, six of them being primitive: `Boolean`, `Null`, `Undefined`, `Number`, `String`, `Symbol` and one non-primitive data type: `Object`.
-
-
-#### Good to hear
-
-
-* Mention of newly added `Symbol` data type
-* `Array`, `Date` and `function` are all of type `object`
-* Functions in JavaScript are objects with the capability of being callable
-
-
-##### Additional links
-
-
-* [MDN docs for data types and data structures](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures)
-* [Understanding Data Types in JavaScript](https://www.digitalocean.com/community/tutorials/understanding-data-types-in-javascript)
-</details>
-
-
-
-<br>[⬆ Back to top](#table-of-contents)
-
-
-### What are the differences between `var`, `let`, `const` and no keyword statements?
-
-<details>
-<summary>View answer</summary>
-
-##### No keyword
-
-When no keyword exists before a variable assignment, it is either assigning a global variable if one does not exist, or reassigns an already declared variable. In non-strict mode, if the variable has not yet been declared, it will assign the variable as a property of the global object (`window` in browsers). In strict mode, it will throw an error to prevent unwanted global variables from being created.
-
-##### var
-
-`var` was the default statement to declare a variable until ES2015. It creates a function-scoped variable that can be reassigned and redeclared. However, due to its lack of block scoping, it can cause issues if the variable is being reused in a loop that contains an asynchronous callback because the variable will continue to exist outside of the block scope.
-
-Below, by the time the the `setTimeout` callback executes, the loop has already finished and the `i` variable is `10`, so all ten callbacks reference the same variable available in the function scope.
+Gather all supplied arguments using the rest operator `...` and return a unary function that uses `Array.prototype.reduce()` to run the value through the series of functions before returning the final value.
 
 ```js
-for (var i = 0; i < 10; i++) {
-  setTimeout(() => {
-    // logs `10` ten times
-    console.log(i)
-  })
-}
-
-/* Solutions with `var` */
-for (var i = 0; i < 10; i++) {
-  // Passed as an argument will use the value as-is in
-  // that point in time
-  setTimeout(console.log, 0, i)
-}
-
-for (var i = 0; i < 10; i++) {
-  // Create a new function scope that will use the value
-  // as-is in that point in time
-  ;(i => {
-    setTimeout(() => {
-      console.log(i)
-    })
-  })(i)
-}
-```
-
-##### let
-
-`let` was introduced in ES2015 and is the new preferred way to declare variables that will be reassigned later. Trying to redeclare a variable again will throw an error. It is block-scoped so that using it in a loop will keep it scoped to the iteration.
-
-```js
-for (let i = 0; i < 10; i++) {
-  setTimeout(() => {
-    // logs 0, 1, 2, 3, ...
-    console.log(i)
-  })
-}
-```
-
-##### const
-
-`const` was introduced in ES2015 and is the new preferred default way to declare all variables if they won't be reassigned later, even for objects that will be mutated (as long as the reference to the object does not change). It is block-scoped and cannot be reassigned.
-
-```js
-const myObject = {}
-myObject.prop = "hello!" // No error
-myObject = "hello" // Error
+const pipe = (...fns) => x => fns.reduce((v, fn) => fn(v), x)
 ```
 
 
 #### Good to hear
 
 
-* All declarations are hoisted to the top of their scope.
-* However, with `let` and `const` there is a concept called the temporal dead zone (TDZ). While the declarations are still hoisted, there is a period between entering scope and being declared where they cannot be accessed.
-* Show a common issue with using `var` and how `let` can solve it, as well as a solution that keeps `var`.
-* `var` should be avoided whenever possible and prefer `const` as the default declaration statement for all variables unless they will be reassigned later, then use `let` if so.
+* Function composition is the process of combining two or more functions to produce a new function.
 
 
 ##### Additional links
 
 
-* [`let` vs `const`](https://wesbos.com/let-vs-const/)
-</details>
-
-
-
-<br>[⬆ Back to top](#table-of-contents)
-
-
-### Explain the difference between mutability and immutability, and mutating vs non-mutating methods.
-
-<details>
-<summary>View answer</summary>
-
-"Mutability" means a value is subject to change. "Immutability" means a value cannot change.
-
-Objects are mutable, while primitive values (strings, numbers, etc) are immutable. This means any operation performed on a primitive value does not change the original value.
-
-All `String.prototype` methods do not have an effect on the original string and return a new string. On the other hand, while some methods of `Array.prototype` do not mutate the original array reference and produce a fresh array, some cause mutations.
-
-```js
-const myString = "hello!"
-myString.replace("!", "") // returns a new string, cannot mutate the original value
-
-const originalArray = [1, 2, 3]
-originalArray.push(4) // mutates originalArray, now [1, 2, 3, 4]
-originalArray.concat(4) // returns a new array, does not mutate the original
-```
-
-
-#### Good to hear
-
-
-* List of mutating and non-mutating array methods
-
-
-##### Additional links
-
-
-* [Mutating vs non-mutating array methods](https://lorenstewart.me/2017/01/22/javascript-array-methods-mutating-vs-non-mutating/)
-</details>
-
-
-
-<br>[⬆ Back to top](#table-of-contents)
-
-
-### What is the only value not equal to itself in JavaScript?
-
-<details>
-<summary>View answer</summary>
-
-`NaN` (Not-a-Number) is the only value not equal to itself when comparing with any of the comparison operators. `NaN` is often the result of meaningless math computations, so two `NaN` values make no sense to be considered equal.
-
-
-#### Good to hear
-
-
-* The difference between `isNaN()` and `Number.isNaN()`
-* `const isNaN = x => x !== x`
-
-
-##### Additional links
-
-
-* [MDN docs for `NaN`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NaN)
-</details>
-
-
-
-<br>[⬆ Back to top](#table-of-contents)
-
-
-### What is Big O Notation?
-
-<details>
-<summary>View answer</summary>
-
-Big O notation is used in Computer Science to describe time complexity of an algorithm. The best algorithms will execute the fastest and have the simplest complexity.
-
-Algorithms don't always perform the same and vary based on the data they are supplied. While in some cases they will execute quickly, in other cases they will execute slowly, even with the same number of elements to deal with.
-
-In these examples, the base time is `1ms` to make it more familiar.
-
-##### O(1)
-
-```js
-arr[arr.length - 1]
-```
-
-Constant time complexity. No matter how many elements the array has, it will theoretically take (excluding real-world variation) the same amount of time to execute.
-
-- 1000 elements = `1ms`
-
-##### O(N)
-
-```js
-arr.filter(fn)
-```
-
-Linear time complexity. The execution time will increase linearly with the number of elements the array has. If the array has 1000 elements and the function takes 1ms to execute, 7000 elements will take 7ms to execute. This is because the function must iterate through all elements of the array before returning a result.
-
-- 1000 elements = `1000ms`
-
-##### O(1-N)
-
-```js
-arr.some(fn)
-```
-
-- 1000 elements = `1ms <= x <= 1000 ms`
-
-The execution time varies depending on the data supplied to the function, it may return very early or very late. The best case here is O(1) and the worst case is O(N).
-
-##### O(logN)
-
-```js
-arr.sort(fn)
-```
-
-Browsers usually implement the quicksort algorithm for the `sort()` method which is logN time complexity. This is very efficient for large collections.
-
-- 1000 elements = `3ms`
-
-##### O(N^2)
-
-```js
-for (let i = 0; i < arr.length; i++) {
-  for (let j = 0; j < arr.length; j++) {
-    // ...
-  }
-}
-```
-
-The execution time rises quadratically with the number of elements. Usually the result of nesting loops.
-
-- 1000 elements = `1000000ms`
-
-##### O(N!)
-
-```js
-const permutations = arr => {
-  if (arr.length <= 2) return arr.length === 2 ? [arr, [arr[1], arr[0]]] : arr
-  return arr.reduce(
-    (acc, item, i) =>
-      acc.concat(
-        permutations([...arr.slice(0, i), ...arr.slice(i + 1)]).map(val => [
-          item,
-          ...val
-        ])
-      ),
-    []
-  )
-}
-```
-
-The execution time rises extremely fast with even just 1 addition to the array.
-
-1000 elements = `Infinity` (practically) ms
-
-
-#### Good to hear
-
-
-* Be wary of nesting loops as execution time increases exponentially.
-
-
-##### Additional links
-
-
-* [Big O Notation in JavaScript](https://medium.com/cesars-tech-insights/big-o-notation-javascript-25c79f50b19b)
+* [What is function composition?](https://medium.com/javascript-scene/master-the-javascript-interview-what-is-function-composition-20dfb109a1a0)
 </details>
 
 
@@ -1527,7 +1818,7 @@ const c = arr => arr.sort((a, b) => a - b)
 <details>
 <summary>View answer</summary>
 
-Recursion is the repeated application of a process. In JavaScript, recursion involves functions that call themselves repeatedly until they reach a base condition. The base condition breaks the out of the recursion loop because otherwise the function would call itself indefinitely. Recursion is very useful when working with data structures that contain nesting where the number of levels deep is unknown.
+Recursion is the repeated application of a process. In JavaScript, recursion involves functions that call themselves repeatedly until they reach a base condition. The base condition breaks out of the recursion loop because otherwise the function would call itself indefinitely. Recursion is very useful when working with data structures that contain nesting where the number of levels deep is unknown.
 
 For example, you may have a thread of comments returned from a database that exist in a flat array but need to be nested for display in the UI. Each comment is either a top-level comment (no parent) or is a reply to a parent comment. Comments can be a reply of a reply of a reply... we have no knowledge beforehand the number of levels deep a comment may be. This is where recursion can help.
 
@@ -1555,7 +1846,7 @@ nest(comments)
 */
 ```
 
-In the above example, the base condition is met if `filter()` returns an empty array. The chained `map()` will never be called which contains the callback to invoke the function recursively, thereby breaking the loop.
+In the above example, the base condition is met if `filter()` returns an empty array. The chained `map()` won't invoke the callback function which contains the recursive call, thereby breaking the loop.
 
 
 #### Good to hear
@@ -1576,59 +1867,104 @@ In the above example, the base condition is met if `filter()` returns an empty a
 <br>[⬆ Back to top](#table-of-contents)
 
 
-### How can you avoid callback hells?
-
-```js
-getData(function(a) {
-  getMoreData(a, function(b) {
-    getMoreData(b, function(c) {
-      getMoreData(c, function(d) {
-        getMoreData(d, function(e) {
-          // ...
-        })
-      })
-    })
-  })
-})
-```
+### What is Big O Notation?
 
 <details>
 <summary>View answer</summary>
 
-Refactoring the functions to return promises and using `async/await` is usually the best option. Instead of supplying the functions with callbacks that cause deep nesting, they return a promise that can be `await`ed and will be resolved once the data has arrived, allowing the next line of code to be evaluated in a sync-like fashion.
+Big O notation is used in Computer Science to describe time complexity of an algorithm. The best algorithms will execute the fastest and have the simplest complexity.
 
-The above code can be restructured like so:
+Algorithms don't always perform the same and may vary based on the data they are supplied. While in some cases they will execute quickly, in other cases they will execute slowly, even with the same number of elements to deal with.
+
+In these examples, the base time is `1ms` to make it more familiar.
+
+##### O(1)
 
 ```js
-async function asyncAwaitVersion() {
-  const a = await getData()
-  const b = await getMoreData(a)
-  const c = await getMoreData(b)
-  const d = await getMoreData(c)
-  const e = await getMoreData(e)
-  // ...
+arr[arr.length - 1]
+```
+
+Constant time complexity. No matter how many elements the array has, it will theoretically take (excluding real-world variation) the same amount of time to execute.
+
+* 1000 elements = `1ms`
+
+##### O(N)
+
+```js
+arr.filter(fn)
+```
+
+Linear time complexity. The execution time will increase linearly with the number of elements the array has. If the array has 1000 elements and the function takes 1ms to execute, 7000 elements will take 7ms to execute. This is because the function must iterate through all elements of the array before returning a result.
+
+* 1000 elements = `1000ms`
+
+##### O([1, N])
+
+```js
+arr.some(fn)
+```
+
+* 1000 elements = `1ms <= x <= 1000ms`
+
+The execution time varies depending on the data supplied to the function, it may return very early or very late. The best case here is O(1) and the worst case is O(N).
+
+##### O(logN)
+
+```js
+arr.sort(fn)
+```
+
+Browsers usually implement the quicksort algorithm for the `sort()` method which is logN time complexity. This is very efficient for large collections.
+
+* 1000 elements = `3ms`
+
+##### O(N^2)
+
+```js
+for (let i = 0; i < arr.length; i++) {
+  for (let j = 0; j < arr.length; j++) {
+    // ...
+  }
 }
 ```
 
-There are lots of ways to solve the issue of callback hells:
+The execution time rises quadratically with the number of elements. Usually the result of nesting loops.
 
-* Modularization: break callbacks into independent functions
-* Use a control flow library, like async
-* Use generators with Promises
-* Use async/await (from v7 on)
+* 1000 elements = `1000000ms`
+
+##### O(N!)
+
+```js
+const permutations = arr => {
+  if (arr.length <= 2) return arr.length === 2 ? [arr, [arr[1], arr[0]]] : arr
+  return arr.reduce(
+    (acc, item, i) =>
+      acc.concat(
+        permutations([...arr.slice(0, i), ...arr.slice(i + 1)]).map(val => [
+          item,
+          ...val
+        ])
+      ),
+    []
+  )
+}
+```
+
+The execution time rises extremely fast with even just 1 addition to the array.
+
+1000 elements = `Infinity` (practically) ms
 
 
 #### Good to hear
 
 
-* As an efficient JavaScript developer, you have to avoid the constantly growing indentation level, produce clean and readable code and be able to handle complex flows.
+* Be wary of nesting loops as execution time increases exponentially.
 
 
 ##### Additional links
 
 
-* [Avoiding Callback Hell in Node.js](http://stackabuse.com/avoiding-callback-hell-in-node-js/)
-* [Asynchronous JavaScript: From Callback Hell to Async and Await](https://blog.hellojs.org/asynchronous-javascript-from-callback-hell-to-async-and-await-9b9ceb63c8e8)
+* [Big O Notation in JavaScript](https://medium.com/cesars-tech-insights/big-o-notation-javascript-25c79f50b19b)
 </details>
 
 
@@ -1636,36 +1972,131 @@ There are lots of ways to solve the issue of callback hells:
 <br>[⬆ Back to top](#table-of-contents)
 
 
-### What is a closure? Can you give a useful example of one?
+### Explain the difference between mutability and immutability, and mutating vs non-mutating methods.
 
 <details>
 <summary>View answer</summary>
 
-A closure is a function defined inside another function and has access to its lexical scope even when it is executing outside its lexical scope. The closure has access to variables in three scopes:
+"Mutability" means a value is subject to change. "Immutability" means a value cannot change.
 
-* Variables declared in its own scope
-* Variables declared in the scope of the parent function
-* Variables declared in the global scope
+Objects are mutable, while primitive values (strings, numbers, etc) are immutable. This means any operation performed on a primitive value does not change the original value.
 
-In JavaScript, all functions are closures because they have access to the outer scope, but most functions don't utilise the usefulness of closures: the persistence of state. Closures are also sometimes called stateful functions because of this.
+All `String.prototype` methods do not have an effect on the original string and return a new string. On the other hand, while some methods of `Array.prototype` do not mutate the original array reference and produce a fresh array, some cause mutations.
 
-In addition, closures are the only way to store private data that can't be accessed from the outside in JavaScript. They are the key to the UMD (Universal Module Definition) pattern, which is frequently used in libraries that only expose a public API but keep the implementation details private, preventing name collisions with other libraries or the user's own code.
+```js
+const myString = "hello!"
+myString.replace("!", "") // returns a new string, cannot mutate the original value
+
+const originalArray = [1, 2, 3]
+originalArray.push(4) // mutates originalArray, now [1, 2, 3, 4]
+originalArray.concat(4) // returns a new array, does not mutate the original
+```
 
 
 #### Good to hear
 
 
-* Closures are useful because they let you associate data with a function that operates on that data.
-* A closure can substitute an object with only a single method.
-* Closures can be used to emulate private properties and methods.
+* List of mutating and non-mutating array methods
 
 
 ##### Additional links
 
 
-* [MDN docs for closures](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures)
-* [What is a closure](https://medium.com/javascript-scene/master-the-javascript-interview-what-is-a-closure-b2f0d2152b36)
-* [I never understood JavaScript closures](https://medium.com/dailyjs/i-never-understood-javascript-closures-9663703368e8)
+* [Mutating vs non-mutating array methods](https://lorenstewart.me/2017/01/22/javascript-array-methods-mutating-vs-non-mutating/)
+</details>
+
+
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
+### What is memoization?
+
+<details>
+<summary>View answer</summary>
+
+Memoization is the process of caching the output of function calls so that subsequent calls are faster. Calling the function again with the same input will return the cached output without needing to do the calculation again.
+
+A basic implementation in JavaScript looks like this:
+
+```js
+const memoize = fn => {
+  const cache = new Map()
+  return value => {
+    const cachedResult = cache.get(value)
+    if (cachedResult !== undefined) return cachedResult
+    const result = fn(value)
+    cache.set(value, result)
+    return result
+  }
+}
+```
+
+
+#### Good to hear
+
+
+* The above technique returns a unary function even if the function can take multiple arguments.
+* The first function call will be slower than usual because of the overhead created by checking if a cached result exists and setting a result before returning the value.
+* Memoization increases performance on subsequent function calls but still needs to do work on the first call.
+
+
+##### Additional links
+
+
+* [Implementing memoization in JavaScript](https://www.sitepoint.com/implementing-memoization-in-javascript/)
+</details>
+
+
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
+### Explain the differences between imperative and declarative programming.
+
+<details>
+<summary>View answer</summary>
+
+* Imperative: **how** to achieve something
+* Declarative: **what** should be achieved
+
+A common example of declarative programming is CSS. The developer specifies CSS properties that describe what something should look like rather than how to achieve it. The "how" is abstracted away by the browser.
+
+On the other hand, imperative programming involves the steps required to achieve something. In JavaScript, the differences can be contrasted like so:
+
+##### Imperative
+
+```js
+const numbers = [1, 2, 3, 4, 5]
+const numbersDoubled = []
+for (let i = 0; i < numbers.length; i++) {
+  numbersDoubled[i] = numbers[i] * 2
+}
+```
+
+Wet manually loop over the numbers of the array and assign the new index as the number doubled.
+
+##### Declarative
+
+```js
+const numbers = [1, 2, 3, 4, 5]
+const numbersDoubled = numbers.map(n => n * 2)
+```
+
+We declare that the new array is mapped to a new one where each value is doubled.
+
+
+#### Good to hear
+
+
+* Declarative programming often works with expressions. Imperative programming frequently uses statements and relies on low-level features that cause mutations, while declarative programming has a strong focus on abstraction and purity.
+* Declarative programming is more terse and easier to process at a glance.
+
+
+##### Additional links
+
+
+* [Declarative vs Imperative Programming](https://codeburst.io/declarative-vs-imperative-programming-a8a7c93d9ad2)
 </details>
 
 
@@ -1713,51 +2144,24 @@ Array.push(arr, 4)
 <br>[⬆ Back to top](#table-of-contents)
 
 
-### What is event-driven programming?
+### What is the event loop in Node.js?
 
 <details>
 <summary>View answer</summary>
 
-Event-driven programming is a paradigm that involves building applications that send and receive events. When the program emits events, the program responds by running any callback functions that are registered to that event and context, passing in associated data to the function. With this pattern, events can be emitted into the wild without throwing errors even if no functions are subscribed to it.
-
-A common example of this is the pattern of elements listening to DOM events such as `click` and `mouseenter`, where a callback function is run when the event occurs.
-
-```js
-document.addEventListener("click", function(event) {
-  // This callback function is run when the user
-  // clicks on the document.
-})
-```
-
-Without the context of the DOM, the pattern may look like this:
-
-```js
-const hub = createEventHub()
-hub.on("message", function(data) {
-  console.log(`${data.username} said ${data.text}`)
-})
-hub.emit("message", {
-  username: "John",
-  text: "Hello?"
-})
-```
-
-With this implementation, `on` is the way to _subscribe_ to an event, while `emit` is the way to _publish_ the event.
+The event loop handles all async callbacks. Callbacks are queued in a loop, while other code runs, and will run one by one when the response for each one has been received.
 
 
 #### Good to hear
 
 
-* Follows a publish-subscribe pattern.
-* Responds to events that occur by running any callback functions subscribed to the event.
-* Show how to create a simple pub-sub implementation with JavaScript.
+* The event loop allows Node.js to perform non-blocking I/O operations, despite the fact that JavaScript is single-threaded
 
 
 ##### Additional links
 
 
-* [MDN docs on Events and Handlers](https://developer.mozilla.org/en-US/docs/Web/Guide/Events/Overview_of_Events_and_Handlers)
-* [Understanding Node.js event-driven architecture](https://medium.freecodecamp.org/understanding-node-js-event-driven-architecture-223292fcbc2d)
+* [Node.js docs on event loop, timers and process.nextTick()](https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick/)
 </details>
 
 
@@ -1798,7 +2202,7 @@ myObject["regularFunction"]() // my Object
 
 myObject.property // NOT myObject; lexical `this`
 myObject.arrowFunction() // NOT myObject; lexical `this`
-myObject.iife() // NOT myObject; lexical `this`
+myObject.iife // NOT myObject; lexical `this`
 const regularFunction = myObject.regularFunction
 regularFunction() // NOT myObject; lexical `this`
 ```
@@ -1878,28 +2282,51 @@ obj.doubleArr() // Uncaught TypeError: this.double is not a function
 <br>[⬆ Back to top](#table-of-contents)
 
 
-### What is functional programming?
+### What is event-driven programming?
 
 <details>
 <summary>View answer</summary>
 
-Functional programming is a paradigm in which programs are built in a declarative manner using pure functions that avoid shared state and mutable data. Functions that always return the same value for the same input and don't produce side effects are the pillar of functional programming. Many programmers consider this to be the best approach to software development as it reduces bugs and cognitive load.
+Event-driven programming is a paradigm that involves building applications that send and receive events. When the program emits events, the program responds by running any callback functions that are registered to that event and context, passing in associated data to the function. With this pattern, events can be emitted into the wild without throwing errors even if no functions are subscribed to it.
+
+A common example of this is the pattern of elements listening to DOM events such as `click` and `mouseenter`, where a callback function is run when the event occurs.
+
+```js
+document.addEventListener("click", function(event) {
+  // This callback function is run when the user
+  // clicks on the document.
+})
+```
+
+Without the context of the DOM, the pattern may look like this:
+
+```js
+const hub = createEventHub()
+hub.on("message", function(data) {
+  console.log(`${data.username} said ${data.text}`)
+})
+hub.emit("message", {
+  username: "John",
+  text: "Hello?"
+})
+```
+
+With this implementation, `on` is the way to _subscribe_ to an event, while `emit` is the way to _publish_ the event.
 
 
 #### Good to hear
 
 
-* Cleaner, more concise development experience
-* Simple function composition
-* Features of JavaScript that enable functional programming (`.map`, `.reduce` etc.)
-* JavaScript is multi-paradigm programming language (Object-Oriented Programming and Functional Programming live in harmony)
+* Follows a publish-subscribe pattern.
+* Responds to events that occur by running any callback functions subscribed to the event.
+* Show how to create a simple pub-sub implementation with JavaScript.
 
 
 ##### Additional links
 
 
-* [Javascript and Functional Programming: An Introduction](https://hackernoon.com/javascript-and-functional-programming-an-introduction-286aa625e26d)
-* [Master the JavaScript Interview: What is Functional Programming?](https://medium.com/javascript-scene/master-the-javascript-interview-what-is-functional-programming-7f218c68b3a0)
+* [MDN docs on Events and Handlers](https://developer.mozilla.org/en-US/docs/Web/Guide/Events/Overview_of_Events_and_Handlers)
+* [Understanding Node.js event-driven architecture](https://medium.freecodecamp.org/understanding-node-js-event-driven-architecture-223292fcbc2d)
 </details>
 
 
@@ -1907,41 +2334,36 @@ Functional programming is a paradigm in which programs are built in a declarativ
 <br>[⬆ Back to top](#table-of-contents)
 
 
-### What is memoization?
+### What is a closure? Can you give a useful example of one?
 
 <details>
 <summary>View answer</summary>
 
-Memoization is the process of caching the output of function calls so that subsequent calls are faster. Calling the function again with the same input will return the cached output without needing to do the calculation again.
+A closure is a function defined inside another function and has access to its lexical scope even when it is executing outside its lexical scope. The closure has access to variables in three scopes:
 
-A basic implementation in JavaScript looks like this:
+* Variables declared in its own scope
+* Variables declared in the scope of the parent function
+* Variables declared in the global scope
 
-```js
-const memoize = fn => {
-  const cache = new Map()
-  return value => {
-    const cachedResult = cache.get(value)
-    if (cachedResult !== undefined) return cachedResult
-    const result = fn(value)
-    cache.set(value, result)
-    return result
-  }
-}
-```
+In JavaScript, all functions are closures because they have access to the outer scope, but most functions don't utilise the usefulness of closures: the persistence of state. Closures are also sometimes called stateful functions because of this.
+
+In addition, closures are the only way to store private data that can't be accessed from the outside in JavaScript. They are the key to the UMD (Universal Module Definition) pattern, which is frequently used in libraries that only expose a public API but keep the implementation details private, preventing name collisions with other libraries or the user's own code.
 
 
 #### Good to hear
 
 
-* The above technique returns a unary function even if the function can take multiple arguments.
-* The first function call will be slower than usual because of the overhead created by checking if a cached result exists and setting a result before returning the value.
-* Memoization increases performance on subsequent function calls but still needs to do work on the first call.
+* Closures are useful because they let you associate data with a function that operates on that data.
+* A closure can substitute an object with only a single method.
+* Closures can be used to emulate private properties and methods.
 
 
 ##### Additional links
 
 
-* [Implementing memoization in JavaScript](https://www.sitepoint.com/implementing-memoization-in-javascript/)
+* [MDN docs for closures](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures)
+* [What is a closure](https://medium.com/javascript-scene/master-the-javascript-interview-what-is-a-closure-b2f0d2152b36)
+* [I never understood JavaScript closures](https://medium.com/dailyjs/i-never-understood-javascript-closures-9663703368e8)
 </details>
 
 
@@ -2012,36 +2434,59 @@ Including `'use strict'` at the beginning of your JavaScript source file enables
 <br>[⬆ Back to top](#table-of-contents)
 
 
-### Create a function `pipe` that performs left-to-right function composition by returning a function that accepts one argument.
+### How can you avoid callback hells?
 
 ```js
-const square = v => v * v
-const double = v => v * 2
-const addOne = v => v + 1
-const res = pipe(square, double, addOne)
-res(3) // 19; addOne(double(square(3)))
+getData(function(a) {
+  getMoreData(a, function(b) {
+    getMoreData(b, function(c) {
+      getMoreData(c, function(d) {
+        getMoreData(d, function(e) {
+          // ...
+        })
+      })
+    })
+  })
+})
 ```
 
 <details>
 <summary>View answer</summary>
 
-Gather all supplied arguments using the rest operator `...` and return a unary function that uses `Array.prototype.reduce()` to run the value through the series of functions before returning the final value.
+Refactoring the functions to return promises and using `async/await` is usually the best option. Instead of supplying the functions with callbacks that cause deep nesting, they return a promise that can be `await`ed and will be resolved once the data has arrived, allowing the next line of code to be evaluated in a sync-like fashion.
+
+The above code can be restructured like so:
 
 ```js
-const pipe = (...fns) => x => fns.reduce((v, fn) => fn(v), x)
+async function asyncAwaitVersion() {
+  const a = await getData()
+  const b = await getMoreData(a)
+  const c = await getMoreData(b)
+  const d = await getMoreData(c)
+  const e = await getMoreData(e)
+  // ...
+}
 ```
+
+There are lots of ways to solve the issue of callback hells:
+
+* Modularization: break callbacks into independent functions
+* Use a control flow library, like async
+* Use generators with Promises
+* Use async/await (from v7 on)
 
 
 #### Good to hear
 
 
-* Function composition is the process of combining two or more functions to produce a new function.
+* As an efficient JavaScript developer, you have to avoid the constantly growing indentation level, produce clean and readable code and be able to handle complex flows.
 
 
 ##### Additional links
 
 
-* [What is function composition?](https://medium.com/javascript-scene/master-the-javascript-interview-what-is-function-composition-20dfb109a1a0)
+* [Avoiding Callback Hell in Node.js](http://stackabuse.com/avoiding-callback-hell-in-node-js/)
+* [Asynchronous JavaScript: From Callback Hell to Async and Await](https://blog.hellojs.org/asynchronous-javascript-from-callback-hell-to-async-and-await-9b9ceb63c8e8)
 </details>
 
 
@@ -2112,24 +2557,25 @@ Once the changes between the old VDOM and new VDOM have been calculated by the d
 <br>[⬆ Back to top](#table-of-contents)
 
 
-### What is the event loop in Node.js?
+### What is the only value not equal to itself in JavaScript?
 
 <details>
 <summary>View answer</summary>
 
-The event loop handles all async callbacks. Callbacks are queued in a loop, while other code runs, and will run one by one when the response for each one has been received.
+`NaN` (Not-a-Number) is the only value not equal to itself when comparing with any of the comparison operators. `NaN` is often the result of meaningless math computations, so two `NaN` values make no sense to be considered equal.
 
 
 #### Good to hear
 
 
-* The event loop allows Node.js to perform non-blocking I/O operations, despite the fact that JavaScript is single-threaded
+* The difference between `isNaN()` and `Number.isNaN()`
+* `const isNaN = x => x !== x`
 
 
 ##### Additional links
 
 
-* [Node.js docs on event loop, timers and process.nextTick()](https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick/)
+* [MDN docs for `NaN`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NaN)
 </details>
 
 
@@ -2151,7 +2597,7 @@ Cache busting is the process of forcing the browser to download the new files. T
 
 A common technique to force the browser to re-download the file is to append a query string to the end of the file.
 
-- `src="js/script.js"` => `src="js/script.js?v=2"`
+* `src="js/script.js"` => `src="js/script.js?v=2"`
 
 The browser considers it a different file but prevents the need to change the file name.
 
@@ -2234,13 +2680,14 @@ Yes to both. The W3 documents state that the tags represent the header(`<header>
 <details>
 <summary>View answer</summary>
 
-The `alt` attribute provides alternative information for an image if a user cannot view it. If the image is for decorative purposes only, the `alt` attribute should be empty. On the other hand, if image contains information the `alt` attribute should describe image.
+The `alt` attribute provides alternative information for an image if a user cannot view it. The `alt` attribute should be used to describe any images except those which only serve a decorative purposes, in which case it should be left empty.
 
 
 #### Good to hear
 
 
-* Decorative images should have empty `alt` tag
+* Decorative images should have empty `alt` attribute.
+* Web crawlers use `alt` tags to understand image content, so they are considered important for Search Engine Optimization (SEO).
 
 
 ##### Additional links
@@ -2623,6 +3070,31 @@ Set the `.row` parent to `display: flex;` and use the `flex` shorthand property 
 <br>[⬆ Back to top](#table-of-contents)
 
 
+### What is the difference between `em` and `rem` units?
+
+<details>
+<summary>View answer</summary>
+
+Both `em` and `rem` units are based on the `font-size` CSS property. The only difference is where they inherit their values from. `em` units inherit their value from the `font-size` of the parent element, while `rem` units inherit their value from the root element (`html`). In most browsers, the `font-size` of root element is set to `16px` by default.
+
+
+#### Good to hear
+
+
+* Benefits of using `em` and `rem` units
+
+
+##### Additional links
+
+
+* [CSS units for font-size: px | em | rem](https://medium.com/code-better/css-units-for-font-size-px-em-rem-79f7e592bb97)
+</details>
+
+
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
 ### What are the advantages of using CSS sprites and how are they utilized?
 
 <details>
@@ -2719,7 +3191,7 @@ The best solution is an upcoming pseudo-selector `:focus-visible` which can be p
 
 
 ## Node
-### NodeJS uses a callback pattern in many instances where if an error were returned it will pass it as the first argument to the callback. What are the advantages of this pattern?
+### NodeJS often uses a callback pattern where if an error is encountered during execution, this error is passed as the first argument to the callback. What are the advantages of this pattern?
 
 ```js
 fs.readFile(filePath, function(err, data) {
@@ -2803,15 +3275,15 @@ REST (REpresentational State Transfer) is a software design pattern for network 
 
 Generally, this concept is used in web applications to manage state. With most applications, there is a common theme of reading, creating, updating, and destroying data. Data is modularized into separate tables like `posts`, `users`, `comments`, and a RESTful API exposes access to this data with:
 
-- An identifier for the resource. This is known as the endpoint or URL for the resource.
-- The operation the server should perform on that resource in the form of an HTTP method or verb. The common HTTP methods are GET, POST, PUT, and DELETE.
+* An identifier for the resource. This is known as the endpoint or URL for the resource.
+* The operation the server should perform on that resource in the form of an HTTP method or verb. The common HTTP methods are GET, POST, PUT, and DELETE.
 
 Here is an example of the URL and HTTP method with a `posts` resource:
 
-- Reading: `/posts/` => GET
-- Creating: `/posts/new` => POST
-- Updating: `/posts/:id` => PUT
-- Destroying: `/posts/:id` => DELETE
+* Reading: `/posts/` => GET
+* Creating: `/posts/new` => POST
+* Updating: `/posts/:id` => PUT
+* Destroying: `/posts/:id` => DELETE
 
 
 #### Good to hear
@@ -2926,9 +3398,9 @@ XSS refers to client-side code injection where the attacker injects malicious sc
 
 For example, a comment system will be at risk if it does not validate or escape user input. If the comment contains unescaped HTML, the comment can inject a `<script>` tag into the website that other users will execute against their knowledge.
 
-- The malicious script has access to cookies which are often used to store session tokens. If an attacker can obtain a user’s session cookie, they can impersonate the user.
-- The script can arbitrarily manipulate the DOM of the page the script is executing in, allowing the attacker to insert pieces of content that appear to be a real part of the website.
-- The script can use AJAX to send HTTP requests with arbitrary content to arbitrary destinations.
+* The malicious script has access to cookies which are often used to store session tokens. If an attacker can obtain a user’s session cookie, they can impersonate the user.
+* The script can arbitrarily manipulate the DOM of the page the script is executing in, allowing the attacker to insert pieces of content that appear to be a real part of the website.
+* The script can use AJAX to send HTTP requests with arbitrary content to arbitrary destinations.
 
 
 #### Good to hear

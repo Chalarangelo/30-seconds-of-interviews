@@ -34,14 +34,14 @@ In the above example, the base condition is met if `filter()` returns an empty a
 
 #### Good to hear
 
-- Recursion is useful when working with data structures containing an unknown number of nested structures.
-- Recursion must have a base condition to be met that breaks out of the loop or it will call itself indefinitely.
+* Recursion is useful when working with data structures containing an unknown number of nested structures.
+* Recursion must have a base condition to be met that breaks out of the loop or it will call itself indefinitely.
 
 ##### Additional links
 
 <!-- Whenever possible, link a more detailed explanation. -->
 
-- [In plain English, what is recursion?](https://softwareengineering.stackexchange.com/questions/25052/in-plain-english-what-is-recursion)
+* [In plain English, what is recursion?](https://softwareengineering.stackexchange.com/questions/25052/in-plain-english-what-is-recursion)
 
 <!-- tags: (javascript) -->
 

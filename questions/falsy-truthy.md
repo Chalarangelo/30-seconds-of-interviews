@@ -6,12 +6,12 @@ A value is either truthy or falsy depending on how it is evaluated in a Boolean 
 
 There are 6 falsy values in JavaScript. They are:
 
-- `false`
-- `undefined`
-- `null`
-- `""` (empty string),
-- `NaN`
-- `0`
+* `false`
+* `undefined`
+* `null`
+* `""` (empty string),
+* `NaN`
+* `0`
 
 Every other value is considered truthy.
 
@@ -32,8 +32,8 @@ There is a shortcut for this using the logical NOT `!` operator. Using `!` once 
 
 ##### Additional links
 
-- [Truthy on MDN](https://developer.mozilla.org/en/docs/Glossary/Truthy)
-- [Falsy on MDN](https://developer.mozilla.org/en-US/docs/Glossary/Falsy)
+* [Truthy on MDN](https://developer.mozilla.org/en/docs/Glossary/Truthy)
+* [Falsy on MDN](https://developer.mozilla.org/en-US/docs/Glossary/Falsy)
 
 <!-- Whenever possible, link a more detailed explanation. -->
 

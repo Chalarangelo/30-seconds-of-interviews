@@ -57,11 +57,11 @@ In the above case, if `e.target` does not match the `"span"` selector, the funct
 
 #### Good to hear
 
-- Logical operations do not produce a boolean unless the operand(s) evaluate to a boolean.
+* Logical operations do not produce a boolean unless the operand(s) evaluate to a boolean.
 
 ##### Additional links
 
-- [JavaScript: What is short-circuit evaluation?](https://codeburst.io/javascript-what-is-short-circuit-evaluation-ff22b2f5608c)
+* [JavaScript: What is short-circuit evaluation?](https://codeburst.io/javascript-what-is-short-circuit-evaluation-ff22b2f5608c)
 
 <!-- Whenever possible, link a more detailed explanation. -->
 

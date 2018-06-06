@@ -15,7 +15,7 @@ commit_website_files() {
       elif [ $TRAVIS_EVENT_TYPE == "api" ]; then
         git commit --message "Travis build: $TRAVIS_BUILD_NUMBER [custom]"
       else
-        git commit --message "Travis build: $TRAVIS_BUILD_NUMBER"
+        git commit --message "Travis build: $TRAVIS_BUILD_NUMBER [FORCED]"
       fi
     fi
   fi

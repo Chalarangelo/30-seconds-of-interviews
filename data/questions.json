@@ -22,6 +22,23 @@
     ]
   },
   {
+    "name": "batches.md",
+    "question": "Create a function `batches` that returns the maximum number of whole batches that can be cooked from a recipe.\n\nIt accepts two objects as arguments: the first object is the recipe for the food, while the second argument is the available ingredients. Each ingredient's value is number representing how many units there are.\n\n`batches(recipe, available)`\n\n```js\n// 0 batches can be made\nbatches(\n  { milk: 100, butter: 50, flour: 5 },\n  { milk: 132, butter: 48, flour: 51 }\n)\nbatches(\n  { milk: 100, flour: 4, sugar: 10, butter: 5 },\n  { milk: 1288, flour: 9, sugar: 95 }\n)\n\n// 1 batch can be made\nbatches(\n  { milk: 100, butter: 50, cheese: 10 },\n  { milk: 198, butter: 52, cheese: 10 }\n)\n\n// 2 batches can be made\nbatches(\n  { milk: 2, sugar: 40, butter: 20 },\n  { milk: 5, sugar: 120, butter: 500 }\n)\n```",
+    "answer": "We must have all ingredients of the recipe available, and in quantities that are more than or equal to the number of units required. If just one of ingredients is not available or lower than needed, we cannot make a single batch.\n\nUse `Object.keys()` to return the ingredients of the recipe as an array, then use `Array.prototype.map()` to map each ingredient to the ratio of available units to the amount required by the recipe. If one of the ingredients required by the recipe is not available at all, the ratio will evaluate to `NaN`, so the logical OR operator can be used to fallback to `0` in this case.\n\nUse the spread `...` operator to feed all the array of ratios into `Math.min()` to determine the lowest ratio. Passing this entire result into `Math.floor()` rounds down to return the maximum number of whole batches.\n\n```js\nconst batches = (recipe, available) =>\n  Math.floor(\n    Math.min(...Object.keys(recipe).map(k => available[k] / recipe[k] || 0))\n  )\n```",
+    "goodToHear": [],
+    "links": [],
+    "tags": [
+      "javascript"
+    ],
+    "expertise": 1,
+    "questionCodeBlocks": [
+      "```js\n// 0 batches can be made\nbatches(\n  { milk: 100, butter: 50, flour: 5 },\n  { milk: 132, butter: 48, flour: 51 }\n)\nbatches(\n  { milk: 100, flour: 4, sugar: 10, butter: 5 },\n  { milk: 1288, flour: 9, sugar: 95 }\n)\n\n// 1 batch can be made\nbatches(\n  { milk: 100, butter: 50, cheese: 10 },\n  { milk: 198, butter: 52, cheese: 10 }\n)\n\n// 2 batches can be made\nbatches(\n  { milk: 2, sugar: 40, butter: 20 },\n  { milk: 5, sugar: 120, butter: 500 }\n)\n```"
+    ],
+    "answerCodeBlocks": [
+      "```js\nconst batches = (recipe, available) =>\n  Math.floor(\n    Math.min(...Object.keys(recipe).map(k => available[k] / recipe[k] || 0))\n  )\n```"
+    ]
+  },
+  {
     "name": "bem.md",
     "question": "What is CSS BEM?",
     "answer": "The BEM methodology is a naming convention for CSS classes in order to keep CSS more maintainable by defining namespaces to solve scoping issues. BEM stands for Block Element Modifier which is an explanation for its structure. A Block is a standalone component that is reusable across projects and acts as a \"namespace\" for sub components (Elements). Modifiers are used as flags when a Block or Element is in a certain state or is different in structure or style.\n\n```css\n/* block component */\n.block {\n}\n\n/* element */\n.block__element {\n}\n\n/* modifier */\n.block__element--modifier {\n}\n```\n\nHere is an example with the class names on markup:\n\n```html\n<nav class=\"navbar\">\n  <a href=\"/\" class=\"navbar__link navbar__link--active\"></a>\n  <a href=\"/\" class=\"navbar__link\"></a>\n  <a href=\"/\" class=\"navbar__link\"></a>\n</nav>\n```\n\nIn this case, `navbar` is the Block, `navbar__link` is an Element that makes no sense outside of the `navbar` component, and `navbar__link--active` is a Modifier that indicates a different state for the `navbar__link` Element.\n\nSince Modifiers are verbose, many opt to use `is-*` flags instead as modifiers.\n\n```html\n<a href=\"/\" class=\"navbar__link is-active\"></a>\n```\n\nThese must be chained to the Element and never alone however, or there will be scope issues.\n\n```css\n.navbar__link.is-active {\n}\n```",
@@ -46,7 +63,7 @@
   {
     "name": "big-o-notation.md",
     "question": "What is Big O Notation?",
-    "answer": "Big O notation is used in Computer Science to describe time complexity of an algorithm. The best algorithms will execute the fastest and have the simplest complexity.\n\nAlgorithms don't always perform the same and vary based on the data they are supplied. While in some cases they will execute quickly, in other cases they will execute slowly, even with the same number of elements to deal with.\n\nIn these examples, the base time is `1ms` to make it more familiar.\n\n##### O(1)\n\n```js\narr[arr.length - 1]\n```\n\nConstant time complexity. No matter how many elements the array has, it will theoretically take (excluding real-world variation) the same amount of time to execute.\n\n- 1000 elements = `1ms`\n\n##### O(N)\n\n```js\narr.filter(fn)\n```\n\nLinear time complexity. The execution time will increase linearly with the number of elements the array has. If the array has 1000 elements and the function takes 1ms to execute, 7000 elements will take 7ms to execute. This is because the function must iterate through all elements of the array before returning a result.\n\n- 1000 elements = `1000ms`\n\n##### O(1-N)\n\n```js\narr.some(fn)\n```\n\n- 1000 elements = `1ms <= x <= 1000 ms`\n\nThe execution time varies depending on the data supplied to the function, it may return very early or very late. The best case here is O(1) and the worst case is O(N).\n\n##### O(logN)\n\n```js\narr.sort(fn)\n```\n\nBrowsers usually implement the quicksort algorithm for the `sort()` method which is logN time complexity. This is very efficient for large collections.\n\n- 1000 elements = `3ms`\n\n##### O(N^2)\n\n```js\nfor (let i = 0; i < arr.length; i++) {\n  for (let j = 0; j < arr.length; j++) {\n    // ...\n  }\n}\n```\n\nThe execution time rises quadratically with the number of elements. Usually the result of nesting loops.\n\n- 1000 elements = `1000000ms`\n\n##### O(N!)\n\n```js\nconst permutations = arr => {\n  if (arr.length <= 2) return arr.length === 2 ? [arr, [arr[1], arr[0]]] : arr\n  return arr.reduce(\n    (acc, item, i) =>\n      acc.concat(\n        permutations([...arr.slice(0, i), ...arr.slice(i + 1)]).map(val => [\n          item,\n          ...val\n        ])\n      ),\n    []\n  )\n}\n```\n\nThe execution time rises extremely fast with even just 1 addition to the array.\n\n1000 elements = `Infinity` (practically) ms",
+    "answer": "Big O notation is used in Computer Science to describe time complexity of an algorithm. The best algorithms will execute the fastest and have the simplest complexity.\n\nAlgorithms don't always perform the same and may vary based on the data they are supplied. While in some cases they will execute quickly, in other cases they will execute slowly, even with the same number of elements to deal with.\n\nIn these examples, the base time is `1ms` to make it more familiar.\n\n##### O(1)\n\n```js\narr[arr.length - 1]\n```\n\nConstant time complexity. No matter how many elements the array has, it will theoretically take (excluding real-world variation) the same amount of time to execute.\n\n* 1000 elements = `1ms`\n\n##### O(N)\n\n```js\narr.filter(fn)\n```\n\nLinear time complexity. The execution time will increase linearly with the number of elements the array has. If the array has 1000 elements and the function takes 1ms to execute, 7000 elements will take 7ms to execute. This is because the function must iterate through all elements of the array before returning a result.\n\n* 1000 elements = `1000ms`\n\n##### O([1, N])\n\n```js\narr.some(fn)\n```\n\n* 1000 elements = `1ms <= x <= 1000ms`\n\nThe execution time varies depending on the data supplied to the function, it may return very early or very late. The best case here is O(1) and the worst case is O(N).\n\n##### O(logN)\n\n```js\narr.sort(fn)\n```\n\nBrowsers usually implement the quicksort algorithm for the `sort()` method which is logN time complexity. This is very efficient for large collections.\n\n* 1000 elements = `3ms`\n\n##### O(N^2)\n\n```js\nfor (let i = 0; i < arr.length; i++) {\n  for (let j = 0; j < arr.length; j++) {\n    // ...\n  }\n}\n```\n\nThe execution time rises quadratically with the number of elements. Usually the result of nesting loops.\n\n* 1000 elements = `1000000ms`\n\n##### O(N!)\n\n```js\nconst permutations = arr => {\n  if (arr.length <= 2) return arr.length === 2 ? [arr, [arr[1], arr[0]]] : arr\n  return arr.reduce(\n    (acc, item, i) =>\n      acc.concat(\n        permutations([...arr.slice(0, i), ...arr.slice(i + 1)]).map(val => [\n          item,\n          ...val\n        ])\n      ),\n    []\n  )\n}\n```\n\nThe execution time rises extremely fast with even just 1 addition to the array.\n\n1000 elements = `Infinity` (practically) ms",
     "goodToHear": [
       "Be wary of nesting loops as execution time increases exponentially."
     ],
@@ -68,9 +85,26 @@
     ]
   },
   {
+    "name": "bind-function.md",
+    "question": "Create a standalone function `bind` that is functionally equivalent to the method `Function.prototype.bind`.\n\n```js\nfunction example() {\n  console.log(this)\n}\nconst boundExample = bind(example, { a: true })\nboundExample.call({ b: true }) // logs { a: true }\n```",
+    "answer": "Return a function that accepts an arbitrary number of arguments by gathering them with the rest `...` operator. From that function, return the result of calling the `fn` with `Function.prototype.apply` to apply the context and the array of arguments to the function.\n\n```js\nconst bind = (fn, context) => (...args) => fn.apply(context, args)\n```",
+    "goodToHear": [],
+    "links": [],
+    "tags": [
+      "javascript"
+    ],
+    "expertise": 1,
+    "questionCodeBlocks": [
+      "```js\nfunction example() {\n  console.log(this)\n}\nconst boundExample = bind(example, { a: true })\nboundExample.call({ b: true }) // logs { a: true }\n```"
+    ],
+    "answerCodeBlocks": [
+      "```js\nconst bind = (fn, context) => (...args) => fn.apply(context, args)\n```"
+    ]
+  },
+  {
     "name": "cache-busting.md",
     "question": "What is the purpose of cache busting and how can you achieve it?",
-    "answer": "Browsers have a cache to temporarily store files on websites so they don't need to be re-downloaded again when switching between pages or reloading the same page. The server is set up to send headers that tell the browser to store the file for a given amount of time. This greatly increases website speed and preserves bandwidth.\n\nHowever, it can cause problems when the website has been changed by developers because the user's cache still references old files. This can either leave them with old functionality or break a website if the cached CSS and JavaScript files are referencing elements that no longer exist, have moved or have been renamed.\n\nCache busting is the process of forcing the browser to download the new files. This is done by naming the file something different to the old file.\n\nA common technique to force the browser to re-download the file is to append a query string to the end of the file.\n\n- `src=\"js/script.js\"` => `src=\"js/script.js?v=2\"`\n\nThe browser considers it a different file but prevents the need to change the file name.",
+    "answer": "Browsers have a cache to temporarily store files on websites so they don't need to be re-downloaded again when switching between pages or reloading the same page. The server is set up to send headers that tell the browser to store the file for a given amount of time. This greatly increases website speed and preserves bandwidth.\n\nHowever, it can cause problems when the website has been changed by developers because the user's cache still references old files. This can either leave them with old functionality or break a website if the cached CSS and JavaScript files are referencing elements that no longer exist, have moved or have been renamed.\n\nCache busting is the process of forcing the browser to download the new files. This is done by naming the file something different to the old file.\n\nA common technique to force the browser to re-download the file is to append a query string to the end of the file.\n\n* `src=\"js/script.js\"` => `src=\"js/script.js?v=2\"`\n\nThe browser considers it a different file but prevents the need to change the file name.",
     "goodToHear": [],
     "links": [
       "[Strategies for cache-busting CSS](https://css-tricks.com/strategies-for-cache-busting-css/)"
@@ -189,6 +223,24 @@
     ]
   },
   {
+    "name": "cors.md",
+    "question": "What is CORS?",
+    "answer": "Cross-Origin Resource Sharing or CORS is a mechanism that uses additional HTTP headers to grant a browser permission to access resources from a server at an origin different from the website origin.\n\nAn exmaple of a cross-origin request is a web application served from `http://mydomain.com` that uses AJAX to make a request for `http://yourdomain.com`.\n\nFor security reasons, browsers restrict cross-origin HTTP requests initiated by JavaScript. `XMLHttpRequest` and `fetch` follow the same-origin policy, meaning a web application using those APIs can only request HTTP resources from the same origin the application was accessed, unless the response from the other origin includes the correct CORS headers.",
+    "goodToHear": [
+      "CORS behavior is not an error,  it’s a security mechanism to protect users.",
+      "CORS is designed to prevent a malicious website that a user may unintentionally visit from making a request to a legitimate website to read their personal data or perform actions against their will."
+    ],
+    "links": [
+      "[MDN docs for CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS)"
+    ],
+    "tags": [
+      "javascript"
+    ],
+    "expertise": 1,
+    "questionCodeBlocks": [],
+    "answerCodeBlocks": []
+  },
+  {
     "name": "css-preprocessors.md",
     "question": "What are the advantages of using CSS preprocessors?",
     "answer": "CSS preprocessors add useful functionality that native CSS does not have, and generally make CSS neater and more maintainable by enabling DRY (Don't Repeat Yourself) principles. Their terse syntax for nested selectors cuts down on repeated code. They provide variables for consistent theming (however, CSS variables have largely replaced this functionality) and additional tools like color functions (`lighten`, `darken`, `transparentize`, etc), mixins, and loops that make CSS more like a real programming language and gives the developer more power to generate complex CSS.",
@@ -265,9 +317,26 @@
     "answerCodeBlocks": []
   },
   {
+    "name": "em-rem-difference.md",
+    "question": "What is the difference between `em` and `rem` units?",
+    "answer": "Both `em` and `rem` units are based on the `font-size` CSS property. The only difference is where they inherit their values from. `em` units inherit their value from the `font-size` of the parent element, while `rem` units inherit their value from the root element (`html`). In most browsers, the `font-size` of root element is set to `16px` by default.",
+    "goodToHear": [
+      "Benefits of using `em` and `rem` units"
+    ],
+    "links": [
+      "[CSS units for font-size: px | em | rem](https://medium.com/code-better/css-units-for-font-size-px-em-rem-79f7e592bb97)"
+    ],
+    "tags": [
+      "css"
+    ],
+    "expertise": 1,
+    "questionCodeBlocks": [],
+    "answerCodeBlocks": []
+  },
+  {
     "name": "event-delegation.md",
     "question": "What is event delegation and why is it useful? Can you show an example of how to use it?",
-    "answer": "Event delegation is a technique of delegating events to a single common ancestor. Due to event bubbling, events \"bubble\" up the DOM tree by executing any handlers progressively on each ancestor element up to the root that may be listening to it.\n\nDOM events provide useful information about the element that initiated the event via `Event.target`. This allows the parent element to handle behavior as though the target element was listening to the event, rather than all children of the parent or the parent itself.\n\nThis provides two main benefits:\n\n- It increases performance and reduces memory consumption by only needing to register a single event listener to handle potentially thousands of elements.\n- If elements are dynamically added to the parent, there is no need to register new event listeners for them.\n\nInstead of:\n\n```js\ndocument.querySelectorAll(\"span\").forEach(span => {\n  span.addEventListener(\"click\", handleSpanClick)\n})\n```\n\nEvent delegation involves using a condition to ensure the child target matches our desired element:\n\n```js\ndocument.addEventListener(\"click\", e => {\n  if (e.target.matches(\"span\")) {\n    handleSpanClick()\n  }\n})\n```",
+    "answer": "Event delegation is a technique of delegating events to a single common ancestor. Due to event bubbling, events \"bubble\" up the DOM tree by executing any handlers progressively on each ancestor element up to the root that may be listening to it.\n\nDOM events provide useful information about the element that initiated the event via `Event.target`. This allows the parent element to handle behavior as though the target element was listening to the event, rather than all children of the parent or the parent itself.\n\nThis provides two main benefits:\n\n* It increases performance and reduces memory consumption by only needing to register a single event listener to handle potentially thousands of elements.\n* If elements are dynamically added to the parent, there is no need to register new event listeners for them.\n\nInstead of:\n\n```js\ndocument.querySelectorAll(\"span\").forEach(span => {\n  span.addEventListener(\"click\", handleSpanClick)\n})\n```\n\nEvent delegation involves using a condition to ensure the child target matches our desired element:\n\n```js\ndocument.addEventListener(\"click\", e => {\n  if (e.target.matches(\"span\")) {\n    handleSpanClick()\n  }\n})\n```",
     "goodToHear": [
       "The difference between event bubbling and capturing"
     ],
@@ -305,6 +374,47 @@
     "answerCodeBlocks": [
       "```js\ndocument.addEventListener(\"click\", function(event) {\n  // This callback function is run when the user\n  // clicks on the document.\n})\n```",
       "```js\nconst hub = createEventHub()\nhub.on(\"message\", function(data) {\n  console.log(`${data.username} said ${data.text}`)\n})\nhub.emit(\"message\", {\n  username: \"John\",\n  text: \"Hello?\"\n})\n```"
+    ]
+  },
+  {
+    "name": "expression-vs-statement.md",
+    "question": "What is the difference between an expression and a statement in JavaScript?",
+    "answer": "There are two main syntactic categories in JavaScript: expressions and statements. A third one is both together, referred to as an expression statement. They are roughly summarized as:\n\n* **Expression**: produces a value\n* **Statement**: performs an action\n* **Expression statement**: produces a value and performs an action\n\nA general rule of thumb:\n\n> If you can print it or assign it to a variable, it’s an expression. If you can’t, it’s a statement.\n\n##### Statements\n\n```js\nlet x = 0\n\nfunction declaration() {}\n\nif (true) {\n}\n```\n\nStatements appear as instructions that do something but don't produce values.\n\n```js\n// Assign `x` to the absolute value of `y`.\nvar x\nif (y >= 0) {\n  x = y\n} else {\n  x = -y\n}\n```\n\nThe only expression in the above code is `y >= 0` which produces a value, either `true` or `false`. A value is not produced by other parts of the code.\n\n##### Expressions\n\nExpressions produce a value. They can be passed around to functions because the interpreter replaces them with the value they resolve to.\n\n```js\n5 + 5 // => 10\n\nlastCharacter(\"input\") // => \"t\"\n\ntrue === true // => true\n```\n\n##### Expression statements\n\nThere is an equivalent version of the set of statements used before as an expression using the conditional operator:\n\n```js\n// Assign `x` as the absolute value of `y`.\nvar x = y >= 0 ? y : -y\n```\n\nThis is both an expression and a statement, because we are declaring a variable `x` (statement) as an evaluation (expression).",
+    "goodToHear": [
+      "Function declarations vs function expressions"
+    ],
+    "links": [
+      "[What is the difference between a statement and an expression?](https://stackoverflow.com/questions/12703214/javascript-difference-between-a-statement-and-an-expression)"
+    ],
+    "tags": [
+      "javascript"
+    ],
+    "expertise": 1,
+    "questionCodeBlocks": [],
+    "answerCodeBlocks": [
+      "```js\nlet x = 0\n\nfunction declaration() {}\n\nif (true) {\n}\n```",
+      "```js\n// Assign `x` to the absolute value of `y`.\nvar x\nif (y >= 0) {\n  x = y\n} else {\n  x = -y\n}\n```",
+      "```js\n5 + 5 // => 10\n\nlastCharacter(\"input\") // => \"t\"\n\ntrue === true // => true\n```",
+      "```js\n// Assign `x` as the absolute value of `y`.\nvar x = y >= 0 ? y : -y\n```"
+    ]
+  },
+  {
+    "name": "falsy-truthy.md",
+    "question": "What are truthy and falsy values in JavaScript?",
+    "answer": "A value is either truthy or falsy depending on how it is evaluated in a Boolean context. Falsy means false-like and truthy means true-like. Essentially, they are values that are coerced to `true` or `false` when performing certain operations.\n\nThere are 6 falsy values in JavaScript. They are:\n\n* `false`\n* `undefined`\n* `null`\n* `\"\"` (empty string),\n* `NaN`\n* `0`\n\nEvery other value is considered truthy.\n\nA value's truthiness can be examined by passing it into the `Boolean` function.\n\n```js\nBoolean(0) // false\n```\n\nThere is a shortcut for this using the logical NOT `!` operator. Using `!` once will convert a value to its inverse boolean equivalent (i.e. not false is true), and `!` once more will convert back, thus effectively converting the value to a boolean.\n\n```js\n!!0 // false\n!![] // true\n```",
+    "goodToHear": [],
+    "links": [
+      "[Truthy on MDN](https://developer.mozilla.org/en/docs/Glossary/Truthy)",
+      "[Falsy on MDN](https://developer.mozilla.org/en-US/docs/Glossary/Falsy)"
+    ],
+    "tags": [
+      "javascript"
+    ],
+    "expertise": 1,
+    "questionCodeBlocks": [],
+    "answerCodeBlocks": [
+      "```js\nBoolean(0) // false\n```",
+      "```js\n!!0 // false\n!![] // true\n```"
     ]
   },
   {
@@ -578,9 +688,10 @@
   {
     "name": "image-accessibility.md",
     "question": "What is the purpose of `alt` attribute on images?",
-    "answer": "The `alt` attribute provides alternative information for an image if a user cannot view it. If the image is for decorative purposes only, the `alt` attribute should be empty. On the other hand, if image contains information the `alt` attribute should describe image.",
+    "answer": "The `alt` attribute provides alternative information for an image if a user cannot view it. The `alt` attribute should be used to describe any images except those which only serve a decorative purposes, in which case it should be left empty.",
     "goodToHear": [
-      "Decorative images should have empty `alt` tag"
+      "Decorative images should have empty `alt` attribute.",
+      "Web crawlers use `alt` tags to understand image content, so they are considered important for Search Engine Optimization (SEO)."
     ],
     "links": [
       "[A good basis for accessibility](https://developer.mozilla.org/en-US/docs/Learn/Accessibility/HTML)"
@@ -591,6 +702,27 @@
     "expertise": 0,
     "questionCodeBlocks": [],
     "answerCodeBlocks": []
+  },
+  {
+    "name": "imperative-vs-declarative.md",
+    "question": "Explain the differences between imperative and declarative programming.",
+    "answer": "* Imperative: **how** to achieve something\n* Declarative: **what** should be achieved\n\nA common example of declarative programming is CSS. The developer specifies CSS properties that describe what something should look like rather than how to achieve it. The \"how\" is abstracted away by the browser.\n\nOn the other hand, imperative programming involves the steps required to achieve something. In JavaScript, the differences can be contrasted like so:\n\n##### Imperative\n\n```js\nconst numbers = [1, 2, 3, 4, 5]\nconst numbersDoubled = []\nfor (let i = 0; i < numbers.length; i++) {\n  numbersDoubled[i] = numbers[i] * 2\n}\n```\n\nWet manually loop over the numbers of the array and assign the new index as the number doubled.\n\n##### Declarative\n\n```js\nconst numbers = [1, 2, 3, 4, 5]\nconst numbersDoubled = numbers.map(n => n * 2)\n```\n\nWe declare that the new array is mapped to a new one where each value is doubled.",
+    "goodToHear": [
+      "Declarative programming often works with expressions. Imperative programming frequently uses statements and relies on low-level features that cause mutations, while declarative programming has a strong focus on abstraction and purity.",
+      "Declarative programming is more terse and easier to process at a glance."
+    ],
+    "links": [
+      "[Declarative vs Imperative Programming](https://codeburst.io/declarative-vs-imperative-programming-a8a7c93d9ad2)"
+    ],
+    "tags": [
+      "javascript"
+    ],
+    "expertise": 2,
+    "questionCodeBlocks": [],
+    "answerCodeBlocks": [
+      "```js\nconst numbers = [1, 2, 3, 4, 5]\nconst numbersDoubled = []\nfor (let i = 0; i < numbers.length; i++) {\n  numbersDoubled[i] = numbers[i] * 2\n}\n```",
+      "```js\nconst numbers = [1, 2, 3, 4, 5]\nconst numbersDoubled = numbers.map(n => n * 2)\n```"
+    ]
   },
   {
     "name": "mask.md",
@@ -687,7 +819,7 @@
   },
   {
     "name": "node-error-first-callback.md",
-    "question": "NodeJS uses a callback pattern in many instances where if an error were returned it will pass it as the first argument to the callback. What are the advantages of this pattern?\n\n```js\nfs.readFile(filePath, function(err, data) {\n  if (err) {\n    // handle the error, the return is important here\n    // so execution stops here\n    return console.log(err)\n  }\n  // use the data object\n  console.log(data)\n})\n```",
+    "question": "NodeJS often uses a callback pattern where if an error is encountered during execution, this error is passed as the first argument to the callback. What are the advantages of this pattern?\n\n```js\nfs.readFile(filePath, function(err, data) {\n  if (err) {\n    // handle the error, the return is important here\n    // so execution stops here\n    return console.log(err)\n  }\n  // use the data object\n  console.log(data)\n})\n```",
     "answer": "Advantages include:\n\n* Not needing to process data if there is no need to even reference it\n* Having a consistent API leads to more adoption\n* Ability to easily adapt a callback pattern that will lead to more maintainable code\n\nAs you can see from below example, the callback is called with null as its first argument if there is no error. However, if there is an error, you create an Error object, which then becomes the callback's only parameter. The callback function allows a user to easily know whether or not an error occurred.\n\nThis practice is also called the _Node.js error convention_, and this kind of callback implementations are called _error-first callbacks_.\n\n```js\nvar isTrue = function(value, callback) {\n  if (value === true) {\n    callback(null, \"Value was true.\")\n  } else {\n    callback(new Error(\"Value is not true!\"))\n  }\n}\n\nvar callback = function(error, retval) {\n  if (error) {\n    console.log(error)\n    return\n  }\n  console.log(retval)\n}\n\nisTrue(false, callback)\nisTrue(true, callback)\n\n/*\n  { stack: [Getter/Setter],\n    arguments: undefined,\n    type: undefined,\n    message: 'Value is not true!' }\n  Value was true.\n*/\n```",
     "goodToHear": [
       "This is just a convention. However, you should stick to it."
@@ -754,9 +886,7 @@
       "Prototypes are objects that other objects inherit properties and methods from.",
       "Factory functions offer private properties and methods through a closure but increase memory usage as a tradeoff, while classes do not have private properties or methods but reduce memory impact by reusing a single prototype object."
     ],
-    "links": [
-      "[Factory functions vs constructor functions vs classes](https://medium.com/javascript-scene/javascript-factory-functions-vs-constructor-functions-vs-classes-2f22ceddf33e)"
-    ],
+    "links": [],
     "tags": [
       "javascript"
     ],
@@ -863,14 +993,10 @@
   {
     "name": "prototypal-inheritance.md",
     "question": "How does prototypal inheritance differ from classical inheritance?",
-    "answer": "In the classical inheritance paradigm, object instances inherit their properties and functions from a class, which acts as a blueprint for the object. Object instances are typically created using a constructor and the `new` keyword.\n\nIn the prototypal inheritance paradigm, object instances inherit directly from other objects and are typically created using factory functions or `Object.create()`. Finally, object instances can be composed from many different objects, allowing for selective inheritance.",
-    "goodToHear": [
-      "Classes create hierarches and taxonomies.",
-      "Prototypal inheritance allows for a flat prototype delegation hierarchy."
-    ],
+    "answer": "In the classical inheritance paradigm, object instances inherit their properties and functions from a class, which acts as a blueprint for the object. Object instances are typically created using a constructor and the `new` keyword.\n\nIn the prototypal inheritance paradigm, object instances inherit directly from other objects and are typically created using factory functions or `Object.create()`.",
+    "goodToHear": [],
     "links": [
-      "[MDN docs for inheritance and the prototype chain](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Inheritance_and_the_prototype_chain)",
-      "[Differences between class and prototypal inheritance](https://medium.com/javascript-scene/master-the-javascript-interview-what-s-the-difference-between-class-prototypal-inheritance-e4cd0a7562e9)"
+      "[MDN docs for inheritance and the prototype chain](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Inheritance_and_the_prototype_chain)"
     ],
     "tags": [
       "javascript"
@@ -905,7 +1031,7 @@
   {
     "name": "recursion.md",
     "question": "What is recursion and when is it useful?",
-    "answer": "Recursion is the repeated application of a process. In JavaScript, recursion involves functions that call themselves repeatedly until they reach a base condition. The base condition breaks the out of the recursion loop because otherwise the function would call itself indefinitely. Recursion is very useful when working with data structures that contain nesting where the number of levels deep is unknown.\n\nFor example, you may have a thread of comments returned from a database that exist in a flat array but need to be nested for display in the UI. Each comment is either a top-level comment (no parent) or is a reply to a parent comment. Comments can be a reply of a reply of a reply... we have no knowledge beforehand the number of levels deep a comment may be. This is where recursion can help.\n\n```js\nconst nest = (items, id = null, link = \"parent_id\") =>\n  items\n    .filter(item => item[link] === id)\n    .map(item => ({ ...item, children: nest(items, item.id) }))\n\nconst comments = [\n  { id: 1, parent_id: null, text: \"First reply to post.\" },\n  { id: 2, parent_id: 1, text: \"First reply to comment #1.\" },\n  { id: 3, parent_id: 1, text: \"Second reply to comment #1.\" },\n  { id: 4, parent_id: 3, text: \"First reply to comment #3.\" },\n  { id: 5, parent_id: 4, text: \"First reply to comment #4.\" },\n  { id: 6, aprent_id: null, text: \"Second reply to post.\" }\n]\n\nnest(comments)\n/*\n[\n  { id: 1, parent_id: null, text: \"First reply to post.\", children: [...] },\n  { id: 6, parent_id: null, text: \"Second reply to post.\" children: [] }\n]\n*/\n```\n\nIn the above example, the base condition is met if `filter()` returns an empty array. The chained `map()` will never be called which contains the callback to invoke the function recursively, thereby breaking the loop.",
+    "answer": "Recursion is the repeated application of a process. In JavaScript, recursion involves functions that call themselves repeatedly until they reach a base condition. The base condition breaks out of the recursion loop because otherwise the function would call itself indefinitely. Recursion is very useful when working with data structures that contain nesting where the number of levels deep is unknown.\n\nFor example, you may have a thread of comments returned from a database that exist in a flat array but need to be nested for display in the UI. Each comment is either a top-level comment (no parent) or is a reply to a parent comment. Comments can be a reply of a reply of a reply... we have no knowledge beforehand the number of levels deep a comment may be. This is where recursion can help.\n\n```js\nconst nest = (items, id = null, link = \"parent_id\") =>\n  items\n    .filter(item => item[link] === id)\n    .map(item => ({ ...item, children: nest(items, item.id) }))\n\nconst comments = [\n  { id: 1, parent_id: null, text: \"First reply to post.\" },\n  { id: 2, parent_id: 1, text: \"First reply to comment #1.\" },\n  { id: 3, parent_id: 1, text: \"Second reply to comment #1.\" },\n  { id: 4, parent_id: 3, text: \"First reply to comment #3.\" },\n  { id: 5, parent_id: 4, text: \"First reply to comment #4.\" },\n  { id: 6, aprent_id: null, text: \"Second reply to post.\" }\n]\n\nnest(comments)\n/*\n[\n  { id: 1, parent_id: null, text: \"First reply to post.\", children: [...] },\n  { id: 6, parent_id: null, text: \"Second reply to post.\" children: [] }\n]\n*/\n```\n\nIn the above example, the base condition is met if `filter()` returns an empty array. The chained `map()` won't invoke the callback function which contains the recursive call, thereby breaking the loop.",
     "goodToHear": [
       "Recursion is useful when working with data structures containing an unknown number of nested structures.",
       "Recursion must have a base condition to be met that breaks out of the loop or it will call itself indefinitely."
@@ -965,7 +1091,7 @@
   {
     "name": "rest.md",
     "question": "What is REST?",
-    "answer": "REST (REpresentational State Transfer) is a software design pattern for network architecture. A RESTful web application exposes data in the form of information about its resources.\n\nGenerally, this concept is used in web applications to manage state. With most applications, there is a common theme of reading, creating, updating, and destroying data. Data is modularized into separate tables like `posts`, `users`, `comments`, and a RESTful API exposes access to this data with:\n\n- An identifier for the resource. This is known as the endpoint or URL for the resource.\n- The operation the server should perform on that resource in the form of an HTTP method or verb. The common HTTP methods are GET, POST, PUT, and DELETE.\n\nHere is an example of the URL and HTTP method with a `posts` resource:\n\n- Reading: `/posts/` => GET\n- Creating: `/posts/new` => POST\n- Updating: `/posts/:id` => PUT\n- Destroying: `/posts/:id` => DELETE",
+    "answer": "REST (REpresentational State Transfer) is a software design pattern for network architecture. A RESTful web application exposes data in the form of information about its resources.\n\nGenerally, this concept is used in web applications to manage state. With most applications, there is a common theme of reading, creating, updating, and destroying data. Data is modularized into separate tables like `posts`, `users`, `comments`, and a RESTful API exposes access to this data with:\n\n* An identifier for the resource. This is known as the endpoint or URL for the resource.\n* The operation the server should perform on that resource in the form of an HTTP method or verb. The common HTTP methods are GET, POST, PUT, and DELETE.\n\nHere is an example of the URL and HTTP method with a `posts` resource:\n\n* Reading: `/posts/` => GET\n* Creating: `/posts/new` => POST\n* Updating: `/posts/:id` => PUT\n* Destroying: `/posts/:id` => DELETE",
     "goodToHear": [
       "Alternatives to this pattern like GraphQL"
     ],
@@ -997,6 +1123,49 @@
       "```js\nfunction greet() {\n  return\n  {\n    message: \"hello\"\n  }\n}\n```"
     ],
     "answerCodeBlocks": []
+  },
+  {
+    "name": "semicolons.md",
+    "question": "Are semicolons required in JavaScript?",
+    "answer": "Sometimes. Due to JavaScript's automatic semicolon insertion, the interpreter places semicolons after most statements. This means semicolons can be omitted in most cases.\n\nHowever, there are some cases where they are required. They are not required at the beginning of a block, but are if they follow a line and:\n\n1.  The line starts with `[`\n\n```js\nconst previousLine = 3\n;[1, 2, previousLine].map(n => n * 2)\n```\n\n2.  The line starts with `(`\n\n```js\nconst previousLine = 3\n;(function() {\n  // ...\n})()\n```\n\nIn the above cases, the interpreter does not insert a semicolon after `3`, and therefore it will see the `3` as attempting object property access or being invoked as a function, which will throw errors.",
+    "goodToHear": [
+      "Semicolons are usually optional in JavaScript but have edge cases where they are required.",
+      "If you don't use semicolons, tools like Prettier will insert semicolons for you in the places where they are required on save in a text editor to prevent errors."
+    ],
+    "links": [],
+    "tags": [
+      "javascript"
+    ],
+    "expertise": 1,
+    "questionCodeBlocks": [],
+    "answerCodeBlocks": [
+      "```js\nconst previousLine = 3\n;[1, 2, previousLine].map(n => n * 2)\n```",
+      "```js\nconst previousLine = 3\n;(function() {\n  // ...\n})()\n```"
+    ]
+  },
+  {
+    "name": "short-circuit-evaluation.md",
+    "question": "What is short-circuit evaluation in JavaScript?",
+    "answer": "Short-circuit evaluation involves logical operations evaluating from left-to-right and stopping early.\n\n```js\ntrue || false\n```\n\nIn the above sample using logical OR, JavaScript won't look at the second operand `false`, because the expression evaluates to `true` regardless. This is known as short-circuit evaluation.\n\nThis also works for logical AND.\n\n```js\nfalse && true\n```\n\nThis means you can have an expression that throws an error if evaluated, and it won't cause issues.\n\n```js\ntrue || nonexistentFunction()\nfalse && nonexistentFunction()\n```\n\nThis remains true for multiple operations because of left-to-right evaluation.\n\n```js\ntrue || nonexistentFunction() || window.nothing.wouldThrowError\ntrue || window.nothing.wouldThrowError\ntrue\n```\n\nA common use case for this behavior is setting default values. If the first operand is falsy the second operand will be evaluated.\n\n```js\nconst options = {}\nconst setting = options.setting || \"default\"\nsetting // \"default\"\n```\n\nAnother common use case is only evaluating an expression if the first operand is truthy.\n\n```js\n// Instead of:\naddEventListener(\"click\", e => {\n  if (e.target.matches(\"span\")) {\n    handleSpanClick(e)\n  }\n})\n\n// You can take advantage of short-circuit evaluation:\naddEventListener(\"click\", e => e.target.matches(\"span\") && handleSpanClick(e))\n```\n\nIn the above case, if `e.target` does not match the `\"span\"` selector, the function will not be called. This is because the first operand will be falsy, causing the second operand to not be evaluated.",
+    "goodToHear": [
+      "Logical operations do not produce a boolean unless the operand(s) evaluate to a boolean."
+    ],
+    "links": [
+      "[JavaScript: What is short-circuit evaluation?](https://codeburst.io/javascript-what-is-short-circuit-evaluation-ff22b2f5608c)"
+    ],
+    "tags": [
+      "javascript"
+    ],
+    "expertise": 1,
+    "questionCodeBlocks": [],
+    "answerCodeBlocks": [
+      "```js\ntrue || false\n```",
+      "```js\nfalse && true\n```",
+      "```js\ntrue || nonexistentFunction()\nfalse && nonexistentFunction()\n```",
+      "```js\ntrue || nonexistentFunction() || window.nothing.wouldThrowError\ntrue || window.nothing.wouldThrowError\ntrue\n```",
+      "```js\nconst options = {}\nconst setting = options.setting || \"default\"\nsetting // \"default\"\n```",
+      "```js\n// Instead of:\naddEventListener(\"click\", e => {\n  if (e.target.matches(\"span\")) {\n    handleSpanClick(e)\n  }\n})\n\n// You can take advantage of short-circuit evaluation:\naddEventListener(\"click\", e => e.target.matches(\"span\") && handleSpanClick(e))\n```"
+    ]
   },
   {
     "name": "sprites.md",
@@ -1054,7 +1223,7 @@
   {
     "name": "this.md",
     "question": "What is the `this` keyword and how does it work?",
-    "answer": "The `this` keyword is an object that represents the context of an executing function. Regular functions can have their `this` value changed with the methods `call()`, `apply()` and `bind()`. Arrow functions implicitly bind `this` so that it refers to the context of its lexical environment, regardless of whether or not its context is set explicitly with `call()`.\n\nHere are some common examples of how `this` works:\n\n##### Object literals\n\n`this` refers to the object itself inside regular functions if the object precedes the invocation of the function.\n\nProperties set as `this` do not refer to the object.\n\n```js\nvar myObject = {\n  property: this,\n  regularFunction: function() {\n    return this\n  },\n  arrowFunction: () => {\n    return this\n  },\n  iife: (function() {\n    return this\n  })()\n}\nmyObject.regularFunction() // myObject\nmyObject[\"regularFunction\"]() // my Object\n\nmyObject.property // NOT myObject; lexical `this`\nmyObject.arrowFunction() // NOT myObject; lexical `this`\nmyObject.iife() // NOT myObject; lexical `this`\nconst regularFunction = myObject.regularFunction\nregularFunction() // NOT myObject; lexical `this`\n```\n\n##### Event listeners\n\n`this` refers to the element listening to the event.\n\n```js\ndocument.body.addEventListener(\"click\", function() {\n  console.log(this) // document.body\n})\n```\n\n##### Constructors\n\n`this` refers to the newly created object.\n\n```js\nclass Example {\n  constructor() {\n    console.log(this) // myExample\n  }\n}\nconst myExample = new Example()\n```\n\n##### Manual\n\nWith `call()` and `apply()`, `this` refers to the object passed as the first argument.\n\n```js\nvar myFunction = function() {\n  return this\n}\nmyFunction.call({ customThis: true }) // { customThis: true }\n```\n\n##### Unwanted `this`\n\nBecause `this` can change depending on the scope, it can have unexpected values when using regular functions.\n\n```js\nvar obj = {\n  arr: [1, 2, 3],\n  doubleArr() {\n    return this.arr.map(function(value) {\n      // this is now this.arr\n      return this.double(value)\n    })\n  },\n  double() {\n    return value * 2\n  }\n}\nobj.doubleArr() // Uncaught TypeError: this.double is not a function\n```",
+    "answer": "The `this` keyword is an object that represents the context of an executing function. Regular functions can have their `this` value changed with the methods `call()`, `apply()` and `bind()`. Arrow functions implicitly bind `this` so that it refers to the context of its lexical environment, regardless of whether or not its context is set explicitly with `call()`.\n\nHere are some common examples of how `this` works:\n\n##### Object literals\n\n`this` refers to the object itself inside regular functions if the object precedes the invocation of the function.\n\nProperties set as `this` do not refer to the object.\n\n```js\nvar myObject = {\n  property: this,\n  regularFunction: function() {\n    return this\n  },\n  arrowFunction: () => {\n    return this\n  },\n  iife: (function() {\n    return this\n  })()\n}\nmyObject.regularFunction() // myObject\nmyObject[\"regularFunction\"]() // my Object\n\nmyObject.property // NOT myObject; lexical `this`\nmyObject.arrowFunction() // NOT myObject; lexical `this`\nmyObject.iife // NOT myObject; lexical `this`\nconst regularFunction = myObject.regularFunction\nregularFunction() // NOT myObject; lexical `this`\n```\n\n##### Event listeners\n\n`this` refers to the element listening to the event.\n\n```js\ndocument.body.addEventListener(\"click\", function() {\n  console.log(this) // document.body\n})\n```\n\n##### Constructors\n\n`this` refers to the newly created object.\n\n```js\nclass Example {\n  constructor() {\n    console.log(this) // myExample\n  }\n}\nconst myExample = new Example()\n```\n\n##### Manual\n\nWith `call()` and `apply()`, `this` refers to the object passed as the first argument.\n\n```js\nvar myFunction = function() {\n  return this\n}\nmyFunction.call({ customThis: true }) // { customThis: true }\n```\n\n##### Unwanted `this`\n\nBecause `this` can change depending on the scope, it can have unexpected values when using regular functions.\n\n```js\nvar obj = {\n  arr: [1, 2, 3],\n  doubleArr() {\n    return this.arr.map(function(value) {\n      // this is now this.arr\n      return this.double(value)\n    })\n  },\n  double() {\n    return value * 2\n  }\n}\nobj.doubleArr() // Uncaught TypeError: this.double is not a function\n```",
     "goodToHear": [
       "In non-strict mode, global `this` is the global object (`window` in browsers), while in strict mode global `this` is `undefined`.",
       "`Function.prototype.call` and `Function.prototype.apply` set the `this` context of an executing function as the first argument, with `call` accepting a variadic number of arguments thereafter, and `apply` accepting an array as the second argument which are fed to the function in a variadic manner.",
@@ -1070,7 +1239,7 @@
     "expertise": 2,
     "questionCodeBlocks": [],
     "answerCodeBlocks": [
-      "```js\nvar myObject = {\n  property: this,\n  regularFunction: function() {\n    return this\n  },\n  arrowFunction: () => {\n    return this\n  },\n  iife: (function() {\n    return this\n  })()\n}\nmyObject.regularFunction() // myObject\nmyObject[\"regularFunction\"]() // my Object\n\nmyObject.property // NOT myObject; lexical `this`\nmyObject.arrowFunction() // NOT myObject; lexical `this`\nmyObject.iife() // NOT myObject; lexical `this`\nconst regularFunction = myObject.regularFunction\nregularFunction() // NOT myObject; lexical `this`\n```",
+      "```js\nvar myObject = {\n  property: this,\n  regularFunction: function() {\n    return this\n  },\n  arrowFunction: () => {\n    return this\n  },\n  iife: (function() {\n    return this\n  })()\n}\nmyObject.regularFunction() // myObject\nmyObject[\"regularFunction\"]() // my Object\n\nmyObject.property // NOT myObject; lexical `this`\nmyObject.arrowFunction() // NOT myObject; lexical `this`\nmyObject.iife // NOT myObject; lexical `this`\nconst regularFunction = myObject.regularFunction\nregularFunction() // NOT myObject; lexical `this`\n```",
       "```js\ndocument.body.addEventListener(\"click\", function() {\n  console.log(this) // document.body\n})\n```",
       "```js\nclass Example {\n  constructor() {\n    console.log(this) // myExample\n  }\n}\nconst myExample = new Example()\n```",
       "```js\nvar myFunction = function() {\n  return this\n}\nmyFunction.call({ customThis: true }) // { customThis: true }\n```",
@@ -1198,7 +1367,7 @@
   {
     "name": "xss.md",
     "question": "What is a cross-site scripting attack (XSS) and how do you prevent it?",
-    "answer": "XSS refers to client-side code injection where the attacker injects malicious scripts into a legitimate website or web application. This is often achieved when the application does not validate user input and freely injects dynamic HTML content.\n\nFor example, a comment system will be at risk if it does not validate or escape user input. If the comment contains unescaped HTML, the comment can inject a `<script>` tag into the website that other users will execute against their knowledge.\n\n- The malicious script has access to cookies which are often used to store session tokens. If an attacker can obtain a user’s session cookie, they can impersonate the user.\n- The script can arbitrarily manipulate the DOM of the page the script is executing in, allowing the attacker to insert pieces of content that appear to be a real part of the website.\n- The script can use AJAX to send HTTP requests with arbitrary content to arbitrary destinations.",
+    "answer": "XSS refers to client-side code injection where the attacker injects malicious scripts into a legitimate website or web application. This is often achieved when the application does not validate user input and freely injects dynamic HTML content.\n\nFor example, a comment system will be at risk if it does not validate or escape user input. If the comment contains unescaped HTML, the comment can inject a `<script>` tag into the website that other users will execute against their knowledge.\n\n* The malicious script has access to cookies which are often used to store session tokens. If an attacker can obtain a user’s session cookie, they can impersonate the user.\n* The script can arbitrarily manipulate the DOM of the page the script is executing in, allowing the attacker to insert pieces of content that appear to be a real part of the website.\n* The script can use AJAX to send HTTP requests with arbitrary content to arbitrary destinations.",
     "goodToHear": [
       "On the client, using `textContent` instead of `innerHTML` prevents the browser from running the string through the HTML parser which would execute scripts in it.",
       "On the server, escaping HTML tags will prevent the browser from parsing the user input as actual HTML and therefore won't execute the script."

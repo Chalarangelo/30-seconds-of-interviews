@@ -7,7 +7,7 @@ const { attempt, readQuestions, getCodeBlocks } = require("./util")
 console.time("Extractor")
 
 attempt("questions.json generation", () => {
-  const output = Object.entries(readQuestions()).map(([name, contents]) => {
+  const output = Object.entries(readQuestions()).map(([ name, contents ]) => {
     const question = contents
       .slice(0 + 4, contents.indexOf("#### Answer"))
       .trim()

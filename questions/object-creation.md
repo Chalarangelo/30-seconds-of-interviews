@@ -83,7 +83,7 @@ Object.create(personProto, {
 
 ##### Additional links
 
-* [Factory functions vs constructor functions vs classes](https://medium.com/javascript-scene/javascript-factory-functions-vs-constructor-functions-vs-classes-2f22ceddf33e)
+<!-- Whenever possible, link a more detailed explanation. -->
 
 <!-- tags: (javascript) -->
 

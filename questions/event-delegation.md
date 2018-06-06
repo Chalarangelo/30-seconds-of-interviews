@@ -8,8 +8,8 @@ DOM events provide useful information about the element that initiated the event
 
 This provides two main benefits:
 
-- It increases performance and reduces memory consumption by only needing to register a single event listener to handle potentially thousands of elements.
-- If elements are dynamically added to the parent, there is no need to register new event listeners for them.
+* It increases performance and reduces memory consumption by only needing to register a single event listener to handle potentially thousands of elements.
+* If elements are dynamically added to the parent, there is no need to register new event listeners for them.
 
 Instead of:
 
@@ -31,13 +31,13 @@ document.addEventListener("click", e => {
 
 #### Good to hear
 
-- The difference between event bubbling and capturing
+* The difference between event bubbling and capturing
 
 ##### Additional links
 
 <!-- Whenever possible, link a more detailed explanation. -->
 
-- [Event Delegation](https://davidwalsh.name/event-delegate)
+* [Event Delegation](https://davidwalsh.name/event-delegate)
 
 <!-- tags: (javascript) -->
 
