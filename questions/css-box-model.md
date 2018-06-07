@@ -1,0 +1,31 @@
+### Your question goes here. Keep it straightforward.
+
+Describe the layout of the CSS Box Model and briefly describe each component.
+
+#### Answer
+
+<!-- Your answer goes here. -->
+
+*Content*: The inner-most part of the box filled with text or an image or some type of content</br>
+
+*Padding*: The transparent area surrounding the content</br>
+
+*Border*: The area surrounding the padding (if any) and content</br>
+
+*Margin*: The transparent outer-most layer that surrounds the border
+
+#### Good to hear
+
+<!-- Whenever possible, include the short list of bullet points that sum up the answer. -->
+This is a very common question to be asked during a front-end interview and something that you should be very comfortable with.
+
+##### Additional links
+
+<!-- Whenever possible, link a more detailed explanation. -->
+
+* [W3School's CSS Box Model Page](https://www.w3schools.com/Css/css_boxmodel.asp)
+* [Mozilla's Intro to the CSS Box Model](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Box_Model/Introduction_to_the_CSS_box_model)
+
+<!-- tags: (css) -->
+
+<!-- expertise: (1) -->
