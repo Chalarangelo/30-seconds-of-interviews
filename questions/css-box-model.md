@@ -1,6 +1,4 @@
-### Your question goes here. Keep it straightforward.
-
-Describe the layout of the CSS Box Model and briefly describe each component.
+### Describe the layout of the CSS Box Model and briefly describe each component.
 
 #### Answer
 
