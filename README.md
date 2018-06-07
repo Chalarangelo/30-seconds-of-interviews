@@ -49,14 +49,11 @@ Join our [Gitter channel](https://gitter.im/30-seconds-of-interviews/Lobby) to h
 <details>
 <summary>View contents</summary>
 
-* [Create a function `batches` that returns the maximum number of whole batches that can be cooked from a recipe.
-It accepts two objects as arguments: the first object is the recipe for the food, while the second argument is the available ingredients. Each ingredient's value is number representing how many units there are.
-
-`batches(recipe, available)`](#create-a-function-batches-that-returns-the-maximum-number-of-whole-batches-that-can-be-cooked-from-a-recipe-it-accepts-two-objects-as-arguments-the-first-object-is-the-recipe-for-the-food-while-the-second-argument-is-the-available-ingredients-each-ingredients-value-is-number-representing-how-many-units-there-are--batchesrecipe-available)
+* [Create a function `batches` that returns the maximum number of whole batches that can be cooked from a recipe.](#create-a-function-batches-that-returns-the-maximum-number-of-whole-batches-that-can-be-cooked-from-a-recipe)
 * [What is Big O Notation?](#what-is-big-o-notation)
 * [Create a standalone function `bind` that is functionally equivalent to the method `Function.prototype.bind`.](#create-a-standalone-function-bind-that-is-functionally-equivalent-to-the-method-functionprototypebind)
 * [How can you avoid callback hells?](#how-can-you-avoid-callback-hells)
-* [What is a callback?](#what-is-a-callback)
+* [What is a callback? Can you show an example using one?](#what-is-a-callback-can-you-show-an-example-using-one)
 * [How do you clone an object in JavaScript?](#how-do-you-clone-an-object-in-javascript)
 * [What is a closure? Can you give a useful example of one?](#what-is-a-closure-can-you-give-a-useful-example-of-one)
 * [How do you compare two objects in JavaScript?](#how-do-you-compare-two-objects-in-javascript)
@@ -77,7 +74,7 @@ It accepts two objects as arguments: the first object is the recipe for the food
 * [Explain the differences between imperative and declarative programming.](#explain-the-differences-between-imperative-and-declarative-programming)
 * [Create a function that masks a string of characters with `#` except for the last four (4) characters.](#create-a-function-that-masks-a-string-of-characters-with--except-for-the-last-four-4-characters)
 * [What is memoization?](#what-is-memoization)
-* [Explain the difference between mutability and immutability, and mutating vs non-mutating methods.](#explain-the-difference-between-mutability-and-immutability-and-mutating-vs-non-mutating-methods)
+* [Contrast mutable and immutable values, and mutating vs non-mutating methods.](#contrast-mutable-and-immutable-values-and-mutating-vs-non-mutating-methods)
 * [What is the only value not equal to itself in JavaScript?](#what-is-the-only-value-not-equal-to-itself-in-javascript)
 * [NodeJS often uses a callback pattern where if an error is encountered during execution, this error is passed as the first argument to the callback. What are the advantages of this pattern?](#nodejs-often-uses-a-callback-pattern-where-if-an-error-is-encountered-during-execution-this-error-is-passed-as-the-first-argument-to-the-callback-what-are-the-advantages-of-this-pattern)
 * [What is the event loop in Node.js?](#what-is-the-event-loop-in-nodejs)
@@ -86,6 +83,7 @@ It accepts two objects as arguments: the first object is the recipe for the food
 * [What is the difference between a parameter and an argument?](#what-is-the-difference-between-a-parameter-and-an-argument)
 * [Does JavaScript pass by value or by reference?](#does-javascript-pass-by-value-or-by-reference)
 * [Create a function `pipe` that performs left-to-right function composition by returning a function that accepts one argument.](#create-a-function-pipe-that-performs-left-to-right-function-composition-by-returning-a-function-that-accepts-one-argument)
+* [What is the difference between the postfix `i++` and prefix `++i` increment operators?](#what-is-the-difference-between-the-postfix-i-and-prefix-i-increment-operators)
 * [In which states can a Promise be?](#in-which-states-can-a-promise-be)
 * [What are Promises?](#what-are-promises)
 * [How does prototypal inheritance differ from classical inheritance?](#how-does-prototypal-inheritance-differ-from-classical-inheritance)
@@ -225,50 +223,27 @@ When either of these options happens, the associated handlers queued up by a pro
 <br>[⬆ Back to top](#table-of-contents)
 
 
-### Create a function `batches` that returns the maximum number of whole batches that can be cooked from a recipe.
-
-It accepts two objects as arguments: the first object is the recipe for the food, while the second argument is the available ingredients. Each ingredient's value is number representing how many units there are.
-
-`batches(recipe, available)`
-
-```js
-// 0 batches can be made
-batches(
-  { milk: 100, butter: 50, flour: 5 },
-  { milk: 132, butter: 48, flour: 51 }
-)
-batches(
-  { milk: 100, flour: 4, sugar: 10, butter: 5 },
-  { milk: 1288, flour: 9, sugar: 95 }
-)
-
-// 1 batch can be made
-batches(
-  { milk: 100, butter: 50, cheese: 10 },
-  { milk: 198, butter: 52, cheese: 10 }
-)
-
-// 2 batches can be made
-batches(
-  { milk: 2, sugar: 40, butter: 20 },
-  { milk: 5, sugar: 120, butter: 500 }
-)
-```
+### What is the difference between the postfix `i++` and prefix `++i` increment operators?
 
 <details>
 <summary>View answer</summary>
 
-We must have all ingredients of the recipe available, and in quantities that are more than or equal to the number of units required. If just one of ingredients is not available or lower than needed, we cannot make a single batch.
+Both increment the variable value by 1. The difference is what they evaluate to.
 
-Use `Object.keys()` to return the ingredients of the recipe as an array, then use `Array.prototype.map()` to map each ingredient to the ratio of available units to the amount required by the recipe. If one of the ingredients required by the recipe is not available at all, the ratio will evaluate to `NaN`, so the logical OR operator can be used to fallback to `0` in this case.
-
-Use the spread `...` operator to feed all the array of ratios into `Math.min()` to determine the lowest ratio. Passing this entire result into `Math.floor()` rounds down to return the maximum number of whole batches.
+The postfix increment operator evaluates to the value _before_ it was incremented.
 
 ```js
-const batches = (recipe, available) =>
-  Math.floor(
-    Math.min(...Object.keys(recipe).map(k => available[k] / recipe[k] || 0))
-  )
+let i = 0
+i++ // 0
+// i === 1
+```
+
+The prefix increment operator evaluates to the value _after_ it was incremented.
+
+```js
+let i = 0
+++i // 1
+// i === 1
 ```
 
 
@@ -289,84 +264,74 @@ const batches = (recipe, available) =>
 <br>[⬆ Back to top](#table-of-contents)
 
 
-### What are the differences between `var`, `let`, `const` and no keyword statements?
+### NodeJS often uses a callback pattern where if an error is encountered during execution, this error is passed as the first argument to the callback. What are the advantages of this pattern?
+
+```js
+fs.readFile(filePath, function(err, data) {
+  if (err) {
+    // handle the error, the return is important here
+    // so execution stops here
+    return console.log(err)
+  }
+  // use the data object
+  console.log(data)
+})
+```
 
 <details>
 <summary>View answer</summary>
 
-##### No keyword
+Advantages include:
 
-When no keyword exists before a variable assignment, it is either assigning a global variable if one does not exist, or reassigns an already declared variable. In non-strict mode, if the variable has not yet been declared, it will assign the variable as a property of the global object (`window` in browsers). In strict mode, it will throw an error to prevent unwanted global variables from being created.
+* Not needing to process data if there is no need to even reference it
+* Having a consistent API leads to more adoption
+* Ability to easily adapt a callback pattern that will lead to more maintainable code
 
-##### var
+As you can see from below example, the callback is called with null as its first argument if there is no error. However, if there is an error, you create an Error object, which then becomes the callback's only parameter. The callback function allows a user to easily know whether or not an error occurred.
 
-`var` was the default statement to declare a variable until ES2015. It creates a function-scoped variable that can be reassigned and redeclared. However, due to its lack of block scoping, it can cause issues if the variable is being reused in a loop that contains an asynchronous callback because the variable will continue to exist outside of the block scope.
-
-Below, by the time the the `setTimeout` callback executes, the loop has already finished and the `i` variable is `10`, so all ten callbacks reference the same variable available in the function scope.
-
-```js
-for (var i = 0; i < 10; i++) {
-  setTimeout(() => {
-    // logs `10` ten times
-    console.log(i)
-  })
-}
-
-/* Solutions with `var` */
-for (var i = 0; i < 10; i++) {
-  // Passed as an argument will use the value as-is in
-  // that point in time
-  setTimeout(console.log, 0, i)
-}
-
-for (var i = 0; i < 10; i++) {
-  // Create a new function scope that will use the value
-  // as-is in that point in time
-  ;(i => {
-    setTimeout(() => {
-      console.log(i)
-    })
-  })(i)
-}
-```
-
-##### let
-
-`let` was introduced in ES2015 and is the new preferred way to declare variables that will be reassigned later. Trying to redeclare a variable again will throw an error. It is block-scoped so that using it in a loop will keep it scoped to the iteration.
+This practice is also called the _Node.js error convention_, and this kind of callback implementations are called _error-first callbacks_.
 
 ```js
-for (let i = 0; i < 10; i++) {
-  setTimeout(() => {
-    // logs 0, 1, 2, 3, ...
-    console.log(i)
-  })
+var isTrue = function(value, callback) {
+  if (value === true) {
+    callback(null, "Value was true.")
+  } else {
+    callback(new Error("Value is not true!"))
+  }
 }
-```
 
-##### const
+var callback = function(error, retval) {
+  if (error) {
+    console.log(error)
+    return
+  }
+  console.log(retval)
+}
 
-`const` was introduced in ES2015 and is the new preferred default way to declare all variables if they won't be reassigned later, even for objects that will be mutated (as long as the reference to the object does not change). It is block-scoped and cannot be reassigned.
+isTrue(false, callback)
+isTrue(true, callback)
 
-```js
-const myObject = {}
-myObject.prop = "hello!" // No error
-myObject = "hello" // Error
+/*
+  { stack: [Getter/Setter],
+    arguments: undefined,
+    type: undefined,
+    message: 'Value is not true!' }
+  Value was true.
+*/
 ```
 
 
 #### Good to hear
 
 
-* All declarations are hoisted to the top of their scope.
-* However, with `let` and `const` there is a concept called the temporal dead zone (TDZ). While the declarations are still hoisted, there is a period between entering scope and being declared where they cannot be accessed.
-* Show a common issue with using `var` and how `let` can solve it, as well as a solution that keeps `var`.
-* `var` should be avoided whenever possible and prefer `const` as the default declaration statement for all variables unless they will be reassigned later, then use `let` if so.
+* This is just a convention. However, you should stick to it.
 
 
 ##### Additional links
 
 
-* [`let` vs `const`](https://wesbos.com/let-vs-const/)
+* [The Node.js Way Understanding Error-First Callbacks](http://fredkschott.com/post/2014/03/understanding-error-first-callbacks-in-node-js/)
+* [What are the error conventions?](https://docs.nodejitsu.com/articles/errors/what-are-the-error-conventions)
 </details>
 
 
@@ -374,20 +339,33 @@ myObject = "hello" // Error
 <br>[⬆ Back to top](#table-of-contents)
 
 
-### What is a callback?
+### What is a callback? Can you show an example using one?
 
 <details>
 <summary>View answer</summary>
 
 Callbacks are functions passed as an argument to another function to be executed once an event has occurred or a certain task is complete, often used in asynchronous code. Callback functions are invoked later by a piece of code but can be declared on initialization without being invoked.
 
-As an example, event listeners are callbacks that are only executed when a specific event occurs.
+As an example, event listeners are asynchronous callbacks that are only executed when a specific event occurs.
 
 ```js
 function onClick() {
   console.log("The user clicked on the page.")
 }
 document.addEventListener("click", onClick)
+```
+
+However, callbacks can also be synchronous. The following `map` function takes a callback function that is invoked synchronously for each iteration of the loop (array element).
+
+```js
+const map = (arr, callback) => {
+  const result = []
+  for (let i = 0; i < arr.length; i++) {
+    result.push(callback(arr[i], i))
+  }
+  return result
+}
+map([1, 2, 3, 4, 5], n => n * 2) // [2, 4, 6, 8, 10]
 ```
 
 
@@ -603,31 +581,67 @@ The DOM (Document Object Model) is a cross-platform API that treats HTML and XML
 <br>[⬆ Back to top](#table-of-contents)
 
 
-### What is a cross-site scripting attack (XSS) and how do you prevent it?
+### Create a function `batches` that returns the maximum number of whole batches that can be cooked from a recipe.
+
+```js
+/**
+It accepts two objects as arguments: the first object is the recipe
+for the food, while the second object is the available ingredients.
+Each ingredient's value is number representing how many units there are.
+
+`batches(recipe, available)`
+*/
+
+// 0 batches can be made
+batches(
+  { milk: 100, butter: 50, flour: 5 },
+  { milk: 132, butter: 48, flour: 51 }
+)
+batches(
+  { milk: 100, flour: 4, sugar: 10, butter: 5 },
+  { milk: 1288, flour: 9, sugar: 95 }
+)
+
+// 1 batch can be made
+batches(
+  { milk: 100, butter: 50, cheese: 10 },
+  { milk: 198, butter: 52, cheese: 10 }
+)
+
+// 2 batches can be made
+batches(
+  { milk: 2, sugar: 40, butter: 20 },
+  { milk: 5, sugar: 120, butter: 500 }
+)
+```
 
 <details>
 <summary>View answer</summary>
 
-XSS refers to client-side code injection where the attacker injects malicious scripts into a legitimate website or web application. This is often achieved when the application does not validate user input and freely injects dynamic HTML content.
+We must have all ingredients of the recipe available, and in quantities that are more than or equal to the number of units required. If just one of ingredients is not available or lower than needed, we cannot make a single batch.
 
-For example, a comment system will be at risk if it does not validate or escape user input. If the comment contains unescaped HTML, the comment can inject a `<script>` tag into the website that other users will execute against their knowledge.
+Use `Object.keys()` to return the ingredients of the recipe as an array, then use `Array.prototype.map()` to map each ingredient to the ratio of available units to the amount required by the recipe. If one of the ingredients required by the recipe is not available at all, the ratio will evaluate to `NaN`, so the logical OR operator can be used to fallback to `0` in this case.
 
-* The malicious script has access to cookies which are often used to store session tokens. If an attacker can obtain a user’s session cookie, they can impersonate the user.
-* The script can arbitrarily manipulate the DOM of the page the script is executing in, allowing the attacker to insert pieces of content that appear to be a real part of the website.
-* The script can use AJAX to send HTTP requests with arbitrary content to arbitrary destinations.
+Use the spread `...` operator to feed the array of all the ingredient ratios into `Math.min()` to determine the lowest ratio. Passing this entire result into `Math.floor()` rounds down to return the maximum number of whole batches.
+
+```js
+const batches = (recipe, available) =>
+  Math.floor(
+    Math.min(...Object.keys(recipe).map(k => available[k] / recipe[k] || 0))
+  )
+```
 
 
 #### Good to hear
 
 
-* On the client, using `textContent` instead of `innerHTML` prevents the browser from running the string through the HTML parser which would execute scripts in it.
-* On the server, escaping HTML tags will prevent the browser from parsing the user input as actual HTML and therefore won't execute the script.
+
 
 
 ##### Additional links
 
 
-* [Cross-Site Scripting Attack (XSS)](https://www.acunetix.com/websitesecurity/cross-site-scripting/)
+
 </details>
 
 
@@ -1340,81 +1354,6 @@ The first `console.log` outputs `true` because JavaScript's compiler performs ty
 <br>[⬆ Back to top](#table-of-contents)
 
 
-### NodeJS often uses a callback pattern where if an error is encountered during execution, this error is passed as the first argument to the callback. What are the advantages of this pattern?
-
-```js
-fs.readFile(filePath, function(err, data) {
-  if (err) {
-    // handle the error, the return is important here
-    // so execution stops here
-    return console.log(err)
-  }
-  // use the data object
-  console.log(data)
-})
-```
-
-<details>
-<summary>View answer</summary>
-
-Advantages include:
-
-* Not needing to process data if there is no need to even reference it
-* Having a consistent API leads to more adoption
-* Ability to easily adapt a callback pattern that will lead to more maintainable code
-
-As you can see from below example, the callback is called with null as its first argument if there is no error. However, if there is an error, you create an Error object, which then becomes the callback's only parameter. The callback function allows a user to easily know whether or not an error occurred.
-
-This practice is also called the _Node.js error convention_, and this kind of callback implementations are called _error-first callbacks_.
-
-```js
-var isTrue = function(value, callback) {
-  if (value === true) {
-    callback(null, "Value was true.")
-  } else {
-    callback(new Error("Value is not true!"))
-  }
-}
-
-var callback = function(error, retval) {
-  if (error) {
-    console.log(error)
-    return
-  }
-  console.log(retval)
-}
-
-isTrue(false, callback)
-isTrue(true, callback)
-
-/*
-  { stack: [Getter/Setter],
-    arguments: undefined,
-    type: undefined,
-    message: 'Value is not true!' }
-  Value was true.
-*/
-```
-
-
-#### Good to hear
-
-
-* This is just a convention. However, you should stick to it.
-
-
-##### Additional links
-
-
-* [The Node.js Way Understanding Error-First Callbacks](http://fredkschott.com/post/2014/03/understanding-error-first-callbacks-in-node-js/)
-* [What are the error conventions?](https://docs.nodejitsu.com/articles/errors/what-are-the-error-conventions)
-</details>
-
-
-
-<br>[⬆ Back to top](#table-of-contents)
-
-
 ### How does prototypal inheritance differ from classical inheritance?
 
 <details>
@@ -1435,6 +1374,42 @@ In the prototypal inheritance paradigm, object instances inherit directly from o
 
 
 * [MDN docs for inheritance and the prototype chain](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Inheritance_and_the_prototype_chain)
+</details>
+
+
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
+### What are Promises?
+
+<details>
+<summary>View answer</summary>
+
+The `Promise` object represents the eventual completion (or failure) of an asynchronous operation, and its resulting value.
+An example can be the following snippet, which after 100ms prints out the result string to the standard output. Also, note the catch, which can be used for error handling. `Promise`s are chainable.
+
+```js
+new Promise((resolve, reject) => {
+  setTimeout(() => {
+    resolve("result")
+  }, 100)
+})
+  .then(console.log)
+  .catch(console.error)
+```
+
+
+#### Good to hear
+
+
+* Take a look into the other questions regarding `Promise`s!
+
+
+##### Additional links
+
+
+* [Master the JavaScript Interview: What is a Promise?](https://medium.com/javascript-scene/master-the-javascript-interview-what-is-a-promise-27fc71e772618)
 </details>
 
 
@@ -1626,42 +1601,6 @@ JavaScript always passes by value. However, with objects, the value is a referen
 <br>[⬆ Back to top](#table-of-contents)
 
 
-### What are Promises?
-
-<details>
-<summary>View answer</summary>
-
-The `Promise` object represents the eventual completion (or failure) of an asynchronous operation, and its resulting value.
-An example can be the following snippet, which after 100ms prints out the result string to the standard output. Also, note the catch, which can be used for error handling. `Promise`s are chainable.
-
-```js
-new Promise((resolve, reject) => {
-  setTimeout(() => {
-    resolve("result")
-  }, 100)
-})
-  .then(console.log)
-  .catch(console.error)
-```
-
-
-#### Good to hear
-
-
-* Take a look into the other questions regarding `Promise`s!
-
-
-##### Additional links
-
-
-* [Master the JavaScript Interview: What is a Promise?](https://medium.com/javascript-scene/master-the-javascript-interview-what-is-a-promise-27fc71e772618)
-</details>
-
-
-
-<br>[⬆ Back to top](#table-of-contents)
-
-
 ### Create a standalone function `bind` that is functionally equivalent to the method `Function.prototype.bind`.
 
 ```js
@@ -1699,28 +1638,116 @@ const bind = (fn, context) => (...args) => fn.apply(context, args)
 <br>[⬆ Back to top](#table-of-contents)
 
 
-### What is functional programming?
+### What are the differences between `var`, `let`, `const` and no keyword statements?
 
 <details>
 <summary>View answer</summary>
 
-Functional programming is a paradigm in which programs are built in a declarative manner using pure functions that avoid shared state and mutable data. Functions that always return the same value for the same input and don't produce side effects are the pillar of functional programming. Many programmers consider this to be the best approach to software development as it reduces bugs and cognitive load.
+##### No keyword
+
+When no keyword exists before a variable assignment, it is either assigning a global variable if one does not exist, or reassigns an already declared variable. In non-strict mode, if the variable has not yet been declared, it will assign the variable as a property of the global object (`window` in browsers). In strict mode, it will throw an error to prevent unwanted global variables from being created.
+
+##### var
+
+`var` was the default statement to declare a variable until ES2015. It creates a function-scoped variable that can be reassigned and redeclared. However, due to its lack of block scoping, it can cause issues if the variable is being reused in a loop that contains an asynchronous callback because the variable will continue to exist outside of the block scope.
+
+Below, by the time the the `setTimeout` callback executes, the loop has already finished and the `i` variable is `10`, so all ten callbacks reference the same variable available in the function scope.
+
+```js
+for (var i = 0; i < 10; i++) {
+  setTimeout(() => {
+    // logs `10` ten times
+    console.log(i)
+  })
+}
+
+/* Solutions with `var` */
+for (var i = 0; i < 10; i++) {
+  // Passed as an argument will use the value as-is in
+  // that point in time
+  setTimeout(console.log, 0, i)
+}
+
+for (var i = 0; i < 10; i++) {
+  // Create a new function scope that will use the value
+  // as-is in that point in time
+  ;(i => {
+    setTimeout(() => {
+      console.log(i)
+    })
+  })(i)
+}
+```
+
+##### let
+
+`let` was introduced in ES2015 and is the new preferred way to declare variables that will be reassigned later. Trying to redeclare a variable again will throw an error. It is block-scoped so that using it in a loop will keep it scoped to the iteration.
+
+```js
+for (let i = 0; i < 10; i++) {
+  setTimeout(() => {
+    // logs 0, 1, 2, 3, ...
+    console.log(i)
+  })
+}
+```
+
+##### const
+
+`const` was introduced in ES2015 and is the new preferred default way to declare all variables if they won't be reassigned later, even for objects that will be mutated (as long as the reference to the object does not change). It is block-scoped and cannot be reassigned.
+
+```js
+const myObject = {}
+myObject.prop = "hello!" // No error
+myObject = "hello" // Error
+```
 
 
 #### Good to hear
 
 
-* Cleaner, more concise development experience
-* Simple function composition
-* Features of JavaScript that enable functional programming (`.map`, `.reduce` etc.)
-* JavaScript is multi-paradigm programming language (Object-Oriented Programming and Functional Programming live in harmony)
+* All declarations are hoisted to the top of their scope.
+* However, with `let` and `const` there is a concept called the temporal dead zone (TDZ). While the declarations are still hoisted, there is a period between entering scope and being declared where they cannot be accessed.
+* Show a common issue with using `var` and how `let` can solve it, as well as a solution that keeps `var`.
+* `var` should be avoided whenever possible and prefer `const` as the default declaration statement for all variables unless they will be reassigned later, then use `let` if so.
 
 
 ##### Additional links
 
 
-* [Javascript and Functional Programming: An Introduction](https://hackernoon.com/javascript-and-functional-programming-an-introduction-286aa625e26d)
-* [Master the JavaScript Interview: What is Functional Programming?](https://medium.com/javascript-scene/master-the-javascript-interview-what-is-functional-programming-7f218c68b3a0)
+* [`let` vs `const`](https://wesbos.com/let-vs-const/)
+</details>
+
+
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
+### What is a cross-site scripting attack (XSS) and how do you prevent it?
+
+<details>
+<summary>View answer</summary>
+
+XSS refers to client-side code injection where the attacker injects malicious scripts into a legitimate website or web application. This is often achieved when the application does not validate user input and freely injects dynamic HTML content.
+
+For example, a comment system will be at risk if it does not validate or escape user input. If the comment contains unescaped HTML, the comment can inject a `<script>` tag into the website that other users will execute against their knowledge.
+
+* The malicious script has access to cookies which are often used to store session tokens. If an attacker can obtain a user’s session cookie, they can impersonate the user.
+* The script can arbitrarily manipulate the DOM of the page the script is executing in, allowing the attacker to insert pieces of content that appear to be a real part of the website.
+* The script can use AJAX to send HTTP requests with arbitrary content to arbitrary destinations.
+
+
+#### Good to hear
+
+
+* On the client, using `textContent` instead of `innerHTML` prevents the browser from running the string through the HTML parser which would execute scripts in it.
+* On the server, escaping HTML tags will prevent the browser from parsing the user input as actual HTML and therefore won't execute the script.
+
+
+##### Additional links
+
+
+* [Cross-Site Scripting Attack (XSS)](https://www.acunetix.com/websitesecurity/cross-site-scripting/)
 </details>
 
 
@@ -1765,12 +1792,117 @@ const pipe = (...fns) => x => fns.reduce((v, fn) => fn(v), x)
 <br>[⬆ Back to top](#table-of-contents)
 
 
+### What is Big O Notation?
+
+<details>
+<summary>View answer</summary>
+
+Big O notation is used in Computer Science to describe the time complexity of an algorithm. The best algorithms will execute the fastest and have the simplest complexity.
+
+Algorithms don't always perform the same and may vary based on the data they are supplied. While in some cases they will execute quickly, in other cases they will execute slowly, even with the same number of elements to deal with.
+
+In these examples, the base time is 1 element = `1ms`.
+
+##### O(1)
+
+```js
+arr[arr.length - 1]
+```
+
+* 1000 elements = `1ms`
+
+Constant time complexity. No matter how many elements the array has, it will theoretically take (excluding real-world variation) the same amount of time to execute.
+
+##### O(N)
+
+```js
+arr.filter(fn)
+```
+
+* 1000 elements = `1000ms`
+
+Linear time complexity. The execution time will increase linearly with the number of elements the array has. If the array has 1000 elements and the function takes 1ms to execute, 7000 elements will take 7ms to execute. This is because the function must iterate through all elements of the array before returning a result.
+
+##### O([1, N])
+
+```js
+arr.some(fn)
+```
+
+* 1000 elements = `1ms <= x <= 1000ms`
+
+The execution time varies depending on the data supplied to the function, it may return very early or very late. The best case here is O(1) and the worst case is O(N).
+
+##### O(logN)
+
+```js
+arr.sort(fn)
+```
+
+* 1000 elements = `3ms`
+
+Browsers usually implement the quicksort algorithm for the `sort()` method which is logN time complexity. This is very efficient for large collections.
+
+##### O(N^2)
+
+```js
+for (let i = 0; i < arr.length; i++) {
+  for (let j = 0; j < arr.length; j++) {
+    // ...
+  }
+}
+```
+
+* 1000 elements = `1000000ms`
+
+The execution time rises quadratically with the number of elements. Usually the result of nesting loops.
+
+##### O(N!)
+
+```js
+const permutations = arr => {
+  if (arr.length <= 2) return arr.length === 2 ? [arr, [arr[1], arr[0]]] : arr
+  return arr.reduce(
+    (acc, item, i) =>
+      acc.concat(
+        permutations([...arr.slice(0, i), ...arr.slice(i + 1)]).map(val => [
+          item,
+          ...val
+        ])
+      ),
+    []
+  )
+}
+```
+
+* 1000 elements = `Infinity` (practically) ms
+
+The execution time rises extremely fast with even just 1 addition to the array.
+
+
+#### Good to hear
+
+
+* Be wary of nesting loops as execution time increases exponentially.
+
+
+##### Additional links
+
+
+* [Big O Notation in JavaScript](https://medium.com/cesars-tech-insights/big-o-notation-javascript-25c79f50b19b)
+</details>
+
+
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
 ### What is a pure function?
 
 <details>
 <summary>View answer</summary>
 
-A pure function is function that satisfies these two conditions:
+A pure function is a function that satisfies these two conditions:
 
 * Given the same input, the function returns the same output.
 * The function doesn't cause side effects outside of the function's scope (i.e. mutate data outside the function or data supplied to the function).
@@ -1805,8 +1937,7 @@ const c = arr => arr.sort((a, b) => a - b)
 ##### Additional links
 
 
-* [MDN docs for `null`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null)
-* [MDN docs for `undefined`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined)
+* [Pure functions in JavaScript](http://www.nicoespeon.com/en/2015/01/pure-functions-javascript/)
 </details>
 
 
@@ -1868,104 +1999,25 @@ In the above example, the base condition is met if `filter()` returns an empty a
 <br>[⬆ Back to top](#table-of-contents)
 
 
-### What is Big O Notation?
+### What is the only value not equal to itself in JavaScript?
 
 <details>
 <summary>View answer</summary>
 
-Big O notation is used in Computer Science to describe time complexity of an algorithm. The best algorithms will execute the fastest and have the simplest complexity.
-
-Algorithms don't always perform the same and may vary based on the data they are supplied. While in some cases they will execute quickly, in other cases they will execute slowly, even with the same number of elements to deal with.
-
-In these examples, the base time is `1ms` to make it more familiar.
-
-##### O(1)
-
-```js
-arr[arr.length - 1]
-```
-
-Constant time complexity. No matter how many elements the array has, it will theoretically take (excluding real-world variation) the same amount of time to execute.
-
-* 1000 elements = `1ms`
-
-##### O(N)
-
-```js
-arr.filter(fn)
-```
-
-Linear time complexity. The execution time will increase linearly with the number of elements the array has. If the array has 1000 elements and the function takes 1ms to execute, 7000 elements will take 7ms to execute. This is because the function must iterate through all elements of the array before returning a result.
-
-* 1000 elements = `1000ms`
-
-##### O([1, N])
-
-```js
-arr.some(fn)
-```
-
-* 1000 elements = `1ms <= x <= 1000ms`
-
-The execution time varies depending on the data supplied to the function, it may return very early or very late. The best case here is O(1) and the worst case is O(N).
-
-##### O(logN)
-
-```js
-arr.sort(fn)
-```
-
-Browsers usually implement the quicksort algorithm for the `sort()` method which is logN time complexity. This is very efficient for large collections.
-
-* 1000 elements = `3ms`
-
-##### O(N^2)
-
-```js
-for (let i = 0; i < arr.length; i++) {
-  for (let j = 0; j < arr.length; j++) {
-    // ...
-  }
-}
-```
-
-The execution time rises quadratically with the number of elements. Usually the result of nesting loops.
-
-* 1000 elements = `1000000ms`
-
-##### O(N!)
-
-```js
-const permutations = arr => {
-  if (arr.length <= 2) return arr.length === 2 ? [arr, [arr[1], arr[0]]] : arr
-  return arr.reduce(
-    (acc, item, i) =>
-      acc.concat(
-        permutations([...arr.slice(0, i), ...arr.slice(i + 1)]).map(val => [
-          item,
-          ...val
-        ])
-      ),
-    []
-  )
-}
-```
-
-The execution time rises extremely fast with even just 1 addition to the array.
-
-1000 elements = `Infinity` (practically) ms
+`NaN` (Not-a-Number) is the only value not equal to itself when comparing with any of the comparison operators. `NaN` is often the result of meaningless math computations, so two `NaN` values make no sense to be considered equal.
 
 
 #### Good to hear
 
 
-* Be wary of nesting loops as execution time increases exponentially.
+* The difference between `isNaN()` and `Number.isNaN()`
+* `const isNaN = x => x !== x`
 
 
 ##### Additional links
 
 
-* [Big O Notation in JavaScript](https://medium.com/cesars-tech-insights/big-o-notation-javascript-25c79f50b19b)
+* [MDN docs for `NaN`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NaN)
 </details>
 
 
@@ -1973,14 +2025,17 @@ The execution time rises extremely fast with even just 1 addition to the array.
 <br>[⬆ Back to top](#table-of-contents)
 
 
-### Explain the difference between mutability and immutability, and mutating vs non-mutating methods.
+### Contrast mutable and immutable values, and mutating vs non-mutating methods.
 
 <details>
 <summary>View answer</summary>
 
-"Mutability" means a value is subject to change. "Immutability" means a value cannot change.
+The two terms can be contrasted as:
 
-Objects are mutable, while primitive values (strings, numbers, etc) are immutable. This means any operation performed on a primitive value does not change the original value.
+* Mutable: subject to change
+* Immutable: cannot change
+
+In JavaScript, objects are mutable while primitive values are immutable. This means operations performed on objects can change the original reference in some way, while operations performed on a primitive value cannot change the original value.
 
 All `String.prototype` methods do not have an effect on the original string and return a new string. On the other hand, while some methods of `Array.prototype` do not mutate the original array reference and produce a fresh array, some cause mutations.
 
@@ -2058,6 +2113,8 @@ const memoize = fn => {
 <details>
 <summary>View answer</summary>
 
+These two types of programming can roughly be summarized as:
+
 * Imperative: **how** to achieve something
 * Declarative: **what** should be achieved
 
@@ -2090,7 +2147,7 @@ We declare that the new array is mapped to a new one where each value is doubled
 #### Good to hear
 
 
-* Declarative programming often works with expressions. Imperative programming frequently uses statements and relies on low-level features that cause mutations, while declarative programming has a strong focus on abstraction and purity.
+* Declarative programming often works with functions and expressions. Imperative programming frequently uses statements and relies on low-level features that cause mutations, while declarative programming has a strong focus on abstraction and purity.
 * Declarative programming is more terse and easier to process at a glance.
 
 
@@ -2098,46 +2155,6 @@ We declare that the new array is mapped to a new one where each value is doubled
 
 
 * [Declarative vs Imperative Programming](https://codeburst.io/declarative-vs-imperative-programming-a8a7c93d9ad2)
-</details>
-
-
-
-<br>[⬆ Back to top](#table-of-contents)
-
-
-### Explain the difference between a static method and an instance method.
-
-<details>
-<summary>View answer</summary>
-
-Static methods belong to a class and don't act on instances, while instance methods belong to the class prototype which is inherited by all instances of the class and acts on them.
-
-```js
-Array.isArray // static method of Array
-Array.prototype.push // instance method of Array
-```
-
-In this case, the `Array.isArray` method does not make sense as an instance method of arrays because we already know the value is an array when working with it.
-
-Instance methods could technically work as static methods, but provide terser syntax:
-
-```js
-const arr = [1, 2, 3]
-arr.push(4)
-Array.push(arr, 4)
-```
-
-
-#### Good to hear
-
-
-* How to create static and instance methods with ES2015 class syntax
-
-
-##### Additional links
-
-
-* [Classes on MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes)
 </details>
 
 
@@ -2163,6 +2180,35 @@ The event loop handles all async callbacks. Callbacks are queued in a loop, whil
 
 
 * [Node.js docs on event loop, timers and process.nextTick()](https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick/)
+</details>
+
+
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
+### What is functional programming?
+
+<details>
+<summary>View answer</summary>
+
+Functional programming is a paradigm in which programs are built in a declarative manner using pure functions that avoid shared state and mutable data. Functions that always return the same value for the same input and don't produce side effects are the pillar of functional programming. Many programmers consider this to be the best approach to software development as it reduces bugs and cognitive load.
+
+
+#### Good to hear
+
+
+* Cleaner, more concise development experience
+* Simple function composition
+* Features of JavaScript that enable functional programming (`.map`, `.reduce` etc.)
+* JavaScript is multi-paradigm programming language (Object-Oriented Programming and Functional Programming live in harmony)
+
+
+##### Additional links
+
+
+* [Javascript and Functional Programming: An Introduction](https://hackernoon.com/javascript-and-functional-programming-an-introduction-286aa625e26d)
+* [Master the JavaScript Interview: What is Functional Programming?](https://medium.com/javascript-scene/master-the-javascript-interview-what-is-functional-programming-7f218c68b3a0)
 </details>
 
 
@@ -2558,25 +2604,39 @@ Once the changes between the old VDOM and new VDOM have been calculated by the d
 <br>[⬆ Back to top](#table-of-contents)
 
 
-### What is the only value not equal to itself in JavaScript?
+### Explain the difference between a static method and an instance method.
 
 <details>
 <summary>View answer</summary>
 
-`NaN` (Not-a-Number) is the only value not equal to itself when comparing with any of the comparison operators. `NaN` is often the result of meaningless math computations, so two `NaN` values make no sense to be considered equal.
+Static methods belong to a class and don't act on instances, while instance methods belong to the class prototype which is inherited by all instances of the class and acts on them.
+
+```js
+Array.isArray // static method of Array
+Array.prototype.push // instance method of Array
+```
+
+In this case, the `Array.isArray` method does not make sense as an instance method of arrays because we already know the value is an array when working with it.
+
+Instance methods could technically work as static methods, but provide terser syntax:
+
+```js
+const arr = [1, 2, 3]
+arr.push(4)
+Array.push(arr, 4)
+```
 
 
 #### Good to hear
 
 
-* The difference between `isNaN()` and `Number.isNaN()`
-* `const isNaN = x => x !== x`
+* How to create static and instance methods with ES2015 class syntax
 
 
 ##### Additional links
 
 
-* [MDN docs for `NaN`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NaN)
+* [Classes on MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes)
 </details>
 
 
@@ -3079,7 +3139,7 @@ Set the `.row` parent to `display: flex;` and use the `flex` shorthand property 
 Both `em` and `rem` units are based on the `font-size` CSS property. The only difference is where they inherit their values from.
 
 * `em` units inherit their value from the `font-size` of the parent element
-* `rem` units inherit their value from the root element (`html`)
+* `rem` units inherit their value from the `font-size` of the root element (`html`)
 
 In most browsers, the `font-size` of the root element is set to `16px` by default.
 
