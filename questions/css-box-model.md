@@ -15,7 +15,7 @@
 #### Good to hear
 
 <!-- Whenever possible, include the short list of bullet points that sum up the answer. -->
-- This is a very common question to be asked during a front-end interview
+- This is a very common question asked during front-end interviews
 - Shows a solid understanding of spacing and the DOM
 
 ##### Additional links
