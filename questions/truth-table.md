@@ -88,6 +88,7 @@ false|false|true
 
 <!-- Whenever possible, link a more detailed explanation. -->
 * [All About Circuits: Universal Logic Gates](https://www.allaboutcircuits.com/technical-articles/universal-logic-gates/)
+* [Math Memoirs: Intro to Truth Tables and Logic](https://medium.com/i-math/intro-to-truth-tables-boolean-algebra-73b331dd9b94)
 
 <!-- tags: (javascript) -->
 
