@@ -4,18 +4,19 @@
 
 <!-- Your answer goes here. -->
 
-*Content*: The inner-most part of the box filled with text or an image or some type of content</br>
+*Content*: The inner-most part of the box filled with text or an image or some type of content  
 
-*Padding*: The transparent area surrounding the content</br>
+*Padding*: The transparent area surrounding the content  
 
-*Border*: The area surrounding the padding (if any) and content</br>
+*Border*: The area surrounding the padding (if any) and content  
 
 *Margin*: The transparent outer-most layer that surrounds the border
 
 #### Good to hear
 
 <!-- Whenever possible, include the short list of bullet points that sum up the answer. -->
-This is a very common question to be asked during a front-end interview and something that you should be very comfortable with.
+- This is a very common question to be asked during a front-end interview
+- Shows a solid understanding of spacing and the DOM
 
 ##### Additional links
 
