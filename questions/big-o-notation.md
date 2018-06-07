@@ -14,7 +14,7 @@ In these examples, the base time is 1 element = `1ms`.
 arr[arr.length - 1]
 ```
 
-- 1000 elements = `1ms`
+* 1000 elements = `1ms`
 
 Constant time complexity. No matter how many elements the array has, it will theoretically take (excluding real-world variation) the same amount of time to execute.
 
@@ -24,7 +24,7 @@ Constant time complexity. No matter how many elements the array has, it will the
 arr.filter(fn)
 ```
 
-- 1000 elements = `1000ms`
+* 1000 elements = `1000ms`
 
 Linear time complexity. The execution time will increase linearly with the number of elements the array has. If the array has 1000 elements and the function takes 1ms to execute, 7000 elements will take 7ms to execute. This is because the function must iterate through all elements of the array before returning a result.
 
@@ -34,7 +34,7 @@ Linear time complexity. The execution time will increase linearly with the numbe
 arr.some(fn)
 ```
 
-- 1000 elements = `1ms <= x <= 1000ms`
+* 1000 elements = `1ms <= x <= 1000ms`
 
 The execution time varies depending on the data supplied to the function, it may return very early or very late. The best case here is O(1) and the worst case is O(N).
 
@@ -44,7 +44,7 @@ The execution time varies depending on the data supplied to the function, it may
 arr.sort(fn)
 ```
 
-- 1000 elements = `3ms`
+* 1000 elements = `3ms`
 
 Browsers usually implement the quicksort algorithm for the `sort()` method which is logN time complexity. This is very efficient for large collections.
 
@@ -58,7 +58,7 @@ for (let i = 0; i < arr.length; i++) {
 }
 ```
 
-- 1000 elements = `1000000ms`
+* 1000 elements = `1000000ms`
 
 The execution time rises quadratically with the number of elements. Usually the result of nesting loops.
 
@@ -80,19 +80,19 @@ const permutations = arr => {
 }
 ```
 
-- 1000 elements = `Infinity` (practically) ms
+* 1000 elements = `Infinity` (practically) ms
 
 The execution time rises extremely fast with even just 1 addition to the array.
 
 #### Good to hear
 
-- Be wary of nesting loops as execution time increases exponentially.
+* Be wary of nesting loops as execution time increases exponentially.
 
 ##### Additional links
 
 <!-- Whenever possible, link a more detailed explanation. -->
 
-- [Big O Notation in JavaScript](https://medium.com/cesars-tech-insights/big-o-notation-javascript-25c79f50b19b)
+* [Big O Notation in JavaScript](https://medium.com/cesars-tech-insights/big-o-notation-javascript-25c79f50b19b)
 
 <!-- tags: (javascript) -->
 

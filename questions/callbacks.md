@@ -28,14 +28,14 @@ map([1, 2, 3, 4, 5], n => n * 2) // [2, 4, 6, 8, 10]
 
 #### Good to hear
 
-- Functions are first-class objects in JavaScript
-- Callbacks vs Promises
+* Functions are first-class objects in JavaScript
+* Callbacks vs Promises
 
 ##### Additional links
 
 <!-- Whenever possible, link a more detailed explanation. -->
 
-- [MDN docs for callbacks](https://developer.mozilla.org/en-US/docs/Glossary/Callback_function)
+* [MDN docs for callbacks](https://developer.mozilla.org/en-US/docs/Glossary/Callback_function)
 
 <!-- tags: (javascript) -->
 

@@ -4,8 +4,8 @@
 
 The two terms can be contrasted as:
 
-- Mutable: subject to change
-- Immutable: cannot change
+* Mutable: subject to change
+* Immutable: cannot change
 
 In JavaScript, objects are mutable while primitive values are immutable. This means operations performed on objects can change the original reference in some way, while operations performed on a primitive value cannot change the original value.
 
@@ -22,11 +22,11 @@ originalArray.concat(4) // returns a new array, does not mutate the original
 
 #### Good to hear
 
-- List of mutating and non-mutating array methods
+* List of mutating and non-mutating array methods
 
 ##### Additional links
 
-- [Mutating vs non-mutating array methods](https://lorenstewart.me/2017/01/22/javascript-array-methods-mutating-vs-non-mutating/)
+* [Mutating vs non-mutating array methods](https://lorenstewart.me/2017/01/22/javascript-array-methods-mutating-vs-non-mutating/)
 
 <!-- tags: (javascript) -->
 
