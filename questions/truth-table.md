@@ -13,17 +13,17 @@ Intuitively, we logically construct a truth table when working with logical oper
 ```
 Using logical OR, only one of the operands needs to be true to evaluate to true:
 -----------------------
+false OR false is false
+false OR true  is true
 true  OR false is true
 true  OR true  is true
-false OR true  is true
-false OR false is false
 
 Using logical AND, both operands must be true to evaluate to true:
 ------------------------
+false AND false is false
+false AND true  is false
 true  AND false is false
 true  AND true  is true
-false AND true  is false
-false AND false is false
 ```
 
 The truth table for `a && b` is as follows:
