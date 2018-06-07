@@ -8,7 +8,7 @@ a && b
 
 A truth table is a mathematical table used in logic when working with Boolean expressions. 
 
-Intuitively, we logically construct a truth table when working with logical operations.
+Intuitively, we construct a truth table when working with logical operations.
 
 ```
 Using logical OR, only one of the operands needs to be true to evaluate to true:
