@@ -28,10 +28,6 @@ Interviews are daunting and can make even the most seasoned expert forget things
 
 <br>
 
-## Sponsors
-
-All financial support on [Patreon](https://www.patreon.com/fejes713) will be equally split between core colaborators on projects in the way of purchasing educational materials and courses.
-
 ## Contributing
 
 > 30 seconds of interviews is a community effort, so feel free to contribute in any way you can. Every contribution helps!
