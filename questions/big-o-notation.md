@@ -2,11 +2,11 @@
 
 #### Answer
 
-Big O notation is used in Computer Science to describe time complexity of an algorithm. The best algorithms will execute the fastest and have the simplest complexity.
+Big O notation is used in Computer Science to describe the time complexity of an algorithm. The best algorithms will execute the fastest and have the simplest complexity.
 
 Algorithms don't always perform the same and may vary based on the data they are supplied. While in some cases they will execute quickly, in other cases they will execute slowly, even with the same number of elements to deal with.
 
-In these examples, the base time is `1ms` to make it more familiar.
+In these examples, the base time is 1 element = `1ms`.
 
 ##### O(1)
 
@@ -14,9 +14,9 @@ In these examples, the base time is `1ms` to make it more familiar.
 arr[arr.length - 1]
 ```
 
-Constant time complexity. No matter how many elements the array has, it will theoretically take (excluding real-world variation) the same amount of time to execute.
-
 * 1000 elements = `1ms`
+
+Constant time complexity. No matter how many elements the array has, it will theoretically take (excluding real-world variation) the same amount of time to execute.
 
 ##### O(N)
 
@@ -24,9 +24,9 @@ Constant time complexity. No matter how many elements the array has, it will the
 arr.filter(fn)
 ```
 
-Linear time complexity. The execution time will increase linearly with the number of elements the array has. If the array has 1000 elements and the function takes 1ms to execute, 7000 elements will take 7ms to execute. This is because the function must iterate through all elements of the array before returning a result.
-
 * 1000 elements = `1000ms`
+
+Linear time complexity. The execution time will increase linearly with the number of elements the array has. If the array has 1000 elements and the function takes 1ms to execute, 7000 elements will take 7ms to execute. This is because the function must iterate through all elements of the array before returning a result.
 
 ##### O([1, N])
 
@@ -44,9 +44,9 @@ The execution time varies depending on the data supplied to the function, it may
 arr.sort(fn)
 ```
 
-Browsers usually implement the quicksort algorithm for the `sort()` method which is logN time complexity. This is very efficient for large collections.
-
 * 1000 elements = `3ms`
+
+Browsers usually implement the quicksort algorithm for the `sort()` method which is logN time complexity. This is very efficient for large collections.
 
 ##### O(N^2)
 
@@ -58,9 +58,9 @@ for (let i = 0; i < arr.length; i++) {
 }
 ```
 
-The execution time rises quadratically with the number of elements. Usually the result of nesting loops.
-
 * 1000 elements = `1000000ms`
+
+The execution time rises quadratically with the number of elements. Usually the result of nesting loops.
 
 ##### O(N!)
 
@@ -80,9 +80,9 @@ const permutations = arr => {
 }
 ```
 
-The execution time rises extremely fast with even just 1 addition to the array.
+* 1000 elements = `Infinity` (practically) ms
 
-1000 elements = `Infinity` (practically) ms
+The execution time rises extremely fast with even just 1 addition to the array.
 
 #### Good to hear
 

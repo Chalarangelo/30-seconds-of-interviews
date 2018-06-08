@@ -1,10 +1,13 @@
-### Explain the difference between mutability and immutability, and mutating vs non-mutating methods.
+### Contrast mutable and immutable values, and mutating vs non-mutating methods.
 
 #### Answer
 
-"Mutability" means a value is subject to change. "Immutability" means a value cannot change.
+The two terms can be contrasted as:
 
-Objects are mutable, while primitive values (strings, numbers, etc) are immutable. This means any operation performed on a primitive value does not change the original value.
+* Mutable: subject to change
+* Immutable: cannot change
+
+In JavaScript, objects are mutable while primitive values are immutable. This means operations performed on objects can change the original reference in some way, while operations performed on a primitive value cannot change the original value.
 
 All `String.prototype` methods do not have an effect on the original string and return a new string. On the other hand, while some methods of `Array.prototype` do not mutate the original array reference and produce a fresh array, some cause mutations.
 
