@@ -20,7 +20,7 @@ Constant time complexity. No matter how many elements the array has, it will the
 
 ##### O(logN)
 
-```
+```js
 const binarySearch = (sortedArray, value) => {
 	left = 0, right = sortedArray.length
 	while(left < right) {
