@@ -1,5 +1,4 @@
 /* eslint no-restricted-globals: 0 */
-
 export const cc = (constant, conditionalClasses = constant) => {
   const res = Object.keys(conditionalClasses).reduce(
     (acc, className) =>
@@ -50,12 +49,6 @@ export const TAG_NAMES = {
   node: "Node",
   security: "Security",
   all: "all"
-}
-
-export const SORTBY_STRINGS = {
-  expertise: "by expertise",
-  alpha: "alphabetically",
-  nonalpha: "unalphabetically"
 }
 
 export const onUserInputChange = callback => {

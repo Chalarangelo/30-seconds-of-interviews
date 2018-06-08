@@ -5,12 +5,7 @@ export default () => state => (
   <main class="Questions">
     <div class="container">
       <ul class="Questions__list">
-        {state.questions
-          .filter(
-            q =>
-              state.filter.category.toLowerCase() === "all" ||
-              q.tags.includes(state.filter.category.toLowerCase())
-          )
+        {[...state.questions]
           .sort(
             (q1, q2) =>
               state.filter.sortAscending

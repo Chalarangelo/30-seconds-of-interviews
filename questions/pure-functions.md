@@ -2,7 +2,7 @@
 
 #### Answer
 
-A pure function is function that satisfies these two conditions:
+A pure function is a function that satisfies these two conditions:
 
 * Given the same input, the function returns the same output.
 * The function doesn't cause side effects outside of the function's scope (i.e. mutate data outside the function or data supplied to the function).
@@ -33,8 +33,7 @@ const c = arr => arr.sort((a, b) => a - b)
 
 ##### Additional links
 
-* [MDN docs for `null`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null)
-* [MDN docs for `undefined`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined)
+* [Pure functions in JavaScript](http://www.nicoespeon.com/en/2015/01/pure-functions-javascript/)
 
 <!-- tags: (javascript) -->
 
