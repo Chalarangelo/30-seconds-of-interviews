@@ -12,7 +12,6 @@
   <a href="https://gitter.im/30-seconds-of-interviews/Lobby"><img src="https://img.shields.io/badge/gitter-join%20chat%20%E2%86%92-brightgreen.svg" alt="gitter"></a>
     <a href="https://github.com/fejes713/30-seconds-of-interviews/blob/master/CONTRIBUTING.md"><img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg" alt="PRs welcome"></a>
   <a href="https://travis-ci.com/fejes713/30-seconds-of-interviews"><img src="https://travis-ci.com/fejes713/30-seconds-of-interviews.svg?token=uZrzJhwCxqfwx7TdXzc4&branch=master" alt="travis"></a>
-  <a href="https://www.patreon.com/fejes713"><img src="https://img.shields.io/badge/Patreon-support%20us-orange.svg" alt="patreon"></a>
   <a href="https://www.producthunt.com/posts/30-seconds-of-interviews"><img src="https://img.shields.io/badge/Product%20Hunt-vote-orange.svg" alt="producthunt"></a>
   <a href="https://github.com/fejes713/30-seconds-of-interviews/blob/master/LICENSE"><img src="https://img.shields.io/badge/licence-MIT-blue.svg" alt="licence"></a>
 </p>
@@ -28,10 +27,6 @@ Interviews are daunting and can make even the most seasoned expert forget things
 <a href="https://30secondsofinterviews.org"><img src="promo.jpg" alt="30 Seconds of Interviews promo"></a>
 
 <br>
-
-## Sponsors
-
-All financial support on [Patreon](https://www.patreon.com/fejes713) will be equally split between core colaborators on projects in the way of purchasing educational materials and courses.
 
 ## Contributing
 
@@ -130,6 +125,7 @@ Join our [Gitter channel](https://gitter.im/30-seconds-of-interviews/Lobby) to h
 <summary>View contents</summary>
 
 * [What is CSS BEM?](#what-is-css-bem)
+* [Describe the layout of the CSS Box Model and briefly describe each component.](#describe-the-layout-of-the-css-box-model-and-briefly-describe-each-component)
 * [What are the advantages of using CSS preprocessors?](#what-are-the-advantages-of-using-css-preprocessors)
 * [Can you describe how CSS specificity works?](#can-you-describe-how-css-specificity-works)
 * [What is the difference between `em` and `rem` units?](#what-is-the-difference-between-em-and-rem-units)
@@ -1966,14 +1962,14 @@ const comments = [
   { id: 3, parent_id: 1, text: "Second reply to comment #1." },
   { id: 4, parent_id: 3, text: "First reply to comment #3." },
   { id: 5, parent_id: 4, text: "First reply to comment #4." },
-  { id: 6, aprent_id: null, text: "Second reply to post." }
+  { id: 6, parent_id: null, text: "Second reply to post." }
 ]
 
 nest(comments)
 /*
 [
   { id: 1, parent_id: null, text: "First reply to post.", children: [...] },
-  { id: 6, parent_id: null, text: "Second reply to post." children: [] }
+  { id: 6, parent_id: null, text: "Second reply to post.", children: [] }
 ]
 */
 ```
@@ -3124,6 +3120,44 @@ Set the `.row` parent to `display: flex;` and use the `flex` shorthand property 
 
 * [MDN docs for `@media` rule](https://developer.mozilla.org/en-US/docs/Web/CSS/@media)
 * [MDN docs for using media queries](https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries)
+</details>
+
+
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
+### Describe the layout of the CSS Box Model and briefly describe each component.
+
+<details>
+<summary>View answer</summary>
+
+<!-- Your answer goes here. -->
+
+_Content_: The inner-most part of the box filled with content, such as text, an image, or video player. It has the dimensions _content-box width_ and _content-box height_.
+
+_Padding_: The transparent area surrounding the content. It has dimensions are _padding-box width_ and _padding-box height_.
+
+_Border_: The area surrounding the padding (if any) and content. It has dimensions _border-box width_ and _border-box height_.
+
+_Margin_: The transparent outer-most layer that surrounds the border. It separates the element from other elements in the DOM. It has dimensions _margin-box width_ and _margin-box height_.
+
+![alt text](https://www.washington.edu/accesscomputing/webd2/student/unit3/images/boxmodel.gif)
+
+
+#### Good to hear
+
+
+* <!-Whenever possible, include the short list of bullet points that sum up the answer. -->
+* This is a very common question asked during front-end interviews and while it may seem easy, it is critical you know it well!
+* Shows a solid understanding of spacing and the DOM
+
+
+##### Additional links
+
+
+* [W3School's CSS Box Model Page](https://www.w3schools.com/Css/css_boxmodel.asp)
+* [Mozilla's Intro to the CSS Box Model](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Box_Model/Introduction_to_the_CSS_box_model)
 </details>
 
 

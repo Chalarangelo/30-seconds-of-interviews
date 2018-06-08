@@ -260,6 +260,26 @@
     "answerCodeBlocks": []
   },
   {
+    "name": "css-box-model.md",
+    "question": "Describe the layout of the CSS Box Model and briefly describe each component.",
+    "answer": "<!-- Your answer goes here. -->\n\n_Content_: The inner-most part of the box filled with content, such as text, an image, or video player. It has the dimensions _content-box width_ and _content-box height_.\n\n_Padding_: The transparent area surrounding the content. It has dimensions are _padding-box width_ and _padding-box height_.\n\n_Border_: The area surrounding the padding (if any) and content. It has dimensions _border-box width_ and _border-box height_.\n\n_Margin_: The transparent outer-most layer that surrounds the border. It separates the element from other elements in the DOM. It has dimensions _margin-box width_ and _margin-box height_.\n\n![alt text](https://www.washington.edu/accesscomputing/webd2/student/unit3/images/boxmodel.gif)",
+    "goodToHear": [
+      "<!-Whenever possible, include the short list of bullet points that sum up the answer. -->",
+      "This is a very common question asked during front-end interviews and while it may seem easy, it is critical you know it well!",
+      "Shows a solid understanding of spacing and the DOM"
+    ],
+    "links": [
+      "[W3School's CSS Box Model Page](https://www.w3schools.com/Css/css_boxmodel.asp)",
+      "[Mozilla's Intro to the CSS Box Model](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Box_Model/Introduction_to_the_CSS_box_model)"
+    ],
+    "tags": [
+      "css"
+    ],
+    "expertise": 1,
+    "questionCodeBlocks": [],
+    "answerCodeBlocks": []
+  },
+  {
     "name": "css-preprocessors.md",
     "question": "What are the advantages of using CSS preprocessors?",
     "answer": "CSS preprocessors add useful functionality that native CSS does not have, and generally make CSS neater and more maintainable by enabling DRY (Don't Repeat Yourself) principles. Their terse syntax for nested selectors cuts down on repeated code. They provide variables for consistent theming (however, CSS variables have largely replaced this functionality) and additional tools like color functions (`lighten`, `darken`, `transparentize`, etc), mixins, and loops that make CSS more like a real programming language and gives the developer more power to generate complex CSS.",
@@ -1047,7 +1067,7 @@
   {
     "name": "recursion.md",
     "question": "What is recursion and when is it useful?",
-    "answer": "Recursion is the repeated application of a process. In JavaScript, recursion involves functions that call themselves repeatedly until they reach a base condition. The base condition breaks out of the recursion loop because otherwise the function would call itself indefinitely. Recursion is very useful when working with data structures that contain nesting where the number of levels deep is unknown.\n\nFor example, you may have a thread of comments returned from a database that exist in a flat array but need to be nested for display in the UI. Each comment is either a top-level comment (no parent) or is a reply to a parent comment. Comments can be a reply of a reply of a reply... we have no knowledge beforehand the number of levels deep a comment may be. This is where recursion can help.\n\n```js\nconst nest = (items, id = null, link = \"parent_id\") =>\n  items\n    .filter(item => item[link] === id)\n    .map(item => ({ ...item, children: nest(items, item.id) }))\n\nconst comments = [\n  { id: 1, parent_id: null, text: \"First reply to post.\" },\n  { id: 2, parent_id: 1, text: \"First reply to comment #1.\" },\n  { id: 3, parent_id: 1, text: \"Second reply to comment #1.\" },\n  { id: 4, parent_id: 3, text: \"First reply to comment #3.\" },\n  { id: 5, parent_id: 4, text: \"First reply to comment #4.\" },\n  { id: 6, aprent_id: null, text: \"Second reply to post.\" }\n]\n\nnest(comments)\n/*\n[\n  { id: 1, parent_id: null, text: \"First reply to post.\", children: [...] },\n  { id: 6, parent_id: null, text: \"Second reply to post.\" children: [] }\n]\n*/\n```\n\nIn the above example, the base condition is met if `filter()` returns an empty array. The chained `map()` won't invoke the callback function which contains the recursive call, thereby breaking the loop.",
+    "answer": "Recursion is the repeated application of a process. In JavaScript, recursion involves functions that call themselves repeatedly until they reach a base condition. The base condition breaks out of the recursion loop because otherwise the function would call itself indefinitely. Recursion is very useful when working with data structures that contain nesting where the number of levels deep is unknown.\n\nFor example, you may have a thread of comments returned from a database that exist in a flat array but need to be nested for display in the UI. Each comment is either a top-level comment (no parent) or is a reply to a parent comment. Comments can be a reply of a reply of a reply... we have no knowledge beforehand the number of levels deep a comment may be. This is where recursion can help.\n\n```js\nconst nest = (items, id = null, link = \"parent_id\") =>\n  items\n    .filter(item => item[link] === id)\n    .map(item => ({ ...item, children: nest(items, item.id) }))\n\nconst comments = [\n  { id: 1, parent_id: null, text: \"First reply to post.\" },\n  { id: 2, parent_id: 1, text: \"First reply to comment #1.\" },\n  { id: 3, parent_id: 1, text: \"Second reply to comment #1.\" },\n  { id: 4, parent_id: 3, text: \"First reply to comment #3.\" },\n  { id: 5, parent_id: 4, text: \"First reply to comment #4.\" },\n  { id: 6, parent_id: null, text: \"Second reply to post.\" }\n]\n\nnest(comments)\n/*\n[\n  { id: 1, parent_id: null, text: \"First reply to post.\", children: [...] },\n  { id: 6, parent_id: null, text: \"Second reply to post.\", children: [] }\n]\n*/\n```\n\nIn the above example, the base condition is met if `filter()` returns an empty array. The chained `map()` won't invoke the callback function which contains the recursive call, thereby breaking the loop.",
     "goodToHear": [
       "Recursion is useful when working with data structures containing an unknown number of nested structures.",
       "Recursion must have a base condition to be met that breaks out of the loop or it will call itself indefinitely."
@@ -1061,7 +1081,7 @@
     "expertise": 2,
     "questionCodeBlocks": [],
     "answerCodeBlocks": [
-      "```js\nconst nest = (items, id = null, link = \"parent_id\") =>\n  items\n    .filter(item => item[link] === id)\n    .map(item => ({ ...item, children: nest(items, item.id) }))\n\nconst comments = [\n  { id: 1, parent_id: null, text: \"First reply to post.\" },\n  { id: 2, parent_id: 1, text: \"First reply to comment #1.\" },\n  { id: 3, parent_id: 1, text: \"Second reply to comment #1.\" },\n  { id: 4, parent_id: 3, text: \"First reply to comment #3.\" },\n  { id: 5, parent_id: 4, text: \"First reply to comment #4.\" },\n  { id: 6, aprent_id: null, text: \"Second reply to post.\" }\n]\n\nnest(comments)\n/*\n[\n  { id: 1, parent_id: null, text: \"First reply to post.\", children: [...] },\n  { id: 6, parent_id: null, text: \"Second reply to post.\" children: [] }\n]\n*/\n```"
+      "```js\nconst nest = (items, id = null, link = \"parent_id\") =>\n  items\n    .filter(item => item[link] === id)\n    .map(item => ({ ...item, children: nest(items, item.id) }))\n\nconst comments = [\n  { id: 1, parent_id: null, text: \"First reply to post.\" },\n  { id: 2, parent_id: 1, text: \"First reply to comment #1.\" },\n  { id: 3, parent_id: 1, text: \"Second reply to comment #1.\" },\n  { id: 4, parent_id: 3, text: \"First reply to comment #3.\" },\n  { id: 5, parent_id: 4, text: \"First reply to comment #4.\" },\n  { id: 6, parent_id: null, text: \"Second reply to post.\" }\n]\n\nnest(comments)\n/*\n[\n  { id: 1, parent_id: null, text: \"First reply to post.\", children: [...] },\n  { id: 6, parent_id: null, text: \"Second reply to post.\", children: [] }\n]\n*/\n```"
     ]
   },
   {
