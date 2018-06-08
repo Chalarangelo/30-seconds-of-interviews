@@ -38,7 +38,7 @@ arr.some(fn)
 
 The execution time varies depending on the data supplied to the function, it may return very early or very late. The best case here is O(1) and the worst case is O(N).
 
-##### O(logN)
+##### O(NlogN)
 
 ```js
 arr.sort(fn)
