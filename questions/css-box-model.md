@@ -4,13 +4,15 @@
 
 <!-- Your answer goes here. -->
 
-*Content*: The inner-most part of the box filled with text or an image or some type of content  
+*Content*: The inner-most part of the box filled with content, such as text, an image, or video player.  It has the dimensions *content-box width* and *content-box height*.
 
-*Padding*: The transparent area surrounding the content  
+*Padding*: The transparent area surrounding the content.  It has dimensions are *padding-box width* and *padding-box height*.
 
-*Border*: The area surrounding the padding (if any) and content  
+*Border*: The area surrounding the padding (if any) and content.  It has dimensions *border-box width* and *border-box height*.
 
-*Margin*: The transparent outer-most layer that surrounds the border
+*Margin*: The transparent outer-most layer that surrounds the border.  It separates the element from other elements in the DOM.  It has dimensions *margin-box width* and *margin-box height*.
+
+![alt text](https://www.washington.edu/accesscomputing/webd2/student/unit3/images/boxmodel.gif)
 
 #### Good to hear
 
