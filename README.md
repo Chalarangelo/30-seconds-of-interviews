@@ -1829,15 +1829,15 @@ arr.some(fn)
 
 The execution time varies depending on the data supplied to the function, it may return very early or very late. The best case here is O(1) and the worst case is O(N).
 
-##### O(logN)
+##### O(NlogN)
 
 ```js
 arr.sort(fn)
 ```
 
-* 1000 elements = `3ms`
+* 1000 elements = `3000ms`
 
-Browsers usually implement the quicksort algorithm for the `sort()` method which is logN time complexity. This is very efficient for large collections.
+Browsers usually implement the quicksort algorithm for the `sort()` method which is NlogN time complexity. This is very efficient for large collections.
 
 ##### O(N^2)
 
@@ -2734,7 +2734,7 @@ Yes to both. The W3 documents state that the tags represent the header(`<header>
 
 * `<header>` is used to contain introductory and navigational information about a section of the page. This can include the section heading, the author’s name, time and date of publication, table of contents, or other navigational information.
 
-* `<article>` is meant to house a self-contained composition that can logically be independently recreated outside of the page without losing it’s meaining. Individual blog posts or news stories are good examples.
+* `<article>` is meant to house a self-contained composition that can logically be independently recreated outside of the page without losing it’s meaning. Individual blog posts or news stories are good examples.
 
 * `<section>` is a flexible container for holding content that shares a common informational theme or purpose.
 
