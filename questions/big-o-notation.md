@@ -18,6 +18,26 @@ arr[arr.length - 1]
 
 Constant time complexity. No matter how many elements the array has, it will theoretically take (excluding real-world variation) the same amount of time to execute.
 
+##### O(logN)
+
+```js
+const binarySearch = (sortedArray, value) => {
+  let left = 0, right = sortedArray.length
+  while (left != right) {
+    let middle = Math.floor((right + left) / 2)
+    if (sortedArray[middle] < value)
+      left = middle + 1
+    else
+      right = middle
+  }	
+  return sortedArray[left] == value
+}
+```
+
+* 1000 elements = `10ms`
+
+Logarithmic time complexity. At every iteration the size of the input is decrease. In the example above is divided in half and the running time would be O(log(2, N)).
+
 ##### O(N)
 
 ```js
