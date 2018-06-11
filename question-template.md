@@ -4,12 +4,10 @@
 Unlike C or C++, JavaScript is a dynamically-typed language. This means that all type checking is performed at runtime as opposed to at compile time. A construct’s actual data type is determined by its context, which can produce confusing or unwanted results. Thus, a JavaScript program may compile without error, but result in unanticipated behavior.  
 Consider the following example using <code>console.log()</code>:
 
-<pre><code>
-console.log("3" - 1)
+<pre><code>console.log("3" - 1)
 // → 2
 console.log("3" + 1)
-// → 31
-</code></pre>
+// → 31</code></pre>
 
 What’s happened here is type coercion. This is JavaScript converting values to types it deems “useful” according to obscure rules, like a preference for trying concatenation before addition. As you can imagine, this can also lead to confusing errors when logical operators are involved.
 
