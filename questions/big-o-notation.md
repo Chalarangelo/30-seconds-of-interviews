@@ -22,14 +22,13 @@ Constant time complexity. No matter how many elements the array has, it will the
 
 ```js
 const binarySearch = (sortedArray, value) => {
-  let left = 0, right = sortedArray.length
+  let left = 0,
+    right = sortedArray.length
   while (left != right) {
     let middle = Math.floor((right + left) / 2)
-    if (sortedArray[middle] < value)
-      left = middle + 1
-    else
-      right = middle
-  }	
+    if (sortedArray[middle] < value) left = middle + 1
+    else right = middle
+  }
   return sortedArray[left] == value
 }
 ```
