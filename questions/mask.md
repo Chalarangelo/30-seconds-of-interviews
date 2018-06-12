@@ -8,11 +8,11 @@ mask("123456789") // "#####6789"
 
 > There are many ways to solve this problem, this is just one one of them.
 
-Using `String.prototype.slice()`, we can grab a portion of the string from index `0` (first character) to index `-4` (5th last character) and calculate the resulting length, using `String.prototype.repeat()` to repeat the mask character that many times. Then, using `String.prototype.slice()` once more, we can concatenate the last 4 characters by passing `-4` as an argument.
+Using the length property we can calculate the length of the string to ba masked and using `String.prototype.repeat()` to repeat the mask character that many times. Then, using `String.prototype.slice()` once more, we can concatenate the last 4 characters by passing `-4` as an argument.
 
 ```js
 const mask = (str, maskChar = "#") =>
-  maskChar.repeat(str.slice(0, -4).length) + str.slice(-4)
+  maskChar.repeat(Math.max(0, str.length - 4)) + str.slice(-4)
 ```
 
 #### Good to hear
