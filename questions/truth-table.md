@@ -37,7 +37,7 @@ true|true|true
 
 If we want an equivalent table, we need to look at other expressions available to us. 
 
-An OR (`||`) with  is the only other logical evauluator we have in Jabvascript which has the following truth table:
+An OR (`||`) which is the only other logical evauluator we have in Jabvascript which has the following truth table:
 
 ```js
 a || b
