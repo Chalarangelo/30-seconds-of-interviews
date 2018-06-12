@@ -3,7 +3,7 @@
 #### Answer
 
 Unlike C or C++, JavaScript is a dynamically-typed language. This means that all type checking is performed at runtime as opposed to at compile time. A construct’s actual data type is determined by its context, which can produce confusing or unwanted results. Thus, a JavaScript program may compile without error, but result in unanticipated behavior.  
-Consider the following example using <code>console.log()</code>:
+Consider the following example using `console.log()`:
 
 ```javascript
 console.log("3" - 1) // → 2
