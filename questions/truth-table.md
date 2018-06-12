@@ -26,7 +26,7 @@ true  AND false is false
 true  AND true  is true
 ```
 
-The truth table for `a && b` is as follows:
+The truth table for `a && b`( an AND `&&`) is as follows:
 
 a|b|result
 ---|---|---
@@ -37,7 +37,7 @@ true|true|true
 
 If we want an equivalent table, we need to look at other expressions available to us. 
 
-An OR (`||`) which is the only other logical evauluator we have in Jabvascript which has the following truth table:
+An OR (`||`) is the only other logical evauluator we have in Javascript which has the following truth table:
 
 ```js
 a || b
@@ -50,7 +50,7 @@ false|true|true
 true|false|true
 true|true|true
 
-We want to exchange the top and bottom rows only to achieve a NAND(&&!) gate. We can do so by inverting the inputs to the OR gate, meaning if one of the values is `false`, it evaluates to `true`. To achieve NAND from this, we need to invert the top and bottom, which is achieved by inverting the original values using the logical NOT (`!`) operator.
+We want to exchange the top and bottom rows only to achieve a NAND(&&!) gate. A NAND gate is a logical expression that is true when any of the inputs are false. To achieve NAND from OR we need to invert the top and bottom outputs which is achieved by inverting the original values using the logical NOT (`!`) operator.
 
 ```js
 !a || !b
