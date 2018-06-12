@@ -3,14 +3,15 @@
 #### Answer
 
 Unlike C or C++, JavaScript is a dynamically-typed language. This means that all type checking is performed at runtime as opposed to at compile time. A construct’s actual data type is determined by its context, which can produce confusing or unwanted results. Thus, a JavaScript program may compile without error, but result in unanticipated behavior.  
+
 Consider the following example using `console.log()`:
 
-```javascript
+```js
 console.log("3" - 1) // → 2
 console.log("3" + 1) // → "31"
 ```
 
-What’s happened here is type coercion. This is JavaScript converting values to types it deems “useful” according to obscure rules, like a preference for trying concatenation before addition. As you can imagine, this can also lead to confusing errors when logical operators are involved.
+What’s happened here is type coercion. JavaScript converts values to types it deems “useful” according to specific rules, like a preference for trying concatenation before addition when encountering the `+` operator. As a consequence, this can lead to confusing errors.
 
 #### Good to hear
 
