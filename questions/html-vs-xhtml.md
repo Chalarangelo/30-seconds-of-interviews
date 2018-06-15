@@ -14,7 +14,7 @@ Some of the key differences are:
 #### Good to hear
 
 * Any element can be self-closed
-* Tags ands attributes are case-sensitive, usually lowercase
+* Tags and attributes are case-sensitive, usually lowercase
 
 ##### Additional links
 
