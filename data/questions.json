@@ -1283,6 +1283,33 @@
     ]
   },
   {
+    "name": "truth-table.md",
+    "question": "What is a truth table? Try to recreate the following Boolean expression using different operators in JavaScript.\n\n```js\na && b\n```",
+    "answer": "A truth table is a mathematical table used in logic when working with Boolean expressions. It describes the Boolean result when applying logical operations on two or more expressions.\n\nIntuitively, we construct a truth table when working with logical operations.\n\n```\nUsing logical OR, only one of the operands needs to be true to evaluate to true:\n-----------------------\nfalse OR false is false\nfalse OR true  is true\ntrue  OR false is true\ntrue  OR true  is true\n\nUsing logical AND, both operands must be true to evaluate to true:\n------------------------\nfalse AND false is false\nfalse AND true  is false\ntrue  AND false is false\ntrue  AND true  is true\n```\n\nThe truth table for `a && b` (logical AND) is as follows:\n\n| a     | b     | result |\n| ----- | ----- | ------ |\n| false | false | false  |\n| false | true  | false  |\n| true  | false | false  |\n| true  | true  | true   |\n\nIf we want an equivalent table, we need to look at other expressions available to us.\n\nThe three logical operators in JavaScript are:\n\n* `&&` AND\n* `||` OR\n* `!` NOT\n\nLogical OR (`||`) has the following truth table:\n\n```js\na || b\n```\n\n| a     | b     | result |\n| ----- | ----- | ------ |\n| false | false | false  |\n| false | true  | true   |\n| true  | false | true   |\n| true  | true  | true   |\n\nWe want to exchange only the top and bottom rows of the table to achieve a NAND (`&&!`) gate. A NAND gate is a logical expression that is true when any of the inputs are false. To arrive at NAND using OR, we need to invert the top and bottom outputs, which is achieved by inverting the original values using the logical NOT (`!`) operator.\n\n```js\n!a || !b\n```\n\n| !a    | !b    | result |\n| ----- | ----- | ------ |\n| true  | true  | true   |\n| true  | false | true   |\n| false | true  | true   |\n| false | false | false  |\n\nFinally, we need to invert the results using the logical NOT operator on the entire expression to get back to the original truth table:\n\n```js\n!(!a || !b)\n```\n\n| !a    | !b    | !result |\n| ----- | ----- | ------- |\n| true  | true  | false   |\n| true  | false | false   |\n| false | true  | false   |\n| false | false | true    |\n\nThis works because NAND is the logical inversion of AND, and if we negate NAND's output we get AND again.",
+    "goodToHear": [
+      "Equivalent expressions for logic can be built out of a different number of steps and inversions.",
+      "Most languages do not have a NAND or NOR gate, but the logic can be recreated by proper inversion of the arguments and result.",
+      "Replicated input to a universal gate is the same as negating the argument."
+    ],
+    "links": [
+      "[All About Circuits: Universal Logic Gates](https://www.allaboutcircuits.com/technical-articles/universal-logic-gates/)",
+      "[Math Memoirs: Intro to Truth Tables and Logic](https://medium.com/i-math/intro-to-truth-tables-boolean-algebra-73b331dd9b94)"
+    ],
+    "tags": [
+      "javascript"
+    ],
+    "expertise": 2,
+    "questionCodeBlocks": [
+      "```js\na && b\n```"
+    ],
+    "answerCodeBlocks": [
+      "```\nUsing logical OR, only one of the operands needs to be true to evaluate to true:\n-----------------------\nfalse OR false is false\nfalse OR true  is true\ntrue  OR false is true\ntrue  OR true  is true\n\nUsing logical AND, both operands must be true to evaluate to true:\n------------------------\nfalse AND false is false\nfalse AND true  is false\ntrue  AND false is false\ntrue  AND true  is true\n```",
+      "```js\na || b\n```",
+      "```js\n!a || !b\n```",
+      "```js\n!(!a || !b)\n```"
+    ]
+  },
+  {
     "name": "typeof-typeof.md",
     "question": "What does the following code evaluate to?\n\n```js\ntypeof typeof 0\n```",
     "answer": "It evaluates to `\"string\"`.\n\n`typeof 0` evaluates to the string `\"number\"` and therefore `typeof \"number\"` evaluates to `\"string\"`.",

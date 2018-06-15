@@ -28,20 +28,20 @@ true  AND true  is true
 
 The truth table for `a && b` (logical AND) is as follows:
 
-a|b|result
----|---|---
-false|false|false
-false|true|false
-true|false|false
-true|true|true
+| a     | b     | result |
+| ----- | ----- | ------ |
+| false | false | false  |
+| false | true  | false  |
+| true  | false | false  |
+| true  | true  | true   |
 
-If we want an equivalent table, we need to look at other expressions available to us. 
+If we want an equivalent table, we need to look at other expressions available to us.
 
 The three logical operators in JavaScript are:
 
-- `&&` AND
-- `||` OR
-- `!` NOT
+* `&&` AND
+* `||` OR
+* `!` NOT
 
 Logical OR (`||`) has the following truth table:
 
@@ -49,12 +49,12 @@ Logical OR (`||`) has the following truth table:
 a || b
 ```
 
-a|b|result
----|---|---
-false|false|false
-false|true|true
-true|false|true
-true|true|true
+| a     | b     | result |
+| ----- | ----- | ------ |
+| false | false | false  |
+| false | true  | true   |
+| true  | false | true   |
+| true  | true  | true   |
 
 We want to exchange only the top and bottom rows of the table to achieve a NAND (`&&!`) gate. A NAND gate is a logical expression that is true when any of the inputs are false. To arrive at NAND using OR, we need to invert the top and bottom outputs, which is achieved by inverting the original values using the logical NOT (`!`) operator.
 
@@ -62,12 +62,12 @@ We want to exchange only the top and bottom rows of the table to achieve a NAND 
 !a || !b
 ```
 
-!a|!b|result
----|---|---
-true|true|true
-true|false|true
-false|true|true
-false|false|false
+| !a    | !b    | result |
+| ----- | ----- | ------ |
+| true  | true  | true   |
+| true  | false | true   |
+| false | true  | true   |
+| false | false | false  |
 
 Finally, we need to invert the results using the logical NOT operator on the entire expression to get back to the original truth table:
 
@@ -75,12 +75,12 @@ Finally, we need to invert the results using the logical NOT operator on the ent
 !(!a || !b)
 ```
 
-!a|!b|!result
----|---|---
-true|true|false
-true|false|false
-false|true|false
-false|false|true
+| !a    | !b    | !result |
+| ----- | ----- | ------- |
+| true  | true  | false   |
+| true  | false | false   |
+| false | true  | false   |
+| false | false | true    |
 
 This works because NAND is the logical inversion of AND, and if we negate NAND's output we get AND again.
 
@@ -93,6 +93,7 @@ This works because NAND is the logical inversion of AND, and if we negate NAND's
 ##### Additional links
 
 <!-- Whenever possible, link a more detailed explanation. -->
+
 * [All About Circuits: Universal Logic Gates](https://www.allaboutcircuits.com/technical-articles/universal-logic-gates/)
 * [Math Memoirs: Intro to Truth Tables and Logic](https://medium.com/i-math/intro-to-truth-tables-boolean-algebra-73b331dd9b94)
 
