@@ -91,6 +91,7 @@ Join our [Gitter channel](https://gitter.im/30-seconds-of-interviews/Lobby) to h
 * [Explain the difference between a static method and an instance method.](#explain-the-difference-between-a-static-method-and-an-instance-method)
 * [What is the difference between synchronous and asynchronous code in JavaScript?](#what-is-the-difference-between-synchronous-and-asynchronous-code-in-javascript)
 * [What is the `this` keyword and how does it work?](#what-is-the-this-keyword-and-how-does-it-work)
+* [What is a truth table? Try to recreate the following Boolean expression using different operators in JavaScript.](#what-is-a-truth-table-try-to-recreate-the-following-boolean-expression-using-different-operators-in-javascript)
 * [What does the following code evaluate to?](#what-does-the-following-code-evaluate-to)
 * [What are JavaScript data types?](#what-are-javascript-data-types)
 * [What is the purpose of JavaScript UI libraries/frameworks like React, Vue, Angular, Hyperapp, etc?](#what-is-the-purpose-of-javascript-ui-librariesframeworks-like-react-vue-angular-hyperapp-etc)
@@ -2177,6 +2178,46 @@ We declare that the new array is mapped to a new one where each value is doubled
 <br>[⬆ Back to top](#table-of-contents)
 
 
+### Explain the difference between a static method and an instance method.
+
+<details>
+<summary>View answer</summary>
+
+Static methods belong to a class and don't act on instances, while instance methods belong to the class prototype which is inherited by all instances of the class and acts on them.
+
+```js
+Array.isArray // static method of Array
+Array.prototype.push // instance method of Array
+```
+
+In this case, the `Array.isArray` method does not make sense as an instance method of arrays because we already know the value is an array when working with it.
+
+Instance methods could technically work as static methods, but provide terser syntax:
+
+```js
+const arr = [1, 2, 3]
+arr.push(4)
+Array.push(arr, 4)
+```
+
+
+#### Good to hear
+
+
+* How to create static and instance methods with ES2015 class syntax
+
+
+##### Additional links
+
+
+* [Classes on MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes)
+</details>
+
+
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
 ### What is the event loop in Node.js?
 
 <details>
@@ -2195,35 +2236,6 @@ The event loop handles all async callbacks. Callbacks are queued in a loop, whil
 
 
 * [Node.js docs on event loop, timers and process.nextTick()](https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick/)
-</details>
-
-
-
-<br>[⬆ Back to top](#table-of-contents)
-
-
-### What is functional programming?
-
-<details>
-<summary>View answer</summary>
-
-Functional programming is a paradigm in which programs are built in a declarative manner using pure functions that avoid shared state and mutable data. Functions that always return the same value for the same input and don't produce side effects are the pillar of functional programming. Many programmers consider this to be the best approach to software development as it reduces bugs and cognitive load.
-
-
-#### Good to hear
-
-
-* Cleaner, more concise development experience
-* Simple function composition
-* Features of JavaScript that enable functional programming (`.map`, `.reduce` etc.)
-* JavaScript is multi-paradigm programming language (Object-Oriented Programming and Functional Programming live in harmony)
-
-
-##### Additional links
-
-
-* [Javascript and Functional Programming: An Introduction](https://hackernoon.com/javascript-and-functional-programming-an-introduction-286aa625e26d)
-* [Master the JavaScript Interview: What is Functional Programming?](https://medium.com/javascript-scene/master-the-javascript-interview-what-is-functional-programming-7f218c68b3a0)
 </details>
 
 
@@ -2337,6 +2349,114 @@ obj.doubleArr() // Uncaught TypeError: this.double is not a function
 
 
 * [`this` on MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this)
+</details>
+
+
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
+### What is a truth table? Try to recreate the following Boolean expression using different operators in JavaScript.
+
+```js
+a && b
+```
+
+<details>
+<summary>View answer</summary>
+
+A truth table is a mathematical table used in logic when working with Boolean expressions. It describes the Boolean result when applying logical operations on two or more expressions.
+
+Intuitively, we construct a truth table when working with logical operations.
+
+```
+Using logical OR, only one of the operands needs to be true to evaluate to true:
+-----------------------
+false OR false is false
+false OR true  is true
+true  OR false is true
+true  OR true  is true
+
+Using logical AND, both operands must be true to evaluate to true:
+------------------------
+false AND false is false
+false AND true  is false
+true  AND false is false
+true  AND true  is true
+```
+
+The truth table for `a && b` (logical AND) is as follows:
+
+| a     | b     | result |
+| ----- | ----- | ------ |
+| false | false | false  |
+| false | true  | false  |
+| true  | false | false  |
+| true  | true  | true   |
+
+If we want an equivalent table, we need to look at other expressions available to us.
+
+The three logical operators in JavaScript are:
+
+* `&&` AND
+* `||` OR
+* `!` NOT
+
+Logical OR (`||`) has the following truth table:
+
+```js
+a || b
+```
+
+| a     | b     | result |
+| ----- | ----- | ------ |
+| false | false | false  |
+| false | true  | true   |
+| true  | false | true   |
+| true  | true  | true   |
+
+We want to exchange only the top and bottom rows of the table to achieve a NAND (`&&!`) gate. A NAND gate is a logical expression that is true when any of the inputs are false. To arrive at NAND using OR, we need to invert the top and bottom outputs, which is achieved by inverting the original values using the logical NOT (`!`) operator.
+
+```js
+!a || !b
+```
+
+| !a    | !b    | result |
+| ----- | ----- | ------ |
+| true  | true  | true   |
+| true  | false | true   |
+| false | true  | true   |
+| false | false | false  |
+
+Finally, we need to invert the results using the logical NOT operator on the entire expression to get back to the original truth table:
+
+```js
+!(!a || !b)
+```
+
+| !a    | !b    | !result |
+| ----- | ----- | ------- |
+| true  | true  | false   |
+| true  | false | false   |
+| false | true  | false   |
+| false | false | true    |
+
+This works because NAND is the logical inversion of AND, and if we negate NAND's output we get AND again.
+
+
+#### Good to hear
+
+
+* Equivalent expressions for logic can be built out of a different number of steps and inversions.
+* Most languages do not have a NAND or NOR gate, but the logic can be recreated by proper inversion of the arguments and result.
+* Replicated input to a universal gate is the same as negating the argument.
+
+
+##### Additional links
+
+
+* [All About Circuits: Universal Logic Gates](https://www.allaboutcircuits.com/technical-articles/universal-logic-gates/)
+* [Math Memoirs: Intro to Truth Tables and Logic](https://medium.com/i-math/intro-to-truth-tables-boolean-algebra-73b331dd9b94)
 </details>
 
 
@@ -2619,39 +2739,28 @@ Once the changes between the old VDOM and new VDOM have been calculated by the d
 <br>[⬆ Back to top](#table-of-contents)
 
 
-### Explain the difference between a static method and an instance method.
+### What is functional programming?
 
 <details>
 <summary>View answer</summary>
 
-Static methods belong to a class and don't act on instances, while instance methods belong to the class prototype which is inherited by all instances of the class and acts on them.
-
-```js
-Array.isArray // static method of Array
-Array.prototype.push // instance method of Array
-```
-
-In this case, the `Array.isArray` method does not make sense as an instance method of arrays because we already know the value is an array when working with it.
-
-Instance methods could technically work as static methods, but provide terser syntax:
-
-```js
-const arr = [1, 2, 3]
-arr.push(4)
-Array.push(arr, 4)
-```
+Functional programming is a paradigm in which programs are built in a declarative manner using pure functions that avoid shared state and mutable data. Functions that always return the same value for the same input and don't produce side effects are the pillar of functional programming. Many programmers consider this to be the best approach to software development as it reduces bugs and cognitive load.
 
 
 #### Good to hear
 
 
-* How to create static and instance methods with ES2015 class syntax
+* Cleaner, more concise development experience
+* Simple function composition
+* Features of JavaScript that enable functional programming (`.map`, `.reduce` etc.)
+* JavaScript is multi-paradigm programming language (Object-Oriented Programming and Functional Programming live in harmony)
 
 
 ##### Additional links
 
 
-* [Classes on MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes)
+* [Javascript and Functional Programming: An Introduction](https://hackernoon.com/javascript-and-functional-programming-an-introduction-286aa625e26d)
+* [Master the JavaScript Interview: What is Functional Programming?](https://medium.com/javascript-scene/master-the-javascript-interview-what-is-functional-programming-7f218c68b3a0)
 </details>
 
 
