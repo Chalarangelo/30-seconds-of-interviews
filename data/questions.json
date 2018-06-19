@@ -201,6 +201,28 @@
     ]
   },
   {
+    "name": "closures-example.md",
+    "question": "What is the output of the following code?\n\n```js\nconst arr = [1, 2, 3, 4, 5]\nfor (var i = 0; i < arr.length; ++i) {\n  setTimeout(() => {\n    console.log(\"arr[\" + i + \"]: \" + arr[i])\n  }, 1000)\n}\n```",
+    "answer": "Because closures capture just the variable and not its value, when the functions execute after `1000ms` the value of `i` is `5`. Hence the output would be a series of `arr[5]: undefined`.\n\nTo get the desired output it sufficient to use `let i` instead of `var i` (ES6 syntax), `let` creates a new binding at every iteration and solves the problem.",
+    "goodToHear": [
+      "Within loops bodies",
+      "`var` creates a single binding for the variables",
+      "`let` creates a new binding for every variables on every iteration",
+      "`const` creates a new binding as `let` does, but the binding is immutable"
+    ],
+    "links": [
+      "[Variables and scoping](http://exploringjs.com/es6/ch_variables.html#sec_let-const-loop-heads)"
+    ],
+    "tags": [
+      "javascript"
+    ],
+    "expertise": 2,
+    "questionCodeBlocks": [
+      "```js\nconst arr = [1, 2, 3, 4, 5]\nfor (var i = 0; i < arr.length; ++i) {\n  setTimeout(() => {\n    console.log(\"arr[\" + i + \"]: \" + arr[i])\n  }, 1000)\n}\n```"
+    ],
+    "answerCodeBlocks": []
+  },
+  {
     "name": "closures.md",
     "question": "What is a closure? Can you give a useful example of one?",
     "answer": "A closure is a function defined inside another function and has access to its lexical scope even when it is executing outside its lexical scope. The closure has access to variables in three scopes:\n\n* Variables declared in its own scope\n* Variables declared in the scope of the parent function\n* Variables declared in the global scope\n\nIn JavaScript, all functions are closures because they have access to the outer scope, but most functions don't utilise the usefulness of closures: the persistence of state. Closures are also sometimes called stateful functions because of this.\n\nIn addition, closures are the only way to store private data that can't be accessed from the outside in JavaScript. They are the key to the UMD (Universal Module Definition) pattern, which is frequently used in libraries that only expose a public API but keep the implementation details private, preventing name collisions with other libraries or the user's own code.",
