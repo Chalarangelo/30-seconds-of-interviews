@@ -50,6 +50,7 @@ Join our [Gitter channel](https://gitter.im/30-seconds-of-interviews/Lobby) to h
 * [How can you avoid callback hells?](#how-can-you-avoid-callback-hells)
 * [What is a callback? Can you show an example using one?](#what-is-a-callback-can-you-show-an-example-using-one)
 * [How do you clone an object in JavaScript?](#how-do-you-clone-an-object-in-javascript)
+* [What is the output of the following code?](#what-is-the-output-of-the-following-code)
 * [What is a closure? Can you give a useful example of one?](#what-is-a-closure-can-you-give-a-useful-example-of-one)
 * [How do you compare two objects in JavaScript?](#how-do-you-compare-two-objects-in-javascript)
 * [What is CORS?](#what-is-cors)
@@ -453,6 +454,37 @@ The latest ECMAScript standard defines seven data types, six of them being primi
 <br>[⬆ Back to top](#table-of-contents)
 
 
+### What does the following code evaluate to?
+
+```js
+typeof typeof 0
+```
+
+<details>
+<summary>View answer</summary>
+
+It evaluates to `"string"`.
+
+`typeof 0` evaluates to the string `"number"` and therefore `typeof "number"` evaluates to `"string"`.
+
+
+#### Good to hear
+
+
+
+
+
+##### Additional links
+
+
+* [MDN docs for typeof](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/typeof)
+</details>
+
+
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
 ### How do you compare two objects in JavaScript?
 
 <details>
@@ -696,30 +728,29 @@ document.addEventListener("click", e => {
 <br>[⬆ Back to top](#table-of-contents)
 
 
-### What does the following code evaluate to?
-
-```js
-typeof typeof 0
-```
+### What is the difference between synchronous and asynchronous code in JavaScript?
 
 <details>
 <summary>View answer</summary>
 
-It evaluates to `"string"`.
+Synchronous means each operation must wait for the previous one to complete.
 
-`typeof 0` evaluates to the string `"number"` and therefore `typeof "number"` evaluates to `"string"`.
+Asynchronous means an operation can occur while another operation is still being processed.
+
+In JavaScript, all code is synchronous due to the single-threaded nature of it. However, asynchronous operations not part of the program (such as `XMLHttpRequest` or `setTimeout`) are processed outside of the main thread because they are controlled by native code (browser APIs), but callbacks part of the program will still be executed synchronously.
 
 
 #### Good to hear
 
 
-
+* JavaScript has a concurrency model based on an "event loop".
+* Functions like `alert` block the main thread so that no user input is registered until the user closes it.
 
 
 ##### Additional links
 
 
-* [MDN docs for typeof](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/typeof)
+
 </details>
 
 
@@ -957,29 +988,75 @@ Both methods iterate through the elements of an array. `map()` maps each element
 <br>[⬆ Back to top](#table-of-contents)
 
 
-### What is the difference between synchronous and asynchronous code in JavaScript?
+### What is short-circuit evaluation in JavaScript?
 
 <details>
 <summary>View answer</summary>
 
-Synchronous means each operation must wait for the previous one to complete.
+Short-circuit evaluation involves logical operations evaluating from left-to-right and stopping early.
 
-Asynchronous means an operation can occur while another operation is still being processed.
+```js
+true || false
+```
 
-In JavaScript, all code is synchronous due to the single-threaded nature of it. However, asynchronous operations not part of the program (such as `XMLHttpRequest` or `setTimeout`) are processed outside of the main thread because they are controlled by native code (browser APIs), but callbacks part of the program will still be executed synchronously.
+In the above sample using logical OR, JavaScript won't look at the second operand `false`, because the expression evaluates to `true` regardless. This is known as short-circuit evaluation.
+
+This also works for logical AND.
+
+```js
+false && true
+```
+
+This means you can have an expression that throws an error if evaluated, and it won't cause issues.
+
+```js
+true || nonexistentFunction()
+false && nonexistentFunction()
+```
+
+This remains true for multiple operations because of left-to-right evaluation.
+
+```js
+true || nonexistentFunction() || window.nothing.wouldThrowError
+true || window.nothing.wouldThrowError
+true
+```
+
+A common use case for this behavior is setting default values. If the first operand is falsy the second operand will be evaluated.
+
+```js
+const options = {}
+const setting = options.setting || "default"
+setting // "default"
+```
+
+Another common use case is only evaluating an expression if the first operand is truthy.
+
+```js
+// Instead of:
+addEventListener("click", e => {
+  if (e.target.matches("span")) {
+    handleSpanClick(e)
+  }
+})
+
+// You can take advantage of short-circuit evaluation:
+addEventListener("click", e => e.target.matches("span") && handleSpanClick(e))
+```
+
+In the above case, if `e.target` does not match the `"span"` selector, the function will not be called. This is because the first operand will be falsy, causing the second operand to not be evaluated.
 
 
 #### Good to hear
 
 
-* JavaScript has a concurrency model based on an "event loop".
-* Functions like `alert` block the main thread so that no user input is registered until the user closes it.
+* Logical operations do not produce a boolean unless the operand(s) evaluate to a boolean.
 
 
 ##### Additional links
 
 
-
+* [JavaScript: What is short-circuit evaluation?](https://codeburst.io/javascript-what-is-short-circuit-evaluation-ff22b2f5608c)
 </details>
 
 
@@ -1123,118 +1200,6 @@ myLibrary.publicMethod() // 2
 <br>[⬆ Back to top](#table-of-contents)
 
 
-### What is short-circuit evaluation in JavaScript?
-
-<details>
-<summary>View answer</summary>
-
-Short-circuit evaluation involves logical operations evaluating from left-to-right and stopping early.
-
-```js
-true || false
-```
-
-In the above sample using logical OR, JavaScript won't look at the second operand `false`, because the expression evaluates to `true` regardless. This is known as short-circuit evaluation.
-
-This also works for logical AND.
-
-```js
-false && true
-```
-
-This means you can have an expression that throws an error if evaluated, and it won't cause issues.
-
-```js
-true || nonexistentFunction()
-false && nonexistentFunction()
-```
-
-This remains true for multiple operations because of left-to-right evaluation.
-
-```js
-true || nonexistentFunction() || window.nothing.wouldThrowError
-true || window.nothing.wouldThrowError
-true
-```
-
-A common use case for this behavior is setting default values. If the first operand is falsy the second operand will be evaluated.
-
-```js
-const options = {}
-const setting = options.setting || "default"
-setting // "default"
-```
-
-Another common use case is only evaluating an expression if the first operand is truthy.
-
-```js
-// Instead of:
-addEventListener("click", e => {
-  if (e.target.matches("span")) {
-    handleSpanClick(e)
-  }
-})
-
-// You can take advantage of short-circuit evaluation:
-addEventListener("click", e => e.target.matches("span") && handleSpanClick(e))
-```
-
-In the above case, if `e.target` does not match the `"span"` selector, the function will not be called. This is because the first operand will be falsy, causing the second operand to not be evaluated.
-
-
-#### Good to hear
-
-
-* Logical operations do not produce a boolean unless the operand(s) evaluate to a boolean.
-
-
-##### Additional links
-
-
-* [JavaScript: What is short-circuit evaluation?](https://codeburst.io/javascript-what-is-short-circuit-evaluation-ff22b2f5608c)
-</details>
-
-
-
-<br>[⬆ Back to top](#table-of-contents)
-
-
-### Create a function that masks a string of characters with `#` except for the last four (4) characters.
-
-```js
-mask("123456789") // "#####6789"
-```
-
-<details>
-<summary>View answer</summary>
-
-> There are many ways to solve this problem, this is just one one of them.
-
-Using `String.prototype.slice()`, we can grab a portion of the string from index `0` (first character) to index `-4` (5th last character) and calculate the resulting length, using `String.prototype.repeat()` to repeat the mask character that many times. Then, using `String.prototype.slice()` once more, we can concatenate the last 4 characters by passing `-4` as an argument.
-
-```js
-const mask = (str, maskChar = "#") =>
-  maskChar.repeat(str.slice(0, -4).length) + str.slice(-4)
-```
-
-
-#### Good to hear
-
-
-* Short, one-line functional solutions to problems should be preferred provided they are efficient
-
-
-##### Additional links
-
-
-
-</details>
-
-
-
-<br>[⬆ Back to top](#table-of-contents)
-
-
 ### Are semicolons required in JavaScript?
 
 <details>
@@ -1268,6 +1233,42 @@ In the above cases, the interpreter does not insert a semicolon after `3`, and t
 
 * Semicolons are usually optional in JavaScript but have edge cases where they are required.
 * If you don't use semicolons, tools like Prettier will insert semicolons for you in the places where they are required on save in a text editor to prevent errors.
+
+
+##### Additional links
+
+
+
+</details>
+
+
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
+### Create a function that masks a string of characters with `#` except for the last four (4) characters.
+
+```js
+mask("123456789") // "#####6789"
+```
+
+<details>
+<summary>View answer</summary>
+
+> There are many ways to solve this problem, this is just one one of them.
+
+Using `String.prototype.slice()`, we can grab a portion of the string from index `0` (first character) to index `-4` (5th last character) and calculate the resulting length, using `String.prototype.repeat()` to repeat the mask character that many times. Then, using `String.prototype.slice()` once more, we can concatenate the last 4 characters by passing `-4` as an argument.
+
+```js
+const mask = (str, maskChar = "#") =>
+  maskChar.repeat(str.slice(0, -4).length) + str.slice(-4)
+```
+
+
+#### Good to hear
+
+
+* Short, one-line functional solutions to problems should be preferred provided they are efficient
 
 
 ##### Additional links
@@ -1407,6 +1408,43 @@ new Promise((resolve, reject) => {
 
 
 * [Master the JavaScript Interview: What is a Promise?](https://medium.com/javascript-scene/master-the-javascript-interview-what-is-a-promise-27fc71e772618)
+</details>
+
+
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
+### Create a standalone function `bind` that is functionally equivalent to the method `Function.prototype.bind`.
+
+```js
+function example() {
+  console.log(this)
+}
+const boundExample = bind(example, { a: true })
+boundExample.call({ b: true }) // logs { a: true }
+```
+
+<details>
+<summary>View answer</summary>
+
+Return a function that accepts an arbitrary number of arguments by gathering them with the rest `...` operator. From that function, return the result of calling the `fn` with `Function.prototype.apply` to apply the context and the array of arguments to the function.
+
+```js
+const bind = (fn, context) => (...args) => fn.apply(context, args)
+```
+
+
+#### Good to hear
+
+
+
+
+
+##### Additional links
+
+
+
 </details>
 
 
@@ -1591,43 +1629,6 @@ JavaScript always passes by value. However, with objects, the value is a referen
 
 
 * [JavaScript Value vs Reference](https://medium.com/dailyjs/back-to-roots-javascript-value-vs-reference-8fb69d587a18)
-</details>
-
-
-
-<br>[⬆ Back to top](#table-of-contents)
-
-
-### Create a standalone function `bind` that is functionally equivalent to the method `Function.prototype.bind`.
-
-```js
-function example() {
-  console.log(this)
-}
-const boundExample = bind(example, { a: true })
-boundExample.call({ b: true }) // logs { a: true }
-```
-
-<details>
-<summary>View answer</summary>
-
-Return a function that accepts an arbitrary number of arguments by gathering them with the rest `...` operator. From that function, return the result of calling the `fn` with `Function.prototype.apply` to apply the context and the array of arguments to the function.
-
-```js
-const bind = (fn, context) => (...args) => fn.apply(context, args)
-```
-
-
-#### Good to hear
-
-
-
-
-
-##### Additional links
-
-
-
 </details>
 
 
@@ -1913,6 +1914,32 @@ The execution time rises extremely fast with even just 1 addition to the array.
 <br>[⬆ Back to top](#table-of-contents)
 
 
+### What is the only value not equal to itself in JavaScript?
+
+<details>
+<summary>View answer</summary>
+
+`NaN` (Not-a-Number) is the only value not equal to itself when comparing with any of the comparison operators. `NaN` is often the result of meaningless math computations, so two `NaN` values make no sense to be considered equal.
+
+
+#### Good to hear
+
+
+* The difference between `isNaN()` and `Number.isNaN()`
+* `const isNaN = x => x !== x`
+
+
+##### Additional links
+
+
+* [MDN docs for `NaN`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NaN)
+</details>
+
+
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
 ### What is a pure function?
 
 <details>
@@ -2008,32 +2035,6 @@ In the above example, the base condition is met if `filter()` returns an empty a
 
 
 * [In plain English, what is recursion?](https://softwareengineering.stackexchange.com/questions/25052/in-plain-english-what-is-recursion)
-</details>
-
-
-
-<br>[⬆ Back to top](#table-of-contents)
-
-
-### What is the only value not equal to itself in JavaScript?
-
-<details>
-<summary>View answer</summary>
-
-`NaN` (Not-a-Number) is the only value not equal to itself when comparing with any of the comparison operators. `NaN` is often the result of meaningless math computations, so two `NaN` values make no sense to be considered equal.
-
-
-#### Good to hear
-
-
-* The difference between `isNaN()` and `Number.isNaN()`
-* `const isNaN = x => x !== x`
-
-
-##### Additional links
-
-
-* [MDN docs for `NaN`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NaN)
 </details>
 
 
@@ -2178,39 +2179,28 @@ We declare that the new array is mapped to a new one where each value is doubled
 <br>[⬆ Back to top](#table-of-contents)
 
 
-### Explain the difference between a static method and an instance method.
+### What is functional programming?
 
 <details>
 <summary>View answer</summary>
 
-Static methods belong to a class and don't act on instances, while instance methods belong to the class prototype which is inherited by all instances of the class and acts on them.
-
-```js
-Array.isArray // static method of Array
-Array.prototype.push // instance method of Array
-```
-
-In this case, the `Array.isArray` method does not make sense as an instance method of arrays because we already know the value is an array when working with it.
-
-Instance methods could technically work as static methods, but provide terser syntax:
-
-```js
-const arr = [1, 2, 3]
-arr.push(4)
-Array.push(arr, 4)
-```
+Functional programming is a paradigm in which programs are built in a declarative manner using pure functions that avoid shared state and mutable data. Functions that always return the same value for the same input and don't produce side effects are the pillar of functional programming. Many programmers consider this to be the best approach to software development as it reduces bugs and cognitive load.
 
 
 #### Good to hear
 
 
-* How to create static and instance methods with ES2015 class syntax
+* Cleaner, more concise development experience
+* Simple function composition
+* Features of JavaScript that enable functional programming (`.map`, `.reduce` etc.)
+* JavaScript is multi-paradigm programming language (Object-Oriented Programming and Functional Programming live in harmony)
 
 
 ##### Additional links
 
 
-* [Classes on MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes)
+* [Javascript and Functional Programming: An Introduction](https://hackernoon.com/javascript-and-functional-programming-an-introduction-286aa625e26d)
+* [Master the JavaScript Interview: What is Functional Programming?](https://medium.com/javascript-scene/master-the-javascript-interview-what-is-functional-programming-7f218c68b3a0)
 </details>
 
 
@@ -2236,6 +2226,58 @@ The event loop handles all async callbacks. Callbacks are queued in a loop, whil
 
 
 * [Node.js docs on event loop, timers and process.nextTick()](https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick/)
+</details>
+
+
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
+### What is event-driven programming?
+
+<details>
+<summary>View answer</summary>
+
+Event-driven programming is a paradigm that involves building applications that send and receive events. When the program emits events, the program responds by running any callback functions that are registered to that event and context, passing in associated data to the function. With this pattern, events can be emitted into the wild without throwing errors even if no functions are subscribed to it.
+
+A common example of this is the pattern of elements listening to DOM events such as `click` and `mouseenter`, where a callback function is run when the event occurs.
+
+```js
+document.addEventListener("click", function(event) {
+  // This callback function is run when the user
+  // clicks on the document.
+})
+```
+
+Without the context of the DOM, the pattern may look like this:
+
+```js
+const hub = createEventHub()
+hub.on("message", function(data) {
+  console.log(`${data.username} said ${data.text}`)
+})
+hub.emit("message", {
+  username: "John",
+  text: "Hello?"
+})
+```
+
+With this implementation, `on` is the way to _subscribe_ to an event, while `emit` is the way to _publish_ the event.
+
+
+#### Good to hear
+
+
+* Follows a publish-subscribe pattern.
+* Responds to events that occur by running any callback functions subscribed to the event.
+* Show how to create a simple pub-sub implementation with JavaScript.
+
+
+##### Additional links
+
+
+* [MDN docs on Events and Handlers](https://developer.mozilla.org/en-US/docs/Web/Guide/Events/Overview_of_Events_and_Handlers)
+* [Understanding Node.js event-driven architecture](https://medium.freecodecamp.org/understanding-node-js-event-driven-architecture-223292fcbc2d)
 </details>
 
 
@@ -2464,58 +2506,6 @@ This works because NAND is the logical inversion of AND, and if we negate NAND's
 <br>[⬆ Back to top](#table-of-contents)
 
 
-### What is event-driven programming?
-
-<details>
-<summary>View answer</summary>
-
-Event-driven programming is a paradigm that involves building applications that send and receive events. When the program emits events, the program responds by running any callback functions that are registered to that event and context, passing in associated data to the function. With this pattern, events can be emitted into the wild without throwing errors even if no functions are subscribed to it.
-
-A common example of this is the pattern of elements listening to DOM events such as `click` and `mouseenter`, where a callback function is run when the event occurs.
-
-```js
-document.addEventListener("click", function(event) {
-  // This callback function is run when the user
-  // clicks on the document.
-})
-```
-
-Without the context of the DOM, the pattern may look like this:
-
-```js
-const hub = createEventHub()
-hub.on("message", function(data) {
-  console.log(`${data.username} said ${data.text}`)
-})
-hub.emit("message", {
-  username: "John",
-  text: "Hello?"
-})
-```
-
-With this implementation, `on` is the way to _subscribe_ to an event, while `emit` is the way to _publish_ the event.
-
-
-#### Good to hear
-
-
-* Follows a publish-subscribe pattern.
-* Responds to events that occur by running any callback functions subscribed to the event.
-* Show how to create a simple pub-sub implementation with JavaScript.
-
-
-##### Additional links
-
-
-* [MDN docs on Events and Handlers](https://developer.mozilla.org/en-US/docs/Web/Guide/Events/Overview_of_Events_and_Handlers)
-* [Understanding Node.js event-driven architecture](https://medium.freecodecamp.org/understanding-node-js-event-driven-architecture-223292fcbc2d)
-</details>
-
-
-
-<br>[⬆ Back to top](#table-of-contents)
-
-
 ### What is a closure? Can you give a useful example of one?
 
 <details>
@@ -2546,6 +2536,45 @@ In addition, closures are the only way to store private data that can't be acces
 * [MDN docs for closures](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures)
 * [What is a closure](https://medium.com/javascript-scene/master-the-javascript-interview-what-is-a-closure-b2f0d2152b36)
 * [I never understood JavaScript closures](https://medium.com/dailyjs/i-never-understood-javascript-closures-9663703368e8)
+</details>
+
+
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
+### What is the output of the following code?
+
+```js
+const arr = [1, 2, 3, 4, 5]
+for (var i = 0; i < arr.length; ++i) {
+  setTimeout(() => {
+    console.log("arr[" + i + "]: " + arr[i])
+  }, 1000)
+}
+```
+
+<details>
+<summary>View answer</summary>
+
+Because closures capture just the variable and not its value, when the functions execute after `1000ms` the value of `i` is `5`. Hence the output would be a series of `arr[5]: undefined`.
+
+To get the desired output it sufficient to use `let i` instead of `var i` (ES6 syntax), `let` creates a new binding at every iteration and solves the problem.
+
+
+#### Good to hear
+
+
+* Within loops bodies
+* `var` creates a single binding for the variables
+* `let` creates a new binding for every variables on every iteration
+* `const` creates a new binding as `let` does, but the binding is immutable
+
+
+##### Additional links
+
+
+* [Variables and scoping](http://exploringjs.com/es6/ch_variables.html#sec_let-const-loop-heads)
 </details>
 
 
@@ -2739,28 +2768,39 @@ Once the changes between the old VDOM and new VDOM have been calculated by the d
 <br>[⬆ Back to top](#table-of-contents)
 
 
-### What is functional programming?
+### Explain the difference between a static method and an instance method.
 
 <details>
 <summary>View answer</summary>
 
-Functional programming is a paradigm in which programs are built in a declarative manner using pure functions that avoid shared state and mutable data. Functions that always return the same value for the same input and don't produce side effects are the pillar of functional programming. Many programmers consider this to be the best approach to software development as it reduces bugs and cognitive load.
+Static methods belong to a class and don't act on instances, while instance methods belong to the class prototype which is inherited by all instances of the class and acts on them.
+
+```js
+Array.isArray // static method of Array
+Array.prototype.push // instance method of Array
+```
+
+In this case, the `Array.isArray` method does not make sense as an instance method of arrays because we already know the value is an array when working with it.
+
+Instance methods could technically work as static methods, but provide terser syntax:
+
+```js
+const arr = [1, 2, 3]
+arr.push(4)
+Array.push(arr, 4)
+```
 
 
 #### Good to hear
 
 
-* Cleaner, more concise development experience
-* Simple function composition
-* Features of JavaScript that enable functional programming (`.map`, `.reduce` etc.)
-* JavaScript is multi-paradigm programming language (Object-Oriented Programming and Functional Programming live in harmony)
+* How to create static and instance methods with ES2015 class syntax
 
 
 ##### Additional links
 
 
-* [Javascript and Functional Programming: An Introduction](https://hackernoon.com/javascript-and-functional-programming-an-introduction-286aa625e26d)
-* [Master the JavaScript Interview: What is Functional Programming?](https://medium.com/javascript-scene/master-the-javascript-interview-what-is-functional-programming-7f218c68b3a0)
+* [Classes on MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes)
 </details>
 
 
