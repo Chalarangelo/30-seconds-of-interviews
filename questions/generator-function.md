@@ -1,6 +1,9 @@
-### Declare and explain a _Generator__ 
+### What are Generators? Can you provide an example of declaring one?
 
 #### Answer
+
+Generators are functions which can be exited and later re-entered. Their context (variable bindings) will be saved across re-entrances.
+Calling a generator function does not execute its body immediately; an iterator object for the function is returned instead. When the iterator's next() method is called, the generator function's body is executed until the first yield expression, which specifies the value to be returned from the iterator or, with yield*, delegates to another generator function.
 
 ```
 function* generator(i) {
@@ -21,10 +24,6 @@ const foo = function* () {
 
 const bar = foo();
 ```
-
-Generators are functions which can be exited and later re-entered. Their context (variable bindings) will be saved across re-entrances.
-Calling a generator function does not execute its body immediately; an iterator object for the function is returned instead. When the iterator's next() method is called, the generator function's body is executed until the first yield expression, which specifies the value to be returned from the iterator or, with yield*, delegates to another generator function.
-
 
 #### Good to hear
 
