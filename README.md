@@ -64,6 +64,7 @@ Join our [Gitter channel](https://gitter.im/30-seconds-of-interviews/Lobby) to h
 * [What does `0.1 + 0.2 === 0.3` evaluate to?](#what-does-01--02--03-evaluate-to)
 * [What is the difference between the array methods `map()` and `forEach()`?](#what-is-the-difference-between-the-array-methods-map-and-foreach)
 * [What is functional programming?](#what-is-functional-programming)
+* [What are Generators? Can you provide an example of declaring one?](#what-are-generators-can-you-provide-an-example-of-declaring-one)
 * [What will the console log in this example?](#what-will-the-console-log-in-this-example)
 * [How does hoisting work in JavaScript?](#how-does-hoisting-work-in-javascript)
 * [What is the reason for wrapping the entire contents of a JavaScript source file in a function that is immediately invoked?](#what-is-the-reason-for-wrapping-the-entire-contents-of-a-javascript-source-file-in-a-function-that-is-immediately-invoked)
@@ -262,74 +263,67 @@ let i = 0
 <br>[⬆ Back to top](#table-of-contents)
 
 
-### NodeJS often uses a callback pattern where if an error is encountered during execution, this error is passed as the first argument to the callback. What are the advantages of this pattern?
+### Create a function `batches` that returns the maximum number of whole batches that can be cooked from a recipe.
 
 ```js
-fs.readFile(filePath, function(err, data) {
-  if (err) {
-    // handle the error, the return is important here
-    // so execution stops here
-    return console.log(err)
-  }
-  // use the data object
-  console.log(data)
-})
+/**
+It accepts two objects as arguments: the first object is the recipe
+for the food, while the second object is the available ingredients.
+Each ingredient's value is number representing how many units there are.
+
+`batches(recipe, available)`
+*/
+
+// 0 batches can be made
+batches(
+  { milk: 100, butter: 50, flour: 5 },
+  { milk: 132, butter: 48, flour: 51 }
+)
+batches(
+  { milk: 100, flour: 4, sugar: 10, butter: 5 },
+  { milk: 1288, flour: 9, sugar: 95 }
+)
+
+// 1 batch can be made
+batches(
+  { milk: 100, butter: 50, cheese: 10 },
+  { milk: 198, butter: 52, cheese: 10 }
+)
+
+// 2 batches can be made
+batches(
+  { milk: 2, sugar: 40, butter: 20 },
+  { milk: 5, sugar: 120, butter: 500 }
+)
 ```
 
 <details>
 <summary>View answer</summary>
 
-Advantages include:
+We must have all ingredients of the recipe available, and in quantities that are more than or equal to the number of units required. If just one of ingredients is not available or lower than needed, we cannot make a single batch.
 
-* Not needing to process data if there is no need to even reference it
-* Having a consistent API leads to more adoption
-* Ability to easily adapt a callback pattern that will lead to more maintainable code
+Use `Object.keys()` to return the ingredients of the recipe as an array, then use `Array.prototype.map()` to map each ingredient to the ratio of available units to the amount required by the recipe. If one of the ingredients required by the recipe is not available at all, the ratio will evaluate to `NaN`, so the logical OR operator can be used to fallback to `0` in this case.
 
-As you can see from below example, the callback is called with null as its first argument if there is no error. However, if there is an error, you create an Error object, which then becomes the callback's only parameter. The callback function allows a user to easily know whether or not an error occurred.
-
-This practice is also called the _Node.js error convention_, and this kind of callback implementations are called _error-first callbacks_.
+Use the spread `...` operator to feed the array of all the ingredient ratios into `Math.min()` to determine the lowest ratio. Passing this entire result into `Math.floor()` rounds down to return the maximum number of whole batches.
 
 ```js
-var isTrue = function(value, callback) {
-  if (value === true) {
-    callback(null, "Value was true.")
-  } else {
-    callback(new Error("Value is not true!"))
-  }
-}
-
-var callback = function(error, retval) {
-  if (error) {
-    console.log(error)
-    return
-  }
-  console.log(retval)
-}
-
-isTrue(false, callback)
-isTrue(true, callback)
-
-/*
-  { stack: [Getter/Setter],
-    arguments: undefined,
-    type: undefined,
-    message: 'Value is not true!' }
-  Value was true.
-*/
+const batches = (recipe, available) =>
+  Math.floor(
+    Math.min(...Object.keys(recipe).map(k => available[k] / recipe[k] || 0))
+  )
 ```
 
 
 #### Good to hear
 
 
-* This is just a convention. However, you should stick to it.
+
 
 
 ##### Additional links
 
 
-* [The Node.js Way Understanding Error-First Callbacks](http://fredkschott.com/post/2014/03/understanding-error-first-callbacks-in-node-js/)
-* [What are the error conventions?](https://docs.nodejitsu.com/articles/errors/what-are-the-error-conventions)
+
 </details>
 
 
@@ -610,67 +604,31 @@ The DOM (Document Object Model) is a cross-platform API that treats HTML and XML
 <br>[⬆ Back to top](#table-of-contents)
 
 
-### Create a function `batches` that returns the maximum number of whole batches that can be cooked from a recipe.
-
-```js
-/**
-It accepts two objects as arguments: the first object is the recipe
-for the food, while the second object is the available ingredients.
-Each ingredient's value is number representing how many units there are.
-
-`batches(recipe, available)`
-*/
-
-// 0 batches can be made
-batches(
-  { milk: 100, butter: 50, flour: 5 },
-  { milk: 132, butter: 48, flour: 51 }
-)
-batches(
-  { milk: 100, flour: 4, sugar: 10, butter: 5 },
-  { milk: 1288, flour: 9, sugar: 95 }
-)
-
-// 1 batch can be made
-batches(
-  { milk: 100, butter: 50, cheese: 10 },
-  { milk: 198, butter: 52, cheese: 10 }
-)
-
-// 2 batches can be made
-batches(
-  { milk: 2, sugar: 40, butter: 20 },
-  { milk: 5, sugar: 120, butter: 500 }
-)
-```
+### What is a cross-site scripting attack (XSS) and how do you prevent it?
 
 <details>
 <summary>View answer</summary>
 
-We must have all ingredients of the recipe available, and in quantities that are more than or equal to the number of units required. If just one of ingredients is not available or lower than needed, we cannot make a single batch.
+XSS refers to client-side code injection where the attacker injects malicious scripts into a legitimate website or web application. This is often achieved when the application does not validate user input and freely injects dynamic HTML content.
 
-Use `Object.keys()` to return the ingredients of the recipe as an array, then use `Array.prototype.map()` to map each ingredient to the ratio of available units to the amount required by the recipe. If one of the ingredients required by the recipe is not available at all, the ratio will evaluate to `NaN`, so the logical OR operator can be used to fallback to `0` in this case.
+For example, a comment system will be at risk if it does not validate or escape user input. If the comment contains unescaped HTML, the comment can inject a `<script>` tag into the website that other users will execute against their knowledge.
 
-Use the spread `...` operator to feed the array of all the ingredient ratios into `Math.min()` to determine the lowest ratio. Passing this entire result into `Math.floor()` rounds down to return the maximum number of whole batches.
-
-```js
-const batches = (recipe, available) =>
-  Math.floor(
-    Math.min(...Object.keys(recipe).map(k => available[k] / recipe[k] || 0))
-  )
-```
+* The malicious script has access to cookies which are often used to store session tokens. If an attacker can obtain a user’s session cookie, they can impersonate the user.
+* The script can arbitrarily manipulate the DOM of the page the script is executing in, allowing the attacker to insert pieces of content that appear to be a real part of the website.
+* The script can use AJAX to send HTTP requests with arbitrary content to arbitrary destinations.
 
 
 #### Good to hear
 
 
-
+* On the client, using `textContent` instead of `innerHTML` prevents the browser from running the string through the HTML parser which would execute scripts in it.
+* On the server, escaping HTML tags will prevent the browser from parsing the user input as actual HTML and therefore won't execute the script.
 
 
 ##### Additional links
 
 
-
+* [Cross-Site Scripting Attack (XSS)](https://www.acunetix.com/websitesecurity/cross-site-scripting/)
 </details>
 
 
@@ -1064,6 +1022,52 @@ In the above case, if `e.target` does not match the `"span"` selector, the funct
 <br>[⬆ Back to top](#table-of-contents)
 
 
+### Are semicolons required in JavaScript?
+
+<details>
+<summary>View answer</summary>
+
+Sometimes. Due to JavaScript's automatic semicolon insertion, the interpreter places semicolons after most statements. This means semicolons can be omitted in most cases.
+
+However, there are some cases where they are required. They are not required at the beginning of a block, but are if they follow a line and:
+
+1.  The line starts with `[`
+
+```js
+const previousLine = 3
+;[1, 2, previousLine].map(n => n * 2)
+```
+
+2.  The line starts with `(`
+
+```js
+const previousLine = 3
+;(function() {
+  // ...
+})()
+```
+
+In the above cases, the interpreter does not insert a semicolon after `3`, and therefore it will see the `3` as attempting object property access or being invoked as a function, which will throw errors.
+
+
+#### Good to hear
+
+
+* Semicolons are usually optional in JavaScript but have edge cases where they are required.
+* If you don't use semicolons, tools like Prettier will insert semicolons for you in the places where they are required on save in a text editor to prevent errors.
+
+
+##### Additional links
+
+
+
+</details>
+
+
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
 ### What will the console log in this example?
 
 ```js
@@ -1200,45 +1204,33 @@ myLibrary.publicMethod() // 2
 <br>[⬆ Back to top](#table-of-contents)
 
 
-### Are semicolons required in JavaScript?
+### What does the following function return?
+
+```js
+function greet() {
+  return
+  {
+    message: "hello"
+  }
+}
+```
 
 <details>
 <summary>View answer</summary>
 
-Sometimes. Due to JavaScript's automatic semicolon insertion, the interpreter places semicolons after most statements. This means semicolons can be omitted in most cases.
-
-However, there are some cases where they are required. They are not required at the beginning of a block, but are if they follow a line and:
-
-1.  The line starts with `[`
-
-```js
-const previousLine = 3
-;[1, 2, previousLine].map(n => n * 2)
-```
-
-2.  The line starts with `(`
-
-```js
-const previousLine = 3
-;(function() {
-  // ...
-})()
-```
-
-In the above cases, the interpreter does not insert a semicolon after `3`, and therefore it will see the `3` as attempting object property access or being invoked as a function, which will throw errors.
+Because of JavaScript's automatic semicolon insertion (ASI), the compiler places a semicolon after `return` keyword and therefore it returns `undefined` without an error being thrown.
 
 
 #### Good to hear
 
 
-* Semicolons are usually optional in JavaScript but have edge cases where they are required.
-* If you don't use semicolons, tools like Prettier will insert semicolons for you in the places where they are required on save in a text editor to prevent errors.
+* Automatic semicolon placement can lead to time-consuming bugs
 
 
 ##### Additional links
 
 
-
+* [Automatic semicolon insertion in JavaScript](http://2ality.com/2011/05/semicolon-insertion.html)
 </details>
 
 
@@ -1275,40 +1267,6 @@ const mask = (str, maskChar = "#") =>
 
 
 
-</details>
-
-
-
-<br>[⬆ Back to top](#table-of-contents)
-
-
-### What does the following function return?
-
-```js
-function greet() {
-  return
-  {
-    message: "hello"
-  }
-}
-```
-
-<details>
-<summary>View answer</summary>
-
-Because of JavaScript's automatic semicolon insertion (ASI), the compiler places a semicolon after `return` keyword and therefore it returns `undefined` without an error being thrown.
-
-
-#### Good to hear
-
-
-* Automatic semicolon placement can lead to time-consuming bugs
-
-
-##### Additional links
-
-
-* [Automatic semicolon insertion in JavaScript](http://2ality.com/2011/05/semicolon-insertion.html)
 </details>
 
 
@@ -1408,6 +1366,81 @@ new Promise((resolve, reject) => {
 
 
 * [Master the JavaScript Interview: What is a Promise?](https://medium.com/javascript-scene/master-the-javascript-interview-what-is-a-promise-27fc71e772618)
+</details>
+
+
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
+### NodeJS often uses a callback pattern where if an error is encountered during execution, this error is passed as the first argument to the callback. What are the advantages of this pattern?
+
+```js
+fs.readFile(filePath, function(err, data) {
+  if (err) {
+    // handle the error, the return is important here
+    // so execution stops here
+    return console.log(err)
+  }
+  // use the data object
+  console.log(data)
+})
+```
+
+<details>
+<summary>View answer</summary>
+
+Advantages include:
+
+* Not needing to process data if there is no need to even reference it
+* Having a consistent API leads to more adoption
+* Ability to easily adapt a callback pattern that will lead to more maintainable code
+
+As you can see from below example, the callback is called with null as its first argument if there is no error. However, if there is an error, you create an Error object, which then becomes the callback's only parameter. The callback function allows a user to easily know whether or not an error occurred.
+
+This practice is also called the _Node.js error convention_, and this kind of callback implementations are called _error-first callbacks_.
+
+```js
+var isTrue = function(value, callback) {
+  if (value === true) {
+    callback(null, "Value was true.")
+  } else {
+    callback(new Error("Value is not true!"))
+  }
+}
+
+var callback = function(error, retval) {
+  if (error) {
+    console.log(error)
+    return
+  }
+  console.log(retval)
+}
+
+isTrue(false, callback)
+isTrue(true, callback)
+
+/*
+  { stack: [Getter/Setter],
+    arguments: undefined,
+    type: undefined,
+    message: 'Value is not true!' }
+  Value was true.
+*/
+```
+
+
+#### Good to hear
+
+
+* This is just a convention. However, you should stick to it.
+
+
+##### Additional links
+
+
+* [The Node.js Way Understanding Error-First Callbacks](http://fredkschott.com/post/2014/03/understanding-error-first-callbacks-in-node-js/)
+* [What are the error conventions?](https://docs.nodejitsu.com/articles/errors/what-are-the-error-conventions)
 </details>
 
 
@@ -1721,31 +1754,39 @@ myObject = "hello" // Error
 <br>[⬆ Back to top](#table-of-contents)
 
 
-### What is a cross-site scripting attack (XSS) and how do you prevent it?
+### Explain the difference between a static method and an instance method.
 
 <details>
 <summary>View answer</summary>
 
-XSS refers to client-side code injection where the attacker injects malicious scripts into a legitimate website or web application. This is often achieved when the application does not validate user input and freely injects dynamic HTML content.
+Static methods belong to a class and don't act on instances, while instance methods belong to the class prototype which is inherited by all instances of the class and acts on them.
 
-For example, a comment system will be at risk if it does not validate or escape user input. If the comment contains unescaped HTML, the comment can inject a `<script>` tag into the website that other users will execute against their knowledge.
+```js
+Array.isArray // static method of Array
+Array.prototype.push // instance method of Array
+```
 
-* The malicious script has access to cookies which are often used to store session tokens. If an attacker can obtain a user’s session cookie, they can impersonate the user.
-* The script can arbitrarily manipulate the DOM of the page the script is executing in, allowing the attacker to insert pieces of content that appear to be a real part of the website.
-* The script can use AJAX to send HTTP requests with arbitrary content to arbitrary destinations.
+In this case, the `Array.isArray` method does not make sense as an instance method of arrays because we already know the value is an array when working with it.
+
+Instance methods could technically work as static methods, but provide terser syntax:
+
+```js
+const arr = [1, 2, 3]
+arr.push(4)
+Array.push(arr, 4)
+```
 
 
 #### Good to hear
 
 
-* On the client, using `textContent` instead of `innerHTML` prevents the browser from running the string through the HTML parser which would execute scripts in it.
-* On the server, escaping HTML tags will prevent the browser from parsing the user input as actual HTML and therefore won't execute the script.
+* How to create static and instance methods with ES2015 class syntax
 
 
 ##### Additional links
 
 
-* [Cross-Site Scripting Attack (XSS)](https://www.acunetix.com/websitesecurity/cross-site-scripting/)
+* [Classes on MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes)
 </details>
 
 
@@ -1914,25 +1955,40 @@ The execution time rises extremely fast with even just 1 addition to the array.
 <br>[⬆ Back to top](#table-of-contents)
 
 
-### What is the only value not equal to itself in JavaScript?
+### Contrast mutable and immutable values, and mutating vs non-mutating methods.
 
 <details>
 <summary>View answer</summary>
 
-`NaN` (Not-a-Number) is the only value not equal to itself when comparing with any of the comparison operators. `NaN` is often the result of meaningless math computations, so two `NaN` values make no sense to be considered equal.
+The two terms can be contrasted as:
+
+* Mutable: subject to change
+* Immutable: cannot change
+
+In JavaScript, objects are mutable while primitive values are immutable. This means operations performed on objects can change the original reference in some way, while operations performed on a primitive value cannot change the original value.
+
+All `String.prototype` methods do not have an effect on the original string and return a new string. On the other hand, while some methods of `Array.prototype` do not mutate the original array reference and produce a fresh array, some cause mutations.
+
+```js
+const myString = "hello!"
+myString.replace("!", "") // returns a new string, cannot mutate the original value
+
+const originalArray = [1, 2, 3]
+originalArray.push(4) // mutates originalArray, now [1, 2, 3, 4]
+originalArray.concat(4) // returns a new array, does not mutate the original
+```
 
 
 #### Good to hear
 
 
-* The difference between `isNaN()` and `Number.isNaN()`
-* `const isNaN = x => x !== x`
+* List of mutating and non-mutating array methods
 
 
 ##### Additional links
 
 
-* [MDN docs for `NaN`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NaN)
+* [Mutating vs non-mutating array methods](https://lorenstewart.me/2017/01/22/javascript-array-methods-mutating-vs-non-mutating/)
 </details>
 
 
@@ -2042,47 +2098,6 @@ In the above example, the base condition is met if `filter()` returns an empty a
 <br>[⬆ Back to top](#table-of-contents)
 
 
-### Contrast mutable and immutable values, and mutating vs non-mutating methods.
-
-<details>
-<summary>View answer</summary>
-
-The two terms can be contrasted as:
-
-* Mutable: subject to change
-* Immutable: cannot change
-
-In JavaScript, objects are mutable while primitive values are immutable. This means operations performed on objects can change the original reference in some way, while operations performed on a primitive value cannot change the original value.
-
-All `String.prototype` methods do not have an effect on the original string and return a new string. On the other hand, while some methods of `Array.prototype` do not mutate the original array reference and produce a fresh array, some cause mutations.
-
-```js
-const myString = "hello!"
-myString.replace("!", "") // returns a new string, cannot mutate the original value
-
-const originalArray = [1, 2, 3]
-originalArray.push(4) // mutates originalArray, now [1, 2, 3, 4]
-originalArray.concat(4) // returns a new array, does not mutate the original
-```
-
-
-#### Good to hear
-
-
-* List of mutating and non-mutating array methods
-
-
-##### Additional links
-
-
-* [Mutating vs non-mutating array methods](https://lorenstewart.me/2017/01/22/javascript-array-methods-mutating-vs-non-mutating/)
-</details>
-
-
-
-<br>[⬆ Back to top](#table-of-contents)
-
-
 ### What is memoization?
 
 <details>
@@ -2172,6 +2187,54 @@ We declare that the new array is mapped to a new one where each value is doubled
 
 
 * [Declarative vs Imperative Programming](https://codeburst.io/declarative-vs-imperative-programming-a8a7c93d9ad2)
+</details>
+
+
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
+### What are Generators? Can you provide an example of declaring one?
+
+<details>
+<summary>View answer</summary>
+
+Generators are functions which can be exited and later re-entered. Their context (variable bindings) will be saved across re-entrances.
+Calling a generator function does not execute its body immediately; an iterator object for the function is returned instead. When the iterator's next() method is called, the generator function's body is executed until the first yield expression, which specifies the value to be returned from the iterator or, with yield\*, delegates to another generator function.
+
+```
+function* generator(i) {
+  yield i;
+  yield i + 10;
+}
+
+// or
+
+new GeneratorFunction ('arg1','console.log(arg1)')
+
+// or
+
+const foo = function* () {
+  yield 10;
+  yield 20;
+};
+
+const bar = foo();
+```
+
+
+#### Good to hear
+
+
+* Generators can be combined with Promises
+* Generators in JavaScript are a very powerful tool for asynchronous programming as they mitigate the problems with callbacks, such as Callback Hell and Inversion of Control.
+* This pattern is what async functions are built on top of.
+
+
+##### Additional links
+
+
+* [Mozilla Docs Generator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Generator**)
 </details>
 
 
@@ -2768,39 +2831,25 @@ Once the changes between the old VDOM and new VDOM have been calculated by the d
 <br>[⬆ Back to top](#table-of-contents)
 
 
-### Explain the difference between a static method and an instance method.
+### What is the only value not equal to itself in JavaScript?
 
 <details>
 <summary>View answer</summary>
 
-Static methods belong to a class and don't act on instances, while instance methods belong to the class prototype which is inherited by all instances of the class and acts on them.
-
-```js
-Array.isArray // static method of Array
-Array.prototype.push // instance method of Array
-```
-
-In this case, the `Array.isArray` method does not make sense as an instance method of arrays because we already know the value is an array when working with it.
-
-Instance methods could technically work as static methods, but provide terser syntax:
-
-```js
-const arr = [1, 2, 3]
-arr.push(4)
-Array.push(arr, 4)
-```
+`NaN` (Not-a-Number) is the only value not equal to itself when comparing with any of the comparison operators. `NaN` is often the result of meaningless math computations, so two `NaN` values make no sense to be considered equal.
 
 
 #### Good to hear
 
 
-* How to create static and instance methods with ES2015 class syntax
+* The difference between `isNaN()` and `Number.isNaN()`
+* `const isNaN = x => x !== x`
 
 
 ##### Additional links
 
 
-* [Classes on MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes)
+* [MDN docs for `NaN`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NaN)
 </details>
 
 
