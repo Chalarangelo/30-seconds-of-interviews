@@ -1253,7 +1253,7 @@ Using `String.prototype.slice()`, we can grab a portion of the string from index
 
 ```js
 const mask = (str, maskChar = "#") =>
-  maskChar.repeat(str.slice(0, -4).length) + str.slice(-4)
+  maskChar.repeat(str.length - 4) + str.slice(-4)
 ```
 
 
