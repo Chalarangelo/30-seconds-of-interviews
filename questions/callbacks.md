@@ -4,7 +4,7 @@
 
 Callbacks are functions passed as an argument to another function to be executed once an event has occurred or a certain task is complete, often used in asynchronous code. Callback functions are invoked later by a piece of code but can be declared on initialization without being invoked.
 
-As an example, event listeners are asynchronous callbacks that are only executed when a specific event occurs.
+As an example, event listeners are functions which accept asynchronous callbacks(onClick), that are only executed when a specific event occurs.
 
 ```js
 function onClick() {
