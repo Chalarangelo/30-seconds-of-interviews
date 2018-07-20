@@ -28,7 +28,7 @@ Interviews are daunting and can make even the most seasoned expert forget things
 
 <br>
 
-## Our sponsors:
+## Our sponsors
 
 <a href="https://www.digitalocean.com/"><img src="digitalocean.png" alt="DigitalOcean logo"></a>
 
