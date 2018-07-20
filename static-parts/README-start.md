@@ -28,6 +28,12 @@ Interviews are daunting and can make even the most seasoned expert forget things
 
 <br>
 
+## Our sponsors:
+
+<a href="https://www.digitalocean.com/"><img src="digitalocean.png" alt="DigitalOcean logo"></a>
+
+<br>
+
 ## Contributing
 
 > 30 seconds of interviews is a community effort, so feel free to contribute in any way you can. Every contribution helps!
