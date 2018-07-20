@@ -28,6 +28,12 @@ Interviews are daunting and can make even the most seasoned expert forget things
 
 <br>
 
+## Our sponsors
+
+<a href="https://www.digitalocean.com/"><img src="digitalocean.png" alt="DigitalOcean logo"></a>
+
+<br>
+
 ## Contributing
 
 > 30 seconds of interviews is a community effort, so feel free to contribute in any way you can. Every contribution helps!
@@ -3134,13 +3140,13 @@ Set the `.row` parent to `display: flex;` and use the `flex` shorthand property 
 
 <!-- Your answer goes here. -->
 
-_Content_: The inner-most part of the box filled with content, such as text, an image, or video player. It has the dimensions _content-box width_ and _content-box height_.
+`Content`: The inner-most part of the box filled with content, such as text, an image, or video player. It has the dimensions `content-box width` and `content-box height`.
 
-_Padding_: The transparent area surrounding the content. It has dimensions are _padding-box width_ and _padding-box height_.
+`Padding`: The transparent area surrounding the content. It has dimensions are `padding-box width` and `padding-box height`.
 
-_Border_: The area surrounding the padding (if any) and content. It has dimensions _border-box width_ and _border-box height_.
+`Border`: The area surrounding the padding (if any) and content. It has dimensions `border-box width` and `border-box height`.
 
-_Margin_: The transparent outer-most layer that surrounds the border. It separates the element from other elements in the DOM. It has dimensions _margin-box width_ and _margin-box height_.
+_Margin_: The transparent outer-most layer that surrounds the border. It separates the element from other elements in the DOM. It has dimensions `margin-box width` and `margin-box height`.
 
 ![alt text](https://www.washington.edu/accesscomputing/webd2/student/unit3/images/boxmodel.gif)
 
@@ -3148,7 +3154,6 @@ _Margin_: The transparent outer-most layer that surrounds the border. It separat
 #### Good to hear
 
 
-* <!-Whenever possible, include the short list of bullet points that sum up the answer. -->
 * This is a very common question asked during front-end interviews and while it may seem easy, it is critical you know it well!
 * Shows a solid understanding of spacing and the DOM
 
