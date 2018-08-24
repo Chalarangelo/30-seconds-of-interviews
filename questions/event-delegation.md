@@ -14,8 +14,8 @@ This provides two main benefits:
 Instead of:
 
 ```js
-document.querySelectorAll("span").forEach(span => {
-  span.addEventListener("click", handleSpanClick)
+document.querySelectorAll("button").forEach(button => {
+  button.addEventListener("click", handleButtonClick)
 })
 ```
 
@@ -23,8 +23,8 @@ Event delegation involves using a condition to ensure the child target matches o
 
 ```js
 document.addEventListener("click", e => {
-  if (e.target.matches("span")) {
-    handleSpanClick()
+  if (e.target.closest("button")) {
+    handleButtonClick()
   }
 })
 ```
