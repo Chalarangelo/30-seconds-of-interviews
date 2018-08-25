@@ -668,8 +668,8 @@ This provides two main benefits:
 Instead of:
 
 ```js
-document.querySelectorAll("span").forEach(span => {
-  span.addEventListener("click", handleSpanClick)
+document.querySelectorAll("button").forEach(button => {
+  button.addEventListener("click", handleButtonClick)
 })
 ```
 
@@ -677,8 +677,8 @@ Event delegation involves using a condition to ensure the child target matches o
 
 ```js
 document.addEventListener("click", e => {
-  if (e.target.matches("span")) {
-    handleSpanClick()
+  if (e.target.closest("button")) {
+    handleButtonClick()
   }
 })
 ```
@@ -1175,16 +1175,19 @@ Another common use case is only evaluating an expression if the first operand is
 ```js
 // Instead of:
 addEventListener("click", e => {
-  if (e.target.matches("span")) {
-    handleSpanClick(e)
+  if (e.target.closest("button")) {
+    handleButtonClick(e)
   }
 })
 
 // You can take advantage of short-circuit evaluation:
-addEventListener("click", e => e.target.matches("span") && handleSpanClick(e))
+addEventListener(
+  "click",
+  e => e.target.closest("button") && handleButtonClick(e)
+)
 ```
 
-In the above case, if `e.target` does not match the `"span"` selector, the function will not be called. This is because the first operand will be falsy, causing the second operand to not be evaluated.
+In the above case, if `e.target` is not or does not contain an element matching the `"button"` selector, the function will not be called. This is because the first operand will be falsy, causing the second operand to not be evaluated.
 
 
 #### Good to hear
