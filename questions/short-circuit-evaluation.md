@@ -50,7 +50,10 @@ addEventListener("click", e => {
 })
 
 // You can take advantage of short-circuit evaluation:
-addEventListener("click", e => e.target.closest("button") && handleButtonClick(e))
+addEventListener(
+  "click",
+  e => e.target.closest("button") && handleButtonClick(e)
+)
 ```
 
 In the above case, if `e.target` is not or does not contain an element matching the `"button"` selector, the function will not be called. This is because the first operand will be falsy, causing the second operand to not be evaluated.
