@@ -2,7 +2,7 @@
 
 #### Answer
 
-Including `'use strict'` at the beginning of your JavaScript source file enables strict mode, which enfores more strict parsing and error handling of JavaScript code. It is considered a good practice and offers a lot of benefits, such as:
+Including `'use strict'` at the beginning of your JavaScript source file enables strict mode, which enforces more strict parsing and error handling of JavaScript code. It is considered a good practice and offers a lot of benefits, such as:
 
 * Easier debugging due to eliminating silent errors.
 * Disallows variable redefinition.
