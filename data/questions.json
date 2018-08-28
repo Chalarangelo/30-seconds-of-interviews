@@ -1339,7 +1339,7 @@
   {
     "name": "use-strict.md",
     "question": "What does `'use strict'` do and what are some of the key benefits to using it?",
-    "answer": "Including `'use strict'` at the beginning of your JavaScript source file enables strict mode, which enfores more strict parsing and error handling of JavaScript code. It is considered a good practice and offers a lot of benefits, such as:\n\n* Easier debugging due to eliminating silent errors.\n* Disallows variable redefinition.\n* Prevents accidental global variables.\n* Oftentimes provides increased performance over identical code that is not running in strict mode.\n* Simplifies `eval()` and `arguments`.\n* Helps make JavaScript more secure.",
+    "answer": "Including `'use strict'` at the beginning of your JavaScript source file enables strict mode, which enforces more strict parsing and error handling of JavaScript code. It is considered a good practice and offers a lot of benefits, such as:\n\n* Easier debugging due to eliminating silent errors.\n* Disallows variable redefinition.\n* Prevents accidental global variables.\n* Oftentimes provides increased performance over identical code that is not running in strict mode.\n* Simplifies `eval()` and `arguments`.\n* Helps make JavaScript more secure.",
     "goodToHear": [
       "Eliminates `this` coercion, throwing an error when `this` references a value of `null` or `undefined`.",
       "Throws an error on invalid usage of `delete`.",
