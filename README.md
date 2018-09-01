@@ -32,6 +32,8 @@ Interviews are daunting and can make even the most seasoned expert forget things
 
 <a href="https://www.digitalocean.com/"><img src="digitalocean.png" alt="DigitalOcean logo"></a>
 
+<a href="https://frontendmasters.com/"><img src="frontendmasters.png" alt="Frontend Masters logo"></a>
+
 <br>
 
 ## Contributing
