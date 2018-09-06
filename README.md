@@ -486,6 +486,14 @@ function isDeepEqual(obj1, obj2, testPrototypes = false) {
     return obj1.getTime() === obj2.getTime()
   }
 
+  if (
+    Object.prototype.toString.call(obj1) !==
+      Object.prototype.toString.call(obj2) ||
+    typeof obj1 !== "object"
+  ) {
+    return false
+  }
+
   const prototypesAreEqual = testPrototypes
     ? isDeepEqual(
         Object.getPrototypeOf(obj1),
