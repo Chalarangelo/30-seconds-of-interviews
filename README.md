@@ -3153,7 +3153,7 @@ Set the `.row` parent to `display: flex;` and use the `flex` shorthand property 
 
 `Content`: The inner-most part of the box filled with content, such as text, an image, or video player. It has the dimensions `content-box width` and `content-box height`.
 
-`Padding`: The transparent area surrounding the content. It has dimensions are `padding-box width` and `padding-box height`.
+`Padding`: The transparent area surrounding the content. It has dimensions `padding-box width` and `padding-box height`.
 
 `Border`: The area surrounding the padding (if any) and content. It has dimensions `border-box width` and `border-box height`.
 
