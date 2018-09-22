@@ -58,26 +58,9 @@ const getCodeBlocks = str => {
   return results
 }
 
-const lower = string => string.toLowerCase()
-
-const getAnchor = string => {
-  const re = /[\u2000-\u206F\u2E00-\u2E7F\\'!"#$%&()*+,./:;<=>?@[\]^`{|}~]/g
-  const replacement = "-"
-  const whitespace = /\s/g
-
-  if (typeof string !== "string") return ""
-  const anchor = string.replace(/[A-Z]+/g, lower)
-  return anchor
-    .trim()
-    .replace(re, "")
-    .replace(whitespace, replacement)
-}
-
-
 module.exports = {
   attempt,
   readQuestions,
-  getAnchor,
   capitalize,
   getCodeBlocks,
   QUESTIONS_PATH,
