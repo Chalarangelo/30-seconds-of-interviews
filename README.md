@@ -189,7 +189,6 @@ Triple equals (`===`) checks for strict equality, which means both the type and 
 
 </details>
 
-
 <br>[⬆ Back to top](#table-of-contents)
 
 ### In which states can a Promise be?
@@ -218,7 +217,6 @@ When either of these options happens, the associated handlers queued up by a pro
 * [Official Web Docs Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)
 
 </details>
-
 
 <br>[⬆ Back to top](#table-of-contents)
 
@@ -256,7 +254,6 @@ let i = 0
 
 
 </details>
-
 
 <br>[⬆ Back to top](#table-of-contents)
 
@@ -331,7 +328,6 @@ isTrue(true, callback)
 
 </details>
 
-
 <br>[⬆ Back to top](#table-of-contents)
 
 ### What is a callback? Can you show an example using one?
@@ -378,7 +374,6 @@ map([1, 2, 3, 4, 5], n => n * 2) // [2, 4, 6, 8, 10]
 
 </details>
 
-
 <br>[⬆ Back to top](#table-of-contents)
 
 ### How do you clone an object in JavaScript?
@@ -418,7 +413,6 @@ Other alternatives include:
 
 </details>
 
-
 <br>[⬆ Back to top](#table-of-contents)
 
 ### What are JavaScript data types?
@@ -444,7 +438,6 @@ The latest ECMAScript standard defines seven data types, six of them being primi
 * [Understanding Data Types in JavaScript](https://www.digitalocean.com/community/tutorials/understanding-data-types-in-javascript)
 
 </details>
-
 
 <br>[⬆ Back to top](#table-of-contents)
 
@@ -519,7 +512,6 @@ function isDeepEqual(obj1, obj2, testPrototypes = false) {
 
 </details>
 
-
 <br>[⬆ Back to top](#table-of-contents)
 
 ### What is CORS?
@@ -548,7 +540,6 @@ For security reasons, browsers restrict cross-origin HTTP requests initiated by 
 
 </details>
 
-
 <br>[⬆ Back to top](#table-of-contents)
 
 ### What is the DOM?
@@ -574,7 +565,6 @@ The DOM (Document Object Model) is a cross-platform API that treats HTML and XML
 * [MDN docs for DOM](https://developer.mozilla.org/en-US/docs/DOM)
 
 </details>
-
 
 <br>[⬆ Back to top](#table-of-contents)
 
@@ -640,7 +630,6 @@ const batches = (recipe, available) =>
 
 </details>
 
-
 <br>[⬆ Back to top](#table-of-contents)
 
 ### What is event delegation and why is it useful? Can you show an example of how to use it?
@@ -689,7 +678,6 @@ document.addEventListener("click", e => {
 
 </details>
 
-
 <br>[⬆ Back to top](#table-of-contents)
 
 ### What does the following code evaluate to?
@@ -717,7 +705,6 @@ It evaluates to `"string"`.
 * [MDN docs for typeof](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/typeof)
 
 </details>
-
 
 <br>[⬆ Back to top](#table-of-contents)
 
@@ -798,7 +785,6 @@ This is both an expression and a statement, because we are declaring a variable 
 
 </details>
 
-
 <br>[⬆ Back to top](#table-of-contents)
 
 ### What are truthy and falsy values in JavaScript?
@@ -847,7 +833,6 @@ There is a shortcut for this using the logical NOT `!` operator. Using `!` once 
 
 </details>
 
-
 <br>[⬆ Back to top](#table-of-contents)
 
 ### Generate an array, containing the Fibonacci sequence, up until the nth term.
@@ -877,7 +862,6 @@ const fibonacci = n =>
 * [Similar problem](https://github.com/Chalarangelo/30-seconds-of-code/blob/master/snippets_archive/fibonacciUntilNum.md)
 
 </details>
-
 
 <br>[⬆ Back to top](#table-of-contents)
 
@@ -914,7 +898,6 @@ approxEqual(0.1 + 0.2, 0.3) // true
 
 </details>
 
-
 <br>[⬆ Back to top](#table-of-contents)
 
 ### What is the difference between the array methods `map()` and `forEach()`?
@@ -940,7 +923,6 @@ Both methods iterate through the elements of an array. `map()` maps each element
 * [JavaScript — Map vs. ForEach](https://codeburst.io/javascript-map-vs-foreach-f38111822c0f)
 
 </details>
-
 
 <br>[⬆ Back to top](#table-of-contents)
 
@@ -968,7 +950,6 @@ In JavaScript, all code is synchronous due to the single-threaded nature of it. 
 
 
 </details>
-
 
 <br>[⬆ Back to top](#table-of-contents)
 
@@ -1002,7 +983,6 @@ Due to hoisting, the local variable `foo` is declared before the `console.log` m
 * [MDN docs for hoisting](https://developer.mozilla.org/en-US/docs/Glossary/Hoisting)
 
 </details>
-
 
 <br>[⬆ Back to top](#table-of-contents)
 
@@ -1066,7 +1046,6 @@ var myFunction = function() {
 
 </details>
 
-
 <br>[⬆ Back to top](#table-of-contents)
 
 ### What is the reason for wrapping the entire contents of a JavaScript source file in a function that is immediately invoked?
@@ -1101,7 +1080,6 @@ myLibrary.publicMethod() // 2
 * [MDN docs for closures](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures)
 
 </details>
-
 
 <br>[⬆ Back to top](#table-of-contents)
 
@@ -1180,7 +1158,6 @@ In the above case, if `e.target` is not or does not contain an element matching 
 
 </details>
 
-
 <br>[⬆ Back to top](#table-of-contents)
 
 ### Create a function that masks a string of characters with `#` except for the last four (4) characters.
@@ -1213,7 +1190,6 @@ const mask = (str, maskChar = "#") =>
 
 
 </details>
-
 
 <br>[⬆ Back to top](#table-of-contents)
 
@@ -1258,7 +1234,6 @@ In the above cases, the interpreter does not insert a semicolon after `3`, and t
 
 </details>
 
-
 <br>[⬆ Back to top](#table-of-contents)
 
 ### What does the following function return?
@@ -1290,7 +1265,6 @@ Because of JavaScript's automatic semicolon insertion (ASI), the compiler places
 * [Automatic semicolon insertion in JavaScript](http://2ality.com/2011/05/semicolon-insertion.html)
 
 </details>
-
 
 <br>[⬆ Back to top](#table-of-contents)
 
@@ -1326,7 +1300,6 @@ The first `console.log` outputs `true` because JavaScript's compiler performs ty
 
 </details>
 
-
 <br>[⬆ Back to top](#table-of-contents)
 
 ### How does prototypal inheritance differ from classical inheritance?
@@ -1350,7 +1323,6 @@ In the prototypal inheritance paradigm, object instances inherit directly from o
 * [MDN docs for inheritance and the prototype chain](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Inheritance_and_the_prototype_chain)
 
 </details>
-
 
 <br>[⬆ Back to top](#table-of-contents)
 
@@ -1386,7 +1358,6 @@ new Promise((resolve, reject) => {
 
 </details>
 
-
 <br>[⬆ Back to top](#table-of-contents)
 
 ### What is the difference between `null` and `undefined`?
@@ -1412,7 +1383,6 @@ In JavaScript, two values discretely represent nothing - `undefined` and `null`.
 * [MDN docs for undefined](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined)
 
 </details>
-
 
 <br>[⬆ Back to top](#table-of-contents)
 
@@ -1509,7 +1479,6 @@ Object.create(personProto, {
 
 </details>
 
-
 <br>[⬆ Back to top](#table-of-contents)
 
 ### What is the difference between a parameter and an argument?
@@ -1540,7 +1509,6 @@ myFunction("argument1", "argument2")
 
 </details>
 
-
 <br>[⬆ Back to top](#table-of-contents)
 
 ### Does JavaScript pass by value or by reference?
@@ -1563,7 +1531,6 @@ JavaScript always passes by value. However, with objects, the value is a referen
 * [JavaScript Value vs Reference](https://medium.com/dailyjs/back-to-roots-javascript-value-vs-reference-8fb69d587a18)
 
 </details>
-
 
 <br>[⬆ Back to top](#table-of-contents)
 
@@ -1597,7 +1564,6 @@ const bind = (fn, context) => (...args) => fn.apply(context, args)
 
 
 </details>
-
 
 <br>[⬆ Back to top](#table-of-contents)
 
@@ -1682,7 +1648,6 @@ myObject = "hello" // Error
 
 </details>
 
-
 <br>[⬆ Back to top](#table-of-contents)
 
 ### What is a cross-site scripting attack (XSS) and how do you prevent it?
@@ -1712,7 +1677,6 @@ For example, a comment system will be at risk if it does not validate or escape 
 * [Cross-Site Scripting Attack (XSS)](https://www.acunetix.com/websitesecurity/cross-site-scripting/)
 
 </details>
-
 
 <br>[⬆ Back to top](#table-of-contents)
 
@@ -1748,7 +1712,6 @@ const pipe = (...fns) => x => fns.reduce((v, fn) => fn(v), x)
 * [What is function composition?](https://medium.com/javascript-scene/master-the-javascript-interview-what-is-function-composition-20dfb109a1a0)
 
 </details>
-
 
 <br>[⬆ Back to top](#table-of-contents)
 
@@ -1853,7 +1816,6 @@ The execution time rises extremely fast with even just 1 addition to the array.
 
 </details>
 
-
 <br>[⬆ Back to top](#table-of-contents)
 
 ### What is a pure function?
@@ -1899,7 +1861,6 @@ const c = arr => arr.sort((a, b) => a - b)
 * [Pure functions in JavaScript](http://www.nicoespeon.com/en/2015/01/pure-functions-javascript/)
 
 </details>
-
 
 <br>[⬆ Back to top](#table-of-contents)
 
@@ -1953,7 +1914,6 @@ In the above example, the base condition is met if `filter()` returns an empty a
 
 </details>
 
-
 <br>[⬆ Back to top](#table-of-contents)
 
 ### What is the only value not equal to itself in JavaScript?
@@ -1977,7 +1937,6 @@ In the above example, the base condition is met if `filter()` returns an empty a
 * [MDN docs for `NaN`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NaN)
 
 </details>
-
 
 <br>[⬆ Back to top](#table-of-contents)
 
@@ -2018,7 +1977,6 @@ originalArray.concat(4) // returns a new array, does not mutate the original
 
 </details>
 
-
 <br>[⬆ Back to top](#table-of-contents)
 
 ### What is memoization?
@@ -2058,7 +2016,6 @@ const memoize = fn => {
 * [Implementing memoization in JavaScript](https://www.sitepoint.com/implementing-memoization-in-javascript/)
 
 </details>
-
 
 <br>[⬆ Back to top](#table-of-contents)
 
@@ -2112,7 +2069,6 @@ We declare that the new array is mapped to a new one where each value is doubled
 
 </details>
 
-
 <br>[⬆ Back to top](#table-of-contents)
 
 ### What is the event loop in Node.js?
@@ -2135,7 +2091,6 @@ The event loop handles all async callbacks. Callbacks are queued in a loop, whil
 * [Node.js docs on event loop, timers and process.nextTick()](https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick/)
 
 </details>
-
 
 <br>[⬆ Back to top](#table-of-contents)
 
@@ -2163,7 +2118,6 @@ Functional programming is a paradigm in which programs are built in a declarativ
 * [Master the JavaScript Interview: What is Functional Programming?](https://medium.com/javascript-scene/master-the-javascript-interview-what-is-functional-programming-7f218c68b3a0)
 
 </details>
-
 
 <br>[⬆ Back to top](#table-of-contents)
 
@@ -2276,7 +2230,6 @@ obj.doubleArr() // Uncaught TypeError: this.double is not a function
 
 </details>
 
-
 <br>[⬆ Back to top](#table-of-contents)
 
 ### What is event-driven programming?
@@ -2327,7 +2280,6 @@ With this implementation, `on` is the way to _subscribe_ to an event, while `emi
 
 </details>
 
-
 <br>[⬆ Back to top](#table-of-contents)
 
 ### What is a closure? Can you give a useful example of one?
@@ -2363,7 +2315,6 @@ In addition, closures are the only way to store private data that can't be acces
 
 </details>
 
-
 <br>[⬆ Back to top](#table-of-contents)
 
 ### What is the purpose of JavaScript UI libraries/frameworks like React, Vue, Angular, Hyperapp, etc?
@@ -2390,7 +2341,6 @@ When working with DOM manipulation libraries like jQuery, the data of an applica
 * [Virtual DOM in Hyperapp](https://github.com/hyperapp/hyperapp#view)
 
 </details>
-
 
 <br>[⬆ Back to top](#table-of-contents)
 
@@ -2423,7 +2373,6 @@ Including `'use strict'` at the beginning of your JavaScript source file enables
 * [MDN docs for strict mode](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode)
 
 </details>
-
 
 <br>[⬆ Back to top](#table-of-contents)
 
@@ -2482,7 +2431,6 @@ There are lots of ways to solve the issue of callback hells:
 * [Asynchronous JavaScript: From Callback Hell to Async and Await](https://blog.hellojs.org/asynchronous-javascript-from-callback-hell-to-async-and-await-9b9ceb63c8e8)
 
 </details>
-
 
 <br>[⬆ Back to top](#table-of-contents)
 
@@ -2545,7 +2493,6 @@ Once the changes between the old VDOM and new VDOM have been calculated by the d
 
 </details>
 
-
 <br>[⬆ Back to top](#table-of-contents)
 
 ### Explain the difference between a static method and an instance method.
@@ -2584,7 +2531,6 @@ Array.push(arr, 4)
 
 </details>
 
-
 <br>[⬆ Back to top](#table-of-contents)
 
 
@@ -2610,7 +2556,6 @@ The `alt` attribute provides alternative information for an image if a user cann
 * [A good basis for accessibility](https://developer.mozilla.org/en-US/docs/Learn/Accessibility/HTML)
 
 </details>
-
 
 <br>[⬆ Back to top](#table-of-contents)
 
@@ -2644,7 +2589,6 @@ The browser considers it a different file but prevents the need to change the fi
 
 </details>
 
-
 <br>[⬆ Back to top](#table-of-contents)
 
 ### Can a web page contain multiple `<header>` elements? What about `<footer>` elements?
@@ -2667,7 +2611,6 @@ Yes to both. The W3 documents state that the tags represent the header(`<header>
 * [StackOverflow Using header or footer tag twice](https://stackoverflow.com/questions/4837269/html5-using-header-or-footer-tag-twice?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa)
 
 </details>
-
 
 <br>[⬆ Back to top](#table-of-contents)
 
@@ -2697,7 +2640,6 @@ Yes to both. The W3 documents state that the tags represent the header(`<header>
 * [HTML 5 Semantic Elements](https://www.w3schools.com/html/html5_semantic_elements.asp)
 
 </details>
-
 
 <br>[⬆ Back to top](#table-of-contents)
 
@@ -2738,7 +2680,6 @@ Note: both attributes must only be used if the script has a `src` attribute (i.e
 
 </details>
 
-
 <br>[⬆ Back to top](#table-of-contents)
 
 ### What is the DOM?
@@ -2764,7 +2705,6 @@ The DOM (Document Object Model) is a cross-platform API that treats HTML and XML
 * [MDN docs for DOM](https://developer.mozilla.org/en-US/docs/DOM)
 
 </details>
-
 
 <br>[⬆ Back to top](#table-of-contents)
 
@@ -2792,7 +2732,6 @@ A browser is said to “support” a specification if it handles valid documents
 * [HTML 5.2 WWW Specifications](https://www.w3.org/TR/html52/)
 
 </details>
-
 
 <br>[⬆ Back to top](#table-of-contents)
 
@@ -2825,7 +2764,6 @@ Some of the key differences are:
 
 </details>
 
-
 <br>[⬆ Back to top](#table-of-contents)
 
 ### Where and why is the `rel="noopener"` attribute used?
@@ -2850,7 +2788,6 @@ The `rel="noopener"` is an attribute used in `<a>` elements (hyperlinks). It pre
 * [About rel="noopener"](https://mathiasbynens.github.io/rel-noopener/)
 
 </details>
-
 
 <br>[⬆ Back to top](#table-of-contents)
 
@@ -2888,7 +2825,6 @@ Both forms of storage are scoped to the document origin so that documents with d
 * [W3Schools HTML5 Webstorage](https://www.w3schools.com/html/html5_webstorage.asp)
 
 </details>
-
 
 <br>[⬆ Back to top](#table-of-contents)
 
@@ -2954,7 +2890,6 @@ These must be chained to the Element and never alone however, or there will be s
 
 </details>
 
-
 <br>[⬆ Back to top](#table-of-contents)
 
 ### What are the advantages of using CSS preprocessors?
@@ -2978,7 +2913,6 @@ CSS preprocessors add useful functionality that native CSS does not have, and ge
 * [CSS Preprocessors](https://medium.com/@garyfagan/css-preprocessors-6f226fa16f27)
 
 </details>
-
 
 <br>[⬆ Back to top](#table-of-contents)
 
@@ -3029,7 +2963,6 @@ Set the `.row` parent to `display: flex;` and use the `flex` shorthand property 
 
 </details>
 
-
 <br>[⬆ Back to top](#table-of-contents)
 
 ### Can you name the four types of `@media` properties?
@@ -3055,7 +2988,6 @@ Set the `.row` parent to `display: flex;` and use the `flex` shorthand property 
 * [MDN docs for using media queries](https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries)
 
 </details>
-
 
 <br>[⬆ Back to top](#table-of-contents)
 
@@ -3092,7 +3024,6 @@ _Margin_: The transparent outer-most layer that surrounds the border. It separat
 
 </details>
 
-
 <br>[⬆ Back to top](#table-of-contents)
 
 ### What is the difference between `em` and `rem` units?
@@ -3120,7 +3051,6 @@ In most browsers, the `font-size` of the root element is set to `16px` by defaul
 * [CSS units for font-size: px | em | rem](https://medium.com/code-better/css-units-for-font-size-px-em-rem-79f7e592bb97)
 
 </details>
-
 
 <br>[⬆ Back to top](#table-of-contents)
 
@@ -3150,7 +3080,6 @@ To utilize a spritesheet in CSS, one would use certain properties, such as `back
 * [CSS Sprites explained by CSS Tricks](https://css-tricks.com/css-sprites/)
 
 </details>
-
 
 <br>[⬆ Back to top](#table-of-contents)
 
@@ -3183,7 +3112,6 @@ When two selectors are compared, the comparison is made on a per-column basis (e
 
 </details>
 
-
 <br>[⬆ Back to top](#table-of-contents)
 
 ### What is a focus ring? What is the correct solution to handle them?
@@ -3211,7 +3139,6 @@ The best solution is an upcoming pseudo-selector `:focus-visible` which can be p
 * [:focus-visible](https://css-tricks.com/focus-visible-and-backwards-compatibility/)
 
 </details>
-
 
 <br>[⬆ Back to top](#table-of-contents)
 
@@ -3288,7 +3215,6 @@ isTrue(true, callback)
 
 </details>
 
-
 <br>[⬆ Back to top](#table-of-contents)
 
 ### What is REST?
@@ -3323,7 +3249,6 @@ Here is an example of the URL and HTTP method with a `posts` resource:
 *   ](https://medium.com/extend/what-is-rest-a-simple-explanation-for-beginners-part-1-introduction-b4a072f8740f)
 
 </details>
-
 
 <br>[⬆ Back to top](#table-of-contents)
 
@@ -3383,7 +3308,6 @@ There are lots of ways to solve the issue of callback hells:
 
 </details>
 
-
 <br>[⬆ Back to top](#table-of-contents)
 
 ### What is the event loop in Node.js?
@@ -3406,7 +3330,6 @@ The event loop handles all async callbacks. Callbacks are queued in a loop, whil
 * [Node.js docs on event loop, timers and process.nextTick()](https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick/)
 
 </details>
-
 
 <br>[⬆ Back to top](#table-of-contents)
 
@@ -3439,7 +3362,6 @@ For example, a comment system will be at risk if it does not validate or escape 
 * [Cross-Site Scripting Attack (XSS)](https://www.acunetix.com/websitesecurity/cross-site-scripting/)
 
 </details>
-
 
 <br>[⬆ Back to top](#table-of-contents)
 

@@ -16,32 +16,36 @@ let endPart = ""
 let output = ""
 
 const detailsTOC = (title, questionsArray) =>
-  "\n" +
-  misc
+  `\n${misc
     .collapsible(
       title,
-      lists.ul(questionsArray, question =>
-        misc.link(
-          question.question
-            .replace("\n", "")
-            .split("```")[0]
-            .trim(),
-          misc.anchor(
+      lists
+        .ul(questionsArray, question =>
+          misc.link(
             question.question
               .replace("\n", "")
               .split("```")[0]
-              .trim()
+              .trim(),
+            misc.anchor(
+              question.question
+                .replace("\n", "")
+                .split("```")[0]
+                .trim()
+            )
           )
         )
-      ).trim()
-    ).trim() + "\n\n"
+        .trim()
+    )
+    .trim()}\n\n`
 
 const detailsQuestion = (title, question) =>
   misc.collapsible(
     title,
-    `${question.answer.toString()}\n\n${headers.h4("Good to hear")}\n\n${lists.ul(
-      question.goodToHear
-    )}\n${headers.h5("Additional Links")}\n\n${lists.ul(question.links)}`
+    `${question.answer.toString()}\n\n${headers.h4(
+      "Good to hear"
+    )}\n\n${lists.ul(question.goodToHear)}\n${headers.h5(
+      "Additional Links"
+    )}\n\n${lists.ul(question.links)}`
   )
 
 console.time("Builder")
@@ -109,7 +113,7 @@ try {
     taggedQuestions.forEach(question => {
       output += headers.h3(question.question).trim()
       output += detailsQuestion("View answer", question)
-      output += "\n\n<br>[⬆ Back to top](#table-of-contents)\n\n"
+      output += `\n<br>${misc.link("⬆ Back to top", misc.anchor("Table of Contents"))}\n\n`
     })
   })
 
