@@ -60,7 +60,7 @@ Join our [Gitter channel](https://gitter.im/30-seconds-of-interviews/Lobby) to h
 * [How do you compare two objects in JavaScript?](#how-do-you-compare-two-objects-in-javascript)
 * [What is CORS?](#what-is-cors)
 * [What is the DOM?](#what-is-the-dom)
-* [What is the difference between the equality operators `==` and `===`?](#what-is-the-difference-between-the-equality-operators--and)
+* [What is the difference between the equality operators `==` and `===`?](#what-is-the-difference-between-the-equality-operators--and-)
 * [What is event delegation and why is it useful? Can you show an example of how to use it?](#what-is-event-delegation-and-why-is-it-useful-can-you-show-an-example-of-how-to-use-it)
 * [What is event-driven programming?](#what-is-event-driven-programming)
 * [What is the difference between an expression and a statement in JavaScript?](#what-is-the-difference-between-an-expression-and-a-statement-in-javascript)
