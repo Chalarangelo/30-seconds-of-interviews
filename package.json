@@ -29,6 +29,7 @@
     "focus-visible": "^4.1.4",
     "fs-extra": "^6.0.0",
     "hyperapp": "^1.2.6",
+    "markdown-builder": "^0.8.4",
     "marked": "^0.3.19",
     "modern-normalize": "^0.4.0",
     "npm": "^6.0.0",
