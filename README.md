@@ -182,16 +182,14 @@ Triple equals (`===`) checks for strict equality, which means both the type and 
 * Mention of falsy values and their comparison.
 
 
-##### Additional links
+##### Additional Links
 
 
 * [MDN docs for comparison operators](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Comparison_Operators)
+
 </details>
 
-
-
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### In which states can a Promise be?
 
@@ -213,17 +211,14 @@ When either of these options happens, the associated handlers queued up by a pro
 
 
 
-
-##### Additional links
+##### Additional Links
 
 
 * [Official Web Docs Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)
+
 </details>
 
-
-
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### What is the difference between the postfix `i++` and prefix `++i` increment operators?
 
@@ -254,17 +249,13 @@ let i = 0
 
 
 
-
-##### Additional links
+##### Additional Links
 
 
 
 </details>
 
-
-
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### NodeJS often uses a callback pattern where if an error is encountered during execution, this error is passed as the first argument to the callback. What are the advantages of this pattern?
 
@@ -329,17 +320,15 @@ isTrue(true, callback)
 * This is just a convention. However, you should stick to it.
 
 
-##### Additional links
+##### Additional Links
 
 
 * [The Node.js Way Understanding Error-First Callbacks](http://fredkschott.com/post/2014/03/understanding-error-first-callbacks-in-node-js/)
 * [What are the error conventions?](https://docs.nodejitsu.com/articles/errors/what-are-the-error-conventions)
+
 </details>
 
-
-
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### What is a callback? Can you show an example using one?
 
@@ -378,16 +367,14 @@ map([1, 2, 3, 4, 5], n => n * 2) // [2, 4, 6, 8, 10]
 * Callbacks vs Promises
 
 
-##### Additional links
+##### Additional Links
 
 
 * [MDN docs for callbacks](https://developer.mozilla.org/en-US/docs/Glossary/Callback_function)
+
 </details>
 
-
-
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### How do you clone an object in JavaScript?
 
@@ -418,17 +405,15 @@ Other alternatives include:
 * The same method can be used to merge two objects.
 
 
-##### Additional links
+##### Additional Links
 
 
 * [MDN docs for Object.assign()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign)
 * [Clone an object in vanilla JS](http://voidcanvas.com/clone-an-object-in-vanilla-js-in-depth/)
+
 </details>
 
-
-
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### What are JavaScript data types?
 
@@ -446,17 +431,15 @@ The latest ECMAScript standard defines seven data types, six of them being primi
 * Functions in JavaScript are objects with the capability of being callable
 
 
-##### Additional links
+##### Additional Links
 
 
 * [MDN docs for data types and data structures](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures)
 * [Understanding Data Types in JavaScript](https://www.digitalocean.com/community/tutorials/understanding-data-types-in-javascript)
+
 </details>
 
-
-
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### How do you compare two objects in JavaScript?
 
@@ -521,17 +504,15 @@ function isDeepEqual(obj1, obj2, testPrototypes = false) {
 * Objects on the other hand are compared by their reference (location in memory)
 
 
-##### Additional links
+##### Additional Links
 
 
 * [Object Equality in JavaScript](http://adripofjavascript.com/blog/drips/object-equality-in-javascript.html)
 * [Deep comparison between two values](https://30secondsofcode.org/object#equals)
+
 </details>
 
-
-
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### What is CORS?
 
@@ -552,16 +533,14 @@ For security reasons, browsers restrict cross-origin HTTP requests initiated by 
 * CORS is designed to prevent a malicious website that a user may unintentionally visit from making a request to a legitimate website to read their personal data or perform actions against their will.
 
 
-##### Additional links
+##### Additional Links
 
 
 * [MDN docs for CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS)
+
 </details>
 
-
-
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### What is the DOM?
 
@@ -580,16 +559,14 @@ The DOM (Document Object Model) is a cross-platform API that treats HTML and XML
 * Setting the `innerHTML` property to a new value runs the string through the HTML parser, offering an easy way to append dynamic HTML content to a node.
 
 
-##### Additional links
+##### Additional Links
 
 
 * [MDN docs for DOM](https://developer.mozilla.org/en-US/docs/DOM)
+
 </details>
 
-
-
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### Create a function `batches` that returns the maximum number of whole batches that can be cooked from a recipe.
 
@@ -647,17 +624,13 @@ const batches = (recipe, available) =>
 
 
 
-
-##### Additional links
+##### Additional Links
 
 
 
 </details>
 
-
-
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### What is event delegation and why is it useful? Can you show an example of how to use it?
 
@@ -698,16 +671,14 @@ document.addEventListener("click", e => {
 * The difference between event bubbling and capturing
 
 
-##### Additional links
+##### Additional Links
 
 
 * [Event Delegation](https://davidwalsh.name/event-delegate)
+
 </details>
 
-
-
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### What does the following code evaluate to?
 
@@ -728,17 +699,14 @@ It evaluates to `"string"`.
 
 
 
-
-##### Additional links
+##### Additional Links
 
 
 * [MDN docs for typeof](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/typeof)
+
 </details>
 
-
-
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### What is the difference between an expression and a statement in JavaScript?
 
@@ -810,16 +778,14 @@ This is both an expression and a statement, because we are declaring a variable 
 * Function declarations vs function expressions
 
 
-##### Additional links
+##### Additional Links
 
 
 * [What is the difference between a statement and an expression?](https://stackoverflow.com/questions/12703214/javascript-difference-between-a-statement-and-an-expression)
+
 </details>
 
-
-
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### What are truthy and falsy values in JavaScript?
 
@@ -859,18 +825,15 @@ There is a shortcut for this using the logical NOT `!` operator. Using `!` once 
 
 
 
-
-##### Additional links
+##### Additional Links
 
 
 * [Truthy on MDN](https://developer.mozilla.org/en/docs/Glossary/Truthy)
 * [Falsy on MDN](https://developer.mozilla.org/en-US/docs/Glossary/Falsy)
+
 </details>
 
-
-
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### Generate an array, containing the Fibonacci sequence, up until the nth term.
 
@@ -893,17 +856,14 @@ const fibonacci = n =>
 
 
 
-
-##### Additional links
+##### Additional Links
 
 
 * [Similar problem](https://github.com/Chalarangelo/30-seconds-of-code/blob/master/snippets_archive/fibonacciUntilNum.md)
+
 </details>
 
-
-
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### What does `0.1 + 0.2 === 0.3` evaluate to?
 
@@ -930,17 +890,15 @@ approxEqual(0.1 + 0.2, 0.3) // true
 * A simple solution to this problem
 
 
-##### Additional links
+##### Additional Links
 
 
 * [A simple helper function to check equality](https://github.com/Chalarangelo/30-seconds-of-code#approximatelyequal)
 * [Fix "0.1 + 0.2 = 0.300000004" in JavaScript](http://blog.blakesimpson.co.uk/read/61-fix-0-1-0-2-0-300000004-in-javascript)
+
 </details>
 
-
-
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### What is the difference between the array methods `map()` and `forEach()`?
 
@@ -957,18 +915,16 @@ Both methods iterate through the elements of an array. `map()` maps each element
 * `map()` is the right choice to keep data immutable where each value of the original array is mapped to a new array.
 
 
-##### Additional links
+##### Additional Links
 
 
 * [MDN docs for forEach](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach)
 * [MDN docs for map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map)
 * [JavaScript — Map vs. ForEach](https://codeburst.io/javascript-map-vs-foreach-f38111822c0f)
+
 </details>
 
-
-
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### What is the difference between synchronous and asynchronous code in JavaScript?
 
@@ -989,16 +945,13 @@ In JavaScript, all code is synchronous due to the single-threaded nature of it. 
 * Functions like `alert` block the main thread so that no user input is registered until the user closes it.
 
 
-##### Additional links
+##### Additional Links
 
 
 
 </details>
 
-
-
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### What will the console log in this example?
 
@@ -1024,16 +977,14 @@ Due to hoisting, the local variable `foo` is declared before the `console.log` m
 * Mention of `strict` mode
 
 
-##### Additional links
+##### Additional Links
 
 
 * [MDN docs for hoisting](https://developer.mozilla.org/en-US/docs/Glossary/Hoisting)
+
 </details>
 
-
-
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### How does hoisting work in JavaScript?
 
@@ -1087,17 +1038,15 @@ var myFunction = function() {
 * Functions declarations are hoisted before variable declarations
 
 
-##### Additional links
+##### Additional Links
 
 
 * [MDN docs for hoisting](https://developer.mozilla.org/en-US/docs/Glossary/Hoisting)
 * [Understanding Hoisting in JavaScript](https://scotch.io/tutorials/understanding-hoisting-in-javascript)
+
 </details>
 
-
-
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### What is the reason for wrapping the entire contents of a JavaScript source file in a function that is immediately invoked?
 
@@ -1125,16 +1074,14 @@ myLibrary.publicMethod() // 2
 * Creates a private namespace
 
 
-##### Additional links
+##### Additional Links
 
 
 * [MDN docs for closures](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures)
+
 </details>
 
-
-
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### What is short-circuit evaluation in JavaScript?
 
@@ -1204,16 +1151,14 @@ In the above case, if `e.target` is not or does not contain an element matching 
 * Logical operations do not produce a boolean unless the operand(s) evaluate to a boolean.
 
 
-##### Additional links
+##### Additional Links
 
 
 * [JavaScript: What is short-circuit evaluation?](https://codeburst.io/javascript-what-is-short-circuit-evaluation-ff22b2f5608c)
+
 </details>
 
-
-
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### Create a function that masks a string of characters with `#` except for the last four (4) characters.
 
@@ -1240,16 +1185,13 @@ const mask = (str, maskChar = "#") =>
 * Short, one-line functional solutions to problems should be preferred provided they are efficient
 
 
-##### Additional links
+##### Additional Links
 
 
 
 </details>
 
-
-
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### Are semicolons required in JavaScript?
 
@@ -1286,16 +1228,13 @@ In the above cases, the interpreter does not insert a semicolon after `3`, and t
 * If you don't use semicolons, tools like Prettier will insert semicolons for you in the places where they are required on save in a text editor to prevent errors.
 
 
-##### Additional links
+##### Additional Links
 
 
 
 </details>
 
-
-
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### What does the following function return?
 
@@ -1320,16 +1259,14 @@ Because of JavaScript's automatic semicolon insertion (ASI), the compiler places
 * Automatic semicolon placement can lead to time-consuming bugs
 
 
-##### Additional links
+##### Additional Links
 
 
 * [Automatic semicolon insertion in JavaScript](http://2ality.com/2011/05/semicolon-insertion.html)
+
 </details>
 
-
-
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### What is the output of the following code?
 
@@ -1356,16 +1293,14 @@ The first `console.log` outputs `true` because JavaScript's compiler performs ty
 * Primitives are compared by value
 
 
-##### Additional links
+##### Additional Links
 
 
 * [JavaScript Value vs Reference](https://medium.com/dailyjs/back-to-roots-javascript-value-vs-reference-8fb69d587a18)
+
 </details>
 
-
-
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### How does prototypal inheritance differ from classical inheritance?
 
@@ -1382,17 +1317,14 @@ In the prototypal inheritance paradigm, object instances inherit directly from o
 
 
 
-
-##### Additional links
+##### Additional Links
 
 
 * [MDN docs for inheritance and the prototype chain](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Inheritance_and_the_prototype_chain)
+
 </details>
 
-
-
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### What are Promises?
 
@@ -1419,16 +1351,14 @@ new Promise((resolve, reject) => {
 * Take a look into the other questions regarding `Promise`s!
 
 
-##### Additional links
+##### Additional Links
 
 
 * [Master the JavaScript Interview: What is a Promise?](https://medium.com/javascript-scene/master-the-javascript-interview-what-is-a-promise-27fc71e772618)
+
 </details>
 
-
-
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### What is the difference between `null` and `undefined`?
 
@@ -1446,17 +1376,15 @@ In JavaScript, two values discretely represent nothing - `undefined` and `null`.
 * `undefined == null` evaluates to `true`.
 
 
-##### Additional links
+##### Additional Links
 
 
 * [MDN docs for null](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null)
 * [MDN docs for undefined](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined)
+
 </details>
 
-
-
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### Describe the different ways to create an object. When should certain ways be preferred over others?
 
@@ -1545,16 +1473,13 @@ Object.create(personProto, {
 * Factory functions offer private properties and methods through a closure but increase memory usage as a tradeoff, while classes do not have private properties or methods but reduce memory impact by reusing a single prototype object.
 
 
-##### Additional links
+##### Additional Links
 
 
 
 </details>
 
-
-
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### What is the difference between a parameter and an argument?
 
@@ -1578,16 +1503,13 @@ myFunction("argument1", "argument2")
 * `myFunction.length` describes the arity of a function (how many parameters it has, regardless of how many arguments it is supplied).
 
 
-##### Additional links
+##### Additional Links
 
 
 
 </details>
 
-
-
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### Does JavaScript pass by value or by reference?
 
@@ -1603,16 +1525,14 @@ JavaScript always passes by value. However, with objects, the value is a referen
 * Difference between pass-by-value and pass-by-reference
 
 
-##### Additional links
+##### Additional Links
 
 
 * [JavaScript Value vs Reference](https://medium.com/dailyjs/back-to-roots-javascript-value-vs-reference-8fb69d587a18)
+
 </details>
 
-
-
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### Create a standalone function `bind` that is functionally equivalent to the method `Function.prototype.bind`.
 
@@ -1639,17 +1559,13 @@ const bind = (fn, context) => (...args) => fn.apply(context, args)
 
 
 
-
-##### Additional links
+##### Additional Links
 
 
 
 </details>
 
-
-
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### What are the differences between `var`, `let`, `const` and no keyword statements?
 
@@ -1725,16 +1641,14 @@ myObject = "hello" // Error
 * `var` should be avoided whenever possible and prefer `const` as the default declaration statement for all variables unless they will be reassigned later, then use `let` if so.
 
 
-##### Additional links
+##### Additional Links
 
 
 * [`let` vs `const`](https://wesbos.com/let-vs-const/)
+
 </details>
 
-
-
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### What is a cross-site scripting attack (XSS) and how do you prevent it?
 
@@ -1757,16 +1671,14 @@ For example, a comment system will be at risk if it does not validate or escape 
 * On the server, escaping HTML tags will prevent the browser from parsing the user input as actual HTML and therefore won't execute the script.
 
 
-##### Additional links
+##### Additional Links
 
 
 * [Cross-Site Scripting Attack (XSS)](https://www.acunetix.com/websitesecurity/cross-site-scripting/)
+
 </details>
 
-
-
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### Create a function `pipe` that performs left-to-right function composition by returning a function that accepts one argument.
 
@@ -1794,16 +1706,14 @@ const pipe = (...fns) => x => fns.reduce((v, fn) => fn(v), x)
 * Function composition is the process of combining two or more functions to produce a new function.
 
 
-##### Additional links
+##### Additional Links
 
 
 * [What is function composition?](https://medium.com/javascript-scene/master-the-javascript-interview-what-is-function-composition-20dfb109a1a0)
+
 </details>
 
-
-
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### What is Big O Notation?
 
@@ -1899,16 +1809,14 @@ The execution time rises extremely fast with even just 1 addition to the array.
 * Be wary of nesting loops as execution time increases exponentially.
 
 
-##### Additional links
+##### Additional Links
 
 
 * [Big O Notation in JavaScript](https://medium.com/cesars-tech-insights/big-o-notation-javascript-25c79f50b19b)
+
 </details>
 
-
-
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### What is a pure function?
 
@@ -1947,16 +1855,14 @@ const c = arr => arr.sort((a, b) => a - b)
 * If a function does not return a value, it is an indication that it is causing side effects.
 
 
-##### Additional links
+##### Additional Links
 
 
 * [Pure functions in JavaScript](http://www.nicoespeon.com/en/2015/01/pure-functions-javascript/)
+
 </details>
 
-
-
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### What is recursion and when is it useful?
 
@@ -2001,16 +1907,14 @@ In the above example, the base condition is met if `filter()` returns an empty a
 * Recursion must have a base condition to be met that breaks out of the loop or it will call itself indefinitely.
 
 
-##### Additional links
+##### Additional Links
 
 
 * [In plain English, what is recursion?](https://softwareengineering.stackexchange.com/questions/25052/in-plain-english-what-is-recursion)
+
 </details>
 
-
-
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### What is the only value not equal to itself in JavaScript?
 
@@ -2027,16 +1931,14 @@ In the above example, the base condition is met if `filter()` returns an empty a
 * `const isNaN = x => x !== x`
 
 
-##### Additional links
+##### Additional Links
 
 
 * [MDN docs for `NaN`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NaN)
+
 </details>
 
-
-
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### Contrast mutable and immutable values, and mutating vs non-mutating methods.
 
@@ -2068,16 +1970,14 @@ originalArray.concat(4) // returns a new array, does not mutate the original
 * List of mutating and non-mutating array methods
 
 
-##### Additional links
+##### Additional Links
 
 
 * [Mutating vs non-mutating array methods](https://lorenstewart.me/2017/01/22/javascript-array-methods-mutating-vs-non-mutating/)
+
 </details>
 
-
-
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### What is memoization?
 
@@ -2110,16 +2010,14 @@ const memoize = fn => {
 * Memoization increases performance on subsequent function calls but still needs to do work on the first call.
 
 
-##### Additional links
+##### Additional Links
 
 
 * [Implementing memoization in JavaScript](https://www.sitepoint.com/implementing-memoization-in-javascript/)
+
 </details>
 
-
-
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### Explain the differences between imperative and declarative programming.
 
@@ -2164,16 +2062,14 @@ We declare that the new array is mapped to a new one where each value is doubled
 * Declarative programming is more terse and easier to process at a glance.
 
 
-##### Additional links
+##### Additional Links
 
 
 * [Declarative vs Imperative Programming](https://codeburst.io/declarative-vs-imperative-programming-a8a7c93d9ad2)
+
 </details>
 
-
-
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### What is the event loop in Node.js?
 
@@ -2189,16 +2085,14 @@ The event loop handles all async callbacks. Callbacks are queued in a loop, whil
 * The event loop allows Node.js to perform non-blocking I/O operations, despite the fact that JavaScript is single-threaded
 
 
-##### Additional links
+##### Additional Links
 
 
 * [Node.js docs on event loop, timers and process.nextTick()](https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick/)
+
 </details>
 
-
-
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### What is functional programming?
 
@@ -2217,17 +2111,15 @@ Functional programming is a paradigm in which programs are built in a declarativ
 * JavaScript is multi-paradigm programming language (Object-Oriented Programming and Functional Programming live in harmony)
 
 
-##### Additional links
+##### Additional Links
 
 
 * [Javascript and Functional Programming: An Introduction](https://hackernoon.com/javascript-and-functional-programming-an-introduction-286aa625e26d)
 * [Master the JavaScript Interview: What is Functional Programming?](https://medium.com/javascript-scene/master-the-javascript-interview-what-is-functional-programming-7f218c68b3a0)
+
 </details>
 
-
-
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### What is the `this` keyword and how does it work?
 
@@ -2331,16 +2223,14 @@ obj.doubleArr() // Uncaught TypeError: this.double is not a function
 * If a function requires its `this` context to be changed based on how it is called, you must use the `function` keyword. Use arrow functions when you want `this` to be the surrounding (lexical) context.
 
 
-##### Additional links
+##### Additional Links
 
 
 * [`this` on MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this)
+
 </details>
 
-
-
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### What is event-driven programming?
 
@@ -2382,17 +2272,15 @@ With this implementation, `on` is the way to _subscribe_ to an event, while `emi
 * Show how to create a simple pub-sub implementation with JavaScript.
 
 
-##### Additional links
+##### Additional Links
 
 
 * [MDN docs on Events and Handlers](https://developer.mozilla.org/en-US/docs/Web/Guide/Events/Overview_of_Events_and_Handlers)
 * [Understanding Node.js event-driven architecture](https://medium.freecodecamp.org/understanding-node-js-event-driven-architecture-223292fcbc2d)
+
 </details>
 
-
-
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### What is a closure? Can you give a useful example of one?
 
@@ -2418,18 +2306,16 @@ In addition, closures are the only way to store private data that can't be acces
 * Closures can be used to emulate private properties and methods.
 
 
-##### Additional links
+##### Additional Links
 
 
 * [MDN docs for closures](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures)
 * [What is a closure](https://medium.com/javascript-scene/master-the-javascript-interview-what-is-a-closure-b2f0d2152b36)
 * [I never understood JavaScript closures](https://medium.com/dailyjs/i-never-understood-javascript-closures-9663703368e8)
+
 </details>
 
-
-
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### What is the purpose of JavaScript UI libraries/frameworks like React, Vue, Angular, Hyperapp, etc?
 
@@ -2449,16 +2335,14 @@ When working with DOM manipulation libraries like jQuery, the data of an applica
 * JSX is an extension to JavaScript that provides XML-like syntax to create virtual DOM objects which is transformed to function calls by a transpiler. It simplifies control flow (if statements/ternary expressions) compared to tagged template literals.
 
 
-##### Additional links
+##### Additional Links
 
 
 * [Virtual DOM in Hyperapp](https://github.com/hyperapp/hyperapp#view)
+
 </details>
 
-
-
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### What does `'use strict'` do and what are some of the key benefits to using it?
 
@@ -2483,16 +2367,14 @@ Including `'use strict'` at the beginning of your JavaScript source file enables
 * Prohibits some syntax likely to be defined in future versions of ECMAScript
 
 
-##### Additional links
+##### Additional Links
 
 
 * [MDN docs for strict mode](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode)
+
 </details>
 
-
-
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### How can you avoid callback hells?
 
@@ -2542,17 +2424,15 @@ There are lots of ways to solve the issue of callback hells:
 * As an efficient JavaScript developer, you have to avoid the constantly growing indentation level, produce clean and readable code and be able to handle complex flows.
 
 
-##### Additional links
+##### Additional Links
 
 
 * [Avoiding Callback Hell in Node.js](http://stackabuse.com/avoiding-callback-hell-in-node-js/)
 * [Asynchronous JavaScript: From Callback Hell to Async and Await](https://blog.hellojs.org/asynchronous-javascript-from-callback-hell-to-async-and-await-9b9ceb63c8e8)
+
 </details>
 
-
-
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### What is a virtual DOM and why is it used in libraries/frameworks?
 
@@ -2606,16 +2486,14 @@ Once the changes between the old VDOM and new VDOM have been calculated by the d
 * Why accessing the DOM can be so costly.
 
 
-##### Additional links
+##### Additional Links
 
 
 * [The difference between Virtual DOM and DOM](http://reactkungfu.com/2015/10/the-difference-between-virtual-dom-and-dom/)
+
 </details>
 
-
-
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### Explain the difference between a static method and an instance method.
 
@@ -2646,13 +2524,12 @@ Array.push(arr, 4)
 * How to create static and instance methods with ES2015 class syntax
 
 
-##### Additional links
+##### Additional Links
 
 
 * [Classes on MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes)
+
 </details>
-
-
 
 <br>[⬆ Back to top](#table-of-contents)
 
@@ -2673,16 +2550,14 @@ The `alt` attribute provides alternative information for an image if a user cann
 * Web crawlers use `alt` tags to understand image content, so they are considered important for Search Engine Optimization (SEO).
 
 
-##### Additional links
+##### Additional Links
 
 
 * [A good basis for accessibility](https://developer.mozilla.org/en-US/docs/Learn/Accessibility/HTML)
+
 </details>
 
-
-
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### What is the purpose of cache busting and how can you achieve it?
 
@@ -2707,17 +2582,14 @@ The browser considers it a different file but prevents the need to change the fi
 
 
 
-
-##### Additional links
+##### Additional Links
 
 
 * [Strategies for cache-busting CSS](https://css-tricks.com/strategies-for-cache-busting-css/)
+
 </details>
 
-
-
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### Can a web page contain multiple `<header>` elements? What about `<footer>` elements?
 
@@ -2733,16 +2605,14 @@ Yes to both. The W3 documents state that the tags represent the header(`<header>
 * W3 recommends having as many as you want, but only 1 of each for each "section" of your page, i.e. body, section etc.
 
 
-##### Additional links
+##### Additional Links
 
 
 * [StackOverflow Using header or footer tag twice](https://stackoverflow.com/questions/4837269/html5-using-header-or-footer-tag-twice?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa)
+
 </details>
 
-
-
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### Briefly describe the correct usage of the following HTML5 semantic elements: `<header>`, `<article>`,`<section>`, `<footer>`
 
@@ -2764,16 +2634,14 @@ Yes to both. The W3 documents state that the tags represent the header(`<header>
 * Other semantic elements are `<form>` and `<table>`
 
 
-##### Additional links
+##### Additional Links
 
 
 * [HTML 5 Semantic Elements](https://www.w3schools.com/html/html5_semantic_elements.asp)
+
 </details>
 
-
-
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### What are `defer` and `async` attributes on a `<script>` tag?
 
@@ -2805,16 +2673,14 @@ Note: both attributes must only be used if the script has a `src` attribute (i.e
 * Use `defer` if the DOM must be ready and the contents are not placed within a `DOMContentLoaded` listener.
 
 
-##### Additional links
+##### Additional Links
 
 
 * [async vs defer attributes](http://www.growingwiththeweb.com/2014/02/async-vs-defer-attributes.html)
+
 </details>
 
-
-
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### What is the DOM?
 
@@ -2833,16 +2699,14 @@ The DOM (Document Object Model) is a cross-platform API that treats HTML and XML
 * Setting the `innerHTML` property to a new value runs the string through the HTML parser, offering an easy way to append dynamic HTML content to a node.
 
 
-##### Additional links
+##### Additional Links
 
 
 * [MDN docs for DOM](https://developer.mozilla.org/en-US/docs/DOM)
+
 </details>
 
-
-
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### Discuss the differences between an HTML specification and a browser’s implementation thereof.
 
@@ -2862,16 +2726,14 @@ A browser is said to “support” a specification if it handles valid documents
 * Thus, many decisions about how to handle malformed documents are left up to the browser.
 
 
-##### Additional links
+##### Additional Links
 
 
 * [HTML 5.2 WWW Specifications](https://www.w3.org/TR/html52/)
+
 </details>
 
-
-
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### What are some differences that XHTML has compared to HTML?
 
@@ -2895,16 +2757,14 @@ Some of the key differences are:
 * Tags ands attributes are case-sensitive, usually lowercase
 
 
-##### Additional links
+##### Additional Links
 
 
 * [W3Schools docs for HTML and XHTML](https://www.w3schools.com/html/html_xhtml.asp)
+
 </details>
 
-
-
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### Where and why is the `rel="noopener"` attribute used?
 
@@ -2921,17 +2781,15 @@ The `rel="noopener"` is an attribute used in `<a>` elements (hyperlinks). It pre
 * `rel="noopener"` prevents opened links from manipulating the source page.
 
 
-##### Additional links
+##### Additional Links
 
 
 * [Open external anchors using rel="noopener"](https://developers.google.com/web/tools/lighthouse/audits/noopener)
 * [About rel="noopener"](https://mathiasbynens.github.io/rel-noopener/)
+
 </details>
 
-
-
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### What is HTML5 Web Storage? Explain `localStorage` and `sessionStorage`.
 
@@ -2961,13 +2819,12 @@ Both forms of storage are scoped to the document origin so that documents with d
 * The data is never transferred to the server and can only be used if the client specifically asks for it.
 
 
-##### Additional links
+##### Additional Links
 
 
 * [W3Schools HTML5 Webstorage](https://www.w3schools.com/html/html5_webstorage.asp)
+
 </details>
-
-
 
 <br>[⬆ Back to top](#table-of-contents)
 
@@ -3026,16 +2883,14 @@ These must be chained to the Element and never alone however, or there will be s
 * Alternative solutions to scope issues like CSS-in-JS
 
 
-##### Additional links
+##### Additional Links
 
 
 * [Writing clean and maintainable CSS](https://hackernoon.com/writing-clean-and-maintainable-css-using-bem-methodology-1dcbf810a664)
+
 </details>
 
-
-
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### What are the advantages of using CSS preprocessors?
 
@@ -3052,16 +2907,14 @@ CSS preprocessors add useful functionality that native CSS does not have, and ge
 * Some disadvantages of using CSS preprocessors (setup, re-compilation time can be slow etc.)
 
 
-##### Additional links
+##### Additional Links
 
 
 * [CSS Preprocessors](https://medium.com/@garyfagan/css-preprocessors-6f226fa16f27)
+
 </details>
 
-
-
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### Using flexbox, create a 3-column layout where each column takes up a `col-{n} / 12` ratio of the container.
 
@@ -3102,18 +2955,15 @@ Set the `.row` parent to `display: flex;` and use the `flex` shorthand property 
 
 
 
-
-##### Additional links
+##### Additional Links
 
 
 * [MDN docs for basic concepts of flexbox](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Basic_Concepts_of_Flexbox)
 * [A complete guide to Flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
+
 </details>
 
-
-
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### Can you name the four types of `@media` properties?
 
@@ -3131,18 +2981,15 @@ Set the `.row` parent to `display: flex;` and use the `flex` shorthand property 
 
 
 
-
-##### Additional links
+##### Additional Links
 
 
 * [MDN docs for `@media` rule](https://developer.mozilla.org/en-US/docs/Web/CSS/@media)
 * [MDN docs for using media queries](https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries)
+
 </details>
 
-
-
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### Describe the layout of the CSS Box Model and briefly describe each component.
 
@@ -3169,17 +3016,15 @@ _Margin_: The transparent outer-most layer that surrounds the border. It separat
 * Shows a solid understanding of spacing and the DOM
 
 
-##### Additional links
+##### Additional Links
 
 
 * [W3School's CSS Box Model Page](https://www.w3schools.com/Css/css_boxmodel.asp)
 * [Mozilla's Intro to the CSS Box Model](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Box_Model/Introduction_to_the_CSS_box_model)
+
 </details>
 
-
-
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### What is the difference between `em` and `rem` units?
 
@@ -3200,16 +3045,14 @@ In most browsers, the `font-size` of the root element is set to `16px` by defaul
 * Benefits of using `em` and `rem` units
 
 
-##### Additional links
+##### Additional Links
 
 
 * [CSS units for font-size: px | em | rem](https://medium.com/code-better/css-units-for-font-size-px-em-rem-79f7e592bb97)
+
 </details>
 
-
-
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### What are the advantages of using CSS sprites and how are they utilized?
 
@@ -3231,16 +3074,14 @@ To utilize a spritesheet in CSS, one would use certain properties, such as `back
 * `background-image`, `background-position` and `background-size` can be used to utilize a spritesheet.
 
 
-##### Additional links
+##### Additional Links
 
 
 * [CSS Sprites explained by CSS Tricks](https://css-tricks.com/css-sprites/)
+
 </details>
 
-
-
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### Can you describe how CSS specificity works?
 
@@ -3264,16 +3105,14 @@ When two selectors are compared, the comparison is made on a per-column basis (e
 * In cases of equal specificity, last rule is applied
 
 
-##### Additional links
+##### Additional Links
 
 
 * [CSS Specificity](https://www.smashingmagazine.com/2007/07/css-specificity-things-you-should-know/)
+
 </details>
 
-
-
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### What is a focus ring? What is the correct solution to handle them?
 
@@ -3294,14 +3133,12 @@ The best solution is an upcoming pseudo-selector `:focus-visible` which can be p
 
 
 
-
-##### Additional links
+##### Additional Links
 
 
 * [:focus-visible](https://css-tricks.com/focus-visible-and-backwards-compatibility/)
+
 </details>
-
-
 
 <br>[⬆ Back to top](#table-of-contents)
 
@@ -3370,17 +3207,15 @@ isTrue(true, callback)
 * This is just a convention. However, you should stick to it.
 
 
-##### Additional links
+##### Additional Links
 
 
 * [The Node.js Way Understanding Error-First Callbacks](http://fredkschott.com/post/2014/03/understanding-error-first-callbacks-in-node-js/)
 * [What are the error conventions?](https://docs.nodejitsu.com/articles/errors/what-are-the-error-conventions)
+
 </details>
 
-
-
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### What is REST?
 
@@ -3408,16 +3243,14 @@ Here is an example of the URL and HTTP method with a `posts` resource:
 * Alternatives to this pattern like GraphQL
 
 
-##### Additional links
+##### Additional Links
 
 
 *   ](https://medium.com/extend/what-is-rest-a-simple-explanation-for-beginners-part-1-introduction-b4a072f8740f)
+
 </details>
 
-
-
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### How can you avoid callback hells?
 
@@ -3467,17 +3300,15 @@ There are lots of ways to solve the issue of callback hells:
 * As an efficient JavaScript developer, you have to avoid the constantly growing indentation level, produce clean and readable code and be able to handle complex flows.
 
 
-##### Additional links
+##### Additional Links
 
 
 * [Avoiding Callback Hell in Node.js](http://stackabuse.com/avoiding-callback-hell-in-node-js/)
 * [Asynchronous JavaScript: From Callback Hell to Async and Await](https://blog.hellojs.org/asynchronous-javascript-from-callback-hell-to-async-and-await-9b9ceb63c8e8)
+
 </details>
 
-
-
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### What is the event loop in Node.js?
 
@@ -3493,13 +3324,12 @@ The event loop handles all async callbacks. Callbacks are queued in a loop, whil
 * The event loop allows Node.js to perform non-blocking I/O operations, despite the fact that JavaScript is single-threaded
 
 
-##### Additional links
+##### Additional Links
 
 
 * [Node.js docs on event loop, timers and process.nextTick()](https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick/)
+
 </details>
-
-
 
 <br>[⬆ Back to top](#table-of-contents)
 
@@ -3526,13 +3356,12 @@ For example, a comment system will be at risk if it does not validate or escape 
 * On the server, escaping HTML tags will prevent the browser from parsing the user input as actual HTML and therefore won't execute the script.
 
 
-##### Additional links
+##### Additional Links
 
 
 * [Cross-Site Scripting Attack (XSS)](https://www.acunetix.com/websitesecurity/cross-site-scripting/)
+
 </details>
-
-
 
 <br>[⬆ Back to top](#table-of-contents)
 
