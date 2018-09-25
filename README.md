@@ -905,7 +905,7 @@ approxEqual(0.1 + 0.2, 0.3) // true
 <details>
 <summary>View answer</summary>
 
-Both methods iterate through the elements of an array. `map()` maps each element to new element by invoking the callback function on each element and returns a new array. On the other hand, `forEach()` invokes the callback function for each element but does not return a new array. `forEach()` is generally used when causing a side effect on each iteration, whereas `map()` is a common functional programming technique.
+Both methods iterate through the elements of an array. `map()` maps each element to a new element by invoking the callback function on each element and returning a new array. On the other hand, `forEach()` invokes the callback function for each element but does not return a new array. `forEach()` is generally used when causing a side effect on each iteration, whereas `map()` is a common functional programming technique.
 
 
 #### Good to hear
@@ -1171,11 +1171,11 @@ mask("123456789") // "#####6789"
 
 > There are many ways to solve this problem, this is just one one of them.
 
-Using `String.prototype.slice()`, we can grab a portion of the string from index `0` (first character) to index `-4` (5th last character) and calculate the resulting length, using `String.prototype.repeat()` to repeat the mask character that many times. Then, using `String.prototype.slice()` once more, we can concatenate the last 4 characters by passing `-4` as an argument.
+Using `String.prototype.slice()` we can grab the last 4 characters of the string by passing `-4` as an argument. Then, using `String.prototype.padStart()`, we can pad the string to the original length with the repeated mask character.
 
 ```js
 const mask = (str, maskChar = "#") =>
-  maskChar.repeat(str.slice(0, -4).length) + str.slice(-4)
+  str.slice(-4).padStart(str.length, maskChar)
 ```
 
 
