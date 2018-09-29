@@ -1,4 +1,4 @@
-### What is Key? What are the benefits of using it in lists?
+### What is a key? What are the benefits of using it in lists?
 
 #### Answer
 
