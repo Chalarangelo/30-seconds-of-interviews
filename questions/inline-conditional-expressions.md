@@ -15,6 +15,9 @@ You can use either `if` statements or ternary expressions to conditionally rende
 
 ##### Additional links
 
+* [React docs on Conditional Rendering](https://reactjs.org/docs/conditional-rendering.html)
+
+
 <!-- tags: (react,javascript) -->
 
 <!-- expertise: (1) -->
