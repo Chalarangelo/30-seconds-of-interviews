@@ -8,7 +8,7 @@ The comments in React are similar to JavaScript multiline comments which are wra
 render() => (<div>
   {/* single-line comments */}
   Hey {user}, write cool comments
-  {/* multy-line
+  {/* multi-line
   comments */}
 </div>)
 ```
