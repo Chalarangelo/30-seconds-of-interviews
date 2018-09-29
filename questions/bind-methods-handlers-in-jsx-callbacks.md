@@ -1,8 +1,8 @@
-### How to bind methods or event handlers in JSX callbacks?
+### How do you ensure methods used in callback props have the correct `this` context?
 
 #### Answer
 
-* In JavaScript classes, the methods are not bound by default. The same thing applies for ReactJS event handlers defined as class methods. Normally we `bind` them in constructor as follows:
+* In JavaScript classes, the methods are not bound by default. This means that their `this` context can be changed (in the case of an event handler, to the element that is listening to the event) and will not refer to the component instance. To solve this, `Function.prototype.bind()` can be used to enforce the `this` context as the component instance.
 
 ```jsx
 constructor(props) {
@@ -15,30 +15,35 @@ handleClick() {
 }
 ```
 
-* If you don’t like to use `bind` approach, then public class fields syntax can be used to correctly bind callbacks:
+* The `bind` approach can be verbose and requires defining a `constructor`, so the new public class fields syntax is generally preferred:
 
 ```jsx
 handleClick = () => {
   console.log('this is:', this);
 }
-<button onClick={this.handleClick}>
-  Click me
-</button>
+
+render() {
+  return (
+    <button onClick={this.handleClick}>
+      Click me
+    </button>
+  );
+}
 ```
 
-* You can also use arrow functions directly in the callbacks as below:
+* You can also use an inline arrow function, because lexical `this` (referring to the component instance) is preserved:
 
 ```jsx
-<button onClick={(e) => this.handleClick(e)}>
+<button onClick={e => this.handleClick(e)}>
   Click me
 </button>
 ```
 
-Remember that ff the callback is passed as prop to lower components, those components might do an extra re-rendering. In those cases, it is preferred to go with bind or public class fields syntax approach considering performance.
+Note that extra re-rendering can occur using this technique because a new function reference is created on render, which gets passed down to child components and breaks `shouldComponentUpdate` / `PureComponent` shallow equality checks to prevent unnecessary re-renders. In cases where performance is important, it is preferred to go with `bind` in the constructor, or the public class fields syntax approach, because the function reference remains constant.
 
 #### Good to hear
 
-* You can bind methods to event handlers in the constructor, using public class fields syntax or using arrow functions in callbacks.
+* You can either bind methods to the component instance context in the constructor, use public class fields syntax, or use inline arrow functions.
 
 ##### Additional links
 
