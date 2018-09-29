@@ -1,4 +1,4 @@
-### How do you ensure methods used in callback props have the correct `this` context?
+### How do you ensure methods have the correct `this` context in React component classes?
 
 #### Answer
 
