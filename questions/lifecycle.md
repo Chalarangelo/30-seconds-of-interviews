@@ -10,6 +10,8 @@ There are four different phases of component’s lifecycle:
 **Updating**: In this phase, the component gets updated in two ways, sending the new props and updating the state. This phase covers `shouldComponentUpdate`, `componentWillUpdate` and `componentDidUpdate` lifecycle methods.
 **Unmounting**: In this last phase, the component is not needed and gets unmounted from the browser DOM. This phase include `componentWillUnmount` lifecycle method.
 
+![lifecycle phases](https://github.com/sudheerj/reactjs-interview-questions/blob/master/images/phases.png)
+
 #### Good to hear
 
 
