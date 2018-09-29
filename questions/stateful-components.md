@@ -2,7 +2,7 @@
 
 #### Answer
 
-A stateful component is a component whose behavior depends on it state. Stateful components are always class components and have a state that is initialized in the constructor.
+A stateful component is a component whose behavior depends on its state. Stateful components are always class components and have a state that is initialized in the constructor.
 
 ```jsx
 class App extends Component {
