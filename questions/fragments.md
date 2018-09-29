@@ -24,7 +24,7 @@ render() {
       <ChildC />
     </>
   );
-  }
+}
 ```
 
 #### Good to hear
