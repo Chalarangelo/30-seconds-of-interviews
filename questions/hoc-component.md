@@ -16,6 +16,6 @@ const EnhancedComponent = higherOrderComponent(WrappedComponent);
 ##### Additional links
 
 
-<!-- tags: (javascript) -->
+<!-- tags: (react) -->
 
 <!-- expertise: (2) -->
