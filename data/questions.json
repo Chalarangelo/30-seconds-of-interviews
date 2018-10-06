@@ -801,6 +801,23 @@
     ]
   },
   {
+    "name": "mime.md",
+    "question": "What is a MIME type and what is it used for?",
+    "answer": "`MIME` is an acronym for `Multi-purpose Internet Mail Extensions`. It is used as a standard way of classifying file types over the Internet.",
+    "goodToHear": [
+      "A `MIME type` actually has two parts: a type and a subtype that are separated by a slash (/). For example, the `MIME type` for Microsoft Word files is `application/msword` (i.e., type is application and the subtype is msword)."
+    ],
+    "links": [
+      "[MIME Type MDN](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types)"
+    ],
+    "tags": [
+      "javascript"
+    ],
+    "expertise": 1,
+    "questionCodeBlocks": [],
+    "answerCodeBlocks": []
+  },
+  {
     "name": "mutable-vs-immutable.md",
     "question": "Contrast mutable and immutable values, and mutating vs non-mutating methods.",
     "answer": "The two terms can be contrasted as:\n\n* Mutable: subject to change\n* Immutable: cannot change\n\nIn JavaScript, objects are mutable while primitive values are immutable. This means operations performed on objects can change the original reference in some way, while operations performed on a primitive value cannot change the original value.\n\nAll `String.prototype` methods do not have an effect on the original string and return a new string. On the other hand, while some methods of `Array.prototype` do not mutate the original array reference and produce a fresh array, some cause mutations.\n\n```js\nconst myString = \"hello!\"\nmyString.replace(\"!\", \"\") // returns a new string, cannot mutate the original value\n\nconst originalArray = [1, 2, 3]\noriginalArray.push(4) // mutates originalArray, now [1, 2, 3, 4]\noriginalArray.concat(4) // returns a new array, does not mutate the original\n```",
