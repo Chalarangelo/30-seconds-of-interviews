@@ -5,10 +5,9 @@
 
 <!-- Your answer goes here. -->
 
-General Sibling Selector
+The General Sibling Selector `~` selects all elements that are siblings of a specified element.
 
-The general sibling selector selects all elements that are siblings and are after of a specified element.
-The following example selects all <p> elements that are siblings of <div> elements: 
+The following example selects all `<p>` elements that are siblings of `<div>` elements: 
 
 ```css
 div ~ p {
@@ -16,19 +15,15 @@ div ~ p {
 }
 ```
 
-The Adjacent Sibling Selector '+' selects all elements that are next to a specified element and have the same parent.
+The Adjacent Sibling Selector `+` selects all elements that are the adjacent siblings of a specified element.
 
-This example will select all <p> elements that are placed immediately after <div> elements:
+The following example will select all `<p>` elements that are placed immediately after `<div>` elements:
 
 ```css
 div + p {
     background-color: red;
 }
 ```
-
-#### Good to hear
-
-* This is a question helps you to show that you know more than the basics of CSS selectors
 
 ##### Additional links
 
