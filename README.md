@@ -134,6 +134,7 @@ Join our [Gitter channel](https://gitter.im/30-seconds-of-interviews/Lobby) to h
 * [What is CSS BEM?](#what-is-css-bem)
 * [Describe the layout of the CSS Box Model and briefly describe each component.](#describe-the-layout-of-the-css-box-model-and-briefly-describe-each-component)
 * [What are the advantages of using CSS preprocessors?](#what-are-the-advantages-of-using-css-preprocessors)
+* [What is the difference between '+' and '~' sibling selectors?.](#what-is-the-difference-between--and--sibling-selectors)
 * [Can you describe how CSS specificity works?](#can-you-describe-how-css-specificity-works)
 * [What is the difference between `em` and `rem` units?](#what-is-the-difference-between-em-and-rem-units)
 * [Using flexbox, create a 3-column layout where each column takes up a `col-{n} / 12` ratio of the container.](#using-flexbox-create-a-3-column-layout-where-each-column-takes-up-a-col-n--12-ratio-of-the-container)
@@ -3102,6 +3103,72 @@ To utilize a spritesheet in CSS, one would use certain properties, such as `back
 
 
 * [CSS Sprites explained by CSS Tricks](https://css-tricks.com/css-sprites/)
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+### What is the difference between '+' and '~' sibling selectors?.
+
+<details>
+<summary>View answer</summary>
+
+The General Sibling Selector `~` selects all elements that are siblings of a specified element.
+
+The following example selects all `<p>` elements that are siblings of `<div>` elements:
+
+```css
+div ~ p {
+  background-color: blue;
+}
+```
+
+The Adjacent Sibling Selector `+` selects all elements that are the adjacent siblings of a specified element.
+
+The following example will select all `<p>` elements that are placed immediately after `<div>` elements:
+
+```css
+div + p {
+  background-color: red;
+}
+```
+
+##### Additional links
+
+* [W3School's CSS Combinators Page](https://www.w3schools.com/css/css_combinators.asp)
+* [Mozilla's Combinators and groups of selectors page](https://developer.mozilla.org/en-US/docs/Learn/CSS/Introduction_to_CSS/Combinators_and_multiple_selectors)
+
+<!-- tags: (css) -->
+
+<!-- expertise: (2) -->
+
+
+#### Good to hear
+
+
+* ifference between '+' and '~' sibling selectors?.
+* #### Answer
+* The General Sibling Selector `~` selects all elements that are siblings of a specified element.
+* The following example selects all `<p>` elements that are siblings of `<div>` elements:
+* ```css
+* div ~ p {
+*   background-color: blue;
+* }
+* ```
+* The Adjacent Sibling Selector `+` selects all elements that are the adjacent siblings of a specified element.
+* The following example will select all `<p>` elements that are placed immediately after `<div>` elements:
+* ```css
+* div + p {
+*   background-color: red;
+* }
+* ```
+
+
+##### Additional Links
+
+
+* [W3School's CSS Combinators Page](https://www.w3schools.com/css/css_combinators.asp)
+* [Mozilla's Combinators and groups of selectors page](https://developer.mozilla.org/en-US/docs/Learn/CSS/Introduction_to_CSS/Combinators_and_multiple_selectors)
 
 </details>
 

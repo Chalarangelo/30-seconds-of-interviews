@@ -4,11 +4,11 @@
 
 The General Sibling Selector `~` selects all elements that are siblings of a specified element.
 
-The following example selects all `<p>` elements that are siblings of `<div>` elements: 
+The following example selects all `<p>` elements that are siblings of `<div>` elements:
 
 ```css
 div ~ p {
-    background-color: blue;
+  background-color: blue;
 }
 ```
 
@@ -18,7 +18,7 @@ The following example will select all `<p>` elements that are placed immediately
 
 ```css
 div + p {
-    background-color: red;
+  background-color: red;
 }
 ```
 
