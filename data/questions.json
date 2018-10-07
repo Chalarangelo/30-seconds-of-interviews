@@ -297,6 +297,42 @@
     "answerCodeBlocks": []
   },
   {
+    "name": "css-sibling-selectors.md",
+    "question": "What is the difference between '+' and '~' sibling selectors?.",
+    "answer": "The General Sibling Selector `~` selects all elements that are siblings of a specified element.\n\nThe following example selects all `<p>` elements that are siblings of `<div>` elements:\n\n```css\ndiv ~ p {\n  background-color: blue;\n}\n```\n\nThe Adjacent Sibling Selector `+` selects all elements that are the adjacent siblings of a specified element.\n\nThe following example will select all `<p>` elements that are placed immediately after `<div>` elements:\n\n```css\ndiv + p {\n  background-color: red;\n}\n```\n\n##### Additional links\n\n* [W3School's CSS Combinators Page](https://www.w3schools.com/css/css_combinators.asp)\n* [Mozilla's Combinators and groups of selectors page](https://developer.mozilla.org/en-US/docs/Learn/CSS/Introduction_to_CSS/Combinators_and_multiple_selectors)\n\n<!-- tags: (css) -->\n\n<!-- expertise: (2) -->",
+    "goodToHear": [
+      "ifference between '+' and '~' sibling selectors?.",
+      "#### Answer",
+      "The General Sibling Selector `~` selects all elements that are siblings of a specified element.",
+      "The following example selects all `<p>` elements that are siblings of `<div>` elements:",
+      "```css",
+      "div ~ p {",
+      "  background-color: blue;",
+      "}",
+      "```",
+      "The Adjacent Sibling Selector `+` selects all elements that are the adjacent siblings of a specified element.",
+      "The following example will select all `<p>` elements that are placed immediately after `<div>` elements:",
+      "```css",
+      "div + p {",
+      "  background-color: red;",
+      "}",
+      "```"
+    ],
+    "links": [
+      "[W3School's CSS Combinators Page](https://www.w3schools.com/css/css_combinators.asp)",
+      "[Mozilla's Combinators and groups of selectors page](https://developer.mozilla.org/en-US/docs/Learn/CSS/Introduction_to_CSS/Combinators_and_multiple_selectors)"
+    ],
+    "tags": [
+      "css"
+    ],
+    "expertise": 2,
+    "questionCodeBlocks": [],
+    "answerCodeBlocks": [
+      "```css\ndiv ~ p {\n  background-color: blue;\n}\n```",
+      "```css\ndiv + p {\n  background-color: red;\n}\n```"
+    ]
+  },
+  {
     "name": "css-specificity.md",
     "question": "Can you describe how CSS specificity works?",
     "answer": "Assuming the browser has already determined the set of rules for an element, each rule is assigned a matrix of values, which correspond to the following from highest to lowest specificity:\n\n* Inline rules (binary - 1 or 0)\n* Number of id selectors\n* Number of class, pseudo-class and attribute selectors\n* Number of tags and pseudo-element selectors\n\nWhen two selectors are compared, the comparison is made on a per-column basis (e.g. an id selector will always be higher than any amount of class selectors, as ids have higher specificity than classes). In cases of equal specificity between multiple rules, the rules that comes last in the page's style sheet is deemed more specific and therefore applied to the element.",
