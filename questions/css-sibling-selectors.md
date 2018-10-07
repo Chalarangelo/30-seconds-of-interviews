@@ -1,9 +1,6 @@
 ### What is the difference between '+' and '~' sibling selectors?.
 
-
 #### Answer
-
-<!-- Your answer goes here. -->
 
 The General Sibling Selector `~` selects all elements that are siblings of a specified element.
 
