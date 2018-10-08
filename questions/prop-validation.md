@@ -6,11 +6,11 @@ When the application is running in development mode, React will automatically ch
 
 The set of predefined prop types are the following:
 
--`React.PropTypes.string`
--`React.PropTypes.number`
--`React.PropTypes.func`
--`React.PropTypes.node`
--`React.PropTypes.bool`
+-`PropTypes.string`
+-`PropTypes.number`
+-`PropTypes.func`
+-`PropTypes.node`
+-`PropTypes.bool`
 
 For example, we define propTypes for component as below:
 ```jsx
