@@ -47,6 +47,10 @@
       color: $color-node;
     }
 
+    &.is-react {
+      color: $color-react;
+    }
+
     &.is-security {
       color: #333;
     }

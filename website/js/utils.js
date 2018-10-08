@@ -48,6 +48,7 @@ export const TAG_NAMES = {
   css: "CSS",
   node: "Node",
   security: "Security",
+  react: "React",
   all: "all"
 }
 
