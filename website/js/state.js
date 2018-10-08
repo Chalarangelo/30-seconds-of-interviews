@@ -26,6 +26,10 @@ export default {
           icon: "code"
         },
         {
+          name: "React",
+          icon: "globe"
+        },
+        {
           name: "Node",
           icon: "server"
         },

@@ -144,5 +144,9 @@
     &.is-node {
       background: $gradient-node;
     }
+
+    &.is-react {
+      background: $gradient-react;
+    }
   }
 }
