@@ -16,7 +16,6 @@ A component, on the other hand, can be declared in several different ways. It ca
 * [React docs on Rendering Elements](https://reactjs.org/docs/rendering-elements.html)
 * [React docs on Components and Props](https://reactjs.org/docs/components-and-props.html)
 
-
 <!-- tags: (react,javascript) -->
 
 <!-- expertise: (0) -->

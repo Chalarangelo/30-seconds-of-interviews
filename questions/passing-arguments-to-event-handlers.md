@@ -7,7 +7,7 @@ You can use an arrow function to wrap around an event handler and pass arguments
 ```jsx
 <button onClick={() => this.handleClick(id)} />
 <button onClick={this.handleClick.bind(this, id)} />
-``` 
+```
 
 #### Good to hear
 

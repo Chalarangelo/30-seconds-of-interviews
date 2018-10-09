@@ -7,9 +7,9 @@ Children is a prop (`this.prop.children`) that allows components to be passed as
 ```jsx
 var MyDiv = React.createClass({
   render: function() {
-    return <div>{this.props.children}</div>;
+    return <div>{this.props.children}</div>
   }
-});
+})
 
 ReactDOM.render(
   <MyDiv>
@@ -17,7 +17,7 @@ ReactDOM.render(
     <span>World</span>
   </MyDiv>,
   node
-);
+)
 ```
 
 #### Good to hear

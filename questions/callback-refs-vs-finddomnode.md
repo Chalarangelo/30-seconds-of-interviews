@@ -8,7 +8,7 @@ Callback refs are preferred over the `findDOMNode()` API, due to the fact that `
 /* Legacy approach using findDOMNode() */
 class MyComponent extends Component {
   componentDidMount() {
-    findDOMNode(this).scrollIntoView();
+    findDOMNode(this).scrollIntoView()
   }
 
   render() {
@@ -19,14 +19,15 @@ class MyComponent extends Component {
 /* Recommended approach using callback refs */
 class MyComponent extends Component {
   componentDidMount() {
-    this.node.scrollIntoView();
+    this.node.scrollIntoView()
   }
 
   render() {
-    return <div ref={node => this.node = node} />
+    return <div ref={node => (this.node = node)} />
   }
 }
 ```
+
 #### Good to hear
 
 * Callback refs are preferred over `findDOMNode()`.

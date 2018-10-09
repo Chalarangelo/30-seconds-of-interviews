@@ -6,13 +6,10 @@ When the application is running in development mode, React will automatically ch
 
 The set of predefined prop types are the following:
 
--`PropTypes.string`
--`PropTypes.number`
--`PropTypes.func`
--`PropTypes.node`
--`PropTypes.bool`
+-`PropTypes.string` -`PropTypes.number` -`PropTypes.func` -`PropTypes.node` -`PropTypes.bool`
 
 For example, we define propTypes for component as below:
+
 ```jsx
 import PropTypes from 'prop-types';
 
@@ -33,11 +30,10 @@ User.propTypes = {
 
 #### Good to hear
 
-- We can define custom `PropTypes`
-- Using `PropTypes` is not mandatory. However, it is a good practice
+* We can define custom `PropTypes`
+* Using `PropTypes` is not mandatory. However, it is a good practice
 
 ##### Additional links
-
 
 <!-- tags: (react) -->
 
