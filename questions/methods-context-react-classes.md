@@ -34,9 +34,7 @@ render() {
 * You can also use an inline arrow function, because lexical `this` (referring to the component instance) is preserved:
 
 ```jsx
-<button onClick={e => this.handleClick(e)}>
-  Click me
-</button>
+<button onClick={e => this.handleClick(e)}>Click me</button>
 ```
 
 Note that extra re-rendering can occur using this technique because a new function reference is created on render, which gets passed down to child components and breaks `shouldComponentUpdate` / `PureComponent` shallow equality checks to prevent unnecessary re-renders. In cases where performance is important, it is preferred to go with `bind` in the constructor, or the public class fields syntax approach, because the function reference remains constant.

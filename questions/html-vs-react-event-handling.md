@@ -16,7 +16,7 @@ Some of the key differences are:
 <button onClick="handleClick()">
 ```
 
-* In HTML, `false` can be returned to prevent default behavior, whereas in React `preventDefault ` has to be called explicitly.
+* In HTML, `false` can be returned to prevent default behavior, whereas in React `preventDefault` has to be called explicitly.
 
 ```html
 <!-- HTML -->
@@ -26,8 +26,8 @@ Some of the key differences are:
 ```jsx
 /* React */
 function handleClick(e) {
-  e.preventDefault();
-  console.log('The link was clicked.');
+  e.preventDefault()
+  console.log("The link was clicked.")
 }
 ```
 
@@ -38,7 +38,6 @@ function handleClick(e) {
 ##### Additional links
 
 * [React docs on Handling Events](https://reactjs.org/docs/handling-events.html)
-
 
 <!-- tags: (react,javascript,html) -->
 

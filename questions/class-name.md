@@ -12,7 +12,6 @@ render() {
 
 #### Good to hear
 
-
 ##### Additional links
 
 <!-- tags: (react) -->

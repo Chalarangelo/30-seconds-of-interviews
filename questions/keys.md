@@ -5,11 +5,7 @@
 Keys are a special string attribute that helps React identify which items have been changed, added or removed. They are used when rendering array elements to give them a stable indentity. Each element's key must be unique (e.g. IDs from the data or indexes as a last resort).
 
 ```jsx
-const todoItems = todos.map((todo) =>
-  <li key={todo.id}>
-    {todo.text}
-  </li>
-);
+const todoItems = todos.map(todo => <li key={todo.id}>{todo.text}</li>)
 ```
 
 * Using indexes as keys is not recommended if the order of items may change, as it might negatively impact performance and may cause issues with component state.

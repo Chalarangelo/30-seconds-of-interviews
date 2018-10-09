@@ -7,8 +7,8 @@ A stateful component is a component whose behavior depends on its state. Statefu
 ```jsx
 class App extends Component {
   constructor(props) {
-    super(props);
-    this.state = { count: 0 };
+    super(props)
+    this.state = { count: 0 }
   }
   render() {
     // ...

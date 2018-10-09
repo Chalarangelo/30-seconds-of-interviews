@@ -158,6 +158,47 @@
     ]
   },
   {
+    "name": "callback-in-setState.md",
+    "question": "What is the purpose of callback function as an argument of `setState`?",
+    "answer": "The callback function is invoked when `setState` has finished and the component gets rendered. Since `setState` is asynchronous, the callback function is used for any post action.\n\n```jsx\nsetState({ name: \"sudheer\" }, () =>\n  console.log(\"The name has updated and component re-rendered\")\n)\n```",
+    "goodToHear": [
+      "The callback functio is invoked after `setState` finishes and is used for any post action.",
+      "It is recommended to use lifecycle method rather this callback function."
+    ],
+    "links": [
+      "[React docs on `setState`](https://reactjs.org/docs/react-component.html#setstate)"
+    ],
+    "tags": [
+      "react",
+      "javascript"
+    ],
+    "expertise": 1,
+    "questionCodeBlocks": [],
+    "answerCodeBlocks": [
+      "```jsx\nsetState({ name: \"sudheer\" }, () =>\n  console.log(\"The name has updated and component re-rendered\")\n)\n```"
+    ]
+  },
+  {
+    "name": "callback-refs-vs-finddomnode.md",
+    "question": "Which is the preferred option between callback refs and findDOMNode()?",
+    "answer": "Callback refs are preferred over the `findDOMNode()` API, due to the fact that `findDOMNode()` prevents certain improvements in React in the future.\n\n```jsx\n/* Legacy approach using findDOMNode() */\nclass MyComponent extends Component {\n  componentDidMount() {\n    findDOMNode(this).scrollIntoView()\n  }\n\n  render() {\n    return <div />\n  }\n}\n\n/* Recommended approach using callback refs */\nclass MyComponent extends Component {\n  componentDidMount() {\n    this.node.scrollIntoView()\n  }\n\n  render() {\n    return <div ref={node => (this.node = node)} />\n  }\n}\n```",
+    "goodToHear": [
+      "Callback refs are preferred over `findDOMNode()`."
+    ],
+    "links": [
+      "[React docs on Refs and the DOM](https://reactjs.org/docs/refs-and-the-dom.html#exposing-dom-refs-to-parent-components)"
+    ],
+    "tags": [
+      "react",
+      "javascript"
+    ],
+    "expertise": 2,
+    "questionCodeBlocks": [],
+    "answerCodeBlocks": [
+      "```jsx\n/* Legacy approach using findDOMNode() */\nclass MyComponent extends Component {\n  componentDidMount() {\n    findDOMNode(this).scrollIntoView()\n  }\n\n  render() {\n    return <div />\n  }\n}\n\n/* Recommended approach using callback refs */\nclass MyComponent extends Component {\n  componentDidMount() {\n    this.node.scrollIntoView()\n  }\n\n  render() {\n    return <div ref={node => (this.node = node)} />\n  }\n}\n```"
+    ]
+  },
+  {
     "name": "callbacks.md",
     "question": "What is a callback? Can you show an example using one?",
     "answer": "Callbacks are functions passed as an argument to another function to be executed once an event has occurred or a certain task is complete, often used in asynchronous code. Callback functions are invoked later by a piece of code but can be declared on initialization without being invoked.\n\nAs an example, event listeners are asynchronous callbacks that are only executed when a specific event occurs.\n\n```js\nfunction onClick() {\n  console.log(\"The user clicked on the page.\")\n}\ndocument.addEventListener(\"click\", onClick)\n```\n\nHowever, callbacks can also be synchronous. The following `map` function takes a callback function that is invoked synchronously for each iteration of the loop (array element).\n\n```js\nconst map = (arr, callback) => {\n  const result = []\n  for (let i = 0; i < arr.length; i++) {\n    result.push(callback(arr[i], i))\n  }\n  return result\n}\nmap([1, 2, 3, 4, 5], n => n * 2) // [2, 4, 6, 8, 10]\n```",
@@ -179,9 +220,30 @@
     ]
   },
   {
+    "name": "children-prop.md",
+    "question": "What is children prop?",
+    "answer": "Children is a prop (`this.prop.children`) that allows components to be passed as data to other components. There are a number of methods available in the React API to work with this prop, such as `React.Children.map`, `React.Children.forEach`, `React.Children.count`, `React.Children.only` and `React.Children.toArray`. A simple usage example of the children prop is as follows:\n\n```jsx\nvar MyDiv = React.createClass({\n  render: function() {\n    return <div>{this.props.children}</div>\n  }\n})\n\nReactDOM.render(\n  <MyDiv>\n    <span>Hello</span>\n    <span>World</span>\n  </MyDiv>,\n  node\n)\n```",
+    "goodToHear": [
+      "Children is a prop that allows components to be passed as data to other components.",
+      "The React API provides methods to work with this prop."
+    ],
+    "links": [
+      "[React docs on Children](https://reactjs.org/docs/jsx-in-depth.html#children-in-jsx)"
+    ],
+    "tags": [
+      "react",
+      "javascript"
+    ],
+    "expertise": 2,
+    "questionCodeBlocks": [],
+    "answerCodeBlocks": [
+      "```jsx\nvar MyDiv = React.createClass({\n  render: function() {\n    return <div>{this.props.children}</div>\n  }\n})\n\nReactDOM.render(\n  <MyDiv>\n    <span>Hello</span>\n    <span>World</span>\n  </MyDiv>,\n  node\n)\n```"
+    ]
+  },
+  {
     "name": "class-name.md",
     "question": "Why React uses className over class attribute?",
-    "answer": "`class` is a reserved keyword in JavaScript and JSX is an extension of JavaScript. That's the primary reason why React uses className instead of class.\n\n```jsx\nrender() {\n  return <span className=\"tooltip\">tooltip</span>\n}\n```",
+    "answer": "`class` is a reserved keyword in JavaScript and JSX is an extension of JavaScript. That's the primary reason why React uses `className` instead of `class`.\n\n```jsx\nrender() {\n  return <span className=\"tooltip\">tooltip</span>\n}\n```",
     "goodToHear": [],
     "links": [],
     "tags": [
@@ -254,6 +316,27 @@
     "questionCodeBlocks": [],
     "answerCodeBlocks": [
       "```js\nfunction isDeepEqual(obj1, obj2, testPrototypes = false) {\n  if (obj1 === obj2) {\n    return true\n  }\n\n  if (typeof obj1 === \"function\" && typeof obj2 === \"function\") {\n    return obj1.toString() === obj2.toString()\n  }\n\n  if (obj1 instanceof Date && obj2 instanceof Date) {\n    return obj1.getTime() === obj2.getTime()\n  }\n\n  if (\n    Object.prototype.toString.call(obj1) !==\n      Object.prototype.toString.call(obj2) ||\n    typeof obj1 !== \"object\"\n  ) {\n    return false\n  }\n\n  const prototypesAreEqual = testPrototypes\n    ? isDeepEqual(\n        Object.getPrototypeOf(obj1),\n        Object.getPrototypeOf(obj2),\n        true\n      )\n    : true\n\n  const obj1Props = Object.getOwnPropertyNames(obj1)\n  const obj2Props = Object.getOwnPropertyNames(obj2)\n\n  return (\n    obj1Props.length === obj2Props.length &&\n    prototypesAreEqual &&\n    obj1Props.every(prop => isDeepEqual(obj1[prop], obj2[prop]))\n  )\n}\n```"
+    ]
+  },
+  {
+    "name": "context.md",
+    "question": "What is context?",
+    "answer": "Context provides a way to pass data through the component tree without having to pass props down manually at every level. For example, authenticated user, locale preference, UI theme need to be accessed in the application by many components.\n\n```jsx\nconst { Provider, Consumer } = React.createContext(defaultValue)\n```",
+    "goodToHear": [
+      "Context provides a way to pass data through a tree of React components, without having to manually pass props.",
+      "Context is designed to share data that is considered _global_ for a tree of React components."
+    ],
+    "links": [
+      "[React docs on Context](https://reactjs.org/docs/context.html)"
+    ],
+    "tags": [
+      "react",
+      "javascript"
+    ],
+    "expertise": 2,
+    "questionCodeBlocks": [],
+    "answerCodeBlocks": [
+      "```jsx\nconst { Provider, Consumer } = React.createContext(defaultValue)\n```"
     ]
   },
   {
@@ -406,6 +489,26 @@
     "answerCodeBlocks": []
   },
   {
+    "name": "element-vs-component.md",
+    "question": "What is the difference between Element and Component?",
+    "answer": "An element is a plain object describing what you want to appear on the screen in terms of the DOM nodes or other components. Elements can contain other elements in their props. Creating a React element is cheap. Once an element is created, it is never mutated.\n\nA component, on the other hand, can be declared in several different ways. It can be a class with a `render()` method (class component) or a function (functional component). Components take props as an input and return an element tree as the output.",
+    "goodToHear": [
+      "Elements are immutable, plain objects that describe the DOM nodes or components you want to render.",
+      "Components can be either classes or functions, that take props as an input and return an element tree as the output."
+    ],
+    "links": [
+      "[React docs on Rendering Elements](https://reactjs.org/docs/rendering-elements.html)",
+      "[React docs on Components and Props](https://reactjs.org/docs/components-and-props.html)"
+    ],
+    "tags": [
+      "react",
+      "javascript"
+    ],
+    "expertise": 0,
+    "questionCodeBlocks": [],
+    "answerCodeBlocks": []
+  },
+  {
     "name": "em-rem-difference.md",
     "question": "What is the difference between `em` and `rem` units?",
     "answer": "Both `em` and `rem` units are based on the `font-size` CSS property. The only difference is where they inherit their values from.\n\n* `em` units inherit their value from the `font-size` of the parent element\n* `rem` units inherit their value from the `font-size` of the root element (`html`)\n\nIn most browsers, the `font-size` of the root element is set to `16px` by default.",
@@ -425,7 +528,7 @@
   {
     "name": "error-boundaries.md",
     "question": "What are error boundaries in React?",
-    "answer": "Error boundaries are React components that catch JavaScript errors anywhere in their child component tree, log those errors, and display a fallback UI instead of the component tree that crashed.\n\nA class component becomes an error boundary if it defines a new lifecycle method called `componentDidCatch`\n\n```jsx\nclass ErrorBoundary extends React.Component {\n  constructor(props) {\n    super(props);\n    this.state = { hasError: false };\n  }\n\n  componentDidCatch(error, info) {\n    // Display fallback UI\n    this.setState({ hasError: true });\n    // You can also log the error to an error reporting service\n    logErrorToMyService(error, info);\n  }\n\n  render() {\n    if (this.state.hasError) {\n      // You can render any custom fallback UI\n      return <h1>Something went wrong.</h1>;\n    }\n    return this.props.children;\n  }\n}\n```",
+    "answer": "Error boundaries are React components that catch JavaScript errors anywhere in their child component tree, log those errors, and display a fallback UI instead of the component tree that crashed.\n\nA class component becomes an error boundary if it defines a new lifecycle method called `componentDidCatch`.\n\n```jsx\nclass ErrorBoundary extends React.Component {\n  constructor(props) {\n    super(props)\n    this.state = { hasError: false }\n  }\n\n  componentDidCatch(error, info) {\n    // Display fallback UI\n    this.setState({ hasError: true })\n    // You can also log the error to an error reporting service\n    logErrorToMyService(error, info)\n  }\n\n  render() {\n    if (this.state.hasError) {\n      // You can render any custom fallback UI\n      return <h1>Something went wrong.</h1>\n    }\n    return this.props.children\n  }\n}\n```",
     "goodToHear": [],
     "links": [],
     "tags": [
@@ -434,7 +537,7 @@
     "expertise": 2,
     "questionCodeBlocks": [],
     "answerCodeBlocks": [
-      "```jsx\nclass ErrorBoundary extends React.Component {\n  constructor(props) {\n    super(props);\n    this.state = { hasError: false };\n  }\n\n  componentDidCatch(error, info) {\n    // Display fallback UI\n    this.setState({ hasError: true });\n    // You can also log the error to an error reporting service\n    logErrorToMyService(error, info);\n  }\n\n  render() {\n    if (this.state.hasError) {\n      // You can render any custom fallback UI\n      return <h1>Something went wrong.</h1>;\n    }\n    return this.props.children;\n  }\n}\n```"
+      "```jsx\nclass ErrorBoundary extends React.Component {\n  constructor(props) {\n    super(props)\n    this.state = { hasError: false }\n  }\n\n  componentDidCatch(error, info) {\n    // Display fallback UI\n    this.setState({ hasError: true })\n    // You can also log the error to an error reporting service\n    logErrorToMyService(error, info)\n  }\n\n  render() {\n    if (this.state.hasError) {\n      // You can render any custom fallback UI\n      return <h1>Something went wrong.</h1>\n    }\n    return this.props.children\n  }\n}\n```"
     ]
   },
   {
@@ -615,6 +718,26 @@
     "answerCodeBlocks": []
   },
   {
+    "name": "fragments.md",
+    "question": "What are fragments?",
+    "answer": "Fragments allow a React component to return multiple elements without a wrapper, by groupping the children without adding extra elements to the DOM. Fragments offer better performance, lower memory usage, a cleaner DOM and can help in dealing with certain CSS mechanisms (e.g. tables, Flexbox and Grid).\n\n```jsx\nrender() {\n  return (\n    <React.Fragment>\n      <ChildA />\n      <ChildB />\n      <ChildC />\n    </React.Fragment>\n  );\n}\n\n// Short syntax (might not supported by all tools):\nrender() {\n  return (\n    <>\n      <ChildA />\n      <ChildB />\n      <ChildC />\n    </>\n  );\n}\n```",
+    "goodToHear": [
+      "Fragments group multiple elements returned from a component, without adding a DOM element around them."
+    ],
+    "links": [
+      "[React docs on Fragments](https://reactjs.org/docs/fragments.html)"
+    ],
+    "tags": [
+      "react",
+      "javascript"
+    ],
+    "expertise": 2,
+    "questionCodeBlocks": [],
+    "answerCodeBlocks": [
+      "```jsx\nrender() {\n  return (\n    <React.Fragment>\n      <ChildA />\n      <ChildB />\n      <ChildC />\n    </React.Fragment>\n  );\n}\n\n// Short syntax (might not supported by all tools):\nrender() {\n  return (\n    <>\n      <ChildA />\n      <ChildB />\n      <ChildC />\n    </>\n  );\n}\n```"
+    ]
+  },
+  {
     "name": "functional-programming.md",
     "question": "What is functional programming?",
     "answer": "Functional programming is a paradigm in which programs are built in a declarative manner using pure functions that avoid shared state and mutable data. Functions that always return the same value for the same input and don't produce side effects are the pillar of functional programming. Many programmers consider this to be the best approach to software development as it reduces bugs and cognitive load.",
@@ -638,7 +761,7 @@
   {
     "name": "hoc-component.md",
     "question": "What are higher-order components?",
-    "answer": "A higher-order component (HOC) is a function that takes a component as an argument and returns a new component. It is a pattern that is derived from React’s compositional nature. Higher-order components are like `pure components` because they accept any dynamically provided child component, but they won’t modify or copy any behavior from their input components.\n\n```jsx\nconst EnhancedComponent = higherOrderComponent(WrappedComponent);\n```",
+    "answer": "A higher-order component (HOC) is a function that takes a component as an argument and returns a new component. It is a pattern that is derived from React’s compositional nature. Higher-order components are like **pure components** because they accept any dynamically provided child component, but they won’t modify or copy any behavior from their input components.\n\n```jsx\nconst EnhancedComponent = higherOrderComponent(WrappedComponent)\n```",
     "goodToHear": [
       "They can be used for state abstraction and manipulation, props manipulation, render high jacking, etc."
     ],
@@ -649,7 +772,7 @@
     "expertise": 2,
     "questionCodeBlocks": [],
     "answerCodeBlocks": [
-      "```jsx\nconst EnhancedComponent = higherOrderComponent(WrappedComponent);\n```"
+      "```jsx\nconst EnhancedComponent = higherOrderComponent(WrappedComponent)\n```"
     ]
   },
   {
@@ -731,6 +854,30 @@
     "expertise": 1,
     "questionCodeBlocks": [],
     "answerCodeBlocks": []
+  },
+  {
+    "name": "html-vs-react-event-handling.md",
+    "question": "What is the difference between HTML and React event handling?",
+    "answer": "Some of the key differences are:\n\n* In HTML, the event name should be in lowercase, whereas in React it follows camelcase convention.\n\n```html\n<!-- HTML -->\n<button onclick=\"handleClick()\">\n```\n\n```jsx\n/* React */\n<button onClick=\"handleClick()\">\n```\n\n* In HTML, `false` can be returned to prevent default behavior, whereas in React `preventDefault` has to be called explicitly.\n\n```html\n<!-- HTML -->\n<a href=\"#\" onclick=\"console.log('The link was clicked.'); return false\"/>\n```\n\n```jsx\n/* React */\nfunction handleClick(e) {\n  e.preventDefault()\n  console.log(\"The link was clicked.\")\n}\n```",
+    "goodToHear": [
+      "HTML uses lowercase event names, React uses camelcase event names."
+    ],
+    "links": [
+      "[React docs on Handling Events](https://reactjs.org/docs/handling-events.html)"
+    ],
+    "tags": [
+      "react",
+      "javascript",
+      "html"
+    ],
+    "expertise": 1,
+    "questionCodeBlocks": [],
+    "answerCodeBlocks": [
+      "```html\n<!-- HTML -->\n<button onclick=\"handleClick()\">\n```",
+      "```jsx\n/* React */\n<button onClick=\"handleClick()\">\n```",
+      "```html\n<!-- HTML -->\n<a href=\"#\" onclick=\"console.log('The link was clicked.'); return false\"/>\n```",
+      "```jsx\n/* React */\nfunction handleClick(e) {\n  e.preventDefault()\n  console.log(\"The link was clicked.\")\n}\n```"
+    ]
   },
   {
     "name": "html-vs-xhtml.md",
@@ -828,6 +975,46 @@
     ]
   },
   {
+    "name": "inline-conditional-expressions.md",
+    "question": "What is inline conditional expressions?",
+    "answer": "You can use either `if` statements or ternary expressions to conditionally render expressions. Apart from these approaches, you can also embed any expressions in JSX by wrapping them in curly braces and then followed by the logical operator `&&`.\n\n```jsx\n;<h1>Hello!</h1>\n{\n  messages.length > 0 && <h2>You have {messages.length} unread messages.</h2>\n}\n```",
+    "goodToHear": [],
+    "links": [
+      "[React docs on Conditional Rendering](https://reactjs.org/docs/conditional-rendering.html)"
+    ],
+    "tags": [
+      "react",
+      "javascript"
+    ],
+    "expertise": 1,
+    "questionCodeBlocks": [],
+    "answerCodeBlocks": [
+      "```jsx\n;<h1>Hello!</h1>\n{\n  messages.length > 0 && <h2>You have {messages.length} unread messages.</h2>\n}\n```"
+    ]
+  },
+  {
+    "name": "keys.md",
+    "question": "What is a key? What are the benefits of using it in lists?",
+    "answer": "Keys are a special string attribute that helps React identify which items have been changed, added or removed. They are used when rendering array elements to give them a stable indentity. Each element's key must be unique (e.g. IDs from the data or indexes as a last resort).\n\n```jsx\nconst todoItems = todos.map(todo => <li key={todo.id}>{todo.text}</li>)\n```\n\n* Using indexes as keys is not recommended if the order of items may change, as it might negatively impact performance and may cause issues with component state.\n* If you extract list items as a separate component then apply keys on the list component instead of the `<li>` tag.",
+    "goodToHear": [
+      "Keys give elements in a collection a stable identity and help React identify changes.",
+      "You should avoid using indexes as keys if the order of items may change.",
+      "You should lift the key up to the component, instead of the `<li>` element, if you extract list items as components."
+    ],
+    "links": [
+      "[React docs on Lists and Keys](https://reactjs.org/docs/lists-and-keys.html)"
+    ],
+    "tags": [
+      "react",
+      "javascript"
+    ],
+    "expertise": 1,
+    "questionCodeBlocks": [],
+    "answerCodeBlocks": [
+      "```jsx\nconst todoItems = todos.map(todo => <li key={todo.id}>{todo.text}</li>)\n```"
+    ]
+  },
+  {
     "name": "lifecycle-methods.md",
     "question": "What are the lifecycle methods in React?",
     "answer": "`componentWillMount`: Executed before rendering and is used for application-level configuration in your root component.\n\n`componentDidMount`: Executed after first rendering and here all AJAX requests, DOM or state updates, and set up eventListeners should occur.\n\n`componentWillReceiveProps`: Executed when particular prop updates to trigger state transitions.\n\n`shouldComponentUpdate`: Determines if the component will be updated or not. By default, it returns true. If you are sure that the component doesn't need to render after state or props are updated, you can return a false value. It is a great place to improve performance as it allows you to prevent a rerender if component receives new prop.\n\n`componentWillUpdate`: Executed before re-rendering the component when there are pros & state changes confirmed by `shouldComponentUpdate` which returns true.\n\n`componentDidUpdate`: Mostly it is used to update the DOM in response to prop or state changes.\n\n`componentWillUnmount`: It will be used to cancel any outgoing network requests, or remove all event listeners associated with the component.",
@@ -856,7 +1043,7 @@
   {
     "name": "lift-state.md",
     "question": "What does lifting state up in React mean?",
-    "answer": "When several components need to share the same data, then it is recommended to lift the shared state up to their closest common ancestor. For example, if two child components share the same data,  it is recommended to move the shared state to parent instead of maintaining the local state in both child components.",
+    "answer": "When several components need to share the same data, then it is recommended to lift the shared state up to their closest common ancestor. For example, if two child components share the same data, it is recommended to move the shared state to parent instead of maintaining the local state in both child components.",
     "goodToHear": [],
     "links": [],
     "tags": [
@@ -920,6 +1107,29 @@
     "questionCodeBlocks": [],
     "answerCodeBlocks": [
       "```js\nconst memoize = fn => {\n  const cache = new Map()\n  return value => {\n    const cachedResult = cache.get(value)\n    if (cachedResult !== undefined) return cachedResult\n    const result = fn(value)\n    cache.set(value, result)\n    return result\n  }\n}\n```"
+    ]
+  },
+  {
+    "name": "methods-context-react-classes.md",
+    "question": "How do you ensure methods have the correct `this` context in React component classes?",
+    "answer": "* In JavaScript classes, the methods are not bound by default. This means that their `this` context can be changed (in the case of an event handler, to the element that is listening to the event) and will not refer to the component instance. To solve this, `Function.prototype.bind()` can be used to enforce the `this` context as the component instance.\n\n```jsx\nconstructor(props) {\n  super(props);\n  this.handleClick = this.handleClick.bind(this);\n}\n\nhandleClick() {\n  // Perform some logic\n}\n```\n\n* The `bind` approach can be verbose and requires defining a `constructor`, so the new public class fields syntax is generally preferred:\n\n```jsx\nhandleClick = () => {\n  console.log('this is:', this);\n}\n\nrender() {\n  return (\n    <button onClick={this.handleClick}>\n      Click me\n    </button>\n  );\n}\n```\n\n* You can also use an inline arrow function, because lexical `this` (referring to the component instance) is preserved:\n\n```jsx\n<button onClick={e => this.handleClick(e)}>Click me</button>\n```\n\nNote that extra re-rendering can occur using this technique because a new function reference is created on render, which gets passed down to child components and breaks `shouldComponentUpdate` / `PureComponent` shallow equality checks to prevent unnecessary re-renders. In cases where performance is important, it is preferred to go with `bind` in the constructor, or the public class fields syntax approach, because the function reference remains constant.",
+    "goodToHear": [
+      "You can either bind methods to the component instance context in the constructor, use public class fields syntax, or use inline arrow functions."
+    ],
+    "links": [
+      "[React docs on Handling Events](https://reactjs.org/docs/handling-events.html)",
+      "[React docs on Passing Functions to Components](https://reactjs.org/docs/faq-functions.html#how-do-i-bind-a-function-to-a-component-instance)"
+    ],
+    "tags": [
+      "react",
+      "javascript"
+    ],
+    "expertise": 2,
+    "questionCodeBlocks": [],
+    "answerCodeBlocks": [
+      "```jsx\nconstructor(props) {\n  super(props);\n  this.handleClick = this.handleClick.bind(this);\n}\n\nhandleClick() {\n  // Perform some logic\n}\n```",
+      "```jsx\nhandleClick = () => {\n  console.log('this is:', this);\n}\n\nrender() {\n  return (\n    <button onClick={this.handleClick}>\n      Click me\n    </button>\n  );\n}\n```",
+      "```jsx\n<button onClick={e => this.handleClick(e)}>Click me</button>\n```"
     ]
   },
   {
@@ -1095,6 +1305,24 @@
     "answerCodeBlocks": []
   },
   {
+    "name": "passing-arguments-to-event-handlers.md",
+    "question": "How do you pass an argument to an event handler or callback?",
+    "answer": "You can use an arrow function to wrap around an event handler and pass arguments, which is equivalent to calling `bind`:\n\n```jsx\n<button onClick={() => this.handleClick(id)} />\n<button onClick={this.handleClick.bind(this, id)} />\n```",
+    "goodToHear": [],
+    "links": [
+      "[React docs on Handling Events](https://reactjs.org/docs/handling-events.html)"
+    ],
+    "tags": [
+      "react",
+      "javascript"
+    ],
+    "expertise": 1,
+    "questionCodeBlocks": [],
+    "answerCodeBlocks": [
+      "```jsx\n<button onClick={() => this.handleClick(id)} />\n<button onClick={this.handleClick.bind(this, id)} />\n```"
+    ]
+  },
+  {
     "name": "pipe.md",
     "question": "Create a function `pipe` that performs left-to-right function composition by returning a function that accepts one argument.\n\n```js\nconst square = v => v * v\nconst double = v => v * 2\nconst addOne = v => v + 1\nconst res = pipe(square, double, addOne)\nres(3) // 19; addOne(double(square(3)))\n```",
     "answer": "Gather all supplied arguments using the rest operator `...` and return a unary function that uses `Array.prototype.reduce()` to run the value through the series of functions before returning the final value.\n\n```js\nconst pipe = (...fns) => x => fns.reduce((v, fn) => fn(v), x)\n```",
@@ -1113,6 +1341,24 @@
     ],
     "answerCodeBlocks": [
       "```js\nconst pipe = (...fns) => x => fns.reduce((v, fn) => fn(v), x)\n```"
+    ]
+  },
+  {
+    "name": "portals.md",
+    "question": "What are portals in ReactJS?",
+    "answer": "Portal are the recommended way to render children into a DOM node that exists outside the DOM hierarchy of the parent component.\n\n```jsx\nReactDOM.createPortal(child, container)\n```\n\nThe first argument (`child`) is any renderable React child, such as an element, string, or fragment. The second argument (`container`) is a DOM element.",
+    "goodToHear": [],
+    "links": [
+      "[React docs on Portals](https://reactjs.org/docs/portals.html)"
+    ],
+    "tags": [
+      "react",
+      "javascript"
+    ],
+    "expertise": 2,
+    "questionCodeBlocks": [],
+    "answerCodeBlocks": [
+      "```jsx\nReactDOM.createPortal(child, container)\n```"
     ]
   },
   {
@@ -1168,7 +1414,7 @@
   {
     "name": "prop-validation.md",
     "question": "How to apply prop validation in React?",
-    "answer": "When the application is running in development mode, React will automatically check for all props that we set on components to make sure they are the correct data type. For incorrect data type, it will generate warning messages in the console for development mode whereas it is disabled in production mode due to performance impact. The required prop is defined with isRequired.\n\nThe set of predefined prop types are the following:\n\n-`React.PropTypes.string`\n-`React.PropTypes.number`\n-`React.PropTypes.func`\n-`React.PropTypes.node`\n-`React.PropTypes.bool`\n\nFor example, we define propTypes for component as below:\n```jsx\nimport PropTypes from 'prop-types';\n\nclass User extends React.Component {\n  render() {\n    return (\n      <h1>Welcome, {this.props.name}</h1>\n      <h2>Age, {this.props.age}\n    );\n  }\n}\n\nUser.propTypes = {\n  name: PropTypes.string.isRequired,\n  age: PropTypes.number.isRequired\n};\n```",
+    "answer": "When the application is running in development mode, React will automatically check for all props that we set on components to make sure they are the correct data type. For incorrect data type, it will generate warning messages in the console for development mode whereas it is disabled in production mode due to performance impact. The required prop is defined with `isRequired`.\n\nThe set of predefined prop types are the following:\n\n-`PropTypes.string` -`PropTypes.number` -`PropTypes.func` -`PropTypes.node` -`PropTypes.bool`\n\nFor example, we define propTypes for component as below:\n\n```jsx\nimport PropTypes from 'prop-types';\n\nclass User extends React.Component {\n  render() {\n    return (\n      <h1>Welcome, {this.props.name}</h1>\n      <h2>Age, {this.props.age}\n    );\n  }\n}\n\nUser.propTypes = {\n  name: PropTypes.string.isRequired,\n  age: PropTypes.number.isRequired\n};\n```",
     "goodToHear": [
       "We can define custom `PropTypes`",
       "Using `PropTypes` is not mandatory. However, it is a good practice"
@@ -1223,7 +1469,7 @@
   {
     "name": "react-comments.md",
     "question": "How to write comments in React?",
-    "answer": "The comments in React are similar to JavaScript multiline comments which are wrapped with curly braces. When using JSX they look like this:\n\n```jsx\nrender() => (<div>\n  {/* single-line comments */}\n  Hey {user}, write cool comments\n  {/* multy-line\n  comments */}\n</div>)\n```",
+    "answer": "The comments in React are similar to JavaScript multiline comments which are wrapped with curly braces. When using JSX they look like this:\n\n```jsx\nrender() => (<div>\n  {/* single-line comments */}\n  Hey {user}, write cool comments\n  {/* multi-line\n  comments */}\n</div>)\n```",
     "goodToHear": [
       "<!-Whenever possible, include the short list of bullet points that sum up the answer. -->"
     ],
@@ -1234,7 +1480,7 @@
     "expertise": 0,
     "questionCodeBlocks": [],
     "answerCodeBlocks": [
-      "```jsx\nrender() => (<div>\n  {/* single-line comments */}\n  Hey {user}, write cool comments\n  {/* multy-line\n  comments */}\n</div>)\n```"
+      "```jsx\nrender() => (<div>\n  {/* single-line comments */}\n  Hey {user}, write cool comments\n  {/* multi-line\n  comments */}\n</div>)\n```"
     ]
   },
   {
@@ -1277,6 +1523,28 @@
       "```js\nconst a = [1, 2, 3]\nconst b = [1, 2, 3]\nconst c = \"1,2,3\"\n\nconsole.log(a == c)\nconsole.log(a == b)\n```"
     ],
     "answerCodeBlocks": []
+  },
+  {
+    "name": "refs.md",
+    "question": "What are refs? When should they be used?",
+    "answer": "Refs provide a way to access DOM nodes or React elements created in the render method. Refs should be used sparringly, but there are some good use cases for refs, such as:\n\n* Managing focus, text selection, or media playback.\n* Triggering imperative animations.\n* Integrating with third-party DOM libraries.\n\nRefs are created using `React.createRef()` method and attached to React elements via the `ref` attribute. In order to use refs throughout the component, just assign the `ref` to the instance property within the constructor:\n\n```jsx\nclass MyComponent extends React.Component {\n  constructor(props) {\n    super(props)\n    this.myRef = React.createRef()\n  }\n  render() {\n    return <div ref={this.myRef} />\n  }\n}\n```\n\nRefs can also be used in functional components with the help of closures.",
+    "goodToHear": [
+      "Refs are used to return a reference to an element.",
+      "Refs shouldn't be overused.",
+      "You can create a ref using `React.createRef()` and attach to Reactelements via the `ref` attribute."
+    ],
+    "links": [
+      "[React docs on Refs and the DOM](https://reactjs.org/docs/refs-and-the-dom.html)"
+    ],
+    "tags": [
+      "react",
+      "javascript"
+    ],
+    "expertise": 2,
+    "questionCodeBlocks": [],
+    "answerCodeBlocks": [
+      "```jsx\nclass MyComponent extends React.Component {\n  constructor(props) {\n    super(props)\n    this.myRef = React.createRef()\n  }\n  render() {\n    return <div ref={this.myRef} />\n  }\n}\n```"
+    ]
   },
   {
     "name": "rel-noopener.md",
@@ -1390,6 +1658,48 @@
       "css"
     ],
     "expertise": 1,
+    "questionCodeBlocks": [],
+    "answerCodeBlocks": []
+  },
+  {
+    "name": "stateful-components.md",
+    "question": "What is a stateful component?",
+    "answer": "A stateful component is a component whose behavior depends on its state. Stateful components are always class components and have a state that is initialized in the constructor.\n\n```jsx\nclass App extends Component {\n  constructor(props) {\n    super(props)\n    this.state = { count: 0 }\n  }\n  render() {\n    // ...\n  }\n}\n```",
+    "goodToHear": [
+      "Stateful components have internal state that they depend on.",
+      "Stateful components are always class components.",
+      "Stateful components have their state initialized in the constructor."
+    ],
+    "links": [
+      "[React docs on State and Lifecycle](https://reactjs.org/docs/state-and-lifecycle.html)"
+    ],
+    "tags": [
+      "react",
+      "javascript"
+    ],
+    "expertise": 0,
+    "questionCodeBlocks": [],
+    "answerCodeBlocks": [
+      "```jsx\nclass App extends Component {\n  constructor(props) {\n    super(props)\n    this.state = { count: 0 }\n  }\n  render() {\n    // ...\n  }\n}\n```"
+    ]
+  },
+  {
+    "name": "stateless-components.md",
+    "question": "What is a stateless component?",
+    "answer": "A stateful component is a component whose behavior does not depend on its state. Stateful components can be either functional or class components. Stateless functional components are easier to maintain and test, while they avoid the `this` keyword altogether. Stateless class components should be preferred when lifecycle hooks need to be used.",
+    "goodToHear": [
+      "Stateless components are independent of their state.",
+      "Stateless components can be either class or functional components.",
+      "Stateless functional components avoid the `this` keyword altogether."
+    ],
+    "links": [
+      "[React docs on State and Lifecycle](https://reactjs.org/docs/state-and-lifecycle.html)"
+    ],
+    "tags": [
+      "react",
+      "javascript"
+    ],
+    "expertise": 0,
     "questionCodeBlocks": [],
     "answerCodeBlocks": []
   },
