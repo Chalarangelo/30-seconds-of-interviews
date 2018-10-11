@@ -162,7 +162,7 @@
     "question": "What is the purpose of callback function as an argument of `setState`?",
     "answer": "The callback function is invoked when `setState` has finished and the component gets rendered. Since `setState` is asynchronous, the callback function is used for any post action.\n\n```jsx\nsetState({ name: \"sudheer\" }, () =>\n  console.log(\"The name has updated and component re-rendered\")\n)\n```",
     "goodToHear": [
-      "The callback functio is invoked after `setState` finishes and is used for any post action.",
+      "The callback function is invoked after `setState` finishes and is used for any post action.",
       "It is recommended to use lifecycle method rather this callback function."
     ],
     "links": [
