@@ -11,7 +11,8 @@ const TAG_NAMES = {
   css: "CSS",
   html: "HTML",
   security: "Security",
-  node: "Node"
+  node: "Node",
+  react: "React"
 }
 
 const attempt = (task, cb) => {
