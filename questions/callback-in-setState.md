@@ -12,7 +12,7 @@ setState({ name: "sudheer" }, () =>
 
 #### Good to hear
 
-* The callback functio is invoked after `setState` finishes and is used for any post action.
+* The callback function is invoked after `setState` finishes and is used for any post action.
 * It is recommended to use lifecycle method rather this callback function.
 
 ##### Additional links
