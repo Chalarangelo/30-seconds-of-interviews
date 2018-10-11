@@ -125,7 +125,7 @@ Join our [Gitter channel](https://gitter.im/30-seconds-of-interviews/Lobby) to h
 </details>
 
 
-### undefined
+### React
 
 <details>
 <summary>View contents</summary>
@@ -3158,7 +3158,7 @@ render() {
 <br>[⬆ Back to top](#table-of-contents)
 
 
-## undefined
+## React
 ### What is a stateless component?
 
 <details>
