@@ -10,8 +10,6 @@
 
 `getSnapshotBeforeUpdate`: Invoked right after a component render happens because of an update, before `componentDidUpdate`. Any value returned from this method will be passed to `componentDidUpdate`.
 
-`componentWillUpdate`: Executed before re-rendering the component when there are pros & state changes confirmed by `shouldComponentUpdate` which returns true.
-
 `componentDidUpdate`: Mostly it is used to update the DOM in response to prop or state changes.
 
 `componentWillUnmount`: It will be used to cancel any outgoing network requests, or remove all event listeners associated with the component.
