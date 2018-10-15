@@ -2166,7 +2166,7 @@ arr.some(fn)
 
 The execution time varies depending on the data supplied to the function, it may return very early or very late. The best case here is O(1) and the worst case is O(N).
 
-##### O(logN)
+##### O(NlogN)
 
 ```js
 arr.sort(fn)
@@ -2174,7 +2174,7 @@ arr.sort(fn)
 
 * 1000 elements = `3ms`
 
-Browsers usually implement the quicksort algorithm for the `sort()` method which is logN time complexity. This is very efficient for large collections.
+Browsers usually implement the quicksort algorithm for the `sort()` method which is NlogN time complexity. This is very efficient for large collections.
 
 ##### O(N^2)
 
