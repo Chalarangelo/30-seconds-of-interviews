@@ -2172,7 +2172,7 @@ The execution time varies depending on the data supplied to the function, it may
 arr.sort(fn)
 ```
 
-* 1000 elements = `3ms`
+* 1000 elements = `10000ms`
 
 Browsers usually implement the quicksort algorithm for the `sort()` method which is NlogN time complexity. This is very efficient for large collections.
 
