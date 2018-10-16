@@ -44,6 +44,12 @@ Do you have an excellent idea or know some cool questions that aren't on the lis
 
 Join our [Gitter channel](https://gitter.im/30-seconds-of-interviews/Lobby) to help with the development of the project.
 
+#### Related projects
+
+* [30 Seconds of Code](https://30secondsofcode.org)
+* [30 Seconds of CSS](https://30-seconds.github.io/30-seconds-of-css/)
+* [30 Seconds of React](https://github.com/30-seconds/30-seconds-of-react)
+
 ## Table of Contents
 
 
@@ -222,7 +228,7 @@ Join our [Gitter channel](https://gitter.im/30-seconds-of-interviews/Lobby) to h
 <details>
 <summary>View answer</summary>
 
-A stateful component is a component whose behavior does not depend on its state. Stateful components can be either functional or class components. Stateless functional components are easier to maintain and test, while they avoid the `this` keyword altogether. Stateless class components should be preferred when lifecycle hooks need to be used.
+A stateless component is a component whose behavior does not depend on its state. Stateless components can be either functional or class components. Stateless functional components are easier to maintain and test, while they avoid the `this` keyword altogether. Stateless functional components should be preferred when lifecycle hooks don't need to be used.
 
 
 #### Good to hear
@@ -2166,15 +2172,15 @@ arr.some(fn)
 
 The execution time varies depending on the data supplied to the function, it may return very early or very late. The best case here is O(1) and the worst case is O(N).
 
-##### O(NlogN)
+##### O(logN)
 
 ```js
 arr.sort(fn)
 ```
 
-* 1000 elements = `10000ms`
+* 1000 elements = `3ms`
 
-Browsers usually implement the quicksort algorithm for the `sort()` method which is NlogN time complexity. This is very efficient for large collections.
+Browsers usually implement the quicksort algorithm for the `sort()` method which is logN time complexity. This is very efficient for large collections.
 
 ##### O(N^2)
 
@@ -3164,7 +3170,7 @@ render() {
 <details>
 <summary>View answer</summary>
 
-A stateful component is a component whose behavior does not depend on its state. Stateful components can be either functional or class components. Stateless functional components are easier to maintain and test, while they avoid the `this` keyword altogether. Stateless class components should be preferred when lifecycle hooks need to be used.
+A stateless component is a component whose behavior does not depend on its state. Stateless components can be either functional or class components. Stateless functional components are easier to maintain and test, while they avoid the `this` keyword altogether. Stateless functional components should be preferred when lifecycle hooks don't need to be used.
 
 
 #### Good to hear
