@@ -2,7 +2,7 @@
 
 #### Answer
 
-A stateful component is a component whose behavior does not depend on its state. Stateful components can be either functional or class components. Stateless functional components are easier to maintain and test, while they avoid the `this` keyword altogether. Stateless class components should be preferred when lifecycle hooks need to be used.
+A stateless component is a component whose behavior does not depend on its state. Stateless components can be either functional or class components. Stateless functional components are easier to maintain and test, while they avoid the `this` keyword altogether. Stateless functional components should be preferred when lifecycle hooks don't need to be used.
 
 #### Good to hear
 
