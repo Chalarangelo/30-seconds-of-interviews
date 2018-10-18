@@ -12,8 +12,9 @@ const setInnerHTML = html => el => {
 }
 
 const memoMarked = content => {
-  const result = markStore[content]
-  return result || (markStore[content] = marked(content))
+  if (!markStore[content]) markStore[content] = marked(content) 
+
+  return markStore[content]
 }
 
 export default ({ node = "div", content, ...props }) =>
