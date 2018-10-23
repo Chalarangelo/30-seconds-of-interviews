@@ -977,7 +977,7 @@
   {
     "name": "inline-conditional-expressions.md",
     "question": "What is inline conditional expressions?",
-    "answer": "You can use either `if` statements or ternary expressions to conditionally render expressions. Apart from these approaches, you can also embed any expressions in JSX by wrapping them in curly braces and then followed by the logical operator `&&`.\n\n```jsx\n;<h1>Hello!</h1>\n{\n  messages.length > 0 && <h2>You have {messages.length} unread messages.</h2>\n}\n```",
+    "answer": "You can use either `if` statements or ternary expressions to conditionally render expressions. Apart from these approaches, you can also embed any expressions in JSX by wrapping them in curly braces and then followed by the logical operator `&&`.\n\n```jsx\n<h1>Hello!</h1>\n{\n  messages.length > 0 && <h2>You have {messages.length} unread messages.</h2>\n}\n```",
     "goodToHear": [],
     "links": [
       "[React docs on Conditional Rendering](https://reactjs.org/docs/conditional-rendering.html)"
