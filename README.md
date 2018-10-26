@@ -208,6 +208,7 @@ Join our [Gitter channel](https://gitter.im/30-seconds-of-interviews/Lobby) to h
 * [NodeJS often uses a callback pattern where if an error is encountered during execution, this error is passed as the first argument to the callback. What are the advantages of this pattern?](#nodejs-often-uses-a-callback-pattern-where-if-an-error-is-encountered-during-execution-this-error-is-passed-as-the-first-argument-to-the-callback-what-are-the-advantages-of-this-pattern)
 * [What is the event loop in Node.js?](#what-is-the-event-loop-in-nodejs)
 * [What is REST?](#what-is-rest)
+* [What is Serialized Data?](#What-is-Serialized-Data?)
 </details>
 
 
@@ -4889,6 +4890,27 @@ The event loop handles all async callbacks. Callbacks are queued in a loop, whil
 
 
 * [Node.js docs on event loop, timers and process.nextTick()](https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick/)
+
+</details>
+
+### What is Serialized Data?
+
+<details>
+<summary>View answer</summary>
+
+Data serialization is the concept of converting structured data into a format that allows it to be shared or stored in such a way that its original structure to be recovered.
+
+
+#### Good to hear
+
+
+* All data sent via HTTP are strings. Unfortunately, what we really want to pass between web applications is structured data(i.e., arrays and hashes). Thus, native data structures can be serialized into a string representation of the data. This string can be transmitted and then parsed back into data by another web agent.
+
+
+##### Additional Links
+
+
+* [Node.js docs on event loop, timers and process.nextTick()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify)
 
 </details>
 
