@@ -90,6 +90,7 @@ Join our [Gitter channel](https://gitter.im/30-seconds-of-interviews/Lobby) to h
 * [Explain the differences between imperative and declarative programming.](#explain-the-differences-between-imperative-and-declarative-programming)
 * [What is inline conditional expressions?](#what-is-inline-conditional-expressions)
 * [What is a key? What are the benefits of using it in lists?](#what-is-a-key-what-are-the-benefits-of-using-it-in-lists)
+* [What is the difference between lexical scoping and dynamic scoping?](#what-is-the-difference-between-lexical-scoping-and-dynamic-scoping)
 * [Create a function that masks a string of characters with `#` except for the last four (4) characters.](#create-a-function-that-masks-a-string-of-characters-with--except-for-the-last-four-4-characters)
 * [What is memoization?](#what-is-memoization)
 * [How do you ensure methods have the correct `this` context in React component classes?](#how-do-you-ensure-methods-have-the-correct-this-context-in-react-component-classes)
@@ -1244,6 +1245,31 @@ const todoItems = todos.map(todo => <li key={todo.id}>{todo.text}</li>)
 
 
 * [React docs on Lists and Keys](https://reactjs.org/docs/lists-and-keys.html)
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+### What is the difference between lexical scoping and dynamic scoping?
+
+<details>
+<summary>View answer</summary>
+
+Lexical scoping refers to when the location of a function's definition determines which variables you have access to. On the other hand, dynamic scoping uses the location of the function's invocation to determine which variables are available.
+
+
+#### Good to hear
+
+
+* Lexical scoping is also known as static scoping.
+* Lexical scoping in JavaScript allows for the concept of closures.
+* Most languages use lexical scoping because it tends to promote source code that is more easily understood.
+
+
+##### Additional Links
+
+
+* [Mozilla Docs Closures & Lexical Scoping](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures)
 
 </details>
 
@@ -3479,19 +3505,19 @@ const todoItems = todos.map(todo => <li key={todo.id}>{todo.text}</li>)
 <details>
 <summary>View answer</summary>
 
-`componentWillMount`: Executed before rendering and is used for application-level configuration in your root component.
+`getDerivedStateFromProps`: Executed before rendering on the initial mount and all component updates. Used to update the state based on changes in props over time. Has rare use cases, like tracking component animations during the lifecycle. There are only few cases where this makes sense to use over other lifecycle methods. It expects to return an object that will be the the new state, or null to update nothing. This method does not have access to the component instance either.
 
 `componentDidMount`: Executed after first rendering and here all AJAX requests, DOM or state updates, and set up eventListeners should occur.
 
-`componentWillReceiveProps`: Executed when particular prop updates to trigger state transitions.
-
 `shouldComponentUpdate`: Determines if the component will be updated or not. By default, it returns true. If you are sure that the component doesn't need to render after state or props are updated, you can return a false value. It is a great place to improve performance as it allows you to prevent a rerender if component receives new prop.
 
-`componentWillUpdate`: Executed before re-rendering the component when there are pros & state changes confirmed by `shouldComponentUpdate` which returns true.
+`getSnapshotBeforeUpdate`: Invoked right after a component render happens because of an update, before `componentDidUpdate`. Any value returned from this method will be passed to `componentDidUpdate`.
 
 `componentDidUpdate`: Mostly it is used to update the DOM in response to prop or state changes.
 
 `componentWillUnmount`: It will be used to cancel any outgoing network requests, or remove all event listeners associated with the component.
+
+`componentDidCatch`: Used in error boundaries, which are components that implement this method. It allows the component to catch JavaScript errors anywhere in the _child_ component tree (below this component), log errors, and display a UI with error information.
 
 
 #### Good to hear
@@ -3516,13 +3542,15 @@ There are four different phases of component’s lifecycle:
 
 **Initialization**: In this phase react component prepares setting up the initial state and default props.
 
-**Mounting**: The react component is ready to mount in the browser DOM. This phase covers `componentWillMount` and `componentDidMount` lifecycle methods.
+**Mounting**: The react component is ready to mount in the browser DOM. This phase covers `getDerivedStateFromProps` and `componentDidMount` lifecycle methods.
 
-**Updating**: In this phase, the component gets updated in two ways, sending the new props and updating the state. This phase covers `shouldComponentUpdate`, `componentWillUpdate` and `componentDidUpdate` lifecycle methods.
+**Updating**: In this phase, the component gets updated in two ways, sending the new props and updating the state. This phase covers `getDerivedStateFromProps`, `shouldComponentUpdate`, `getSnapshotBeforeUpdate` and `componentDidUpdate` lifecycle methods.
 
-**Unmounting**: In this last phase, the component is not needed and gets unmounted from the browser DOM. This phase include `componentWillUnmount` lifecycle method.
+**Unmounting**: In this last phase, the component is not needed and gets unmounted from the browser DOM. This phase includes the `componentWillUnmount` lifecycle method.
 
-<img alt="lifecycle phases" src="https://raw.githubusercontent.com/sudheerj/reactjs-interview-questions/master/images/phases.png" style="width: 100%"/>
+**Error Handling**: In this phase, the component is called whenever there's an error during rendering, in a lifecycle method, or in the constructor for any child component. This phase includes the `componentDidCatch` lifecycle method.
+
+<img alt="lifecycle phases" src="https://pbs.twimg.com/media/DZ-97vzW4AAbcZj.jpg:large" style="width: 100%"/>
 
 
 #### Good to hear

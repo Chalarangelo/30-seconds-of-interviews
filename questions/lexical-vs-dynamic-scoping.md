@@ -6,9 +6,9 @@ Lexical scoping refers to when the location of a function's definition determine
 
 #### Good to hear
 
-- Lexical scoping is also known as static scoping.
-- Lexical scoping in JavaScript allows for the concept of closures.
-- Most languages use lexical scoping because it tends to promote source code that is more easily understood.
+* Lexical scoping is also known as static scoping.
+* Lexical scoping in JavaScript allows for the concept of closures.
+* Most languages use lexical scoping because it tends to promote source code that is more easily understood.
 
 ##### Additional links
 
