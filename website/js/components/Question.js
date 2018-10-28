@@ -19,6 +19,7 @@ export default ({
         tags.includes(state.filter.category.toLowerCase())
     })}
     key={name}
+    id={name.substring(0, name.length - 3)}
   >
     <div class={`Question__badge is-${EXPERTISE_STRINGS[expertise]}`}>
       {EXPERTISE_STRINGS[expertise]}

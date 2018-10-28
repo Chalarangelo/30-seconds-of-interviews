@@ -12,9 +12,8 @@ const setInnerHTML = html => el => {
 }
 
 const memoMarked = content => {
-  if (!markStore.hasOwnProperty(content)) markStore[content] = marked(content) 
-
-  return markStore[content]
+  const result = markStore[content]
+  return result || (markStore[content] = marked(content))
 }
 
 export default ({ node = "div", content, ...props }) =>
