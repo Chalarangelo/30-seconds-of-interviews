@@ -1075,7 +1075,7 @@
   {
     "name": "mask.md",
     "question": "Create a function that masks a string of characters with `#` except for the last four (4) characters.\n\n```js\nmask(\"123456789\") // \"#####6789\"\n```",
-    "answer": "> There are many ways to solve this problem, this is just one one of them.\n\nUsing `String.prototype.slice()` we can grab the last 4 characters of the string by passing `-4` as an argument. Then, using `String.prototype.padStart()`, we can pad the string to the original length with the repeated mask character.\n\n```js\nconst mask = (str, maskChar = \"#\") =>\n  str.slice(-4).padStart(str.length, maskChar)\n```",
+    "answer": "> There are many ways to solve this problem, this is just one of them.\n\nUsing `String.prototype.slice()` we can grab the last 4 characters of the string by passing `-4` as an argument. Then, using `String.prototype.padStart()`, we can pad the string to the original length with the repeated mask character.\n\n```js\nconst mask = (str, maskChar = \"#\") =>\n  str.slice(-4).padStart(str.length, maskChar)\n```",
     "goodToHear": [
       "Short, one-line functional solutions to problems should be preferred provided they are efficient"
     ],
