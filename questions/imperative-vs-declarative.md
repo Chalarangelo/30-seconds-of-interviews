@@ -21,7 +21,7 @@ for (let i = 0; i < numbers.length; i++) {
 }
 ```
 
-Wet manually loop over the numbers of the array and assign the new index as the number doubled.
+We manually loop over the numbers of the array and assign the new index as the number doubled.
 
 ##### Declarative
 
