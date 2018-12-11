@@ -13,10 +13,6 @@ render() => (<div>
 </div>)
 ```
 
-#### Good to hear
-
-<!-- Whenever possible, include the short list of bullet points that sum up the answer. -->
-
 ##### Additional links
 
 <!-- tags: (react) -->
