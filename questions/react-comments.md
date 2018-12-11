@@ -13,8 +13,6 @@ render() => (<div>
 </div>)
 ```
 
-##### Additional links
-
 <!-- tags: (react) -->
 
 <!-- expertise: (0) -->
