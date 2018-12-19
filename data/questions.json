@@ -399,7 +399,7 @@
     "question": "What is the difference between '+' and '~' sibling selectors?.",
     "answer": "The General Sibling Selector `~` selects all elements that are siblings of a specified element.\n\nThe following example selects all `<p>` elements that are siblings of `<div>` elements:\n\n```css\ndiv ~ p {\n  background-color: blue;\n}\n```\n\nThe Adjacent Sibling Selector `+` selects all elements that are the adjacent siblings of a specified element.\n\nThe following example will select all `<p>` elements that are placed immediately after `<div>` elements:\n\n```css\ndiv + p {\n  background-color: red;\n}\n```\n\n##### Additional links\n\n* [W3School's CSS Combinators Page](https://www.w3schools.com/css/css_combinators.asp)\n* [Mozilla's Combinators and groups of selectors page](https://developer.mozilla.org/en-US/docs/Learn/CSS/Introduction_to_CSS/Combinators_and_multiple_selectors)\n\n<!-- tags: (css) -->\n\n<!-- expertise: (2) -->",
     "goodToHear": [
-      "ifference between '+' and '~' sibling selectors?.",
+      "Difference between '+' and '~' sibling selectors?.",
       "#### Answer",
       "The General Sibling Selector `~` selects all elements that are siblings of a specified element.",
       "The following example selects all `<p>` elements that are siblings of `<div>` elements:",
