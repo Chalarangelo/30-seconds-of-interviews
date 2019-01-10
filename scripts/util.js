@@ -51,10 +51,7 @@ const getCodeBlocks = str => {
     if (m.index === regex.lastIndex) {
       regex.lastIndex += 1
     }
-    // eslint-disable-next-line no-unused-vars
-    m.forEach((match, groupIndex) => {
-      results.push(match)
-    })
+    m.forEach(match => results.push(match))
   }
   return results
 }
