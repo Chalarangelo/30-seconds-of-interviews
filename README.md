@@ -3263,19 +3263,6 @@ render() => (<div>
 #### Good to hear
 
 
-* comments in React?
-* #### Answer
-* The comments in React are similar to JavaScript multiline comments which are wrapped with curly braces. When using JSX they look like this:
-* ```jsx
-* render() => (<div>
-*   {/single-line comments */}
-*   Hey {user}, write cool comments
-*   {/multi-line
-*   comments */}
-* </div>)
-* ```
-* <!-tags: (react) -->
-* <!-expertise: (0) -->
 
 
 ##### Additional Links
@@ -4661,22 +4648,6 @@ div + p {
 #### Good to hear
 
 
-* ifference between '+' and '~' sibling selectors?.
-* #### Answer
-* The General Sibling Selector `~` selects all elements that are siblings of a specified element.
-* The following example selects all `<p>` elements that are siblings of `<div>` elements:
-* ```css
-* div ~ p {
-*   background-color: blue;
-* }
-* ```
-* The Adjacent Sibling Selector `+` selects all elements that are the adjacent siblings of a specified element.
-* The following example will select all `<p>` elements that are placed immediately after `<div>` elements:
-* ```css
-* div + p {
-*   background-color: red;
-* }
-* ```
 
 
 ##### Additional Links
