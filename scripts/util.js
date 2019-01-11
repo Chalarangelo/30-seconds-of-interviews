@@ -51,13 +51,35 @@ const getCodeBlocks = str => {
     if (m.index === regex.lastIndex) {
       regex.lastIndex += 1
     }
-    // eslint-disable-next-line no-unused-vars
-    m.forEach((match, groupIndex) => {
-      results.push(match)
-    })
+    m.forEach(match => results.push(match))
   }
   return results
 }
+
+const getSection = (searchString, contents, includeSubsections = true) => {
+  const indexOfSearch = contents.indexOf(searchString)
+  if (indexOfSearch < 0) return ""
+
+  let endSearch = "\\n#"
+  if (includeSubsections) {
+    let i
+    for (i = 0; searchString[i] === "#" && i < searchString.length; i++);
+
+    if (i > 0) {
+      endSearch += `{${i - 1},${i}}[^#]`
+    }
+  }
+  const endRegex = new RegExp(endSearch)
+
+  const sliceStart = indexOfSearch + searchString.length + 1
+  const endIndex = contents.slice(sliceStart).search(endRegex)
+  const sliceEnd = endIndex === -1 ? undefined : endIndex + sliceStart
+
+  return contents.slice(sliceStart, sliceEnd).trim()
+}
+
+const getFirstSection = (contents, includeSubsections) =>
+  getSection("", contents.slice(3), includeSubsections)
 
 module.exports = {
   attempt,
@@ -65,5 +87,7 @@ module.exports = {
   capitalize,
   getCodeBlocks,
   QUESTIONS_PATH,
-  TAG_NAMES
+  TAG_NAMES,
+  getSection,
+  getFirstSection
 }
