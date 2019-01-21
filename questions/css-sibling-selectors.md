@@ -22,10 +22,12 @@ div + p {
 }
 ```
 
+#### Good to hear
+
 ##### Additional links
 
-* [W3School's CSS Combinators Page](https://www.w3schools.com/css/css_combinators.asp)
-* [Mozilla's Combinators and groups of selectors page](https://developer.mozilla.org/en-US/docs/Learn/CSS/Introduction_to_CSS/Combinators_and_multiple_selectors)
+- [W3School's CSS Combinators Page](https://www.w3schools.com/css/css_combinators.asp)
+- [Mozilla's Combinators and groups of selectors page](https://developer.mozilla.org/en-US/docs/Learn/CSS/Introduction_to_CSS/Combinators_and_multiple_selectors)
 
 <!-- tags: (css) -->
 
