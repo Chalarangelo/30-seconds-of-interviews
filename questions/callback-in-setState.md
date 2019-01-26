@@ -4,7 +4,7 @@
 
 The callback function is invoked when `setState` has finished and the component gets rendered. Since `setState` is asynchronous, the callback function is used for any post action.
 
-```jsx
+```js
 setState({ name: "sudheer" }, () => {
   console.log("The name has updated and component re-rendered")
 })

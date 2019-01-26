@@ -26,7 +26,7 @@ function App({ messages, isVisible }) {
 
 Logical AND `&&` and the ternary `? :` operator replace the `if`/`else` statements.
 
-```jsx
+```js
 function App({ messages, isVisible }) {
   return (
     <div>
