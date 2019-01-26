@@ -12,12 +12,12 @@ setState({ name: "sudheer" }, () => {
 
 #### Good to hear
 
-- The callback function is invoked after `setState` finishes and is used for any post action.
-- It is recommended to use lifecycle method rather this callback function.
+* The callback function is invoked after `setState` finishes and is used for any post action.
+* It is recommended to use lifecycle method rather this callback function.
 
 ##### Additional links
 
-- [React docs on `setState`](https://reactjs.org/docs/react-component.html#setstate)
+* [React docs on `setState`](https://reactjs.org/docs/react-component.html#setstate)
 
 <!-- tags: (react,javascript) -->
 

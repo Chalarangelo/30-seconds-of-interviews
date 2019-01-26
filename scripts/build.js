@@ -113,7 +113,10 @@ try {
     taggedQuestions.forEach(question => {
       output += headers.h3(question.question).trim()
       output += detailsQuestion("View answer", question)
-      output += `\n<br>${misc.link("⬆ Back to top", misc.anchor("Table of Contents"))}\n\n`
+      output += `\n<br>${misc.link(
+        "⬆ Back to top",
+        misc.anchor("Table of Contents")
+      )}\n\n`
     })
   })
 

@@ -25,13 +25,13 @@ function App() {
 
 #### Good to hear
 
-- Stateful components have internal state that they depend on.
-- Stateful components are class components or function components that use stateful Hooks.
-- Stateful components have their state initialized in the constructor or with `useState()`.
+* Stateful components have internal state that they depend on.
+* Stateful components are class components or function components that use stateful Hooks.
+* Stateful components have their state initialized in the constructor or with `useState()`.
 
 ##### Additional links
 
-- [React docs on State and Lifecycle](https://reactjs.org/docs/state-and-lifecycle.html)
+* [React docs on State and Lifecycle](https://reactjs.org/docs/state-and-lifecycle.html)
 
 <!-- tags: (react,javascript) -->
 
