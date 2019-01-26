@@ -6,7 +6,7 @@ Error boundaries are React components that catch JavaScript errors anywhere in t
 
 A class component becomes an error boundary if it defines a new lifecycle method called `componentDidCatch`.
 
-```jsx
+```js
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props)

@@ -4,7 +4,7 @@
 
 Fragments allow a React component to return multiple elements without a wrapper, by grouping the children without adding extra elements to the DOM. Fragments offer better performance, lower memory usage, a cleaner DOM and can help in dealing with certain CSS mechanisms (e.g. tables, Flexbox and Grid).
 
-```jsx
+```js
 render() {
   return (
     <React.Fragment>
@@ -15,7 +15,7 @@ render() {
   );
 }
 
-// Short syntax (might not supported by all tools):
+// Short syntax supported by Babel 7
 render() {
   return (
     <>
@@ -29,11 +29,11 @@ render() {
 
 #### Good to hear
 
-* Fragments group multiple elements returned from a component, without adding a DOM element around them.
+- Fragments group multiple elements returned from a component, without adding a DOM element around them.
 
 ##### Additional links
 
-* [React docs on Fragments](https://reactjs.org/docs/fragments.html)
+- [React docs on Fragments](https://reactjs.org/docs/fragments.html)
 
 <!-- tags: (react,javascript) -->
 

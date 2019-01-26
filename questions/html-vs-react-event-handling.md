@@ -2,29 +2,25 @@
 
 #### Answer
 
-Some of the key differences are:
-
-* In HTML, the event name should be in lowercase, whereas in React it follows camelcase convention.
+In HTML, the attribute name is in all lowercase and is given a string invoking a function defined somewhere:
 
 ```html
-<!-- HTML -->
-<button onclick="handleClick()">
+<button onclick="handleClick()"></button>
 ```
 
-```jsx
-/* React */
-<button onClick="handleClick()">
+In React, the attribute name is camelCase and are passed the function reference inside curly braces:
+
+```js
+<button onClick={handleClick} />
 ```
 
-* In HTML, `false` can be returned to prevent default behavior, whereas in React `preventDefault` has to be called explicitly.
+In HTML, `false` can be returned to prevent default behavior, whereas in React `preventDefault` has to be called explicitly.
 
 ```html
-<!-- HTML -->
-<a href="#" onclick="console.log('The link was clicked.'); return false"/>
+<a href="#" onclick="console.log('The link was clicked.'); return false" />
 ```
 
-```jsx
-/* React */
+```js
 function handleClick(e) {
   e.preventDefault()
   console.log("The link was clicked.")
@@ -33,11 +29,11 @@ function handleClick(e) {
 
 #### Good to hear
 
-* HTML uses lowercase event names, React uses camelcase event names.
+- HTML uses lowercase, React uses camelCase.
 
 ##### Additional links
 
-* [React docs on Handling Events](https://reactjs.org/docs/handling-events.html)
+- [React docs on Handling Events](https://reactjs.org/docs/handling-events.html)
 
 <!-- tags: (react,javascript,html) -->
 
