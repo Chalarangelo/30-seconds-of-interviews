@@ -1,20 +1,26 @@
-### What is the difference between Element and Component?
+### What is the difference between an element and a component in React?
 
 #### Answer
 
-An element is a plain object describing what you want to appear on the screen in terms of the DOM nodes or other components. Elements can contain other elements in their props. Creating a React element is cheap. Once an element is created, it is never mutated.
+An element is a plain JavaScript object that represents a DOM node or component. Elements are pure and never mutated, and are cheap to create.
 
-A component, on the other hand, can be declared in several different ways. It can be a class with a `render()` method (class component) or a function (functional component). Components take props as an input and return an element tree as the output.
+A component is a function or class. Components can have state and take props as input and return an element tree as output (although they can represent generic containers or wrappers and don't necessarily have to emit DOM). Components can initiate side effects in lifecycle methods (e.g. AJAX requests, DOM mutations, interfacing with 3rd party libraries) and may be expensive to create.
+
+```js
+const Component = () => "Hello"
+const componentElement = <Component />
+const domNodeElement = <div />
+```
 
 #### Good to hear
 
-* Elements are immutable, plain objects that describe the DOM nodes or components you want to render.
-* Components can be either classes or functions, that take props as an input and return an element tree as the output.
+- Elements are immutable, plain objects that describe the DOM nodes or components you want to render.
+- Components can be either classes or functions, that take props as an input and return an element tree as the output.
 
 ##### Additional links
 
-* [React docs on Rendering Elements](https://reactjs.org/docs/rendering-elements.html)
-* [React docs on Components and Props](https://reactjs.org/docs/components-and-props.html)
+- [React docs on Rendering Elements](https://reactjs.org/docs/rendering-elements.html)
+- [React docs on Components and Props](https://reactjs.org/docs/components-and-props.html)
 
 <!-- tags: (react,javascript) -->
 

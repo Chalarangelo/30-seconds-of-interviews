@@ -1,16 +1,16 @@
-### How to write comments in React?
+### How do you write comments inside a JSX tree in React?
 
 #### Answer
 
-The comments in React are similar to JavaScript multiline comments which are wrapped with curly braces. When using JSX they look like this:
+Comments must be wrapped inside curly braces `{}` and use the `/* */` syntax.
 
 ```jsx
-render() => (<div>
-  {/* single-line comments */}
-  Hey {user}, write cool comments
-  {/* multi-line
-  comments */}
-</div>)
+const tree = (
+  <div>
+    {/* Comment */}
+    <p>Text</p>
+  </div>
+)
 ```
 
 <!-- tags: (react) -->

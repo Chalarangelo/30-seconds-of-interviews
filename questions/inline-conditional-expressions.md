@@ -1,13 +1,43 @@
-### What is inline conditional expressions?
+### What are inline conditional expressions?
 
 #### Answer
 
-You can use either `if` statements or ternary expressions to conditionally render expressions. Apart from these approaches, you can also embed any expressions in JSX by wrapping them in curly braces and then followed by the logical operator `&&`.
+Since a JSX element tree is one large expression, you cannot embed statements inside. Conditional expressions act as a replacement for statements to use inside the tree.
+
+For example, this won't work:
+
+<!-- prettier-ignore -->
+```js
+function App({ messages, isVisible }) {
+  return (
+    <div>
+      if (messages.length > 0) {
+        <h2>You have {messages.length} unread messages.</h2>
+      } else {
+        <h2>You have no unread messages.</h2>
+      }
+      if (isVisible) {
+        <p>I am visible.</p>
+      }
+    </div>
+  )
+}
+```
+
+Logical AND `&&` and the ternary `? :` operator replace the `if`/`else` statements.
 
 ```jsx
-;<h1>Hello!</h1>
-{
-  messages.length > 0 && <h2>You have {messages.length} unread messages.</h2>
+function App({ messages, isVisible }) {
+  return (
+    <div>
+      {messages.length > 0 ? (
+        <h2>You have {messages.length} unread messages.</h2>
+      ) : (
+        <h2>You have no unread messages.</h2>
+      )}
+      {isVisible && <p>I am visible.</p>}
+    </div>
+  )
 }
 ```
 
@@ -15,7 +45,7 @@ You can use either `if` statements or ternary expressions to conditionally rende
 
 ##### Additional links
 
-* [React docs on Conditional Rendering](https://reactjs.org/docs/conditional-rendering.html)
+- [React docs on Conditional Rendering](https://reactjs.org/docs/conditional-rendering.html)
 
 <!-- tags: (react,javascript) -->
 
