@@ -14,13 +14,13 @@ const domNodeElement = <div />
 
 #### Good to hear
 
-- Elements are immutable, plain objects that describe the DOM nodes or components you want to render.
-- Components can be either classes or functions, that take props as an input and return an element tree as the output.
+* Elements are immutable, plain objects that describe the DOM nodes or components you want to render.
+* Components can be either classes or functions, that take props as an input and return an element tree as the output.
 
 ##### Additional links
 
-- [React docs on Rendering Elements](https://reactjs.org/docs/rendering-elements.html)
-- [React docs on Components and Props](https://reactjs.org/docs/components-and-props.html)
+* [React docs on Rendering Elements](https://reactjs.org/docs/rendering-elements.html)
+* [React docs on Components and Props](https://reactjs.org/docs/components-and-props.html)
 
 <!-- tags: (react,javascript) -->
 

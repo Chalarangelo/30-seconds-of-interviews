@@ -14,7 +14,7 @@ The first argument (`child`) is any renderable React child, such as an element, 
 
 ##### Additional links
 
-- [React docs on Portals](https://reactjs.org/docs/portals.html)
+* [React docs on Portals](https://reactjs.org/docs/portals.html)
 
 <!-- tags: (react,javascript) -->
 

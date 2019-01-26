@@ -26,8 +26,8 @@ class User extends React.Component {
 
 #### Good to hear
 
-- We can define custom `propTypes`
-- Using `propTypes` is not mandatory. However, it is a good practice and can reduce bugs.
+* We can define custom `propTypes`
+* Using `propTypes` is not mandatory. However, it is a good practice and can reduce bugs.
 
 ##### Additional links
 

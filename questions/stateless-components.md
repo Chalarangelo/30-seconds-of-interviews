@@ -6,13 +6,13 @@ A stateless component is a component whose behavior does not depend on its state
 
 #### Good to hear
 
-- Stateless components are independent of their state.
-- Stateless components can be either class or functional components.
-- Stateless functional components avoid the `this` keyword altogether.
+* Stateless components are independent of their state.
+* Stateless components can be either class or functional components.
+* Stateless functional components avoid the `this` keyword altogether.
 
 ##### Additional links
 
-- [React docs on State and Lifecycle](https://reactjs.org/docs/state-and-lifecycle.html)
+* [React docs on State and Lifecycle](https://reactjs.org/docs/state-and-lifecycle.html)
 
 <!-- tags: (react,javascript) -->
 

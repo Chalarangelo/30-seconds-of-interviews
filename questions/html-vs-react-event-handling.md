@@ -29,11 +29,11 @@ function handleClick(e) {
 
 #### Good to hear
 
-- HTML uses lowercase, React uses camelCase.
+* HTML uses lowercase, React uses camelCase.
 
 ##### Additional links
 
-- [React docs on Handling Events](https://reactjs.org/docs/handling-events.html)
+* [React docs on Handling Events](https://reactjs.org/docs/handling-events.html)
 
 <!-- tags: (react,javascript,html) -->
 

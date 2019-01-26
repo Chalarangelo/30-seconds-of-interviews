@@ -65,7 +65,7 @@ Join our [Gitter channel](https://gitter.im/30-seconds-of-interviews/Lobby) to h
 * [What is the purpose of callback function as an argument of `setState`?](#what-is-the-purpose-of-callback-function-as-an-argument-of-setstate)
 * [Which is the preferred option between callback refs and findDOMNode()?](#which-is-the-preferred-option-between-callback-refs-and-finddomnode)
 * [What is a callback? Can you show an example using one?](#what-is-a-callback-can-you-show-an-example-using-one)
-* [What is children prop?](#what-is-children-prop)
+* [What is the `children` prop?](#what-is-the-children-prop)
 * [How do you clone an object in JavaScript?](#how-do-you-clone-an-object-in-javascript)
 * [What is a closure? Can you give a useful example of one?](#what-is-a-closure-can-you-give-a-useful-example-of-one)
 * [How do you compare two objects in JavaScript?](#how-do-you-compare-two-objects-in-javascript)
@@ -73,7 +73,7 @@ Join our [Gitter channel](https://gitter.im/30-seconds-of-interviews/Lobby) to h
 * [What is CORS?](#what-is-cors)
 * [What is the DOM?](#what-is-the-dom)
 * [What is the difference between the equality operators `==` and `===`?](#what-is-the-difference-between-the-equality-operators--and-)
-* [What is the difference between Element and Component?](#what-is-the-difference-between-element-and-component)
+* [What is the difference between an element and a component in React?](#what-is-the-difference-between-an-element-and-a-component-in-react)
 * [What is event delegation and why is it useful? Can you show an example of how to use it?](#what-is-event-delegation-and-why-is-it-useful-can-you-show-an-example-of-how-to-use-it)
 * [What is event-driven programming?](#what-is-event-driven-programming)
 * [What is the difference between an expression and a statement in JavaScript?](#what-is-the-difference-between-an-expression-and-a-statement-in-javascript)
@@ -88,7 +88,7 @@ Join our [Gitter channel](https://gitter.im/30-seconds-of-interviews/Lobby) to h
 * [What is the difference between HTML and React event handling?](#what-is-the-difference-between-html-and-react-event-handling)
 * [What is the reason for wrapping the entire contents of a JavaScript source file in a function that is immediately invoked?](#what-is-the-reason-for-wrapping-the-entire-contents-of-a-javascript-source-file-in-a-function-that-is-immediately-invoked)
 * [Explain the differences between imperative and declarative programming.](#explain-the-differences-between-imperative-and-declarative-programming)
-* [What is inline conditional expressions?](#what-is-inline-conditional-expressions)
+* [What are inline conditional expressions?](#what-are-inline-conditional-expressions)
 * [What is a key? What are the benefits of using it in lists?](#what-is-a-key-what-are-the-benefits-of-using-it-in-lists)
 * [What is the difference between lexical scoping and dynamic scoping?](#what-is-the-difference-between-lexical-scoping-and-dynamic-scoping)
 * [Create a function that masks a string of characters with `#` except for the last four (4) characters.](#create-a-function-that-masks-a-string-of-characters-with--except-for-the-last-four-4-characters)
@@ -105,7 +105,7 @@ Join our [Gitter channel](https://gitter.im/30-seconds-of-interviews/Lobby) to h
 * [Does JavaScript pass by value or by reference?](#does-javascript-pass-by-value-or-by-reference)
 * [How do you pass an argument to an event handler or callback?](#how-do-you-pass-an-argument-to-an-event-handler-or-callback)
 * [Create a function `pipe` that performs left-to-right function composition by returning a function that accepts one argument.](#create-a-function-pipe-that-performs-left-to-right-function-composition-by-returning-a-function-that-accepts-one-argument)
-* [What are portals in ReactJS?](#what-are-portals-in-reactjs)
+* [What are portals in React?](#what-are-portals-in-react)
 * [What is the difference between the postfix `i++` and prefix `++i` increment operators?](#what-is-the-difference-between-the-postfix-i-and-prefix-i-increment-operators)
 * [In which states can a Promise be?](#in-which-states-can-a-promise-be)
 * [What are Promises?](#what-are-promises)
@@ -113,11 +113,11 @@ Join our [Gitter channel](https://gitter.im/30-seconds-of-interviews/Lobby) to h
 * [What is a pure function?](#what-is-a-pure-function)
 * [What is recursion and when is it useful?](#what-is-recursion-and-when-is-it-useful)
 * [What is the output of the following code?](#what-is-the-output-of-the-following-code)
-* [What are refs? When should they be used?](#what-are-refs-when-should-they-be-used)
+* [What are refs in React? When should they be used?](#what-are-refs-in-react-when-should-they-be-used)
 * [What does the following function return?](#what-does-the-following-function-return)
 * [Are semicolons required in JavaScript?](#are-semicolons-required-in-javascript)
 * [What is short-circuit evaluation in JavaScript?](#what-is-short-circuit-evaluation-in-javascript)
-* [What is a stateful component?](#what-is-a-stateful-component)
+* [What is a stateful component in React?](#what-is-a-stateful-component-in-react)
 * [What is a stateless component?](#what-is-a-stateless-component)
 * [Explain the difference between a static method and an instance method.](#explain-the-difference-between-a-static-method-and-an-instance-method)
 * [What is the difference between synchronous and asynchronous code in JavaScript?](#what-is-the-difference-between-synchronous-and-asynchronous-code-in-javascript)
@@ -139,26 +139,26 @@ Join our [Gitter channel](https://gitter.im/30-seconds-of-interviews/Lobby) to h
 
 * [What is the purpose of callback function as an argument of `setState`?](#what-is-the-purpose-of-callback-function-as-an-argument-of-setstate)
 * [Which is the preferred option between callback refs and findDOMNode()?](#which-is-the-preferred-option-between-callback-refs-and-finddomnode)
-* [What is children prop?](#what-is-children-prop)
-* [Why React uses className over class attribute?](#why-react-uses-classname-over-class-attribute)
+* [What is the `children` prop?](#what-is-the-children-prop)
+* [Why does React use `className` instead of `class` like in HTML?](#why-does-react-use-classname-instead-of-class-like-in-html)
 * [What is context?](#what-is-context)
-* [What is the difference between Element and Component?](#what-is-the-difference-between-element-and-component)
+* [What is the difference between an element and a component in React?](#what-is-the-difference-between-an-element-and-a-component-in-react)
 * [What are error boundaries in React?](#what-are-error-boundaries-in-react)
 * [What are fragments?](#what-are-fragments)
 * [What are higher-order components?](#what-are-higher-order-components)
 * [What is the difference between HTML and React event handling?](#what-is-the-difference-between-html-and-react-event-handling)
-* [What is inline conditional expressions?](#what-is-inline-conditional-expressions)
+* [What are inline conditional expressions?](#what-are-inline-conditional-expressions)
 * [What is a key? What are the benefits of using it in lists?](#what-is-a-key-what-are-the-benefits-of-using-it-in-lists)
 * [What are the lifecycle methods in React?](#what-are-the-lifecycle-methods-in-react)
 * [What are the different phases of the component lifecycle in React?](#what-are-the-different-phases-of-the-component-lifecycle-in-react)
 * [What does lifting state up in React mean?](#what-does-lifting-state-up-in-react-mean)
 * [How do you ensure methods have the correct `this` context in React component classes?](#how-do-you-ensure-methods-have-the-correct-this-context-in-react-component-classes)
 * [How do you pass an argument to an event handler or callback?](#how-do-you-pass-an-argument-to-an-event-handler-or-callback)
-* [What are portals in ReactJS?](#what-are-portals-in-reactjs)
+* [What are portals in React?](#what-are-portals-in-react)
 * [How to apply prop validation in React?](#how-to-apply-prop-validation-in-react)
-* [How to write comments in React?](#how-to-write-comments-in-react)
-* [What are refs? When should they be used?](#what-are-refs-when-should-they-be-used)
-* [What is a stateful component?](#what-is-a-stateful-component)
+* [How do you write comments inside a JSX tree in React?](#how-do-you-write-comments-inside-a-jsx-tree-in-react)
+* [What are refs in React? When should they be used?](#what-are-refs-in-react-when-should-they-be-used)
+* [What is a stateful component in React?](#what-is-a-stateful-component-in-react)
 * [What is a stateless component?](#what-is-a-stateless-component)
 </details>
 
@@ -249,14 +249,20 @@ Triple equals (`===`) checks for strict equality, which means both the type and 
 
 <br>[⬆ Back to top](#table-of-contents)
 
-### What is the difference between Element and Component?
+### What is the difference between an element and a component in React?
 
 <details>
 <summary>View answer</summary>
 
-An element is a plain object describing what you want to appear on the screen in terms of the DOM nodes or other components. Elements can contain other elements in their props. Creating a React element is cheap. Once an element is created, it is never mutated.
+An element is a plain JavaScript object that represents a DOM node or component. Elements are pure and never mutated, and are cheap to create.
 
-A component, on the other hand, can be declared in several different ways. It can be a class with a `render()` method (class component) or a function (functional component). Components take props as an input and return an element tree as the output.
+A component is a function or class. Components can have state and take props as input and return an element tree as output (although they can represent generic containers or wrappers and don't necessarily have to emit DOM). Components can initiate side effects in lifecycle methods (e.g. AJAX requests, DOM mutations, interfacing with 3rd party libraries) and may be expensive to create.
+
+```js
+const Component = () => "Hello"
+const componentElement = <Component />
+const domNodeElement = <div />
+```
 
 
 #### Good to hear
@@ -342,14 +348,15 @@ When either of these options happens, the associated handlers queued up by a pro
 
 <br>[⬆ Back to top](#table-of-contents)
 
-### What is a stateful component?
+### What is a stateful component in React?
 
 <details>
 <summary>View answer</summary>
 
-A stateful component is a component whose behavior depends on its state. Stateful components are always class components and have a state that is initialized in the constructor.
+A stateful component is a component whose behavior depends on its state. This means that two separate instances of the component if given the same props will not necessarily render the same output, unlike pure function components.
 
-```jsx
+```js
+// Stateful class component
 class App extends Component {
   constructor(props) {
     super(props)
@@ -359,6 +366,12 @@ class App extends Component {
     // ...
   }
 }
+
+// Stateful function component
+function App() {
+  const [count, setCount] = useState(0)
+  return // ...
+}
 ```
 
 
@@ -366,8 +379,8 @@ class App extends Component {
 
 
 * Stateful components have internal state that they depend on.
-* Stateful components are always class components.
-* Stateful components have their state initialized in the constructor.
+* Stateful components are class components or function components that use stateful Hooks.
+* Stateful components have their state initialized in the constructor or with `useState()`.
 
 
 ##### Additional Links
@@ -384,7 +397,7 @@ class App extends Component {
 <details>
 <summary>View answer</summary>
 
-A stateless component is a component whose behavior does not depend on its state. Stateless components can be either functional or class components. Stateless functional components are easier to maintain and test, while they avoid the `this` keyword altogether. Stateless functional components should be preferred when lifecycle hooks don't need to be used.
+A stateless component is a component whose behavior does not depend on its state. Stateless components can be either functional or class components. Stateless functional components are easier to maintain and test since they are guaranteed to produce the same output given the same props. Stateless functional components should be preferred when lifecycle hooks don't need to be used.
 
 
 #### Good to hear
@@ -508,10 +521,10 @@ const bind = (fn, context) => (...args) => fn.apply(context, args)
 
 The callback function is invoked when `setState` has finished and the component gets rendered. Since `setState` is asynchronous, the callback function is used for any post action.
 
-```jsx
-setState({ name: "sudheer" }, () =>
+```js
+setState({ name: "sudheer" }, () => {
   console.log("The name has updated and component re-rendered")
-)
+})
 ```
 
 
@@ -1109,29 +1122,25 @@ var myFunction = function() {
 <details>
 <summary>View answer</summary>
 
-Some of the key differences are:
-
-* In HTML, the event name should be in lowercase, whereas in React it follows camelcase convention.
+In HTML, the attribute name is in all lowercase and is given a string invoking a function defined somewhere:
 
 ```html
-<!-- HTML -->
-<button onclick="handleClick()">
+<button onclick="handleClick()"></button>
 ```
 
-```jsx
-/* React */
-<button onClick="handleClick()">
+In React, the attribute name is camelCase and are passed the function reference inside curly braces:
+
+```js
+<button onClick={handleClick} />
 ```
 
-* In HTML, `false` can be returned to prevent default behavior, whereas in React `preventDefault` has to be called explicitly.
+In HTML, `false` can be returned to prevent default behavior, whereas in React `preventDefault` has to be called explicitly.
 
 ```html
-<!-- HTML -->
-<a href="#" onclick="console.log('The link was clicked.'); return false"/>
+<a href="#" onclick="console.log('The link was clicked.'); return false" />
 ```
 
-```jsx
-/* React */
+```js
 function handleClick(e) {
   e.preventDefault()
   console.log("The link was clicked.")
@@ -1142,7 +1151,7 @@ function handleClick(e) {
 #### Good to hear
 
 
-* HTML uses lowercase event names, React uses camelcase event names.
+* HTML uses lowercase, React uses camelCase.
 
 
 ##### Additional Links
@@ -1189,17 +1198,47 @@ myLibrary.publicMethod() // 2
 
 <br>[⬆ Back to top](#table-of-contents)
 
-### What is inline conditional expressions?
+### What are inline conditional expressions?
 
 <details>
 <summary>View answer</summary>
 
-You can use either `if` statements or ternary expressions to conditionally render expressions. Apart from these approaches, you can also embed any expressions in JSX by wrapping them in curly braces and then followed by the logical operator `&&`.
+Since a JSX element tree is one large expression, you cannot embed statements inside. Conditional expressions act as a replacement for statements to use inside the tree.
 
-```jsx
-;<h1>Hello!</h1>
-{
-  messages.length > 0 && <h2>You have {messages.length} unread messages.</h2>
+For example, this won't work:
+
+<!-- prettier-ignore -->
+```js
+function App({ messages, isVisible }) {
+  return (
+    <div>
+      if (messages.length > 0) {
+        <h2>You have {messages.length} unread messages.</h2>
+      } else {
+        <h2>You have no unread messages.</h2>
+      }
+      if (isVisible) {
+        <p>I am visible.</p>
+      }
+    </div>
+  )
+}
+```
+
+Logical AND `&&` and the ternary `? :` operator replace the `if`/`else` statements.
+
+```js
+function App({ messages, isVisible }) {
+  return (
+    <div>
+      {messages.length > 0 ? (
+        <h2>You have {messages.length} unread messages.</h2>
+      ) : (
+        <h2>You have no unread messages.</h2>
+      )}
+      {isVisible && <p>I am visible.</p>}
+    </div>
+  )
 }
 ```
 
@@ -1225,7 +1264,7 @@ You can use either `if` statements or ternary expressions to conditionally rende
 
 Keys are a special string attribute that helps React identify which items have been changed, added or removed. They are used when rendering array elements to give them a stable indentity. Each element's key must be unique (e.g. IDs from the data or indexes as a last resort).
 
-```jsx
+```js
 const todoItems = todos.map(todo => <li key={todo.id}>{todo.text}</li>)
 ```
 
@@ -1585,7 +1624,7 @@ JavaScript always passes by value. However, with objects, the value is a referen
 
 You can use an arrow function to wrap around an event handler and pass arguments, which is equivalent to calling `bind`:
 
-```jsx
+```js
 <button onClick={() => this.handleClick(id)} />
 <button onClick={this.handleClick.bind(this, id)} />
 ```
@@ -2211,8 +2250,8 @@ There are lots of ways to solve the issue of callback hells:
 
 Callback refs are preferred over the `findDOMNode()` API, due to the fact that `findDOMNode()` prevents certain improvements in React in the future.
 
-```jsx
-/* Legacy approach using findDOMNode() */
+```js
+// Legacy approach using findDOMNode()
 class MyComponent extends Component {
   componentDidMount() {
     findDOMNode(this).scrollIntoView()
@@ -2223,7 +2262,7 @@ class MyComponent extends Component {
   }
 }
 
-/* Recommended approach using callback refs */
+// Recommended approach using callback refs
 class MyComponent extends Component {
   componentDidMount() {
     this.node.scrollIntoView()
@@ -2251,27 +2290,25 @@ class MyComponent extends Component {
 
 <br>[⬆ Back to top](#table-of-contents)
 
-### What is children prop?
+### What is the `children` prop?
 
 <details>
 <summary>View answer</summary>
 
-Children is a prop (`this.prop.children`) that allows components to be passed as data to other components. There are a number of methods available in the React API to work with this prop, such as `React.Children.map`, `React.Children.forEach`, `React.Children.count`, `React.Children.only` and `React.Children.toArray`. A simple usage example of the children prop is as follows:
+`children` is part of the props object passed to components that allows components to be passed as data to other components, providing the ability to compose components cleanly. There are a number of methods available in the React API to work with this prop, such as `React.Children.map`, `React.Children.forEach`, `React.Children.count`, `React.Children.only` and `React.Children.toArray`. A simple usage example of the children prop is as follows:
 
-```jsx
-var MyDiv = React.createClass({
-  render: function() {
-    return <div>{this.props.children}</div>
-  }
-})
+```js
+function GenericBox({ children }) {
+  return <div className="container">{children}</div>
+}
 
-ReactDOM.render(
-  <MyDiv>
-    <span>Hello</span>
-    <span>World</span>
-  </MyDiv>,
-  node
-)
+function App() {
+  return (
+    <GenericBox>
+      <span>Hello</span> <span>World</span>
+    </GenericBox>
+  )
+}
 ```
 
 
@@ -2333,7 +2370,7 @@ In addition, closures are the only way to store private data that can't be acces
 
 Context provides a way to pass data through the component tree without having to pass props down manually at every level. For example, authenticated user, locale preference, UI theme need to be accessed in the application by many components.
 
-```jsx
+```js
 const { Provider, Consumer } = React.createContext(defaultValue)
 ```
 
@@ -2409,9 +2446,9 @@ With this implementation, `on` is the way to _subscribe_ to an event, while `emi
 <details>
 <summary>View answer</summary>
 
-Fragments allow a React component to return multiple elements without a wrapper, by groupping the children without adding extra elements to the DOM. Fragments offer better performance, lower memory usage, a cleaner DOM and can help in dealing with certain CSS mechanisms (e.g. tables, Flexbox and Grid).
+Fragments allow a React component to return multiple elements without a wrapper, by grouping the children without adding extra elements to the DOM. Fragments offer better performance, lower memory usage, a cleaner DOM and can help in dealing with certain CSS mechanisms (e.g. tables, Flexbox and Grid).
 
-```jsx
+```js
 render() {
   return (
     <React.Fragment>
@@ -2422,7 +2459,7 @@ render() {
   );
 }
 
-// Short syntax (might not supported by all tools):
+// Short syntax supported by Babel 7
 render() {
   return (
     <>
@@ -2574,9 +2611,9 @@ const memoize = fn => {
 <details>
 <summary>View answer</summary>
 
-* In JavaScript classes, the methods are not bound by default. This means that their `this` context can be changed (in the case of an event handler, to the element that is listening to the event) and will not refer to the component instance. To solve this, `Function.prototype.bind()` can be used to enforce the `this` context as the component instance.
+In JavaScript classes, the methods are not bound by default. This means that their `this` context can be changed (in the case of an event handler, to the element that is listening to the event) and will not refer to the component instance. To solve this, `Function.prototype.bind()` can be used to enforce the `this` context as the component instance.
 
-```jsx
+```js
 constructor(props) {
   super(props);
   this.handleClick = this.handleClick.bind(this);
@@ -2589,7 +2626,7 @@ handleClick() {
 
 * The `bind` approach can be verbose and requires defining a `constructor`, so the new public class fields syntax is generally preferred:
 
-```jsx
+```js
 handleClick = () => {
   console.log('this is:', this);
 }
@@ -2605,7 +2642,7 @@ render() {
 
 * You can also use an inline arrow function, because lexical `this` (referring to the component instance) is preserved:
 
-```jsx
+```js
 <button onClick={e => this.handleClick(e)}>Click me</button>
 ```
 
@@ -2749,14 +2786,14 @@ const pipe = (...fns) => x => fns.reduce((v, fn) => fn(v), x)
 
 <br>[⬆ Back to top](#table-of-contents)
 
-### What are portals in ReactJS?
+### What are portals in React?
 
 <details>
 <summary>View answer</summary>
 
 Portal are the recommended way to render children into a DOM node that exists outside the DOM hierarchy of the parent component.
 
-```jsx
+```js
 ReactDOM.createPortal(child, container)
 ```
 
@@ -2875,7 +2912,7 @@ In the above example, the base condition is met if `filter()` returns an empty a
 
 <br>[⬆ Back to top](#table-of-contents)
 
-### What are refs? When should they be used?
+### What are refs in React? When should they be used?
 
 <details>
 <summary>View answer</summary>
@@ -2886,14 +2923,15 @@ Refs provide a way to access DOM nodes or React elements created in the render m
 * Triggering imperative animations.
 * Integrating with third-party DOM libraries.
 
-Refs are created using `React.createRef()` method and attached to React elements via the `ref` attribute. In order to use refs throughout the component, just assign the `ref` to the instance property within the constructor:
+Refs are created using `React.createRef()` method and attached to React elements via the `ref` attribute. In order to use refs throughout the component, assign the `ref` to the instance property within the constructor:
 
-```jsx
+```js
 class MyComponent extends React.Component {
   constructor(props) {
     super(props)
     this.myRef = React.createRef()
   }
+
   render() {
     return <div ref={this.myRef} />
   }
@@ -2908,7 +2946,7 @@ Refs can also be used in functional components with the help of closures.
 
 * Refs are used to return a reference to an element.
 * Refs shouldn't be overused.
-* You can create a ref using `React.createRef()` and attach to Reactelements via the `ref` attribute.
+* You can create a ref using `React.createRef()` and attach to elements via the `ref` attribute.
 
 
 ##### Additional Links
@@ -3191,14 +3229,20 @@ Once the changes between the old VDOM and new VDOM have been calculated by the d
 
 
 ## React
-### What is the difference between Element and Component?
+### What is the difference between an element and a component in React?
 
 <details>
 <summary>View answer</summary>
 
-An element is a plain object describing what you want to appear on the screen in terms of the DOM nodes or other components. Elements can contain other elements in their props. Creating a React element is cheap. Once an element is created, it is never mutated.
+An element is a plain JavaScript object that represents a DOM node or component. Elements are pure and never mutated, and are cheap to create.
 
-A component, on the other hand, can be declared in several different ways. It can be a class with a `render()` method (class component) or a function (functional component). Components take props as an input and return an element tree as the output.
+A component is a function or class. Components can have state and take props as input and return an element tree as output (although they can represent generic containers or wrappers and don't necessarily have to emit DOM). Components can initiate side effects in lifecycle methods (e.g. AJAX requests, DOM mutations, interfacing with 3rd party libraries) and may be expensive to create.
+
+```js
+const Component = () => "Hello"
+const componentElement = <Component />
+const domNodeElement = <div />
+```
 
 
 #### Good to hear
@@ -3239,20 +3283,20 @@ When several components need to share the same data, then it is recommended to l
 
 <br>[⬆ Back to top](#table-of-contents)
 
-### How to write comments in React?
+### How do you write comments inside a JSX tree in React?
 
 <details>
 <summary>View answer</summary>
 
-The comments in React are similar to JavaScript multiline comments which are wrapped with curly braces. When using JSX they look like this:
+Comments must be wrapped inside curly braces `{}` and use the `/* */` syntax.
 
 ```jsx
-render() => (<div>
-  {/* single-line comments */}
-  Hey {user}, write cool comments
-  {/* multi-line
-  comments */}
-</div>)
+const tree = (
+  <div>
+    {/* Comment */}
+    <p>Text</p>
+  </div>
+)
 ```
 
 <!-- tags: (react) -->
@@ -3273,14 +3317,15 @@ render() => (<div>
 
 <br>[⬆ Back to top](#table-of-contents)
 
-### What is a stateful component?
+### What is a stateful component in React?
 
 <details>
 <summary>View answer</summary>
 
-A stateful component is a component whose behavior depends on its state. Stateful components are always class components and have a state that is initialized in the constructor.
+A stateful component is a component whose behavior depends on its state. This means that two separate instances of the component if given the same props will not necessarily render the same output, unlike pure function components.
 
-```jsx
+```js
+// Stateful class component
 class App extends Component {
   constructor(props) {
     super(props)
@@ -3290,6 +3335,12 @@ class App extends Component {
     // ...
   }
 }
+
+// Stateful function component
+function App() {
+  const [count, setCount] = useState(0)
+  return // ...
+}
 ```
 
 
@@ -3297,8 +3348,8 @@ class App extends Component {
 
 
 * Stateful components have internal state that they depend on.
-* Stateful components are always class components.
-* Stateful components have their state initialized in the constructor.
+* Stateful components are class components or function components that use stateful Hooks.
+* Stateful components have their state initialized in the constructor or with `useState()`.
 
 
 ##### Additional Links
@@ -3315,7 +3366,7 @@ class App extends Component {
 <details>
 <summary>View answer</summary>
 
-A stateless component is a component whose behavior does not depend on its state. Stateless components can be either functional or class components. Stateless functional components are easier to maintain and test, while they avoid the `this` keyword altogether. Stateless functional components should be preferred when lifecycle hooks don't need to be used.
+A stateless component is a component whose behavior does not depend on its state. Stateless components can be either functional or class components. Stateless functional components are easier to maintain and test since they are guaranteed to produce the same output given the same props. Stateless functional components should be preferred when lifecycle hooks don't need to be used.
 
 
 #### Good to hear
@@ -3342,10 +3393,10 @@ A stateless component is a component whose behavior does not depend on its state
 
 The callback function is invoked when `setState` has finished and the component gets rendered. Since `setState` is asynchronous, the callback function is used for any post action.
 
-```jsx
-setState({ name: "sudheer" }, () =>
+```js
+setState({ name: "sudheer" }, () => {
   console.log("The name has updated and component re-rendered")
-)
+})
 ```
 
 
@@ -3365,18 +3416,39 @@ setState({ name: "sudheer" }, () =>
 
 <br>[⬆ Back to top](#table-of-contents)
 
-### Why React uses className over class attribute?
+### Why does React use `className` instead of `class` like in HTML?
 
 <details>
 <summary>View answer</summary>
 
-`class` is a reserved keyword in JavaScript and JSX is an extension of JavaScript. That's the primary reason why React uses `className` instead of `class`.
+React's philosophy in the beginning was to align with the browser DOM API rather than HTML, since that more closely represents how elements are created. Setting a `class` on an element meant using the `className` API:
 
-```jsx
-render() {
-  return <span className="tooltip">tooltip</span>
+```js
+const element = document.createElement("div")
+element.className = "hello"
+```
+
+Additionally, before ES5, reserved words could not be used in objects:
+
+```js
+const element = {
+  attributes: {
+    class: "hello"
+  }
 }
 ```
+
+In IE8, this will throw an error.
+
+In modern environments, destructuring will throw an error if trying to assign to a variable:
+
+```js
+const { class } = this.props // Error
+const { className } = this.props // All good
+const { class: className } = this.props // All good, but cumbersome!
+```
+
+However, `class` _can_ be used as a prop without problems, as seen in other libraries like Preact. React currently allows you to use `class`, but will throw a warning and convert it to `className` under the hood. There is currently an open thread (as of January 2019) discussing changing `className` to `class` to reduce confusion.
 
 
 #### Good to hear
@@ -3397,29 +3469,25 @@ render() {
 <details>
 <summary>View answer</summary>
 
-Some of the key differences are:
-
-* In HTML, the event name should be in lowercase, whereas in React it follows camelcase convention.
+In HTML, the attribute name is in all lowercase and is given a string invoking a function defined somewhere:
 
 ```html
-<!-- HTML -->
-<button onclick="handleClick()">
+<button onclick="handleClick()"></button>
 ```
 
-```jsx
-/* React */
-<button onClick="handleClick()">
+In React, the attribute name is camelCase and are passed the function reference inside curly braces:
+
+```js
+<button onClick={handleClick} />
 ```
 
-* In HTML, `false` can be returned to prevent default behavior, whereas in React `preventDefault` has to be called explicitly.
+In HTML, `false` can be returned to prevent default behavior, whereas in React `preventDefault` has to be called explicitly.
 
 ```html
-<!-- HTML -->
-<a href="#" onclick="console.log('The link was clicked.'); return false"/>
+<a href="#" onclick="console.log('The link was clicked.'); return false" />
 ```
 
-```jsx
-/* React */
+```js
 function handleClick(e) {
   e.preventDefault()
   console.log("The link was clicked.")
@@ -3430,7 +3498,7 @@ function handleClick(e) {
 #### Good to hear
 
 
-* HTML uses lowercase event names, React uses camelcase event names.
+* HTML uses lowercase, React uses camelCase.
 
 
 ##### Additional Links
@@ -3442,17 +3510,47 @@ function handleClick(e) {
 
 <br>[⬆ Back to top](#table-of-contents)
 
-### What is inline conditional expressions?
+### What are inline conditional expressions?
 
 <details>
 <summary>View answer</summary>
 
-You can use either `if` statements or ternary expressions to conditionally render expressions. Apart from these approaches, you can also embed any expressions in JSX by wrapping them in curly braces and then followed by the logical operator `&&`.
+Since a JSX element tree is one large expression, you cannot embed statements inside. Conditional expressions act as a replacement for statements to use inside the tree.
 
-```jsx
-;<h1>Hello!</h1>
-{
-  messages.length > 0 && <h2>You have {messages.length} unread messages.</h2>
+For example, this won't work:
+
+<!-- prettier-ignore -->
+```js
+function App({ messages, isVisible }) {
+  return (
+    <div>
+      if (messages.length > 0) {
+        <h2>You have {messages.length} unread messages.</h2>
+      } else {
+        <h2>You have no unread messages.</h2>
+      }
+      if (isVisible) {
+        <p>I am visible.</p>
+      }
+    </div>
+  )
+}
+```
+
+Logical AND `&&` and the ternary `? :` operator replace the `if`/`else` statements.
+
+```js
+function App({ messages, isVisible }) {
+  return (
+    <div>
+      {messages.length > 0 ? (
+        <h2>You have {messages.length} unread messages.</h2>
+      ) : (
+        <h2>You have no unread messages.</h2>
+      )}
+      {isVisible && <p>I am visible.</p>}
+    </div>
+  )
 }
 ```
 
@@ -3478,7 +3576,7 @@ You can use either `if` statements or ternary expressions to conditionally rende
 
 Keys are a special string attribute that helps React identify which items have been changed, added or removed. They are used when rendering array elements to give them a stable indentity. Each element's key must be unique (e.g. IDs from the data or indexes as a last resort).
 
-```jsx
+```js
 const todoItems = todos.map(todo => <li key={todo.id}>{todo.text}</li>)
 ```
 
@@ -3543,11 +3641,11 @@ const todoItems = todos.map(todo => <li key={todo.id}>{todo.text}</li>)
 
 There are four different phases of component’s lifecycle:
 
-**Initialization**: In this phase react component prepares setting up the initial state and default props.
+**Initialization**: In this phase, the component prepares setting up the initial state and default props.
 
-**Mounting**: The react component is ready to mount in the browser DOM. This phase covers `getDerivedStateFromProps` and `componentDidMount` lifecycle methods.
+**Mounting**: The react component is ready to mount to the DOM. This phase covers the `getDerivedStateFromProps` and `componentDidMount` lifecycle methods.
 
-**Updating**: In this phase, the component gets updated in two ways, sending the new props and updating the state. This phase covers `getDerivedStateFromProps`, `shouldComponentUpdate`, `getSnapshotBeforeUpdate` and `componentDidUpdate` lifecycle methods.
+**Updating**: In this phase, the component gets updated in two ways, sending the new props and updating the state. This phase covers the `getDerivedStateFromProps`, `shouldComponentUpdate`, `getSnapshotBeforeUpdate` and `componentDidUpdate` lifecycle methods.
 
 **Unmounting**: In this last phase, the component is not needed and gets unmounted from the browser DOM. This phase includes the `componentWillUnmount` lifecycle method.
 
@@ -3576,7 +3674,7 @@ There are four different phases of component’s lifecycle:
 
 You can use an arrow function to wrap around an event handler and pass arguments, which is equivalent to calling `bind`:
 
-```jsx
+```js
 <button onClick={() => this.handleClick(id)} />
 <button onClick={this.handleClick.bind(this, id)} />
 ```
@@ -3603,8 +3701,8 @@ You can use an arrow function to wrap around an event handler and pass arguments
 
 Callback refs are preferred over the `findDOMNode()` API, due to the fact that `findDOMNode()` prevents certain improvements in React in the future.
 
-```jsx
-/* Legacy approach using findDOMNode() */
+```js
+// Legacy approach using findDOMNode()
 class MyComponent extends Component {
   componentDidMount() {
     findDOMNode(this).scrollIntoView()
@@ -3615,7 +3713,7 @@ class MyComponent extends Component {
   }
 }
 
-/* Recommended approach using callback refs */
+// Recommended approach using callback refs
 class MyComponent extends Component {
   componentDidMount() {
     this.node.scrollIntoView()
@@ -3643,27 +3741,25 @@ class MyComponent extends Component {
 
 <br>[⬆ Back to top](#table-of-contents)
 
-### What is children prop?
+### What is the `children` prop?
 
 <details>
 <summary>View answer</summary>
 
-Children is a prop (`this.prop.children`) that allows components to be passed as data to other components. There are a number of methods available in the React API to work with this prop, such as `React.Children.map`, `React.Children.forEach`, `React.Children.count`, `React.Children.only` and `React.Children.toArray`. A simple usage example of the children prop is as follows:
+`children` is part of the props object passed to components that allows components to be passed as data to other components, providing the ability to compose components cleanly. There are a number of methods available in the React API to work with this prop, such as `React.Children.map`, `React.Children.forEach`, `React.Children.count`, `React.Children.only` and `React.Children.toArray`. A simple usage example of the children prop is as follows:
 
-```jsx
-var MyDiv = React.createClass({
-  render: function() {
-    return <div>{this.props.children}</div>
-  }
-})
+```js
+function GenericBox({ children }) {
+  return <div className="container">{children}</div>
+}
 
-ReactDOM.render(
-  <MyDiv>
-    <span>Hello</span>
-    <span>World</span>
-  </MyDiv>,
-  node
-)
+function App() {
+  return (
+    <GenericBox>
+      <span>Hello</span> <span>World</span>
+    </GenericBox>
+  )
+}
 ```
 
 
@@ -3690,7 +3786,7 @@ ReactDOM.render(
 
 Context provides a way to pass data through the component tree without having to pass props down manually at every level. For example, authenticated user, locale preference, UI theme need to be accessed in the application by many components.
 
-```jsx
+```js
 const { Provider, Consumer } = React.createContext(defaultValue)
 ```
 
@@ -3720,7 +3816,7 @@ Error boundaries are React components that catch JavaScript errors anywhere in t
 
 A class component becomes an error boundary if it defines a new lifecycle method called `componentDidCatch`.
 
-```jsx
+```js
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props)
@@ -3763,9 +3859,9 @@ class ErrorBoundary extends React.Component {
 <details>
 <summary>View answer</summary>
 
-Fragments allow a React component to return multiple elements without a wrapper, by groupping the children without adding extra elements to the DOM. Fragments offer better performance, lower memory usage, a cleaner DOM and can help in dealing with certain CSS mechanisms (e.g. tables, Flexbox and Grid).
+Fragments allow a React component to return multiple elements without a wrapper, by grouping the children without adding extra elements to the DOM. Fragments offer better performance, lower memory usage, a cleaner DOM and can help in dealing with certain CSS mechanisms (e.g. tables, Flexbox and Grid).
 
-```jsx
+```js
 render() {
   return (
     <React.Fragment>
@@ -3776,7 +3872,7 @@ render() {
   );
 }
 
-// Short syntax (might not supported by all tools):
+// Short syntax supported by Babel 7
 render() {
   return (
     <>
@@ -3811,7 +3907,7 @@ render() {
 
 A higher-order component (HOC) is a function that takes a component as an argument and returns a new component. It is a pattern that is derived from React’s compositional nature. Higher-order components are like **pure components** because they accept any dynamically provided child component, but they won’t modify or copy any behavior from their input components.
 
-```jsx
+```js
 const EnhancedComponent = higherOrderComponent(WrappedComponent)
 ```
 
@@ -3835,9 +3931,9 @@ const EnhancedComponent = higherOrderComponent(WrappedComponent)
 <details>
 <summary>View answer</summary>
 
-* In JavaScript classes, the methods are not bound by default. This means that their `this` context can be changed (in the case of an event handler, to the element that is listening to the event) and will not refer to the component instance. To solve this, `Function.prototype.bind()` can be used to enforce the `this` context as the component instance.
+In JavaScript classes, the methods are not bound by default. This means that their `this` context can be changed (in the case of an event handler, to the element that is listening to the event) and will not refer to the component instance. To solve this, `Function.prototype.bind()` can be used to enforce the `this` context as the component instance.
 
-```jsx
+```js
 constructor(props) {
   super(props);
   this.handleClick = this.handleClick.bind(this);
@@ -3850,7 +3946,7 @@ handleClick() {
 
 * The `bind` approach can be verbose and requires defining a `constructor`, so the new public class fields syntax is generally preferred:
 
-```jsx
+```js
 handleClick = () => {
   console.log('this is:', this);
 }
@@ -3866,7 +3962,7 @@ render() {
 
 * You can also use an inline arrow function, because lexical `this` (referring to the component instance) is preserved:
 
-```jsx
+```js
 <button onClick={e => this.handleClick(e)}>Click me</button>
 ```
 
@@ -3889,14 +3985,14 @@ Note that extra re-rendering can occur using this technique because a new functi
 
 <br>[⬆ Back to top](#table-of-contents)
 
-### What are portals in ReactJS?
+### What are portals in React?
 
 <details>
 <summary>View answer</summary>
 
 Portal are the recommended way to render children into a DOM node that exists outside the DOM hierarchy of the parent component.
 
-```jsx
+```js
 ReactDOM.createPortal(child, container)
 ```
 
@@ -3922,38 +4018,34 @@ The first argument (`child`) is any renderable React child, such as an element, 
 <details>
 <summary>View answer</summary>
 
-When the application is running in development mode, React will automatically check for all props that we set on components to make sure they are the correct data type. For incorrect data type, it will generate warning messages in the console for development mode whereas it is disabled in production mode due to performance impact. The required prop is defined with `isRequired`.
+When the application is running in development mode, React will automatically check for all props that we set on components to make sure they are the correct data type. For incorrect data types, it will generate warning messages in the console for development mode. They are stripped in production mode due to their performance impact. Required props are defined with `isRequired`.
 
-The set of predefined prop types are the following:
+For example, we define `propTypes` for component as below:
 
--`PropTypes.string` -`PropTypes.number` -`PropTypes.func` -`PropTypes.node` -`PropTypes.bool`
-
-For example, we define propTypes for component as below:
-
-```jsx
-import PropTypes from 'prop-types';
+```js
+import PropTypes from "prop-types"
 
 class User extends React.Component {
+  static propTypes = {
+    name: PropTypes.string.isRequired,
+    age: PropTypes.number.isRequired
+  }
+
   render() {
     return (
       <h1>Welcome, {this.props.name}</h1>
       <h2>Age, {this.props.age}
-    );
+    )
   }
 }
-
-User.propTypes = {
-  name: PropTypes.string.isRequired,
-  age: PropTypes.number.isRequired
-};
 ```
 
 
 #### Good to hear
 
 
-* We can define custom `PropTypes`
-* Using `PropTypes` is not mandatory. However, it is a good practice
+* We can define custom `propTypes`
+* Using `propTypes` is not mandatory. However, it is a good practice and can reduce bugs.
 
 
 ##### Additional Links
@@ -3964,7 +4056,7 @@ User.propTypes = {
 
 <br>[⬆ Back to top](#table-of-contents)
 
-### What are refs? When should they be used?
+### What are refs in React? When should they be used?
 
 <details>
 <summary>View answer</summary>
@@ -3975,14 +4067,15 @@ Refs provide a way to access DOM nodes or React elements created in the render m
 * Triggering imperative animations.
 * Integrating with third-party DOM libraries.
 
-Refs are created using `React.createRef()` method and attached to React elements via the `ref` attribute. In order to use refs throughout the component, just assign the `ref` to the instance property within the constructor:
+Refs are created using `React.createRef()` method and attached to React elements via the `ref` attribute. In order to use refs throughout the component, assign the `ref` to the instance property within the constructor:
 
-```jsx
+```js
 class MyComponent extends React.Component {
   constructor(props) {
     super(props)
     this.myRef = React.createRef()
   }
+
   render() {
     return <div ref={this.myRef} />
   }
@@ -3997,7 +4090,7 @@ Refs can also be used in functional components with the help of closures.
 
 * Refs are used to return a reference to an element.
 * Refs shouldn't be overused.
-* You can create a ref using `React.createRef()` and attach to Reactelements via the `ref` attribute.
+* You can create a ref using `React.createRef()` and attach to elements via the `ref` attribute.
 
 
 ##### Additional Links
@@ -4217,29 +4310,25 @@ A browser is said to “support” a specification if it handles valid documents
 <details>
 <summary>View answer</summary>
 
-Some of the key differences are:
-
-* In HTML, the event name should be in lowercase, whereas in React it follows camelcase convention.
+In HTML, the attribute name is in all lowercase and is given a string invoking a function defined somewhere:
 
 ```html
-<!-- HTML -->
-<button onclick="handleClick()">
+<button onclick="handleClick()"></button>
 ```
 
-```jsx
-/* React */
-<button onClick="handleClick()">
+In React, the attribute name is camelCase and are passed the function reference inside curly braces:
+
+```js
+<button onClick={handleClick} />
 ```
 
-* In HTML, `false` can be returned to prevent default behavior, whereas in React `preventDefault` has to be called explicitly.
+In HTML, `false` can be returned to prevent default behavior, whereas in React `preventDefault` has to be called explicitly.
 
 ```html
-<!-- HTML -->
-<a href="#" onclick="console.log('The link was clicked.'); return false"/>
+<a href="#" onclick="console.log('The link was clicked.'); return false" />
 ```
 
-```jsx
-/* React */
+```js
 function handleClick(e) {
   e.preventDefault()
   console.log("The link was clicked.")
@@ -4250,7 +4339,7 @@ function handleClick(e) {
 #### Good to hear
 
 
-* HTML uses lowercase event names, React uses camelcase event names.
+* HTML uses lowercase, React uses camelCase.
 
 
 ##### Additional Links

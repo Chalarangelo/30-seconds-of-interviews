@@ -10,7 +10,7 @@ const EnhancedComponent = higherOrderComponent(WrappedComponent)
 
 #### Good to hear
 
-- They can be used for state abstraction and manipulation, props manipulation, render high jacking, etc.
+* They can be used for state abstraction and manipulation, props manipulation, render high jacking, etc.
 
 ##### Additional links
 

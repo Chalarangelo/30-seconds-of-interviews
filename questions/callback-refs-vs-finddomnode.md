@@ -30,11 +30,11 @@ class MyComponent extends Component {
 
 #### Good to hear
 
-- Callback refs are preferred over `findDOMNode()`.
+* Callback refs are preferred over `findDOMNode()`.
 
 ##### Additional links
 
-- [React docs on Refs and the DOM](https://reactjs.org/docs/refs-and-the-dom.html#exposing-dom-refs-to-parent-components)
+* [React docs on Refs and the DOM](https://reactjs.org/docs/refs-and-the-dom.html#exposing-dom-refs-to-parent-components)
 
 <!-- tags: (react,javascript) -->
 

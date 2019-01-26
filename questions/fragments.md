@@ -29,11 +29,11 @@ render() {
 
 #### Good to hear
 
-- Fragments group multiple elements returned from a component, without adding a DOM element around them.
+* Fragments group multiple elements returned from a component, without adding a DOM element around them.
 
 ##### Additional links
 
-- [React docs on Fragments](https://reactjs.org/docs/fragments.html)
+* [React docs on Fragments](https://reactjs.org/docs/fragments.html)
 
 <!-- tags: (react,javascript) -->
 
