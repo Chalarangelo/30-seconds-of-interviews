@@ -4,8 +4,8 @@
 
 Callback refs are preferred over the `findDOMNode()` API, due to the fact that `findDOMNode()` prevents certain improvements in React in the future.
 
-```jsx
-/* Legacy approach using findDOMNode() */
+```js
+// Legacy approach using findDOMNode()
 class MyComponent extends Component {
   componentDidMount() {
     findDOMNode(this).scrollIntoView()
@@ -16,7 +16,7 @@ class MyComponent extends Component {
   }
 }
 
-/* Recommended approach using callback refs */
+// Recommended approach using callback refs
 class MyComponent extends Component {
   componentDidMount() {
     this.node.scrollIntoView()
@@ -30,11 +30,11 @@ class MyComponent extends Component {
 
 #### Good to hear
 
-* Callback refs are preferred over `findDOMNode()`.
+- Callback refs are preferred over `findDOMNode()`.
 
 ##### Additional links
 
-* [React docs on Refs and the DOM](https://reactjs.org/docs/refs-and-the-dom.html#exposing-dom-refs-to-parent-components)
+- [React docs on Refs and the DOM](https://reactjs.org/docs/refs-and-the-dom.html#exposing-dom-refs-to-parent-components)
 
 <!-- tags: (react,javascript) -->
 
