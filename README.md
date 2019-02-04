@@ -1262,7 +1262,7 @@ function App({ messages, isVisible }) {
 <details>
 <summary>View answer</summary>
 
-Keys are a special string attribute that helps React identify which items have been changed, added or removed. They are used when rendering array elements to give them a stable indentity. Each element's key must be unique (e.g. IDs from the data or indexes as a last resort).
+Keys are a special string attribute that helps React identify which items have been changed, added or removed. They are used when rendering array elements to give them a stable identity. Each element's key must be unique (e.g. IDs from the data or indexes as a last resort).
 
 ```js
 const todoItems = todos.map(todo => <li key={todo.id}>{todo.text}</li>)
@@ -3574,7 +3574,7 @@ function App({ messages, isVisible }) {
 <details>
 <summary>View answer</summary>
 
-Keys are a special string attribute that helps React identify which items have been changed, added or removed. They are used when rendering array elements to give them a stable indentity. Each element's key must be unique (e.g. IDs from the data or indexes as a last resort).
+Keys are a special string attribute that helps React identify which items have been changed, added or removed. They are used when rendering array elements to give them a stable identity. Each element's key must be unique (e.g. IDs from the data or indexes as a last resort).
 
 ```js
 const todoItems = todos.map(todo => <li key={todo.id}>{todo.text}</li>)
