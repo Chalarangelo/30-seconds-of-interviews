@@ -2,7 +2,7 @@
 
 #### Answer
 
-Both increment the variable value by 1. The difference is when they evaluate to.
+Both increment the variable value by 1. The difference is what they evaluate to.
 
 The postfix increment operator evaluates to the value _before_ it was incremented.
 
