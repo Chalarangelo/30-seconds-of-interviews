@@ -63,3 +63,4 @@ dist
 
 # editor
 .vscode
+.idea
