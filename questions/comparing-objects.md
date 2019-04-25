@@ -13,7 +13,7 @@ plain objects, arrays, functions, dates and primitive values.
 
 ```js
 function isDeepEqual(obj1, obj2, testPrototypes = false) {
-  if (obj1 === obj2) {
+  if (Object.is(obj1, obj2)) {
     return true
   }
 
