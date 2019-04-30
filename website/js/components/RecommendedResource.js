@@ -5,7 +5,7 @@ const RecommendedResource = () => (
     <div class={"Question__badge"}>Recommended resource</div>
     <div class="Question">
       <h2>
-        <a href="https://frontendmasters.com/books/front-end-handbook/2018/">
+        <a href="https://frontendmasters.com/books/front-end-handbook/2019/">
           Frontend Masters Handbook
         </a>
       </h2>
