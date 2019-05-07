@@ -49,7 +49,7 @@ These must be chained to the Element and never alone however, or there will be s
 
 ##### Additional links
 
-* [Writing clean and maintainable CSS](https://hackernoon.com/writing-clean-and-maintainable-css-using-bem-methodology-1dcbf810a664)
+* [BEM 101](https://css-tricks.com/bem-101/)
 
 <!-- tags: (css) -->
 
