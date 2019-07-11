@@ -44,7 +44,7 @@
     "eslint-plugin-markdown": "^1.0.0-beta.6",
     "eslint-plugin-react": "^7.8.2",
     "node-sass": "^4.11.0",
-    "parcel-bundler": "^1.8.1",
+    "parcel-bundler": "^1.10.0",
     "prettier-eslint-cli": "^4.7.1"
   }
 }
