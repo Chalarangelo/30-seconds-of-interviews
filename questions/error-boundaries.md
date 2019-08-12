@@ -38,7 +38,7 @@ class ErrorBoundary extends React.Component {
 
 #### Good to hear
 
-* <b>Error boundaries only catch errors in the components below them in the tree.</b> An error boundary can’t catch an error within itself.
+* **Error boundaries only catch errors in the components below them in the tree.** An error boundary can’t catch an error within itself.
 
 ##### Additional links
 https://reactjs.org/docs/error-boundaries.html
