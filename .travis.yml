@@ -7,7 +7,7 @@ jobs:
           on_failure: [change]
       language: node_js
       node_js:
-        - node
+        - lts/*
       install:
         - yarn install
       before_script:
