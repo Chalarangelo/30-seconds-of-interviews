@@ -417,7 +417,7 @@ let i = 0
 /**
 It accepts two objects as arguments: the first object is the recipe
 for the food, while the second object is the available ingredients.
-Each ingredient's value is number representing how many units there are.
+Each ingredient's value is a number representing how many units there are.
 
 `batches(recipe, available)`
 */
@@ -448,7 +448,7 @@ batches(
 <details>
 <summary>View answer</summary>
 
-We must have all ingredients of the recipe available, and in quantities that are more than or equal to the number of units required. If just one of ingredients is not available or lower than needed, we cannot make a single batch.
+We must have all ingredients of the recipe available, and in quantities that are more than or equal to the number of units required. If just one of the ingredients is not available or lower than needed, we cannot make a single batch.
 
 Use `Object.keys()` to return the ingredients of the recipe as an array, then use `Array.prototype.map()` to map each ingredient to the ratio of available units to the amount required by the recipe. If one of the ingredients required by the recipe is not available at all, the ratio will evaluate to `NaN`, so the logical OR operator can be used to fallback to `0` in this case.
 
@@ -3847,7 +3847,7 @@ Note that extra re-rendering can occur using this technique because a new functi
 
 Error boundaries are React components that catch JavaScript errors anywhere in their child component tree, log those errors, and display a fallback UI instead of the component tree that crashed.
 
-A class component becomes an error boundary if it defines a new lifecycle method called `componentDidCatch`.
+Class components become error boundaries if they define either (or both) of the lifecycle methods `static getDerivedStateFromError()` or `componentDidCatch().`
 
 ```js
 class ErrorBoundary extends React.Component {
@@ -3856,11 +3856,16 @@ class ErrorBoundary extends React.Component {
     this.state = { hasError: false }
   }
 
+  // Use componentDidCatch to log the error
   componentDidCatch(error, info) {
-    // Display fallback UI
-    this.setState({ hasError: true })
     // You can also log the error to an error reporting service
     logErrorToMyService(error, info)
+  }
+
+  // use getDerivedStateFromError to update state
+  static getDerivedStateFromError(error) {
+    // Display fallback UI
+    return { hasError: true }
   }
 
   render() {
@@ -3877,11 +3882,13 @@ class ErrorBoundary extends React.Component {
 #### Good to hear
 
 
+* **Error boundaries only catch errors in the components below them in the tree.*An error boundary can’t catch an error within itself.
 
 
 ##### Additional Links
 
 
+* https://reactjs.org/docs/error-boundaries.html
 
 </details>
 
@@ -4103,7 +4110,7 @@ The first argument (`child`) is any renderable React child, such as an element, 
 <details>
 <summary>View answer</summary>
 
-The `alt` attribute provides alternative information for an image if a user cannot view it. The `alt` attribute should be used to describe any images except those which only serve a decorative purposes, in which case it should be left empty.
+The `alt` attribute provides alternative information for an image if a user cannot view it. The `alt` attribute should be used to describe any images except those which only serve a decorative purpose, in which case it should be left empty.
 
 
 #### Good to hear
@@ -4496,7 +4503,7 @@ These must be chained to the Element and never alone however, or there will be s
 ##### Additional Links
 
 
-* [Writing clean and maintainable CSS](https://hackernoon.com/writing-clean-and-maintainable-css-using-bem-methodology-1dcbf810a664)
+* [BEM 101](https://css-tricks.com/bem-101/)
 
 </details>
 

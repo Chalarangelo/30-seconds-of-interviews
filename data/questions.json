@@ -2,7 +2,7 @@
   {
     "name": "alt-attribute.md",
     "question": "What is the purpose of the `alt` attribute on images?",
-    "answer": "The `alt` attribute provides alternative information for an image if a user cannot view it. The `alt` attribute should be used to describe any images except those which only serve a decorative purposes, in which case it should be left empty.",
+    "answer": "The `alt` attribute provides alternative information for an image if a user cannot view it. The `alt` attribute should be used to describe any images except those which only serve a decorative purpose, in which case it should be left empty.",
     "goodToHear": [
       "Decorative images should have an empty `alt` attribute.",
       "Web crawlers use `alt` tags to understand image content, so they are considered important for Search Engine Optimization (SEO).",
@@ -42,8 +42,8 @@
   },
   {
     "name": "batches.md",
-    "question": "Create a function `batches` that returns the maximum number of whole batches that can be cooked from a recipe.\n\n```js\n/**\nIt accepts two objects as arguments: the first object is the recipe\nfor the food, while the second object is the available ingredients.\nEach ingredient's value is number representing how many units there are.\n\n`batches(recipe, available)`\n*/\n\n// 0 batches can be made\nbatches(\n  { milk: 100, butter: 50, flour: 5 },\n  { milk: 132, butter: 48, flour: 51 }\n)\nbatches(\n  { milk: 100, flour: 4, sugar: 10, butter: 5 },\n  { milk: 1288, flour: 9, sugar: 95 }\n)\n\n// 1 batch can be made\nbatches(\n  { milk: 100, butter: 50, cheese: 10 },\n  { milk: 198, butter: 52, cheese: 10 }\n)\n\n// 2 batches can be made\nbatches(\n  { milk: 2, sugar: 40, butter: 20 },\n  { milk: 5, sugar: 120, butter: 500 }\n)\n```",
-    "answer": "We must have all ingredients of the recipe available, and in quantities that are more than or equal to the number of units required. If just one of ingredients is not available or lower than needed, we cannot make a single batch.\n\nUse `Object.keys()` to return the ingredients of the recipe as an array, then use `Array.prototype.map()` to map each ingredient to the ratio of available units to the amount required by the recipe. If one of the ingredients required by the recipe is not available at all, the ratio will evaluate to `NaN`, so the logical OR operator can be used to fallback to `0` in this case.\n\nUse the spread `...` operator to feed the array of all the ingredient ratios into `Math.min()` to determine the lowest ratio. Passing this entire result into `Math.floor()` rounds down to return the maximum number of whole batches.\n\n```js\nconst batches = (recipe, available) =>\n  Math.floor(\n    Math.min(...Object.keys(recipe).map(k => available[k] / recipe[k] || 0))\n  )\n```",
+    "question": "Create a function `batches` that returns the maximum number of whole batches that can be cooked from a recipe.\n\n```js\n/**\nIt accepts two objects as arguments: the first object is the recipe\nfor the food, while the second object is the available ingredients.\nEach ingredient's value is a number representing how many units there are.\n\n`batches(recipe, available)`\n*/\n\n// 0 batches can be made\nbatches(\n  { milk: 100, butter: 50, flour: 5 },\n  { milk: 132, butter: 48, flour: 51 }\n)\nbatches(\n  { milk: 100, flour: 4, sugar: 10, butter: 5 },\n  { milk: 1288, flour: 9, sugar: 95 }\n)\n\n// 1 batch can be made\nbatches(\n  { milk: 100, butter: 50, cheese: 10 },\n  { milk: 198, butter: 52, cheese: 10 }\n)\n\n// 2 batches can be made\nbatches(\n  { milk: 2, sugar: 40, butter: 20 },\n  { milk: 5, sugar: 120, butter: 500 }\n)\n```",
+    "answer": "We must have all ingredients of the recipe available, and in quantities that are more than or equal to the number of units required. If just one of the ingredients is not available or lower than needed, we cannot make a single batch.\n\nUse `Object.keys()` to return the ingredients of the recipe as an array, then use `Array.prototype.map()` to map each ingredient to the ratio of available units to the amount required by the recipe. If one of the ingredients required by the recipe is not available at all, the ratio will evaluate to `NaN`, so the logical OR operator can be used to fallback to `0` in this case.\n\nUse the spread `...` operator to feed the array of all the ingredient ratios into `Math.min()` to determine the lowest ratio. Passing this entire result into `Math.floor()` rounds down to return the maximum number of whole batches.\n\n```js\nconst batches = (recipe, available) =>\n  Math.floor(\n    Math.min(...Object.keys(recipe).map(k => available[k] / recipe[k] || 0))\n  )\n```",
     "goodToHear": [],
     "links": [],
     "tags": [
@@ -51,7 +51,7 @@
     ],
     "expertise": 1,
     "questionCodeBlocks": [
-      "```js\n/**\nIt accepts two objects as arguments: the first object is the recipe\nfor the food, while the second object is the available ingredients.\nEach ingredient's value is number representing how many units there are.\n\n`batches(recipe, available)`\n*/\n\n// 0 batches can be made\nbatches(\n  { milk: 100, butter: 50, flour: 5 },\n  { milk: 132, butter: 48, flour: 51 }\n)\nbatches(\n  { milk: 100, flour: 4, sugar: 10, butter: 5 },\n  { milk: 1288, flour: 9, sugar: 95 }\n)\n\n// 1 batch can be made\nbatches(\n  { milk: 100, butter: 50, cheese: 10 },\n  { milk: 198, butter: 52, cheese: 10 }\n)\n\n// 2 batches can be made\nbatches(\n  { milk: 2, sugar: 40, butter: 20 },\n  { milk: 5, sugar: 120, butter: 500 }\n)\n```"
+      "```js\n/**\nIt accepts two objects as arguments: the first object is the recipe\nfor the food, while the second object is the available ingredients.\nEach ingredient's value is a number representing how many units there are.\n\n`batches(recipe, available)`\n*/\n\n// 0 batches can be made\nbatches(\n  { milk: 100, butter: 50, flour: 5 },\n  { milk: 132, butter: 48, flour: 51 }\n)\nbatches(\n  { milk: 100, flour: 4, sugar: 10, butter: 5 },\n  { milk: 1288, flour: 9, sugar: 95 }\n)\n\n// 1 batch can be made\nbatches(\n  { milk: 100, butter: 50, cheese: 10 },\n  { milk: 198, butter: 52, cheese: 10 }\n)\n\n// 2 batches can be made\nbatches(\n  { milk: 2, sugar: 40, butter: 20 },\n  { milk: 5, sugar: 120, butter: 500 }\n)\n```"
     ],
     "answerCodeBlocks": [
       "```js\nconst batches = (recipe, available) =>\n  Math.floor(\n    Math.min(...Object.keys(recipe).map(k => available[k] / recipe[k] || 0))\n  )\n```"
@@ -65,7 +65,7 @@
       "Alternative solutions to scope issues like CSS-in-JS"
     ],
     "links": [
-      "[Writing clean and maintainable CSS](https://hackernoon.com/writing-clean-and-maintainable-css-using-bem-methodology-1dcbf810a664)"
+      "[BEM 101](https://css-tricks.com/bem-101/)"
     ],
     "tags": [
       "css"
@@ -516,16 +516,20 @@
   {
     "name": "error-boundaries.md",
     "question": "What are error boundaries in React?",
-    "answer": "Error boundaries are React components that catch JavaScript errors anywhere in their child component tree, log those errors, and display a fallback UI instead of the component tree that crashed.\n\nA class component becomes an error boundary if it defines a new lifecycle method called `componentDidCatch`.\n\n```js\nclass ErrorBoundary extends React.Component {\n  constructor(props) {\n    super(props)\n    this.state = { hasError: false }\n  }\n\n  componentDidCatch(error, info) {\n    // Display fallback UI\n    this.setState({ hasError: true })\n    // You can also log the error to an error reporting service\n    logErrorToMyService(error, info)\n  }\n\n  render() {\n    if (this.state.hasError) {\n      // You can render any custom fallback UI\n      return <h1>Something went wrong.</h1>\n    }\n    return this.props.children\n  }\n}\n```",
-    "goodToHear": [],
-    "links": [],
+    "answer": "Error boundaries are React components that catch JavaScript errors anywhere in their child component tree, log those errors, and display a fallback UI instead of the component tree that crashed.\n\nClass components become error boundaries if they define either (or both) of the lifecycle methods `static getDerivedStateFromError()` or `componentDidCatch().`\n\n```js\nclass ErrorBoundary extends React.Component {\n  constructor(props) {\n    super(props)\n    this.state = { hasError: false }\n  }\n\n  // Use componentDidCatch to log the error\n  componentDidCatch(error, info) {\n    // You can also log the error to an error reporting service\n    logErrorToMyService(error, info)\n  }\n\n  // use getDerivedStateFromError to update state\n  static getDerivedStateFromError(error) {\n    // Display fallback UI\n    return { hasError: true }\n  }\n\n  render() {\n    if (this.state.hasError) {\n      // You can render any custom fallback UI\n      return <h1>Something went wrong.</h1>\n    }\n    return this.props.children\n  }\n}\n```",
+    "goodToHear": [
+      "**Error boundaries only catch errors in the components below them in the tree.*An error boundary can’t catch an error within itself."
+    ],
+    "links": [
+      "https://reactjs.org/docs/error-boundaries.html"
+    ],
     "tags": [
       "react"
     ],
     "expertise": 2,
     "questionCodeBlocks": [],
     "answerCodeBlocks": [
-      "```js\nclass ErrorBoundary extends React.Component {\n  constructor(props) {\n    super(props)\n    this.state = { hasError: false }\n  }\n\n  componentDidCatch(error, info) {\n    // Display fallback UI\n    this.setState({ hasError: true })\n    // You can also log the error to an error reporting service\n    logErrorToMyService(error, info)\n  }\n\n  render() {\n    if (this.state.hasError) {\n      // You can render any custom fallback UI\n      return <h1>Something went wrong.</h1>\n    }\n    return this.props.children\n  }\n}\n```"
+      "```js\nclass ErrorBoundary extends React.Component {\n  constructor(props) {\n    super(props)\n    this.state = { hasError: false }\n  }\n\n  // Use componentDidCatch to log the error\n  componentDidCatch(error, info) {\n    // You can also log the error to an error reporting service\n    logErrorToMyService(error, info)\n  }\n\n  // use getDerivedStateFromError to update state\n  static getDerivedStateFromError(error) {\n    // Display fallback UI\n    return { hasError: true }\n  }\n\n  render() {\n    if (this.state.hasError) {\n      // You can render any custom fallback UI\n      return <h1>Something went wrong.</h1>\n    }\n    return this.props.children\n  }\n}\n```"
     ]
   },
   {
