@@ -29,12 +29,6 @@ Interviews are daunting and can make even the most seasoned expert forget things
 
 <br>
 
-## Our sponsors
-
-<a href="https://www.digitalocean.com/"><img src="digitalocean.png" alt="DigitalOcean logo"></a>
-
-<br>
-
 ## Contributing
 
 > 30 seconds of interviews is a community effort, so feel free to contribute in any way you can. Every contribution helps!
@@ -224,6 +218,31 @@ Join our [Gitter channel](https://gitter.im/30-seconds-of-interviews/Lobby) to h
 ---
 
 ## JavaScript
+### What is a stateless component?
+
+<details>
+<summary>View answer</summary>
+
+A stateless component is a component whose behavior does not depend on its state. Stateless components can be either functional or class components. Stateless functional components are easier to maintain and test since they are guaranteed to produce the same output given the same props. Stateless functional components should be preferred when lifecycle hooks don't need to be used.
+
+
+#### Good to hear
+
+
+* Stateless components are independent of their state.
+* Stateless components can be either class or functional components.
+* Stateless functional components avoid the `this` keyword altogether.
+
+
+##### Additional Links
+
+
+* [React docs on State and Lifecycle](https://reactjs.org/docs/state-and-lifecycle.html)
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 ### What is the difference between the equality operators `==` and `===`?
 
 <details>
@@ -282,72 +301,6 @@ const domNodeElement = <div />
 
 <br>[⬆ Back to top](#table-of-contents)
 
-### What is the difference between the postfix `i++` and prefix `++i` increment operators?
-
-<details>
-<summary>View answer</summary>
-
-Both increment the variable value by 1. The difference is what they evaluate to.
-
-The postfix increment operator evaluates to the value _before_ it was incremented.
-
-```js
-let i = 0
-i++ // 0
-// i === 1
-```
-
-The prefix increment operator evaluates to the value _after_ it was incremented.
-
-```js
-let i = 0
-++i // 1
-// i === 1
-```
-
-
-#### Good to hear
-
-
-
-
-##### Additional Links
-
-
-
-</details>
-
-<br>[⬆ Back to top](#table-of-contents)
-
-### In which states can a Promise be?
-
-<details>
-<summary>View answer</summary>
-
-A `Promise` is in one of these states:
-
-* pending: initial state, neither fulfilled nor rejected.
-* fulfilled: meaning that the operation completed successfully.
-* rejected: meaning that the operation failed.
-
-A pending promise can either be fulfilled with a value, or rejected with a reason (error).
-When either of these options happens, the associated handlers queued up by a promise's then method are called.
-
-
-#### Good to hear
-
-
-
-
-##### Additional Links
-
-
-* [Official Web Docs Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)
-
-</details>
-
-<br>[⬆ Back to top](#table-of-contents)
-
 ### What is a stateful component in React?
 
 <details>
@@ -392,26 +345,67 @@ function App() {
 
 <br>[⬆ Back to top](#table-of-contents)
 
-### What is a stateless component?
+### In which states can a Promise be?
 
 <details>
 <summary>View answer</summary>
 
-A stateless component is a component whose behavior does not depend on its state. Stateless components can be either functional or class components. Stateless functional components are easier to maintain and test since they are guaranteed to produce the same output given the same props. Stateless functional components should be preferred when lifecycle hooks don't need to be used.
+A `Promise` is in one of these states:
+
+* pending: initial state, neither fulfilled nor rejected.
+* fulfilled: meaning that the operation completed successfully.
+* rejected: meaning that the operation failed.
+
+A pending promise can either be fulfilled with a value, or rejected with a reason (error).
+When either of these options happens, the associated handlers queued up by a promise's then method are called.
 
 
 #### Good to hear
 
 
-* Stateless components are independent of their state.
-* Stateless components can be either class or functional components.
-* Stateless functional components avoid the `this` keyword altogether.
 
 
 ##### Additional Links
 
 
-* [React docs on State and Lifecycle](https://reactjs.org/docs/state-and-lifecycle.html)
+* [Official Web Docs Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+### What is the difference between the postfix `i++` and prefix `++i` increment operators?
+
+<details>
+<summary>View answer</summary>
+
+Both increment the variable value by 1. The difference is what they evaluate to.
+
+The postfix increment operator evaluates to the value _before_ it was incremented.
+
+```js
+let i = 0
+i++ // 0
+// i === 1
+```
+
+The prefix increment operator evaluates to the value _after_ it was incremented.
+
+```js
+let i = 0
+++i // 1
+// i === 1
+```
+
+
+#### Good to hear
+
+
+
+
+##### Additional Links
+
+
 
 </details>
 
@@ -481,24 +475,18 @@ const batches = (recipe, available) =>
 
 <br>[⬆ Back to top](#table-of-contents)
 
-### Create a standalone function `bind` that is functionally equivalent to the method `Function.prototype.bind`.
+### What does the following code evaluate to?
 
 ```js
-function example() {
-  console.log(this)
-}
-const boundExample = bind(example, { a: true })
-boundExample.call({ b: true }) // logs { a: true }
+typeof typeof 0
 ```
 
 <details>
 <summary>View answer</summary>
 
-Return a function that accepts an arbitrary number of arguments by gathering them with the rest `...` operator. From that function, return the result of calling the `fn` with `Function.prototype.apply` to apply the context and the array of arguments to the function.
+It evaluates to `"string"`.
 
-```js
-const bind = (fn, context) => (...args) => fn.apply(context, args)
-```
+`typeof 0` evaluates to the string `"number"` and therefore `typeof "number"` evaluates to `"string"`.
 
 
 #### Good to hear
@@ -509,82 +497,7 @@ const bind = (fn, context) => (...args) => fn.apply(context, args)
 ##### Additional Links
 
 
-
-</details>
-
-<br>[⬆ Back to top](#table-of-contents)
-
-### What is the purpose of callback function as an argument of `setState`?
-
-<details>
-<summary>View answer</summary>
-
-The callback function is invoked when `setState` has finished and the component gets rendered. Since `setState` is asynchronous, the callback function is used for any post action.
-
-```js
-setState({ name: "sudheer" }, () => {
-  console.log("The name has updated and component re-rendered")
-})
-```
-
-
-#### Good to hear
-
-
-* The callback function is invoked after `setState` finishes and is used for any post action.
-* It is recommended to use lifecycle method rather this callback function.
-
-
-##### Additional Links
-
-
-* [React docs on `setState`](https://reactjs.org/docs/react-component.html#setstate)
-
-</details>
-
-<br>[⬆ Back to top](#table-of-contents)
-
-### What is a callback? Can you show an example using one?
-
-<details>
-<summary>View answer</summary>
-
-Callbacks are functions passed as an argument to another function to be executed once an event has occurred or a certain task is complete, often used in asynchronous code. Callback functions are invoked later by a piece of code but can be declared on initialization without being invoked.
-
-As an example, event listeners are asynchronous callbacks that are only executed when a specific event occurs.
-
-```js
-function onClick() {
-  console.log("The user clicked on the page.")
-}
-document.addEventListener("click", onClick)
-```
-
-However, callbacks can also be synchronous. The following `map` function takes a callback function that is invoked synchronously for each iteration of the loop (array element).
-
-```js
-const map = (arr, callback) => {
-  const result = []
-  for (let i = 0; i < arr.length; i++) {
-    result.push(callback(arr[i], i))
-  }
-  return result
-}
-map([1, 2, 3, 4, 5], n => n * 2) // [2, 4, 6, 8, 10]
-```
-
-
-#### Good to hear
-
-
-* Functions are first-class objects in JavaScript
-* Callbacks vs Promises
-
-
-##### Additional Links
-
-
-* [MDN docs for callbacks](https://developer.mozilla.org/en-US/docs/Glossary/Callback_function)
+* [MDN docs for typeof](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/typeof)
 
 </details>
 
@@ -624,6 +537,33 @@ Other alternatives include:
 
 * [MDN docs for Object.assign()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign)
 * [Clone an object in vanilla JS](http://voidcanvas.com/clone-an-object-in-vanilla-js-in-depth/)
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+### What is the difference between synchronous and asynchronous code in JavaScript?
+
+<details>
+<summary>View answer</summary>
+
+Synchronous means each operation must wait for the previous one to complete.
+
+Asynchronous means an operation can occur while another operation is still being processed.
+
+In JavaScript, all code is synchronous due to the single-threaded nature of it. However, asynchronous operations not part of the program (such as `XMLHttpRequest` or `setTimeout`) are processed outside of the main thread because they are controlled by native code (browser APIs), but callbacks part of the program will still be executed synchronously.
+
+
+#### Good to hear
+
+
+* JavaScript has a concurrency model based on an "event loop".
+* Functions like `alert` block the main thread so that no user input is registered until the user closes it.
+
+
+##### Additional Links
+
+
 
 </details>
 
@@ -702,6 +642,36 @@ function isDeepEqual(obj1, obj2, testPrototypes = false) {
 
 <br>[⬆ Back to top](#table-of-contents)
 
+### What is a cross-site scripting attack (XSS) and how do you prevent it?
+
+<details>
+<summary>View answer</summary>
+
+XSS refers to client-side code injection where the attacker injects malicious scripts into a legitimate website or web application. This is often achieved when the application does not validate user input and freely injects dynamic HTML content.
+
+For example, a comment system will be at risk if it does not validate or escape user input. If the comment contains unescaped HTML, the comment can inject a `<script>` tag into the website that other users will execute against their knowledge.
+
+* The malicious script has access to cookies which are often used to store session tokens. If an attacker can obtain a user’s session cookie, they can impersonate the user.
+* The script can arbitrarily manipulate the DOM of the page the script is executing in, allowing the attacker to insert pieces of content that appear to be a real part of the website.
+* The script can use AJAX to send HTTP requests with arbitrary content to arbitrary destinations.
+
+
+#### Good to hear
+
+
+* On the client, using `textContent` instead of `innerHTML` prevents the browser from running the string through the HTML parser which would execute scripts in it.
+* On the server, escaping HTML tags will prevent the browser from parsing the user input as actual HTML and therefore won't execute the script.
+
+
+##### Additional Links
+
+
+* [Cross-Site Scripting Attack (XSS)](https://www.acunetix.com/websitesecurity/cross-site-scripting/)
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 ### What is CORS?
 
 <details>
@@ -756,6 +726,122 @@ The DOM (Document Object Model) is a cross-platform API that treats HTML and XML
 
 <br>[⬆ Back to top](#table-of-contents)
 
+### Create a standalone function `bind` that is functionally equivalent to the method `Function.prototype.bind`.
+
+```js
+function example() {
+  console.log(this)
+}
+const boundExample = bind(example, { a: true })
+boundExample.call({ b: true }) // logs { a: true }
+```
+
+<details>
+<summary>View answer</summary>
+
+Return a function that accepts an arbitrary number of arguments by gathering them with the rest `...` operator. From that function, return the result of calling the `fn` with `Function.prototype.apply` to apply the context and the array of arguments to the function.
+
+```js
+const bind = (fn, context) => (...args) => fn.apply(context, args)
+```
+
+
+#### Good to hear
+
+
+
+
+##### Additional Links
+
+
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+### What are the differences between `var`, `let`, `const` and no keyword statements?
+
+<details>
+<summary>View answer</summary>
+
+##### No keyword
+
+When no keyword exists before a variable assignment, it is either assigning a global variable if one does not exist, or reassigns an already declared variable. In non-strict mode, if the variable has not yet been declared, it will assign the variable as a property of the global object (`window` in browsers). In strict mode, it will throw an error to prevent unwanted global variables from being created.
+
+##### var
+
+`var` was the default statement to declare a variable until ES2015. It creates a function-scoped variable that can be reassigned and redeclared. However, due to its lack of block scoping, it can cause issues if the variable is being reused in a loop that contains an asynchronous callback because the variable will continue to exist outside of the block scope.
+
+Below, by the time the the `setTimeout` callback executes, the loop has already finished and the `i` variable is `10`, so all ten callbacks reference the same variable available in the function scope.
+
+```js
+for (var i = 0; i < 10; i++) {
+  setTimeout(() => {
+    // logs `10` ten times
+    console.log(i)
+  })
+}
+
+/* Solutions with `var` */
+for (var i = 0; i < 10; i++) {
+  // Passed as an argument will use the value as-is in
+  // that point in time
+  setTimeout(console.log, 0, i)
+}
+
+for (var i = 0; i < 10; i++) {
+  // Create a new function scope that will use the value
+  // as-is in that point in time
+  ;(i => {
+    setTimeout(() => {
+      console.log(i)
+    })
+  })(i)
+}
+```
+
+##### let
+
+`let` was introduced in ES2015 and is the new preferred way to declare variables that will be reassigned later. Trying to redeclare a variable again will throw an error. It is block-scoped so that using it in a loop will keep it scoped to the iteration.
+
+```js
+for (let i = 0; i < 10; i++) {
+  setTimeout(() => {
+    // logs 0, 1, 2, 3, ...
+    console.log(i)
+  })
+}
+```
+
+##### const
+
+`const` was introduced in ES2015 and is the new preferred default way to declare all variables if they won't be reassigned later, even for objects that will be mutated (as long as the reference to the object does not change). It is block-scoped and cannot be reassigned.
+
+```js
+const myObject = {}
+myObject.prop = "hello!" // No error
+myObject = "hello" // Error
+```
+
+
+#### Good to hear
+
+
+* All declarations are hoisted to the top of their scope.
+* However, with `let` and `const` there is a concept called the temporal dead zone (TDZ). While the declarations are still hoisted, there is a period between entering scope and being declared where they cannot be accessed.
+* Show a common issue with using `var` and how `let` can solve it, as well as a solution that keeps `var`.
+* `var` should be avoided whenever possible and prefer `const` as the default declaration statement for all variables unless they will be reassigned later, then use `let` if so.
+
+
+##### Additional Links
+
+
+* [`let` vs `const`](https://wesbos.com/let-vs-const/)
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 ### What is event delegation and why is it useful? Can you show an example of how to use it?
 
 <details>
@@ -799,6 +885,36 @@ document.addEventListener("click", e => {
 
 
 * [Event Delegation](https://davidwalsh.name/event-delegate)
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+### What is the purpose of callback function as an argument of `setState`?
+
+<details>
+<summary>View answer</summary>
+
+The callback function is invoked when `setState` has finished and the component gets rendered. Since `setState` is asynchronous, the callback function is used for any post action.
+
+```js
+setState({ name: "sudheer" }, () => {
+  console.log("The name has updated and component re-rendered")
+})
+```
+
+
+#### Good to hear
+
+
+* The callback function is invoked after `setState` finishes and is used for any post action.
+* It is recommended to use lifecycle method rather this callback function.
+
+
+##### Additional Links
+
+
+* [React docs on `setState`](https://reactjs.org/docs/react-component.html#setstate)
 
 </details>
 
@@ -1022,6 +1138,126 @@ Both methods iterate through the elements of an array. `map()` maps each element
 
 <br>[⬆ Back to top](#table-of-contents)
 
+### What is short-circuit evaluation in JavaScript?
+
+<details>
+<summary>View answer</summary>
+
+Short-circuit evaluation involves logical operations evaluating from left-to-right and stopping early.
+
+```js
+true || false
+```
+
+In the above sample using logical OR, JavaScript won't look at the second operand `false`, because the expression evaluates to `true` regardless. This is known as short-circuit evaluation.
+
+This also works for logical AND.
+
+```js
+false && true
+```
+
+This means you can have an expression that throws an error if evaluated, and it won't cause issues.
+
+```js
+true || nonexistentFunction()
+false && nonexistentFunction()
+```
+
+This remains true for multiple operations because of left-to-right evaluation.
+
+```js
+true || nonexistentFunction() || window.nothing.wouldThrowError
+true || window.nothing.wouldThrowError
+true
+```
+
+A common use case for this behavior is setting default values. If the first operand is falsy the second operand will be evaluated.
+
+```js
+const options = {}
+const setting = options.setting || "default"
+setting // "default"
+```
+
+Another common use case is only evaluating an expression if the first operand is truthy.
+
+```js
+// Instead of:
+addEventListener("click", e => {
+  if (e.target.closest("button")) {
+    handleButtonClick(e)
+  }
+})
+
+// You can take advantage of short-circuit evaluation:
+addEventListener(
+  "click",
+  e => e.target.closest("button") && handleButtonClick(e)
+)
+```
+
+In the above case, if `e.target` is not or does not contain an element matching the `"button"` selector, the function will not be called. This is because the first operand will be falsy, causing the second operand to not be evaluated.
+
+
+#### Good to hear
+
+
+* Logical operations do not produce a boolean unless the operand(s) evaluate to a boolean.
+
+
+##### Additional Links
+
+
+* [JavaScript: What is short-circuit evaluation?](https://codeburst.io/javascript-what-is-short-circuit-evaluation-ff22b2f5608c)
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+### Are semicolons required in JavaScript?
+
+<details>
+<summary>View answer</summary>
+
+Sometimes. Due to JavaScript's automatic semicolon insertion, the interpreter places semicolons after most statements. This means semicolons can be omitted in most cases.
+
+However, there are some cases where they are required. They are not required at the beginning of a block, but are if they follow a line and:
+
+1.  The line starts with `[`
+
+```js
+const previousLine = 3
+;[1, 2, previousLine].map(n => n * 2)
+```
+
+2.  The line starts with `(`
+
+```js
+const previousLine = 3
+;(function() {
+  // ...
+})()
+```
+
+In the above cases, the interpreter does not insert a semicolon after `3`, and therefore it will see the `3` as attempting object property access or being invoked as a function, which will throw errors.
+
+
+#### Good to hear
+
+
+* Semicolons are usually optional in JavaScript but have edge cases where they are required.
+* If you don't use semicolons, tools like Prettier will insert semicolons for you in the places where they are required on save in a text editor to prevent errors.
+
+
+##### Additional Links
+
+
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 ### What will the console log in this example?
 
 ```js
@@ -1198,6 +1434,38 @@ myLibrary.publicMethod() // 2
 
 <br>[⬆ Back to top](#table-of-contents)
 
+### What does the following function return?
+
+```js
+function greet() {
+  return
+  {
+    message: "hello"
+  }
+}
+```
+
+<details>
+<summary>View answer</summary>
+
+Because of JavaScript's automatic semicolon insertion (ASI), the compiler places a semicolon after `return` keyword and therefore it returns `undefined` without an error being thrown.
+
+
+#### Good to hear
+
+
+* Automatic semicolon placement can lead to time-consuming bugs
+
+
+##### Additional Links
+
+
+* [Automatic semicolon insertion in JavaScript](http://2ality.com/2011/05/semicolon-insertion.html)
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 ### What are inline conditional expressions?
 
 <details>
@@ -1347,6 +1615,64 @@ const mask = (str, maskChar = "#") =>
 
 <br>[⬆ Back to top](#table-of-contents)
 
+### What is the output of the following code?
+
+```js
+const a = [1, 2, 3]
+const b = [1, 2, 3]
+const c = "1,2,3"
+
+console.log(a == c)
+console.log(a == b)
+```
+
+<details>
+<summary>View answer</summary>
+
+The first `console.log` outputs `true` because JavaScript's compiler performs type conversion and therefore it compares to strings by their value. On the other hand, the second `console.log` outputs `false` because Arrays are Objects and Objects are compared by reference.
+
+
+#### Good to hear
+
+
+* JavaScript performs automatic type conversion
+* Objects are compared by reference
+* Primitives are compared by value
+
+
+##### Additional Links
+
+
+* [JavaScript Value vs Reference](https://medium.com/dailyjs/back-to-roots-javascript-value-vs-reference-8fb69d587a18)
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+### How does prototypal inheritance differ from classical inheritance?
+
+<details>
+<summary>View answer</summary>
+
+In the classical inheritance paradigm, object instances inherit their properties and functions from a class, which acts as a blueprint for the object. Object instances are typically created using a constructor and the `new` keyword.
+
+In the prototypal inheritance paradigm, object instances inherit directly from other objects and are typically created using factory functions or `Object.create()`.
+
+
+#### Good to hear
+
+
+
+
+##### Additional Links
+
+
+* [MDN docs for inheritance and the prototype chain](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Inheritance_and_the_prototype_chain)
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 ### What is a MIME type and what is it used for?
 
 <details>
@@ -1365,6 +1691,66 @@ const mask = (str, maskChar = "#") =>
 
 
 * [MIME Type MDN](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types)
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+### What are Promises?
+
+<details>
+<summary>View answer</summary>
+
+The `Promise` object represents the eventual completion (or failure) of an asynchronous operation, and its resulting value.
+An example can be the following snippet, which after 100ms prints out the result string to the standard output. Also, note the catch, which can be used for error handling. `Promise`s are chainable.
+
+```js
+new Promise((resolve, reject) => {
+  setTimeout(() => {
+    resolve("result")
+  }, 100)
+})
+  .then(console.log)
+  .catch(console.error)
+```
+
+
+#### Good to hear
+
+
+* Take a look into the other questions regarding `Promise`s!
+
+
+##### Additional Links
+
+
+* [Master the JavaScript Interview: What is a Promise?](https://medium.com/javascript-scene/master-the-javascript-interview-what-is-a-promise-27fc71e772618)
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+### What are JavaScript data types?
+
+<details>
+<summary>View answer</summary>
+
+The latest ECMAScript standard defines seven data types, six of them being primitive: `Boolean`, `Null`, `Undefined`, `Number`, `String`, `Symbol` and one non-primitive data type: `Object`.
+
+
+#### Good to hear
+
+
+* Mention of newly added `Symbol` data type
+* `Array`, `Date` and `function` are all of type `object`
+* Functions in JavaScript are objects with the capability of being callable
+
+
+##### Additional Links
+
+
+* [MDN docs for data types and data structures](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures)
+* [Understanding Data Types in JavaScript](https://www.digitalocean.com/community/tutorials/understanding-data-types-in-javascript)
 
 </details>
 
@@ -1438,6 +1824,52 @@ isTrue(true, callback)
 
 * [The Node.js Way Understanding Error-First Callbacks](http://fredkschott.com/post/2014/03/understanding-error-first-callbacks-in-node-js/)
 * [What are the error conventions?](https://docs.nodejitsu.com/articles/errors/what-are-the-error-conventions)
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+### What is a callback? Can you show an example using one?
+
+<details>
+<summary>View answer</summary>
+
+Callbacks are functions passed as an argument to another function to be executed once an event has occurred or a certain task is complete, often used in asynchronous code. Callback functions are invoked later by a piece of code but can be declared on initialization without being invoked.
+
+As an example, event listeners are asynchronous callbacks that are only executed when a specific event occurs.
+
+```js
+function onClick() {
+  console.log("The user clicked on the page.")
+}
+document.addEventListener("click", onClick)
+```
+
+However, callbacks can also be synchronous. The following `map` function takes a callback function that is invoked synchronously for each iteration of the loop (array element).
+
+```js
+const map = (arr, callback) => {
+  const result = []
+  for (let i = 0; i < arr.length; i++) {
+    result.push(callback(arr[i], i))
+  }
+  return result
+}
+map([1, 2, 3, 4, 5], n => n * 2) // [2, 4, 6, 8, 10]
+```
+
+
+#### Good to hear
+
+
+* Functions are first-class objects in JavaScript
+* Callbacks vs Promises
+
+
+##### Additional Links
+
+
+* [MDN docs for callbacks](https://developer.mozilla.org/en-US/docs/Glossary/Callback_function)
 
 </details>
 
@@ -1644,439 +2076,168 @@ You can use an arrow function to wrap around an event handler and pass arguments
 
 <br>[⬆ Back to top](#table-of-contents)
 
-### What are Promises?
+### What are fragments?
 
 <details>
 <summary>View answer</summary>
 
-The `Promise` object represents the eventual completion (or failure) of an asynchronous operation, and its resulting value.
-An example can be the following snippet, which after 100ms prints out the result string to the standard output. Also, note the catch, which can be used for error handling. `Promise`s are chainable.
+Fragments allow a React component to return multiple elements without a wrapper, by grouping the children without adding extra elements to the DOM. Fragments offer better performance, lower memory usage, a cleaner DOM and can help in dealing with certain CSS mechanisms (e.g. tables, Flexbox and Grid).
 
 ```js
-new Promise((resolve, reject) => {
-  setTimeout(() => {
-    resolve("result")
-  }, 100)
-})
-  .then(console.log)
-  .catch(console.error)
-```
+render() {
+  return (
+    <React.Fragment>
+      <ChildA />
+      <ChildB />
+      <ChildC />
+    </React.Fragment>
+  );
+}
 
-
-#### Good to hear
-
-
-* Take a look into the other questions regarding `Promise`s!
-
-
-##### Additional Links
-
-
-* [Master the JavaScript Interview: What is a Promise?](https://medium.com/javascript-scene/master-the-javascript-interview-what-is-a-promise-27fc71e772618)
-
-</details>
-
-<br>[⬆ Back to top](#table-of-contents)
-
-### How does prototypal inheritance differ from classical inheritance?
-
-<details>
-<summary>View answer</summary>
-
-In the classical inheritance paradigm, object instances inherit their properties and functions from a class, which acts as a blueprint for the object. Object instances are typically created using a constructor and the `new` keyword.
-
-In the prototypal inheritance paradigm, object instances inherit directly from other objects and are typically created using factory functions or `Object.create()`.
-
-
-#### Good to hear
-
-
-
-
-##### Additional Links
-
-
-* [MDN docs for inheritance and the prototype chain](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Inheritance_and_the_prototype_chain)
-
-</details>
-
-<br>[⬆ Back to top](#table-of-contents)
-
-### What is the output of the following code?
-
-```js
-const a = [1, 2, 3]
-const b = [1, 2, 3]
-const c = "1,2,3"
-
-console.log(a == c)
-console.log(a == b)
-```
-
-<details>
-<summary>View answer</summary>
-
-The first `console.log` outputs `true` because JavaScript's compiler performs type conversion and therefore it compares to strings by their value. On the other hand, the second `console.log` outputs `false` because Arrays are Objects and Objects are compared by reference.
-
-
-#### Good to hear
-
-
-* JavaScript performs automatic type conversion
-* Objects are compared by reference
-* Primitives are compared by value
-
-
-##### Additional Links
-
-
-* [JavaScript Value vs Reference](https://medium.com/dailyjs/back-to-roots-javascript-value-vs-reference-8fb69d587a18)
-
-</details>
-
-<br>[⬆ Back to top](#table-of-contents)
-
-### What does the following function return?
-
-```js
-function greet() {
-  return
-  {
-    message: "hello"
-  }
+// Short syntax supported by Babel 7
+render() {
+  return (
+    <>
+      <ChildA />
+      <ChildB />
+      <ChildC />
+    </>
+  );
 }
 ```
 
-<details>
-<summary>View answer</summary>
-
-Because of JavaScript's automatic semicolon insertion (ASI), the compiler places a semicolon after `return` keyword and therefore it returns `undefined` without an error being thrown.
-
 
 #### Good to hear
 
 
-* Automatic semicolon placement can lead to time-consuming bugs
+* Fragments group multiple elements returned from a component, without adding a DOM element around them.
 
 
 ##### Additional Links
 
 
-* [Automatic semicolon insertion in JavaScript](http://2ality.com/2011/05/semicolon-insertion.html)
+* [React docs on Fragments](https://reactjs.org/docs/fragments.html)
 
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
 
-### Are semicolons required in JavaScript?
+### Create a function `pipe` that performs left-to-right function composition by returning a function that accepts one argument.
+
+```js
+const square = v => v * v
+const double = v => v * 2
+const addOne = v => v + 1
+const res = pipe(square, double, addOne)
+res(3) // 19; addOne(double(square(3)))
+```
 
 <details>
 <summary>View answer</summary>
 
-Sometimes. Due to JavaScript's automatic semicolon insertion, the interpreter places semicolons after most statements. This means semicolons can be omitted in most cases.
-
-However, there are some cases where they are required. They are not required at the beginning of a block, but are if they follow a line and:
-
-1.  The line starts with `[`
+Gather all supplied arguments using the rest operator `...` and return a unary function that uses `Array.prototype.reduce()` to run the value through the series of functions before returning the final value.
 
 ```js
-const previousLine = 3
-;[1, 2, previousLine].map(n => n * 2)
+const pipe = (...fns) => x => fns.reduce((v, fn) => fn(v), x)
 ```
-
-2.  The line starts with `(`
-
-```js
-const previousLine = 3
-;(function() {
-  // ...
-})()
-```
-
-In the above cases, the interpreter does not insert a semicolon after `3`, and therefore it will see the `3` as attempting object property access or being invoked as a function, which will throw errors.
 
 
 #### Good to hear
 
 
-* Semicolons are usually optional in JavaScript but have edge cases where they are required.
-* If you don't use semicolons, tools like Prettier will insert semicolons for you in the places where they are required on save in a text editor to prevent errors.
+* Function composition is the process of combining two or more functions to produce a new function.
 
 
 ##### Additional Links
 
 
+* [What is function composition?](https://medium.com/javascript-scene/master-the-javascript-interview-what-is-function-composition-20dfb109a1a0)
 
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
 
-### What is short-circuit evaluation in JavaScript?
+### What is the event loop in Node.js?
 
 <details>
 <summary>View answer</summary>
 
-Short-circuit evaluation involves logical operations evaluating from left-to-right and stopping early.
-
-```js
-true || false
-```
-
-In the above sample using logical OR, JavaScript won't look at the second operand `false`, because the expression evaluates to `true` regardless. This is known as short-circuit evaluation.
-
-This also works for logical AND.
-
-```js
-false && true
-```
-
-This means you can have an expression that throws an error if evaluated, and it won't cause issues.
-
-```js
-true || nonexistentFunction()
-false && nonexistentFunction()
-```
-
-This remains true for multiple operations because of left-to-right evaluation.
-
-```js
-true || nonexistentFunction() || window.nothing.wouldThrowError
-true || window.nothing.wouldThrowError
-true
-```
-
-A common use case for this behavior is setting default values. If the first operand is falsy the second operand will be evaluated.
-
-```js
-const options = {}
-const setting = options.setting || "default"
-setting // "default"
-```
-
-Another common use case is only evaluating an expression if the first operand is truthy.
-
-```js
-// Instead of:
-addEventListener("click", e => {
-  if (e.target.closest("button")) {
-    handleButtonClick(e)
-  }
-})
-
-// You can take advantage of short-circuit evaluation:
-addEventListener(
-  "click",
-  e => e.target.closest("button") && handleButtonClick(e)
-)
-```
-
-In the above case, if `e.target` is not or does not contain an element matching the `"button"` selector, the function will not be called. This is because the first operand will be falsy, causing the second operand to not be evaluated.
+The event loop handles all async callbacks. Callbacks are queued in a loop, while other code runs, and will run one by one when the response for each one has been received.
 
 
 #### Good to hear
 
 
-* Logical operations do not produce a boolean unless the operand(s) evaluate to a boolean.
+* The event loop allows Node.js to perform non-blocking I/O operations, despite the fact that JavaScript is single-threaded
 
 
 ##### Additional Links
 
 
-* [JavaScript: What is short-circuit evaluation?](https://codeburst.io/javascript-what-is-short-circuit-evaluation-ff22b2f5608c)
+* [Node.js docs on event loop, timers and process.nextTick()](https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick/)
 
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
 
-### What is the difference between synchronous and asynchronous code in JavaScript?
+### What is the only value not equal to itself in JavaScript?
 
 <details>
 <summary>View answer</summary>
 
-Synchronous means each operation must wait for the previous one to complete.
-
-Asynchronous means an operation can occur while another operation is still being processed.
-
-In JavaScript, all code is synchronous due to the single-threaded nature of it. However, asynchronous operations not part of the program (such as `XMLHttpRequest` or `setTimeout`) are processed outside of the main thread because they are controlled by native code (browser APIs), but callbacks part of the program will still be executed synchronously.
+`NaN` (Not-a-Number) is the only value not equal to itself when comparing with any of the comparison operators. `NaN` is often the result of meaningless math computations, so two `NaN` values make no sense to be considered equal.
 
 
 #### Good to hear
 
 
-* JavaScript has a concurrency model based on an "event loop".
-* Functions like `alert` block the main thread so that no user input is registered until the user closes it.
+* The difference between `isNaN()` and `Number.isNaN()`
+* `const isNaN = x => x !== x`
 
 
 ##### Additional Links
 
 
+* [MDN docs for `NaN`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NaN)
 
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
 
-### What does the following code evaluate to?
-
-```js
-typeof typeof 0
-```
+### Contrast mutable and immutable values, and mutating vs non-mutating methods.
 
 <details>
 <summary>View answer</summary>
 
-It evaluates to `"string"`.
+The two terms can be contrasted as:
 
-`typeof 0` evaluates to the string `"number"` and therefore `typeof "number"` evaluates to `"string"`.
+* Mutable: subject to change
+* Immutable: cannot change
 
+In JavaScript, objects are mutable while primitive values are immutable. This means operations performed on objects can change the original reference in some way, while operations performed on a primitive value cannot change the original value.
 
-#### Good to hear
-
-
-
-
-##### Additional Links
-
-
-* [MDN docs for typeof](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/typeof)
-
-</details>
-
-<br>[⬆ Back to top](#table-of-contents)
-
-### What are JavaScript data types?
-
-<details>
-<summary>View answer</summary>
-
-The latest ECMAScript standard defines seven data types, six of them being primitive: `Boolean`, `Null`, `Undefined`, `Number`, `String`, `Symbol` and one non-primitive data type: `Object`.
-
-
-#### Good to hear
-
-
-* Mention of newly added `Symbol` data type
-* `Array`, `Date` and `function` are all of type `object`
-* Functions in JavaScript are objects with the capability of being callable
-
-
-##### Additional Links
-
-
-* [MDN docs for data types and data structures](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures)
-* [Understanding Data Types in JavaScript](https://www.digitalocean.com/community/tutorials/understanding-data-types-in-javascript)
-
-</details>
-
-<br>[⬆ Back to top](#table-of-contents)
-
-### What are the differences between `var`, `let`, `const` and no keyword statements?
-
-<details>
-<summary>View answer</summary>
-
-##### No keyword
-
-When no keyword exists before a variable assignment, it is either assigning a global variable if one does not exist, or reassigns an already declared variable. In non-strict mode, if the variable has not yet been declared, it will assign the variable as a property of the global object (`window` in browsers). In strict mode, it will throw an error to prevent unwanted global variables from being created.
-
-##### var
-
-`var` was the default statement to declare a variable until ES2015. It creates a function-scoped variable that can be reassigned and redeclared. However, due to its lack of block scoping, it can cause issues if the variable is being reused in a loop that contains an asynchronous callback because the variable will continue to exist outside of the block scope.
-
-Below, by the time the the `setTimeout` callback executes, the loop has already finished and the `i` variable is `10`, so all ten callbacks reference the same variable available in the function scope.
+All `String.prototype` methods do not have an effect on the original string and return a new string. On the other hand, while some methods of `Array.prototype` do not mutate the original array reference and produce a fresh array, some cause mutations.
 
 ```js
-for (var i = 0; i < 10; i++) {
-  setTimeout(() => {
-    // logs `10` ten times
-    console.log(i)
-  })
-}
+const myString = "hello!"
+myString.replace("!", "") // returns a new string, cannot mutate the original value
 
-/* Solutions with `var` */
-for (var i = 0; i < 10; i++) {
-  // Passed as an argument will use the value as-is in
-  // that point in time
-  setTimeout(console.log, 0, i)
-}
-
-for (var i = 0; i < 10; i++) {
-  // Create a new function scope that will use the value
-  // as-is in that point in time
-  ;(i => {
-    setTimeout(() => {
-      console.log(i)
-    })
-  })(i)
-}
-```
-
-##### let
-
-`let` was introduced in ES2015 and is the new preferred way to declare variables that will be reassigned later. Trying to redeclare a variable again will throw an error. It is block-scoped so that using it in a loop will keep it scoped to the iteration.
-
-```js
-for (let i = 0; i < 10; i++) {
-  setTimeout(() => {
-    // logs 0, 1, 2, 3, ...
-    console.log(i)
-  })
-}
-```
-
-##### const
-
-`const` was introduced in ES2015 and is the new preferred default way to declare all variables if they won't be reassigned later, even for objects that will be mutated (as long as the reference to the object does not change). It is block-scoped and cannot be reassigned.
-
-```js
-const myObject = {}
-myObject.prop = "hello!" // No error
-myObject = "hello" // Error
+const originalArray = [1, 2, 3]
+originalArray.push(4) // mutates originalArray, now [1, 2, 3, 4]
+originalArray.concat(4) // returns a new array, does not mutate the original
 ```
 
 
 #### Good to hear
 
 
-* All declarations are hoisted to the top of their scope.
-* However, with `let` and `const` there is a concept called the temporal dead zone (TDZ). While the declarations are still hoisted, there is a period between entering scope and being declared where they cannot be accessed.
-* Show a common issue with using `var` and how `let` can solve it, as well as a solution that keeps `var`.
-* `var` should be avoided whenever possible and prefer `const` as the default declaration statement for all variables unless they will be reassigned later, then use `let` if so.
+* List of mutating and non-mutating array methods
 
 
 ##### Additional Links
 
 
-* [`let` vs `const`](https://wesbos.com/let-vs-const/)
-
-</details>
-
-<br>[⬆ Back to top](#table-of-contents)
-
-### What is a cross-site scripting attack (XSS) and how do you prevent it?
-
-<details>
-<summary>View answer</summary>
-
-XSS refers to client-side code injection where the attacker injects malicious scripts into a legitimate website or web application. This is often achieved when the application does not validate user input and freely injects dynamic HTML content.
-
-For example, a comment system will be at risk if it does not validate or escape user input. If the comment contains unescaped HTML, the comment can inject a `<script>` tag into the website that other users will execute against their knowledge.
-
-* The malicious script has access to cookies which are often used to store session tokens. If an attacker can obtain a user’s session cookie, they can impersonate the user.
-* The script can arbitrarily manipulate the DOM of the page the script is executing in, allowing the attacker to insert pieces of content that appear to be a real part of the website.
-* The script can use AJAX to send HTTP requests with arbitrary content to arbitrary destinations.
-
-
-#### Good to hear
-
-
-* On the client, using `textContent` instead of `innerHTML` prevents the browser from running the string through the HTML parser which would execute scripts in it.
-* On the server, escaping HTML tags will prevent the browser from parsing the user input as actual HTML and therefore won't execute the script.
-
-
-##### Additional Links
-
-
-* [Cross-Site Scripting Attack (XSS)](https://www.acunetix.com/websitesecurity/cross-site-scripting/)
+* [Mutating vs non-mutating array methods](https://lorenstewart.me/2017/01/22/javascript-array-methods-mutating-vs-non-mutating/)
 
 </details>
 
@@ -2185,635 +2346,6 @@ The execution time rises extremely fast with even just 1 addition to the array.
 
 <br>[⬆ Back to top](#table-of-contents)
 
-### How can you avoid callback hells?
-
-```js
-getData(function(a) {
-  getMoreData(a, function(b) {
-    getMoreData(b, function(c) {
-      getMoreData(c, function(d) {
-        getMoreData(d, function(e) {
-          // ...
-        })
-      })
-    })
-  })
-})
-```
-
-<details>
-<summary>View answer</summary>
-
-Refactoring the functions to return promises and using `async/await` is usually the best option. Instead of supplying the functions with callbacks that cause deep nesting, they return a promise that can be `await`ed and will be resolved once the data has arrived, allowing the next line of code to be evaluated in a sync-like fashion.
-
-The above code can be restructured like so:
-
-```js
-async function asyncAwaitVersion() {
-  const a = await getData()
-  const b = await getMoreData(a)
-  const c = await getMoreData(b)
-  const d = await getMoreData(c)
-  const e = await getMoreData(d)
-  // ...
-}
-```
-
-There are lots of ways to solve the issue of callback hells:
-
-* Modularization: break callbacks into independent functions
-* Use a control flow library, like async
-* Use generators with Promises
-* Use async/await (from v7 on)
-
-
-#### Good to hear
-
-
-* As an efficient JavaScript developer, you have to avoid the constantly growing indentation level, produce clean and readable code and be able to handle complex flows.
-
-
-##### Additional Links
-
-
-* [Avoiding Callback Hell in Node.js](http://stackabuse.com/avoiding-callback-hell-in-node-js/)
-* [Asynchronous JavaScript: From Callback Hell to Async and Await](https://blog.hellojs.org/asynchronous-javascript-from-callback-hell-to-async-and-await-9b9ceb63c8e8)
-
-</details>
-
-<br>[⬆ Back to top](#table-of-contents)
-
-### Which is the preferred option between callback refs and findDOMNode()?
-
-<details>
-<summary>View answer</summary>
-
-Callback refs are preferred over the `findDOMNode()` API, due to the fact that `findDOMNode()` prevents certain improvements in React in the future.
-
-```js
-// Legacy approach using findDOMNode()
-class MyComponent extends Component {
-  componentDidMount() {
-    findDOMNode(this).scrollIntoView()
-  }
-
-  render() {
-    return <div />
-  }
-}
-
-// Recommended approach using callback refs
-class MyComponent extends Component {
-  componentDidMount() {
-    this.node.scrollIntoView()
-  }
-
-  render() {
-    return <div ref={node => (this.node = node)} />
-  }
-}
-```
-
-
-#### Good to hear
-
-
-* Callback refs are preferred over `findDOMNode()`.
-
-
-##### Additional Links
-
-
-* [React docs on Refs and the DOM](https://reactjs.org/docs/refs-and-the-dom.html#exposing-dom-refs-to-parent-components)
-
-</details>
-
-<br>[⬆ Back to top](#table-of-contents)
-
-### What is the `children` prop?
-
-<details>
-<summary>View answer</summary>
-
-`children` is part of the props object passed to components that allows components to be passed as data to other components, providing the ability to compose components cleanly. There are a number of methods available in the React API to work with this prop, such as `React.Children.map`, `React.Children.forEach`, `React.Children.count`, `React.Children.only` and `React.Children.toArray`. A simple usage example of the children prop is as follows:
-
-```js
-function GenericBox({ children }) {
-  return <div className="container">{children}</div>
-}
-
-function App() {
-  return (
-    <GenericBox>
-      <span>Hello</span> <span>World</span>
-    </GenericBox>
-  )
-}
-```
-
-
-#### Good to hear
-
-
-* Children is a prop that allows components to be passed as data to other components.
-* The React API provides methods to work with this prop.
-
-
-##### Additional Links
-
-
-* [React docs on Children](https://reactjs.org/docs/jsx-in-depth.html#children-in-jsx)
-
-</details>
-
-<br>[⬆ Back to top](#table-of-contents)
-
-### What is a closure? Can you give a useful example of one?
-
-<details>
-<summary>View answer</summary>
-
-A closure is a function defined inside another function and has access to its lexical scope even when it is executing outside its lexical scope. The closure has access to variables in three scopes:
-
-* Variables declared in its own scope
-* Variables declared in the scope of the parent function
-* Variables declared in the global scope
-
-In JavaScript, all functions are closures because they have access to the outer scope, but most functions don't utilise the usefulness of closures: the persistence of state. Closures are also sometimes called stateful functions because of this.
-
-In addition, closures are the only way to store private data that can't be accessed from the outside in JavaScript. They are the key to the UMD (Universal Module Definition) pattern, which is frequently used in libraries that only expose a public API but keep the implementation details private, preventing name collisions with other libraries or the user's own code.
-
-
-#### Good to hear
-
-
-* Closures are useful because they let you associate data with a function that operates on that data.
-* A closure can substitute an object with only a single method.
-* Closures can be used to emulate private properties and methods.
-
-
-##### Additional Links
-
-
-* [MDN docs for closures](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures)
-* [What is a closure](https://medium.com/javascript-scene/master-the-javascript-interview-what-is-a-closure-b2f0d2152b36)
-* [I never understood JavaScript closures](https://medium.com/dailyjs/i-never-understood-javascript-closures-9663703368e8)
-
-</details>
-
-<br>[⬆ Back to top](#table-of-contents)
-
-### What is context?
-
-<details>
-<summary>View answer</summary>
-
-Context provides a way to pass data through the component tree without having to pass props down manually at every level. For example, authenticated user, locale preference, UI theme need to be accessed in the application by many components.
-
-```js
-const { Provider, Consumer } = React.createContext(defaultValue)
-```
-
-
-#### Good to hear
-
-
-* Context provides a way to pass data through a tree of React components, without having to manually pass props.
-* Context is designed to share data that is considered _global_ for a tree of React components.
-
-
-##### Additional Links
-
-
-* [React docs on Context](https://reactjs.org/docs/context.html)
-
-</details>
-
-<br>[⬆ Back to top](#table-of-contents)
-
-### What is event-driven programming?
-
-<details>
-<summary>View answer</summary>
-
-Event-driven programming is a paradigm that involves building applications that send and receive events. When the program emits events, the program responds by running any callback functions that are registered to that event and context, passing in associated data to the function. With this pattern, events can be emitted into the wild without throwing errors even if no functions are subscribed to it.
-
-A common example of this is the pattern of elements listening to DOM events such as `click` and `mouseenter`, where a callback function is run when the event occurs.
-
-```js
-document.addEventListener("click", function(event) {
-  // This callback function is run when the user
-  // clicks on the document.
-})
-```
-
-Without the context of the DOM, the pattern may look like this:
-
-```js
-const hub = createEventHub()
-hub.on("message", function(data) {
-  console.log(`${data.username} said ${data.text}`)
-})
-hub.emit("message", {
-  username: "John",
-  text: "Hello?"
-})
-```
-
-With this implementation, `on` is the way to _subscribe_ to an event, while `emit` is the way to _publish_ the event.
-
-
-#### Good to hear
-
-
-* Follows a publish-subscribe pattern.
-* Responds to events that occur by running any callback functions subscribed to the event.
-* Show how to create a simple pub-sub implementation with JavaScript.
-
-
-##### Additional Links
-
-
-* [MDN docs on Events and Handlers](https://developer.mozilla.org/en-US/docs/Web/Guide/Events/Overview_of_Events_and_Handlers)
-* [Understanding Node.js event-driven architecture](https://medium.freecodecamp.org/understanding-node-js-event-driven-architecture-223292fcbc2d)
-
-</details>
-
-<br>[⬆ Back to top](#table-of-contents)
-
-### What are fragments?
-
-<details>
-<summary>View answer</summary>
-
-Fragments allow a React component to return multiple elements without a wrapper, by grouping the children without adding extra elements to the DOM. Fragments offer better performance, lower memory usage, a cleaner DOM and can help in dealing with certain CSS mechanisms (e.g. tables, Flexbox and Grid).
-
-```js
-render() {
-  return (
-    <React.Fragment>
-      <ChildA />
-      <ChildB />
-      <ChildC />
-    </React.Fragment>
-  );
-}
-
-// Short syntax supported by Babel 7
-render() {
-  return (
-    <>
-      <ChildA />
-      <ChildB />
-      <ChildC />
-    </>
-  );
-}
-```
-
-
-#### Good to hear
-
-
-* Fragments group multiple elements returned from a component, without adding a DOM element around them.
-
-
-##### Additional Links
-
-
-* [React docs on Fragments](https://reactjs.org/docs/fragments.html)
-
-</details>
-
-<br>[⬆ Back to top](#table-of-contents)
-
-### What is functional programming?
-
-<details>
-<summary>View answer</summary>
-
-Functional programming is a paradigm in which programs are built in a declarative manner using pure functions that avoid shared state and mutable data. Functions that always return the same value for the same input and don't produce side effects are the pillar of functional programming. Many programmers consider this to be the best approach to software development as it reduces bugs and cognitive load.
-
-
-#### Good to hear
-
-
-* Cleaner, more concise development experience
-* Simple function composition
-* Features of JavaScript that enable functional programming (`.map`, `.reduce` etc.)
-* JavaScript is multi-paradigm programming language (Object-Oriented Programming and Functional Programming live in harmony)
-
-
-##### Additional Links
-
-
-* [Javascript and Functional Programming: An Introduction](https://hackernoon.com/javascript-and-functional-programming-an-introduction-286aa625e26d)
-* [Master the JavaScript Interview: What is Functional Programming?](https://medium.com/javascript-scene/master-the-javascript-interview-what-is-functional-programming-7f218c68b3a0)
-
-</details>
-
-<br>[⬆ Back to top](#table-of-contents)
-
-### Explain the differences between imperative and declarative programming.
-
-<details>
-<summary>View answer</summary>
-
-These two types of programming can roughly be summarized as:
-
-* Imperative: **how** to achieve something
-* Declarative: **what** should be achieved
-
-A common example of declarative programming is CSS. The developer specifies CSS properties that describe what something should look like rather than how to achieve it. The "how" is abstracted away by the browser.
-
-On the other hand, imperative programming involves the steps required to achieve something. In JavaScript, the differences can be contrasted like so:
-
-##### Imperative
-
-```js
-const numbers = [1, 2, 3, 4, 5]
-const numbersDoubled = []
-for (let i = 0; i < numbers.length; i++) {
-  numbersDoubled[i] = numbers[i] * 2
-}
-```
-
-We manually loop over the numbers of the array and assign the new index as the number doubled.
-
-##### Declarative
-
-```js
-const numbers = [1, 2, 3, 4, 5]
-const numbersDoubled = numbers.map(n => n * 2)
-```
-
-We declare that the new array is mapped to a new one where each value is doubled.
-
-
-#### Good to hear
-
-
-* Declarative programming often works with functions and expressions. Imperative programming frequently uses statements and relies on low-level features that cause mutations, while declarative programming has a strong focus on abstraction and purity.
-* Declarative programming is more terse and easier to process at a glance.
-
-
-##### Additional Links
-
-
-* [Declarative vs Imperative Programming](https://codeburst.io/declarative-vs-imperative-programming-a8a7c93d9ad2)
-
-</details>
-
-<br>[⬆ Back to top](#table-of-contents)
-
-### What is memoization?
-
-<details>
-<summary>View answer</summary>
-
-Memoization is the process of caching the output of function calls so that subsequent calls are faster. Calling the function again with the same input will return the cached output without needing to do the calculation again.
-
-A basic implementation in JavaScript looks like this:
-
-```js
-const memoize = fn => {
-  const cache = new Map()
-  return value => {
-    const cachedResult = cache.get(value)
-    if (cachedResult !== undefined) return cachedResult
-    const result = fn(value)
-    cache.set(value, result)
-    return result
-  }
-}
-```
-
-
-#### Good to hear
-
-
-* The above technique returns a unary function even if the function can take multiple arguments.
-* The first function call will be slower than usual because of the overhead created by checking if a cached result exists and setting a result before returning the value.
-* Memoization increases performance on subsequent function calls but still needs to do work on the first call.
-
-
-##### Additional Links
-
-
-* [Implementing memoization in JavaScript](https://www.sitepoint.com/implementing-memoization-in-javascript/)
-
-</details>
-
-<br>[⬆ Back to top](#table-of-contents)
-
-### How do you ensure methods have the correct `this` context in React component classes?
-
-<details>
-<summary>View answer</summary>
-
-In JavaScript classes, the methods are not bound by default. This means that their `this` context can be changed (in the case of an event handler, to the element that is listening to the event) and will not refer to the component instance. To solve this, `Function.prototype.bind()` can be used to enforce the `this` context as the component instance.
-
-```js
-constructor(props) {
-  super(props);
-  this.handleClick = this.handleClick.bind(this);
-}
-
-handleClick() {
-  // Perform some logic
-}
-```
-
-* The `bind` approach can be verbose and requires defining a `constructor`, so the new public class fields syntax is generally preferred:
-
-```js
-handleClick = () => {
-  console.log('this is:', this);
-}
-
-render() {
-  return (
-    <button onClick={this.handleClick}>
-      Click me
-    </button>
-  );
-}
-```
-
-* You can also use an inline arrow function, because lexical `this` (referring to the component instance) is preserved:
-
-```js
-<button onClick={e => this.handleClick(e)}>Click me</button>
-```
-
-Note that extra re-rendering can occur using this technique because a new function reference is created on render, which gets passed down to child components and breaks `shouldComponentUpdate` / `PureComponent` shallow equality checks to prevent unnecessary re-renders. In cases where performance is important, it is preferred to go with `bind` in the constructor, or the public class fields syntax approach, because the function reference remains constant.
-
-
-#### Good to hear
-
-
-* You can either bind methods to the component instance context in the constructor, use public class fields syntax, or use inline arrow functions.
-
-
-##### Additional Links
-
-
-* [React docs on Handling Events](https://reactjs.org/docs/handling-events.html)
-* [React docs on Passing Functions to Components](https://reactjs.org/docs/faq-functions.html#how-do-i-bind-a-function-to-a-component-instance)
-
-</details>
-
-<br>[⬆ Back to top](#table-of-contents)
-
-### Contrast mutable and immutable values, and mutating vs non-mutating methods.
-
-<details>
-<summary>View answer</summary>
-
-The two terms can be contrasted as:
-
-* Mutable: subject to change
-* Immutable: cannot change
-
-In JavaScript, objects are mutable while primitive values are immutable. This means operations performed on objects can change the original reference in some way, while operations performed on a primitive value cannot change the original value.
-
-All `String.prototype` methods do not have an effect on the original string and return a new string. On the other hand, while some methods of `Array.prototype` do not mutate the original array reference and produce a fresh array, some cause mutations.
-
-```js
-const myString = "hello!"
-myString.replace("!", "") // returns a new string, cannot mutate the original value
-
-const originalArray = [1, 2, 3]
-originalArray.push(4) // mutates originalArray, now [1, 2, 3, 4]
-originalArray.concat(4) // returns a new array, does not mutate the original
-```
-
-
-#### Good to hear
-
-
-* List of mutating and non-mutating array methods
-
-
-##### Additional Links
-
-
-* [Mutating vs non-mutating array methods](https://lorenstewart.me/2017/01/22/javascript-array-methods-mutating-vs-non-mutating/)
-
-</details>
-
-<br>[⬆ Back to top](#table-of-contents)
-
-### What is the only value not equal to itself in JavaScript?
-
-<details>
-<summary>View answer</summary>
-
-`NaN` (Not-a-Number) is the only value not equal to itself when comparing with any of the comparison operators. `NaN` is often the result of meaningless math computations, so two `NaN` values make no sense to be considered equal.
-
-
-#### Good to hear
-
-
-* The difference between `isNaN()` and `Number.isNaN()`
-* `const isNaN = x => x !== x`
-
-
-##### Additional Links
-
-
-* [MDN docs for `NaN`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NaN)
-
-</details>
-
-<br>[⬆ Back to top](#table-of-contents)
-
-### What is the event loop in Node.js?
-
-<details>
-<summary>View answer</summary>
-
-The event loop handles all async callbacks. Callbacks are queued in a loop, while other code runs, and will run one by one when the response for each one has been received.
-
-
-#### Good to hear
-
-
-* The event loop allows Node.js to perform non-blocking I/O operations, despite the fact that JavaScript is single-threaded
-
-
-##### Additional Links
-
-
-* [Node.js docs on event loop, timers and process.nextTick()](https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick/)
-
-</details>
-
-<br>[⬆ Back to top](#table-of-contents)
-
-### Create a function `pipe` that performs left-to-right function composition by returning a function that accepts one argument.
-
-```js
-const square = v => v * v
-const double = v => v * 2
-const addOne = v => v + 1
-const res = pipe(square, double, addOne)
-res(3) // 19; addOne(double(square(3)))
-```
-
-<details>
-<summary>View answer</summary>
-
-Gather all supplied arguments using the rest operator `...` and return a unary function that uses `Array.prototype.reduce()` to run the value through the series of functions before returning the final value.
-
-```js
-const pipe = (...fns) => x => fns.reduce((v, fn) => fn(v), x)
-```
-
-
-#### Good to hear
-
-
-* Function composition is the process of combining two or more functions to produce a new function.
-
-
-##### Additional Links
-
-
-* [What is function composition?](https://medium.com/javascript-scene/master-the-javascript-interview-what-is-function-composition-20dfb109a1a0)
-
-</details>
-
-<br>[⬆ Back to top](#table-of-contents)
-
-### What are portals in React?
-
-<details>
-<summary>View answer</summary>
-
-Portal are the recommended way to render children into a DOM node that exists outside the DOM hierarchy of the parent component.
-
-```js
-ReactDOM.createPortal(child, container)
-```
-
-The first argument (`child`) is any renderable React child, such as an element, string, or fragment. The second argument (`container`) is a DOM element.
-
-
-#### Good to hear
-
-
-
-
-##### Additional Links
-
-
-* [React docs on Portals](https://reactjs.org/docs/portals.html)
-
-</details>
-
-<br>[⬆ Back to top](#table-of-contents)
-
 ### What is a pure function?
 
 <details>
@@ -2912,6 +2444,46 @@ In the above example, the base condition is met if `filter()` returns an empty a
 
 <br>[⬆ Back to top](#table-of-contents)
 
+### What is memoization?
+
+<details>
+<summary>View answer</summary>
+
+Memoization is the process of caching the output of function calls so that subsequent calls are faster. Calling the function again with the same input will return the cached output without needing to do the calculation again.
+
+A basic implementation in JavaScript looks like this:
+
+```js
+const memoize = fn => {
+  const cache = new Map()
+  return value => {
+    const cachedResult = cache.get(value)
+    if (cachedResult !== undefined) return cachedResult
+    const result = fn(value)
+    cache.set(value, result)
+    return result
+  }
+}
+```
+
+
+#### Good to hear
+
+
+* The above technique returns a unary function even if the function can take multiple arguments.
+* The first function call will be slower than usual because of the overhead created by checking if a cached result exists and setting a result before returning the value.
+* Memoization increases performance on subsequent function calls but still needs to do work on the first call.
+
+
+##### Additional Links
+
+
+* [Implementing memoization in JavaScript](https://www.sitepoint.com/implementing-memoization-in-javascript/)
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 ### What are refs in React? When should they be used?
 
 <details>
@@ -2958,6 +2530,191 @@ Refs can also be used in functional components with the help of closures.
 
 <br>[⬆ Back to top](#table-of-contents)
 
+### Explain the differences between imperative and declarative programming.
+
+<details>
+<summary>View answer</summary>
+
+These two types of programming can roughly be summarized as:
+
+* Imperative: **how** to achieve something
+* Declarative: **what** should be achieved
+
+A common example of declarative programming is CSS. The developer specifies CSS properties that describe what something should look like rather than how to achieve it. The "how" is abstracted away by the browser.
+
+On the other hand, imperative programming involves the steps required to achieve something. In JavaScript, the differences can be contrasted like so:
+
+##### Imperative
+
+```js
+const numbers = [1, 2, 3, 4, 5]
+const numbersDoubled = []
+for (let i = 0; i < numbers.length; i++) {
+  numbersDoubled[i] = numbers[i] * 2
+}
+```
+
+We manually loop over the numbers of the array and assign the new index as the number doubled.
+
+##### Declarative
+
+```js
+const numbers = [1, 2, 3, 4, 5]
+const numbersDoubled = numbers.map(n => n * 2)
+```
+
+We declare that the new array is mapped to a new one where each value is doubled.
+
+
+#### Good to hear
+
+
+* Declarative programming often works with functions and expressions. Imperative programming frequently uses statements and relies on low-level features that cause mutations, while declarative programming has a strong focus on abstraction and purity.
+* Declarative programming is more terse and easier to process at a glance.
+
+
+##### Additional Links
+
+
+* [Declarative vs Imperative Programming](https://codeburst.io/declarative-vs-imperative-programming-a8a7c93d9ad2)
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+### What is functional programming?
+
+<details>
+<summary>View answer</summary>
+
+Functional programming is a paradigm in which programs are built in a declarative manner using pure functions that avoid shared state and mutable data. Functions that always return the same value for the same input and don't produce side effects are the pillar of functional programming. Many programmers consider this to be the best approach to software development as it reduces bugs and cognitive load.
+
+
+#### Good to hear
+
+
+* Cleaner, more concise development experience
+* Simple function composition
+* Features of JavaScript that enable functional programming (`.map`, `.reduce` etc.)
+* JavaScript is multi-paradigm programming language (Object-Oriented Programming and Functional Programming live in harmony)
+
+
+##### Additional Links
+
+
+* [Javascript and Functional Programming: An Introduction](https://hackernoon.com/javascript-and-functional-programming-an-introduction-286aa625e26d)
+* [Master the JavaScript Interview: What is Functional Programming?](https://medium.com/javascript-scene/master-the-javascript-interview-what-is-functional-programming-7f218c68b3a0)
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+### What are portals in React?
+
+<details>
+<summary>View answer</summary>
+
+Portal are the recommended way to render children into a DOM node that exists outside the DOM hierarchy of the parent component.
+
+```js
+ReactDOM.createPortal(child, container)
+```
+
+The first argument (`child`) is any renderable React child, such as an element, string, or fragment. The second argument (`container`) is a DOM element.
+
+
+#### Good to hear
+
+
+
+
+##### Additional Links
+
+
+* [React docs on Portals](https://reactjs.org/docs/portals.html)
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+### What is event-driven programming?
+
+<details>
+<summary>View answer</summary>
+
+Event-driven programming is a paradigm that involves building applications that send and receive events. When the program emits events, the program responds by running any callback functions that are registered to that event and context, passing in associated data to the function. With this pattern, events can be emitted into the wild without throwing errors even if no functions are subscribed to it.
+
+A common example of this is the pattern of elements listening to DOM events such as `click` and `mouseenter`, where a callback function is run when the event occurs.
+
+```js
+document.addEventListener("click", function(event) {
+  // This callback function is run when the user
+  // clicks on the document.
+})
+```
+
+Without the context of the DOM, the pattern may look like this:
+
+```js
+const hub = createEventHub()
+hub.on("message", function(data) {
+  console.log(`${data.username} said ${data.text}`)
+})
+hub.emit("message", {
+  username: "John",
+  text: "Hello?"
+})
+```
+
+With this implementation, `on` is the way to _subscribe_ to an event, while `emit` is the way to _publish_ the event.
+
+
+#### Good to hear
+
+
+* Follows a publish-subscribe pattern.
+* Responds to events that occur by running any callback functions subscribed to the event.
+* Show how to create a simple pub-sub implementation with JavaScript.
+
+
+##### Additional Links
+
+
+* [MDN docs on Events and Handlers](https://developer.mozilla.org/en-US/docs/Web/Guide/Events/Overview_of_Events_and_Handlers)
+* [Understanding Node.js event-driven architecture](https://medium.freecodecamp.org/understanding-node-js-event-driven-architecture-223292fcbc2d)
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+### What is context?
+
+<details>
+<summary>View answer</summary>
+
+Context provides a way to pass data through the component tree without having to pass props down manually at every level. For example, authenticated user, locale preference, UI theme need to be accessed in the application by many components.
+
+```js
+const { Provider, Consumer } = React.createContext(defaultValue)
+```
+
+
+#### Good to hear
+
+
+* Context provides a way to pass data through a tree of React components, without having to manually pass props.
+* Context is designed to share data that is considered _global_ for a tree of React components.
+
+
+##### Additional Links
+
+
+* [React docs on Context](https://reactjs.org/docs/context.html)
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 ### Explain the difference between a static method and an instance method.
 
 <details>
@@ -2991,6 +2748,41 @@ Array.push(arr, 4)
 
 
 * [Classes on MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes)
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+### What is a closure? Can you give a useful example of one?
+
+<details>
+<summary>View answer</summary>
+
+A closure is a function defined inside another function and has access to its lexical scope even when it is executing outside its lexical scope. The closure has access to variables in three scopes:
+
+* Variables declared in its own scope
+* Variables declared in the scope of the parent function
+* Variables declared in the global scope
+
+In JavaScript, all functions are closures because they have access to the outer scope, but most functions don't utilise the usefulness of closures: the persistence of state. Closures are also sometimes called stateful functions because of this.
+
+In addition, closures are the only way to store private data that can't be accessed from the outside in JavaScript. They are the key to the UMD (Universal Module Definition) pattern, which is frequently used in libraries that only expose a public API but keep the implementation details private, preventing name collisions with other libraries or the user's own code.
+
+
+#### Good to hear
+
+
+* Closures are useful because they let you associate data with a function that operates on that data.
+* A closure can substitute an object with only a single method.
+* Closures can be used to emulate private properties and methods.
+
+
+##### Additional Links
+
+
+* [MDN docs for closures](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures)
+* [What is a closure](https://medium.com/javascript-scene/master-the-javascript-interview-what-is-a-closure-b2f0d2152b36)
+* [I never understood JavaScript closures](https://medium.com/dailyjs/i-never-understood-javascript-closures-9663703368e8)
 
 </details>
 
@@ -3107,6 +2899,91 @@ obj.doubleArr() // Uncaught TypeError: this.double is not a function
 
 <br>[⬆ Back to top](#table-of-contents)
 
+### What is the `children` prop?
+
+<details>
+<summary>View answer</summary>
+
+`children` is part of the props object passed to components that allows components to be passed as data to other components, providing the ability to compose components cleanly. There are a number of methods available in the React API to work with this prop, such as `React.Children.map`, `React.Children.forEach`, `React.Children.count`, `React.Children.only` and `React.Children.toArray`. A simple usage example of the children prop is as follows:
+
+```js
+function GenericBox({ children }) {
+  return <div className="container">{children}</div>
+}
+
+function App() {
+  return (
+    <GenericBox>
+      <span>Hello</span> <span>World</span>
+    </GenericBox>
+  )
+}
+```
+
+
+#### Good to hear
+
+
+* Children is a prop that allows components to be passed as data to other components.
+* The React API provides methods to work with this prop.
+
+
+##### Additional Links
+
+
+* [React docs on Children](https://reactjs.org/docs/jsx-in-depth.html#children-in-jsx)
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+### Which is the preferred option between callback refs and findDOMNode()?
+
+<details>
+<summary>View answer</summary>
+
+Callback refs are preferred over the `findDOMNode()` API, due to the fact that `findDOMNode()` prevents certain improvements in React in the future.
+
+```js
+// Legacy approach using findDOMNode()
+class MyComponent extends Component {
+  componentDidMount() {
+    findDOMNode(this).scrollIntoView()
+  }
+
+  render() {
+    return <div />
+  }
+}
+
+// Recommended approach using callback refs
+class MyComponent extends Component {
+  componentDidMount() {
+    this.node.scrollIntoView()
+  }
+
+  render() {
+    return <div ref={node => (this.node = node)} />
+  }
+}
+```
+
+
+#### Good to hear
+
+
+* Callback refs are preferred over `findDOMNode()`.
+
+
+##### Additional Links
+
+
+* [React docs on Refs and the DOM](https://reactjs.org/docs/refs-and-the-dom.html#exposing-dom-refs-to-parent-components)
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 ### What is the purpose of JavaScript UI libraries/frameworks like React, Vue, Angular, Hyperapp, etc?
 
 <details>
@@ -3161,6 +3038,64 @@ Including `'use strict'` at the beginning of your JavaScript source file enables
 
 
 * [MDN docs for strict mode](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode)
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+### How can you avoid callback hells?
+
+```js
+getData(function(a) {
+  getMoreData(a, function(b) {
+    getMoreData(b, function(c) {
+      getMoreData(c, function(d) {
+        getMoreData(d, function(e) {
+          // ...
+        })
+      })
+    })
+  })
+})
+```
+
+<details>
+<summary>View answer</summary>
+
+Refactoring the functions to return promises and using `async/await` is usually the best option. Instead of supplying the functions with callbacks that cause deep nesting, they return a promise that can be `await`ed and will be resolved once the data has arrived, allowing the next line of code to be evaluated in a sync-like fashion.
+
+The above code can be restructured like so:
+
+```js
+async function asyncAwaitVersion() {
+  const a = await getData()
+  const b = await getMoreData(a)
+  const c = await getMoreData(b)
+  const d = await getMoreData(c)
+  const e = await getMoreData(d)
+  // ...
+}
+```
+
+There are lots of ways to solve the issue of callback hells:
+
+* Modularization: break callbacks into independent functions
+* Use a control flow library, like async
+* Use generators with Promises
+* Use async/await (from v7 on)
+
+
+#### Good to hear
+
+
+* As an efficient JavaScript developer, you have to avoid the constantly growing indentation level, produce clean and readable code and be able to handle complex flows.
+
+
+##### Additional Links
+
+
+* [Avoiding Callback Hell in Node.js](http://stackabuse.com/avoiding-callback-hell-in-node-js/)
+* [Asynchronous JavaScript: From Callback Hell to Async and Await](https://blog.hellojs.org/asynchronous-javascript-from-callback-hell-to-async-and-await-9b9ceb63c8e8)
 
 </details>
 
@@ -3227,8 +3162,170 @@ Once the changes between the old VDOM and new VDOM have been calculated by the d
 
 <br>[⬆ Back to top](#table-of-contents)
 
+### How do you ensure methods have the correct `this` context in React component classes?
+
+<details>
+<summary>View answer</summary>
+
+In JavaScript classes, the methods are not bound by default. This means that their `this` context can be changed (in the case of an event handler, to the element that is listening to the event) and will not refer to the component instance. To solve this, `Function.prototype.bind()` can be used to enforce the `this` context as the component instance.
+
+```js
+constructor(props) {
+  super(props);
+  this.handleClick = this.handleClick.bind(this);
+}
+
+handleClick() {
+  // Perform some logic
+}
+```
+
+* The `bind` approach can be verbose and requires defining a `constructor`, so the new public class fields syntax is generally preferred:
+
+```js
+handleClick = () => {
+  console.log('this is:', this);
+}
+
+render() {
+  return (
+    <button onClick={this.handleClick}>
+      Click me
+    </button>
+  );
+}
+```
+
+* You can also use an inline arrow function, because lexical `this` (referring to the component instance) is preserved:
+
+```js
+<button onClick={e => this.handleClick(e)}>Click me</button>
+```
+
+Note that extra re-rendering can occur using this technique because a new function reference is created on render, which gets passed down to child components and breaks `shouldComponentUpdate` / `PureComponent` shallow equality checks to prevent unnecessary re-renders. In cases where performance is important, it is preferred to go with `bind` in the constructor, or the public class fields syntax approach, because the function reference remains constant.
+
+
+#### Good to hear
+
+
+* You can either bind methods to the component instance context in the constructor, use public class fields syntax, or use inline arrow functions.
+
+
+##### Additional Links
+
+
+* [React docs on Handling Events](https://reactjs.org/docs/handling-events.html)
+* [React docs on Passing Functions to Components](https://reactjs.org/docs/faq-functions.html#how-do-i-bind-a-function-to-a-component-instance)
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 
 ## React
+### What is a stateless component?
+
+<details>
+<summary>View answer</summary>
+
+A stateless component is a component whose behavior does not depend on its state. Stateless components can be either functional or class components. Stateless functional components are easier to maintain and test since they are guaranteed to produce the same output given the same props. Stateless functional components should be preferred when lifecycle hooks don't need to be used.
+
+
+#### Good to hear
+
+
+* Stateless components are independent of their state.
+* Stateless components can be either class or functional components.
+* Stateless functional components avoid the `this` keyword altogether.
+
+
+##### Additional Links
+
+
+* [React docs on State and Lifecycle](https://reactjs.org/docs/state-and-lifecycle.html)
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+### What is a stateful component in React?
+
+<details>
+<summary>View answer</summary>
+
+A stateful component is a component whose behavior depends on its state. This means that two separate instances of the component if given the same props will not necessarily render the same output, unlike pure function components.
+
+```js
+// Stateful class component
+class App extends Component {
+  constructor(props) {
+    super(props)
+    this.state = { count: 0 }
+  }
+  render() {
+    // ...
+  }
+}
+
+// Stateful function component
+function App() {
+  const [count, setCount] = useState(0)
+  return // ...
+}
+```
+
+
+#### Good to hear
+
+
+* Stateful components have internal state that they depend on.
+* Stateful components are class components or function components that use stateful Hooks.
+* Stateful components have their state initialized in the constructor or with `useState()`.
+
+
+##### Additional Links
+
+
+* [React docs on State and Lifecycle](https://reactjs.org/docs/state-and-lifecycle.html)
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+### How do you write comments inside a JSX tree in React?
+
+<details>
+<summary>View answer</summary>
+
+Comments must be wrapped inside curly braces `{}` and use the `/* */` syntax.
+
+```jsx
+const tree = (
+  <div>
+    {/* Comment */}
+    <p>Text</p>
+  </div>
+)
+```
+
+<!-- tags: (react) -->
+
+<!-- expertise: (0) -->
+
+
+#### Good to hear
+
+
+
+
+##### Additional Links
+
+
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 ### What is the difference between an element and a component in React?
 
 <details>
@@ -3283,104 +3380,76 @@ When several components need to share the same data, then it is recommended to l
 
 <br>[⬆ Back to top](#table-of-contents)
 
-### How do you write comments inside a JSX tree in React?
+### Why does React use `className` instead of `class` like in HTML?
 
 <details>
 <summary>View answer</summary>
 
-Comments must be wrapped inside curly braces `{}` and use the `/* */` syntax.
-
-```jsx
-const tree = (
-  <div>
-    {/* Comment */}
-    <p>Text</p>
-  </div>
-)
-```
-
-<!-- tags: (react) -->
-
-<!-- expertise: (0) -->
-
-
-#### Good to hear
-
-
-
-
-##### Additional Links
-
-
-
-</details>
-
-<br>[⬆ Back to top](#table-of-contents)
-
-### What is a stateful component in React?
-
-<details>
-<summary>View answer</summary>
-
-A stateful component is a component whose behavior depends on its state. This means that two separate instances of the component if given the same props will not necessarily render the same output, unlike pure function components.
+React's philosophy in the beginning was to align with the browser DOM API rather than HTML, since that more closely represents how elements are created. Setting a `class` on an element meant using the `className` API:
 
 ```js
-// Stateful class component
-class App extends Component {
-  constructor(props) {
-    super(props)
-    this.state = { count: 0 }
-  }
-  render() {
-    // ...
-  }
-}
+const element = document.createElement("div")
+element.className = "hello"
+```
 
-// Stateful function component
-function App() {
-  const [count, setCount] = useState(0)
-  return // ...
+Additionally, before ES5, reserved words could not be used in objects:
+
+```js
+const element = {
+  attributes: {
+    class: "hello"
+  }
 }
+```
+
+In IE8, this will throw an error.
+
+In modern environments, destructuring will throw an error if trying to assign to a variable:
+
+```js
+const { class } = this.props // Error
+const { className } = this.props // All good
+const { class: className } = this.props // All good, but cumbersome!
+```
+
+However, `class` _can_ be used as a prop without problems, as seen in other libraries like Preact. React currently allows you to use `class`, but will throw a warning and convert it to `className` under the hood. There is currently an open thread (as of January 2019) discussing changing `className` to `class` to reduce confusion.
+
+
+#### Good to hear
+
+
+
+
+##### Additional Links
+
+
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+### How do you pass an argument to an event handler or callback?
+
+<details>
+<summary>View answer</summary>
+
+You can use an arrow function to wrap around an event handler and pass arguments, which is equivalent to calling `bind`:
+
+```js
+<button onClick={() => this.handleClick(id)} />
+<button onClick={this.handleClick.bind(this, id)} />
 ```
 
 
 #### Good to hear
 
 
-* Stateful components have internal state that they depend on.
-* Stateful components are class components or function components that use stateful Hooks.
-* Stateful components have their state initialized in the constructor or with `useState()`.
 
 
 ##### Additional Links
 
 
-* [React docs on State and Lifecycle](https://reactjs.org/docs/state-and-lifecycle.html)
-
-</details>
-
-<br>[⬆ Back to top](#table-of-contents)
-
-### What is a stateless component?
-
-<details>
-<summary>View answer</summary>
-
-A stateless component is a component whose behavior does not depend on its state. Stateless components can be either functional or class components. Stateless functional components are easier to maintain and test since they are guaranteed to produce the same output given the same props. Stateless functional components should be preferred when lifecycle hooks don't need to be used.
-
-
-#### Good to hear
-
-
-* Stateless components are independent of their state.
-* Stateless components can be either class or functional components.
-* Stateless functional components avoid the `this` keyword altogether.
-
-
-##### Additional Links
-
-
-* [React docs on State and Lifecycle](https://reactjs.org/docs/state-and-lifecycle.html)
+* [React docs on Handling Events](https://reactjs.org/docs/handling-events.html)
 
 </details>
 
@@ -3416,39 +3485,24 @@ setState({ name: "sudheer" }, () => {
 
 <br>[⬆ Back to top](#table-of-contents)
 
-### Why does React use `className` instead of `class` like in HTML?
+### What are the different phases of the component lifecycle in React?
 
 <details>
 <summary>View answer</summary>
 
-React's philosophy in the beginning was to align with the browser DOM API rather than HTML, since that more closely represents how elements are created. Setting a `class` on an element meant using the `className` API:
+There are four different phases of component’s lifecycle:
 
-```js
-const element = document.createElement("div")
-element.className = "hello"
-```
+**Initialization**: In this phase, the component prepares setting up the initial state and default props.
 
-Additionally, before ES5, reserved words could not be used in objects:
+**Mounting**: The react component is ready to mount to the DOM. This phase covers the `getDerivedStateFromProps` and `componentDidMount` lifecycle methods.
 
-```js
-const element = {
-  attributes: {
-    class: "hello"
-  }
-}
-```
+**Updating**: In this phase, the component gets updated in two ways, sending the new props and updating the state. This phase covers the `getDerivedStateFromProps`, `shouldComponentUpdate`, `getSnapshotBeforeUpdate` and `componentDidUpdate` lifecycle methods.
 
-In IE8, this will throw an error.
+**Unmounting**: In this last phase, the component is not needed and gets unmounted from the browser DOM. This phase includes the `componentWillUnmount` lifecycle method.
 
-In modern environments, destructuring will throw an error if trying to assign to a variable:
+**Error Handling**: In this phase, the component is called whenever there's an error during rendering, in a lifecycle method, or in the constructor for any child component. This phase includes the `componentDidCatch` lifecycle method.
 
-```js
-const { class } = this.props // Error
-const { className } = this.props // All good
-const { class: className } = this.props // All good, but cumbersome!
-```
-
-However, `class` _can_ be used as a prop without problems, as seen in other libraries like Preact. React currently allows you to use `class`, but will throw a warning and convert it to `className` under the hood. There is currently an open thread (as of January 2019) discussing changing `className` to `class` to reduce confusion.
+<img alt="lifecycle phases" src="https://pbs.twimg.com/media/DZ-97vzW4AAbcZj.jpg:large" style="width: 100%"/>
 
 
 #### Good to hear
@@ -3569,38 +3623,6 @@ function App({ messages, isVisible }) {
 
 <br>[⬆ Back to top](#table-of-contents)
 
-### What is a key? What are the benefits of using it in lists?
-
-<details>
-<summary>View answer</summary>
-
-Keys are a special string attribute that helps React identify which items have been changed, added or removed. They are used when rendering array elements to give them a stable identity. Each element's key must be unique (e.g. IDs from the data or indexes as a last resort).
-
-```js
-const todoItems = todos.map(todo => <li key={todo.id}>{todo.text}</li>)
-```
-
-* Using indexes as keys is not recommended if the order of items may change, as it might negatively impact performance and may cause issues with component state.
-* If you extract list items as a separate component then apply keys on the list component instead of the `<li>` tag.
-
-
-#### Good to hear
-
-
-* Keys give elements in a collection a stable identity and help React identify changes.
-* You should avoid using indexes as keys if the order of items may change.
-* You should lift the key up to the component, instead of the `<li>` element, if you extract list items as components.
-
-
-##### Additional Links
-
-
-* [React docs on Lists and Keys](https://reactjs.org/docs/lists-and-keys.html)
-
-</details>
-
-<br>[⬆ Back to top](#table-of-contents)
-
 ### What are the lifecycle methods in React?
 
 <details>
@@ -3634,61 +3656,33 @@ const todoItems = todos.map(todo => <li key={todo.id}>{todo.text}</li>)
 
 <br>[⬆ Back to top](#table-of-contents)
 
-### What are the different phases of the component lifecycle in React?
+### What is a key? What are the benefits of using it in lists?
 
 <details>
 <summary>View answer</summary>
 
-There are four different phases of component’s lifecycle:
-
-**Initialization**: In this phase, the component prepares setting up the initial state and default props.
-
-**Mounting**: The react component is ready to mount to the DOM. This phase covers the `getDerivedStateFromProps` and `componentDidMount` lifecycle methods.
-
-**Updating**: In this phase, the component gets updated in two ways, sending the new props and updating the state. This phase covers the `getDerivedStateFromProps`, `shouldComponentUpdate`, `getSnapshotBeforeUpdate` and `componentDidUpdate` lifecycle methods.
-
-**Unmounting**: In this last phase, the component is not needed and gets unmounted from the browser DOM. This phase includes the `componentWillUnmount` lifecycle method.
-
-**Error Handling**: In this phase, the component is called whenever there's an error during rendering, in a lifecycle method, or in the constructor for any child component. This phase includes the `componentDidCatch` lifecycle method.
-
-<img alt="lifecycle phases" src="https://pbs.twimg.com/media/DZ-97vzW4AAbcZj.jpg:large" style="width: 100%"/>
-
-
-#### Good to hear
-
-
-
-
-##### Additional Links
-
-
-
-</details>
-
-<br>[⬆ Back to top](#table-of-contents)
-
-### How do you pass an argument to an event handler or callback?
-
-<details>
-<summary>View answer</summary>
-
-You can use an arrow function to wrap around an event handler and pass arguments, which is equivalent to calling `bind`:
+Keys are a special string attribute that helps React identify which items have been changed, added or removed. They are used when rendering array elements to give them a stable identity. Each element's key must be unique (e.g. IDs from the data or indexes as a last resort).
 
 ```js
-<button onClick={() => this.handleClick(id)} />
-<button onClick={this.handleClick.bind(this, id)} />
+const todoItems = todos.map(todo => <li key={todo.id}>{todo.text}</li>)
 ```
+
+* Using indexes as keys is not recommended if the order of items may change, as it might negatively impact performance and may cause issues with component state.
+* If you extract list items as a separate component then apply keys on the list component instead of the `<li>` tag.
 
 
 #### Good to hear
 
 
+* Keys give elements in a collection a stable identity and help React identify changes.
+* You should avoid using indexes as keys if the order of items may change.
+* You should lift the key up to the component, instead of the `<li>` element, if you extract list items as components.
 
 
 ##### Additional Links
 
 
-* [React docs on Handling Events](https://reactjs.org/docs/handling-events.html)
+* [React docs on Lists and Keys](https://reactjs.org/docs/lists-and-keys.html)
 
 </details>
 
@@ -3741,119 +3735,6 @@ class MyComponent extends Component {
 
 <br>[⬆ Back to top](#table-of-contents)
 
-### What is the `children` prop?
-
-<details>
-<summary>View answer</summary>
-
-`children` is part of the props object passed to components that allows components to be passed as data to other components, providing the ability to compose components cleanly. There are a number of methods available in the React API to work with this prop, such as `React.Children.map`, `React.Children.forEach`, `React.Children.count`, `React.Children.only` and `React.Children.toArray`. A simple usage example of the children prop is as follows:
-
-```js
-function GenericBox({ children }) {
-  return <div className="container">{children}</div>
-}
-
-function App() {
-  return (
-    <GenericBox>
-      <span>Hello</span> <span>World</span>
-    </GenericBox>
-  )
-}
-```
-
-
-#### Good to hear
-
-
-* Children is a prop that allows components to be passed as data to other components.
-* The React API provides methods to work with this prop.
-
-
-##### Additional Links
-
-
-* [React docs on Children](https://reactjs.org/docs/jsx-in-depth.html#children-in-jsx)
-
-</details>
-
-<br>[⬆ Back to top](#table-of-contents)
-
-### What is context?
-
-<details>
-<summary>View answer</summary>
-
-Context provides a way to pass data through the component tree without having to pass props down manually at every level. For example, authenticated user, locale preference, UI theme need to be accessed in the application by many components.
-
-```js
-const { Provider, Consumer } = React.createContext(defaultValue)
-```
-
-
-#### Good to hear
-
-
-* Context provides a way to pass data through a tree of React components, without having to manually pass props.
-* Context is designed to share data that is considered _global_ for a tree of React components.
-
-
-##### Additional Links
-
-
-* [React docs on Context](https://reactjs.org/docs/context.html)
-
-</details>
-
-<br>[⬆ Back to top](#table-of-contents)
-
-### What are error boundaries in React?
-
-<details>
-<summary>View answer</summary>
-
-Error boundaries are React components that catch JavaScript errors anywhere in their child component tree, log those errors, and display a fallback UI instead of the component tree that crashed.
-
-A class component becomes an error boundary if it defines a new lifecycle method called `componentDidCatch`.
-
-```js
-class ErrorBoundary extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = { hasError: false }
-  }
-
-  componentDidCatch(error, info) {
-    // Display fallback UI
-    this.setState({ hasError: true })
-    // You can also log the error to an error reporting service
-    logErrorToMyService(error, info)
-  }
-
-  render() {
-    if (this.state.hasError) {
-      // You can render any custom fallback UI
-      return <h1>Something went wrong.</h1>
-    }
-    return this.props.children
-  }
-}
-```
-
-
-#### Good to hear
-
-
-
-
-##### Additional Links
-
-
-
-</details>
-
-<br>[⬆ Back to top](#table-of-contents)
-
 ### What are fragments?
 
 <details>
@@ -3895,32 +3776,6 @@ render() {
 
 
 * [React docs on Fragments](https://reactjs.org/docs/fragments.html)
-
-</details>
-
-<br>[⬆ Back to top](#table-of-contents)
-
-### What are higher-order components?
-
-<details>
-<summary>View answer</summary>
-
-A higher-order component (HOC) is a function that takes a component as an argument and returns a new component. It is a pattern that is derived from React’s compositional nature. Higher-order components are like **pure components** because they accept any dynamically provided child component, but they won’t modify or copy any behavior from their input components.
-
-```js
-const EnhancedComponent = higherOrderComponent(WrappedComponent)
-```
-
-
-#### Good to hear
-
-
-* They can be used for state abstraction and manipulation, props manipulation, render high jacking, etc.
-
-
-##### Additional Links
-
-
 
 </details>
 
@@ -3985,18 +3840,38 @@ Note that extra re-rendering can occur using this technique because a new functi
 
 <br>[⬆ Back to top](#table-of-contents)
 
-### What are portals in React?
+### What are error boundaries in React?
 
 <details>
 <summary>View answer</summary>
 
-Portal are the recommended way to render children into a DOM node that exists outside the DOM hierarchy of the parent component.
+Error boundaries are React components that catch JavaScript errors anywhere in their child component tree, log those errors, and display a fallback UI instead of the component tree that crashed.
+
+A class component becomes an error boundary if it defines a new lifecycle method called `componentDidCatch`.
 
 ```js
-ReactDOM.createPortal(child, container)
-```
+class ErrorBoundary extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = { hasError: false }
+  }
 
-The first argument (`child`) is any renderable React child, such as an element, string, or fragment. The second argument (`container`) is a DOM element.
+  componentDidCatch(error, info) {
+    // Display fallback UI
+    this.setState({ hasError: true })
+    // You can also log the error to an error reporting service
+    logErrorToMyService(error, info)
+  }
+
+  render() {
+    if (this.state.hasError) {
+      // You can render any custom fallback UI
+      return <h1>Something went wrong.</h1>
+    }
+    return this.props.children
+  }
+}
+```
 
 
 #### Good to hear
@@ -4007,7 +3882,32 @@ The first argument (`child`) is any renderable React child, such as an element, 
 ##### Additional Links
 
 
-* [React docs on Portals](https://reactjs.org/docs/portals.html)
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+### What are higher-order components?
+
+<details>
+<summary>View answer</summary>
+
+A higher-order component (HOC) is a function that takes a component as an argument and returns a new component. It is a pattern that is derived from React’s compositional nature. Higher-order components are like **pure components** because they accept any dynamically provided child component, but they won’t modify or copy any behavior from their input components.
+
+```js
+const EnhancedComponent = higherOrderComponent(WrappedComponent)
+```
+
+
+#### Good to hear
+
+
+* They can be used for state abstraction and manipulation, props manipulation, render high jacking, etc.
+
+
+##### Additional Links
+
+
 
 </details>
 
@@ -4056,6 +3956,34 @@ class User extends React.Component {
 
 <br>[⬆ Back to top](#table-of-contents)
 
+### What is context?
+
+<details>
+<summary>View answer</summary>
+
+Context provides a way to pass data through the component tree without having to pass props down manually at every level. For example, authenticated user, locale preference, UI theme need to be accessed in the application by many components.
+
+```js
+const { Provider, Consumer } = React.createContext(defaultValue)
+```
+
+
+#### Good to hear
+
+
+* Context provides a way to pass data through a tree of React components, without having to manually pass props.
+* Context is designed to share data that is considered _global_ for a tree of React components.
+
+
+##### Additional Links
+
+
+* [React docs on Context](https://reactjs.org/docs/context.html)
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 ### What are refs in React? When should they be used?
 
 <details>
@@ -4097,6 +4025,72 @@ Refs can also be used in functional components with the help of closures.
 
 
 * [React docs on Refs and the DOM](https://reactjs.org/docs/refs-and-the-dom.html)
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+### What is the `children` prop?
+
+<details>
+<summary>View answer</summary>
+
+`children` is part of the props object passed to components that allows components to be passed as data to other components, providing the ability to compose components cleanly. There are a number of methods available in the React API to work with this prop, such as `React.Children.map`, `React.Children.forEach`, `React.Children.count`, `React.Children.only` and `React.Children.toArray`. A simple usage example of the children prop is as follows:
+
+```js
+function GenericBox({ children }) {
+  return <div className="container">{children}</div>
+}
+
+function App() {
+  return (
+    <GenericBox>
+      <span>Hello</span> <span>World</span>
+    </GenericBox>
+  )
+}
+```
+
+
+#### Good to hear
+
+
+* Children is a prop that allows components to be passed as data to other components.
+* The React API provides methods to work with this prop.
+
+
+##### Additional Links
+
+
+* [React docs on Children](https://reactjs.org/docs/jsx-in-depth.html#children-in-jsx)
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+### What are portals in React?
+
+<details>
+<summary>View answer</summary>
+
+Portal are the recommended way to render children into a DOM node that exists outside the DOM hierarchy of the parent component.
+
+```js
+ReactDOM.createPortal(child, container)
+```
+
+The first argument (`child`) is any renderable React child, such as an element, string, or fragment. The second argument (`container`) is a DOM element.
+
+
+#### Good to hear
+
+
+
+
+##### Additional Links
+
+
+* [React docs on Portals](https://reactjs.org/docs/portals.html)
 
 </details>
 
@@ -4213,6 +4207,31 @@ Yes to both. The W3 documents state that the tags represent the header(`<header>
 
 <br>[⬆ Back to top](#table-of-contents)
 
+### Where and why is the `rel="noopener"` attribute used?
+
+<details>
+<summary>View answer</summary>
+
+The `rel="noopener"` is an attribute used in `<a>` elements (hyperlinks). It prevents pages from having a `window.opener` property, which would otherwise point to the page from where the link was opened and would allow the page opened from the hyperlink to manipulate the page where the hyperlink is.
+
+
+#### Good to hear
+
+
+* `rel="noopener"` is applied to hyperlinks.
+* `rel="noopener"` prevents opened links from manipulating the source page.
+
+
+##### Additional Links
+
+
+* [Open external anchors using rel="noopener"](https://developers.google.com/web/tools/lighthouse/audits/noopener)
+* [About rel="noopener"](https://mathiasbynens.github.io/rel-noopener/)
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 ### What are `defer` and `async` attributes on a `<script>` tag?
 
 <details>
@@ -4247,59 +4266,6 @@ Note: both attributes must only be used if the script has a `src` attribute (i.e
 
 
 * [async vs defer attributes](http://www.growingwiththeweb.com/2014/02/async-vs-defer-attributes.html)
-
-</details>
-
-<br>[⬆ Back to top](#table-of-contents)
-
-### What is the DOM?
-
-<details>
-<summary>View answer</summary>
-
-The DOM (Document Object Model) is a cross-platform API that treats HTML and XML documents as a tree structure consisting of nodes. These nodes (such as elements and text nodes) are objects that can be programmatically manipulated and any visible changes made to them are reflected live in the document. In a browser, this API is available to JavaScript where DOM nodes can be manipulated to change their styles, contents, placement in the document, or interacted with through event listeners.
-
-
-#### Good to hear
-
-
-* The DOM was designed to be independent of any particular programming language, making the structural representation of the document available from a single, consistent API.
-* The DOM is constructed progressively in the browser as a page loads, which is why scripts are often placed at the bottom of a page, in the `<head>` with a `defer` attribute, or inside a `DOMContentLoaded` event listener. Scripts that manipulate DOM nodes should be run after the DOM has been constructed to avoid errors.
-* `document.getElementById()` and `document.querySelector()` are common functions for selecting DOM nodes.
-* Setting the `innerHTML` property to a new value runs the string through the HTML parser, offering an easy way to append dynamic HTML content to a node.
-
-
-##### Additional Links
-
-
-* [MDN docs for DOM](https://developer.mozilla.org/en-US/docs/DOM)
-
-</details>
-
-<br>[⬆ Back to top](#table-of-contents)
-
-### Discuss the differences between an HTML specification and a browser’s implementation thereof.
-
-<details>
-<summary>View answer</summary>
-
-HTML specifications such as `HTML5` define a set of rules that a document must adhere to in order to be “valid” according to that specification. In addition, a specification provides instructions on how a browser must interpret and render such a document.
-
-A browser is said to “support” a specification if it handles valid documents according to the rules of the specification. As of yet, no browser supports all aspects of the `HTML5` specification (although all of the major browser support most of it), and as a result, it is necessary for the developer to confirm whether the aspect they are making use of will be supported by all of the browsers on which they hope to display their content. This is why cross-browser support continues to be a headache for developers, despite the improved specificiations.
-
-
-#### Good to hear
-
-
-* `HTML5` defines some rules to follow for an invalid `HTML5` document (i.e., one that contains syntactical errors)
-* However, invalid documents may contain anything, so it's impossible for the specification to handle all possibilities comprehensively.
-* Thus, many decisions about how to handle malformed documents are left up to the browser.
-
-
-##### Additional Links
-
-
-* [HTML 5.2 WWW Specifications](https://www.w3.org/TR/html52/)
 
 </details>
 
@@ -4382,26 +4348,54 @@ Some of the key differences are:
 
 <br>[⬆ Back to top](#table-of-contents)
 
-### Where and why is the `rel="noopener"` attribute used?
+### What is the DOM?
 
 <details>
 <summary>View answer</summary>
 
-The `rel="noopener"` is an attribute used in `<a>` elements (hyperlinks). It prevents pages from having a `window.opener` property, which would otherwise point to the page from where the link was opened and would allow the page opened from the hyperlink to manipulate the page where the hyperlink is.
+The DOM (Document Object Model) is a cross-platform API that treats HTML and XML documents as a tree structure consisting of nodes. These nodes (such as elements and text nodes) are objects that can be programmatically manipulated and any visible changes made to them are reflected live in the document. In a browser, this API is available to JavaScript where DOM nodes can be manipulated to change their styles, contents, placement in the document, or interacted with through event listeners.
 
 
 #### Good to hear
 
 
-* `rel="noopener"` is applied to hyperlinks.
-* `rel="noopener"` prevents opened links from manipulating the source page.
+* The DOM was designed to be independent of any particular programming language, making the structural representation of the document available from a single, consistent API.
+* The DOM is constructed progressively in the browser as a page loads, which is why scripts are often placed at the bottom of a page, in the `<head>` with a `defer` attribute, or inside a `DOMContentLoaded` event listener. Scripts that manipulate DOM nodes should be run after the DOM has been constructed to avoid errors.
+* `document.getElementById()` and `document.querySelector()` are common functions for selecting DOM nodes.
+* Setting the `innerHTML` property to a new value runs the string through the HTML parser, offering an easy way to append dynamic HTML content to a node.
 
 
 ##### Additional Links
 
 
-* [Open external anchors using rel="noopener"](https://developers.google.com/web/tools/lighthouse/audits/noopener)
-* [About rel="noopener"](https://mathiasbynens.github.io/rel-noopener/)
+* [MDN docs for DOM](https://developer.mozilla.org/en-US/docs/DOM)
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+### Discuss the differences between an HTML specification and a browser’s implementation thereof.
+
+<details>
+<summary>View answer</summary>
+
+HTML specifications such as `HTML5` define a set of rules that a document must adhere to in order to be “valid” according to that specification. In addition, a specification provides instructions on how a browser must interpret and render such a document.
+
+A browser is said to “support” a specification if it handles valid documents according to the rules of the specification. As of yet, no browser supports all aspects of the `HTML5` specification (although all of the major browser support most of it), and as a result, it is necessary for the developer to confirm whether the aspect they are making use of will be supported by all of the browsers on which they hope to display their content. This is why cross-browser support continues to be a headache for developers, despite the improved specificiations.
+
+
+#### Good to hear
+
+
+* `HTML5` defines some rules to follow for an invalid `HTML5` document (i.e., one that contains syntactical errors)
+* However, invalid documents may contain anything, so it's impossible for the specification to handle all possibilities comprehensively.
+* Thus, many decisions about how to handle malformed documents are left up to the browser.
+
+
+##### Additional Links
+
+
+* [HTML 5.2 WWW Specifications](https://www.w3.org/TR/html52/)
 
 </details>
 

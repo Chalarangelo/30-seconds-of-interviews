@@ -30,9 +30,9 @@
     "fs-extra": "^6.0.0",
     "hyperapp": "^1.2.6",
     "markdown-builder": "^0.8.9",
-    "marked": "^0.3.19",
+    "marked": "^0.7.0",
     "modern-normalize": "^0.4.0",
-    "npm": "^6.0.0",
+    "npm": "^6.10.3",
     "prettier-eslint": "^8.8.1",
     "prismjs": "^1.14.0"
   },
@@ -44,7 +44,7 @@
     "eslint-plugin-markdown": "^1.0.0-beta.6",
     "eslint-plugin-react": "^7.8.2",
     "node-sass": "^4.11.0",
-    "parcel-bundler": "^1.10.0",
+    "parcel-bundler": "^1.12.3",
     "prettier-eslint-cli": "^4.7.1"
   }
 }
