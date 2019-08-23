@@ -24,28 +24,28 @@
   "homepage": "https://30secondsofinterviews.org/",
   "dependencies": {
     "babel-preset-stage-3": "^6.24.1",
-    "chalk": "^2.4.1",
-    "feather-icons": "^4.7.3",
-    "focus-visible": "^4.1.4",
-    "fs-extra": "^6.0.0",
-    "hyperapp": "^1.2.6",
-    "markdown-builder": "^0.8.9",
-    "marked": "^0.3.19",
-    "modern-normalize": "^0.4.0",
-    "npm": "^6.0.0",
-    "prettier-eslint": "^8.8.1",
-    "prismjs": "^1.14.0"
+    "chalk": "^2.4.2",
+    "feather-icons": "^4.24.1",
+    "focus-visible": "^5.0.2",
+    "fs-extra": "^8.1.0",
+    "hyperapp": "^2.0.1",
+    "markdown-builder": "^0.9.0",
+    "marked": "^0.7.0",
+    "modern-normalize": "^0.5.0",
+    "npm": "^6.11.2",
+    "prettier-eslint": "^9.0.0",
+    "prismjs": "^1.17.1"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",
-    "eslint": "^4.19.1",
-    "eslint-config-airbnb-base": "^12.1.0",
-    "eslint-config-prettier": "^2.9.0",
-    "eslint-plugin-import": "^2.12.0",
-    "eslint-plugin-markdown": "^1.0.0-beta.6",
-    "eslint-plugin-react": "^7.8.2",
-    "node-sass": "^4.11.0",
-    "parcel-bundler": "^1.8.1",
-    "prettier-eslint-cli": "^4.7.1"
+    "eslint": "^6.2.1",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-config-prettier": "^6.1.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-markdown": "^1.0.0",
+    "eslint-plugin-react": "^7.14.3",
+    "node-sass": "^4.12.0",
+    "parcel-bundler": "^1.12.3",
+    "prettier-eslint-cli": "^5.0.0"
   }
 }

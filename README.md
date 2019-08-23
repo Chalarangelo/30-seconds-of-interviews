@@ -29,12 +29,6 @@ Interviews are daunting and can make even the most seasoned expert forget things
 
 <br>
 
-## Our sponsors
-
-<a href="https://www.digitalocean.com/"><img src="digitalocean.png" alt="DigitalOcean logo"></a>
-
-<br>
-
 ## Contributing
 
 > 30 seconds of interviews is a community effort, so feel free to contribute in any way you can. Every contribution helps!
@@ -3853,7 +3847,7 @@ Note that extra re-rendering can occur using this technique because a new functi
 
 Error boundaries are React components that catch JavaScript errors anywhere in their child component tree, log those errors, and display a fallback UI instead of the component tree that crashed.
 
-A class component becomes an error boundary if it defines a new lifecycle method called `componentDidCatch`.
+Class components become error boundaries if they define either (or both) of the lifecycle methods `static getDerivedStateFromError()` or `componentDidCatch().`
 
 ```js
 class ErrorBoundary extends React.Component {
@@ -3862,12 +3856,18 @@ class ErrorBoundary extends React.Component {
     this.state = { hasError: false }
   }
 
+  // Use componentDidCatch to log the error
   componentDidCatch(error, info) {
-    // Display fallback UI
-    this.setState({ hasError: true })
     // You can also log the error to an error reporting service
     logErrorToMyService(error, info)
   }
+  
+  // use getDerivedStateFromError to update state
+  static getDerivedStateFromError(error) {
+    // Display fallback UI
+     return { hasError: true };
+  }
+
 
   render() {
     if (this.state.hasError) {
@@ -3883,11 +3883,13 @@ class ErrorBoundary extends React.Component {
 #### Good to hear
 
 
+* Error boundaries only catch errors in the components below them in the tree. An error boundary can’t catch an error within itself.
 
 
 ##### Additional Links
 
 
+* https://reactjs.org/docs/error-boundaries.html
 
 </details>
 

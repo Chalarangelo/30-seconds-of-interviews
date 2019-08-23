@@ -516,16 +516,20 @@
   {
     "name": "error-boundaries.md",
     "question": "What are error boundaries in React?",
-    "answer": "Error boundaries are React components that catch JavaScript errors anywhere in their child component tree, log those errors, and display a fallback UI instead of the component tree that crashed.\n\nA class component becomes an error boundary if it defines a new lifecycle method called `componentDidCatch`.\n\n```js\nclass ErrorBoundary extends React.Component {\n  constructor(props) {\n    super(props)\n    this.state = { hasError: false }\n  }\n\n  componentDidCatch(error, info) {\n    // Display fallback UI\n    this.setState({ hasError: true })\n    // You can also log the error to an error reporting service\n    logErrorToMyService(error, info)\n  }\n\n  render() {\n    if (this.state.hasError) {\n      // You can render any custom fallback UI\n      return <h1>Something went wrong.</h1>\n    }\n    return this.props.children\n  }\n}\n```",
-    "goodToHear": [],
-    "links": [],
+    "answer": "Error boundaries are React components that catch JavaScript errors anywhere in their child component tree, log those errors, and display a fallback UI instead of the component tree that crashed.\n\nClass components become error boundaries if they define either (or both) of the lifecycle methods `static getDerivedStateFromError()` or `componentDidCatch().`\n\n```js\nclass ErrorBoundary extends React.Component {\n  constructor(props) {\n    super(props)\n    this.state = { hasError: false }\n  }\n\n  // Use componentDidCatch to log the error\n  componentDidCatch(error, info) {\n    // You can also log the error to an error reporting service\n    logErrorToMyService(error, info)\n  }\n  \n  // use getDerivedStateFromError to update state\n  static getDerivedStateFromError(error) {\n    // Display fallback UI\n     return { hasError: true };\n  }\n\n\n  render() {\n    if (this.state.hasError) {\n      // You can render any custom fallback UI\n      return <h1>Something went wrong.</h1>\n    }\n    return this.props.children\n  }\n}\n```",
+    "goodToHear": [
+      "Error boundaries only catch errors in the components below them in the tree. An error boundary can’t catch an error within itself."
+    ],
+    "links": [
+      "https://reactjs.org/docs/error-boundaries.html"
+    ],
     "tags": [
       "react"
     ],
     "expertise": 2,
     "questionCodeBlocks": [],
     "answerCodeBlocks": [
-      "```js\nclass ErrorBoundary extends React.Component {\n  constructor(props) {\n    super(props)\n    this.state = { hasError: false }\n  }\n\n  componentDidCatch(error, info) {\n    // Display fallback UI\n    this.setState({ hasError: true })\n    // You can also log the error to an error reporting service\n    logErrorToMyService(error, info)\n  }\n\n  render() {\n    if (this.state.hasError) {\n      // You can render any custom fallback UI\n      return <h1>Something went wrong.</h1>\n    }\n    return this.props.children\n  }\n}\n```"
+      "```js\nclass ErrorBoundary extends React.Component {\n  constructor(props) {\n    super(props)\n    this.state = { hasError: false }\n  }\n\n  // Use componentDidCatch to log the error\n  componentDidCatch(error, info) {\n    // You can also log the error to an error reporting service\n    logErrorToMyService(error, info)\n  }\n  \n  // use getDerivedStateFromError to update state\n  static getDerivedStateFromError(error) {\n    // Display fallback UI\n     return { hasError: true };\n  }\n\n\n  render() {\n    if (this.state.hasError) {\n      // You can render any custom fallback UI\n      return <h1>Something went wrong.</h1>\n    }\n    return this.props.children\n  }\n}\n```"
     ]
   },
   {
