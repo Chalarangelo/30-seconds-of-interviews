@@ -4,7 +4,7 @@
 /**
 It accepts two objects as arguments: the first object is the recipe
 for the food, while the second object is the available ingredients.
-Each ingredient's value is number representing how many units there are.
+Each ingredient's value is a number representing how many units there are.
 
 `batches(recipe, available)`
 */
@@ -34,7 +34,7 @@ batches(
 
 #### Answer
 
-We must have all ingredients of the recipe available, and in quantities that are more than or equal to the number of units required. If just one of ingredients is not available or lower than needed, we cannot make a single batch.
+We must have all ingredients of the recipe available, and in quantities that are more than or equal to the number of units required. If just one of the ingredients is not available or lower than needed, we cannot make a single batch.
 
 Use `Object.keys()` to return the ingredients of the recipe as an array, then use `Array.prototype.map()` to map each ingredient to the ratio of available units to the amount required by the recipe. If one of the ingredients required by the recipe is not available at all, the ratio will evaluate to `NaN`, so the logical OR operator can be used to fallback to `0` in this case.
 

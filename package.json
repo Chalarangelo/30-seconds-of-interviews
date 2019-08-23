@@ -37,6 +37,7 @@
     "prismjs": "^1.14.0"
   },
   "devDependencies": {
+    "babel-core": "^6.26.3",
     "eslint": "^4.19.1",
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-config-prettier": "^2.9.0",
