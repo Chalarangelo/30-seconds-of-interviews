@@ -1,0 +1,20 @@
+### Can we modify an attribute's value dynamically for an HTML tag? 
+
+#### Answer
+
+Yes. It is possible by using javascript using 'getElementById' method.
+'<input type=“text” id=“inputField”>
+document.getElementById(“inputField”).attr(“type”, “password”);'
+Here we are changing type from 'text' to 'password'
+
+#### Good to hear
+
+* We can also use jQuery for this purpose using setAttribute() method.
+
+##### Additional links
+
+* [Reference](https://developer.mozilla.org/en-US/docs/Web/API/Element/setAttribute)
+
+<!-- tags: (html) -->
+
+<!-- expertise: (0) -->
