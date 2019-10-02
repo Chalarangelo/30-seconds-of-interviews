@@ -1,0 +1,30 @@
+### // interviewer: what will the following code output?
+'const arr = [10, 12, 15, 21];
+for (var i = 0; i < arr.length; i++) {
+  setTimeout(function() {
+    console.log('Index: ' + i + ', element: ' + arr[i]);
+  }, 3000);
+}'
+
+#### Answer
+
+Index: 4, element: undefined(printed 4 times).
+
+In each iteration, control goes to timeout method and wait for 3000ms to be completed.
+Also value of 'i' will be increased to a count of 4 during last iteration. After the last iteration, the wait cycle of first timeout method call will get resumed.
+Since the current value of 'i' is 4 and it tries to index the 4th element of array it shows undefined exception. (There are only elements present till index 3.)
+Simlarly the remaining 3 wait cycles will be resumed.
+Hence it will logged 4 times with the same exception with index 4.
+
+
+#### Good to hear
+
+* Its because of the Closure property, that setTimeout() is able to access that 'arr' variable.
+
+##### Additional links
+
+https://javascript.info/closure
+
+<!-- tags: (html) -->
+
+<!-- expertise: (0) -->
