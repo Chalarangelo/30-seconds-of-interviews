@@ -4,7 +4,7 @@
 
 The Accessibility Tree is a structure produced by the browser's Accessibility APIs which provides accessibility information to assistive technologies such as screen readers. 
 It runs parallel to the DOM and is similar to the DOM API, but with much fewer nodes, because a lot of that information is only useful for visual presentation. 
-By writing semantic HTML we can take advantage of this process in creating accessible experience for our users.
+By writing semantic HTML we can take advantage of this process in creating an accessible experience for our users.
 
 #### Good to hear
 
