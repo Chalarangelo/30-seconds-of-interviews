@@ -13,6 +13,7 @@ An example using ARIA:
   aria-owns="ex1-grid"
   aria-haspopup="grid"
   id="ex1-combobox">
+  ...
 </div>
 ```
 Credit: W3C's [ARIA 1.1 Combobox with Grid Popup Example](https://w3c.github.io/aria-practices/examples/combobox/aria1.1pattern/grid-combo.html)
