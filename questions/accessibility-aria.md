@@ -2,7 +2,7 @@
 
 #### Answer
 
-ARIA stands for "Accessible Rich Internet Applications". ARIA code is HTML. It provides additional attributes in the development of web applications to offer screen reader users more context about dynamic components, including the component's role, name, and state. It should only be used when an HTML element equivalent is not available or lacks full support. ARIA is semantic, and doesn't actually make your component dynamic.
+ARIA stands for "Accessible Rich Internet Applications", and is a technical specification created by the World Wide Web Consortium (W3C). Better known as WAI-ARIA, it provides additional HTML attributes in the development of web applications to offer people who use assistive technologies (AT) a more robust and interoperable experience with dynamic components. By providing the component's role, name, and state, AT users can better understand how to interact with the component. WAI-ARIA should only be used when an HTML element equivalent is not available or lacks full browser or AT support. WAI-ARIA's semantic markup coupled with JavaScript works to provide an understandable and interactive experience for people who use AT.
 
 An example using ARIA:
 
@@ -13,6 +13,7 @@ An example using ARIA:
   aria-owns="ex1-grid"
   aria-haspopup="grid"
   id="ex1-combobox">
+  <!-- more code here-->
 </div>
 ```
 Credit: W3C's [ARIA 1.1 Combobox with Grid Popup Example](https://w3c.github.io/aria-practices/examples/combobox/aria1.1pattern/grid-combo.html)
@@ -20,9 +21,9 @@ Credit: W3C's [ARIA 1.1 Combobox with Grid Popup Example](https://w3c.github.io/
 #### Good to hear
 
 * Accessible Rich Internet Applications
-* Benefits screen reader users
+* Benefits people who use assistive technologies (AT)
 * Provides role, name, and state
-* Semantic HTML that doesn't produce interaction by itself
+* Semantic HTML coupled with JavaScript
 
 ##### Additional links
 
