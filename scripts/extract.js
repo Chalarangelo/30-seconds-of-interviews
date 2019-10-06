@@ -16,7 +16,7 @@ attempt("questions.json generation", () => {
   const output = Object.entries(readQuestions()).map(([ name, contents ]) => {
     const question = getFirstSection(contents)
     const answer = getSection("#### Answer", contents)
-
+    
     const goodToHear = getSection("#### Good to hear", contents, false)
       .split("\n")
       .map(v => v.replace(/[*-] /g, ""))
