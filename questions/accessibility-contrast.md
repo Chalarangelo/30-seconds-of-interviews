@@ -15,6 +15,6 @@
 * [WebAIM Contrast Checker](https://webaim.org/resources/contrastchecker/)
 * [Contrast Ratio checker](https://contrast-ratio.com/#)
 
-tags: accessibility
+<!-- tags: (accessibility) -->
 
-expertise: 0
+<!-- expertise: (0) -->
