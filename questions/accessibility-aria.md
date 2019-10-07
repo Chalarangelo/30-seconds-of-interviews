@@ -31,6 +31,6 @@ Credit: W3C's [ARIA 1.1 Combobox with Grid Popup Example](https://w3c.github.io/
 * [WAI-ARIA Spec](https://www.w3.org/TR/wai-aria/)
 * [ARIA Serious? Eric Eggert presentation](https://youtu.be/4bH57rWPnYo)
 
-tags: accessibility
+<!-- tags: (accessibility) -->
 
-expertise: 1
+<!-- expertise: (1) -->

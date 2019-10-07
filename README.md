@@ -194,6 +194,18 @@ Join our [Gitter channel](https://gitter.im/30-seconds-of-interviews/Lobby) to h
 </details>
 
 
+### Accessibility
+
+<details>
+<summary>View contents</summary>
+
+* [What is ARIA and when should you use it?](#what-is-aria-and-when-should-you-use-it)
+* [What is the Accessibility Tree?](#what-is-the-accessibility-tree)
+* [What are landmark roles and how can they be useful?](#what-are-landmark-roles-and-how-can-they-be-useful)
+* [What is WCAG? What are the differences between A, AA, and AAA compliance?](#what-is-wcag-what-are-the-differences-between-a-aa-and-aaa-compliance)
+</details>
+
+
 ### Node
 
 <details>
@@ -4796,6 +4808,136 @@ The best solution is an upcoming pseudo-selector `:focus-visible` which can be p
 
 
 * [:focus-visible](https://css-tricks.com/focus-visible-and-backwards-compatibility/)
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
+## Accessibility
+### What is WCAG? What are the differences between A, AA, and AAA compliance?
+
+<details>
+<summary>View answer</summary>
+
+WCAG stands for "Web Content Accessibility Guidelines". It is a standard describing how to make web content more accessible to people with disabilities
+They have 12-13 guidelines and for each one, there are testable success criteria, which are at three levels: A, AA, and AAA. The higher the level, the higher the impact on the design of the web content. The higher the level, the web content is essentially more accessible by more users.
+Depending on where you live/work, there may be regulations requiring websites to meet certain levels of compliance. For instance, in Ontario, Canada, beginning January 1, 2021 all public websites and web content posted after January 1, 2012 must meet AA compliance.
+
+
+#### Good to hear
+
+
+* A guideline for making web content more accessible
+* 3 different levels (A, AA, and AAA) of compliance for each guideline
+* Governments are starting to require web content to meet a certain level of compliance by law
+
+
+##### Additional Links
+
+
+* [Web Content Accessibility Guidelines (WCAG) Overview](https://www.w3.org/WAI/standards-guidelines/wcag/)
+* [How to Meet WCAG](https://www.w3.org/WAI/WCAG21/quickref/)
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+### What is ARIA and when should you use it?
+
+<details>
+<summary>View answer</summary>
+
+ARIA stands for "Accessible Rich Internet Applications", and is a technical specification created by the World Wide Web Consortium (W3C). Better known as WAI-ARIA, it provides additional HTML attributes in the development of web applications to offer people who use assistive technologies (AT) a more robust and interoperable experience with dynamic components. By providing the component's role, name, and state, AT users can better understand how to interact with the component. WAI-ARIA should only be used when an HTML element equivalent is not available or lacks full browser or AT support. WAI-ARIA's semantic markup coupled with JavaScript works to provide an understandable and interactive experience for people who use AT.
+
+An example using ARIA:
+
+```
+<div 
+  role="combobox"
+  aria-expanded="false"
+  aria-owns="ex1-grid"
+  aria-haspopup="grid"
+  id="ex1-combobox">
+  ...
+</div>
+```
+Credit: W3C's [ARIA 1.1 Combobox with Grid Popup Example](https://w3c.github.io/aria-practices/examples/combobox/aria1.1pattern/grid-combo.html)
+
+
+#### Good to hear
+
+
+* Accessible Rich Internet Applications
+* Benefits people who use assistive technologies (AT)
+* Provides role, name, and state
+* Semantic HTML coupled with JavaScript
+
+
+##### Additional Links
+
+
+* [WAI-ARIA Overview](https://www.w3.org/WAI/standards-guidelines/aria/)
+* [WAI-ARIA Spec](https://www.w3.org/TR/wai-aria/)
+* [ARIA Serious? Eric Eggert presentation](https://youtu.be/4bH57rWPnYo)
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+### What is the Accessibility Tree?
+
+<details>
+<summary>View answer</summary>
+
+The Accessibility Tree is a structure produced by the browser's Accessibility APIs which provides accessibility information to assistive technologies such as screen readers. 
+It runs parallel to the DOM and is similar to the DOM API, but with much fewer nodes, because a lot of that information is only useful for visual presentation. 
+By writing semantic HTML we can take advantage of this process in creating an accessible experience for our users.
+
+
+#### Good to hear
+
+
+* Tree structure exposing information to assistive technologies
+* Runs parallel to the DOM
+* Semantic HTML is essential in creating accessible experiences
+
+
+##### Additional Links
+
+
+* [Accessibility APIs](https://www.smashingmagazine.com/2015/03/web-accessibility-with-accessibility-api/)
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+### What are landmark roles and how can they be useful?
+
+<details>
+<summary>View answer</summary>
+
+Landmark roles is a way to identify different sections of a page like the main content or a navigation region. The Landmarks helps assistive technology users to navigate a page, allowing them skip over areas of it.
+
+For example,
+```html
+<div id="header" role="banner">Header of the Page</div>
+<div id="content" role="main">Main Content Goes Here</div>
+```
+
+
+#### Good to hear
+
+
+* Identify sections of a page
+* Assist users in navigating a page
+
+
+##### Additional Links
+
+
+* [ARIA Landmark Roles](https://www.washington.edu/accessibility/web/landmarks/)
+* [Using ARIA landmarks to identify regions of a page](https://www.w3.org/WAI/GL/wiki/Using_ARIA_landmarks_to_identify_regions_of_a_page)
 
 </details>
 

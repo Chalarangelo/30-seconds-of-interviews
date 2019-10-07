@@ -1,5 +1,48 @@
 [
   {
+    "name": "accessibility-aria.md",
+    "question": "What is ARIA and when should you use it?",
+    "answer": "ARIA stands for \"Accessible Rich Internet Applications\", and is a technical specification created by the World Wide Web Consortium (W3C). Better known as WAI-ARIA, it provides additional HTML attributes in the development of web applications to offer people who use assistive technologies (AT) a more robust and interoperable experience with dynamic components. By providing the component's role, name, and state, AT users can better understand how to interact with the component. WAI-ARIA should only be used when an HTML element equivalent is not available or lacks full browser or AT support. WAI-ARIA's semantic markup coupled with JavaScript works to provide an understandable and interactive experience for people who use AT.\n\nAn example using ARIA:\n\n```\n<div \n  role=\"combobox\"\n  aria-expanded=\"false\"\n  aria-owns=\"ex1-grid\"\n  aria-haspopup=\"grid\"\n  id=\"ex1-combobox\">\n  ...\n</div>\n```\nCredit: W3C's [ARIA 1.1 Combobox with Grid Popup Example](https://w3c.github.io/aria-practices/examples/combobox/aria1.1pattern/grid-combo.html)",
+    "goodToHear": [
+      "Accessible Rich Internet Applications",
+      "Benefits people who use assistive technologies (AT)",
+      "Provides role, name, and state",
+      "Semantic HTML coupled with JavaScript"
+    ],
+    "links": [
+      "[WAI-ARIA Overview](https://www.w3.org/WAI/standards-guidelines/aria/)",
+      "[WAI-ARIA Spec](https://www.w3.org/TR/wai-aria/)",
+      "[ARIA Serious? Eric Eggert presentation](https://youtu.be/4bH57rWPnYo)"
+    ],
+    "tags": [
+      "accessibility"
+    ],
+    "expertise": 1,
+    "questionCodeBlocks": [],
+    "answerCodeBlocks": [
+      "```\n<div \n  role=\"combobox\"\n  aria-expanded=\"false\"\n  aria-owns=\"ex1-grid\"\n  aria-haspopup=\"grid\"\n  id=\"ex1-combobox\">\n  ...\n</div>\n```"
+    ]
+  },
+  {
+    "name": "accessibility-tree.md",
+    "question": "What is the Accessibility Tree?",
+    "answer": "The Accessibility Tree is a structure produced by the browser's Accessibility APIs which provides accessibility information to assistive technologies such as screen readers. \nIt runs parallel to the DOM and is similar to the DOM API, but with much fewer nodes, because a lot of that information is only useful for visual presentation. \nBy writing semantic HTML we can take advantage of this process in creating an accessible experience for our users.",
+    "goodToHear": [
+      "Tree structure exposing information to assistive technologies",
+      "Runs parallel to the DOM",
+      "Semantic HTML is essential in creating accessible experiences"
+    ],
+    "links": [
+      "[Accessibility APIs](https://www.smashingmagazine.com/2015/03/web-accessibility-with-accessibility-api/)"
+    ],
+    "tags": [
+      "accessibility"
+    ],
+    "expertise": 1,
+    "questionCodeBlocks": [],
+    "answerCodeBlocks": []
+  },
+  {
     "name": "alt-attribute.md",
     "question": "What is the purpose of the `alt` attribute on images?",
     "answer": "The `alt` attribute provides alternative information for an image if a user cannot view it. The `alt` attribute should be used to describe any images except those which only serve a decorative purpose, in which case it should be left empty.",
@@ -1008,6 +1051,27 @@
     ]
   },
   {
+    "name": "landmark-roles.md",
+    "question": "What are landmark roles and how can they be useful?",
+    "answer": "Landmark roles is a way to identify different sections of a page like the main content or a navigation region. The Landmarks helps assistive technology users to navigate a page, allowing them skip over areas of it.\n\nFor example,\n```html\n<div id=\"header\" role=\"banner\">Header of the Page</div>\n<div id=\"content\" role=\"main\">Main Content Goes Here</div>\n```",
+    "goodToHear": [
+      "Identify sections of a page",
+      "Assist users in navigating a page"
+    ],
+    "links": [
+      "[ARIA Landmark Roles](https://www.washington.edu/accessibility/web/landmarks/)",
+      "[Using ARIA landmarks to identify regions of a page](https://www.w3.org/WAI/GL/wiki/Using_ARIA_landmarks_to_identify_regions_of_a_page)"
+    ],
+    "tags": [
+      "accessibility"
+    ],
+    "expertise": 1,
+    "questionCodeBlocks": [],
+    "answerCodeBlocks": [
+      "```html\n<div id=\"header\" role=\"banner\">Header of the Page</div>\n<div id=\"content\" role=\"main\">Main Content Goes Here</div>\n```"
+    ]
+  },
+  {
     "name": "lexical-vs-dynamic-scoping.md",
     "question": "What is the difference between lexical scoping and dynamic scoping?",
     "answer": "Lexical scoping refers to when the location of a function's definition determines which variables you have access to. On the other hand, dynamic scoping uses the location of the function's invocation to determine which variables are available.",
@@ -1892,6 +1956,26 @@
       "```html\n<div class=\"counter\">\n  <h1>0</h1>\n  <button>-</button>\n  <button>+</button>\n</div>\n```",
       "```js\n{\n  nodeName: \"div\",\n  attributes: { class: \"counter\" },\n  children: [\n    {\n      nodeName: \"h1\",\n      attributes: {},\n      children: [0]\n    },\n    {\n      nodeName: \"button\",\n      attributes: {},\n      children: [\"-\"]\n    },\n    {\n      nodeName: \"button\",\n      attributes: {},\n      children: [\"+\"]\n    }\n  ]\n}\n```"
     ]
+  },
+  {
+    "name": "wcag.md",
+    "question": "What is WCAG? What are the differences between A, AA, and AAA compliance?",
+    "answer": "WCAG stands for \"Web Content Accessibility Guidelines\". It is a standard describing how to make web content more accessible to people with disabilities\nThey have 12-13 guidelines and for each one, there are testable success criteria, which are at three levels: A, AA, and AAA. The higher the level, the higher the impact on the design of the web content. The higher the level, the web content is essentially more accessible by more users.\nDepending on where you live/work, there may be regulations requiring websites to meet certain levels of compliance. For instance, in Ontario, Canada, beginning January 1, 2021 all public websites and web content posted after January 1, 2012 must meet AA compliance.",
+    "goodToHear": [
+      "A guideline for making web content more accessible",
+      "3 different levels (A, AA, and AAA) of compliance for each guideline",
+      "Governments are starting to require web content to meet a certain level of compliance by law"
+    ],
+    "links": [
+      "[Web Content Accessibility Guidelines (WCAG) Overview](https://www.w3.org/WAI/standards-guidelines/wcag/)",
+      "[How to Meet WCAG](https://www.w3.org/WAI/WCAG21/quickref/)"
+    ],
+    "tags": [
+      "accessibility"
+    ],
+    "expertise": 0,
+    "questionCodeBlocks": [],
+    "answerCodeBlocks": []
   },
   {
     "name": "xss.md",

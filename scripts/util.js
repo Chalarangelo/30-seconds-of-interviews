@@ -12,7 +12,8 @@ const TAG_NAMES = {
   html: "HTML",
   security: "Security",
   node: "Node",
-  react: "React"
+  react: "React",
+  accessibility: "Accessibility"
 }
 
 const attempt = (task, cb) => {
