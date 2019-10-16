@@ -191,6 +191,7 @@ Join our [Gitter channel](https://gitter.im/30-seconds-of-interviews/Lobby) to h
 * [What is a focus ring? What is the correct solution to handle them?](#what-is-a-focus-ring-what-is-the-correct-solution-to-handle-them)
 * [Can you name the four types of `@media` properties?](#can-you-name-the-four-types-of-media-properties)
 * [What are the advantages of using CSS sprites and how are they utilized?](#what-are-the-advantages-of-using-css-sprites-and-how-are-they-utilized)
+*What is the meaning of CSS?(#what-is-the-meaning-of-css)
 </details>
 
 
