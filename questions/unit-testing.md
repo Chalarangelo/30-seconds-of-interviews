@@ -2,7 +2,7 @@
 
 ### Answer
 
-In layman terms, unit Testing is a level of software testing where individual units or components of a software are tested independently.
+Unit Testing is a level of software testing where individual units or components of software are tested independently.
 
 Generally, we write code tests using frameworks like Mocha and Chai. We validate the module by giving it all types of inputs into it, and expect the output we are looking for.
 
