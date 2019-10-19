@@ -14,6 +14,7 @@ Generally, we write code tests using frameworks like Mocha and Chai. We validate
 ### Good to hear
 
 Take a look at different testing frameworks like Jest which are way easier to use.
+Test the software in a way the end user would be expected to use it.
 
 ### Additional Links
 
