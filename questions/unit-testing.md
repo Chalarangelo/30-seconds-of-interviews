@@ -4,7 +4,7 @@
 
 Unit Testing is a level of software testing where individual units or components of software are tested independently.
 
-Generally, we write code tests using frameworks like Mocha and Chai. We validate the module by giving it all types of inputs into it, and expect the output we are looking for.
+Tests are written using frameworks like Mocha, Chai, and Jest. The software is validated by giving it different inputs, and checking to see that the desired output is returned.
 
 **Benefits**:
 
