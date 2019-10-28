@@ -51,7 +51,8 @@ for(const sortedWord in collectedAnagrams) {
 ##### Additional links
 
 * [Find The Anagrams Gist](https://gist.github.com/tinabme/fe6878f5cff42f60a537262503f9b765)
+* [isAnagram function implementation](https://www.30secondsofcode.org/snippet/isAnagram)
 
-<!-- tags: (javascript, anagram) -->
+<!-- tags: (javascript) -->
 
 <!-- expertise: (1) -->
