@@ -1,5 +1,3 @@
-### Your question goes here. Keep it straightforward.
-
 ## What is OOP? 
 
 #### Answer
