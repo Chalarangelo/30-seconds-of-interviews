@@ -1,5 +1,5 @@
 ### Your question goes here. Keep it straightforward.
-
+Whats the difference in function between function(){} and ()=>{}
 <!-- If you need to display some code, keep it short. It goes here: -->
 
 ```html
@@ -11,8 +11,9 @@
 ```js
 ```
 
-#### Answer
 
+#### Answer
+Is the similar in function but the arrow function does not bind the "this" argument, supers or new.target keywords,
 <!-- Your answer goes here. -->
 
 <!-- If you need to display some code, keep it short. It goes here: -->
