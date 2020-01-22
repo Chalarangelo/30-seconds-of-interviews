@@ -103,6 +103,7 @@ Join our [Gitter channel](https://gitter.im/30-seconds-of-interviews/Lobby) to h
 * [What is the difference between the postfix `i++` and prefix `++i` increment operators?](#what-is-the-difference-between-the-postfix-i-and-prefix-i-increment-operators)
 * [In which states can a Promise be?](#in-which-states-can-a-promise-be)
 * [What are Promises?](#what-are-promises)
+* [What is an `async` function?](#what-is-an-async-function)
 * [How does prototypal inheritance differ from classical inheritance?](#how-does-prototypal-inheritance-differ-from-classical-inheritance)
 * [What is a pure function?](#what-is-a-pure-function)
 * [What is recursion and when is it useful?](#what-is-recursion-and-when-is-it-useful)
@@ -395,6 +396,9 @@ async function foo() {
 }
 ```
 
+<details>
+<summary>View answer</summary>
+  
 #### Answer
 An `async` function is a function that allows you to pause the function's execution while it waits for (`await`s) a promise to resolve. It's an abstraction on top of the Promise API that makes asynchronous operations _look_ like they're synchronous.
 
@@ -432,6 +436,10 @@ async function foo() {
 <!-- tags: (javascript) -->
 
 <!-- expertise: (1) -->
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
 
 
 ### What is the difference between the postfix `i++` and prefix `++i` increment operators?
