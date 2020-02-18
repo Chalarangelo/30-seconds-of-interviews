@@ -23,7 +23,7 @@ window.addEventListere('scroll', debounce(function() {
 
 #### Good to hear
 
-* Common use case is to make API call only when user is finished typing while search.
+* Common use case is to make API call only when user is finished typing while searching.
 
 ##### Additional links
 * [Debouncing explained](https://css-tricks.com/debouncing-throttling-explained-examples/)
