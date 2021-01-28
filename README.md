@@ -40,7 +40,7 @@ Join our [Gitter channel](https://gitter.im/30-seconds-of-interviews/Lobby) to h
 #### Related projects
 
 - [30 Seconds of Code](https://30secondsofcode.org)
-- [30 Seconds of CSS](https://30-seconds.github.io/30-seconds-of-css/)
+- [30 Seconds of CSS](https://www.30secondsofcode.org/css/p/1)
 - [30 Seconds of React](https://github.com/30-seconds/30-seconds-of-react)
 - [30 Seconds of Knowledge](https://chrome.google.com/webstore/detail/30-seconds-of-knowledge/mmgplondnjekobonklacmemikcnhklla)
 
