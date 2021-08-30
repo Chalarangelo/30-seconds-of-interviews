@@ -5047,7 +5047,7 @@ Here is an example of the URL and HTTP method with a `posts` resource:
 ##### Additional Links
 
 
-*   ](https://medium.com/extend/what-is-rest-a-simple-explanation-for-beginners-part-1-introduction-b4a072f8740f)
+* [What is REST — A Simple Explanation for Beginners, Part 1: Introduction](https://medium.com/extend/what-is-rest-a-simple-explanation-for-beginners-part-1-introduction-b4a072f8740f)
 
 </details>
 
