@@ -2,7 +2,7 @@
 
 #### Answer
 
-The latest ECMAScript standard defines seven data types, six of them being primitive: `Boolean`, `Null`, `Undefined`, `Number`, `String`, `Symbol` and one non-primitive data type: `Object`.
+The latest ECMAScript standard defines eight data types, six of them being primitive: `Boolean`, `Null`, `Undefined`, `Number`, `BigInt`, `String`, `Symbol` and one non-primitive data type: `Object`.
 
 #### Good to hear
 
