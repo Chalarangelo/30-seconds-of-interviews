@@ -34,7 +34,7 @@
     "modern-normalize": "^0.5.0",
     "npm": "^6.11.2",
     "prettier-eslint": "^9.0.0",
-    "prismjs": "^1.17.1"
+    "prismjs": "^1.27.0"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",
